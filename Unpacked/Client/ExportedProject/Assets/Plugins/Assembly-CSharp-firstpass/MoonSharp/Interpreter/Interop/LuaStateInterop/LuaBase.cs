@@ -1,66 +1,357 @@
-using UnityEngine;
-
 namespace MoonSharp.Interpreter.Interop.LuaStateInterop
 {
-	public class LuaBase : MonoBehaviour
+	public class LuaBase
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		protected const int LUA_TNONE = -1;
 
-		1. No dll files were provided to AssetRipper.
+		protected const int LUA_TNIL = 0;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		protected const int LUA_TBOOLEAN = 1;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		protected const int LUA_TLIGHTUSERDATA = 2;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		protected const int LUA_TNUMBER = 3;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		protected const int LUA_TSTRING = 4;
 
-		3. Assembly Reconstruction has not been implemented.
+		protected const int LUA_TTABLE = 5;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		protected const int LUA_TFUNCTION = 6;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		protected const int LUA_TUSERDATA = 7;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		protected const int LUA_TTHREAD = 8;
 
-		5. Script Content Level 0
+		protected const int LUA_MULTRET = -1;
 
-			AssetRipper was set to not load any script information.
+		protected const string LUA_INTFRMLEN = "l";
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		protected static DynValue GetArgument(LuaState L, int pos)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		protected static DynValue ArgAsType(LuaState L, int pos, DataType type, bool allowNil = false)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		protected static int LuaType(LuaState L, int p)
+		{
+			return 0;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		protected static string LuaLCheckLString(LuaState L, int argNum, out uint l)
+		{
+			l = default(uint);
+			return null;
+		}
 
-		*/
+		protected static void LuaPushInteger(LuaState L, int val)
+		{
+		}
+
+		protected static int LuaToBoolean(LuaState L, int p)
+		{
+			return 0;
+		}
+
+		protected static string LuaToLString(LuaState luaState, int p, out uint l)
+		{
+			l = default(uint);
+			return null;
+		}
+
+		protected static string LuaToString(LuaState luaState, int p)
+		{
+			return null;
+		}
+
+		protected static void LuaLAddValue(LuaLBuffer b)
+		{
+		}
+
+		protected static void LuaLAddLString(LuaLBuffer b, CharPtr s, uint p)
+		{
+		}
+
+		protected static void LuaLAddString(LuaLBuffer b, string s)
+		{
+		}
+
+		protected static int LuaLOptInteger(LuaState L, int pos, int def)
+		{
+			return 0;
+		}
+
+		protected static int LuaLCheckInteger(LuaState L, int pos)
+		{
+			return 0;
+		}
+
+		protected static void LuaLArgCheck(LuaState L, bool condition, int argNum, string message)
+		{
+		}
+
+		protected static int LuaLCheckInt(LuaState L, int argNum)
+		{
+			return 0;
+		}
+
+		protected static int LuaGetTop(LuaState L)
+		{
+			return 0;
+		}
+
+		protected static int LuaLError(LuaState luaState, string message, params object[] args)
+		{
+			return 0;
+		}
+
+		protected static void LuaLAddChar(LuaLBuffer b, char p)
+		{
+		}
+
+		protected static void LuaLBuffInit(LuaState L, LuaLBuffer b)
+		{
+		}
+
+		protected static void LuaPushLiteral(LuaState L, string literalString)
+		{
+		}
+
+		protected static void LuaLPushResult(LuaLBuffer b)
+		{
+		}
+
+		protected static void LuaPushLString(LuaState L, CharPtr s, uint len)
+		{
+		}
+
+		protected static void LuaLCheckStack(LuaState L, int n, string message)
+		{
+		}
+
+		protected static string LUA_QL(string p)
+		{
+			return null;
+		}
+
+		protected static void LuaPushNil(LuaState L)
+		{
+		}
+
+		protected static void LuaAssert(bool p)
+		{
+		}
+
+		protected static string LuaLTypeName(LuaState L, int p)
+		{
+			return null;
+		}
+
+		protected static int LuaIsString(LuaState L, int p)
+		{
+			return 0;
+		}
+
+		protected static void LuaPop(LuaState L, int p)
+		{
+		}
+
+		protected static void LuaGetTable(LuaState L, int p)
+		{
+		}
+
+		protected static int LuaLOptInt(LuaState L, int pos, int def)
+		{
+			return 0;
+		}
+
+		protected static CharPtr LuaLCheckString(LuaState L, int p)
+		{
+			return null;
+		}
+
+		protected static string LuaLCheckStringStr(LuaState L, int p)
+		{
+			return null;
+		}
+
+		protected static void LuaLArgError(LuaState L, int arg, string p)
+		{
+		}
+
+		protected static double LuaLCheckNumber(LuaState L, int pos)
+		{
+			return 0.0;
+		}
+
+		protected static void LuaPushValue(LuaState L, int arg)
+		{
+		}
+
+		protected static void LuaCall(LuaState L, int nargs, int nresults = -1)
+		{
+		}
+
+		protected static int memcmp(CharPtr ptr1, CharPtr ptr2, uint size)
+		{
+			return 0;
+		}
+
+		protected static int memcmp(CharPtr ptr1, CharPtr ptr2, int size)
+		{
+			return 0;
+		}
+
+		protected static CharPtr memchr(CharPtr ptr, char c, uint count)
+		{
+			return null;
+		}
+
+		protected static CharPtr strpbrk(CharPtr str, CharPtr charset)
+		{
+			return null;
+		}
+
+		protected static bool isalpha(char c)
+		{
+			return false;
+		}
+
+		protected static bool iscntrl(char c)
+		{
+			return false;
+		}
+
+		protected static bool isdigit(char c)
+		{
+			return false;
+		}
+
+		protected static bool islower(char c)
+		{
+			return false;
+		}
+
+		protected static bool ispunct(char c)
+		{
+			return false;
+		}
+
+		protected static bool isspace(char c)
+		{
+			return false;
+		}
+
+		protected static bool isupper(char c)
+		{
+			return false;
+		}
+
+		protected static bool isalnum(char c)
+		{
+			return false;
+		}
+
+		protected static bool isxdigit(char c)
+		{
+			return false;
+		}
+
+		protected static bool isgraph(char c)
+		{
+			return false;
+		}
+
+		protected static bool isalpha(int c)
+		{
+			return false;
+		}
+
+		protected static bool iscntrl(int c)
+		{
+			return false;
+		}
+
+		protected static bool isdigit(int c)
+		{
+			return false;
+		}
+
+		protected static bool islower(int c)
+		{
+			return false;
+		}
+
+		protected static bool ispunct(int c)
+		{
+			return false;
+		}
+
+		protected static bool isspace(int c)
+		{
+			return false;
+		}
+
+		protected static bool isupper(int c)
+		{
+			return false;
+		}
+
+		protected static bool isalnum(int c)
+		{
+			return false;
+		}
+
+		protected static bool isgraph(int c)
+		{
+			return false;
+		}
+
+		protected static char tolower(char c)
+		{
+			return '\0';
+		}
+
+		protected static char toupper(char c)
+		{
+			return '\0';
+		}
+
+		protected static char tolower(int c)
+		{
+			return '\0';
+		}
+
+		protected static char toupper(int c)
+		{
+			return '\0';
+		}
+
+		protected static CharPtr strchr(CharPtr str, char c)
+		{
+			return null;
+		}
+
+		protected static CharPtr strcpy(CharPtr dst, CharPtr src)
+		{
+			return null;
+		}
+
+		protected static CharPtr strncpy(CharPtr dst, CharPtr src, int length)
+		{
+			return null;
+		}
+
+		protected static int strlen(CharPtr str)
+		{
+			return 0;
+		}
+
+		public static void sprintf(CharPtr buffer, CharPtr str, params object[] argv)
+		{
+		}
 	}
 }

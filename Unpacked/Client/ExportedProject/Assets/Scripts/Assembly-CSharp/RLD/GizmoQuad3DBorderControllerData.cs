@@ -1,66 +1,51 @@
-using UnityEngine;
-
 namespace RLD
 {
-	public class GizmoQuad3DBorderControllerData : MonoBehaviour
+	public class GizmoQuad3DBorderControllerData
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public Gizmo Gizmo;
 
-		1. No dll files were provided to AssetRipper.
+		public GizmoPlaneSlider3D PlaneSlider;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public GizmoQuad3DBorder Border;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public GizmoHandle TargetHandle;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public QuadShape3D TargetQuad;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public QuadShape3D BorderQuad;
 
-		3. Assembly Reconstruction has not been implemented.
+		public BoxShape3D TopBox;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public BoxShape3D RightBox;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public BoxShape3D BottomBox;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public BoxShape3D LeftBox;
 
-		5. Script Content Level 0
+		public BoxShape3D TopLeftBox;
 
-			AssetRipper was set to not load any script information.
+		public BoxShape3D TopRightBox;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public BoxShape3D BottomRightBox;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public BoxShape3D BottomLeftBox;
 
-		7. An incorrect path was provided to AssetRipper.
+		public int BorderQuadIndex;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public int TopBoxIndex;
 
-		*/
+		public int RightBoxIndex;
+
+		public int BottomBoxIndex;
+
+		public int LeftBoxIndex;
+
+		public int TopLeftBoxIndex;
+
+		public int TopRightBoxIndex;
+
+		public int BottomRightBoxIndex;
+
+		public int BottomLeftBoxIndex;
 	}
 }

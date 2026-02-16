@@ -1,66 +1,175 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using Mirror;
+using MoonSharp.Interpreter;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Polytoria.Datamodel.Services
 {
-	public class ChatService : MonoBehaviour
+	public class ChatService : NetworkBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CLogChatMessage_003Ed__9 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public ChatService _003C_003E4__this;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public int userId;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public string message;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private UnityWebRequest _003Cuwr_003E5__2;
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			public _003CLogChatMessage_003Ed__9(int _003C_003E1__state)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		5. Script Content Level 0
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			AssetRipper was set to not load any script information.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			private void _003C_003Em__Finally1()
+			{
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public const int MaxMessageLength = 128;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static ChatService Instance;
 
-		*/
+		private Players _players;
+
+		private void Awake()
+		{
+		}
+
+		public void BroadcastMessage(string message)
+		{
+		}
+
+		public void UnicastMessage(string message, Player player)
+		{
+		}
+
+		[MoonSharpHidden]
+		public void SendChat(string message)
+		{
+		}
+
+		private string FilterChatExploits(string message)
+		{
+			return null;
+		}
+
+		private void DoSendChat(string message, Color color, Player player)
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CLogChatMessage_003Ed__9))]
+		private IEnumerator LogChatMessage(int userId, string message)
+		{
+			return null;
+		}
+
+		[Command(requiresAuthority = false)]
+		private void CmdSendChat(string message, NetworkConnectionToClient sender = null)
+		{
+		}
+
+		[ClientRpc]
+		private void SendChatClientRpc(string message, string username, Color color, Player player)
+		{
+		}
+
+		[TargetRpc]
+		private void SendChatTargetRpc(NetworkConnection target, string message, string username, Color color)
+		{
+		}
+
+		[MoonSharpHidden]
+		public new void Invoke(string methodName, float time)
+		{
+		}
+
+		[MoonSharpHidden]
+		public new void InvokeRepeating(string methodName, float time, float repeatRate)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_CmdSendChat__String__NetworkConnectionToClient(string message, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdSendChat__String__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_SendChatClientRpc__String__String__Color__Player(string message, string username, Color color, Player player)
+		{
+		}
+
+		protected static void InvokeUserCode_SendChatClientRpc__String__String__Color__Player(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_SendChatTargetRpc__NetworkConnection__String__String__Color(NetworkConnection target, string message, string username, Color color)
+		{
+		}
+
+		protected static void InvokeUserCode_SendChatTargetRpc__NetworkConnection__String__String__Color(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static ChatService()
+		{
+		}
 	}
 }

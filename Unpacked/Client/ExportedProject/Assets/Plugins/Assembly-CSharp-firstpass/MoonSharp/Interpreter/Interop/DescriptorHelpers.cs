@@ -1,66 +1,164 @@
-using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace MoonSharp.Interpreter.Interop
 {
-	public class DescriptorHelpers : MonoBehaviour
+	public static class DescriptorHelpers
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CGetAllImplementedTypes_003Ed__10 : IEnumerable<Type>, IEnumerable, IEnumerator<Type>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private Type _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private int _003C_003El__initialThreadId;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private Type t;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public Type _003C_003E3__t;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private Type _003Cot_003E5__2;
 
-		3. Assembly Reconstruction has not been implemented.
+			private Type[] _003C_003E7__wrap2;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			private int _003C_003E7__wrap3;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			Type IEnumerator<Type>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-		5. Script Content Level 0
+			[DebuggerHidden]
+			public _003CGetAllImplementedTypes_003Ed__10(int _003C_003E1__state)
+			{
+			}
 
-			AssetRipper was set to not load any script information.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		7. An incorrect path was provided to AssetRipper.
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			[DebuggerHidden]
+			IEnumerator<Type> IEnumerable<Type>.GetEnumerator()
+			{
+				return null;
+			}
 
-		*/
+			[DebuggerHidden]
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return null;
+			}
+		}
+
+		public static bool? GetVisibilityFromAttributes(this MemberInfo mi)
+		{
+			return null;
+		}
+
+		public static bool IsDelegateType(this Type t)
+		{
+			return false;
+		}
+
+		public static string GetClrVisibility(this Type type)
+		{
+			return null;
+		}
+
+		public static string GetClrVisibility(this FieldInfo info)
+		{
+			return null;
+		}
+
+		public static string GetClrVisibility(this PropertyInfo info)
+		{
+			return null;
+		}
+
+		public static string GetClrVisibility(this MethodBase info)
+		{
+			return null;
+		}
+
+		public static bool IsPropertyInfoPublic(this PropertyInfo pi)
+		{
+			return false;
+		}
+
+		public static List<string> GetMetaNamesFromAttributes(this MethodInfo mi)
+		{
+			return null;
+		}
+
+		public static Type[] SafeGetTypes(this Assembly asm)
+		{
+			return null;
+		}
+
+		public static string GetConversionMethodName(this Type type)
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CGetAllImplementedTypes_003Ed__10))]
+		public static IEnumerable<Type> GetAllImplementedTypes(this Type t)
+		{
+			return null;
+		}
+
+		public static bool IsValidSimpleIdentifier(string str)
+		{
+			return false;
+		}
+
+		public static string ToValidSimpleIdentifier(string str)
+		{
+			return null;
+		}
+
+		public static string Camelify(string name)
+		{
+			return null;
+		}
+
+		public static string UpperFirstLetter(string name)
+		{
+			return null;
+		}
 	}
 }

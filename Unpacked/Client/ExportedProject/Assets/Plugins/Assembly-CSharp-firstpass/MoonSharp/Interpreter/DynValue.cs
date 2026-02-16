@@ -1,66 +1,305 @@
-using UnityEngine;
+using System;
+using System.Text;
 
 namespace MoonSharp.Interpreter
 {
-	public class DynValue : MonoBehaviour
+	public sealed class DynValue
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private static int s_RefIDCounter;
 
-		1. No dll files were provided to AssetRipper.
+		private int m_RefID;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private int m_HashCode;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private bool m_ReadOnly;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private double m_Number;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private object m_Object;
 
-		3. Assembly Reconstruction has not been implemented.
+		private DataType m_Type;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public int ReferenceID => 0;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public DataType Type => default(DataType);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public Closure Function => null;
 
-		5. Script Content Level 0
+		public double Number => 0.0;
 
-			AssetRipper was set to not load any script information.
+		public DynValue[] Tuple => null;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Coroutine Coroutine => null;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Table Table => null;
 
-		7. An incorrect path was provided to AssetRipper.
+		public bool Boolean => false;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public string String => null;
 
-		*/
+		public CallbackFunction Callback => null;
+
+		public TailCallData TailCallData => null;
+
+		public YieldRequest YieldRequest => null;
+
+		public UserData UserData => null;
+
+		public bool ReadOnly => false;
+
+		public static DynValue Void { get; private set; }
+
+		public static DynValue Nil { get; private set; }
+
+		public static DynValue True { get; private set; }
+
+		public static DynValue False { get; private set; }
+
+		public static DynValue NewNil()
+		{
+			return null;
+		}
+
+		public static DynValue NewBoolean(bool v)
+		{
+			return null;
+		}
+
+		public static DynValue NewNumber(double num)
+		{
+			return null;
+		}
+
+		public static DynValue NewString(string str)
+		{
+			return null;
+		}
+
+		public static DynValue NewString(StringBuilder sb)
+		{
+			return null;
+		}
+
+		public static DynValue NewString(string format, params object[] args)
+		{
+			return null;
+		}
+
+		public static DynValue NewCoroutine(Coroutine coroutine)
+		{
+			return null;
+		}
+
+		public static DynValue NewClosure(Closure function)
+		{
+			return null;
+		}
+
+		public static DynValue NewCallback(Func<ScriptExecutionContext, CallbackArguments, DynValue> callBack, string name = null)
+		{
+			return null;
+		}
+
+		public static DynValue NewCallback(CallbackFunction function)
+		{
+			return null;
+		}
+
+		public static DynValue NewTable(Table table)
+		{
+			return null;
+		}
+
+		public static DynValue NewPrimeTable()
+		{
+			return null;
+		}
+
+		public static DynValue NewTable(Script script)
+		{
+			return null;
+		}
+
+		public static DynValue NewTable(Script script, params DynValue[] arrayValues)
+		{
+			return null;
+		}
+
+		public static DynValue NewTailCallReq(DynValue tailFn, params DynValue[] args)
+		{
+			return null;
+		}
+
+		public static DynValue NewTailCallReq(TailCallData tailCallData)
+		{
+			return null;
+		}
+
+		public static DynValue NewYieldReq(DynValue[] args)
+		{
+			return null;
+		}
+
+		internal static DynValue NewForcedYieldReq()
+		{
+			return null;
+		}
+
+		public static DynValue NewTuple(params DynValue[] values)
+		{
+			return null;
+		}
+
+		public static DynValue NewTupleNested(params DynValue[] values)
+		{
+			return null;
+		}
+
+		public static DynValue NewUserData(UserData userData)
+		{
+			return null;
+		}
+
+		public DynValue AsReadOnly()
+		{
+			return null;
+		}
+
+		public DynValue Clone()
+		{
+			return null;
+		}
+
+		public DynValue Clone(bool readOnly)
+		{
+			return null;
+		}
+
+		public DynValue CloneAsWritable()
+		{
+			return null;
+		}
+
+		static DynValue()
+		{
+		}
+
+		public string ToPrintString()
+		{
+			return null;
+		}
+
+		public string ToDebugPrintString()
+		{
+			return null;
+		}
+
+		public override string ToString()
+		{
+			return null;
+		}
+
+		public override int GetHashCode()
+		{
+			return 0;
+		}
+
+		public override bool Equals(object obj)
+		{
+			return false;
+		}
+
+		public string CastToString()
+		{
+			return null;
+		}
+
+		public double? CastToNumber()
+		{
+			return null;
+		}
+
+		public bool CastToBool()
+		{
+			return false;
+		}
+
+		public IScriptPrivateResource GetAsPrivateResource()
+		{
+			return null;
+		}
+
+		public DynValue ToScalar()
+		{
+			return null;
+		}
+
+		public void Assign(DynValue value)
+		{
+		}
+
+		public DynValue GetLength()
+		{
+			return null;
+		}
+
+		public bool IsNil()
+		{
+			return false;
+		}
+
+		public bool IsNotNil()
+		{
+			return false;
+		}
+
+		public bool IsVoid()
+		{
+			return false;
+		}
+
+		public bool IsNotVoid()
+		{
+			return false;
+		}
+
+		public bool IsNilOrNan()
+		{
+			return false;
+		}
+
+		internal void AssignNumber(double num)
+		{
+		}
+
+		public static DynValue FromObject(Script script, object obj)
+		{
+			return null;
+		}
+
+		public object ToObject()
+		{
+			return null;
+		}
+
+		public object ToObject(Type desiredType)
+		{
+			return null;
+		}
+
+		public T ToObject<T>()
+		{
+			return default(T);
+		}
+
+		public DynValue CheckType(string funcName, DataType desiredType, int argNum = -1, TypeValidationFlags flags = TypeValidationFlags.AutoConvert)
+		{
+			return null;
+		}
+
+		public T CheckUserDataType<T>(string funcName, int argNum = -1, TypeValidationFlags flags = TypeValidationFlags.AutoConvert)
+		{
+			return default(T);
+		}
 	}
 }

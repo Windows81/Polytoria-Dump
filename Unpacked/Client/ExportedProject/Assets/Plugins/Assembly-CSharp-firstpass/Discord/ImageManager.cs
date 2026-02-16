@@ -1,66 +1,82 @@
+using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Discord
 {
-	public class ImageManager : MonoBehaviour
+	public class ImageManager
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		internal struct FFIEvents
+		{
+		}
 
-		1. No dll files were provided to AssetRipper.
+		internal struct FFIMethods
+		{
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void FetchCallback(IntPtr ptr, Result result, ImageHandle handleResult);
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void FetchMethod(IntPtr methodsPtr, ImageHandle handle, bool refresh, IntPtr callbackData, FetchCallback callback);
 
-		2. Incorrect dll files were provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result GetDimensionsMethod(IntPtr methodsPtr, ImageHandle handle, ref ImageDimensions dimensions);
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result GetDataMethod(IntPtr methodsPtr, ImageHandle handle, byte[] data, int dataLen);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			internal FetchMethod Fetch;
 
-		3. Assembly Reconstruction has not been implemented.
+			internal GetDimensionsMethod GetDimensions;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			internal GetDataMethod GetData;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public delegate void FetchHandler(Result result, ImageHandle handleResult);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private IntPtr MethodsPtr;
 
-		5. Script Content Level 0
+		private object MethodsStructure;
 
-			AssetRipper was set to not load any script information.
+		private FFIMethods Methods => default(FFIMethods);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		internal ImageManager(IntPtr ptr, IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private void InitEvents(IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[MonoPInvokeCallback]
+		private static void FetchCallbackImpl(IntPtr ptr, Result result, ImageHandle handleResult)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void Fetch(ImageHandle handle, bool refresh, FetchHandler callback)
+		{
+		}
 
-		*/
+		public ImageDimensions GetDimensions(ImageHandle handle)
+		{
+			return default(ImageDimensions);
+		}
+
+		public void GetData(ImageHandle handle, byte[] data)
+		{
+		}
+
+		public void Fetch(ImageHandle handle, FetchHandler callback)
+		{
+		}
+
+		public byte[] GetData(ImageHandle handle)
+		{
+			return null;
+		}
+
+		public Texture2D GetTexture(ImageHandle handle)
+		{
+			return null;
+		}
 	}
 }

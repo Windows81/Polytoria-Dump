@@ -1,66 +1,213 @@
-using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using Mirror;
+using UnityEngine.Networking;
 
 namespace Polytoria.Datamodel.Services
 {
-	public class DataStoreService : MonoBehaviour
+	public class DataStoreService : NetworkBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CDoLoadFromServer_003Ed__20 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public GetDataStoreQueueEntry entry;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public DataStoreService _003C_003E4__this;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			private Datastore _003Cds_003E5__2;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private UnityWebRequest _003Cuwr_003E5__3;
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			public _003CDoLoadFromServer_003Ed__20(int _003C_003E1__state)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		5. Script Content Level 0
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			AssetRipper was set to not load any script information.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			private void _003C_003Em__Finally1()
+			{
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[CompilerGenerated]
+		private sealed class _003CDoWriteToServer_003Ed__22 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			private object _003C_003E2__current;
 
-		*/
+			public object value;
+
+			public string key;
+
+			public Datastore ds;
+
+			public Action<bool> callback;
+
+			private UnityWebRequest _003Cuwr_003E5__2;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CDoWriteToServer_003Ed__22(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		public int MaxReadRequestsPerMinute;
+
+		public int ReadRequestsPerPlayerModifier;
+
+		public int MaxWriteRequestsPerMinute;
+
+		public int WriteRequestsPerPlayerModifier;
+
+		private Queue<GetDataStoreQueueEntry> getDataStoreQueue;
+
+		private Dictionary<string, Datastore> datastores;
+
+		private int readRequestsThisMinute;
+
+		private int writeRequestThisMinute;
+
+		private int currentMinute;
+
+		private bool isGettingDatastore;
+
+		public static DataStoreService Instance { get; private set; }
+
+		private void Awake()
+		{
+		}
+
+		public Datastore GetDatastore(string key)
+		{
+			return null;
+		}
+
+		private void Update()
+		{
+		}
+
+		public bool UseReadRequest()
+		{
+			return false;
+		}
+
+		public bool UseWriteRequest()
+		{
+			return false;
+		}
+
+		public void LoadFromServer(Datastore ds, Action<bool> callback)
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CDoLoadFromServer_003Ed__20))]
+		private IEnumerator DoLoadFromServer(GetDataStoreQueueEntry entry)
+		{
+			return null;
+		}
+
+		public void WriteToServer(Datastore ds, string key, object value, Action<bool> callback)
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CDoWriteToServer_003Ed__22))]
+		private IEnumerator DoWriteToServer(Datastore ds, string key, object value, Action<bool> callback)
+		{
+			return null;
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
 	}
 }

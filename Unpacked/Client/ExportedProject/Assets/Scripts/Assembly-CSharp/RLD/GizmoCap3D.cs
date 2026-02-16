@@ -2,65 +2,226 @@ using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoCap3D : MonoBehaviour
+	public class GizmoCap3D : GizmoCap
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private int _coneIndex;
 
-		1. No dll files were provided to AssetRipper.
+		private ConeShape3D _cone;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private int _pyramidIndex;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private PyramidShape3D _pyramid;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private int _boxIndex;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private BoxShape3D _box;
 
-		3. Assembly Reconstruction has not been implemented.
+		private int _sphereIndex;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private SphereShape3D _sphere;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private int _trPrismIndex;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private TriangPrismShape3D _trPrism;
 
-		5. Script Content Level 0
+		private GizmoCap3DControllerData _controllerData;
 
-			AssetRipper was set to not load any script information.
+		private IGizmoCap3DController[] _controllers;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private GizmoTransform _transform;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private GizmoOverrideColor _overrideColor;
 
-		7. An incorrect path was provided to AssetRipper.
+		private GizmoCap3DLookAndFeel _lookAndFeel;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private GizmoCap3DLookAndFeel _sharedLookAndFeel;
 
-		*/
+		public Vector3 Position
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
+
+		public Quaternion Rotation
+		{
+			get
+			{
+				return default(Quaternion);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoOverrideColor OverrideColor => null;
+
+		public IGizmoDragSession DragSession
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoCap3DLookAndFeel LookAndFeel => null;
+
+		public GizmoCap3DLookAndFeel SharedLookAndFeel
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoCap3D(Gizmo gizmo, int handleId)
+			: base(null, 0)
+		{
+		}
+
+		public void RegisterTransformAsDragTarget(IGizmoDragSession dragSession)
+		{
+		}
+
+		public void UnregisterTransformAsDragTarget(IGizmoDragSession dragSession)
+		{
+		}
+
+		public void AlignTransformAxis(int axisIndex, AxisSign axisSign, Vector3 axis)
+		{
+		}
+
+		public void SetZoomFactorTransform(GizmoTransform transform)
+		{
+		}
+
+		public void CapSlider3D(Vector3 sliderDirection, Vector3 sliderEndPt)
+		{
+		}
+
+		public void CapSlider3DInvert(Vector3 sliderDirection, Vector3 sliderEndPt)
+		{
+		}
+
+		public float GetSliderAlignedRealLength(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetZoomFactor(Camera camera)
+		{
+			return 0f;
+		}
+
+		public float GetRealConeHeight(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealConeRadius(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealPyramidWidth(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealPyramidDepth(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealPyramidHeight(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealBoxWidth(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealBoxHeight(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealBoxDepth(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public Vector3 GetRealBoxSize(float zoomFactor)
+		{
+			return default(Vector3);
+		}
+
+		public float GetRealSphereRadius(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealTriPrismWidth(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealTriPrismHeight(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealTriPrismDepth(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public void ApplyZoomFactor(Camera camera)
+		{
+		}
+
+		public override void Render(Camera camera)
+		{
+		}
+
+		public void Refresh()
+		{
+		}
+
+		protected override void OnVisibilityStateChanged()
+		{
+		}
+
+		protected override void OnHoverableStateChanged()
+		{
+		}
+
+		private void OnGizmoPreUpdateBegin(Gizmo gizmo)
+		{
+		}
+
+		private void OnTransformChanged(GizmoTransform transform, GizmoTransform.ChangeData changeData)
+		{
+		}
+
+		private void OnGizmoPostEnabled(Gizmo gizmo)
+		{
+		}
+
+		private void OnGizmoPostDisabled(Gizmo gizmo)
+		{
+		}
 	}
 }

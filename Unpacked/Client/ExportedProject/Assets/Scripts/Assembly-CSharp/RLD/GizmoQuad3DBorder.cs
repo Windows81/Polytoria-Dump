@@ -1,66 +1,105 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoQuad3DBorder : MonoBehaviour
+	public class GizmoQuad3DBorder
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private GizmoPlaneSlider3D _planeSlider;
 
-		1. No dll files were provided to AssetRipper.
+		private GizmoHandle _targetHandle;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private QuadShape3D _targetQuad;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private bool _isVisible;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private bool _isHoverable;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private int _borderQuadIndex;
 
-		3. Assembly Reconstruction has not been implemented.
+		private QuadShape3D _borderQuad;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private int _topBoxIndex;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private BoxShape3D _topBox;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private int _rightBoxIndex;
 
-		5. Script Content Level 0
+		private BoxShape3D _rightBox;
 
-			AssetRipper was set to not load any script information.
+		private int _bottomBoxIndex;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private BoxShape3D _bottomBox;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private int _leftBoxIndex;
 
-		7. An incorrect path was provided to AssetRipper.
+		private BoxShape3D _leftBox;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private int _topLeftBoxIndex;
 
-		*/
+		private BoxShape3D _topLeftBox;
+
+		private int _topRightBoxIndex;
+
+		private BoxShape3D _topRightBox;
+
+		private int _bottomRightBoxIndex;
+
+		private BoxShape3D _bottomRightBox;
+
+		private int _bottomLeftBoxIndex;
+
+		private BoxShape3D _bottomLeftBox;
+
+		private List<int> _sortedBoxIndices;
+
+		private GizmoQuad3DBorderControllerData _controllerData;
+
+		private IGizmoQuad3DBorderController[] _controllers;
+
+		public bool IsVisible => false;
+
+		public bool IsHoverable => false;
+
+		public Gizmo Gizmo => null;
+
+		public GizmoQuad3DBorder(GizmoPlaneSlider3D planeSlider, GizmoHandle targetHandle, QuadShape3D targetQuad)
+		{
+		}
+
+		public void SetVisible(bool isVisible)
+		{
+		}
+
+		public void SetHoverable(bool isHoverable)
+		{
+		}
+
+		public float GetZoomFactor(Camera camera)
+		{
+			return 0f;
+		}
+
+		public float GetRealBoxHeight(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public float GetRealBoxDepth(float zoomFactor)
+		{
+			return 0f;
+		}
+
+		public void OnQuadShapeChanged()
+		{
+		}
+
+		public void Render(Camera camera)
+		{
+		}
+
+		private void OnGizmoPreUpdateBegin(Gizmo gizmo)
+		{
+		}
 	}
 }

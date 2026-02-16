@@ -1,66 +1,155 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Polytoria.Controllers
 {
 	public class NetworkController : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CPlaySolo_003Ed__9 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-		2. Incorrect dll files were provided to AssetRipper.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			[DebuggerHidden]
+			public _003CPlaySolo_003Ed__9(int _003C_003E1__state)
+			{
+			}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		3. Assembly Reconstruction has not been implemented.
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[CompilerGenerated]
+		private sealed class _003CStartClient_003Ed__8 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		5. Script Content Level 0
+			private object _003C_003E2__current;
 
-			AssetRipper was set to not load any script information.
+			public NetworkController _003C_003E4__this;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			private UnityWebRequest _003Cuwr_003E5__2;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-		7. An incorrect path was provided to AssetRipper.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			[DebuggerHidden]
+			public _003CStartClient_003Ed__8(int _003C_003E1__state)
+			{
+			}
 
-		*/
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		public static NetworkController singleton;
+
+		private string passphrase;
+
+		public int PlaceID { get; private set; }
+
+		private void Awake()
+		{
+		}
+
+		private void Start()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CStartClient_003Ed__8))]
+		private IEnumerator StartClient()
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CPlaySolo_003Ed__9))]
+		private IEnumerator PlaySolo()
+		{
+			return null;
+		}
+
+		private void Update()
+		{
+		}
 	}
 }

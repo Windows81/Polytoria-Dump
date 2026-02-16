@@ -1,66 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Polytoria.Datamodel;
 using UnityEngine;
 
 namespace Polytoria.Controllers
 {
 	public class ClipboardController : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static ClipboardController singleton;
 
-		1. No dll files were provided to AssetRipper.
+		private const string CLIPBOARD_PREFIX = "POLYTORIA_CLIPBOARD:";
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private const uint GMEM_MOVEABLE = 2u;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private const uint CF_UNICODETEXT = 13u;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private void Awake()
+		{
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[PreserveSig]
+		private static extern bool OpenClipboard(IntPtr hWndNewOwner);
 
-		3. Assembly Reconstruction has not been implemented.
+		[PreserveSig]
+		private static extern bool CloseClipboard();
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[PreserveSig]
+		private static extern bool EmptyClipboard();
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[PreserveSig]
+		private static extern IntPtr SetClipboardData(uint uFormat, IntPtr data);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[PreserveSig]
+		private static extern IntPtr GetClipboardData(uint uFormat);
 
-		5. Script Content Level 0
+		[PreserveSig]
+		private static extern IntPtr GlobalAlloc(uint flags, UIntPtr size);
 
-			AssetRipper was set to not load any script information.
+		[PreserveSig]
+		private static extern IntPtr GlobalLock(IntPtr hMem);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[PreserveSig]
+		private static extern bool GlobalUnlock(IntPtr hMem);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[PreserveSig]
+		private static extern IntPtr GlobalFree(IntPtr hMem);
 
-		7. An incorrect path was provided to AssetRipper.
+		private static void SetClipboardText(string text)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private static string GetClipboardText()
+		{
+			return null;
+		}
 
-		*/
+		public void CopyInstancesToClipboard(List<Instance> instances)
+		{
+		}
+
+		public void PasteInstancesFromClipboard(Instance targetParent = null)
+		{
+		}
+
+		private string CompressString(string text)
+		{
+			return null;
+		}
+
+		private string DecompressString(string compressedText)
+		{
+			return null;
+		}
 	}
 }

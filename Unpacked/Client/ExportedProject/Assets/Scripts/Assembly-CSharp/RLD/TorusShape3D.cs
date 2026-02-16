@@ -1,66 +1,176 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class TorusShape3D : MonoBehaviour
+	public class TorusShape3D : Shape3D
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum WireRenderFlags
+		{
+			None = 0,
+			TubeSlices = 1,
+			AxialSlices = 2,
+			All = 3
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public class WireRenderDescriptor
+		{
+			private WireRenderFlags _wireFlags;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private int _numTubeSlices;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private int _numAxialSlices;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public int NumTubeSlices
+			{
+				get
+				{
+					return 0;
+				}
+				set
+				{
+				}
+			}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public int NumAxialSlices
+			{
+				get
+				{
+					return 0;
+				}
+				set
+				{
+				}
+			}
 
-		3. Assembly Reconstruction has not been implemented.
+			public WireRenderFlags WireFlags
+			{
+				get
+				{
+					return default(WireRenderFlags);
+				}
+				set
+				{
+				}
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private float _coreRadius;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private float _tubeRadius;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private Vector3 _center;
 
-		5. Script Content Level 0
+		private Quaternion _rotation;
 
-			AssetRipper was set to not load any script information.
+		private TorusEpsilon _epsilon;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private WireRenderDescriptor _wireRenderDesc;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float CoreRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public float TubeRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Vector3 Center
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public Quaternion Rotation
+		{
+			get
+			{
+				return default(Quaternion);
+			}
+			set
+			{
+			}
+		}
+
+		public Vector3 Right => default(Vector3);
+
+		public Vector3 Up => default(Vector3);
+
+		public Vector3 Look => default(Vector3);
+
+		public TorusEpsilon Epsilon
+		{
+			get
+			{
+				return default(TorusEpsilon);
+			}
+			set
+			{
+			}
+		}
+
+		public float TubeRadiusEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public WireRenderDescriptor WireRenderDesc => null;
+
+		public static Vector3 ModelRight => default(Vector3);
+
+		public static Vector3 ModelUp => default(Vector3);
+
+		public static Vector3 ModelLook => default(Vector3);
+
+		public static Vector3 ModelCenter => default(Vector3);
+
+		public override bool Raycast(Ray ray, out float t)
+		{
+			t = default(float);
+			return false;
+		}
+
+		public override void RenderSolid()
+		{
+		}
+
+		public override void RenderWire()
+		{
+		}
+
+		public List<Vector3> GetHrzExtents()
+		{
+			return null;
+		}
+
+		public override AABB GetAABB()
+		{
+			return default(AABB);
+		}
 	}
 }

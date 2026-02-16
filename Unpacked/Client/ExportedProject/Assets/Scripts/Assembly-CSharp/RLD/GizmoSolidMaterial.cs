@@ -2,65 +2,66 @@ using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoSolidMaterial : MonoBehaviour
+	public class GizmoSolidMaterial : Singleton<GizmoSolidMaterial>
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Material _material;
 
-		1. No dll files were provided to AssetRipper.
+		public Material Material => null;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public bool IsLit => false;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public float LightIntensity => 0f;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public void ResetValuesToSensibleDefaults()
+		{
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public void SetLit(bool isLit)
+		{
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public void SetLightDirection(Vector3 lightDir)
+		{
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public void SetLightIntensity(float intensity)
+		{
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public void SetColor(Color color)
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public void SetZWriteEnabled(bool isEnabled)
+		{
+		}
 
-		5. Script Content Level 0
+		public void SetZTestEnabled(bool isEnabled)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public void SetZTestAlways()
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public void SetZTestLess()
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public void SetCullModeBack()
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public void SetCullModeFront()
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void SetCullModeOff()
+		{
+		}
 
-		*/
+		public void SetPass(int passIndex)
+		{
+		}
 	}
 }

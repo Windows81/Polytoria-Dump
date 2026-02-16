@@ -1,66 +1,244 @@
+using System;
+using System.Runtime.InteropServices;
+using Mirror;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class ProceduralSky : MonoBehaviour
+	[Instantiatable]
+	public class ProceduralSky : SkyBase
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SyncVar(hook = "OnSunSizeChanged")]
+		private float sunSize;
 
-		1. No dll files were provided to AssetRipper.
+		[SyncVar(hook = "OnSunSizeConvergenceChanged")]
+		private float sunSizeConvergence;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar(hook = "OnAtmosphereThicknessChanged")]
+		private float atmosphereThickness;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar(hook = "OnSkyTintChanged")]
+		private Color skyTint;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SyncVar(hook = "OnGroundColorChanged")]
+		private Color groundColor;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SyncVar(hook = "OnExposureChanged")]
+		private float exposure;
 
-		3. Assembly Reconstruction has not been implemented.
+		public Action<float, float> _Mirror_SyncVarHookDelegate_sunSize;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Action<float, float> _Mirror_SyncVarHookDelegate_sunSizeConvergence;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Action<float, float> _Mirror_SyncVarHookDelegate_atmosphereThickness;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_skyTint;
 
-		5. Script Content Level 0
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_groundColor;
 
-			AssetRipper was set to not load any script information.
+		public Action<float, float> _Mirror_SyncVarHookDelegate_exposure;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[Archivable]
+		[CreatorProperty]
+		public float SunSize
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[Archivable]
+		[CreatorProperty]
+		public float SunSizeConvergence
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[Archivable]
+		[CreatorProperty]
+		public float AtmosphereThickness
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[Archivable]
+		[CreatorProperty]
+		public Color SkyTint
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		[Archivable]
+		[CreatorProperty]
+		public Color GroundColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		[Archivable]
+		[CreatorProperty]
+		public float Exposure
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float NetworksunSize
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworksunSizeConvergence
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkatmosphereThickness
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkskyTint
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkgroundColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float Networkexposure
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		protected override void Apply()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		private void OnSunSizeChanged(float oldValue, float newValue)
+		{
+		}
+
+		private void OnSunSizeConvergenceChanged(float oldValue, float newValue)
+		{
+		}
+
+		private void OnAtmosphereThicknessChanged(float oldValue, float newValue)
+		{
+		}
+
+		private void OnSkyTintChanged(Color oldValue, Color newValue)
+		{
+		}
+
+		private void OnGroundColorChanged(Color oldValue, Color newValue)
+		{
+		}
+
+		private void OnExposureChanged(float oldValue, float newValue)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

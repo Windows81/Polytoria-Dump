@@ -1,66 +1,237 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using SimpleJSON;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
 namespace Polytoria.Controllers
 {
 	public class ToolboxController : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum ToolboxCategory
+		{
+			RecentlyUpdated = 0,
+			UploadedModels = 1
+		}
 
-		1. No dll files were provided to AssetRipper.
+		[CompilerGenerated]
+		private sealed class _003CDoReloadToolbox_003Ed__22 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private object _003C_003E2__current;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public ToolboxController _003C_003E4__this;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			private UnityWebRequest _003Cuwr_003E5__2;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			[DebuggerHidden]
+			public _003CDoReloadToolbox_003Ed__22(int _003C_003E1__state)
+			{
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-		5. Script Content Level 0
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-			AssetRipper was set to not load any script information.
+			private void _003C_003Em__Finally1()
+			{
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[CompilerGenerated]
+		private sealed class _003CLoadThumbnail_003Ed__23 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		7. An incorrect path was provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			public JSONNode entry;
 
-		*/
+			public RawImage image;
+
+			private UnityWebRequest _003Ctwr_003E5__2;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CLoadThumbnail_003Ed__23(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		[SerializeField]
+		private TMP_Dropdown categorySelector;
+
+		[SerializeField]
+		private RectTransform toolboxContainer;
+
+		[SerializeField]
+		private RectTransform entryPrefab;
+
+		[SerializeField]
+		private TMP_Text pageLabel;
+
+		private int page;
+
+		private int pageLimit;
+
+		private ToolboxCategory cat;
+
+		private string searchQuery;
+
+		public int Page
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public ToolboxCategory Category
+		{
+			get
+			{
+				return default(ToolboxCategory);
+			}
+			set
+			{
+			}
+		}
+
+		public string SearchQuery
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		private void Start()
+		{
+		}
+
+		public void SetSearchQuery(string q)
+		{
+		}
+
+		public void ReloadToolbox()
+		{
+		}
+
+		public void PageUp()
+		{
+		}
+
+		public void PageDown()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CDoReloadToolbox_003Ed__22))]
+		private IEnumerator DoReloadToolbox()
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CLoadThumbnail_003Ed__23))]
+		private IEnumerator LoadThumbnail(JSONNode entry, RawImage image)
+		{
+			return null;
+		}
+
+		public void InsertModel(int id)
+		{
+		}
+
+		public void SetCategory(int c)
+		{
+		}
 	}
 }

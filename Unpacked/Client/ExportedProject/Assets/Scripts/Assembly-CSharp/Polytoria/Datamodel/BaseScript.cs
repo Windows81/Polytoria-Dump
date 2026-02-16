@@ -1,66 +1,142 @@
-using UnityEngine;
+using System.Runtime.InteropServices;
+using Mirror;
+using MoonSharp.Interpreter;
+using Polytoria.Datamodel.Services;
 
 namespace Polytoria.Datamodel
 {
-	public class BaseScript : MonoBehaviour
+	public class BaseScript : Instance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public bool running;
 
-		1. No dll files were provided to AssetRipper.
+		private bool requestedRun;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private ScriptService scriptService;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar]
+		[MoonSharpHidden]
+		public string source;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[MoonSharpHidden]
+		public Script script;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private DynValue updateFunc;
 
-		3. Assembly Reconstruction has not been implemented.
+		private DynValue fixedUpdateFunc;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[MoonSharpHidden]
+		[Archivable]
+		public string Source
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public new object this[string name]
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public string Networksource
+		{
+			get
+			{
+				return null;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		protected override void Awake()
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		protected override void Start()
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		protected override void OnNetworkStart()
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public override void OnStartClient()
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[MoonSharpHidden]
+		public void Run()
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[ClientRpc]
+		private void RpcRun()
+		{
+		}
 
-		*/
+		public void Call(string function, params object[] args)
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		protected override void PostClone()
+		{
+		}
+
+		public void Update()
+		{
+		}
+
+		public void FixedUpdate()
+		{
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_RpcRun()
+		{
+		}
+
+		protected static void InvokeUserCode_RpcRun(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static BaseScript()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

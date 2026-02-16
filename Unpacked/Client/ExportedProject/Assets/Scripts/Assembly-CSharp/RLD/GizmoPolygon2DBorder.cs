@@ -2,65 +2,56 @@ using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoPolygon2DBorder : MonoBehaviour
+	public class GizmoPolygon2DBorder
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private GizmoPlaneSlider2D _planeSlider;
 
-		1. No dll files were provided to AssetRipper.
+		private GizmoHandle _targetHandle;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private PolygonShape2D _targetPolygon;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private bool _isVisible;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private bool _isHoverable;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private int _borderPolygonIndex;
 
-		3. Assembly Reconstruction has not been implemented.
+		private int _thickBorderPolygonIndex;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private PolygonShape2D _borderPolygon;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private PolygonShape2D _thickBorderPolygon;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private GizmoPolygon2DBorderControllerData _controllerData;
 
-		5. Script Content Level 0
+		private IGizmoPolygon2DBorderController[] _controllers;
 
-			AssetRipper was set to not load any script information.
+		public bool IsVisible => false;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public bool IsHoverable => false;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public GizmoPolygon2DBorder(GizmoPlaneSlider2D planeSlider, GizmoHandle targetHandle, PolygonShape2D targetPolygon)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public void SetVisible(bool isVisible)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void SetHoverable(bool isHoverable)
+		{
+		}
 
-		*/
+		public void OnPolygonShapeChanged()
+		{
+		}
+
+		public void Render(Camera camera)
+		{
+		}
+
+		private void OnGizmoPreUpdateBegin(Gizmo gizmo)
+		{
+		}
 	}
 }

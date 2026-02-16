@@ -1,66 +1,304 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoPlaneSlider2D : MonoBehaviour
+	public class GizmoPlaneSlider2D : GizmoSlider
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private int _quadIndex;
 
-		1. No dll files were provided to AssetRipper.
+		private int _circleIndex;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private int _polygonIndex;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private QuadShape2D _quad;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private CircleShape2D _circle;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private PolygonShape2D _polygon;
 
-		3. Assembly Reconstruction has not been implemented.
+		private GizmoQuad2DBorder _quadBorder;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private GizmoCircle2DBorder _circleBorder;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private GizmoPolygon2DBorder _polygonBorder;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private bool _isBorderVisible;
 
-		5. Script Content Level 0
+		private bool _isBorderHoverable;
 
-			AssetRipper was set to not load any script information.
+		private GizmoTransform _transform;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private GizmoDragChannel _dragChannel;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private IGizmoDragSession _selectedDragSession;
 
-		7. An incorrect path was provided to AssetRipper.
+		private GizmoDblAxisOffsetDrag3D _offsetDrag;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private Vector3 _offsetDragOrigin;
 
-		*/
+		private GizmoSglAxisRotationDrag3D _rotationDrag;
+
+		private GizmoRotationArc2D _rotationArc;
+
+		private GizmoDblAxisScaleDrag3D _scaleDrag;
+
+		private Vector3 _scaleDragOrigin;
+
+		private Vector3 _scaleAxisRight;
+
+		private Vector3 _scaleAxisUp;
+
+		private int _scaleDragAxisIndexRight;
+
+		private int _scaleDragAxisIndexUp;
+
+		private GizmoPlaneSlider2DControllerData _controllerData;
+
+		private IGizmoPlaneSlider2DController[] _controllers;
+
+		private GizmoPlaneSlider2DSettings _settings;
+
+		private GizmoPlaneSlider2DSettings _sharedSettings;
+
+		private GizmoPlaneSlider2DLookAndFeel _lookAndFeel;
+
+		private GizmoPlaneSlider2DLookAndFeel _sharedLookAndFeel;
+
+		public GizmoPlaneSlider2DSettings Settings => null;
+
+		public GizmoPlaneSlider2DSettings SharedSettings
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoPlaneSlider2DLookAndFeel LookAndFeel => null;
+
+		public GizmoPlaneSlider2DLookAndFeel SharedLookAndFeel
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector2 Position
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		public Vector2 PolyCenter => default(Vector2);
+
+		public Quaternion Rotation => default(Quaternion);
+
+		public float RotationDegrees
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector2 Right => default(Vector2);
+
+		public Vector2 Up => default(Vector2);
+
+		public Vector3 OffsetDragOrigin
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoDragChannel DragChannel => default(GizmoDragChannel);
+
+		public Vector3 ScaleDragOrigin
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
+
+		public int ScaleDragAxisIndexRight
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int ScaleDragAxisIndexUp
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector3 TotalDragOffset => default(Vector3);
+
+		public Vector3 RelativeDragOffset => default(Vector3);
+
+		public float TotalDragRotation => 0f;
+
+		public float RelativeDragRotation => 0f;
+
+		public float TotalDragScaleRight => 0f;
+
+		public float RelativeDragScaleRight => 0f;
+
+		public float TotalDragScaleUp => 0f;
+
+		public float RelativeDragScaleUp => 0f;
+
+		public bool IsBorderVisible => false;
+
+		public bool IsBorderHoverable => false;
+
+		public bool IsDragged => false;
+
+		public bool IsMoving => false;
+
+		public bool IsRotating => false;
+
+		public bool IsScaling => false;
+
+		public GizmoPlaneSlider2D(Gizmo gizmo, int handleId)
+			: base(null, 0)
+		{
+		}
+
+		public void SetBorderVisible(bool isVisible)
+		{
+		}
+
+		public void SetBorderHoverable(bool isHoverable)
+		{
+		}
+
+		public override void SetSnapEnabled(bool isEnabled)
+		{
+		}
+
+		public void SetPolyCwPoints(List<Vector2> cwPoints, bool isClosed)
+		{
+		}
+
+		public void MakePolySphereBorder(Vector3 sphereCenter, float sphereRadius, int numPoints, Camera camera)
+		{
+		}
+
+		public float GetRealQuadWidth()
+		{
+			return 0f;
+		}
+
+		public float GetRealQuadHeight()
+		{
+			return 0f;
+		}
+
+		public Vector2 GetRealQuadSize()
+		{
+			return default(Vector2);
+		}
+
+		public float GetRealCircleRadius()
+		{
+			return 0f;
+		}
+
+		public Vector2 GetRealExtentPoint(Shape2DExtentPoint extentPt)
+		{
+			return default(Vector2);
+		}
+
+		public void SetDragChannel(GizmoDragChannel dragChannel)
+		{
+		}
+
+		public void AddTargetTransform(GizmoTransform transform)
+		{
+		}
+
+		public void AddTargetTransform(GizmoTransform transform, GizmoDragChannel dragChannel)
+		{
+		}
+
+		public void RemoveTargetTransform(GizmoTransform transform)
+		{
+		}
+
+		public void RemoveTargetTransform(GizmoTransform transform, GizmoDragChannel dragChannel)
+		{
+		}
+
+		public override void Render(Camera camera)
+		{
+		}
+
+		public void Refresh()
+		{
+		}
+
+		protected override void OnVisibilityStateChanged()
+		{
+		}
+
+		protected override void OnHoverableStateChanged()
+		{
+		}
+
+		private void OnGizmoPreUpdateBegin(Gizmo gizmo)
+		{
+		}
+
+		private void OnTransformChanged(GizmoTransform transform, GizmoTransform.ChangeData changeData)
+		{
+		}
+
+		private void OnGizmoAttemptHandleDragBegin(Gizmo gizmo, int handleId)
+		{
+		}
+
+		private void OnGizmoHandleDragUpdate(Gizmo gizmo, int handleId)
+		{
+		}
+
+		private void OnGizmoPostEnabled(Gizmo gizmo)
+		{
+		}
 	}
 }

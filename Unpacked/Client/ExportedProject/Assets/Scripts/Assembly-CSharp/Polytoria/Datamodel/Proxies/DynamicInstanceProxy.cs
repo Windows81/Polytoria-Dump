@@ -1,66 +1,164 @@
+using MoonSharp.Interpreter;
 using UnityEngine;
 
 namespace Polytoria.Datamodel.Proxies
 {
-	public class DynamicInstanceProxy : MonoBehaviour
+	public class DynamicInstanceProxy : InstanceProxy
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private readonly DynamicInstance dynamicInstance;
 
-		1. No dll files were provided to AssetRipper.
+		public Vector3 Position
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public Vector3 Rotation
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public Vector3 LocalPosition
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public Vector3 LocalRotation
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public Vector3 Size
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public Vector3 LocalSize
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Quaternion Quaternion
+		{
+			get
+			{
+				return default(Quaternion);
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Quaternion LocalQuaternion
+		{
+			get
+			{
+				return default(Quaternion);
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public Vector3 Forward => default(Vector3);
 
-		5. Script Content Level 0
+		public Vector3 Up => default(Vector3);
 
-			AssetRipper was set to not load any script information.
+		public Vector3 Right => default(Vector3);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[MoonSharpHidden]
+		public DynamicInstanceProxy(DynamicInstance target)
+			: base(null)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public void LookAt(Vector3 lookTarget, Vector3 worldUp)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public void LookAt(Vector3 lookTarget)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void LookAt(DynamicInstance dynamicInstance)
+		{
+		}
 
-		*/
+		public void Translate(Vector3 translation)
+		{
+		}
+
+		public void RotateAround(Vector3 point, Vector3 axis, float angle)
+		{
+		}
+
+		public void Rotate(Vector3 eulerAngles)
+		{
+		}
+
+		public Vector3 InverseTransformPoint(Vector3 point)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 TransformPoint(Vector3 point)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 InverseTransformDirection(Vector3 direction)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 TransformDirection(Vector3 direction)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 InverseTransformVector(Vector3 vector)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 TransformVector(Vector3 vector)
+		{
+			return default(Vector3);
+		}
 	}
 }

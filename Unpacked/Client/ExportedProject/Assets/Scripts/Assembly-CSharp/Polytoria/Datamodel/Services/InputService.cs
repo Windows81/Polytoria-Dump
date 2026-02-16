@@ -1,66 +1,152 @@
+using System.Collections.Generic;
+using Polytoria.Lua;
 using UnityEngine;
 
 namespace Polytoria.Datamodel.Services
 {
-	public class InputService : MonoBehaviour
+	public class InputService
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static LuaEvent KeyDown;
 
-		1. No dll files were provided to AssetRipper.
+		public static LuaEvent KeyUp;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static Vector3 MousePosition => default(Vector3);
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static bool CursorLocked
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static bool CursorVisible
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static int ScreenWidth => 0;
 
-		3. Assembly Reconstruction has not been implemented.
+		public static int ScreenHeight => 0;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static bool AnyKey => false;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static bool AnyKeyDown => false;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static bool IsInputFocused => false;
 
-		5. Script Content Level 0
+		public static Vector3 GetMouseWorldPosition()
+		{
+			return default(Vector3);
+		}
 
-			AssetRipper was set to not load any script information.
+		public static Vector3 GetMouseWorldPoint()
+		{
+			return default(Vector3);
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static Vector3 ScreenToWorldPoint(Vector3 pos)
+		{
+			return default(Vector3);
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static Vector3 ScreenToViewportPoint(Vector3 pos)
+		{
+			return default(Vector3);
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static Vector3 WorldToScreenPoint(Vector3 pos)
+		{
+			return default(Vector3);
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static Vector3 WorldToViewportPoint(Vector3 pos)
+		{
+			return default(Vector3);
+		}
 
-		*/
+		public static Vector3 ViewportToWorldPoint(Vector3 pos)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 ViewportToScreenPoint(Vector3 pos)
+		{
+			return default(Vector3);
+		}
+
+		public static RayResult? ScreenPointToRay(Vector3 pos, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
+
+		public static RayResult? ViewportPointToRay(Vector3 pos, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
+
+		public static bool GetButton(string buttonName)
+		{
+			return false;
+		}
+
+		public static bool GetButtonDown(string buttonName)
+		{
+			return false;
+		}
+
+		public static bool GetButtonUp(string buttonName)
+		{
+			return false;
+		}
+
+		public static float GetAxis(string axisName)
+		{
+			return 0f;
+		}
+
+		public static float GetAxisRaw(string axisName)
+		{
+			return 0f;
+		}
+
+		public static bool GetKey(KeyCode key)
+		{
+			return false;
+		}
+
+		public static bool GetKeyDown(KeyCode key)
+		{
+			return false;
+		}
+
+		public static bool GetKeyUp(KeyCode key)
+		{
+			return false;
+		}
+
+		public static bool GetMouseButton(int button)
+		{
+			return false;
+		}
+
+		public static bool GetMouseButtonDown(int button)
+		{
+			return false;
+		}
+
+		public static bool GetMouseButtonUp(int button)
+		{
+			return false;
+		}
 	}
 }

@@ -1,66 +1,437 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class Gizmo : MonoBehaviour
+	[Serializable]
+	public class Gizmo
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private bool _isEnabled;
 
-		1. No dll files were provided to AssetRipper.
+		private GizmoHandleCollection _handles;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private GizmoBehaviourCollection _behaviours;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private GizmoHoverInfo _hoverInfo;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private GizmoDragInfo _dragInfo;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private IGizmoHandle _hoveredHandle;
 
-		3. Assembly Reconstruction has not been implemented.
+		private Priority _genericHoverPriority;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private Priority _hoverPriority3D;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private Priority _hoverPriority2D;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private IGizmoDragSession _activeDragSession;
 
-		5. Script Content Level 0
+		private GizmoTransform _transform;
 
-			AssetRipper was set to not load any script information.
+		[NonSerialized]
+		private MoveGizmo _moveGizmo;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[NonSerialized]
+		private RotationGizmo _rotationGizmo;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[NonSerialized]
+		private ScaleGizmo _scaleGizmo;
 
-		7. An incorrect path was provided to AssetRipper.
+		[NonSerialized]
+		private UniversalGizmo _universalGizmo;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[NonSerialized]
+		private ObjectTransformGizmo _objectTransformGizmo;
 
-		*/
+		[NonSerialized]
+		private BoxGizmo _boxGizmo;
+
+		[NonSerialized]
+		private ObjectExtrudeGizmo _objectExtrudeGizmo;
+
+		[NonSerialized]
+		private SceneGizmo _sceneGizmo;
+
+		public static int InputDeviceDragButtonIndex => 0;
+
+		public int NumHandles => 0;
+
+		public Camera FocusCamera => null;
+
+		public bool IsEnabled => false;
+
+		public Priority GenericHoverPriority => null;
+
+		public Priority HoverPriority3D => null;
+
+		public Priority HoverPriority2D => null;
+
+		public GizmoTransform Transform => null;
+
+		public GizmoHoverInfo HoverInfo => default(GizmoHoverInfo);
+
+		public bool IsHovered => false;
+
+		public int HoverHandleId => 0;
+
+		public GizmoDimension HoverHandleDimension => default(GizmoDimension);
+
+		public Vector3 HoverPoint => default(Vector3);
+
+		public GizmoDragInfo DragInfo => default(GizmoDragInfo);
+
+		public bool IsDragged => false;
+
+		public GizmoDragChannel ActiveDragChannel => default(GizmoDragChannel);
+
+		public int DragHandleId => 0;
+
+		public Vector3 DragBeginPoint => default(Vector3);
+
+		public GizmoDimension DragHandleDimension => default(GizmoDimension);
+
+		public Vector3 TotalDragOffset => default(Vector3);
+
+		public Quaternion TotalDragRotation => default(Quaternion);
+
+		public Vector3 TotalDragScale => default(Vector3);
+
+		public Vector3 RelativeDragOffset => default(Vector3);
+
+		public Quaternion RelativeDragRotation => default(Quaternion);
+
+		public Vector3 RelativeDragScale => default(Vector3);
+
+		public MoveGizmo MoveGizmo => null;
+
+		public RotationGizmo RotationGizmo => null;
+
+		public ScaleGizmo ScaleGizmo => null;
+
+		public UniversalGizmo UniversalGizmo => null;
+
+		public ObjectTransformGizmo ObjectTransformGizmo => null;
+
+		public BoxGizmo BoxGizmo => null;
+
+		public ObjectExtrudeGizmo ObjectExtrudeGizmo => null;
+
+		public SceneGizmo SceneGizmo => null;
+
+		public event GizmoPostEnabledHandler PostEnabled
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostDisabledHandler PostDisabled
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreUpdateBeginHandler PreUpdateBegin
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostUpdateEndHandler PostUpdateEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreHoverEnterHandler PreHoverEnter
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostHoverEnterHandler PostHoverEnter
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreHoverExitHandler PreHoverExit
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostHoverExitHandler PostHoverExit
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreDragBeginHandler PreDragBegin
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostDragBeginHandler PostDragBegin
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreDragEndHandler PreDragEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostDragEndHandler PostDragEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreDragUpdateHandler PreDragUpdate
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostDragUpdateHandler PostDragUpdate
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreHandlePickedHandler PreHandlePicked
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostHandlePickedHandler PostHandlePicked
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPreDragBeginAttemptHandler PreDragBeginAttempt
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event GizmoPostDragBeginAttemptHandler PostDragBeginAttempt
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public Camera GetWorkCamera()
+		{
+			return null;
+		}
+
+		public GizmoHandle CreateHandle(int id)
+		{
+			return null;
+		}
+
+		public void SetEnabled(bool enabled)
+		{
+		}
+
+		public BehaviourType AddBehaviour<BehaviourType>() where BehaviourType : class, IGizmoBehaviour, new()
+		{
+			return null;
+		}
+
+		public bool AddBehaviour(IGizmoBehaviour behaviour)
+		{
+			return false;
+		}
+
+		public bool RemoveBehaviour(IGizmoBehaviour behaviour)
+		{
+			return false;
+		}
+
+		public List<BehaviourType> GetBehavioursOfType<BehaviourType>() where BehaviourType : class, IGizmoBehaviour
+		{
+			return null;
+		}
+
+		public BehaviourType GetFirstBehaviourOfType<BehaviourType>() where BehaviourType : class, IGizmoBehaviour
+		{
+			return null;
+		}
+
+		public IGizmoBehaviour GetFirstBehaviourOfType(Type behaviourType)
+		{
+			return null;
+		}
+
+		public List<GizmoHandleHoverData> GetAllHandlesHoverData(Ray hoverRay)
+		{
+			return null;
+		}
+
+		public IGizmoHandle GetHandleById_SystemCall(int handleId)
+		{
+			return null;
+		}
+
+		public void OnGUI_SystemCall()
+		{
+		}
+
+		public void OnUpdateBegin_SystemCall()
+		{
+		}
+
+		public void OnUpdateEnd_SystemCall()
+		{
+		}
+
+		public void UpdateHandleHoverInfo_SystemCall(GizmoHoverInfo hoverInfo)
+		{
+		}
+
+		public void Render_SystemCall(Camera camera, Plane[] worldFrustumPlanes)
+		{
+		}
+
+		public void HandleInputDeviceEvents_SystemCall()
+		{
+		}
+
+		private void OnInputDevicePickButtonDown()
+		{
+		}
+
+		private void OnInputDevicePickButtonUp()
+		{
+		}
+
+		private void EndDragSession()
+		{
+		}
+
+		private void OnInputDeviceMoved()
+		{
+		}
+
+		private void TryActivateDragSession()
+		{
+		}
 	}
 }

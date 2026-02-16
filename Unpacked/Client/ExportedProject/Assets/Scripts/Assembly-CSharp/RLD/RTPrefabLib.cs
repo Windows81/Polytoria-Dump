@@ -1,66 +1,118 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class RTPrefabLib : MonoBehaviour
+	[Serializable]
+	public class RTPrefabLib
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private string _name;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private List<RTPrefab> _prefabs;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public int NumPrefabs => 0;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public string Name
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public event PrefabCreatedInLibHandler PrefabCreated
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public event PrefabRemovedFromLibHandler PrefabRemoved
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public event PrefabLibClearedHandler Cleared
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public RTPrefab CreatePrefab(GameObject unityPrefab, Texture2D prefabPreview)
+		{
+			return null;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public RTPrefab CreatePrefabFromSceneObject(GameObject sceneObject)
+		{
+			return null;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public List<RTPrefab> CreatePrefabsFromSceneObjects(List<GameObject> sceneObjects)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		public void Remove(int prefabIndex)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public void Remove(RTPrefab prefab)
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public void Clear()
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public bool Contains(GameObject unityPrefab)
+		{
+			return false;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public bool Contains(RTPrefab prefab)
+		{
+			return false;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public int GetPrefabIndex(RTPrefab prefab)
+		{
+			return 0;
+		}
 
-		*/
+		public RTPrefab GetPrefab(int prefabIndex)
+		{
+			return null;
+		}
+
+		public RTPrefab GetPrefab(GameObject unityPrefab)
+		{
+			return null;
+		}
 	}
 }

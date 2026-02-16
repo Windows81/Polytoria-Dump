@@ -1,66 +1,401 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class UniversalGizmo : MonoBehaviour
+	[Serializable]
+	public class UniversalGizmo : GizmoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum MvVertexSnapState
+		{
+			SelectingPivot = 0,
+			Snapping = 1,
+			Inactive = 2
+		}
 
-		1. No dll files were provided to AssetRipper.
+		private GizmoLineSlider3D _mvPXSlider;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private GizmoLineSlider3D _mvPYSlider;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private GizmoLineSlider3D _mvPZSlider;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private GizmoLineSlider3D _mvNXSlider;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private GizmoLineSlider3D _mvNYSlider;
 
-		3. Assembly Reconstruction has not been implemented.
+		private GizmoLineSlider3D _mvNZSlider;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private GizmoLineSlider3DCollection _mvAxesSliders;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private GizmoPlaneSlider3D _mvXYSlider;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private GizmoPlaneSlider3D _mvYZSlider;
 
-		5. Script Content Level 0
+		private GizmoPlaneSlider3D _mvZXSlider;
 
-			AssetRipper was set to not load any script information.
+		private GizmoPlaneSlider3DCollection _mvDblSliders;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private bool _isMvVertexSnapEnabled;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private GizmoCap2D _mvVertSnapCap;
 
-		7. An incorrect path was provided to AssetRipper.
+		private GizmoObjectVertexSnapDrag3D _mvVertexSnapDrag;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private Vector3 _mvPostVSnapPosRestore;
 
-		*/
+		private GizmoLineSlider2D _mvP2DModeXSlider;
+
+		private GizmoLineSlider2D _mvP2DModeYSlider;
+
+		private GizmoLineSlider2D _mvN2DModeXSlider;
+
+		private GizmoLineSlider2D _mvN2DModeYSlider;
+
+		private GizmoLineSlider2DCollection _mv2DModeSliders;
+
+		private GizmoPlaneSlider2D _mv2DModeDblSlider;
+
+		private GizmoPlaneSlider3D _rtXSlider;
+
+		private GizmoPlaneSlider3D _rtYSlider;
+
+		private GizmoPlaneSlider3D _rtZSlider;
+
+		private GizmoPlaneSlider3DCollection _rtAxesSliders;
+
+		private GizmoCap3D _rtMidCap;
+
+		private GizmoDblAxisRotationDrag3D _rtCamXYRotationDrag;
+
+		private GizmoPlaneSlider2D _rtCamLookSlider;
+
+		private GizmoCap3D _scMidCap;
+
+		private GizmoUniformScaleDrag3D _scUnformScaleDrag;
+
+		private GizmoScaleGuide _scScaleGuide;
+
+		private IEnumerable<GameObject> _scScaleGuideTargetObjects;
+
+		private bool _is2DModeEnabled;
+
+		[SerializeField]
+		private UniversalGizmoSettings2D _settings2D;
+
+		private UniversalGizmoSettings2D _sharedSettings2D;
+
+		[SerializeField]
+		private UniversalGizmoSettings3D _settings3D;
+
+		private UniversalGizmoSettings3D _sharedSettings3D;
+
+		[SerializeField]
+		private UniversalGizmoLookAndFeel2D _lookAndFeel2D;
+
+		private UniversalGizmoLookAndFeel2D _sharedLookAndFeel2D;
+
+		[SerializeField]
+		private UniversalGizmoLookAndFeel3D _lookAndFeel3D;
+
+		private UniversalGizmoLookAndFeel3D _sharedLookAndFeel3D;
+
+		[SerializeField]
+		private UniversalGizmoHotkeys _hotkeys;
+
+		private UniversalGizmoHotkeys _sharedHotkeys;
+
+		[SerializeField]
+		private bool _useSnapEnableHotkey;
+
+		[SerializeField]
+		private bool _useVertSnapEnableHotkey;
+
+		[SerializeField]
+		private bool _use2DModeEnableHotkey;
+
+		public UniversalGizmoSettings2D Settings2D => null;
+
+		public UniversalGizmoSettings2D SharedSettings2D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public UniversalGizmoSettings3D Settings3D => null;
+
+		public UniversalGizmoSettings3D SharedSettings3D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public UniversalGizmoLookAndFeel2D LookAndFeel2D => null;
+
+		public UniversalGizmoLookAndFeel2D SharedLookAndFeel2D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public UniversalGizmoLookAndFeel3D LookAndFeel3D => null;
+
+		public UniversalGizmoLookAndFeel3D SharedLookAndFeel3D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public UniversalGizmoHotkeys Hotkeys => null;
+
+		public UniversalGizmoHotkeys SharedHotkeys
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public bool UseSnapEnableHotkey
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool UseVertSnapEnableHotkey
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool Use2DModeEnableHotkey
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public MvVertexSnapState GetMvVertexSnapState()
+		{
+			return default(MvVertexSnapState);
+		}
+
+		public float GetMvZoomFactor(Vector3 position)
+		{
+			return 0f;
+		}
+
+		public float GetMvZoomFactor(Vector3 position, Camera camera)
+		{
+			return 0f;
+		}
+
+		public float GetRtZoomFactor(Vector3 position)
+		{
+			return 0f;
+		}
+
+		public float GetRtZoomFactor(Vector3 position, Camera camera)
+		{
+			return 0f;
+		}
+
+		public float GetScZoomFactor(Vector3 position)
+		{
+			return 0f;
+		}
+
+		public float GetScZoomFactor(Vector3 position, Camera camera)
+		{
+			return 0f;
+		}
+
+		public bool IsDraggingMoveHandle()
+		{
+			return false;
+		}
+
+		public bool IsDraggingRotationHandle()
+		{
+			return false;
+		}
+
+		public bool IsDraggingScaleHandle()
+		{
+			return false;
+		}
+
+		public bool IsMoveHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsRotationHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsScaleHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool OwnsHandle(int handleId)
+		{
+			return false;
+		}
+
+		public void SetSnapEnabled(bool isEnabled)
+		{
+		}
+
+		public void SetMvVertexSnapEnabled(bool isEnabled)
+		{
+		}
+
+		public void Set2DModeEnabled(bool isEnabled)
+		{
+		}
+
+		public void SetMvVertexSnapTargetObjects(IEnumerable<GameObject> targetObjects)
+		{
+		}
+
+		public void SetMvAxesLinesHoverable(bool hoverable)
+		{
+		}
+
+		public void SetRtMidCapHoverable(bool hoverable)
+		{
+		}
+
+		public void SetScaleGuideTargetObjects(IEnumerable<GameObject> targetObjects)
+		{
+		}
+
+		public override void OnAttached()
+		{
+		}
+
+		public override void OnDetached()
+		{
+		}
+
+		public override void OnEnabled()
+		{
+		}
+
+		public override void OnDisabled()
+		{
+		}
+
+		public override void OnGizmoEnabled()
+		{
+		}
+
+		public override void OnGizmoUpdateBegin()
+		{
+		}
+
+		public override void OnGizmoRender(Camera camera)
+		{
+		}
+
+		public override void OnGizmoDragUpdate(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragBegin(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragEnd(int handleId)
+		{
+		}
+
+		public override void OnGizmoAttemptHandleDragBegin(int handleId)
+		{
+		}
+
+		private void PlaceMvDblSlidersInSliderPlanes(Camera camera)
+		{
+		}
+
+		private void SetupSharedLookAndFeel()
+		{
+		}
+
+		private void SetupSharedSettings()
+		{
+		}
+
+		private void Update2DGizmoPosition()
+		{
+		}
+
+		private void Update2DModeHandlePositions()
+		{
+		}
+
+		private void OnGizmoTransformChanged(GizmoTransform transform, GizmoTransform.ChangeData changeData)
+		{
+		}
+
+		private void Hide2DModeHandles()
+		{
+		}
+
+		private void UpdateRtCamLookSlider(Camera camera)
+		{
+		}
+
+		private void SetMoveHandlesVisible(bool visible)
+		{
+		}
+
+		private void SetRotationHandlesVisible(bool visible)
+		{
+		}
+
+		private void SetScaleHandlesVisible(bool visible)
+		{
+		}
 	}
 }

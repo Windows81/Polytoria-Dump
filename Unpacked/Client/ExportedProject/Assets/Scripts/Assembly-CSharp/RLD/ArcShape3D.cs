@@ -1,66 +1,224 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ArcShape3D : MonoBehaviour
+	public class ArcShape3D : Shape3D
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum WireRenderFlags
+		{
+			None = 0,
+			ExtremitiesBorder = 1,
+			ArcBorder = 2,
+			All = 3
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public class WireRenderDescriptor
+		{
+			private WireRenderFlags _wireFlags;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public WireRenderFlags WireFlags
+			{
+				get
+				{
+					return default(WireRenderFlags);
+				}
+				set
+				{
+				}
+			}
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private WireRenderDescriptor _wireRenderDesc;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Vector3 _startPoint;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Vector3 _endPoint;
 
-		3. Assembly Reconstruction has not been implemented.
+		private Vector3 _origin;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private Plane _plane;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private float _radius;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private AABB _aabb;
 
-		5. Script Content Level 0
+		private float _degreeAngleFromStart;
 
-			AssetRipper was set to not load any script information.
+		private bool _forceShortestArc;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private List<Vector3> _borderPoints;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private int _numBorderPoints;
 
-		7. An incorrect path was provided to AssetRipper.
+		private bool _areBorderPointsDirty;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private ArcEpsilon _epsilon;
 
-		*/
+		private Shape3DRaycastMode _raycastMode;
+
+		public float Radius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public bool ForceShortestArc
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public float DegreeAngleFromStart
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float AbsDegreeAngleFromStart => 0f;
+
+		public int NumBorderPoints
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector3 Origin
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
+
+		public Vector3 StartPoint => default(Vector3);
+
+		public Vector3 EndPoint => default(Vector3);
+
+		public Plane Plane => default(Plane);
+
+		public Vector3 Normal => default(Vector3);
+
+		public ArcEpsilon Epsilon
+		{
+			get
+			{
+				return default(ArcEpsilon);
+			}
+			set
+			{
+			}
+		}
+
+		public float AreaEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float ExtrudeEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float WireEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public WireRenderDescriptor WireRenderDesc => null;
+
+		public Shape3DRaycastMode RaycastMode
+		{
+			get
+			{
+				return default(Shape3DRaycastMode);
+			}
+			set
+			{
+			}
+		}
+
+		public override void RenderSolid()
+		{
+		}
+
+		public override void RenderWire()
+		{
+		}
+
+		public void SetArcData(Plane plane, Vector3 origin, Vector3 startPoint, float radius)
+		{
+		}
+
+		public override bool Raycast(Ray ray, out float t)
+		{
+			t = default(float);
+			return false;
+		}
+
+		public override bool RaycastWire(Ray ray, out float t)
+		{
+			t = default(float);
+			return false;
+		}
+
+		public bool ContainsPoint(Vector3 point, bool checkOnPlane)
+		{
+			return false;
+		}
+
+		public override AABB GetAABB()
+		{
+			return default(AABB);
+		}
+
+		private void OnBorderPointsFoundDirty()
+		{
+		}
+
+		private void CalculateEndPoint()
+		{
+		}
 	}
 }

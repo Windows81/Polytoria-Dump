@@ -1,66 +1,67 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class EditorPrefabPreviewGen : MonoBehaviour
+	public class EditorPrefabPreviewGen
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private enum PreviewObjectType
+		{
+			Mesh = 1,
+			Sprite = 2,
+			Light = 3,
+			ParticleSystem = 4,
+			Other = 5
+		}
 
-		1. No dll files were provided to AssetRipper.
+		private PrefabPreviewLookAndFeel _previewLookAndFeel;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private ObjectBounds.QueryConfig _boundsQConfig;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private Light _previewLight;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Camera _renderCamera;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private bool _isGenSessionActive;
 
-		3. Assembly Reconstruction has not been implemented.
+		private Dictionary<Light, bool> _lightToState;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private GameObject _nonMeshPreviewObject;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public bool BeginGenSession(PrefabPreviewLookAndFeel previewLookAndFeel)
+		{
+			return false;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public void EndGenSession()
+		{
+		}
 
-		5. Script Content Level 0
+		public Texture2D Generate(GameObject unityPrefab)
+		{
+			return null;
+		}
 
-			AssetRipper was set to not load any script information.
+		private bool CreateRenderCamera()
+		{
+			return false;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private bool CreatePreviewLight()
+		{
+			return false;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private void CreateNonMeshPreviewObject()
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		private void DisableSceneLights()
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
-
-		*/
+		private void RestoreSceneLights()
+		{
+		}
 	}
 }

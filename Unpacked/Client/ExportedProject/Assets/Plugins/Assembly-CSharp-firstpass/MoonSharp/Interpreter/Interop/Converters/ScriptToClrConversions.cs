@@ -1,66 +1,77 @@
-using UnityEngine;
+using System;
+using System.Reflection;
 
 namespace MoonSharp.Interpreter.Interop.Converters
 {
-	public class ScriptToClrConversions : MonoBehaviour
+	internal static class ScriptToClrConversions
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		internal const int WEIGHT_MAX_VALUE = 100;
 
-		1. No dll files were provided to AssetRipper.
+		internal const int WEIGHT_CUSTOM_CONVERTER_MATCH = 100;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		internal const int WEIGHT_EXACT_MATCH = 100;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		internal const int WEIGHT_STRING_TO_STRINGBUILDER = 99;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		internal const int WEIGHT_STRING_TO_CHAR = 98;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		internal const int WEIGHT_NIL_TO_NULLABLE = 100;
 
-		3. Assembly Reconstruction has not been implemented.
+		internal const int WEIGHT_NIL_TO_REFTYPE = 100;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		internal const int WEIGHT_VOID_WITH_DEFAULT = 50;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		internal const int WEIGHT_VOID_WITHOUT_DEFAULT = 25;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		internal const int WEIGHT_NIL_WITH_DEFAULT = 25;
 
-		5. Script Content Level 0
+		internal const int WEIGHT_BOOL_TO_STRING = 5;
 
-			AssetRipper was set to not load any script information.
+		internal const int WEIGHT_NUMBER_TO_STRING = 50;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		internal const int WEIGHT_NUMBER_TO_ENUM = 90;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		internal const int WEIGHT_USERDATA_TO_STRING = 5;
 
-		7. An incorrect path was provided to AssetRipper.
+		internal const int WEIGHT_TABLE_CONVERSION = 90;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		internal const int WEIGHT_NUMBER_DOWNCAST = 99;
 
-		*/
+		internal const int WEIGHT_NO_MATCH = 0;
+
+		internal const int WEIGHT_NO_EXTRA_PARAMS_BONUS = 100;
+
+		internal const int WEIGHT_EXTRA_PARAMS_MALUS = 2;
+
+		internal const int WEIGHT_BYREF_BONUSMALUS = -10;
+
+		internal const int WEIGHT_VARARGS_MALUS = 1;
+
+		internal const int WEIGHT_VARARGS_EMPTY = 40;
+
+		internal static object DynValueToObject(DynValue value)
+		{
+			return null;
+		}
+
+		public static MethodInfo HasImplicitConversion(Type baseType, Type targetType)
+		{
+			return null;
+		}
+
+		internal static object DynValueToObjectOfType(DynValue value, Type desiredType, object defaultValue, bool isOptional)
+		{
+			return null;
+		}
+
+		internal static int DynValueToObjectOfTypeWeight(DynValue value, Type desiredType, bool isOptional)
+		{
+			return 0;
+		}
+
+		private static int GetNumericTypeWeight(Type desiredType)
+		{
+			return 0;
+		}
 	}
 }

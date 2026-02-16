@@ -2,65 +2,98 @@ using UnityEngine;
 
 namespace Polytoria.Lua
 {
-	public class LuaQuaternion : MonoBehaviour
+	public class LuaQuaternion
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static Quaternion Identity => default(Quaternion);
 
-		1. No dll files were provided to AssetRipper.
+		public static Quaternion New()
+		{
+			return default(Quaternion);
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static Quaternion New(float d)
+		{
+			return default(Quaternion);
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static Quaternion New(float x, float y, float z, float w)
+		{
+			return default(Quaternion);
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static float Angle(Quaternion a, Quaternion b)
+		{
+			return 0f;
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static Quaternion AngleAxis(float angle, Vector3 axis)
+		{
+			return default(Quaternion);
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public float Dot(Quaternion a, Quaternion b)
+		{
+			return 0f;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static Quaternion Euler(float x, float y, float z)
+		{
+			return default(Quaternion);
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static Quaternion Euler(Vector3 euler)
+		{
+			return default(Quaternion);
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static Quaternion FromToRotation(Vector3 fromDirection, Vector3 toDirection)
+		{
+			return default(Quaternion);
+		}
 
-		5. Script Content Level 0
+		public static Quaternion Inverse(Quaternion rotation)
+		{
+			return default(Quaternion);
+		}
 
-			AssetRipper was set to not load any script information.
+		public static Quaternion Lerp(Quaternion a, Quaternion b, float t)
+		{
+			return default(Quaternion);
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static Quaternion LerpUnclamped(Quaternion a, Quaternion b, float t)
+		{
+			return default(Quaternion);
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static Quaternion LookRotation(Vector3 forward)
+		{
+			return default(Quaternion);
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static Quaternion LookRotation(Vector3 forward, Vector3 upwards)
+		{
+			return default(Quaternion);
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static Quaternion Normalize(Quaternion q)
+		{
+			return default(Quaternion);
+		}
 
-		*/
+		public static Quaternion RotateTowards(Quaternion from, Quaternion to, float maxDegreesDelta)
+		{
+			return default(Quaternion);
+		}
+
+		public static Quaternion Slerp(Quaternion a, Quaternion b, float t)
+		{
+			return default(Quaternion);
+		}
+
+		public static Quaternion SlerpUnclamped(Quaternion a, Quaternion b, float t)
+		{
+			return default(Quaternion);
+		}
 	}
 }

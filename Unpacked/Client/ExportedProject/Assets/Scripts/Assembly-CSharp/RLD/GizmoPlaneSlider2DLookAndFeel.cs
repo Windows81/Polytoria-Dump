@@ -1,66 +1,224 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoPlaneSlider2DLookAndFeel : MonoBehaviour
+	[Serializable]
+	public class GizmoPlaneSlider2DLookAndFeel
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private GizmoFillMode2D _fillMode;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoPlane2DType _planeType;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private float _scale;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private float _quadWidth;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private float _quadHeight;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private float _circleRadius;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private bool _isRotationArcVisible;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private GizmoRotationArc2DLookAndFeel _rotationArcLookAndFeel;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private Color _color;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private Color _hoveredColor;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private Color _borderColor;
 
-			AssetRipper was set to not load any script information.
+		[SerializeField]
+		private Color _hoveredBorderColor;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[SerializeField]
+		private GizmoQuad2DBorderType _quadBorderType;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[SerializeField]
+		private GizmoCircle2DBorderType _circleBorderType;
 
-		7. An incorrect path was provided to AssetRipper.
+		[SerializeField]
+		private GizmoPolygon2DBorderType _polygonBorderType;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[SerializeField]
+		private float _borderPolyThickness;
 
-		*/
+		public GizmoFillMode2D FillMode
+		{
+			get
+			{
+				return default(GizmoFillMode2D);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoPlane2DType PlaneType
+		{
+			get
+			{
+				return default(GizmoPlane2DType);
+			}
+			set
+			{
+			}
+		}
+
+		public float Scale
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float QuadWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float QuadHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float CircleRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public bool IsRotationArcVisible
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoRotationArc2DLookAndFeel RotationArcLookAndFeel => null;
+
+		public Color Color
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color HoveredColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color BorderColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color HoveredBorderColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoQuad2DBorderType QuadBorderType
+		{
+			get
+			{
+				return default(GizmoQuad2DBorderType);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoCircle2DBorderType CircleBorderType
+		{
+			get
+			{
+				return default(GizmoCircle2DBorderType);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoPolygon2DBorderType PolygonBorderType
+		{
+			get
+			{
+				return default(GizmoPolygon2DBorderType);
+			}
+			set
+			{
+			}
+		}
+
+		public float BorderPolyThickness
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 	}
 }

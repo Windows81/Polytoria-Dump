@@ -1,66 +1,397 @@
+using System;
+using System.Runtime.InteropServices;
+using Mirror;
+using TMPro;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class UILabel : MonoBehaviour
+	[Instantiatable]
+	public class UILabel : UIView
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public const float FONT_SCALE = 1.5f;
 
-		1. No dll files were provided to AssetRipper.
+		private TMP_Text tmp;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar(hook = "SyncSetTextJustify")]
+		private TextJustify justify;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar(hook = "SyncSetTextAlign")]
+		private TextVerticalAlign verticalAlign;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SyncVar(hook = "SyncSetFontSize")]
+		private float fontSize;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SyncVar(hook = "SyncSetMaxFontSize")]
+		private float maxFontSize;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SyncVar(hook = "SyncSetAutoSize")]
+		private bool autoSize;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SyncVar(hook = "SyncSetText")]
+		private string text;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SyncVar(hook = "SyncSetColor")]
+		private Color textColor;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SyncVar(hook = "SyncSetFont")]
+		private TextFontPreset font;
 
-		5. Script Content Level 0
+		[SyncVar(hook = "SyncSetOutlineColor")]
+		private Color outlineColor;
 
-			AssetRipper was set to not load any script information.
+		[SyncVar(hook = "SyncSetOutlineWidth")]
+		private float outlineWidth;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Action<TextJustify, TextJustify> _Mirror_SyncVarHookDelegate_justify;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Action<TextVerticalAlign, TextVerticalAlign> _Mirror_SyncVarHookDelegate_verticalAlign;
 
-		7. An incorrect path was provided to AssetRipper.
+		public Action<float, float> _Mirror_SyncVarHookDelegate_fontSize;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Action<float, float> _Mirror_SyncVarHookDelegate_maxFontSize;
 
-		*/
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_autoSize;
+
+		public Action<string, string> _Mirror_SyncVarHookDelegate_text;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_textColor;
+
+		public Action<TextFontPreset, TextFontPreset> _Mirror_SyncVarHookDelegate_font;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_outlineColor;
+
+		public Action<float, float> _Mirror_SyncVarHookDelegate_outlineWidth;
+
+		[CreatorProperty]
+		[Archivable]
+		public string Text
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Color TextColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public TextJustify JustifyText
+		{
+			get
+			{
+				return default(TextJustify);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public TextVerticalAlign VerticalAlign
+		{
+			get
+			{
+				return default(TextVerticalAlign);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float FontSize
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float MaxFontSize
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool AutoSize
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public TextFontPreset Font
+		{
+			get
+			{
+				return default(TextFontPreset);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Color OutlineColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float OutlineWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public TextJustify Networkjustify
+		{
+			get
+			{
+				return default(TextJustify);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public TextVerticalAlign NetworkverticalAlign
+		{
+			get
+			{
+				return default(TextVerticalAlign);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkfontSize
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkmaxFontSize
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkautoSize
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public string Networktext
+		{
+			get
+			{
+				return null;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworktextColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public TextFontPreset Networkfont
+		{
+			get
+			{
+				return default(TextFontPreset);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkoutlineColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkoutlineWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		private void SyncSetText(string oldtext, string newtext)
+		{
+		}
+
+		private void SyncSetTextJustify(TextJustify oldValue, TextJustify newValue)
+		{
+		}
+
+		private void SyncSetTextAlign(TextVerticalAlign oldValue, TextVerticalAlign newValue)
+		{
+		}
+
+		private void SyncSetFontSize(float oldValue, float newValue)
+		{
+		}
+
+		private void SyncSetMaxFontSize(float oldValue, float newValue)
+		{
+		}
+
+		private void SyncSetAutoSize(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncSetColor(Color oldValue, Color newValue)
+		{
+		}
+
+		private void SyncSetFont(TextFontPreset oldValue, TextFontPreset newValue)
+		{
+		}
+
+		private void SyncSetOutlineColor(Color oldValue, Color newValue)
+		{
+		}
+
+		private void SyncSetOutlineWidth(float oldValue, float newValue)
+		{
+		}
+
+		private void UpdateOutline()
+		{
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		protected override void OnDestroy()
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

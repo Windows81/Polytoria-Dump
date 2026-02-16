@@ -1,66 +1,157 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class PyramidShape3D : MonoBehaviour
+	public class PyramidShape3D : Shape3D
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Vector3 _baseCenter;
 
-		1. No dll files were provided to AssetRipper.
+		private float _baseWidth;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private float _baseDepth;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private float _height;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Quaternion _rotation;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private PyramidEpsilon _epsilon;
 
-		3. Assembly Reconstruction has not been implemented.
+		public Vector3 BaseCenter
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Vector3 Tip
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Quaternion Rotation
+		{
+			get
+			{
+				return default(Quaternion);
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public float BaseWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		public float BaseDepth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public float Height
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public PyramidEpsilon Epsilon
+		{
+			get
+			{
+				return default(PyramidEpsilon);
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float PtContainEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public Vector3 CentralAxis => default(Vector3);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Vector3 Right => default(Vector3);
 
-		*/
+		public Vector3 Up => default(Vector3);
+
+		public Vector3 Look => default(Vector3);
+
+		public static Vector3 ModelRight => default(Vector3);
+
+		public static Vector3 ModelUp => default(Vector3);
+
+		public static Vector3 ModelLook => default(Vector3);
+
+		public static Vector3 ModelBaseCenter => default(Vector3);
+
+		public void PointTipAlongAxis(Vector3 axis)
+		{
+		}
+
+		public override void RenderSolid()
+		{
+		}
+
+		public override void RenderWire()
+		{
+		}
+
+		public List<Vector3> GetBaseCornerPoints()
+		{
+			return null;
+		}
+
+		public override AABB GetAABB()
+		{
+			return default(AABB);
+		}
+
+		public override bool Raycast(Ray ray, out float t)
+		{
+			t = default(float);
+			return false;
+		}
+
+		public bool ContainsPoint(Vector3 point)
+		{
+			return false;
+		}
 	}
 }

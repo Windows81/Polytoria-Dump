@@ -1,66 +1,106 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class BoxMath : MonoBehaviour
+	public static class BoxMath
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private static List<BoxFace> _allBoxFaces;
 
-		1. No dll files were provided to AssetRipper.
+		private static Vector3[] A;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private static Vector3[] B;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private static float[,] R;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private static float[,] absR;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static List<BoxFace> AllBoxFaces => null;
 
-		3. Assembly Reconstruction has not been implemented.
+		static BoxMath()
+		{
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static int GetFaceAxisIndex(BoxFace face)
+		{
+			return 0;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static BoxFaceDesc GetFaceClosestToPoint(Vector3 point, Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation)
+		{
+			return default(BoxFaceDesc);
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static BoxFaceDesc GetFaceClosestToPoint(Vector3 point, Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, Vector3 viewVector)
+		{
+			return default(BoxFaceDesc);
+		}
 
-		5. Script Content Level 0
+		public static BoxFace GetMostAlignedFace(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, Vector3 direction)
+		{
+			return default(BoxFace);
+		}
 
-			AssetRipper was set to not load any script information.
+		public static Vector3 CalcBoxFaceSize(Vector3 boxSize, BoxFace boxFace)
+		{
+			return default(Vector3);
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static BoxFaceAreaDesc GetBoxFaceAreaDesc(Vector3 boxSize, BoxFace boxFace)
+		{
+			return default(BoxFaceAreaDesc);
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static Plane CalcBoxFacePlane(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, BoxFace boxFace)
+		{
+			return default(Plane);
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static Vector3 CalcBoxFaceNormal(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, BoxFace boxFace)
+		{
+			return default(Vector3);
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static Vector3 CalcBoxFaceCenter(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, BoxFace boxFace)
+		{
+			return default(Vector3);
+		}
 
-		*/
+		public static List<Vector3> CalcBoxCornerPoints(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation)
+		{
+			return null;
+		}
+
+		public static void TransformBox(Vector3 boxCenter, Vector3 boxSize, Matrix4x4 transformMatrix, out Vector3 newBoxCenter, out Vector3 newBoxSize)
+		{
+			newBoxCenter = default(Vector3);
+			newBoxSize = default(Vector3);
+		}
+
+		public static bool BoxIntersectsBox(Vector3 center0, Vector3 size0, Quaternion rotation0, Vector3 center1, Vector3 size1, Quaternion rotation1)
+		{
+			return false;
+		}
+
+		public static Vector3 CalcBoxPtClosestToPt(Vector3 point, Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation)
+		{
+			return default(Vector3);
+		}
+
+		public static bool Raycast(Ray ray, Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, BoxEpsilon epsilon = default(BoxEpsilon))
+		{
+			return false;
+		}
+
+		public static bool Raycast(Ray ray, out float t, Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, BoxEpsilon epsilon = default(BoxEpsilon))
+		{
+			t = default(float);
+			return false;
+		}
+
+		public static bool ContainsPoint(Vector3 point, Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation, BoxEpsilon epsilon = default(BoxEpsilon))
+		{
+			return false;
+		}
 	}
 }

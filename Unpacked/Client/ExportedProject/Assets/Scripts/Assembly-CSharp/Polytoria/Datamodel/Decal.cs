@@ -1,66 +1,270 @@
+using System;
+using System.Runtime.InteropServices;
+using Mirror;
+using Polytoria.Controllers;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class Decal : MonoBehaviour
+	[Instantiatable]
+	[RequireComponent(typeof(MeshRenderer))]
+	public class Decal : DynamicInstance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SyncVar(hook = "SetImage")]
+		private string imageID;
 
-		1. No dll files were provided to AssetRipper.
+		[SyncVar(hook = "SetImageType")]
+		private ImageType imageType;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar(hook = "SetTextureScale")]
+		private Vector2 textureScale;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar(hook = "SetTextureOffset")]
+		private Vector2 textureOffset;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SyncVar(hook = "SetColor")]
+		private Color color;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SyncVar(hook = "SetCastShadows")]
+		private bool castShadows;
 
-		3. Assembly Reconstruction has not been implemented.
+		private ImageCacheKey lastCacheKey;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private BoxCollider col;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private MeshRenderer meshRenderer;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private ImageCacheEntry currentEntry;
 
-		5. Script Content Level 0
+		private Material transparentMaterial;
 
-			AssetRipper was set to not load any script information.
+		private Material cutoutMaterial;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Action<string, string> _Mirror_SyncVarHookDelegate_imageID;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Action<ImageType, ImageType> _Mirror_SyncVarHookDelegate_imageType;
 
-		7. An incorrect path was provided to AssetRipper.
+		public Action<Vector2, Vector2> _Mirror_SyncVarHookDelegate_textureScale;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Action<Vector2, Vector2> _Mirror_SyncVarHookDelegate_textureOffset;
 
-		*/
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_color;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_castShadows;
+
+		[CreatorProperty]
+		[Archivable]
+		public string ImageID
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public ImageType ImageType
+		{
+			get
+			{
+				return default(ImageType);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector2 TextureScale
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector2 TextureOffset
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Color Color
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool CastShadows
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public string NetworkimageID
+		{
+			get
+			{
+				return null;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public ImageType NetworkimageType
+		{
+			get
+			{
+				return default(ImageType);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector2 NetworktextureScale
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector2 NetworktextureOffset
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color Networkcolor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkcastShadows
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		private void SetTextureScale(Vector2 oldScale, Vector2 newScale)
+		{
+		}
+
+		private void SetTextureOffset(Vector2 oldOffset, Vector2 newOffset)
+		{
+		}
+
+		private void SetCastShadows(bool oldShadows, bool newShadows)
+		{
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		private void SetImage(string oldId, string newId)
+		{
+		}
+
+		private void SetImageType(ImageType oldType, ImageType newType)
+		{
+		}
+
+		private void SetColor(Color oldColor, Color newColor)
+		{
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		protected override void Update()
+		{
+		}
+
+		private void GetImage()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

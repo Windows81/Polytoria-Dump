@@ -1,66 +1,90 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using MoonSharp.Interpreter.Debugging;
+using MoonSharp.Interpreter.Execution;
+using MoonSharp.Interpreter.Execution.VM;
 
 namespace MoonSharp.Interpreter.Tree.Expressions
 {
-	public class FunctionDefinitionExpression : MonoBehaviour
+	internal class FunctionDefinitionExpression : Expression, IClosureBuilder
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private SymbolRef[] m_ParamNames;
 
-		1. No dll files were provided to AssetRipper.
+		private Statement m_Statement;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private RuntimeScopeFrame m_StackFrame;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private List<SymbolRef> m_Closure;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private bool m_HasVarArgs;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Instruction m_ClosureInstruction;
 
-		3. Assembly Reconstruction has not been implemented.
+		private bool m_UsesGlobalEnv;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private SymbolRef m_Env;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private SourceRef m_Begin;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private SourceRef m_End;
 
-		5. Script Content Level 0
+		public FunctionDefinitionExpression(ScriptLoadingContext lcontext, bool usesGlobalEnv)
+			: base(null)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public FunctionDefinitionExpression(ScriptLoadingContext lcontext, bool pushSelfParam, bool isLambda)
+			: base(null)
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private FunctionDefinitionExpression(ScriptLoadingContext lcontext, bool pushSelfParam, bool usesGlobalEnv, bool isLambda)
+			: base(null)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private Statement CreateLambdaBody(ScriptLoadingContext lcontext)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		private Statement CreateBody(ScriptLoadingContext lcontext)
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private List<string> BuildParamList(ScriptLoadingContext lcontext, bool pushSelfParam, Token openBracketToken, bool isLambda)
+		{
+			return null;
+		}
 
-		*/
+		private SymbolRef[] DefineArguments(List<string> paramnames, ScriptLoadingContext lcontext)
+		{
+			return null;
+		}
+
+		public SymbolRef CreateUpvalue(BuildTimeScope scope, SymbolRef symbol)
+		{
+			return null;
+		}
+
+		public override DynValue Eval(ScriptExecutionContext context)
+		{
+			return null;
+		}
+
+		public int CompileBody(ByteCode bc, string friendlyName)
+		{
+			return 0;
+		}
+
+		public int Compile(ByteCode bc, Func<int> afterDecl, string friendlyName)
+		{
+			return 0;
+		}
+
+		public override void Compile(ByteCode bc)
+		{
+		}
 	}
 }

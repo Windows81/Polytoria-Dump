@@ -1,66 +1,154 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ObjectExtrudeGizmoLookAndFeel3D : MonoBehaviour
+	[Serializable]
+	public class ObjectExtrudeGizmoLookAndFeel3D : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private Color _boxWireColor;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoLineSlider3DLookAndFeel[] _sglSlidersLookAndFeel;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private bool[] _extrudeSliderVis;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public bool UseZoomFactor => false;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public Color BoxWireColor => default(Color);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public GizmoCap3DType SliderCapType => default(GizmoCap3DType);
 
-		3. Assembly Reconstruction has not been implemented.
+		public GizmoShadeMode SliderCapShadeMode => default(GizmoShadeMode);
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public GizmoFillMode3D SliderCapFillMode => default(GizmoFillMode3D);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Color XColor => default(Color);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public Color YColor => default(Color);
 
-		5. Script Content Level 0
+		public Color ZColor => default(Color);
 
-			AssetRipper was set to not load any script information.
+		public Color HoveredColor => default(Color);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public float SliderBoxCapWidth => 0f;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float SliderBoxCapHeight => 0f;
 
-		7. An incorrect path was provided to AssetRipper.
+		public float SliderBoxCapDepth => 0f;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float SliderConeCapHeight => 0f;
 
-		*/
+		public float SliderConeCapBaseRadius => 0f;
+
+		public float SliderPyramidCapWidth => 0f;
+
+		public float SliderPyramidCapHeight => 0f;
+
+		public float SliderPyramidCapDepth => 0f;
+
+		public float SliderTriPrismCapWidth => 0f;
+
+		public float SliderTriPrismCapHeight => 0f;
+
+		public float SliderTriPrismCapDepth => 0f;
+
+		public float SliderSphereCapRadius => 0f;
+
+		public bool IsExtrudeSliderVisible(int axisIndex, AxisSign axisSign)
+		{
+			return false;
+		}
+
+		public void SetExtrudeSliderVisible(int axisIndex, AxisSign axisSign, bool isVisible)
+		{
+		}
+
+		public void SetBoxWireColor(Color color)
+		{
+		}
+
+		public void SetSliderCapType(GizmoCap3DType capType)
+		{
+		}
+
+		public void SetSliderBoxCapWidth(float width)
+		{
+		}
+
+		public void SetSliderBoxCapHeight(float height)
+		{
+		}
+
+		public void SetSliderBoxCapDepth(float depth)
+		{
+		}
+
+		public void SetSliderConeCapHeight(float height)
+		{
+		}
+
+		public void SetSliderConeCapBaseRadius(float radius)
+		{
+		}
+
+		public void SetSliderPyramidCapWidth(float width)
+		{
+		}
+
+		public void SetSliderPyramidCapHeight(float height)
+		{
+		}
+
+		public void SetSliderPyramidCapDepth(float depth)
+		{
+		}
+
+		public void SetSliderTriPrismCapWidth(float width)
+		{
+		}
+
+		public void SetSliderTriPrismCapHeight(float height)
+		{
+		}
+
+		public void SetSliderTriPrismCapDepth(float depth)
+		{
+		}
+
+		public void SetSliderSphereCapRadius(float radius)
+		{
+		}
+
+		public void SetUseZoomFactor(bool useZoomFactor)
+		{
+		}
+
+		public void SetSliderCapShadeMode(GizmoShadeMode shadeMode)
+		{
+		}
+
+		public void SetSliderCapFillMode(GizmoFillMode3D fillMode)
+		{
+		}
+
+		public void SetAxisColor(int axisIndex, Color color)
+		{
+		}
+
+		public void SetHoveredColor(Color hoveredColor)
+		{
+		}
+
+		public void ConnectSliderLookAndFeel(GizmoLineSlider3D slider, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		private GizmoLineSlider3DLookAndFeel GetSglSliderLookAndFeel(int axisIndex, AxisSign axisSign)
+		{
+			return null;
+		}
 	}
 }

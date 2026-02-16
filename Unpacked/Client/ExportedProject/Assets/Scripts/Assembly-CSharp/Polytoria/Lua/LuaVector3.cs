@@ -2,65 +2,126 @@ using UnityEngine;
 
 namespace Polytoria.Lua
 {
-	public class LuaVector3 : MonoBehaviour
+	public class LuaVector3
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static Vector3 New()
+		{
+			return default(Vector3);
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public static Vector3 New(float d)
+		{
+			return default(Vector3);
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static Vector3 New(float x, float y)
+		{
+			return default(Vector3);
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static Vector3 New(float x, float y, float z)
+		{
+			return default(Vector3);
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static Vector3 New(Vector2 v)
+		{
+			return default(Vector3);
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static float Angle(Vector3 from, Vector3 to)
+		{
+			return 0f;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public static Vector3 ClampMagnitude(Vector3 vector, float maxLength)
+		{
+			return default(Vector3);
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static Vector3 Cross(Vector3 lhs, Vector3 rhs)
+		{
+			return default(Vector3);
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static float Distance(Vector3 a, Vector3 b)
+		{
+			return 0f;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static float Dot(Vector3 lhs, Vector3 rhs)
+		{
+			return 0f;
+		}
 
-		5. Script Content Level 0
+		public static Vector3 Lerp(Vector3 a, Vector3 b, float t)
+		{
+			return default(Vector3);
+		}
 
-			AssetRipper was set to not load any script information.
+		public static Vector3 Max(Vector3 lhs, Vector3 rhs)
+		{
+			return default(Vector3);
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static Vector3 Min(Vector3 lhs, Vector3 rhs)
+		{
+			return default(Vector3);
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta)
+		{
+			return default(Vector3);
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static Vector3 Normalize(Vector3 value)
+		{
+			return default(Vector3);
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static Vector3 Project(Vector3 vector, Vector3 onNormal)
+		{
+			return default(Vector3);
+		}
 
-		*/
+		public static Vector3 ProjectOnPlane(Vector3 vector, Vector3 planeNormal)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 Reflect(Vector3 inDirection, Vector3 inNormal)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 RotateTowards(Vector3 current, Vector3 target, float maxRadiansDelta, float maxMagnitudeDelta)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 Scale(Vector3 a, Vector3 b)
+		{
+			return default(Vector3);
+		}
+
+		public static float SignedAngle(Vector3 from, Vector3 to, Vector3 axis)
+		{
+			return 0f;
+		}
+
+		public static Vector3 Slerp(Vector3 a, Vector3 b, float t)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 SlerpUnclamped(Vector3 a, Vector3 b, float t)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 SmoothDamp(Vector3 current, Vector3 target, ref Vector3 currentVelocity, float smoothTime, float maxSpeed, float deltaTime)
+		{
+			return default(Vector3);
+		}
 	}
 }

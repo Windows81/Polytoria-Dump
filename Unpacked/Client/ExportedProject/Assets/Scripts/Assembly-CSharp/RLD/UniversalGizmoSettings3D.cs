@@ -1,66 +1,289 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class UniversalGizmoSettings3D : MonoBehaviour
+	[Serializable]
+	public class UniversalGizmoSettings3D : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private UniversalGizmoSettingsCategory _displayCategory;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoObjectVertexSnapSettings _mvVertexSnapSettings;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private GizmoLineSlider3DSettings[] _mvSglSliderSettings;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoPlaneSlider3DSettings[] _mvDblSliderSettings;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private float _rtCamRightSnapStep;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private float _rtCamUpSnapStep;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private GizmoPlaneSlider3DSettings[] _rtSliderSettings;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private GizmoPlaneSlider2DSettings _rtCamLookSliderSettings;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private float _scUniformSnapStep;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private GizmoLineSlider3DSettings[] _scSglSliderSettings;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private GizmoPlaneSlider3DSettings[] _scDblSliderSettings;
 
-			AssetRipper was set to not load any script information.
+		public GizmoObjectVertexSnapSettings VertexSnapSettings => null;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public float MvLineSliderHoverEps => 0f;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float MvBoxSliderHoverEps => 0f;
 
-		7. An incorrect path was provided to AssetRipper.
+		public float MvCylinderSliderHoverEps => 0f;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float MvXSnapStep => 0f;
 
-		*/
+		public float MvYSnapStep => 0f;
+
+		public float MvZSnapStep => 0f;
+
+		public float MvDragSensitivity => 0f;
+
+		public float RtAxisLineHoverEps => 0f;
+
+		public float RtAxisTorusHoverEps => 0f;
+
+		public float RtCamLookLineHoverEps => 0f;
+
+		public float RtCamLookThickHoverEps => 0f;
+
+		public bool RtCanHoverCulledPixels => false;
+
+		public GizmoSnapMode RtSnapMode => default(GizmoSnapMode);
+
+		public float RtXSnapStep => 0f;
+
+		public float RtYSnapStep => 0f;
+
+		public float RtZSnapStep => 0f;
+
+		public float RtCamRightSnapStep => 0f;
+
+		public float RtCamUpSnapStep => 0f;
+
+		public float RtCamLookSnapStep => 0f;
+
+		public float RtDragSensitivity => 0f;
+
+		public float ScLineSliderHoverEps => 0f;
+
+		public float ScBoxSliderHoverEps => 0f;
+
+		public float ScCylinderSliderHoverEps => 0f;
+
+		public float ScXSnapStep => 0f;
+
+		public float ScYSnapStep => 0f;
+
+		public float ScZSnapStep => 0f;
+
+		public float ScXYSnapStep => 0f;
+
+		public float ScYZSnapStep => 0f;
+
+		public float ScZXSnapStep => 0f;
+
+		public float ScUniformSnapStep => 0f;
+
+		public float ScDragSensitivity => 0f;
+
+		public UniversalGizmoSettingsCategory DisplayCategory
+		{
+			get
+			{
+				return default(UniversalGizmoSettingsCategory);
+			}
+			set
+			{
+			}
+		}
+
+		public void SetMvLineSliderHoverEps(float eps)
+		{
+		}
+
+		public void SetMvBoxSliderHoverEps(float eps)
+		{
+		}
+
+		public void SetMvCylinderSliderHoverEps(float eps)
+		{
+		}
+
+		public void SetMvXSnapStep(float snapStep)
+		{
+		}
+
+		public void SetMvYSnapStep(float snapStep)
+		{
+		}
+
+		public void SetMvZSnapStep(float snapStep)
+		{
+		}
+
+		public void SetMvDragSensitivity(float sensitivity)
+		{
+		}
+
+		public void ConnectMvSliderSettings(GizmoLineSlider3D slider, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		public void ConnectMvDblSliderSettings(GizmoPlaneSlider3D dblSlider, PlaneId planeId)
+		{
+		}
+
+		public void Inherit(MoveGizmoSettings3D settings)
+		{
+		}
+
+		private GizmoLineSlider3DSettings GetMvSglSliderSettings(int axisIndex, AxisSign axisSign)
+		{
+			return null;
+		}
+
+		private GizmoPlaneSlider3DSettings GetMvDblSliderSettings(PlaneId planeId)
+		{
+			return null;
+		}
+
+		public void SetRtCanHoverCulledPixels(bool canHover)
+		{
+		}
+
+		public void SetRtAxisLineHoverEps(float eps)
+		{
+		}
+
+		public void SetRtAxisTorusHoverEps(float eps)
+		{
+		}
+
+		public void SetRtCamLookLineHoverEps(float eps)
+		{
+		}
+
+		public void SetRtCamLookThickHoverEps(float eps)
+		{
+		}
+
+		public void SetRtAxisSnapStep(int axisIndex, float snapStep)
+		{
+		}
+
+		public void SetRtCamRightSnapStep(float snapStep)
+		{
+		}
+
+		public void SetRtCamUpSnapStep(float snapStep)
+		{
+		}
+
+		public void SetRtCamLookSnapStep(float snapStep)
+		{
+		}
+
+		public void SetRtSnapMode(GizmoSnapMode snapMode)
+		{
+		}
+
+		public void SetRtDragSensitivity(float sensitivity)
+		{
+		}
+
+		public void ConnectRtSliderSettings(GizmoPlaneSlider3D slider, int axisIndex)
+		{
+		}
+
+		public void ConnectRtCamLookSliderSettings(GizmoPlaneSlider2D slider)
+		{
+		}
+
+		public void Inherit(RotationGizmoSettings3D settings)
+		{
+		}
+
+		public void SetScLineSliderHoverEps(float eps)
+		{
+		}
+
+		public void SetScBoxSliderHoverEps(float eps)
+		{
+		}
+
+		public void SetScCylinderSliderHoverEps(float eps)
+		{
+		}
+
+		public void SetScXSnapStep(float snapStep)
+		{
+		}
+
+		public void SetScYSnapStep(float snapStep)
+		{
+		}
+
+		public void SetScZSnapStep(float snapStep)
+		{
+		}
+
+		public void SetScXYSnapStep(float snapStep)
+		{
+		}
+
+		public void SetScYZSnapStep(float snapStep)
+		{
+		}
+
+		public void SetScZXSnapStep(float snapStep)
+		{
+		}
+
+		public void SetScUniformScaleSnapStep(float snapStep)
+		{
+		}
+
+		public void SetScDragSensitivity(float sensitivity)
+		{
+		}
+
+		public void ConnectScSliderSettings(GizmoLineSlider3D slider, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		public void ConnectScDblSliderSettings(GizmoPlaneSlider3D dblSlider, PlaneId planeId)
+		{
+		}
+
+		public void Inherit(ScaleGizmoSettings3D settings)
+		{
+		}
+
+		private GizmoLineSlider3DSettings GetScSglSliderSettings(int axisIndex, AxisSign axisSign)
+		{
+			return null;
+		}
+
+		private GizmoPlaneSlider3DSettings GetScDblSliderSettings(PlaneId planeId)
+		{
+			return null;
+		}
 	}
 }

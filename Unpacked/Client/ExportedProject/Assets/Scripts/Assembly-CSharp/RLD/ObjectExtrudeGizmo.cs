@@ -1,66 +1,241 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ObjectExtrudeGizmo : MonoBehaviour
+	[Serializable]
+	public class ObjectExtrudeGizmo : GizmoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private struct HandleDragExtrudeData
+		{
+			public Vector3 ExtrudeDir;
 
-		1. No dll files were provided to AssetRipper.
+			public Vector3 ExtrudeCenter;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public int AxisIndex;
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private List<GameObject> _objectBuffer;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Vector3 _boxSize;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private GizmoSpace _extrudeSpace;
 
-		3. Assembly Reconstruction has not been implemented.
+		private List<GameObject> _targetParents;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private HashSet<GameObject> _ignoredParentObjects;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private ObjectBounds.QueryConfig _boundsQConfig;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private SceneOverlapFilter _sceneOverlapFilter;
 
-		5. Script Content Level 0
+		private ObjectExtrudeGizmoDragEnd _dragEndAction;
 
-			AssetRipper was set to not load any script information.
+		private HandleDragExtrudeData _handleDragExtrData;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private GizmoLineSlider3D _rightExtrude;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private GizmoLineSlider3D _upExtrude;
 
-		7. An incorrect path was provided to AssetRipper.
+		private GizmoLineSlider3D _frontExtrude;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private GizmoLineSlider3D _leftExtrude;
 
-		*/
+		private GizmoLineSlider3D _bottomExtrude;
+
+		private GizmoLineSlider3D _backExtrude;
+
+		private GizmoLineSlider3DCollection _extrudeSliders;
+
+		[SerializeField]
+		private ObjectExtrudeGizmoLookAndFeel3D _lookAndFeel3D;
+
+		private ObjectExtrudeGizmoLookAndFeel3D _sharedLookAndFeel3D;
+
+		[SerializeField]
+		private ObjectExtrudeGizmoHotkeys _hotkeys;
+
+		private ObjectExtrudeGizmoHotkeys _sharedHotkeys;
+
+		public ObjectExtrudeGizmoLookAndFeel3D LookAndFeel3D => null;
+
+		public ObjectExtrudeGizmoLookAndFeel3D SharedLookAndFeel3D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public ObjectExtrudeGizmoHotkeys Hotkeys => null;
+
+		public ObjectExtrudeGizmoHotkeys SharedHotkeys
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector3 BoxCenter => default(Vector3);
+
+		public Quaternion BoxRotation => default(Quaternion);
+
+		public Vector3 BoxSize => default(Vector3);
+
+		public Vector3 BoxRight => default(Vector3);
+
+		public Vector3 BoxUp => default(Vector3);
+
+		public Vector3 BoxLook => default(Vector3);
+
+		public OBB OBB => default(OBB);
+
+		public GizmoSpace ExtrudeSpace => default(GizmoSpace);
+
+		public int NumTargetParents => 0;
+
+		public event ObjectExtrudeGizmoExtrudeUpdateHandler ExtrudeUpdate
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public bool OwnsHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsRightExtrudeHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsLeftExtrudeHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsTopExtrudeHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsBottomExtrudeHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsFrontExtrudeHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsBackExtrudeHandle(int handleId)
+		{
+			return false;
+		}
+
+		public void SetIgnoredParentObjects(IEnumerable<GameObject> ignoredParentObjects)
+		{
+		}
+
+		public void SetExtrudeSpace(GizmoSpace extrudeSpace)
+		{
+		}
+
+		public void SetExtrudeTargets(IEnumerable<GameObject> extrudeTargets)
+		{
+		}
+
+		public void FitBoxToTargets()
+		{
+		}
+
+		public override void OnDetached()
+		{
+		}
+
+		public override void OnEnabled()
+		{
+		}
+
+		public override void OnDisabled()
+		{
+		}
+
+		public override void OnGizmoEnabled()
+		{
+		}
+
+		public override void OnAttached()
+		{
+		}
+
+		public override void OnGizmoUpdateBegin()
+		{
+		}
+
+		public override void OnGizmoRender(Camera camera)
+		{
+		}
+
+		public override void OnGizmoDragBegin(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragUpdate(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragEnd(int handleId)
+		{
+		}
+
+		private void UpdateExtrudeSliderTransforms()
+		{
+		}
+
+		private void OnGizmoTransformChanged(GizmoTransform gizmoTransform, GizmoTransform.ChangeData changeData)
+		{
+		}
+
+		private void SetAABB(AABB aabb)
+		{
+		}
+
+		private void SetOBB(OBB obb)
+		{
+		}
+
+		private void UpdateSnapSteps()
+		{
+		}
+
+		private void ValidateBoxSize()
+		{
+		}
+
+		private void SetupSharedLookAndFeel()
+		{
+		}
+
+		private void OnUndoRedoEnd(IUndoRedoAction action)
+		{
+		}
 	}
 }

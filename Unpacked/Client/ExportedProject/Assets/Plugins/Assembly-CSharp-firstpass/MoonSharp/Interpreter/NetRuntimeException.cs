@@ -1,66 +1,184 @@
-using UnityEngine;
+using System;
+using MoonSharp.Interpreter.Interop;
+using MoonSharp.Interpreter.Interop.BasicDescriptors;
 
 namespace MoonSharp.Interpreter
 {
-	public class NetRuntimeException : MonoBehaviour
+	[Serializable]
+	public class NetRuntimeException : InterpreterException
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public NetRuntimeException(Exception ex)
+			: base((Exception)null, (string)null)
+		{
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public NetRuntimeException(NetRuntimeException ex)
+			: base((Exception)null, (string)null)
+		{
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public NetRuntimeException(string message)
+			: base((Exception)null, (string)null)
+		{
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public NetRuntimeException(string format, params object[] args)
+			: base((Exception)null, (string)null)
+		{
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static NetRuntimeException ArithmeticOnNonNumber(DynValue l, DynValue r = null)
+		{
+			return null;
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static NetRuntimeException ConcatOnNonString(DynValue l, DynValue r)
+		{
+			return null;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public static NetRuntimeException LenOnInvalidType(DynValue r)
+		{
+			return null;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static NetRuntimeException CompareInvalidType(DynValue l, DynValue r)
+		{
+			return null;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static NetRuntimeException BadArgument(int argNum, string funcName, string message)
+		{
+			return null;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static NetRuntimeException BadArgumentUserData(int argNum, string funcName, Type expected, object got, bool allowNil)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		public static NetRuntimeException BadArgument(int argNum, string funcName, DataType expected, DataType got, bool allowNil)
+		{
+			return null;
+		}
 
-			AssetRipper was set to not load any script information.
+		public static NetRuntimeException BadArgument(int argNum, string funcName, string expected, string got, bool allowNil)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static NetRuntimeException BadArgumentNoValue(int argNum, string funcName, DataType expected)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static NetRuntimeException BadArgumentIndexOutOfRange(string funcName, int argNum)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static NetRuntimeException BadArgumentNoNegativeNumbers(int argNum, string funcName)
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static NetRuntimeException BadArgumentValueExpected(int argNum, string funcName)
+		{
+			return null;
+		}
 
-		*/
+		public static NetRuntimeException IndexType(DynValue obj)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException LoopInIndex()
+		{
+			return null;
+		}
+
+		public static NetRuntimeException LoopInNewIndex()
+		{
+			return null;
+		}
+
+		public static NetRuntimeException LoopInCall()
+		{
+			return null;
+		}
+
+		public static NetRuntimeException TableIndexIsNil()
+		{
+			return null;
+		}
+
+		public static NetRuntimeException TableIndexIsNaN()
+		{
+			return null;
+		}
+
+		public static NetRuntimeException ConvertToNumberFailed(int stage)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException ConvertObjectFailed(object obj)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException ConvertObjectFailed(DataType t)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException ConvertObjectFailed(DataType t, Type t2)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException UserDataArgumentTypeMismatch(DataType t, Type clrType)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException UserDataMissingField(string typename, string fieldname)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException CannotResumeNotSuspended(CoroutineState state)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException CannotYield()
+		{
+			return null;
+		}
+
+		public static NetRuntimeException CannotYieldMain()
+		{
+			return null;
+		}
+
+		public static NetRuntimeException AttemptToCallNonFunc(DataType type, string debugText = null)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException AccessInstanceMemberOnStatics(IMemberDescriptor desc)
+		{
+			return null;
+		}
+
+		public static NetRuntimeException AccessInstanceMemberOnStatics(IUserDataDescriptor typeDescr, IMemberDescriptor desc)
+		{
+			return null;
+		}
+
+		public override void Rethrow()
+		{
+		}
 	}
 }

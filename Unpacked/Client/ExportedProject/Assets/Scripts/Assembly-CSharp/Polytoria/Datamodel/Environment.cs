@@ -1,66 +1,476 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Mirror;
+using MoonSharp.Interpreter;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class Environment : MonoBehaviour
+	public class Environment : Instance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CExplosionForce_003Ed__36 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public Collider col;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public float force;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public Vector3 position;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public float radius;
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			public _003CExplosionForce_003Ed__36(int _003C_003E1__state)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		5. Script Content Level 0
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			AssetRipper was set to not load any script information.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[SyncVar]
+		private SkyboxPreset skybox;
 
-		7. An incorrect path was provided to AssetRipper.
+		[SyncVar]
+		private Vector3 gravity;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[SyncVar]
+		private bool fogEnabled;
 
-		*/
+		[SyncVar]
+		private float fogStartDistance;
+
+		[SyncVar]
+		private float fogEndDistance;
+
+		[SyncVar]
+		private Color fogColor;
+
+		[SyncVar]
+		private float partDestroyHeight;
+
+		[SyncVar]
+		private bool autoGenerateNavMesh;
+
+		private NavMeshSurface surface;
+
+		private GameObject explosionPrefab;
+
+		[CreatorProperty]
+		[Archivable]
+		public SkyboxPreset Skybox
+		{
+			get
+			{
+				return default(SkyboxPreset);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector3 Gravity
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool FogEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float FogStartDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float FogEndDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Color FogColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float PartDestroyHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool AutoGenerateNavMesh
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public SkyboxPreset Networkskybox
+		{
+			get
+			{
+				return default(SkyboxPreset);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector3 Networkgravity
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkfogEnabled
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkfogStartDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkfogEndDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkfogColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkpartDestroyHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkautoGenerateNavMesh
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		public void CreateExplosion(Vector3 position, float radius = 10f, float force = 5000f, bool affectKinematic = true, DynValue callback = null, float damage = 100000f)
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CExplosionForce_003Ed__36))]
+		private IEnumerator ExplosionForce(Collider col, Vector3 position, float radius, float force)
+		{
+			return null;
+		}
+
+		public RayResult? Raycast(Vector3 origin, Vector3 direction, float maxDistance = 1f / 0f, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
+
+		public RayResult[] RaycastAll(Vector3 origin, Vector3 direction, float maxDistance = 1f / 0f, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
+
+		public Instance[] OverlapSphere(Vector3 position, float radius, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
+
+		public Instance[] OverlapBox(Vector3 center, Vector3 size, Vector3 rotation, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
+
+		protected override void Start()
+		{
+		}
+
+		public void RebuildNavMesh(Instance root = null)
+		{
+		}
+
+		public Vector3 GetPointOnNavMesh(Vector3 position, float maxDistance = 100f)
+		{
+			return default(Vector3);
+		}
+
+		[ClientRpc]
+		private void RpcSetSkybox(SkyboxPreset sky)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcExplode(Vector3 position, float radius)
+		{
+		}
+
+		private void AddPlrExplosionForce(Player player, Vector3 position, float radius, float force)
+		{
+		}
+
+		[TargetRpc]
+		private void ApplyForceTargetRpc(NetworkConnection target, Vector3 force)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetGravity(Vector3 g)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetFogEnabled(bool enabled)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetFogStartDistance(float dist)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetFogEndDistance(float dist)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetFogColor(Color c)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_RpcSetSkybox__SkyboxPreset(SkyboxPreset sky)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetSkybox__SkyboxPreset(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcExplode__Vector3__Single(Vector3 position, float radius)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcExplode__Vector3__Single(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_ApplyForceTargetRpc__NetworkConnection__Vector3(NetworkConnection target, Vector3 force)
+		{
+		}
+
+		protected static void InvokeUserCode_ApplyForceTargetRpc__NetworkConnection__Vector3(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetGravity__Vector3(Vector3 g)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetGravity__Vector3(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetFogEnabled__Boolean(bool enabled)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetFogEnabled__Boolean(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetFogStartDistance__Single(float dist)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetFogStartDistance__Single(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetFogEndDistance__Single(float dist)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetFogEndDistance__Single(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetFogColor__Color(Color c)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetFogColor__Color(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static Environment()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

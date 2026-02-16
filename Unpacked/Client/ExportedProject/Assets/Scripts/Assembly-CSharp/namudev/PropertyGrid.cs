@@ -1,66 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace namudev
 {
 	public class PropertyGrid : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private GameObject targetObject;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private bool logging;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private GameObject label;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private GameObject scrollbar;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Dictionary<Type, GameObject> itemTemplateMap;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private List<GameObject> items;
 
-		3. Assembly Reconstruction has not been implemented.
+		public event Action<object, PropertyInfo> ValueChanged
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public void AppendLabel(string text)
+		{
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public T AppendProperty<T>(string caption, object value) where T : Component
+		{
+			return null;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public void Populate(object obj)
+		{
+		}
 
-		5. Script Content Level 0
+		public void Clear()
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		private void Awake()
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private void AppendProperties(object obj, List<string> exclude = null)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private void AppendProperty(object obj, PropertyInfo propertyInfo)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
-
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
-
-		*/
+		private void Log(string message)
+		{
+		}
 	}
 }

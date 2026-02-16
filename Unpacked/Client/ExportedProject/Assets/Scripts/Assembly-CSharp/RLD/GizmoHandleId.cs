@@ -1,66 +1,129 @@
-using UnityEngine;
-
 namespace RLD
 {
-	public class GizmoHandleId : MonoBehaviour
+	public static class GizmoHandleId
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static int None => 0;
 
-		1. No dll files were provided to AssetRipper.
+		public static int SceneGizmoMidCap => 0;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static int SceneGizmoPositiveXAxis => 0;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static int SceneGizmoPositiveYAxis => 0;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static int SceneGizmoPositiveZAxis => 0;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static int SceneGizmoNegativeXAxis => 0;
 
-		3. Assembly Reconstruction has not been implemented.
+		public static int SceneGizmoNegativeYAxis => 0;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static int SceneGizmoNegativeZAxis => 0;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static int SceneGizmoCamPrjSwitchLabel => 0;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static int PXSlider => 0;
 
-		5. Script Content Level 0
+		public static int PYSlider => 0;
 
-			AssetRipper was set to not load any script information.
+		public static int PZSlider => 0;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static int NXSlider => 0;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static int NYSlider => 0;
 
-		7. An incorrect path was provided to AssetRipper.
+		public static int NZSlider => 0;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static int PXCap => 0;
 
-		*/
+		public static int PYCap => 0;
+
+		public static int PZCap => 0;
+
+		public static int NXCap => 0;
+
+		public static int NYCap => 0;
+
+		public static int NZCap => 0;
+
+		public static int XRotationSlider => 0;
+
+		public static int YRotationSlider => 0;
+
+		public static int ZRotationSlider => 0;
+
+		public static int XYDblSlider => 0;
+
+		public static int YZDblSlider => 0;
+
+		public static int ZXDblSlider => 0;
+
+		public static int PCamXSlider => 0;
+
+		public static int PCamYSlider => 0;
+
+		public static int NCamXSlider => 0;
+
+		public static int NCamYSlider => 0;
+
+		public static int PCamXCap => 0;
+
+		public static int PCamYCap => 0;
+
+		public static int NCamXCap => 0;
+
+		public static int NCamYCap => 0;
+
+		public static int CamXYSlider => 0;
+
+		public static int CamXYRotation => 0;
+
+		public static int CamZRotation => 0;
+
+		public static int VertSnap => 0;
+
+		public static int MidScaleCap => 0;
+
+		public static int MidDisplayCap => 0;
+
+		public static int MidSnapCap => 0;
+
+		public static int BoxTickLeftCenter => 0;
+
+		public static int BoxTickRightCenter => 0;
+
+		public static int BoxTickFrontCenter => 0;
+
+		public static int BoxTickBackCenter => 0;
+
+		public static int BoxTickTopCenter => 0;
+
+		public static int BoxTickBottomCenter => 0;
+
+		public static int ExtrudeSliderLeft => 0;
+
+		public static int ExtrudeSliderRight => 0;
+
+		public static int ExtrudeSliderFront => 0;
+
+		public static int ExtrudeSliderBack => 0;
+
+		public static int ExtrudeSliderTop => 0;
+
+		public static int ExtrudeSliderBottom => 0;
+
+		public static int ExtrudeCapLeft => 0;
+
+		public static int ExtrudeCapRight => 0;
+
+		public static int ExtrudeCapFront => 0;
+
+		public static int ExtrudeCapBack => 0;
+
+		public static int ExtrudeCapTop => 0;
+
+		public static int ExtrudeCapBottom => 0;
+
+		public static int MirrorPlane => 0;
+
+		public static int SafeClientId => 0;
 	}
 }

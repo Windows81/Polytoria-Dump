@@ -1,66 +1,296 @@
+using System.Runtime.InteropServices;
+using Mirror;
+using Polytoria.Lua;
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace Polytoria.Datamodel
 {
-	public class Tool : MonoBehaviour
+	[Instantiatable]
+	[RequireComponent(typeof(ParentConstraint))]
+	public class Tool : DynamicInstance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Renderer _renderer;
 
-		1. No dll files were provided to AssetRipper.
+		private BoxCollider col;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Rigidbody rb;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private ParentConstraint parentConstraint;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public LuaEvent Activated;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public LuaEvent Deactivated;
 
-		3. Assembly Reconstruction has not been implemented.
+		public LuaEvent Equipped;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public LuaEvent Unequipped;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private float pickupCooldown;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SyncVar]
+		private bool droppable;
 
-		5. Script Content Level 0
+		[CreatorProperty]
+		[Archivable]
+		public bool Droppable
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		protected override bool DoTransformSync => false;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public bool Networkdroppable
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		protected override void Awake()
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		protected override void Start()
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void Play(string anim)
+		{
+		}
 
-		*/
+		private void OnParentChange()
+		{
+		}
+
+		private void FixChildTransforms(DynamicInstance i)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcUpdateChildTransform(DynamicInstance i, Vector3 pos, Quaternion rot, Vector3 size)
+		{
+		}
+
+		protected override void Update()
+		{
+		}
+
+		private void OnTouched(Instance obj)
+		{
+		}
+
+		private void CollectTool(IToolHolder holder)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcLinkTool(Instance par)
+		{
+		}
+
+		private void DoLinkTool(Instance par)
+		{
+		}
+
+		private void OnDescendantAdded(Instance obj)
+		{
+		}
+
+		private void RecalculateBounds()
+		{
+		}
+
+		public void InvokeActivate()
+		{
+		}
+
+		[Command(requiresAuthority = false)]
+		private void CmdActivate()
+		{
+		}
+
+		private void DoActivate()
+		{
+		}
+
+		[ClientRpc]
+		private void RpcActivate()
+		{
+		}
+
+		public void InvokeDeactivate()
+		{
+		}
+
+		[Command(requiresAuthority = false)]
+		private void CmdDeactivate()
+		{
+		}
+
+		private void DoDeactivate()
+		{
+		}
+
+		[ClientRpc]
+		private void RpcDeactivate()
+		{
+		}
+
+		public void InvokeEquip()
+		{
+		}
+
+		[Command(requiresAuthority = false)]
+		private void CmdEquip()
+		{
+		}
+
+		private void DoEquip()
+		{
+		}
+
+		[ClientRpc]
+		private void RpcEquip()
+		{
+		}
+
+		public void InvokeUnequip()
+		{
+		}
+
+		[Command(requiresAuthority = false)]
+		private void CmdUnequip()
+		{
+		}
+
+		private void DoUnequip()
+		{
+		}
+
+		[ClientRpc]
+		private void RpcUnequip()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_RpcUpdateChildTransform__DynamicInstance__Vector3__Quaternion__Vector3(DynamicInstance i, Vector3 pos, Quaternion rot, Vector3 size)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcUpdateChildTransform__DynamicInstance__Vector3__Quaternion__Vector3(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcLinkTool__Instance(Instance par)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcLinkTool__Instance(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdActivate()
+		{
+		}
+
+		protected static void InvokeUserCode_CmdActivate(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcActivate()
+		{
+		}
+
+		protected static void InvokeUserCode_RpcActivate(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdDeactivate()
+		{
+		}
+
+		protected static void InvokeUserCode_CmdDeactivate(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcDeactivate()
+		{
+		}
+
+		protected static void InvokeUserCode_RpcDeactivate(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdEquip()
+		{
+		}
+
+		protected static void InvokeUserCode_CmdEquip(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcEquip()
+		{
+		}
+
+		protected static void InvokeUserCode_RpcEquip(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdUnequip()
+		{
+		}
+
+		protected static void InvokeUserCode_CmdUnequip(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcUnequip()
+		{
+		}
+
+		protected static void InvokeUserCode_RpcUnequip(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static Tool()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

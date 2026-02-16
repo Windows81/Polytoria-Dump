@@ -1,66 +1,127 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using MoonSharp.Interpreter.Interop.BasicDescriptors;
 
 namespace MoonSharp.Interpreter.Interop
 {
-	public class OverloadedMethodMemberDescriptor : MonoBehaviour
+	public class OverloadedMethodMemberDescriptor : IOptimizableDescriptor, IMemberDescriptor, IWireableDescriptor
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private class OverloadableMemberDescriptorComparer : IComparer<IOverloadableMemberDescriptor>
+		{
+			public int Compare(IOverloadableMemberDescriptor x, IOverloadableMemberDescriptor y)
+			{
+				return 0;
+			}
+		}
 
-		1. No dll files were provided to AssetRipper.
+		private class OverloadCacheItem
+		{
+			public bool HasObject;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public IOverloadableMemberDescriptor Method;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public List<DataType> ArgsDataType;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public List<Type> ArgsUserDataType;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public int HitIndexAtLastHit;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		private const int CACHE_SIZE = 5;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private List<IOverloadableMemberDescriptor> m_Overloads;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private List<IOverloadableMemberDescriptor> m_ExtOverloads;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private bool m_Unsorted;
 
-		5. Script Content Level 0
+		private OverloadCacheItem[] m_Cache;
 
-			AssetRipper was set to not load any script information.
+		private int m_CacheHits;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private int m_ExtensionMethodVersion;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public bool IgnoreExtensionMethods { get; set; }
 
-		7. An incorrect path was provided to AssetRipper.
+		public string Name { get; private set; }
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Type DeclaringType { get; private set; }
 
-		*/
+		public int OverloadCount => 0;
+
+		public bool IsStatic => false;
+
+		public MemberDescriptorAccess MemberAccess => default(MemberDescriptorAccess);
+
+		public OverloadedMethodMemberDescriptor(string name, Type declaringType)
+		{
+		}
+
+		public OverloadedMethodMemberDescriptor(string name, Type declaringType, IOverloadableMemberDescriptor descriptor)
+		{
+		}
+
+		public OverloadedMethodMemberDescriptor(string name, Type declaringType, IEnumerable<IOverloadableMemberDescriptor> descriptors)
+		{
+		}
+
+		internal void SetExtensionMethodsSnapshot(int version, List<IOverloadableMemberDescriptor> extMethods)
+		{
+		}
+
+		public void AddOverload(IOverloadableMemberDescriptor overload)
+		{
+		}
+
+		private DynValue PerformOverloadedCall(Script script, object obj, ScriptExecutionContext context, CallbackArguments args)
+		{
+			return null;
+		}
+
+		private void Cache(bool hasObject, CallbackArguments args, IOverloadableMemberDescriptor bestOverload)
+		{
+		}
+
+		private bool CheckMatch(bool hasObject, CallbackArguments args, OverloadCacheItem overloadCacheItem)
+		{
+			return false;
+		}
+
+		private int CalcScoreForOverload(ScriptExecutionContext context, CallbackArguments args, IOverloadableMemberDescriptor method, bool isExtMethod)
+		{
+			return 0;
+		}
+
+		private static int CalcScoreForSingleArgument(ParameterDescriptor desc, Type parameterType, DynValue arg, bool isOptional)
+		{
+			return 0;
+		}
+
+		public Func<ScriptExecutionContext, CallbackArguments, DynValue> GetCallback(Script script, object obj)
+		{
+			return null;
+		}
+
+		void IOptimizableDescriptor.Optimize()
+		{
+		}
+
+		public CallbackFunction GetCallbackFunction(Script script, object obj = null)
+		{
+			return null;
+		}
+
+		public DynValue GetValue(Script script, object obj)
+		{
+			return null;
+		}
+
+		public void SetValue(Script script, object obj, DynValue value)
+		{
+		}
+
+		public void PrepareForWiring(Table t)
+		{
+		}
 	}
 }

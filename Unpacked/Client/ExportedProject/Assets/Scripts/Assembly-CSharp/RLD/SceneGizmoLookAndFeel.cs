@@ -1,66 +1,226 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class SceneGizmoLookAndFeel : MonoBehaviour
+	[Serializable]
+	public class SceneGizmoLookAndFeel : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private static readonly float _baseScreenSize;
 
-		1. No dll files were provided to AssetRipper.
+		private static readonly float _invBaseScreenSize;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private GizmoCap3DLookAndFeel _midCapLookAndFeel;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoCap3DLookAndFeel[] _axesCapsLookAndFeel;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private SceneGizmoScreenCorner _screenCorner;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private Vector2 _screenOffset;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private float _screenSize;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private Color _axesLabelTint;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private Color _camPrjSwitchLabelTint;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private bool _isCamPrjSwitchLabelVisible;
 
-		5. Script Content Level 0
+		private GizmoCap3DLookAndFeel AxisCapLookAndFeel => null;
 
-			AssetRipper was set to not load any script information.
+		public SceneGizmoScreenCorner ScreenCorner
+		{
+			get
+			{
+				return default(SceneGizmoScreenCorner);
+			}
+			set
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Vector2 ScreenOffset
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float ScreenSize
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public Color AxesLabelTint
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Color CamPrjSwitchLabelTint
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public bool IsCamPrjSwitchLabelVisible
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public Texture2D CamPerspModeLabelTexture => null;
+
+		public Texture2D CamOrthoModeLabelTexture => null;
+
+		public Color HoveredColor => default(Color);
+
+		public GizmoCap3DType AxesCapType => default(GizmoCap3DType);
+
+		public GizmoCap3DType MidCapType => default(GizmoCap3DType);
+
+		public float MidCapBoxSize => 0f;
+
+		public float MidCapSphereRadius => 0f;
+
+		public float AxisConeHeight => 0f;
+
+		public float AxisConeRadius => 0f;
+
+		public float AxisPyramidWidth => 0f;
+
+		public float AxisPyramidHeight => 0f;
+
+		public float AxisPyramidDepth => 0f;
+
+		public float AxisLabelScreenSize => 0f;
+
+		public float AxisCamAlignFadeOutThreshold => 0f;
+
+		public float AxisCamAlignFadeOutDuration => 0f;
+
+		public float AxisCamAlignFadeOutAlpha => 0f;
+
+		public void SetMidCapColor(Color color)
+		{
+		}
+
+		public void SetAxisCapColor(Color color, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		public Color GetAxisCapColor(int axisIndex, AxisSign axisSign)
+		{
+			return default(Color);
+		}
+
+		public void SetHoveredColor(Color hoveredColor)
+		{
+		}
+
+		public void SetMidCapFillMode(GizmoFillMode3D fillMode)
+		{
+		}
+
+		public void SetAxisCapFillMode(GizmoFillMode3D fillMode)
+		{
+		}
+
+		public void SetMidCapShadeMode(GizmoShadeMode shadeMode)
+		{
+		}
+
+		public void SetAxisCapShadeMode(GizmoShadeMode shadeMode)
+		{
+		}
+
+		public List<Enum> GetAllowedMidCapTypes()
+		{
+			return null;
+		}
+
+		public List<Enum> GetAllowedAxesCapTypes()
+		{
+			return null;
+		}
+
+		public bool IsMidCapTypeAllowed(GizmoCap3DType capType)
+		{
+			return false;
+		}
+
+		public void SetMidCapType(GizmoCap3DType capType)
+		{
+		}
+
+		public bool IsAxisCapTypeAllowed(GizmoCap3DType capType)
+		{
+			return false;
+		}
+
+		public void SetAxisCapType(GizmoCap3DType capType)
+		{
+		}
+
+		public float GetAxesLabelWorldSize(Camera gizmoCam, Vector3 labelWorldPos)
+		{
+			return 0f;
+		}
+
+		public Vector2 CalculateMaxPrjSwitchLabelRectSize()
+		{
+			return default(Vector2);
+		}
+
+		public void ConnectMidCapLookAndFeel(GizmoCap3D midCap)
+		{
+		}
+
+		public void ConnectAxisCapLookAndFeel(GizmoCap3D axisCap, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		private GizmoCap3DLookAndFeel GetAxisCapLookAndFeel(int axisIndex, AxisSign axisSign)
+		{
+			return null;
+		}
+
+		private void OnScreenSizeChanged()
+		{
+		}
 	}
 }

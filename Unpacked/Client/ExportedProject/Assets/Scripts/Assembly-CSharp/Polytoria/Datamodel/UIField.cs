@@ -1,66 +1,355 @@
+using System;
+using System.Runtime.InteropServices;
+using Mirror;
+using Polytoria.Lua;
+using SoftMasking;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Polytoria.Datamodel
 {
-	public class UIField : MonoBehaviour
+	[Instantiatable]
+	public class UIField : Instance, IPointerEnterHandler, IEventSystemHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public LuaEvent MouseUp;
 
-		1. No dll files were provided to AssetRipper.
+		public LuaEvent MouseDown;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar(hook = "SyncSetPositionOffset")]
+		private Vector2 positionOffset;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar(hook = "SyncSetSizeOffset")]
+		private Vector2 sizeOffset;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SyncVar(hook = "SyncSetPositionRelative")]
+		private Vector2 positionRelative;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SyncVar(hook = "SyncSetSizeRelative")]
+		private Vector2 sizeRelative;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SyncVar(hook = "SyncSetRotation")]
+		private float rotation;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SyncVar(hook = "SyncSetPivotPoint")]
+		private Vector2 pivotPoint;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SyncVar(hook = "SyncSetVisible")]
+		private bool visible;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SyncVar(hook = "SyncSetClipDescendants")]
+		private bool clipDescendants;
 
-		5. Script Content Level 0
+		private RectTransform parentRect;
 
-			AssetRipper was set to not load any script information.
+		private RectTransform recttransform;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private SoftMask mask;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private bool hasHVLayoutParent;
 
-		7. An incorrect path was provided to AssetRipper.
+		public Action<Vector2, Vector2> _Mirror_SyncVarHookDelegate_positionOffset;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Action<Vector2, Vector2> _Mirror_SyncVarHookDelegate_sizeOffset;
 
-		*/
+		public Action<Vector2, Vector2> _Mirror_SyncVarHookDelegate_positionRelative;
+
+		public Action<Vector2, Vector2> _Mirror_SyncVarHookDelegate_sizeRelative;
+
+		public Action<float, float> _Mirror_SyncVarHookDelegate_rotation;
+
+		public Action<Vector2, Vector2> _Mirror_SyncVarHookDelegate_pivotPoint;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_visible;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_clipDescendants;
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector2 PositionOffset
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector2 PositionRelative
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float Rotation
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector2 SizeOffset
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector2 SizeRelative
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector2 PivotPoint
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool Visible
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ClipDescendants
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector2 NetworkpositionOffset
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector2 NetworksizeOffset
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector2 NetworkpositionRelative
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector2 NetworksizeRelative
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float Networkrotation
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector2 NetworkpivotPoint
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool Networkvisible
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkclipDescendants
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		private void SyncSetPositionOffset(Vector2 oldValue, Vector2 newValue)
+		{
+		}
+
+		private void SyncSetSizeOffset(Vector2 oldValue, Vector2 newValue)
+		{
+		}
+
+		private void SyncSetPositionRelative(Vector2 oldValue, Vector2 newValue)
+		{
+		}
+
+		private void SyncSetSizeRelative(Vector2 oldValue, Vector2 newValue)
+		{
+		}
+
+		private void SyncSetRotation(float oldValue, float newValue)
+		{
+		}
+
+		private void SyncSetPivotPoint(Vector2 oldValue, Vector2 newValue)
+		{
+		}
+
+		private void SyncSetVisible(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncSetClipDescendants(bool oldValue, bool newValue)
+		{
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		private void UpdateVisibility()
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		private void Update()
+		{
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		public void OnPointerEnter(PointerEventData eventData)
+		{
+		}
+
+		public void OnPointerExit(PointerEventData eventData)
+		{
+		}
+
+		public void OnPointerUp(PointerEventData eventData)
+		{
+		}
+
+		public void OnPointerDown(PointerEventData eventData)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

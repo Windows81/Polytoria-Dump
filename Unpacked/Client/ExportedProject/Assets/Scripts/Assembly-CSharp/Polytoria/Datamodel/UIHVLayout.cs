@@ -1,66 +1,480 @@
+using System;
+using System.Runtime.InteropServices;
+using Mirror;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Polytoria.Datamodel
 {
-	public class UIHVLayout : MonoBehaviour
+	public class UIHVLayout : UIField
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		protected HorizontalOrVerticalLayoutGroup layoutGroup;
 
-		1. No dll files were provided to AssetRipper.
+		[SyncVar(hook = "SyncSpacing")]
+		protected float spacing;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar(hook = "SyncChildControlWidth")]
+		protected bool childControlWidth;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar(hook = "SyncChildControlHeight")]
+		protected bool childControlHeight;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SyncVar(hook = "SyncChildScaleWidth")]
+		protected bool childScaleWidth;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SyncVar(hook = "SyncChildScaleHeight")]
+		protected bool childScaleHeight;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SyncVar(hook = "SyncChildForceExpandWidth")]
+		protected bool childForceExpandWidth;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SyncVar(hook = "SyncChildForceExpandHeight")]
+		protected bool childForceExpandHeight;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SyncVar(hook = "SyncPaddingLeft")]
+		protected int paddingLeft;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SyncVar(hook = "SyncPaddingRight")]
+		protected int paddingRight;
 
-		5. Script Content Level 0
+		[SyncVar(hook = "SyncPaddingTop")]
+		protected int paddingTop;
 
-			AssetRipper was set to not load any script information.
+		[SyncVar(hook = "SyncPaddingBottom")]
+		protected int paddingBottom;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[SyncVar(hook = "SyncChildAlignment")]
+		protected TextAnchor childAlignment;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[SyncVar(hook = "SyncReverseAlignment")]
+		protected bool reverseAlignment;
 
-		7. An incorrect path was provided to AssetRipper.
+		public Action<float, float> _Mirror_SyncVarHookDelegate_spacing;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_childControlWidth;
 
-		*/
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_childControlHeight;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_childScaleWidth;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_childScaleHeight;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_childForceExpandWidth;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_childForceExpandHeight;
+
+		public Action<int, int> _Mirror_SyncVarHookDelegate_paddingLeft;
+
+		public Action<int, int> _Mirror_SyncVarHookDelegate_paddingRight;
+
+		public Action<int, int> _Mirror_SyncVarHookDelegate_paddingTop;
+
+		public Action<int, int> _Mirror_SyncVarHookDelegate_paddingBottom;
+
+		public Action<TextAnchor, TextAnchor> _Mirror_SyncVarHookDelegate_childAlignment;
+
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_reverseAlignment;
+
+		[CreatorProperty]
+		[Archivable]
+		public float Spacing
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ChildControlWidth
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ChildControlHeight
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ChildScaleWidth
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ChildScaleHeight
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ChildForceExpandWidth
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ChildForceExpandHeight
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public int PaddingLeft
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public int PaddingRight
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public int PaddingTop
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public int PaddingBottom
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public TextAnchor ChildAlignment
+		{
+			get
+			{
+				return default(TextAnchor);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ReverseAlignment
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public float Networkspacing
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkchildControlWidth
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkchildControlHeight
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkchildScaleWidth
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkchildScaleHeight
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkchildForceExpandWidth
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkchildForceExpandHeight
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworkpaddingLeft
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworkpaddingRight
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworkpaddingTop
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworkpaddingBottom
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public TextAnchor NetworkchildAlignment
+		{
+			get
+			{
+				return default(TextAnchor);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkreverseAlignment
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		private void SyncSpacing(float oldValue, float newValue)
+		{
+		}
+
+		private void SyncChildControlWidth(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncChildControlHeight(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncChildScaleWidth(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncChildScaleHeight(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncChildForceExpandWidth(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncChildForceExpandHeight(bool oldValue, bool newValue)
+		{
+		}
+
+		private void SyncPaddingLeft(int oldValue, int newValue)
+		{
+		}
+
+		private void SyncPaddingRight(int oldValue, int newValue)
+		{
+		}
+
+		private void SyncPaddingTop(int oldValue, int newValue)
+		{
+		}
+
+		private void SyncPaddingBottom(int oldValue, int newValue)
+		{
+		}
+
+		private void SyncChildAlignment(TextAnchor oldValue, TextAnchor newValue)
+		{
+		}
+
+		private void SyncReverseAlignment(bool oldValue, bool newValue)
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		private void LateUpdate()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

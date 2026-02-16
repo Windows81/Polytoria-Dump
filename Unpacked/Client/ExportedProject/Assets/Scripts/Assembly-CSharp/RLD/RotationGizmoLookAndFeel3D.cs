@@ -1,66 +1,223 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class RotationGizmoLookAndFeel3D : MonoBehaviour
+	[Serializable]
+	public class RotationGizmoLookAndFeel3D : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private bool _isMidCapVisible;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoCap3DLookAndFeel _midCapLookAndFeel;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private bool[] _axesVis;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoPlaneSlider3DLookAndFeel[] _axesLookAndFeel;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private bool _isCamLookSliderVisible;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private float _camLookSliderRadiusOffset;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private GizmoPlaneSlider2DLookAndFeel _camLookSliderLookAndFeel;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public float Scale => 0f;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public float Radius => 0f;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public bool UseZoomFactor => false;
 
-		5. Script Content Level 0
+		public Color XBorderColor => default(Color);
 
-			AssetRipper was set to not load any script information.
+		public Color YBorderColor => default(Color);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Color ZBorderColor => default(Color);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Color HoveredColor => default(Color);
 
-		7. An incorrect path was provided to AssetRipper.
+		public float AxisTorusThickness => 0f;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float AxisCylTorusWidth => 0f;
 
-		*/
+		public float AxisCylTorusHeight => 0f;
+
+		public float AxisCullAlphaScale => 0f;
+
+		public GizmoShadeMode ShadeMode => default(GizmoShadeMode);
+
+		public GizmoCircle3DBorderType AxisBorderType => default(GizmoCircle3DBorderType);
+
+		public GizmoFillMode3D AxisBorderFillMode => default(GizmoFillMode3D);
+
+		public int NumAxisTorusWireAxialSlices => 0;
+
+		public Color RotationArcColor => default(Color);
+
+		public Color RotationArcBorderColor => default(Color);
+
+		public bool UseShortestRotationArc => false;
+
+		public bool IsRotationArcVisible => false;
+
+		public Color MidCapColor => default(Color);
+
+		public Color MidCapBorderColor => default(Color);
+
+		public Color HoveredMidCapColor => default(Color);
+
+		public bool IsMidCapVisible => false;
+
+		public bool IsMidCapBorderVisible => false;
+
+		public float CamLookSliderRadiusOffset => 0f;
+
+		public Color CamLookSliderBorderColor => default(Color);
+
+		public Color CamLookSliderHoveredBorderColor => default(Color);
+
+		public GizmoPolygon2DBorderType CamLookSliderPolyBorderType => default(GizmoPolygon2DBorderType);
+
+		public float CamLookSliderPolyBorderThickness => 0f;
+
+		public bool IsCamLookSliderVisible => false;
+
+		public bool IsAxisVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public void SetAxisVisible(int axisIndex, bool isVisible)
+		{
+		}
+
+		public void SetShadeMode(GizmoShadeMode shadeMode)
+		{
+		}
+
+		public void SetAxisBorderFillMode(GizmoFillMode3D fillMode)
+		{
+		}
+
+		public void SetNumAxisTorusWireAxialSlices(int numSlices)
+		{
+		}
+
+		public void SetUseZoomFactor(bool useZoomFactor)
+		{
+		}
+
+		public void SetScale(float scale)
+		{
+		}
+
+		public void SetRadius(float radius)
+		{
+		}
+
+		public void SetAxisBorderCullAlphaScale(float scale)
+		{
+		}
+
+		public void SetAxisBorderType(GizmoCircle3DBorderType borderType)
+		{
+		}
+
+		public void SetAxisTorusThickness(float thickness)
+		{
+		}
+
+		public void SetAxisCylTorusWidth(float width)
+		{
+		}
+
+		public void SetAxisCylTorusHeight(float height)
+		{
+		}
+
+		public void SetMidCapVisible(bool isVisible)
+		{
+		}
+
+		public void SetMidCapColor(Color color)
+		{
+		}
+
+		public void SetHoveredMidCapColor(Color color)
+		{
+		}
+
+		public void SetMidCapBorderVisible(bool isVisible)
+		{
+		}
+
+		public void SetMidCapBorderColor(Color color)
+		{
+		}
+
+		public void SetAxisBorderColor(int axisIndex, Color color)
+		{
+		}
+
+		public void SetHoveredColor(Color hoveredColor)
+		{
+		}
+
+		public void SetRotationArcColor(Color color)
+		{
+		}
+
+		public void SetRotationArcBorderColor(Color color)
+		{
+		}
+
+		public void SetUseShortestRotationArc(bool useShortest)
+		{
+		}
+
+		public void SetRotationArcVisible(bool isVisible)
+		{
+		}
+
+		public void SetCamLookSliderRadiusOffset(float offset)
+		{
+		}
+
+		public void SetCamLookSliderBorderColor(Color color)
+		{
+		}
+
+		public void SetCamLookSliderHoveredBorderColor(Color color)
+		{
+		}
+
+		public void SetCamLookSliderVisible(bool isVisible)
+		{
+		}
+
+		public void SetCamLookSliderPolyBorderType(GizmoPolygon2DBorderType polyBorderType)
+		{
+		}
+
+		public void SetCamLookSliderPolyBorderThickness(float thickness)
+		{
+		}
+
+		public void ConnectSliderLookAndFeel(GizmoPlaneSlider3D slider, int axisIndex)
+		{
+		}
+
+		public void ConnectMidCapLookAndFeel(GizmoCap3D cap)
+		{
+		}
+
+		public void ConnectCamLookSliderLookAndFeel(GizmoPlaneSlider2D slider)
+		{
+		}
 	}
 }

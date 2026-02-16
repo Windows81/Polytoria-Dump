@@ -1,66 +1,171 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ObjectGrabSettings : MonoBehaviour
+	[Serializable]
+	public class ObjectGrabSettings : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private bool _alignAxis;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private TransformAxis _alignmentAxis;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private float _rotationSensitivity;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private float _scaleSensitivity;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private float _offsetFromSurfaceSensitivity;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private float _offsetFromAnchorSensitivity;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private ObjectGrabSurfaceFlags _surfaceFlags;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private float _defaultOffsetFromSurface;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private int _surfaceLayers;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private ObjectLayerGrabSettings[] _layerGrabSettings;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private int _sphericalMeshLayers;
 
-			AssetRipper was set to not load any script information.
+		[SerializeField]
+		private int _terrainMeshLayers;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public bool AlignAxis
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public TransformAxis AlignmentAxis
+		{
+			get
+			{
+				return default(TransformAxis);
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public float RotationSensitivity
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float ScaleSensitivity
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public float OffsetFromSurfaceSensitivity
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float OffsetFromAnchorSensitivity
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public ObjectGrabSurfaceFlags SurfaceFlags
+		{
+			get
+			{
+				return default(ObjectGrabSurfaceFlags);
+			}
+			set
+			{
+			}
+		}
+
+		public float DefaultOffsetFromSurface
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public int SurfaceLayers
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int SphericalMeshLayers
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int TerrainMeshLayers
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public ObjectLayerGrabSettings GetLayerGrabSettings(int layer)
+		{
+			return null;
+		}
 	}
 }

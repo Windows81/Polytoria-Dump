@@ -1,66 +1,162 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class RotationGizmo : MonoBehaviour
+	[Serializable]
+	public class RotationGizmo : GizmoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private GizmoPlaneSlider3D _xSlider;
 
-		1. No dll files were provided to AssetRipper.
+		private GizmoPlaneSlider3D _ySlider;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private GizmoPlaneSlider3D _zSlider;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private GizmoPlaneSlider3DCollection _axesSliders;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private GizmoCap3D _midCap;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private GizmoDblAxisRotationDrag3D _camXYRotationDrag;
 
-		3. Assembly Reconstruction has not been implemented.
+		private GizmoPlaneSlider2D _camLookSlider;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private RotationGizmoHotkeys _hotkeys;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private RotationGizmoSettings3D _settings3D;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private RotationGizmoLookAndFeel3D _lookAndFeel3D;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private bool _useSnapEnableHotkey;
 
-			AssetRipper was set to not load any script information.
+		private RotationGizmoHotkeys _sharedHotkeys;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private RotationGizmoSettings3D _sharedSettings3D;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private RotationGizmoLookAndFeel3D _sharedLookAndFeel3D;
 
-		7. An incorrect path was provided to AssetRipper.
+		public RotationGizmoSettings3D Settings3D => null;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public RotationGizmoLookAndFeel3D LookAndFeel3D => null;
 
-		*/
+		public RotationGizmoHotkeys Hotkeys => null;
+
+		public RotationGizmoSettings3D SharedSettings3D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public RotationGizmoLookAndFeel3D SharedLookAndFeel3D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public RotationGizmoHotkeys SharedHotkeys
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public bool UseSnapEnableHotkey
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public float GetZoomFactor(Vector3 position)
+		{
+			return 0f;
+		}
+
+		public float GetZoomFactor(Vector3 position, Camera camera)
+		{
+			return 0f;
+		}
+
+		public bool OwnsHandle(int handleId)
+		{
+			return false;
+		}
+
+		public void SetMidCapHoverable(bool hoverable)
+		{
+		}
+
+		public void SetSnapEnabled(bool isEnabled)
+		{
+		}
+
+		public override void OnGizmoEnabled()
+		{
+		}
+
+		public override void OnDetached()
+		{
+		}
+
+		public override void OnEnabled()
+		{
+		}
+
+		public override void OnDisabled()
+		{
+		}
+
+		public override void OnAttached()
+		{
+		}
+
+		public override void OnGizmoUpdateBegin()
+		{
+		}
+
+		public override void OnGizmoRender(Camera camera)
+		{
+		}
+
+		public override void OnGizmoAttemptHandleDragBegin(int handleId)
+		{
+		}
+
+		private void UpdateCamLookSlider(Camera camera)
+		{
+		}
+
+		private void SetupSharedLookAndFeel()
+		{
+		}
+
+		private void SetupSharedSettings()
+		{
+		}
+
+		private void OnGizmoTransformChanged(GizmoTransform gizmoTransform, GizmoTransform.ChangeData changeData)
+		{
+		}
 	}
 }

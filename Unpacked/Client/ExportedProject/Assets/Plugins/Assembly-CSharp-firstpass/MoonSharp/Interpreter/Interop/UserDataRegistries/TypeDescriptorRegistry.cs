@@ -1,66 +1,83 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using MoonSharp.Interpreter.Interop.RegistrationPolicies;
 
 namespace MoonSharp.Interpreter.Interop.UserDataRegistries
 {
-	public class TypeDescriptorRegistry : MonoBehaviour
+	internal static class TypeDescriptorRegistry
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private static object s_Lock;
 
-		1. No dll files were provided to AssetRipper.
+		private static Dictionary<Type, IUserDataDescriptor> s_TypeRegistry;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private static Dictionary<Type, IUserDataDescriptor> s_TypeRegistryHistory;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private static InteropAccessMode s_DefaultAccessMode;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		internal static InteropAccessMode DefaultAccessMode
+		{
+			get
+			{
+				return default(InteropAccessMode);
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static IEnumerable<KeyValuePair<Type, IUserDataDescriptor>> RegisteredTypes => null;
 
-		3. Assembly Reconstruction has not been implemented.
+		public static IEnumerable<KeyValuePair<Type, IUserDataDescriptor>> RegisteredTypesHistory => null;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		internal static IRegistrationPolicy RegistrationPolicy { get; set; }
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		internal static void RegisterAssembly(Assembly asm = null, bool includeExtensionTypes = false)
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		internal static bool IsTypeRegistered(Type type)
+		{
+			return false;
+		}
 
-		5. Script Content Level 0
+		internal static void UnregisterType(Type t, bool deleteHistory = false)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		internal static IUserDataDescriptor RegisterProxyType_Impl(IProxyFactory proxyFactory, InteropAccessMode accessMode, string friendlyName)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		internal static IUserDataDescriptor RegisterType_Impl(Type type, InteropAccessMode accessMode, string friendlyName, IUserDataDescriptor descriptor)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private static IUserDataDescriptor PerformRegistration(Type type, IUserDataDescriptor newDescriptor, IUserDataDescriptor oldDescriptor, bool deleteHistory = false)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		internal static InteropAccessMode ResolveDefaultAccessModeForType(InteropAccessMode accessMode, Type type)
+		{
+			return default(InteropAccessMode);
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		internal static IUserDataDescriptor GetDescriptorForType(Type type, bool searchInterfaces)
+		{
+			return null;
+		}
 
-		*/
+		private static bool FrameworkIsAssignableFrom(Type type)
+		{
+			return false;
+		}
+
+		public static bool IsTypeBlacklisted(Type t)
+		{
+			return false;
+		}
 	}
 }

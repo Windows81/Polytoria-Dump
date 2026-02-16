@@ -1,66 +1,515 @@
-using UnityEngine;
+using System.Collections.Generic;
+using System.IO;
+using MoonSharp.Interpreter.DataStructs;
+using MoonSharp.Interpreter.Debugging;
 
 namespace MoonSharp.Interpreter.Execution.VM
 {
-	public class Processor : MonoBehaviour
+	internal sealed class Processor
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private class DebugContext
+		{
+			public bool DebuggerEnabled;
 
-		1. No dll files were provided to AssetRipper.
+			public IDebugger DebuggerAttached;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public DebuggerAction.ActionType DebuggerCurrentAction;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public int DebuggerCurrentActionTarget;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public SourceRef LastHlRef;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public int ExStackDepthAtStep;
 
-		3. Assembly Reconstruction has not been implemented.
+			public List<SourceRef> BreakPoints;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			public bool LineBasedBreakPoints;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private const int STACK_SIZE = 131072;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private ByteCode m_RootChunk;
 
-		5. Script Content Level 0
+		private FastStack<DynValue> m_ValueStack;
 
-			AssetRipper was set to not load any script information.
+		private FastStack<CallStackItem> m_ExecutionStack;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private List<Processor> m_CoroutinesStack;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private Table m_GlobalTable;
 
-		7. An incorrect path was provided to AssetRipper.
+		private Script m_Script;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private Processor m_Parent;
 
-		*/
+		private CoroutineState m_State;
+
+		private bool m_CanYield;
+
+		private int m_SavedInstructionPtr;
+
+		private DebugContext m_Debug;
+
+		private int m_OwningThreadID;
+
+		private int m_ExecutionNesting;
+
+		private const ulong DUMP_CHUNK_MAGIC = 1877195438928383261uL;
+
+		private const int DUMP_CHUNK_VERSION = 336;
+
+		private const int YIELD_SPECIAL_TRAP = -99;
+
+		internal long AutoYieldCounter;
+
+		public CoroutineState State => default(CoroutineState);
+
+		public Coroutine AssociatedCoroutine { get; set; }
+
+		internal bool DebuggerEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public Processor(Script script, Table globalContext, ByteCode byteCode)
+		{
+		}
+
+		private Processor(Processor parentProcessor)
+		{
+		}
+
+		internal Processor(Processor parentProcessor, Processor recycleProcessor)
+		{
+		}
+
+		public DynValue Call(DynValue function, DynValue[] args)
+		{
+			return null;
+		}
+
+		private int PushClrToScriptStackFrame(CallStackItemFlags flags, DynValue function, DynValue[] args)
+		{
+			return 0;
+		}
+
+		private void LeaveProcessor()
+		{
+		}
+
+		private int GetThreadId()
+		{
+			return 0;
+		}
+
+		private void EnterProcessor()
+		{
+		}
+
+		internal SourceRef GetCoroutineSuspendedLocation()
+		{
+			return null;
+		}
+
+		internal static bool IsDumpStream(Stream stream)
+		{
+			return false;
+		}
+
+		internal int Dump(Stream stream, int baseAddress, bool hasUpvalues)
+		{
+			return 0;
+		}
+
+		private void AddSymbolToMap(Dictionary<SymbolRef, int> symbolMap, SymbolRef s)
+		{
+		}
+
+		internal int Undump(Stream stream, int sourceID, Table envTable, out bool hasUpvalues)
+		{
+			hasUpvalues = default(bool);
+			return 0;
+		}
+
+		public DynValue Coroutine_Create(Closure closure)
+		{
+			return null;
+		}
+
+		public DynValue Coroutine_Recycle(Processor mainProcessor, Closure closure)
+		{
+			return null;
+		}
+
+		public DynValue Coroutine_Resume(DynValue[] args)
+		{
+			return null;
+		}
+
+		internal Instruction FindMeta(ref int baseAddress)
+		{
+			return null;
+		}
+
+		internal void AttachDebugger(IDebugger debugger)
+		{
+		}
+
+		private void ListenDebugger(Instruction instr, int instructionPtr)
+		{
+		}
+
+		private void ResetBreakPoints(DebuggerAction action)
+		{
+		}
+
+		internal HashSet<int> ResetBreakPoints(SourceCode src, HashSet<int> lines)
+		{
+			return null;
+		}
+
+		private bool ToggleBreakPoint(DebuggerAction action, bool? state)
+		{
+			return false;
+		}
+
+		private void RefreshDebugger(bool hard, int instructionPtr)
+		{
+		}
+
+		private List<WatchItem> Debugger_RefreshThreads(ScriptExecutionContext context)
+		{
+			return null;
+		}
+
+		private List<WatchItem> Debugger_RefreshVStack()
+		{
+			return null;
+		}
+
+		private List<WatchItem> Debugger_RefreshWatches(ScriptExecutionContext context, List<DynamicExpression> watchList)
+		{
+			return null;
+		}
+
+		private List<WatchItem> Debugger_RefreshLocals(ScriptExecutionContext context)
+		{
+			return null;
+		}
+
+		private WatchItem Debugger_RefreshWatch(ScriptExecutionContext context, DynamicExpression dynExpr)
+		{
+			return null;
+		}
+
+		internal List<WatchItem> Debugger_GetCallStack(SourceRef startingRef)
+		{
+			return null;
+		}
+
+		private SourceRef GetCurrentSourceRef(int instructionPtr)
+		{
+			return null;
+		}
+
+		private void FillDebugData(InterpreterException ex, int ip)
+		{
+		}
+
+		internal Table GetMetatable(DynValue value)
+		{
+			return null;
+		}
+
+		internal DynValue GetBinaryMetamethod(DynValue op1, DynValue op2, string eventName)
+		{
+			return null;
+		}
+
+		internal DynValue GetMetamethod(DynValue value, string metamethod)
+		{
+			return null;
+		}
+
+		internal DynValue GetMetamethodRaw(DynValue value, string metamethod)
+		{
+			return null;
+		}
+
+		internal Script GetScript()
+		{
+			return null;
+		}
+
+		private DynValue Processing_Loop(int instructionPtr)
+		{
+			return null;
+		}
+
+		internal string PerformMessageDecorationBeforeUnwind(DynValue messageHandler, string decoratedMessage, SourceRef sourceRef)
+		{
+			return null;
+		}
+
+		private void AssignLocal(SymbolRef symref, DynValue value)
+		{
+		}
+
+		private void ExecStoreLcl(Instruction i)
+		{
+		}
+
+		private void ExecStoreUpv(Instruction i)
+		{
+		}
+
+		private void ExecSwap(Instruction i)
+		{
+		}
+
+		private DynValue GetStoreValue(Instruction i)
+		{
+			return null;
+		}
+
+		private void ExecClosure(Instruction i)
+		{
+		}
+
+		private DynValue GetUpvalueSymbol(SymbolRef s)
+		{
+			return null;
+		}
+
+		private void ExecMkTuple(Instruction i)
+		{
+		}
+
+		private void ExecToNum(Instruction i)
+		{
+		}
+
+		private void ExecIterUpd(Instruction i)
+		{
+		}
+
+		private void ExecExpTuple(Instruction i)
+		{
+		}
+
+		private void ExecIterPrep(Instruction i)
+		{
+		}
+
+		private int ExecJFor(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private void ExecIncr(Instruction i)
+		{
+		}
+
+		private void ExecCNot(Instruction i)
+		{
+		}
+
+		private void ExecNot(Instruction i)
+		{
+		}
+
+		private void ExecBeginFn(Instruction i)
+		{
+		}
+
+		private CallStackItem PopToBasePointer()
+		{
+			return null;
+		}
+
+		private int PopExecStackAndCheckVStack(int vstackguard)
+		{
+			return 0;
+		}
+
+		private IList<DynValue> CreateArgsListForFunctionCall(int numargs, int offsFromTop)
+		{
+			return null;
+		}
+
+		private void ExecArgs(Instruction I)
+		{
+		}
+
+		private int Internal_ExecCall(int argsCount, int instructionPtr, CallbackFunction handler = null, CallbackFunction continuation = null, bool thisCall = false, string debugText = null, DynValue unwindHandler = null)
+		{
+			return 0;
+		}
+
+		private int PerformTCO(int instructionPtr, int argsCount)
+		{
+			return 0;
+		}
+
+		private int ExecRet(Instruction i)
+		{
+			return 0;
+		}
+
+		private int Internal_CheckForTailRequests(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int JumpBool(Instruction i, bool expectedValueForJump, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecShortCircuitingOperator(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecAdd(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecSub(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecMul(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecMod(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecDiv(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecPower(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecNeg(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecEq(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecLess(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecLessEq(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecLen(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecConcat(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private void ExecTblInitI(Instruction i)
+		{
+		}
+
+		private void ExecTblInitN(Instruction i)
+		{
+		}
+
+		private int ExecIndexSet(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int ExecIndex(Instruction i, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private void ClearBlockData(Instruction I)
+		{
+		}
+
+		public DynValue GetGenericSymbol(SymbolRef symref)
+		{
+			return null;
+		}
+
+		private DynValue GetGlobalSymbol(DynValue dynValue, string name)
+		{
+			return null;
+		}
+
+		private void SetGlobalSymbol(DynValue dynValue, string name, DynValue value)
+		{
+		}
+
+		public void AssignGenericSymbol(SymbolRef symref, DynValue value)
+		{
+		}
+
+		private CallStackItem GetTopNonClrFunction()
+		{
+			return null;
+		}
+
+		public SymbolRef FindSymbolByName(string name)
+		{
+			return null;
+		}
+
+		private DynValue[] Internal_AdjustTuple(IList<DynValue> values)
+		{
+			return null;
+		}
+
+		private int Internal_InvokeUnaryMetaMethod(DynValue op1, string eventName, int instructionPtr)
+		{
+			return 0;
+		}
+
+		private int Internal_InvokeBinaryMetaMethod(DynValue l, DynValue r, string eventName, int instructionPtr, DynValue extraPush = null)
+		{
+			return 0;
+		}
+
+		private DynValue[] StackTopToArray(int items, bool pop)
+		{
+			return null;
+		}
+
+		private DynValue[] StackTopToArrayReverse(int items, bool pop)
+		{
+			return null;
+		}
 	}
 }

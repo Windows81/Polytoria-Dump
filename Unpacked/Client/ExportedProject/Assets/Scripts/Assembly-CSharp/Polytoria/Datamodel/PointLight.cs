@@ -1,66 +1,211 @@
+using System.Runtime.InteropServices;
+using Mirror;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class PointLight : MonoBehaviour
+	[Instantiatable]
+	public class PointLight : DynamicInstance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private static float intensityMultiplier;
 
-		1. No dll files were provided to AssetRipper.
+		private static float rangeMultiplier;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar]
+		private float range;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar]
+		private float brightness;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SyncVar]
+		private Color color;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SyncVar]
+		private bool shadows;
 
-		3. Assembly Reconstruction has not been implemented.
+		[CreatorProperty]
+		[Archivable]
+		public float Range
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[CreatorProperty]
+		[Archivable]
+		public float Brightness
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[CreatorProperty]
+		[Archivable]
+		public Color Color
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[CreatorProperty]
+		[Archivable]
+		public bool Shadows
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		public float Networkrange
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public float Networkbrightness
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Color Networkcolor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public bool Networkshadows
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		protected override void OnHide()
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		protected override void OnShow()
+		{
+		}
 
-		*/
+		protected override void Start()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetRange(float range)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetBrightness(float brightness)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetColor(Color color)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetShadowsEnabled(bool enabled)
+		{
+		}
+
+		static PointLight()
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_RpcSetRange__Single(float range)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetRange__Single(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetBrightness__Single(float brightness)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetBrightness__Single(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetColor__Color(Color color)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetColor__Color(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetShadowsEnabled__Boolean(bool enabled)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetShadowsEnabled__Boolean(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

@@ -1,66 +1,100 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GLRenderer : MonoBehaviour
+	public static class GLRenderer
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static void DrawQuads2D(List<Vector2> quadPoints, Camera camera)
+		{
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public static void DrawLineLoop2D(List<Vector2> linePoints, Camera camera)
+		{
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static void DrawLineLoop2D(List<Vector2> linePoints, Vector2 translation, Vector2 scale, Camera camera)
+		{
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static void DrawLines2D(List<Vector2> linePoints, Camera camera)
+		{
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static void DrawLines2D(List<Vector2> linePoints, Vector2 translation, Vector2 scale, Camera camera)
+		{
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static void DrawLine2D(Vector2 startPoint, Vector2 endPoint, Camera camera)
+		{
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public static void DrawLine3D(Vector3 startPoint, Vector3 endPoint)
+		{
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static void DrawLines3D(List<Vector3> linePoints)
+		{
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static void DrawLineLoop3D(List<Vector3> linePoints)
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static void DrawLineStrip3D(List<Vector3> linePoints)
+		{
+		}
 
-		5. Script Content Level 0
+		public static void DrawLineLoop3D(List<Vector3> linePoints, Vector3 pointOffset)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public static void DrawLinePairs3D(List<Vector3> pairPoints)
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static void DrawRectBorder2D(Rect rect, Camera camera)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static void DrawRect2D(Rect rect, Camera camera)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static void DrawCircleBorder2D(Vector2 circleCenter, float circleRadius, int numPoints, Camera camera)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static void DrawCircle2D(Vector2 circleCenter, float circleRadius, int numPoints, Camera camera)
+		{
+		}
 
-		*/
+		public static void DrawCircleBorder3D(Vector3 circleCenter, float circleRadius, Vector3 circleRight, Vector3 circleUp, int numPoints)
+		{
+		}
+
+		public static void DrawCircle3D(Vector2 circleCenter, float circleRadius, Vector3 circleRight, Vector3 circleUp, int numPoints)
+		{
+		}
+
+		public static void DrawSphereBorder(Camera camera, Vector3 sphereCenter, float sphereRadius, int numPoints)
+		{
+		}
+
+		public static void DrawTriangleFan2D(Vector2 origin, List<Vector2> points, Vector2 translation, Vector2 scale, Camera camera)
+		{
+		}
+
+		public static void DrawTriangleFan2D(Vector2 origin, List<Vector2> points, Camera camera)
+		{
+		}
+
+		public static void DrawTriangleFan3D(Vector3 origin, List<Vector3> points, Vector3 translation, Vector3 scale)
+		{
+		}
+
+		public static void DrawTriangleFan3D(Vector3 origin, List<Vector3> points)
+		{
+		}
 	}
 }

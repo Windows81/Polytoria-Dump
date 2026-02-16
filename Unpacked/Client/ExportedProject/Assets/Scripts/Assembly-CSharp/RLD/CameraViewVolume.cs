@@ -1,66 +1,123 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class CameraViewVolume : MonoBehaviour
+	public class CameraViewVolume
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum VPoint
+		{
+			NearTopLeft = 0,
+			NearTopRight = 1,
+			NearBottomRight = 2,
+			NearBottomLeft = 3,
+			FarTopLeft = 4,
+			FarTopRight = 5,
+			FarBottomRight = 6,
+			FarBottomLeft = 7
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public enum VPlane
+		{
+			Left = 0,
+			Right = 1,
+			Bottom = 2,
+			Top = 3,
+			Near = 4,
+			Far = 5
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private const int _numWorldPoints = 8;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private const int _numWorldPlanes = 6;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Vector3[] _worldPoints;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Plane[] _worldPlanes;
 
-		3. Assembly Reconstruction has not been implemented.
+		private Vector2 _farPlaneSize;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private Vector2 _nearPlaneSize;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private AABB _worldAABB;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private OBB _worldOBB;
 
-		5. Script Content Level 0
+		public Plane LeftPlane => default(Plane);
 
-			AssetRipper was set to not load any script information.
+		public Plane RightPlane => default(Plane);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Plane BottomPlane => default(Plane);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Plane TopPlane => default(Plane);
 
-		7. An incorrect path was provided to AssetRipper.
+		public Plane NearPlane => default(Plane);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Plane FarPlane => default(Plane);
 
-		*/
+		public Vector3 NearTopLeft => default(Vector3);
+
+		public Vector3 NearTopRight => default(Vector3);
+
+		public Vector3 NearBottomRight => default(Vector3);
+
+		public Vector3 NearBottomLeft => default(Vector3);
+
+		public Vector3 FarTopLeft => default(Vector3);
+
+		public Vector3 FarTopRight => default(Vector3);
+
+		public Vector3 FarBottomRight => default(Vector3);
+
+		public Vector3 FarBottomLeft => default(Vector3);
+
+		public Vector2 FarPlaneSize => default(Vector2);
+
+		public Vector2 NearPlaneSize => default(Vector2);
+
+		public AABB WorldAABB => default(AABB);
+
+		public OBB WorldOBB => default(OBB);
+
+		public CameraViewVolume()
+		{
+		}
+
+		public CameraViewVolume(Camera camera)
+		{
+		}
+
+		public void FromCamera(Camera camera)
+		{
+		}
+
+		public List<Vector3> GetNearPlanePoints()
+		{
+			return null;
+		}
+
+		public static Plane[] GetCameraWorldPlanes(Camera camera)
+		{
+			return null;
+		}
+
+		public bool CheckAABB(AABB aabb)
+		{
+			return false;
+		}
+
+		public static bool CheckAABB(Camera camera, AABB aabb)
+		{
+			return false;
+		}
+
+		public static bool CheckAABB(Camera camera, AABB aabb, Plane[] cameraWorldPlanes)
+		{
+			return false;
+		}
+
+		private void CalculateWorldPoints(Camera camera)
+		{
+		}
 	}
 }

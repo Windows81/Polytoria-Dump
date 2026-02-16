@@ -1,66 +1,356 @@
+using System;
+using System.Runtime.InteropServices;
+using Mirror;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Polytoria.Datamodel
 {
-	public class Text3D : MonoBehaviour
+	[Instantiatable]
+	public class Text3D : DynamicInstance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private TMP_Text tmp;
 
-		1. No dll files were provided to AssetRipper.
+		[SyncVar]
+		protected string text;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar]
+		protected Color color;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SyncVar]
+		protected float fontSize;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SyncVar]
+		protected bool faceCamera;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SyncVar]
+		protected HorizontalAlignmentOptions horizontalAlignment;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SyncVar]
+		protected VerticalAlignmentOptions verticalAlignment;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SyncVar(hook = "SyncSetFont")]
+		private TextFontPreset font;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SyncVar]
+		private Vector3 rotationCache;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SyncVar]
+		private Vector3 positionCache;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private ContentSizeFitter csf;
 
-			AssetRipper was set to not load any script information.
+		public Action<TextFontPreset, TextFontPreset> _Mirror_SyncVarHookDelegate_font;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[CreatorProperty]
+		[Archivable]
+		public string Text
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[CreatorProperty]
+		[Archivable]
+		public Color Color
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[CreatorProperty]
+		[Archivable]
+		public float FontSize
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[CreatorProperty]
+		[Archivable]
+		public bool FaceCamera
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		[CreatorProperty]
+		[Archivable]
+		public HorizontalAlignmentOptions HorizontalAlignment
+		{
+			get
+			{
+				return default(HorizontalAlignmentOptions);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public VerticalAlignmentOptions VerticalAlignment
+		{
+			get
+			{
+				return default(VerticalAlignmentOptions);
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public TextFontPreset Font
+		{
+			get
+			{
+				return default(TextFontPreset);
+			}
+			set
+			{
+			}
+		}
+
+		public string Networktext
+		{
+			get
+			{
+				return null;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color Networkcolor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public float NetworkfontSize
+		{
+			get
+			{
+				return 0f;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkfaceCamera
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public HorizontalAlignmentOptions NetworkhorizontalAlignment
+		{
+			get
+			{
+				return default(HorizontalAlignmentOptions);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public VerticalAlignmentOptions NetworkverticalAlignment
+		{
+			get
+			{
+				return default(VerticalAlignmentOptions);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public TextFontPreset Networkfont
+		{
+			get
+			{
+				return default(TextFontPreset);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector3 NetworkrotationCache
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Vector3 NetworkpositionCache
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		protected override void Update()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetText(string t)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetColor(Color color)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetFontSize(float fs)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetHorizontalAlignment(HorizontalAlignmentOptions al)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetVerticalAlignment(VerticalAlignmentOptions al)
+		{
+		}
+
+		private void SyncSetFont(TextFontPreset oldValue, TextFontPreset newValue)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_RpcSetText__String(string t)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetText__String(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetColor__Color(Color color)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetColor__Color(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetFontSize__Single(float fs)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetFontSize__Single(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetHorizontalAlignment__HorizontalAlignmentOptions(HorizontalAlignmentOptions al)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetHorizontalAlignment__HorizontalAlignmentOptions(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetVerticalAlignment__VerticalAlignmentOptions(VerticalAlignmentOptions al)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetVerticalAlignment__VerticalAlignmentOptions(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static Text3D()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

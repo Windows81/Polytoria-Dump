@@ -1,66 +1,394 @@
-using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using MoonSharp.Interpreter.Debugging;
+using MoonSharp.Interpreter.Execution.VM;
 
 namespace MoonSharp.Interpreter
 {
-	public class Coroutine : MonoBehaviour
+	public class Coroutine : RefIdObject, IScriptPrivateResource
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum CoroutineType
+		{
+			Coroutine = 0,
+			ClrCallback = 1,
+			ClrCallbackDead = 2,
+			Recycled = 3
+		}
 
-		1. No dll files were provided to AssetRipper.
+		[CompilerGenerated]
+		private sealed class _003CAsEnumerable_003Ed__12 : IEnumerable<object>, IEnumerable, IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private object _003C_003E2__current;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private int _003C_003El__initialThreadId;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public Coroutine _003C_003E4__this;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private IEnumerator<DynValue> _003C_003E7__wrap1;
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			public _003CAsEnumerable_003Ed__12(int _003C_003E1__state)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		5. Script Content Level 0
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			AssetRipper was set to not load any script information.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			private void _003C_003Em__Finally1()
+			{
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
 
-		7. An incorrect path was provided to AssetRipper.
+			[DebuggerHidden]
+			IEnumerator<object> IEnumerable<object>.GetEnumerator()
+			{
+				return null;
+			}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			[DebuggerHidden]
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return null;
+			}
+		}
 
-		*/
+		[CompilerGenerated]
+		private sealed class _003CAsEnumerable_003Ed__13<T> : IEnumerable<T>, IEnumerable, IEnumerator<T>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
+
+			private T _003C_003E2__current;
+
+			private int _003C_003El__initialThreadId;
+
+			public Coroutine _003C_003E4__this;
+
+			private IEnumerator<DynValue> _003C_003E7__wrap1;
+
+			T IEnumerator<T>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return default(T);
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CAsEnumerable_003Ed__13(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+
+			[DebuggerHidden]
+			IEnumerator<T> IEnumerable<T>.GetEnumerator()
+			{
+				return null;
+			}
+
+			[DebuggerHidden]
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return null;
+			}
+		}
+
+		[CompilerGenerated]
+		private sealed class _003CAsTypedEnumerable_003Ed__11 : IEnumerable<DynValue>, IEnumerable, IEnumerator<DynValue>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
+
+			private DynValue _003C_003E2__current;
+
+			private int _003C_003El__initialThreadId;
+
+			public Coroutine _003C_003E4__this;
+
+			DynValue IEnumerator<DynValue>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CAsTypedEnumerable_003Ed__11(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+
+			[DebuggerHidden]
+			IEnumerator<DynValue> IEnumerable<DynValue>.GetEnumerator()
+			{
+				return null;
+			}
+
+			[DebuggerHidden]
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return null;
+			}
+		}
+
+		[CompilerGenerated]
+		private sealed class _003CAsUnityCoroutine_003Ed__14 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
+
+			private object _003C_003E2__current;
+
+			public Coroutine _003C_003E4__this;
+
+			private IEnumerator<DynValue> _003C_003E7__wrap1;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CAsUnityCoroutine_003Ed__14(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		private CallbackFunction m_ClrCallback;
+
+		private Processor m_Processor;
+
+		public CoroutineType Type { get; private set; }
+
+		public CoroutineState State => default(CoroutineState);
+
+		public Script OwnerScript { get; private set; }
+
+		public long AutoYieldCounter
+		{
+			get
+			{
+				return 0L;
+			}
+			set
+			{
+			}
+		}
+
+		internal Coroutine(CallbackFunction function)
+		{
+		}
+
+		internal Coroutine(Processor proc)
+		{
+		}
+
+		internal void MarkClrCallbackAsDead()
+		{
+		}
+
+		internal DynValue Recycle(Processor mainProcessor, Closure closure)
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CAsTypedEnumerable_003Ed__11))]
+		public IEnumerable<DynValue> AsTypedEnumerable()
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CAsEnumerable_003Ed__12))]
+		public IEnumerable<object> AsEnumerable()
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CAsEnumerable_003Ed__13<>))]
+		public IEnumerable<T> AsEnumerable<T>()
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CAsUnityCoroutine_003Ed__14))]
+		public IEnumerator AsUnityCoroutine()
+		{
+			return null;
+		}
+
+		public DynValue Resume(params DynValue[] args)
+		{
+			return null;
+		}
+
+		public DynValue Resume(ScriptExecutionContext context, params DynValue[] args)
+		{
+			return null;
+		}
+
+		public DynValue Resume()
+		{
+			return null;
+		}
+
+		public DynValue Resume(ScriptExecutionContext context)
+		{
+			return null;
+		}
+
+		public DynValue Resume(params object[] args)
+		{
+			return null;
+		}
+
+		public DynValue Resume(ScriptExecutionContext context, params object[] args)
+		{
+			return null;
+		}
+
+		public WatchItem[] GetStackTrace(int skip, SourceRef entrySourceRef = null)
+		{
+			return null;
+		}
 	}
 }

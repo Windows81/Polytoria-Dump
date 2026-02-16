@@ -1,66 +1,236 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class BoxGizmo : MonoBehaviour
+	[Serializable]
+	public class BoxGizmo : GizmoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum Usage
+		{
+			Generic = 0,
+			ObjectScale = 1
+		}
 
-		1. No dll files were provided to AssetRipper.
+		private Usage _usage;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private bool _isUsagePermanent;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private Vector3 _boxSize;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private GameObject _targetHierarchy;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Transform _targetHierarchyTransform;
 
-		3. Assembly Reconstruction has not been implemented.
+		private LocalTransformSnapshot _dragBeginTargetTransformSnapshot;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private GizmoCap2D _rightTick;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private GizmoCap2D _topTick;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private GizmoCap2D _backTick;
 
-		5. Script Content Level 0
+		private GizmoCap2D _leftTick;
 
-			AssetRipper was set to not load any script information.
+		private GizmoCap2D _bottomTick;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private GizmoCap2D _frontTick;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private GizmoCap2DCollection _ticks;
 
-		7. An incorrect path was provided to AssetRipper.
+		private bool _scaleFromCenter;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private Vector3 _scalePivot;
 
-		*/
+		private GizmoSglAxisScaleDrag3D.WorkData _scaleDragWorkData;
+
+		private GizmoSglAxisScaleDrag3D _scaleDrag;
+
+		[SerializeField]
+		private BoxGizmoSettings3D _settings3D;
+
+		private BoxGizmoSettings3D _sharedSettings3D;
+
+		[SerializeField]
+		private BoxGizmoLookAndFeel3D _lookAndFeel3D;
+
+		private BoxGizmoLookAndFeel3D _sharedLookAndFeel3D;
+
+		private BoxGizmoHotkeys _hotkeys;
+
+		private BoxGizmoHotkeys _sharedHotkeys;
+
+		public BoxGizmoSettings3D Settings3D => null;
+
+		public BoxGizmoSettings3D SharedSettings3D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public BoxGizmoLookAndFeel3D LookAndFeel3D => null;
+
+		public BoxGizmoLookAndFeel3D SharedLookAndFeel3D
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public BoxGizmoHotkeys Hotkeys => null;
+
+		public BoxGizmoHotkeys SharedHotkeys
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public Usage BoxUsage => default(Usage);
+
+		public bool IsUsagePermanent => false;
+
+		public Vector3 BoxCenter => default(Vector3);
+
+		public Quaternion BoxRotation => default(Quaternion);
+
+		public Vector3 BoxRight => default(Vector3);
+
+		public Vector3 BoxUp => default(Vector3);
+
+		public Vector3 BoxLook => default(Vector3);
+
+		public override void OnDetached()
+		{
+		}
+
+		public override void OnEnabled()
+		{
+		}
+
+		public override void OnDisabled()
+		{
+		}
+
+		public override void OnGizmoEnabled()
+		{
+		}
+
+		public void MakeUsagePermanent()
+		{
+		}
+
+		public bool OwnsHandle(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsXTick(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsYTick(int handleId)
+		{
+			return false;
+		}
+
+		public bool IsZTick(int handleId)
+		{
+			return false;
+		}
+
+		public void SetSnapEnabled(bool isEnabled)
+		{
+		}
+
+		public void SetSize(Vector3 size)
+		{
+		}
+
+		public void SetUsage(Usage usage)
+		{
+		}
+
+		public bool SetTargetHierarchy(GameObject targetHierarchy)
+		{
+			return false;
+		}
+
+		public bool FitBoxToTargetHierarchy()
+		{
+			return false;
+		}
+
+		public override void OnAttached()
+		{
+		}
+
+		public override bool OnGizmoCanBeginDrag(int handleId)
+		{
+			return false;
+		}
+
+		public override void OnGizmoUpdateBegin()
+		{
+		}
+
+		public override void OnGizmoRender(Camera camera)
+		{
+		}
+
+		public override void OnGizmoAttemptHandleDragBegin(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragUpdate(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragEnd(int handleId)
+		{
+		}
+
+		private void OnUndoRedoEnd(IUndoRedoAction action)
+		{
+		}
+
+		private void UpdateTickPositions()
+		{
+		}
+
+		private void ValidateBoxSize()
+		{
+		}
+
+		private void SetupSharedLookAndFeel()
+		{
+		}
+
+		private void SetupSharedSettings()
+		{
+		}
+
+		private void OnGizmoTransformChanged(GizmoTransform gizmoTransform, GizmoTransform.ChangeData changeData)
+		{
+		}
+
+		private OBB CalcTargetRootOBB(GameObject targetRoot)
+		{
+			return default(OBB);
+		}
 	}
 }

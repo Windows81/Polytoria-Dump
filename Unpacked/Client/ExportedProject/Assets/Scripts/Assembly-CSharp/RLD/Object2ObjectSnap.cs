@@ -1,66 +1,138 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class Object2ObjectSnap : MonoBehaviour
+	public static class Object2ObjectSnap
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[Flags]
+		public enum Prefs
+		{
+			None = 0,
+			TryMatchArea = 1,
+			All = 1
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public enum SnapFailReson
+		{
+			None = 0,
+			MaxObjectsExceeded = 1,
+			InvalidSourceObjects = 2,
+			NoDestinationFound = 3
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public struct SnapResult
+		{
+			private bool _success;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private Vector3 _snapPivot;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			private Vector3 _snapDestination;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private float _snapDistance;
 
-		3. Assembly Reconstruction has not been implemented.
+			private SnapFailReson _failReason;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			public bool Success => false;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			public Vector3 SnapPivot => default(Vector3);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			public Vector3 SnapDestination => default(Vector3);
 
-		5. Script Content Level 0
+			public float SnapDistance => 0f;
 
-			AssetRipper was set to not load any script information.
+			public SnapFailReson FailReason => default(SnapFailReson);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			public SnapResult(SnapFailReson failReson)
+			{
+				_success = false;
+				_snapPivot = default(Vector3);
+				_snapDestination = default(Vector3);
+				_snapDistance = 0f;
+				_failReason = default(SnapFailReson);
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			public SnapResult(Vector3 snapPivot, Vector3 snapDestination, float snapDistance)
+			{
+				_success = false;
+				_snapPivot = default(Vector3);
+				_snapDestination = default(Vector3);
+				_snapDistance = 0f;
+				_failReason = default(SnapFailReson);
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public struct Config
+		{
+			private float _areaMatchEps;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			public List<GameObject> IgnoreDestObjects;
 
-		*/
+			public int DestinationLayers;
+
+			public float SnapRadius;
+
+			public Prefs Prefs;
+
+			public float AreaMatchEps
+			{
+				get
+				{
+					return 0f;
+				}
+				set
+				{
+				}
+			}
+		}
+
+		private struct SnapSortData
+		{
+			public GameObject SrcObject;
+
+			public GameObject DestObject;
+
+			public BoxFace SrcSnapFace;
+
+			public BoxFace DestSnapFace;
+
+			public bool FaceAreasMatch;
+
+			public float FaceAreaDiff;
+
+			public Vector3 SnapPivot;
+
+			public Vector3 SnapDest;
+
+			public float SnapDistance;
+		}
+
+		private static List<GameObject> _nearbyObjectBuffer;
+
+		private static Config _defaultConfig;
+
+		public static int MaxSourceObjects => 0;
+
+		public static Config DefaultConfig => default(Config);
+
+		static Object2ObjectSnap()
+		{
+		}
+
+		public static SnapResult Snap(List<GameObject> roots, Config snapConfig)
+		{
+			return default(SnapResult);
+		}
+
+		public static SnapResult Snap(GameObject root, Config snapConfig)
+		{
+			return default(SnapResult);
+		}
+
+		public static SnapResult CalculateSnapResult(GameObject root, Config snapConfig)
+		{
+			return default(SnapResult);
+		}
 	}
 }

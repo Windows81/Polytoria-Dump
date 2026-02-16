@@ -1,66 +1,72 @@
-using UnityEngine;
+using System;
+using System.Reflection;
 
 namespace MoonSharp.Interpreter.Compatibility.Frameworks
 {
-	public class FrameworkBase : MonoBehaviour
+	public abstract class FrameworkBase
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public abstract bool StringContainsChar(string str, char chr);
 
-		1. No dll files were provided to AssetRipper.
+		public abstract bool IsValueType(Type t);
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public abstract Assembly GetAssembly(Type t);
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public abstract Type GetBaseType(Type t);
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public abstract bool IsGenericType(Type t);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public abstract bool IsGenericTypeDefinition(Type t);
 
-		3. Assembly Reconstruction has not been implemented.
+		public abstract bool IsEnum(Type t);
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public abstract bool IsNestedPublic(Type t);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public abstract bool IsAbstract(Type t);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public abstract bool IsInterface(Type t);
 
-		5. Script Content Level 0
+		public abstract Attribute[] GetCustomAttributes(Type t, bool inherit);
 
-			AssetRipper was set to not load any script information.
+		public abstract Attribute[] GetCustomAttributes(Type t, Type at, bool inherit);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public abstract Type[] GetInterfaces(Type t);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public abstract bool IsInstanceOfType(Type t, object o);
 
-		7. An incorrect path was provided to AssetRipper.
+		public abstract MethodInfo GetAddMethod(EventInfo ei);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public abstract MethodInfo GetRemoveMethod(EventInfo ei);
 
-		*/
+		public abstract MethodInfo GetGetMethod(PropertyInfo pi);
+
+		public abstract MethodInfo GetSetMethod(PropertyInfo pi);
+
+		public abstract Type GetInterface(Type type, string name);
+
+		public abstract PropertyInfo[] GetProperties(Type type);
+
+		public abstract PropertyInfo GetProperty(Type type, string name);
+
+		public abstract Type[] GetNestedTypes(Type type);
+
+		public abstract EventInfo[] GetEvents(Type type);
+
+		public abstract ConstructorInfo[] GetConstructors(Type type);
+
+		public abstract Type[] GetAssemblyTypes(Assembly asm);
+
+		public abstract MethodInfo[] GetMethods(Type type);
+
+		public abstract FieldInfo[] GetFields(Type t);
+
+		public abstract MethodInfo GetMethod(Type type, string name);
+
+		public abstract Type[] GetGenericArguments(Type t);
+
+		public abstract bool IsAssignableFrom(Type current, Type toCompare);
+
+		public abstract bool IsDbNull(object o);
+
+		public abstract MethodInfo GetMethod(Type resourcesType, string v, Type[] type);
 	}
 }

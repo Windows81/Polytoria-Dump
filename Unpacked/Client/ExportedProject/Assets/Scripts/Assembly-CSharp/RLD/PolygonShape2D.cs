@@ -1,66 +1,196 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class PolygonShape2D : MonoBehaviour
+	public class PolygonShape2D : Shape2D
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum ThickBorderFillMode
+		{
+			Filled = 0,
+			Border = 1
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public class BorderRenderDescriptor
+		{
+			private Shape2DBorderType _borderType;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private float _thickness;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private Shape2DBorderDirection _direction;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			private ThickBorderFillMode _fillMode;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public Shape2DBorderType BorderType
+			{
+				get
+				{
+					return default(Shape2DBorderType);
+				}
+				set
+				{
+				}
+			}
 
-		3. Assembly Reconstruction has not been implemented.
+			public float Thickness
+			{
+				get
+				{
+					return 0f;
+				}
+				set
+				{
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			public Shape2DBorderDirection Direction
+			{
+				get
+				{
+					return default(Shape2DBorderDirection);
+				}
+				set
+				{
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			public ThickBorderFillMode FillMode
+			{
+				get
+				{
+					return default(ThickBorderFillMode);
+				}
+				set
+				{
+				}
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private Rect _rect;
 
-		5. Script Content Level 0
+		private bool _isRectDirty;
 
-			AssetRipper was set to not load any script information.
+		private bool _isClosed;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private List<Vector2> _cwPolyPoints;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private List<Vector2> _thickCwBorderPoints;
 
-		7. An incorrect path was provided to AssetRipper.
+		private bool _isThickBorderDirty;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private PolygonEpsilon _epsilon;
 
-		*/
+		private Shape2DPtContainMode _ptContainMode;
+
+		private BorderRenderDescriptor _borderRenderDesc;
+
+		public int NumPoints => 0;
+
+		public PolygonEpsilon Epsilon
+		{
+			get
+			{
+				return default(PolygonEpsilon);
+			}
+			set
+			{
+			}
+		}
+
+		public float AreaEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float WireEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float ThickWireEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public bool IsClosed => false;
+
+		public Shape2DPtContainMode PtContainMode
+		{
+			get
+			{
+				return default(Shape2DPtContainMode);
+			}
+			set
+			{
+			}
+		}
+
+		public BorderRenderDescriptor BorderRenderDesc => null;
+
+		public Vector2 GetExtentPoint(Shape2DExtentPoint extentPt)
+		{
+			return default(Vector2);
+		}
+
+		public override void RenderArea(Camera camera)
+		{
+		}
+
+		public override void RenderBorder(Camera camera)
+		{
+		}
+
+		public List<Vector2> GetPoints()
+		{
+			return null;
+		}
+
+		public override Rect GetEncapsulatingRect()
+		{
+			return default(Rect);
+		}
+
+		public void CopyPoints(PolygonShape2D sourcePoly)
+		{
+		}
+
+		public void SetClockwisePoints(List<Vector2> cwBorderPoints, bool isClosed)
+		{
+		}
+
+		public void MakeSphereBorder(Vector3 sphereCenter, float sphereRadius, int numPoints, Camera camera)
+		{
+		}
+
+		public override bool ContainsPoint(Vector2 point)
+		{
+			return false;
+		}
+
+		private void CalculateRect()
+		{
+		}
+
+		private void CalculateThickBorderPoints()
+		{
+		}
 	}
 }

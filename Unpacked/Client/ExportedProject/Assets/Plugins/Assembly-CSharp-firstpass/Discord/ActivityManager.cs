@@ -1,66 +1,242 @@
-using UnityEngine;
+using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Discord
 {
-	public class ActivityManager : MonoBehaviour
+	public class ActivityManager
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		internal struct FFIEvents
+		{
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ActivityJoinHandler(IntPtr ptr, string secret);
 
-		1. No dll files were provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ActivitySpectateHandler(IntPtr ptr, string secret);
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ActivityJoinRequestHandler(IntPtr ptr, ref User user);
 
-		2. Incorrect dll files were provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ActivityInviteHandler(IntPtr ptr, ActivityActionType type, ref User user, ref Activity activity);
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			internal ActivityJoinHandler OnActivityJoin;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			internal ActivitySpectateHandler OnActivitySpectate;
 
-		3. Assembly Reconstruction has not been implemented.
+			internal ActivityJoinRequestHandler OnActivityJoinRequest;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			internal ActivityInviteHandler OnActivityInvite;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		internal struct FFIMethods
+		{
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result RegisterCommandMethod(IntPtr methodsPtr, string command);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result RegisterSteamMethod(IntPtr methodsPtr, uint steamId);
 
-		5. Script Content Level 0
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void UpdateActivityCallback(IntPtr ptr, Result result);
 
-			AssetRipper was set to not load any script information.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void UpdateActivityMethod(IntPtr methodsPtr, ref Activity activity, IntPtr callbackData, UpdateActivityCallback callback);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ClearActivityCallback(IntPtr ptr, Result result);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ClearActivityMethod(IntPtr methodsPtr, IntPtr callbackData, ClearActivityCallback callback);
 
-		7. An incorrect path was provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void SendRequestReplyCallback(IntPtr ptr, Result result);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void SendRequestReplyMethod(IntPtr methodsPtr, long userId, ActivityJoinRequestReply reply, IntPtr callbackData, SendRequestReplyCallback callback);
 
-		*/
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void SendInviteCallback(IntPtr ptr, Result result);
+
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void SendInviteMethod(IntPtr methodsPtr, long userId, ActivityActionType type, string content, IntPtr callbackData, SendInviteCallback callback);
+
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void AcceptInviteCallback(IntPtr ptr, Result result);
+
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void AcceptInviteMethod(IntPtr methodsPtr, long userId, IntPtr callbackData, AcceptInviteCallback callback);
+
+			internal RegisterCommandMethod RegisterCommand;
+
+			internal RegisterSteamMethod RegisterSteam;
+
+			internal UpdateActivityMethod UpdateActivity;
+
+			internal ClearActivityMethod ClearActivity;
+
+			internal SendRequestReplyMethod SendRequestReply;
+
+			internal SendInviteMethod SendInvite;
+
+			internal AcceptInviteMethod AcceptInvite;
+		}
+
+		public delegate void UpdateActivityHandler(Result result);
+
+		public delegate void ClearActivityHandler(Result result);
+
+		public delegate void SendRequestReplyHandler(Result result);
+
+		public delegate void SendInviteHandler(Result result);
+
+		public delegate void AcceptInviteHandler(Result result);
+
+		public delegate void ActivityJoinHandler(string secret);
+
+		public delegate void ActivitySpectateHandler(string secret);
+
+		public delegate void ActivityJoinRequestHandler(ref User user);
+
+		public delegate void ActivityInviteHandler(ActivityActionType type, ref User user, ref Activity activity);
+
+		private IntPtr MethodsPtr;
+
+		private object MethodsStructure;
+
+		private FFIMethods Methods => default(FFIMethods);
+
+		public event ActivityJoinHandler OnActivityJoin
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ActivitySpectateHandler OnActivitySpectate
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ActivityJoinRequestHandler OnActivityJoinRequest
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ActivityInviteHandler OnActivityInvite
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public void RegisterCommand()
+		{
+		}
+
+		internal ActivityManager(IntPtr ptr, IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
+
+		private void InitEvents(IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
+
+		public void RegisterCommand(string command)
+		{
+		}
+
+		public void RegisterSteam(uint steamId)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void UpdateActivityCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void UpdateActivity(Activity activity, UpdateActivityHandler callback)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void ClearActivityCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void ClearActivity(ClearActivityHandler callback)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void SendRequestReplyCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void SendRequestReply(long userId, ActivityJoinRequestReply reply, SendRequestReplyHandler callback)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void SendInviteCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void SendInvite(long userId, ActivityActionType type, string content, SendInviteHandler callback)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void AcceptInviteCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void AcceptInvite(long userId, AcceptInviteHandler callback)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void OnActivityJoinImpl(IntPtr ptr, string secret)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void OnActivitySpectateImpl(IntPtr ptr, string secret)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void OnActivityJoinRequestImpl(IntPtr ptr, ref User user)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void OnActivityInviteImpl(IntPtr ptr, ActivityActionType type, ref User user, ref Activity activity)
+		{
+		}
 	}
 }

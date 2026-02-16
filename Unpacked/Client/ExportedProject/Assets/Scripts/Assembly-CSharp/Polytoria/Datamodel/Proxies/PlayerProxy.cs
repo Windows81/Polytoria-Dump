@@ -1,66 +1,413 @@
+using MoonSharp.Interpreter;
+using Polytoria.Lua;
 using UnityEngine;
 
 namespace Polytoria.Datamodel.Proxies
 {
-	public class PlayerProxy : MonoBehaviour
+	public class PlayerProxy : InstanceProxy
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private readonly Player player;
 
-		1. No dll files were provided to AssetRipper.
+		public float RespawnTime
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public Vector3 Velocity
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public float MaxHealth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public float Health
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public float WalkSpeed
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public float SprintSpeed
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public bool StaminaEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public float Stamina
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public float MaxStamina
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		public float StaminaRegen
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public float JumpPower
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Vector3 Position
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Vector3 Rotation
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public Vector3 Size
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Color ChatColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public bool CanMove
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool Anchored
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public Color HeadColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color TorsoColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color LeftArmColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color RightArmColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color LeftLegColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color RightLegColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public int ShirtID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int PantsID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int FaceID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public bool IsInputFocused => false;
+
+		public Seat SittingIn => null;
+
+		public Vector3 Forward => default(Vector3);
+
+		public Vector3 Right => default(Vector3);
+
+		public bool IsAdmin => false;
+
+		public bool IsCreator => false;
+
+		public int UserID => 0;
+
+		[LuaEventParameter(typeof(string), "message", false)]
+		[LuaEventParameter(typeof(PlayerChatEvent), "event", false)]
+		public LuaEvent Chatted => null;
+
+		public LuaEvent Died => null;
+
+		public LuaEvent Respawned => null;
+
+		[MoonSharpHidden]
+		public PlayerProxy(Player target)
+			: base(null)
+		{
+		}
+
+		[LuaCallbackParameter("callback", typeof(bool), "success", false)]
+		[LuaCallbackParameter("callback", typeof(bool), "owned", false)]
+		public void OwnsItem(int assetId, DynValue callback)
+		{
+		}
+
+		public void Kick(string reason = "You have been kicked from the server.")
+		{
+		}
+
+		public void Sit(Seat seat)
+		{
+		}
+
+		public void Unsit(bool addForce = true)
+		{
+		}
+
+		public void Respawn()
+		{
+		}
+
+		public void LoadAppearance(int userID)
+		{
+		}
+
+		public void ClearAppearance()
+		{
+		}
+
+		public void ResetAppearance()
+		{
+		}
+
+		public void LookAt(Vector3 lookTarget, Vector3 worldUp)
+		{
+		}
+
+		public void LookAt(Vector3 lookTarget)
+		{
+		}
+
+		public void LookAt(DynamicInstance instance)
+		{
+		}
+
+		public void Translate(Vector3 translation)
+		{
+		}
+
+		public void RotateAround(Vector3 point, Vector3 axis, float angle)
+		{
+		}
+
+		public void Rotate(Vector3 eulerAngles)
+		{
+		}
+
+		public Vector3 InverseTransformPoint(Vector3 point)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 TransformPoint(Vector3 point)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 InverseTransformDirection(Vector3 direction)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 TransformDirection(Vector3 direction)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 InverseTransformVector(Vector3 vector)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 TransformVector(Vector3 vector)
+		{
+			return default(Vector3);
+		}
 	}
 }

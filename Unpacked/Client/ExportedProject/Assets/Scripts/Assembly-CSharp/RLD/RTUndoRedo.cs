@@ -1,66 +1,133 @@
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class RTUndoRedo : MonoBehaviour
+	public class RTUndoRedo : MonoSingleton<RTUndoRedo>
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private class ActionGroup
+		{
+			public List<IUndoRedoAction> Actions;
 
-		1. No dll files were provided to AssetRipper.
+			public ActionGroup(IUndoRedoAction action)
+			{
+			}
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private bool _isEnabled;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private int _actionLimit;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private List<ActionGroup> _actionGroupStack;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private int _stackPointer;
 
-		3. Assembly Reconstruction has not been implemented.
+		public bool IsEnabled => false;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public int ActionLimit
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public event UndoStartHandler UndoStart
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public event UndoEndHandler UndoEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		public event RedoStartHandler RedoStart
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public event RedoEndHandler RedoEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public event CanUndoRedoHandler CanUndoRedo
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public void SetEnabled(bool isEnabled)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public void ClearActions()
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void RecordAction(IUndoRedoAction action)
+		{
+		}
 
-		*/
+		public void Update_SystemCall()
+		{
+		}
+
+		public void Undo()
+		{
+		}
+
+		public void Redo()
+		{
+		}
+
+		private void RemoveGroups(int startIndex, int count)
+		{
+		}
+
+		private void OnValidate()
+		{
+		}
 	}
 }

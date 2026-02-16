@@ -1,66 +1,223 @@
-using UnityEngine;
+using System.Collections.Generic;
+using MoonSharp.Interpreter.DataStructs;
 
 namespace MoonSharp.Interpreter
 {
-	public class Table : MonoBehaviour
+	public class Table : RefIdObject, IScriptPrivateResource
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private readonly LinkedList<TablePair> m_Values;
 
-		1. No dll files were provided to AssetRipper.
+		private readonly LinkedListIndex<DynValue, TablePair> m_ValueMap;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private readonly LinkedListIndex<string, TablePair> m_StringMap;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private readonly LinkedListIndex<int, TablePair> m_ArrayMap;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private readonly Script m_Owner;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private int m_InitArray;
 
-		3. Assembly Reconstruction has not been implemented.
+		private int m_CachedLength;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private bool m_ContainsNilEntries;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private Table m_MetaTable;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public Script OwnerScript => null;
 
-		5. Script Content Level 0
+		public object this[params object[] keys]
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public object this[object key]
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public int Length => 0;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Table MetaTable
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public IEnumerable<TablePair> Pairs => null;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public IEnumerable<DynValue> Keys => null;
 
-		*/
+		public IEnumerable<DynValue> Values => null;
+
+		public Table(Script owner)
+		{
+		}
+
+		public Table(Script owner, params DynValue[] arrayValues)
+		{
+		}
+
+		public void Clear()
+		{
+		}
+
+		private int GetIntegralKey(double d)
+		{
+			return 0;
+		}
+
+		private Table ResolveMultipleKeys(object[] keys, out object key)
+		{
+			key = null;
+			return null;
+		}
+
+		public void Append(DynValue value)
+		{
+		}
+
+		private void PerformTableSet<T>(LinkedListIndex<T, TablePair> listIndex, T key, DynValue keyDynValue, DynValue value, bool isNumber, int appendKey)
+		{
+		}
+
+		public void Set(string key, DynValue value)
+		{
+		}
+
+		public void Set(int key, DynValue value)
+		{
+		}
+
+		public void Set(DynValue key, DynValue value)
+		{
+		}
+
+		public void Set(object key, DynValue value)
+		{
+		}
+
+		public void Set(object[] keys, DynValue value)
+		{
+		}
+
+		public DynValue Get(string key)
+		{
+			return null;
+		}
+
+		public DynValue Get(int key)
+		{
+			return null;
+		}
+
+		public DynValue Get(DynValue key)
+		{
+			return null;
+		}
+
+		public DynValue Get(object key)
+		{
+			return null;
+		}
+
+		public DynValue Get(params object[] keys)
+		{
+			return null;
+		}
+
+		private static DynValue RawGetValue(LinkedListNode<TablePair> linkedListNode)
+		{
+			return null;
+		}
+
+		public DynValue RawGet(string key)
+		{
+			return null;
+		}
+
+		public DynValue RawGet(int key)
+		{
+			return null;
+		}
+
+		public DynValue RawGet(DynValue key)
+		{
+			return null;
+		}
+
+		public DynValue RawGet(object key)
+		{
+			return null;
+		}
+
+		public DynValue RawGet(params object[] keys)
+		{
+			return null;
+		}
+
+		private bool PerformTableRemove<T>(LinkedListIndex<T, TablePair> listIndex, T key, bool isNumber)
+		{
+			return false;
+		}
+
+		public bool Remove(string key)
+		{
+			return false;
+		}
+
+		public bool Remove(int key)
+		{
+			return false;
+		}
+
+		public bool Remove(DynValue key)
+		{
+			return false;
+		}
+
+		public bool Remove(object key)
+		{
+			return false;
+		}
+
+		public bool Remove(params object[] keys)
+		{
+			return false;
+		}
+
+		public void CollectDeadKeys()
+		{
+		}
+
+		public TablePair? NextKey(DynValue v)
+		{
+			return null;
+		}
+
+		private TablePair? GetNextOf(LinkedListNode<TablePair> linkedListNode)
+		{
+			return null;
+		}
+
+		internal void InitNextArrayKeys(DynValue val, bool lastpos)
+		{
+		}
 	}
 }

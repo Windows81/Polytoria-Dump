@@ -1,66 +1,181 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class OBB : MonoBehaviour
+	public struct OBB
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Vector3 _size;
 
-		1. No dll files were provided to AssetRipper.
+		private Vector3 _center;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Quaternion _rotation;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private bool _isValid;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public bool IsValid => false;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public Vector3 Center
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public Vector3 Size
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Vector3 Extents => default(Vector3);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Quaternion Rotation
+		{
+			get
+			{
+				return default(Quaternion);
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public Matrix4x4 RotationMatrix => default(Matrix4x4);
 
-		5. Script Content Level 0
+		public Vector3 Right => default(Vector3);
 
-			AssetRipper was set to not load any script information.
+		public Vector3 Up => default(Vector3);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Vector3 Look => default(Vector3);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public OBB(Vector3 center, Vector3 size)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public OBB(Vector3 center, Vector3 size, Quaternion rotation)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public OBB(Vector3 center, Quaternion rotation)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
 
-		*/
+		public OBB(Quaternion rotation)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
+
+		public OBB(Bounds bounds, Quaternion rotation)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
+
+		public OBB(AABB aabb)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
+
+		public OBB(AABB aabb, Quaternion rotation)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
+
+		public OBB(AABB modelSpaceAABB, Transform worldTransform)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
+
+		public OBB(OBB copy)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_rotation = default(Quaternion);
+			_isValid = false;
+		}
+
+		public static OBB GetInvalid()
+		{
+			return default(OBB);
+		}
+
+		public void Inflate(float amount)
+		{
+		}
+
+		public Matrix4x4 GetUnitBoxTransform()
+		{
+			return default(Matrix4x4);
+		}
+
+		public List<Vector3> GetCornerPoints()
+		{
+			return null;
+		}
+
+		public List<Vector3> GetCenterAndCornerPoints()
+		{
+			return null;
+		}
+
+		public void Encapsulate(OBB otherOBB)
+		{
+		}
+
+		public Vector3 GetPointFaceNormal(Vector3 pointOnFace)
+		{
+			return default(Vector3);
+		}
+
+		public bool IntersectsOBB(OBB otherOBB)
+		{
+			return false;
+		}
+
+		public Vector3 GetClosestPoint(Vector3 point)
+		{
+			return default(Vector3);
+		}
+
+		public bool IntersectsSphere(Sphere sphere)
+		{
+			return false;
+		}
 	}
 }

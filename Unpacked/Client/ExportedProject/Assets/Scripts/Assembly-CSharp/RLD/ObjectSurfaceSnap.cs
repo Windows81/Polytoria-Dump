@@ -1,66 +1,107 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ObjectSurfaceSnap : MonoBehaviour
+	public class ObjectSurfaceSnap
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum Type
+		{
+			UnityTerrain = 0,
+			Mesh = 1,
+			TerrainMesh = 2,
+			SphericalMesh = 3,
+			SceneGrid = 4
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public struct SnapConfig
+		{
+			public bool AlignAxis;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public TransformAxis AlignmentAxis;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public Type SurfaceType;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public float OffsetFromSurface;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public Vector3 SurfaceHitPoint;
 
-		3. Assembly Reconstruction has not been implemented.
+			public Vector3 SurfaceHitNormal;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			public Plane SurfaceHitPlane;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			public GameObject SurfaceObject;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			public bool IsSurfaceMesh()
+			{
+				return false;
+			}
+		}
 
-		5. Script Content Level 0
+		public struct SnapResult
+		{
+			public bool Success;
 
-			AssetRipper was set to not load any script information.
+			public Plane SittingPlane;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			public Vector3 SittingPoint;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			public SnapResult(Plane sittingPlane, Vector3 sittingPoint)
+			{
+				Success = false;
+				SittingPlane = default(Plane);
+				SittingPoint = default(Vector3);
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		private abstract class SurfaceRaycaster
+		{
+			protected GameObject _surfaceObject;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			protected bool _raycastReverse;
 
-		*/
+			public SurfaceRaycaster(GameObject surfaceObject, bool raycastReverse)
+			{
+			}
+
+			public abstract GameObjectRayHit Raycast(Ray ray);
+		}
+
+		private class MeshSurfaceRaycaster : SurfaceRaycaster
+		{
+			public MeshSurfaceRaycaster(GameObject surfaceObject, bool raycastReverse)
+			{
+			}
+
+			public override GameObjectRayHit Raycast(Ray ray)
+			{
+				return null;
+			}
+		}
+
+		public static SnapResult SnapHierarchy(GameObject root, SnapConfig snapConfig)
+		{
+			return default(SnapResult);
+		}
+
+		public static Vector3 CalculateSitOnSurfaceOffset(OBB obb, Plane surfacePlane, float offsetFromSurface)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 CalculateSitOnSurfaceOffset(AABB aabb, Plane surfacePlane, float offsetFromSurface)
+		{
+			return default(Vector3);
+		}
+
+		public static Vector3 CalculateEmbedVector(List<Vector3> embedPoints, GameObject embedSurface, Vector3 embedDirection, Type surfaceType)
+		{
+			return default(Vector3);
+		}
+
+		private static SurfaceRaycaster CreateSurfaceRaycaster(Type surfaceType, GameObject surfaceObject, bool raycastReverse)
+		{
+			return null;
+		}
 	}
 }

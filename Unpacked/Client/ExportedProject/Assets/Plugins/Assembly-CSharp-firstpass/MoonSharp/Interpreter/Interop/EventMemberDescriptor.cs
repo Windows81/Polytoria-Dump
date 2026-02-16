@@ -1,66 +1,115 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using MoonSharp.Interpreter.DataStructs;
+using MoonSharp.Interpreter.Interop.BasicDescriptors;
 
 namespace MoonSharp.Interpreter.Interop
 {
-	public class EventMemberDescriptor : MonoBehaviour
+	public class EventMemberDescriptor : IMemberDescriptor
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private delegate void EventWrapper00();
 
-		1. No dll files were provided to AssetRipper.
+		private delegate void EventWrapper01(object o1);
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private delegate void EventWrapper02(object o1, object o2);
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private delegate void EventWrapper03(object o1, object o2, object o3);
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private delegate void EventWrapper04(object o1, object o2, object o3, object o4);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private delegate void EventWrapper05(object o1, object o2, object o3, object o4, object o5);
 
-		3. Assembly Reconstruction has not been implemented.
+		private delegate void EventWrapper06(object o1, object o2, object o3, object o4, object o5, object o6);
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private delegate void EventWrapper07(object o1, object o2, object o3, object o4, object o5, object o6, object o7);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private delegate void EventWrapper08(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private delegate void EventWrapper09(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9);
 
-		5. Script Content Level 0
+		private delegate void EventWrapper10(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9, object o10);
 
-			AssetRipper was set to not load any script information.
+		private delegate void EventWrapper11(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9, object o10, object o11);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private delegate void EventWrapper12(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9, object o10, object o11, object o12);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private delegate void EventWrapper13(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9, object o10, object o11, object o12, object o13);
 
-		7. An incorrect path was provided to AssetRipper.
+		private delegate void EventWrapper14(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9, object o10, object o11, object o12, object o13, object o14);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private delegate void EventWrapper15(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9, object o10, object o11, object o12, object o13, object o14, object o15);
 
-		*/
+		private delegate void EventWrapper16(object o1, object o2, object o3, object o4, object o5, object o6, object o7, object o8, object o9, object o10, object o11, object o12, object o13, object o14, object o15, object o16);
+
+		public const int MAX_ARGS_IN_DELEGATE = 16;
+
+		private object m_Lock;
+
+		private MultiDictionary<object, Closure> m_Callbacks;
+
+		private Dictionary<object, Delegate> m_Delegates;
+
+		private MethodInfo m_Add;
+
+		private MethodInfo m_Remove;
+
+		public EventInfo EventInfo { get; private set; }
+
+		public bool IsStatic { get; private set; }
+
+		public string Name => null;
+
+		public MemberDescriptorAccess MemberAccess => default(MemberDescriptorAccess);
+
+		public static EventMemberDescriptor TryCreateIfVisible(EventInfo ei, InteropAccessMode accessMode)
+		{
+			return null;
+		}
+
+		public static bool CheckEventIsCompatible(EventInfo ei, bool throwException)
+		{
+			return false;
+		}
+
+		public EventMemberDescriptor(EventInfo ei, InteropAccessMode accessMode = InteropAccessMode.Default)
+		{
+		}
+
+		public DynValue GetValue(Script script, object obj)
+		{
+			return null;
+		}
+
+		internal DynValue AddCallback(object o, ScriptExecutionContext context, CallbackArguments args)
+		{
+			return null;
+		}
+
+		internal DynValue RemoveCallback(object o, ScriptExecutionContext context, CallbackArguments args)
+		{
+			return null;
+		}
+
+		private void RegisterCallback(object o)
+		{
+		}
+
+		private void UnregisterCallback(object o)
+		{
+		}
+
+		private Delegate CreateDelegate(object sender)
+		{
+			return null;
+		}
+
+		private void DispatchEvent(object sender, object o01 = null, object o02 = null, object o03 = null, object o04 = null, object o05 = null, object o06 = null, object o07 = null, object o08 = null, object o09 = null, object o10 = null, object o11 = null, object o12 = null, object o13 = null, object o14 = null, object o15 = null, object o16 = null)
+		{
+		}
+
+		public void SetValue(Script script, object obj, DynValue v)
+		{
+		}
 	}
 }

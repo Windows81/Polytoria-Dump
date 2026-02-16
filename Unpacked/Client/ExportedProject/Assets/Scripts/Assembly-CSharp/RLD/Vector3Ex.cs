@@ -1,66 +1,92 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class Vector3Ex : MonoBehaviour
+	public static class Vector3Ex
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static void OffsetPoints(List<Vector3> points, Vector3 offset)
+		{
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public static Vector2 ConvertDirTo2D(Vector3 start, Vector3 end, Camera camera)
+		{
+			return default(Vector2);
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static Vector3 Abs(this Vector3 v)
+		{
+			return default(Vector3);
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static Vector3 GetSignVector(this Vector3 v)
+		{
+			return default(Vector3);
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static float GetMaxAbsComp(this Vector3 v)
+		{
+			return 0f;
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static float Dot(this Vector3 v1, Vector3 v2)
+		{
+			return 0f;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public static float AbsDot(this Vector3 v1, Vector3 v2)
+		{
+			return 0f;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static Vector3 FromValue(float value)
+		{
+			return default(Vector3);
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static float SignedAngle(Vector3 from, Vector3 to, Vector3 axis)
+		{
+			return 0f;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static float GetDistanceToSegment(this Vector3 point, Vector3 point0, Vector3 point1)
+		{
+			return 0f;
+		}
 
-		5. Script Content Level 0
+		public static Vector3 ProjectOnSegment(this Vector3 point, Vector3 point0, Vector3 point1)
+		{
+			return default(Vector3);
+		}
 
-			AssetRipper was set to not load any script information.
+		public static int GetPointClosestToPoint(List<Vector3> points, Vector3 pt)
+		{
+			return 0;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static Vector3 GetPointCloudCenter(IEnumerable<Vector3> ptCloud)
+		{
+			return default(Vector3);
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static Vector3 GetInverse(this Vector3 vector)
+		{
+			return default(Vector3);
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static bool IsAligned(this Vector3 vector, Vector3 other, bool checkSameDirection)
+		{
+			return false;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static bool PointsSameDir(this Vector3 vector, Vector3 other)
+		{
+			return false;
+		}
 
-		*/
+		public static int GetMostAligned(Vector3[] vectors, Vector3 dir, bool checkSameDirection)
+		{
+			return 0;
+		}
 	}
 }

@@ -1,66 +1,163 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Polytoria.UI
 {
 	public class ChatWindow : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003C_003Ec__DisplayClass28_0
+		{
+			public TMP_Text txt;
 
-		1. No dll files were provided to AssetRipper.
+			internal void _003CinactiveFade_003Eb__0(float val)
+			{
+			}
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[CompilerGenerated]
+		private sealed class _003CinactiveFade_003Ed__28 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public ChatMessageRef t;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private _003C_003Ec__DisplayClass28_0 _003C_003E8__1;
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			public _003CinactiveFade_003Ed__28(int _003C_003E1__state)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		5. Script Content Level 0
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			AssetRipper was set to not load any script information.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private Image darken;
 
-		7. An incorrect path was provided to AssetRipper.
+		private Scrollbar scrollbar;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private Image focusImage;
 
-		*/
+		public TMP_InputField input;
+
+		private ScrollRect scrollRect;
+
+		public static ChatWindow instance;
+
+		private RectTransform chatMessage;
+
+		private ChatWindowState _state;
+
+		private RectTransform PopContainer;
+
+		public Vector2 normalSize;
+
+		public Vector2 focusedSize;
+
+		public float stateChangeCooldown;
+
+		public float StateChangeRateLimit;
+
+		public UICommandList commandList;
+
+		private List<ChatMessageRef> chatMessages;
+
+		private const float chatStayTime = 10f;
+
+		private const float chatFadeTime = 0.3f;
+
+		public RectTransform ChatContainer { get; private set; }
+
+		public bool Focused => false;
+
+		public ChatWindowState state
+		{
+			get
+			{
+				return default(ChatWindowState);
+			}
+			set
+			{
+			}
+		}
+
+		private void Awake()
+		{
+		}
+
+		private void Start()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CinactiveFade_003Ed__28))]
+		private IEnumerator inactiveFade(ChatMessageRef t)
+		{
+			return null;
+		}
+
+		private void Update()
+		{
+		}
+
+		public void ToggleFocused()
+		{
+		}
+
+		public void SetInactive()
+		{
+		}
+
+		private void scrollViewToBottom()
+		{
+		}
+
+		public void PushChat(string username, string message, Color usernameColor)
+		{
+		}
 	}
 }

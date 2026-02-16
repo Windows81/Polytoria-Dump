@@ -1,66 +1,184 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoHandle : MonoBehaviour
+	public class GizmoHandle : IGizmoHandle
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public GizmoHandleCanHoverHandler CanHover;
 
-		1. No dll files were provided to AssetRipper.
+		private int _id;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Gizmo _gizmo;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private GizmoTransform _zoomFactorTransform;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Priority _genericHoverPriority;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Priority _hoverPriority2D;
 
-		3. Assembly Reconstruction has not been implemented.
+		private Priority _hoverPriority3D;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private List<GizmoHandleShape3D> _3DShapes;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private List<GizmoHandleShape2D> _2DShapes;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public int Id => 0;
 
-		5. Script Content Level 0
+		public Gizmo Gizmo => null;
 
-			AssetRipper was set to not load any script information.
+		public IGizmoDragSession DragSession { get; set; }
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Priority GenericHoverPriority => null;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Priority HoverPriority2D => null;
 
-		7. An incorrect path was provided to AssetRipper.
+		public Priority HoverPriority3D => null;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public int Num3DShapes => 0;
 
-		*/
+		public int Num2DShapes => 0;
+
+		public bool Has3DShapes => false;
+
+		public bool Has2DShapes => false;
+
+		public bool Is2DHoverable { get; set; }
+
+		public bool Is3DHoverable { get; set; }
+
+		public bool Is2DVisible { get; set; }
+
+		public bool Is3DVisible { get; set; }
+
+		public GizmoHandle(Gizmo gizmo, int id)
+		{
+		}
+
+		public float GetZoomFactor(Camera camera)
+		{
+			return 0f;
+		}
+
+		public void SetZoomFactorTransform(GizmoTransform transform)
+		{
+		}
+
+		public void SetHoverable(bool isHoverable)
+		{
+		}
+
+		public void SetVisible(bool isVisible)
+		{
+		}
+
+		public Shape3D Get3DShape(int shapeIndex)
+		{
+			return null;
+		}
+
+		public Shape2D Get2DShape(int shapeIndex)
+		{
+			return null;
+		}
+
+		public void SetAll3DShapesVisible(bool visible)
+		{
+		}
+
+		public void Set3DShapeVisible(int shapeIndex, bool isVisible)
+		{
+		}
+
+		public bool Is3DShapeVisible(int shapeIndex)
+		{
+			return false;
+		}
+
+		public void Set3DShapeHoverable(int shapeIndex, bool isHoverable)
+		{
+		}
+
+		public void SetAll2DShapesVisible(bool visible)
+		{
+		}
+
+		public void Set2DShapeVisible(int shapeIndex, bool isVisible)
+		{
+		}
+
+		public bool Is2DShapeVisible(int shapeIndex)
+		{
+			return false;
+		}
+
+		public void Set2DShapeHoverable(int shapeIndex, bool isHoverable)
+		{
+		}
+
+		public bool Contains3DShape(Shape3D shape)
+		{
+			return false;
+		}
+
+		public bool Contains2DShape(Shape2D shape)
+		{
+			return false;
+		}
+
+		public int Add3DShape(Shape3D shape)
+		{
+			return 0;
+		}
+
+		public int Add2DShape(Shape2D shape)
+		{
+			return 0;
+		}
+
+		public void Remove3DShape(Shape3D shape)
+		{
+		}
+
+		public void Remove2DShape(Shape2D shape)
+		{
+		}
+
+		public void Render3DSolid()
+		{
+		}
+
+		public void Render3DWire()
+		{
+		}
+
+		public void Render3DSolid(int shapeIndex)
+		{
+		}
+
+		public void Render3DWire(int shapeIndex)
+		{
+		}
+
+		public void Render2DSolid(Camera camera)
+		{
+		}
+
+		public void Render2DWire(Camera camera)
+		{
+		}
+
+		public void Render2DSolid(Camera camera, int shapeIndex)
+		{
+		}
+
+		public void Render2DWire(Camera camera, int shapeIndex)
+		{
+		}
+
+		public GizmoHandleHoverData GetHoverData(Ray hoverRay)
+		{
+			return null;
+		}
 	}
 }

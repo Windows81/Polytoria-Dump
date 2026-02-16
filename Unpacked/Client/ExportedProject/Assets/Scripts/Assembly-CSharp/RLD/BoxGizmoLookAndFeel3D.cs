@@ -1,66 +1,93 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class BoxGizmoLookAndFeel3D : MonoBehaviour
+	[Serializable]
+	public class BoxGizmoLookAndFeel3D : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private Color _boxWireColor;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoCap2DLookAndFeel[] _tickLookAndFeel;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public Color BoxWireColor => default(Color);
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public Color XTickColor => default(Color);
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public Color YTickColor => default(Color);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public Color ZTickColor => default(Color);
 
-		3. Assembly Reconstruction has not been implemented.
+		public Color TickBorderColor => default(Color);
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Color TickHoveredColor => default(Color);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Color TickHoveredBorderColor => default(Color);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public GizmoCap2DType TickType => default(GizmoCap2DType);
 
-		5. Script Content Level 0
+		public float TickQuadWidth => 0f;
 
-			AssetRipper was set to not load any script information.
+		public float TickQuadHeight => 0f;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public float TickCircleRadius => 0f;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public List<Enum> GetAllowedTickTypes()
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public bool IsTickTypeAllowed(GizmoCap2DType tickType)
+		{
+			return false;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void SetBoxWireColor(Color color)
+		{
+		}
 
-		*/
+		public void SetAxisTickColor(int axisIndex, Color color)
+		{
+		}
+
+		public void SetTickBorderColor(Color color)
+		{
+		}
+
+		public void SetTickHoveredColor(Color color)
+		{
+		}
+
+		public void SetTickHoveredBorderColor(Color color)
+		{
+		}
+
+		public void SetTickType(GizmoCap2DType tickType)
+		{
+		}
+
+		public void SetTickQuadWidth(float width)
+		{
+		}
+
+		public void SetTickQuadHeight(float height)
+		{
+		}
+
+		public void SetTickCircleRadius(float radius)
+		{
+		}
+
+		public void ConnectTickLookAndFeel(GizmoCap2D tick, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		private GizmoCap2DLookAndFeel GetTickLookAndFeel(int axisIndex, AxisSign axisSign)
+		{
+			return null;
+		}
 	}
 }

@@ -1,66 +1,327 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoCap3DLookAndFeel : MonoBehaviour
+	[Serializable]
+	public class GizmoCap3DLookAndFeel
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private GizmoCap3DType _capType;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoFillMode3D _fillMode;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private GizmoShadeMode _shadeMode;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private float _scale;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private bool _useZoomFactor;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private float _coneHeight;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private float _coneRadius;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private float _pyramidHeight;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private float _pyramidWidth;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private float _pyramidDepth;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private float _boxWidth;
 
-			AssetRipper was set to not load any script information.
+		[SerializeField]
+		private float _boxHeight;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[SerializeField]
+		private float _boxDepth;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[SerializeField]
+		private float _sphereRadius;
 
-		7. An incorrect path was provided to AssetRipper.
+		[SerializeField]
+		private float _trPrismWidth;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[SerializeField]
+		private float _trPrismHeight;
 
-		*/
+		[SerializeField]
+		private float _trPrismDepth;
+
+		[SerializeField]
+		private bool _isSphereBorderVisible;
+
+		[SerializeField]
+		private Color _sphereBorderColor;
+
+		[SerializeField]
+		private int _numSphereBorderPoints;
+
+		[SerializeField]
+		private Color _color;
+
+		[SerializeField]
+		private Color _hoveredColor;
+
+		public GizmoCap3DType CapType
+		{
+			get
+			{
+				return default(GizmoCap3DType);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoFillMode3D FillMode
+		{
+			get
+			{
+				return default(GizmoFillMode3D);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoShadeMode ShadeMode
+		{
+			get
+			{
+				return default(GizmoShadeMode);
+			}
+			set
+			{
+			}
+		}
+
+		public float Scale
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public bool UseZoomFactor
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public float ConeHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float ConeRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float PyramidHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float PyramidWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float PyramidDepth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BoxWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BoxHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BoxDepth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float SphereRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float TrPrismWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float TrPrismHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float TrPrismDepth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public bool IsSphereBorderVisible
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public Color SphereBorderColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public int NumSphereBorderPoints
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public Color Color
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color HoveredColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public static float DefaultConeHeight => 0f;
+
+		public static float DefaultConeRadius => 0f;
+
+		public static float DefaultPyramidHeight => 0f;
+
+		public static float DefaultPyramidWidth => 0f;
+
+		public static float DefaultPyramidDepth => 0f;
 	}
 }

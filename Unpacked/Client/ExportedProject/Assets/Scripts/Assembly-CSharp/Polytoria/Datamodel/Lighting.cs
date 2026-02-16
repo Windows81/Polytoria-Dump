@@ -1,66 +1,151 @@
+using System.Runtime.InteropServices;
+using Mirror;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class Lighting : MonoBehaviour
+	public class Lighting : Instance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SyncVar]
+		private Color ambientColor;
 
-		1. No dll files were provided to AssetRipper.
+		[SyncVar]
+		private AmbientSource ambientSource;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private SunLight sun;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[CreatorProperty]
+		[Archivable]
+		public Color AmbientColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[CreatorProperty]
+		[Archivable]
+		public AmbientSource AmbientSource
+		{
+			get
+			{
+				return default(AmbientSource);
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public bool Shadows
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public float SunBrightness
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Color SunColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Color NetworkambientColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public AmbientSource NetworkambientSource
+		{
+			get
+			{
+				return default(AmbientSource);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		protected override void Awake()
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		protected override void Start()
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[ClientRpc]
+		private void RpcSetAmbientColor(Color c)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[ClientRpc]
+		private void RpcSetAmbientSource(AmbientSource source)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public override bool Weaved()
+		{
+			return false;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		protected void UserCode_RpcSetAmbientColor__Color(Color c)
+		{
+		}
 
-		*/
+		protected static void InvokeUserCode_RpcSetAmbientColor__Color(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetAmbientSource__AmbientSource(AmbientSource source)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetAmbientSource__AmbientSource(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static Lighting()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

@@ -1,66 +1,242 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using MoonSharp.Interpreter.Debugging;
 
 namespace MoonSharp.Interpreter.Execution.VM
 {
-	public class ByteCode : MonoBehaviour
+	internal class ByteCode : RefIdObject
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private class SourceCodeStackGuard : IDisposable
+		{
+			private ByteCode m_Bc;
 
-		1. No dll files were provided to AssetRipper.
+			public SourceCodeStackGuard(SourceRef sref, ByteCode bc)
+			{
+			}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public void Dispose()
+			{
+			}
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public List<Instruction> Code;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private List<SourceRef> m_SourceRefStack;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private SourceRef m_CurrentSourceRef;
 
-		3. Assembly Reconstruction has not been implemented.
+		internal LoopTracker LoopTracker;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Script Script { get; private set; }
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public ByteCode(Script script)
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public IDisposable EnterSource(SourceRef sref)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		public void PushSourceRef(SourceRef sref)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public void PopSourceRef()
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public void Dump(string file)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public int GetJumpPointForNextInstruction()
+		{
+			return 0;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public int GetJumpPointForLastInstruction()
+		{
+			return 0;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Instruction GetLastInstruction()
+		{
+			return null;
+		}
 
-		*/
+		private Instruction AppendInstruction(Instruction c)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Nop(string comment)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Invalid(string type)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Pop(int num = 1)
+		{
+			return null;
+		}
+
+		public void Emit_Call(int argCount, string debugName)
+		{
+		}
+
+		public void Emit_ThisCall(int argCount, string debugName)
+		{
+		}
+
+		public Instruction Emit_Literal(DynValue value)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Jump(OpCode jumpOpCode, int idx, int optPar = 0)
+		{
+			return null;
+		}
+
+		public Instruction Emit_MkTuple(int cnt)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Operator(OpCode opcode)
+		{
+			return null;
+		}
+
+		[Conditional("EMIT_DEBUG_OPS")]
+		public void Emit_Debug(string str)
+		{
+		}
+
+		public Instruction Emit_Enter(RuntimeScopeBlock runtimeScopeBlock)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Leave(RuntimeScopeBlock runtimeScopeBlock)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Exit(RuntimeScopeBlock runtimeScopeBlock)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Clean(RuntimeScopeBlock runtimeScopeBlock)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Closure(SymbolRef[] symbols, int jmpnum)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Args(params SymbolRef[] symbols)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Ret(int retvals)
+		{
+			return null;
+		}
+
+		public Instruction Emit_ToNum(int stage = 0)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Incr(int i)
+		{
+			return null;
+		}
+
+		public Instruction Emit_NewTable(bool shared)
+		{
+			return null;
+		}
+
+		public Instruction Emit_IterPrep()
+		{
+			return null;
+		}
+
+		public Instruction Emit_ExpTuple(int stackOffset)
+		{
+			return null;
+		}
+
+		public Instruction Emit_IterUpd()
+		{
+			return null;
+		}
+
+		public Instruction Emit_Meta(string funcName, OpCodeMetadataType metaType, DynValue value = null)
+		{
+			return null;
+		}
+
+		public Instruction Emit_BeginFn(RuntimeScopeFrame stackFrame)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Scalar()
+		{
+			return null;
+		}
+
+		public int Emit_Load(SymbolRef sym)
+		{
+			return 0;
+		}
+
+		public int Emit_Store(SymbolRef sym, int stackofs, int tupleidx)
+		{
+			return 0;
+		}
+
+		public Instruction Emit_TblInitN()
+		{
+			return null;
+		}
+
+		public Instruction Emit_TblInitI(bool lastpos)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Index(DynValue index = null, bool isNameIndex = false, bool isExpList = false)
+		{
+			return null;
+		}
+
+		public Instruction Emit_IndexSet(int stackofs, int tupleidx, DynValue index = null, bool isNameIndex = false, bool isExpList = false)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Copy(int numval)
+		{
+			return null;
+		}
+
+		public Instruction Emit_Swap(int p1, int p2)
+		{
+			return null;
+		}
 	}
 }

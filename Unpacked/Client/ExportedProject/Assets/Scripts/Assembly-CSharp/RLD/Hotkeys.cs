@@ -1,66 +1,285 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class Hotkeys : MonoBehaviour
+	[Serializable]
+	public class Hotkeys
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private static List<KeyCode> _availableKeys;
 
-		1. No dll files were provided to AssetRipper.
+		private static List<string> _availableKeyNames;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private const int _maxNumberOfKeys = 2;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private bool _isEnabled;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private KeyCode _key;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private bool _lCtrl;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private bool _lCmd;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private bool _lAlt;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private bool _lShift;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private bool _useStrictModifierCheck;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private bool _lMouseBtn;
 
-			AssetRipper was set to not load any script information.
+		[SerializeField]
+		private bool _rMouseBtn;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[SerializeField]
+		private bool _mMouseBtn;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[SerializeField]
+		private bool _useStrictMouseCheck;
 
-		7. An incorrect path was provided to AssetRipper.
+		[SerializeField]
+		private string _name;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[NonSerialized]
+		private List<Hotkeys> _potentialOverlaps;
 
-		*/
+		[SerializeField]
+		private HotkeysStaticData _staticData;
+
+		public static List<KeyCode> AvailableKeys => null;
+
+		public static List<string> AvailableKeyNames => null;
+
+		public bool IsEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public string Name => null;
+
+		public KeyCode Key
+		{
+			get
+			{
+				return default(KeyCode);
+			}
+			set
+			{
+			}
+		}
+
+		public bool LCtrl
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool LCmd
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool LAlt
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool LShift
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool LMouseButton
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool RMouseButton
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool MMouseButton
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool UseStrictMouseCheck
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool UseStrictModifierCheck
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		static Hotkeys()
+		{
+		}
+
+		public Hotkeys(string name)
+		{
+		}
+
+		public Hotkeys(string name, HotkeysStaticData staticData)
+		{
+		}
+
+		public static void EstablishPotentialOverlaps(List<Hotkeys> hotkeysCollection)
+		{
+		}
+
+		public int GetNumModifiers()
+		{
+			return 0;
+		}
+
+		public int GetNumMouseButtons()
+		{
+			return 0;
+		}
+
+		public List<MouseButton> GetAllUsedMouseButtons()
+		{
+			return null;
+		}
+
+		public bool UsesMouseButtons(List<MouseButton> buttons)
+		{
+			return false;
+		}
+
+		public List<KeyCode> GetAllUsedModifiers()
+		{
+			return null;
+		}
+
+		public bool UsesModifiers(List<KeyCode> modifiers)
+		{
+			return false;
+		}
+
+		public void AddPotentialOverlap(Hotkeys hotkeys)
+		{
+		}
+
+		public bool ContainsPotentialOverlap(Hotkeys hotkeys)
+		{
+			return false;
+		}
+
+		public bool IsOverlappedBy(Hotkeys hotkeys)
+		{
+			return false;
+		}
+
+		public bool IsActive(bool checkForOverlaps = true)
+		{
+			return false;
+		}
+
+		public bool IsActiveInFrame(bool checkForOverlaps = true)
+		{
+			return false;
+		}
+
+		public bool HasNoKeys()
+		{
+			return false;
+		}
+
+		public bool HasNoModifiers()
+		{
+			return false;
+		}
+
+		public bool HasNoMouseButtons()
+		{
+			return false;
+		}
+
+		public bool IsEmpty()
+		{
+			return false;
+		}
+
+		private bool IsAnyModifierKeyPressed()
+		{
+			return false;
+		}
+
+		private bool IsAnyMouseButtonPressed()
+		{
+			return false;
+		}
 	}
 }

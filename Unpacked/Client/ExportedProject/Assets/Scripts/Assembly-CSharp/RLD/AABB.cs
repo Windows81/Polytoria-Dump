@@ -1,66 +1,163 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class AABB : MonoBehaviour
+	public struct AABB
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Vector3 _size;
 
-		1. No dll files were provided to AssetRipper.
+		private Vector3 _center;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private bool _isValid;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public bool IsValid => false;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public Vector3 Center
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public Vector3 Size
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public Vector3 Extents => default(Vector3);
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Vector3 Min
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Vector3 Max
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public AABB(Vector3 center, Vector3 size)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_isValid = false;
+		}
 
-		5. Script Content Level 0
+		public AABB(Bounds bounds)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_isValid = false;
+		}
 
-			AssetRipper was set to not load any script information.
+		public AABB(IEnumerable<Vector3> pointCloud)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_isValid = false;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public AABB(IEnumerable<Vector2> pointCloud)
+		{
+			_size = default(Vector3);
+			_center = default(Vector3);
+			_isValid = false;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static AABB GetInvalid()
+		{
+			return default(AABB);
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public void Inflate(float amount)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void Inflate(Vector3 amount)
+		{
+		}
 
-		*/
+		public void Encapsulate(Vector3 point)
+		{
+		}
+
+		public void Encapsulate(IEnumerable<Vector3> points)
+		{
+		}
+
+		public void Encapsulate(AABB aabb)
+		{
+		}
+
+		public void Transform(Matrix4x4 transformMatrix)
+		{
+		}
+
+		public bool ContainsPoint(Vector3 point)
+		{
+			return false;
+		}
+
+		public List<Vector3> GetCornerPoints()
+		{
+			return null;
+		}
+
+		public List<Vector3> GetCenterAndCornerPoints()
+		{
+			return null;
+		}
+
+		public List<Vector2> GetScreenCornerPoints(Camera camera)
+		{
+			return null;
+		}
+
+		public List<Vector2> GetScreenCenterAndCornerPoints(Camera camera)
+		{
+			return null;
+		}
+
+		public Rect GetScreenRectangle(Camera camera)
+		{
+			return default(Rect);
+		}
+
+		public Matrix4x4 GetUnitBoxTransform()
+		{
+			return default(Matrix4x4);
+		}
+
+		public Bounds ToBounds()
+		{
+			return default(Bounds);
+		}
+
+		private void RecalculateCenterAndSize(Vector3 min, Vector3 max)
+		{
+		}
 	}
 }

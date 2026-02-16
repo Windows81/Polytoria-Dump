@@ -1,66 +1,352 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Xml;
+using Polytoria.Datamodel;
+using Polytoria.Types;
+using U8Xml;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Polytoria.Controllers
 {
 	public class GameIO : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CLoadFromSite_003Ed__13 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public int id;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public GameIO _003C_003E4__this;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public Action<bool> callback;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private UnityWebRequest _003Cuwr_003E5__2;
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			public _003CLoadFromSite_003Ed__13(int _003C_003E1__state)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		5. Script Content Level 0
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			AssetRipper was set to not load any script information.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			private void _003C_003Em__Finally1()
+			{
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[CompilerGenerated]
+		private sealed class _003CModelFromSite_003Ed__12 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			private object _003C_003E2__current;
 
-		*/
+			public int id;
+
+			public GameIO _003C_003E4__this;
+
+			public Instance parent;
+
+			public Action<Instance> callback;
+
+			private UnityWebRequest _003Cuwr_003E5__2;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CModelFromSite_003Ed__12(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		[CompilerGenerated]
+		private sealed class _003CPostClearDatamodel_003Ed__10 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
+
+			private object _003C_003E2__current;
+
+			public GameIO _003C_003E4__this;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CPostClearDatamodel_003Ed__10(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		private Game game;
+
+		public static GameIO singleton;
+
+		private List<Instance> spawnInstances;
+
+		private void Awake()
+		{
+		}
+
+		public void Load(int id, Action<bool> callback = null)
+		{
+		}
+
+		public void LoadFromFile(string path, Action<bool> callback = null)
+		{
+		}
+
+		public Instance LoadModelFromFile(string path, Instance parent)
+		{
+			return null;
+		}
+
+		public void LoadModelFromSite(int id, Instance parent, Action<Instance> callback = null)
+		{
+		}
+
+		public Model LoadModelFromXmlString(string xmlString, Instance parent)
+		{
+			return null;
+		}
+
+		public void ClearDatamodel()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CPostClearDatamodel_003Ed__10))]
+		private IEnumerator PostClearDatamodel()
+		{
+			return null;
+		}
+
+		public void PostMapLoad()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CModelFromSite_003Ed__12))]
+		public IEnumerator ModelFromSite(int id, Instance parent, Action<Instance> callback)
+		{
+			return null;
+		}
+
+		[IteratorStateMachine(typeof(_003CLoadFromSite_003Ed__13))]
+		public IEnumerator LoadFromSite(int id, Action<bool> callback = null)
+		{
+			return null;
+		}
+
+		private Instance LoadXml(U8Xml.XmlNode xml, Instance parent = null)
+		{
+			return null;
+		}
+
+		private Instance HandleXmlNodes(U8Xml.XmlNodeList nodes, Instance parent)
+		{
+			return null;
+		}
+
+		public Vector3 XmlConvertVector3(U8Xml.XmlNode property)
+		{
+			return default(Vector3);
+		}
+
+		public Vector2 XmlConvertVector2(U8Xml.XmlNode property)
+		{
+			return default(Vector2);
+		}
+
+		public Color XmlConvertColor(U8Xml.XmlNode property)
+		{
+			return default(Color);
+		}
+
+		public ColorRange XmlConvertColorRange(U8Xml.XmlNode property)
+		{
+			return default(ColorRange);
+		}
+
+		public NumberRange XmlConvertNumberRange(U8Xml.XmlNode property)
+		{
+			return default(NumberRange);
+		}
+
+		public string SaveModelToString(Instance root)
+		{
+			return null;
+		}
+
+		public void SaveModelToFile(Instance root, string path)
+		{
+		}
+
+		public string SaveToString()
+		{
+			return null;
+		}
+
+		public void SaveToFile(string path)
+		{
+		}
+
+		private void SaveHandleChild(XmlDocument doc, Instance i, XmlElement parent)
+		{
+		}
+
+		private void SaveString(XmlDocument doc, XmlElement properties, string name, string value)
+		{
+		}
+
+		private void SaveFloat(XmlDocument doc, XmlElement properties, string name, float value)
+		{
+		}
+
+		private void SaveInt(XmlDocument doc, XmlElement properties, string name, int value)
+		{
+		}
+
+		private void SaveBool(XmlDocument doc, XmlElement properties, string name, bool value)
+		{
+		}
+
+		private void SaveVector3(XmlDocument doc, XmlElement properties, string name, Vector3 value)
+		{
+		}
+
+		private void SaveVector2(XmlDocument doc, XmlElement properties, string name, Vector2 value)
+		{
+		}
+
+		private void SaveColor(XmlDocument doc, XmlElement properties, string name, Color value)
+		{
+		}
+
+		private void SaveColorRange(XmlDocument doc, XmlElement properties, string name, ColorRange value)
+		{
+		}
+
+		private void SaveNumberRange(XmlDocument doc, XmlElement properties, string name, NumberRange value)
+		{
+		}
 	}
 }

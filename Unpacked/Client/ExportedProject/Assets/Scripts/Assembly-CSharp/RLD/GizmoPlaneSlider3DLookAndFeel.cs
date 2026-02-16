@@ -1,66 +1,378 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoPlaneSlider3DLookAndFeel : MonoBehaviour
+	[Serializable]
+	public class GizmoPlaneSlider3DLookAndFeel
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private GizmoPlane3DType _planeType;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private float _scale;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private bool _useZoomFactor;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private float _quadWidth;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private float _quadHeight;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private float _raTriangleXLength;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private float _raTriangleYLength;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private float _circleRadius;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private float _borderBoxHeight;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private float _borderBoxDepth;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private float _borderTorusThickness;
 
-			AssetRipper was set to not load any script information.
+		[SerializeField]
+		private int _numBorderTorusWireAxialSlices;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[SerializeField]
+		private float _borderCylTorusWidth;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[SerializeField]
+		private float _borderCylTorusHeight;
 
-		7. An incorrect path was provided to AssetRipper.
+		[SerializeField]
+		private GizmoShadeMode _shadeMode;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[SerializeField]
+		private Color _color;
 
-		*/
+		[SerializeField]
+		private Color _hoveredColor;
+
+		[SerializeField]
+		private Color _borderColor;
+
+		[SerializeField]
+		private Color _hoveredBorderColor;
+
+		[SerializeField]
+		private float _borderCircleCullAlphaScale;
+
+		[SerializeField]
+		private GizmoShadeMode _borderShadeMode;
+
+		[SerializeField]
+		private GizmoFillMode3D _borderFillMode;
+
+		[SerializeField]
+		private GizmoQuad3DBorderType _quadBorderType;
+
+		[SerializeField]
+		private GizmoRATriangle3DBorderType _raTriangleBorderType;
+
+		[SerializeField]
+		private GizmoCircle3DBorderType _circleBorderType;
+
+		[SerializeField]
+		private bool _isRotationArcVisible;
+
+		[SerializeField]
+		private GizmoRotationArc3DLookAndFeel _rotationArcLookAndFeel;
+
+		public GizmoShadeMode ShadeMode
+		{
+			get
+			{
+				return default(GizmoShadeMode);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoPlane3DType PlaneType
+		{
+			get
+			{
+				return default(GizmoPlane3DType);
+			}
+			set
+			{
+			}
+		}
+
+		public float Scale
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public bool UseZoomFactor
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public float QuadWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float QuadHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float RATriangleXLength
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float RATriangleYLength
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float CircleRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BorderCircleCullAlphaScale
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BorderBoxHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BorderBoxDepth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BorderTorusThickness
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BorderCylTorusWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float BorderCylTorusHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public int NumBorderTorusWireAxialSlices
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public Color Color
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color HoveredColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color BorderColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color HoveredBorderColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoShadeMode BorderShadeMode
+		{
+			get
+			{
+				return default(GizmoShadeMode);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoFillMode3D BorderFillMode
+		{
+			get
+			{
+				return default(GizmoFillMode3D);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoQuad3DBorderType QuadBorderType
+		{
+			get
+			{
+				return default(GizmoQuad3DBorderType);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoCircle3DBorderType CircleBorderType
+		{
+			get
+			{
+				return default(GizmoCircle3DBorderType);
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoRATriangle3DBorderType RATriangleBorderType
+		{
+			get
+			{
+				return default(GizmoRATriangle3DBorderType);
+			}
+			set
+			{
+			}
+		}
+
+		public bool IsRotationArcVisible
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public GizmoRotationArc3DLookAndFeel RotationArcLookAndFeel => null;
 	}
 }

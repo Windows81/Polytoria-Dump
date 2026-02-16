@@ -1,66 +1,191 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ObjectSelectionSettings : MonoBehaviour
+	[Serializable]
+	public class ObjectSelectionSettings : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private MultiSelectOverlapMode _multiSelectOverlapMode;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GameObjectType _selectableObjectTypes;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private int _selectableLayers;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private int _duplicatableLayers;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private int _deletableLayers;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private HashSet<GameObject> _nonSelectableObjects;
 
-		3. Assembly Reconstruction has not been implemented.
+		private HashSet<Camera> _nonSelectableCameras;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private bool _canClickSelect;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private bool _enableCyclicalClickSelect;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private bool _canMultiSelect;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private int _minMultiSelectSize;
 
-			AssetRipper was set to not load any script information.
+		public MultiSelectOverlapMode MultiSelectOverlapMode
+		{
+			get
+			{
+				return default(MultiSelectOverlapMode);
+			}
+			set
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public bool CanClickSelect
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public bool EnableCyclicalClickSelect
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public bool CanMultiSelect
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public int SelectableLayers
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public int DuplicatableLayers
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int DeletableLayers
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int MinMultiSelectSize
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public bool IsCameraSelectable(Camera camera)
+		{
+			return false;
+		}
+
+		public void SetCameraSelectable(Camera camera, bool isSelectable)
+		{
+		}
+
+		public void SetCameraCollectionSelectable(List<Camera> cameraCollection, bool areSelectable)
+		{
+		}
+
+		public bool IsObjectTypeSelectable(GameObjectType gameObjectType)
+		{
+			return false;
+		}
+
+		public void SetObjectTypeSelectable(GameObjectType gameObjectType, bool isSelectable)
+		{
+		}
+
+		public bool IsObjectLayerSelectable(int objectLayer)
+		{
+			return false;
+		}
+
+		public void SetObjectLayerSelectable(int objectLayer, bool isSelectable)
+		{
+		}
+
+		public bool IsObjectSelectable(GameObject gameObject)
+		{
+			return false;
+		}
+
+		public void SetObjectSelectable(GameObject gameObject, bool isSelectable)
+		{
+		}
+
+		public void SetObjectCollectionSelectable(List<GameObject> gameObjectCollection, bool areSelectable)
+		{
+		}
+
+		public void RemoveNullObjectRefs()
+		{
+		}
+
+		public bool IsObjectLayerDuplicatable(int objectLayer)
+		{
+			return false;
+		}
+
+		public void SetObjectLayerDuplicatable(int objectLayer, bool isDuplicatable)
+		{
+		}
+
+		public bool IsObjectLayerDeletable(int objectLayer)
+		{
+			return false;
+		}
 	}
 }

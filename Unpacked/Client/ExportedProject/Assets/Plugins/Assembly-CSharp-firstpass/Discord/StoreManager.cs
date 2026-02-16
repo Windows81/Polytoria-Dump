@@ -1,66 +1,215 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Discord
 {
-	public class StoreManager : MonoBehaviour
+	public class StoreManager
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		internal struct FFIEvents
+		{
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void EntitlementCreateHandler(IntPtr ptr, ref Entitlement entitlement);
 
-		1. No dll files were provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void EntitlementDeleteHandler(IntPtr ptr, ref Entitlement entitlement);
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			internal EntitlementCreateHandler OnEntitlementCreate;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			internal EntitlementDeleteHandler OnEntitlementDelete;
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		internal struct FFIMethods
+		{
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void FetchSkusCallback(IntPtr ptr, Result result);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void FetchSkusMethod(IntPtr methodsPtr, IntPtr callbackData, FetchSkusCallback callback);
 
-		3. Assembly Reconstruction has not been implemented.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void CountSkusMethod(IntPtr methodsPtr, ref int count);
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result GetSkuMethod(IntPtr methodsPtr, long skuId, ref Sku sku);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result GetSkuAtMethod(IntPtr methodsPtr, int index, ref Sku sku);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void FetchEntitlementsCallback(IntPtr ptr, Result result);
 
-		5. Script Content Level 0
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void FetchEntitlementsMethod(IntPtr methodsPtr, IntPtr callbackData, FetchEntitlementsCallback callback);
 
-			AssetRipper was set to not load any script information.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void CountEntitlementsMethod(IntPtr methodsPtr, ref int count);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result GetEntitlementMethod(IntPtr methodsPtr, long entitlementId, ref Entitlement entitlement);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result GetEntitlementAtMethod(IntPtr methodsPtr, int index, ref Entitlement entitlement);
 
-		7. An incorrect path was provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result HasSkuEntitlementMethod(IntPtr methodsPtr, long skuId, ref bool hasEntitlement);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void StartPurchaseCallback(IntPtr ptr, Result result);
 
-		*/
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void StartPurchaseMethod(IntPtr methodsPtr, long skuId, IntPtr callbackData, StartPurchaseCallback callback);
+
+			internal FetchSkusMethod FetchSkus;
+
+			internal CountSkusMethod CountSkus;
+
+			internal GetSkuMethod GetSku;
+
+			internal GetSkuAtMethod GetSkuAt;
+
+			internal FetchEntitlementsMethod FetchEntitlements;
+
+			internal CountEntitlementsMethod CountEntitlements;
+
+			internal GetEntitlementMethod GetEntitlement;
+
+			internal GetEntitlementAtMethod GetEntitlementAt;
+
+			internal HasSkuEntitlementMethod HasSkuEntitlement;
+
+			internal StartPurchaseMethod StartPurchase;
+		}
+
+		public delegate void FetchSkusHandler(Result result);
+
+		public delegate void FetchEntitlementsHandler(Result result);
+
+		public delegate void StartPurchaseHandler(Result result);
+
+		public delegate void EntitlementCreateHandler(ref Entitlement entitlement);
+
+		public delegate void EntitlementDeleteHandler(ref Entitlement entitlement);
+
+		private IntPtr MethodsPtr;
+
+		private object MethodsStructure;
+
+		private FFIMethods Methods => default(FFIMethods);
+
+		public event EntitlementCreateHandler OnEntitlementCreate
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event EntitlementDeleteHandler OnEntitlementDelete
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		internal StoreManager(IntPtr ptr, IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
+
+		private void InitEvents(IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void FetchSkusCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void FetchSkus(FetchSkusHandler callback)
+		{
+		}
+
+		public int CountSkus()
+		{
+			return 0;
+		}
+
+		public Sku GetSku(long skuId)
+		{
+			return default(Sku);
+		}
+
+		public Sku GetSkuAt(int index)
+		{
+			return default(Sku);
+		}
+
+		[MonoPInvokeCallback]
+		private static void FetchEntitlementsCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void FetchEntitlements(FetchEntitlementsHandler callback)
+		{
+		}
+
+		public int CountEntitlements()
+		{
+			return 0;
+		}
+
+		public Entitlement GetEntitlement(long entitlementId)
+		{
+			return default(Entitlement);
+		}
+
+		public Entitlement GetEntitlementAt(int index)
+		{
+			return default(Entitlement);
+		}
+
+		public bool HasSkuEntitlement(long skuId)
+		{
+			return false;
+		}
+
+		[MonoPInvokeCallback]
+		private static void StartPurchaseCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void StartPurchase(long skuId, StartPurchaseHandler callback)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void OnEntitlementCreateImpl(IntPtr ptr, ref Entitlement entitlement)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void OnEntitlementDeleteImpl(IntPtr ptr, ref Entitlement entitlement)
+		{
+		}
+
+		public IEnumerable<Entitlement> GetEntitlements()
+		{
+			return null;
+		}
+
+		public IEnumerable<Sku> GetSkus()
+		{
+			return null;
+		}
 	}
 }

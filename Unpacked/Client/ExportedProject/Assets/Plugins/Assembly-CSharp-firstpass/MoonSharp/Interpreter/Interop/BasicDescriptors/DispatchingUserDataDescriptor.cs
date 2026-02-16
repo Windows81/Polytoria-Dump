@@ -1,66 +1,188 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 namespace MoonSharp.Interpreter.Interop.BasicDescriptors
 {
-	public class DispatchingUserDataDescriptor : MonoBehaviour
+	public abstract class DispatchingUserDataDescriptor : IUserDataDescriptor, IOptimizableDescriptor
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private int m_ExtMethodsVersion;
 
-		1. No dll files were provided to AssetRipper.
+		private Dictionary<string, IMemberDescriptor> m_MetaMembers;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Dictionary<string, IMemberDescriptor> m_Members;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		protected const string SPECIALNAME_INDEXER_GET = "get_Item";
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		protected const string SPECIALNAME_INDEXER_SET = "set_Item";
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		protected const string SPECIALNAME_CAST_EXPLICIT = "op_Explicit";
 
-		3. Assembly Reconstruction has not been implemented.
+		protected const string SPECIALNAME_CAST_IMPLICIT = "op_Implicit";
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public string Name { get; private set; }
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Type Type { get; private set; }
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public string FriendlyName { get; private set; }
 
-		5. Script Content Level 0
+		public IEnumerable<string> MemberNames => null;
 
-			AssetRipper was set to not load any script information.
+		public IEnumerable<KeyValuePair<string, IMemberDescriptor>> Members => null;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public IEnumerable<string> MetaMemberNames => null;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public IEnumerable<KeyValuePair<string, IMemberDescriptor>> MetaMembers => null;
 
-		7. An incorrect path was provided to AssetRipper.
+		protected DispatchingUserDataDescriptor(Type type, string friendlyName = null)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void AddMetaMember(string name, IMemberDescriptor desc)
+		{
+		}
 
-		*/
+		public void AddDynValue(string name, DynValue value)
+		{
+		}
+
+		public void AddMember(string name, IMemberDescriptor desc)
+		{
+		}
+
+		public IMemberDescriptor FindMember(string memberName)
+		{
+			return null;
+		}
+
+		public void RemoveMember(string memberName)
+		{
+		}
+
+		public IMemberDescriptor FindMetaMember(string memberName)
+		{
+			return null;
+		}
+
+		public void RemoveMetaMember(string memberName)
+		{
+		}
+
+		private void AddMemberTo(Dictionary<string, IMemberDescriptor> members, string name, IMemberDescriptor desc)
+		{
+		}
+
+		public virtual DynValue Index(Script script, object obj, DynValue index, bool isDirectIndexing)
+		{
+			return null;
+		}
+
+		private DynValue TryIndexOnExtMethod(Script script, object obj, string indexName)
+		{
+			return null;
+		}
+
+		public bool HasMember(string exactName)
+		{
+			return false;
+		}
+
+		public bool HasMetaMember(string exactName)
+		{
+			return false;
+		}
+
+		protected virtual DynValue TryIndex(Script script, object obj, string indexName)
+		{
+			return null;
+		}
+
+		public virtual bool SetIndex(Script script, object obj, DynValue index, DynValue value, bool isDirectIndexing)
+		{
+			return false;
+		}
+
+		protected virtual bool TrySetIndex(Script script, object obj, string indexName, DynValue value)
+		{
+			return false;
+		}
+
+		void IOptimizableDescriptor.Optimize()
+		{
+		}
+
+		protected static string Camelify(string name)
+		{
+			return null;
+		}
+
+		protected static string UpperFirstLetter(string name)
+		{
+			return null;
+		}
+
+		public virtual string AsString(object obj)
+		{
+			return null;
+		}
+
+		protected virtual DynValue ExecuteIndexer(IMemberDescriptor mdesc, Script script, object obj, DynValue index, DynValue value)
+		{
+			return null;
+		}
+
+		public virtual DynValue MetaIndex(Script script, object obj, string metaname)
+		{
+			return null;
+		}
+
+		private int PerformComparison(object obj, object p1, object p2)
+		{
+			return 0;
+		}
+
+		private DynValue MultiDispatchLessThanOrEqual(Script script, object obj)
+		{
+			return null;
+		}
+
+		private DynValue MultiDispatchLessThan(Script script, object obj)
+		{
+			return null;
+		}
+
+		private DynValue TryDispatchLength(Script script, object obj)
+		{
+			return null;
+		}
+
+		private DynValue MultiDispatchEqual(Script script, object obj)
+		{
+			return null;
+		}
+
+		private bool CheckEquality(object obj, object p1, object p2)
+		{
+			return false;
+		}
+
+		private DynValue DispatchMetaOnMethod(Script script, object obj, string methodName)
+		{
+			return null;
+		}
+
+		private DynValue TryDispatchToNumber(Script script, object obj)
+		{
+			return null;
+		}
+
+		private DynValue TryDispatchToBool(Script script, object obj)
+		{
+			return null;
+		}
+
+		public virtual bool IsTypeCompatible(Type type, object obj)
+		{
+			return false;
+		}
 	}
 }

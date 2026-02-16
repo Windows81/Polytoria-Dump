@@ -1,66 +1,137 @@
-using UnityEngine;
+using System;
 
 namespace MoonSharp.Interpreter.CoreLib
 {
-	public class StringModule : MonoBehaviour
+	[MoonSharpModule(Namespace = "string")]
+	public class StringModule
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public const string BASE64_DUMP_HEADER = "MoonSharp_dump_b64::";
 
-		1. No dll files were provided to AssetRipper.
+		public static void MoonSharpInit(Table globalTable, Table stringTable)
+		{
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[MoonSharpModuleMethod]
+		public static DynValue dump(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[MoonSharpModuleMethod]
+		public static DynValue @char(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[MoonSharpModuleMethod]
+		public static DynValue @byte(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[MoonSharpModuleMethod]
+		public static DynValue unicode(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		private static int Unicode2Ascii(int i)
+		{
+			return 0;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private static DynValue PerformByteLike(DynValue vs, DynValue vi, DynValue vj, Func<int, int> filter)
+		{
+			return null;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private static int? AdjustIndex(string s, DynValue vi, int defval)
+		{
+			return null;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[MoonSharpModuleMethod]
+		public static DynValue len(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		[MoonSharpModuleMethod]
+		public static DynValue match(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			AssetRipper was set to not load any script information.
+		[MoonSharpModuleMethod]
+		public static DynValue gmatch(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[MoonSharpModuleMethod]
+		public static DynValue gsub(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[MoonSharpModuleMethod]
+		public static DynValue find(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[MoonSharpModuleMethod]
+		public static DynValue lower(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[MoonSharpModuleMethod]
+		public static DynValue upper(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		*/
+		[MoonSharpModuleMethod]
+		public static DynValue rep(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
+
+		[MoonSharpModuleMethod]
+		public static DynValue format(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
+
+		[MoonSharpModuleMethod]
+		public static DynValue reverse(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
+
+		[MoonSharpModuleMethod]
+		public static DynValue sub(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
+
+		[MoonSharpModuleMethod]
+		public static DynValue startsWith(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
+
+		[MoonSharpModuleMethod]
+		public static DynValue endsWith(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
+
+		[MoonSharpModuleMethod]
+		public static DynValue contains(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 	}
 }

@@ -1,66 +1,114 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class CameraEx : MonoBehaviour
+	public static class CameraEx
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private static List<GameObject> _objectBuffer;
 
-		1. No dll files were provided to AssetRipper.
+		public static bool IsCurrent(this Camera camera)
+		{
+			return false;
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static float GetFrustumDistanceFromHeight(this Camera camera, float frustumHeight)
+		{
+			return 0f;
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static float GetFOVFromDistanceAndHeight(this Camera camera, float frustumHeight, float distance)
+		{
+			return 0f;
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public static float GetFrustumWidthFromDistance(this Camera camera, float distance)
+		{
+			return 0f;
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static float GetFrustumHeightFromDistance(this Camera camera, float distance)
+		{
+			return 0f;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public static AABB CalculateVolumeAABB(this Camera camera)
+		{
+			return default(AABB);
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public static AABB CalculateFrustumAABB(this Camera camera)
+		{
+			return default(AABB);
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static AABB CalculateOrthoAABB(this Camera camera)
+		{
+			return default(AABB);
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static bool IsPointInFrontNearPlane(this Camera camera, Vector3 position)
+		{
+			return false;
+		}
 
-		5. Script Content Level 0
+		public static Plane GetNearPlaneForward(this Camera camera)
+		{
+			return default(Plane);
+		}
 
-			AssetRipper was set to not load any script information.
+		public static Vector3 GetFarMidPoint(this Camera camera)
+		{
+			return default(Vector3);
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static Vector3 GetFarMidOrthoTop(this Camera camera)
+		{
+			return default(Vector3);
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static float GetOrthoFOV(this Camera camera)
+		{
+			return 0f;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static bool IsPointFacingCamera(this Camera camera, Vector3 point, Vector3 pointNormal)
+		{
+			return false;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static float GetPointZDistance(this Camera camera, Vector3 point)
+		{
+			return 0f;
+		}
 
-		*/
+		public static List<Vector3> GetVisibleSphereExtents(this Camera camera, Sphere sphere)
+		{
+			return null;
+		}
+
+		public static List<Vector2> ConvertWorldToScreenPoints(this Camera camera, List<Vector3> worldPoints)
+		{
+			return null;
+		}
+
+		public static float ScreenToEstimatedWorldSize(this Camera camera, Vector3 worldPos, float screenSize)
+		{
+			return 0f;
+		}
+
+		public static float EstimateZoomFactor(this Camera camera, Vector3 worldPos)
+		{
+			return 0f;
+		}
+
+		public static float EstimateZoomFactorSpherical(this Camera camera, Vector3 worldPos)
+		{
+			return 0f;
+		}
+
+		public static void GetVisibleObjects(this Camera camera, CameraViewVolume viewVolume, List<GameObject> visibleObjects)
+		{
+		}
 	}
 }

@@ -1,66 +1,246 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class MoveGizmoLookAndFeel2D : MonoBehaviour
+	[Serializable]
+	public class MoveGizmoLookAndFeel2D : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private GizmoPlaneSlider2DLookAndFeel _dblSliderLookAndFeel;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoLineSlider2DLookAndFeel[] _sglSliderLookAndFeel;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private bool _isDblSliderVisible;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private bool[] _sglSliderVis;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private bool[] _sglSliderCapVis;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public float Scale => 0f;
 
-		3. Assembly Reconstruction has not been implemented.
+		public float SliderLength => 0f;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public float BoxSliderThickness => 0f;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public float SliderArrowCapHeight => 0f;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public float SliderArrowCapBaseRadius => 0f;
 
-		5. Script Content Level 0
+		public float SliderQuadCapWidth => 0f;
 
-			AssetRipper was set to not load any script information.
+		public float SliderQuadCapHeight => 0f;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public float SliderCircleCapRadius => 0f;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float DblSliderQuadWidth => 0f;
 
-		7. An incorrect path was provided to AssetRipper.
+		public float DblSliderQuadHeight => 0f;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float DblSliderCircleRadius => 0f;
 
-		*/
+		public Color XColor => default(Color);
+
+		public Color YColor => default(Color);
+
+		public Color XBorderColor => default(Color);
+
+		public Color YBorderColor => default(Color);
+
+		public Color DblSliderColor => default(Color);
+
+		public Color DblSliderBorderColor => default(Color);
+
+		public Color DblSliderHoveredColor => default(Color);
+
+		public Color DblSliderHoveredBorderColor => default(Color);
+
+		public bool IsDblSliderVisible => false;
+
+		public Color SliderHoveredColor => default(Color);
+
+		public Color SliderHoveredBorderColor => default(Color);
+
+		public GizmoFillMode2D SliderFillMode => default(GizmoFillMode2D);
+
+		public GizmoFillMode2D SliderCapFillMode => default(GizmoFillMode2D);
+
+		public GizmoFillMode2D DblSliderFillMode => default(GizmoFillMode2D);
+
+		public GizmoCap2DType SliderCapType => default(GizmoCap2DType);
+
+		public GizmoLine2DType SliderLineType => default(GizmoLine2DType);
+
+		public GizmoPlane2DType DblSliderPlaneType => default(GizmoPlane2DType);
+
+		public bool IsDblSliderPlaneTypeAllowed(GizmoPlane2DType planeType)
+		{
+			return false;
+		}
+
+		public List<Enum> GetAllowedDblSliderPlaneTypes()
+		{
+			return null;
+		}
+
+		public void SetDblSliderVisible(bool isVisible)
+		{
+		}
+
+		public bool IsSliderVisible(int axisIndex, AxisSign axisSign)
+		{
+			return false;
+		}
+
+		public bool IsPositiveSliderVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public bool IsNegativeSliderVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public void SetSliderVisible(int axisIndex, AxisSign axisSign, bool isVisible)
+		{
+		}
+
+		public bool IsSliderCapVisible(int axisIndex, AxisSign axisSign)
+		{
+			return false;
+		}
+
+		public bool IsPositiveSliderCapVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public bool IsNegativeSliderCapVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public void SetSliderCapVisible(int axisIndex, AxisSign axisSign, bool isVisible)
+		{
+		}
+
+		public void SetAxisColor(int axisIndex, Color color)
+		{
+		}
+
+		public void SetAxisBorderColor(int axisIndex, Color color)
+		{
+		}
+
+		public void SetSliderHoveredFillColor(Color color)
+		{
+		}
+
+		public void SetSliderHoveredBorderColor(Color color)
+		{
+		}
+
+		public void SetSliderFillMode(GizmoFillMode2D fillMode)
+		{
+		}
+
+		public void SetDblSliderFillMode(GizmoFillMode2D fillMode)
+		{
+		}
+
+		public void SetSliderCapFillMode(GizmoFillMode2D fillMode)
+		{
+		}
+
+		public void SetSliderLineType(GizmoLine2DType lineType)
+		{
+		}
+
+		public void SetBoxSliderThickness(float thickness)
+		{
+		}
+
+		public void SetSliderLength(float length)
+		{
+		}
+
+		public void SetSliderCapType(GizmoCap2DType capType)
+		{
+		}
+
+		public void SetSliderArrowCapBaseRadius(float radius)
+		{
+		}
+
+		public void SetSliderArrowCapHeight(float height)
+		{
+		}
+
+		public void SetSliderQuadCapWidth(float width)
+		{
+		}
+
+		public void SetSliderQuadCapHeight(float height)
+		{
+		}
+
+		public void SetSliderCircleCapRadius(float radius)
+		{
+		}
+
+		public void SetDblSliderPlaneType(GizmoPlane2DType sliderType)
+		{
+		}
+
+		public void SetDblSliderQuadWidth(float width)
+		{
+		}
+
+		public void SetDblSliderQuadHeight(float height)
+		{
+		}
+
+		public void SetDblSliderCircleRadius(float radius)
+		{
+		}
+
+		public void SetDblSliderColor(Color color)
+		{
+		}
+
+		public void SetDblSliderBorderColor(Color color)
+		{
+		}
+
+		public void SetDblSliderHoveredColor(Color color)
+		{
+		}
+
+		public void SetDblSliderHoveredBorderColor(Color color)
+		{
+		}
+
+		public void SetScale(float scale)
+		{
+		}
+
+		public void ConnectSliderLookAndFeel(GizmoLineSlider2D slider, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		public void ConnectDblSliderLookAndFeel(GizmoPlaneSlider2D slider)
+		{
+		}
+
+		private GizmoLineSlider2DLookAndFeel GetSliderLookAndFeel(int axisIndex, AxisSign axisSign)
+		{
+			return null;
+		}
 	}
 }

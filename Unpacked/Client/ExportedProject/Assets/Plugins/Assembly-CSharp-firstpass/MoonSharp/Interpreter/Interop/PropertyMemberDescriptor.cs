@@ -1,66 +1,74 @@
-using UnityEngine;
+using System;
+using System.Reflection;
+using MoonSharp.Interpreter.Interop.BasicDescriptors;
 
 namespace MoonSharp.Interpreter.Interop
 {
-	public class PropertyMemberDescriptor : MonoBehaviour
+	public class PropertyMemberDescriptor : IMemberDescriptor, IOptimizableDescriptor, IWireableDescriptor
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private MethodInfo m_Getter;
 
-		1. No dll files were provided to AssetRipper.
+		private MethodInfo m_Setter;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Func<object, object> m_OptimizedGetter;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private Action<object, object> m_OptimizedSetter;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public PropertyInfo PropertyInfo { get; private set; }
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public InteropAccessMode AccessMode { get; private set; }
 
-		3. Assembly Reconstruction has not been implemented.
+		public bool IsStatic { get; private set; }
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public string Name { get; private set; }
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public bool CanRead => false;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public bool CanWrite => false;
 
-		5. Script Content Level 0
+		public MemberDescriptorAccess MemberAccess => default(MemberDescriptorAccess);
 
-			AssetRipper was set to not load any script information.
+		public static PropertyMemberDescriptor TryCreateIfVisible(PropertyInfo pi, InteropAccessMode accessMode)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private static PropertyMemberDescriptor TryCreate(PropertyInfo pi, InteropAccessMode accessMode, MethodInfo getter, MethodInfo setter)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public PropertyMemberDescriptor(PropertyInfo pi, InteropAccessMode accessMode)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public PropertyMemberDescriptor(PropertyInfo pi, InteropAccessMode accessMode, MethodInfo getter, MethodInfo setter)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public DynValue GetValue(Script script, object obj)
+		{
+			return null;
+		}
 
-		*/
+		internal void OptimizeGetter()
+		{
+		}
+
+		internal void OptimizeSetter()
+		{
+		}
+
+		public void SetValue(Script script, object obj, DynValue v)
+		{
+		}
+
+		void IOptimizableDescriptor.Optimize()
+		{
+		}
+
+		public void PrepareForWiring(Table t)
+		{
+		}
 	}
 }

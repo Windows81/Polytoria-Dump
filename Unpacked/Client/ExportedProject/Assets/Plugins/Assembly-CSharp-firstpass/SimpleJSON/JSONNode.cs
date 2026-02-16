@@ -1,66 +1,746 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Text;
 using UnityEngine;
 
 namespace SimpleJSON
 {
-	public class JSONNode : MonoBehaviour
+	public abstract class JSONNode
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public struct Enumerator
+		{
+			private enum Type
+			{
+				None = 0,
+				Array = 1,
+				Object = 2
+			}
 
-		1. No dll files were provided to AssetRipper.
+			private Type type;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private Dictionary<string, JSONNode>.Enumerator m_Object;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private List<JSONNode>.Enumerator m_Array;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public bool IsValid => false;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public KeyValuePair<string, JSONNode> Current => default(KeyValuePair<string, JSONNode>);
 
-		3. Assembly Reconstruction has not been implemented.
+			public Enumerator(List<JSONNode>.Enumerator aArrayEnum)
+			{
+				type = default(Type);
+				m_Object = default(Dictionary<string, JSONNode>.Enumerator);
+				m_Array = default(List<JSONNode>.Enumerator);
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			public Enumerator(Dictionary<string, JSONNode>.Enumerator aDictEnum)
+			{
+				type = default(Type);
+				m_Object = default(Dictionary<string, JSONNode>.Enumerator);
+				m_Array = default(List<JSONNode>.Enumerator);
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			public bool MoveNext()
+			{
+				return false;
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public struct ValueEnumerator
+		{
+			private Enumerator m_Enumerator;
 
-		5. Script Content Level 0
+			public JSONNode Current => null;
 
-			AssetRipper was set to not load any script information.
+			public ValueEnumerator(List<JSONNode>.Enumerator aArrayEnum)
+			{
+				m_Enumerator = default(Enumerator);
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			public ValueEnumerator(Dictionary<string, JSONNode>.Enumerator aDictEnum)
+			{
+				m_Enumerator = default(Enumerator);
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			public ValueEnumerator(Enumerator aEnumerator)
+			{
+				m_Enumerator = default(Enumerator);
+			}
 
-		7. An incorrect path was provided to AssetRipper.
+			public bool MoveNext()
+			{
+				return false;
+			}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			public ValueEnumerator GetEnumerator()
+			{
+				return default(ValueEnumerator);
+			}
+		}
 
-		*/
+		public struct KeyEnumerator
+		{
+			private Enumerator m_Enumerator;
+
+			public JSONNode Current => null;
+
+			public KeyEnumerator(List<JSONNode>.Enumerator aArrayEnum)
+			{
+				m_Enumerator = default(Enumerator);
+			}
+
+			public KeyEnumerator(Dictionary<string, JSONNode>.Enumerator aDictEnum)
+			{
+				m_Enumerator = default(Enumerator);
+			}
+
+			public KeyEnumerator(Enumerator aEnumerator)
+			{
+				m_Enumerator = default(Enumerator);
+			}
+
+			public bool MoveNext()
+			{
+				return false;
+			}
+
+			public KeyEnumerator GetEnumerator()
+			{
+				return default(KeyEnumerator);
+			}
+		}
+
+		public class LinqEnumerator : IEnumerator<KeyValuePair<string, JSONNode>>, IEnumerator, IDisposable, IEnumerable<KeyValuePair<string, JSONNode>>, IEnumerable
+		{
+			private JSONNode m_Node;
+
+			private Enumerator m_Enumerator;
+
+			public KeyValuePair<string, JSONNode> Current => default(KeyValuePair<string, JSONNode>);
+
+			object IEnumerator.Current => null;
+
+			internal LinqEnumerator(JSONNode aNode)
+			{
+			}
+
+			public bool MoveNext()
+			{
+				return false;
+			}
+
+			public void Dispose()
+			{
+			}
+
+			public IEnumerator<KeyValuePair<string, JSONNode>> GetEnumerator()
+			{
+				return null;
+			}
+
+			public void Reset()
+			{
+			}
+
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return null;
+			}
+		}
+
+		[CompilerGenerated]
+		private sealed class _003Cget_Children_003Ed__39 : IEnumerable<JSONNode>, IEnumerable, IEnumerator<JSONNode>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
+
+			private JSONNode _003C_003E2__current;
+
+			private int _003C_003El__initialThreadId;
+
+			JSONNode IEnumerator<JSONNode>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003Cget_Children_003Ed__39(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+
+			[DebuggerHidden]
+			IEnumerator<JSONNode> IEnumerable<JSONNode>.GetEnumerator()
+			{
+				return null;
+			}
+
+			[DebuggerHidden]
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return null;
+			}
+		}
+
+		[CompilerGenerated]
+		private sealed class _003Cget_DeepChildren_003Ed__41 : IEnumerable<JSONNode>, IEnumerable, IEnumerator<JSONNode>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
+
+			private JSONNode _003C_003E2__current;
+
+			private int _003C_003El__initialThreadId;
+
+			public JSONNode _003C_003E4__this;
+
+			private IEnumerator<JSONNode> _003C_003E7__wrap1;
+
+			private IEnumerator<JSONNode> _003C_003E7__wrap2;
+
+			JSONNode IEnumerator<JSONNode>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003Cget_DeepChildren_003Ed__41(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			private void _003C_003Em__Finally2()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+
+			[DebuggerHidden]
+			IEnumerator<JSONNode> IEnumerable<JSONNode>.GetEnumerator()
+			{
+				return null;
+			}
+
+			[DebuggerHidden]
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return null;
+			}
+		}
+
+		public static bool forceASCII;
+
+		[ThreadStatic]
+		private static StringBuilder m_EscapeBuilder;
+
+		public static JSONContainerType VectorContainerType;
+
+		public static JSONContainerType QuaternionContainerType;
+
+		public static JSONContainerType RectContainerType;
+
+		public abstract JSONNodeType Tag { get; }
+
+		public virtual JSONNode this[int aIndex]
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual JSONNode this[string aKey]
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual string Value
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual int Count => 0;
+
+		public virtual bool IsNumber => false;
+
+		public virtual bool IsString => false;
+
+		public virtual bool IsBoolean => false;
+
+		public virtual bool IsNull => false;
+
+		public virtual bool IsArray => false;
+
+		public virtual bool IsObject => false;
+
+		public virtual bool Inline
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual IEnumerable<JSONNode> Children
+		{
+			[IteratorStateMachine(typeof(_003Cget_Children_003Ed__39))]
+			get
+			{
+				return null;
+			}
+		}
+
+		public IEnumerable<JSONNode> DeepChildren
+		{
+			[IteratorStateMachine(typeof(_003Cget_DeepChildren_003Ed__41))]
+			get
+			{
+				return null;
+			}
+		}
+
+		public IEnumerable<KeyValuePair<string, JSONNode>> Linq => null;
+
+		public KeyEnumerator Keys => default(KeyEnumerator);
+
+		public ValueEnumerator Values => default(ValueEnumerator);
+
+		public virtual double AsDouble
+		{
+			get
+			{
+				return 0.0;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual int AsInt
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual float AsFloat
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual bool AsBool
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public virtual JSONArray AsArray => null;
+
+		public virtual JSONObject AsObject => null;
+
+		internal static StringBuilder EscapeBuilder => null;
+
+		public virtual void Add(string aKey, JSONNode aItem)
+		{
+		}
+
+		public virtual void Add(JSONNode aItem)
+		{
+		}
+
+		public virtual JSONNode Remove(string aKey)
+		{
+			return null;
+		}
+
+		public virtual JSONNode Remove(int aIndex)
+		{
+			return null;
+		}
+
+		public virtual JSONNode Remove(JSONNode aNode)
+		{
+			return null;
+		}
+
+		public override string ToString()
+		{
+			return null;
+		}
+
+		public virtual string ToString(int aIndent)
+		{
+			return null;
+		}
+
+		internal abstract void WriteToStringBuilder(StringBuilder aSB, int aIndent, int aIndentInc, JSONTextMode aMode);
+
+		public abstract Enumerator GetEnumerator();
+
+		public static implicit operator JSONNode(string s)
+		{
+			return null;
+		}
+
+		public static implicit operator string(JSONNode d)
+		{
+			return null;
+		}
+
+		public static implicit operator JSONNode(double n)
+		{
+			return null;
+		}
+
+		public static implicit operator double(JSONNode d)
+		{
+			return 0.0;
+		}
+
+		public static implicit operator JSONNode(float n)
+		{
+			return null;
+		}
+
+		public static implicit operator float(JSONNode d)
+		{
+			return 0f;
+		}
+
+		public static implicit operator JSONNode(int n)
+		{
+			return null;
+		}
+
+		public static implicit operator int(JSONNode d)
+		{
+			return 0;
+		}
+
+		public static implicit operator JSONNode(bool b)
+		{
+			return null;
+		}
+
+		public static implicit operator bool(JSONNode d)
+		{
+			return false;
+		}
+
+		public static implicit operator JSONNode(KeyValuePair<string, JSONNode> aKeyValue)
+		{
+			return null;
+		}
+
+		public static bool operator ==(JSONNode a, object b)
+		{
+			return false;
+		}
+
+		public static bool operator !=(JSONNode a, object b)
+		{
+			return false;
+		}
+
+		public override bool Equals(object obj)
+		{
+			return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return 0;
+		}
+
+		internal static string Escape(string aText)
+		{
+			return null;
+		}
+
+		private static void ParseElement(JSONNode ctx, string token, string tokenName, bool quoted)
+		{
+		}
+
+		public static JSONNode Parse(string aJSON)
+		{
+			return null;
+		}
+
+		private static JSONNode GetContainer(JSONContainerType aType)
+		{
+			return null;
+		}
+
+		public static implicit operator JSONNode(Vector2 aVec)
+		{
+			return null;
+		}
+
+		public static implicit operator JSONNode(Vector3 aVec)
+		{
+			return null;
+		}
+
+		public static implicit operator JSONNode(Vector4 aVec)
+		{
+			return null;
+		}
+
+		public static implicit operator JSONNode(Quaternion aRot)
+		{
+			return null;
+		}
+
+		public static implicit operator JSONNode(Rect aRect)
+		{
+			return null;
+		}
+
+		public static implicit operator JSONNode(RectOffset aRect)
+		{
+			return null;
+		}
+
+		public static implicit operator Vector2(JSONNode aNode)
+		{
+			return default(Vector2);
+		}
+
+		public static implicit operator Vector3(JSONNode aNode)
+		{
+			return default(Vector3);
+		}
+
+		public static implicit operator Vector4(JSONNode aNode)
+		{
+			return default(Vector4);
+		}
+
+		public static implicit operator Quaternion(JSONNode aNode)
+		{
+			return default(Quaternion);
+		}
+
+		public static implicit operator Rect(JSONNode aNode)
+		{
+			return default(Rect);
+		}
+
+		public static implicit operator RectOffset(JSONNode aNode)
+		{
+			return null;
+		}
+
+		public Vector2 ReadVector2(Vector2 aDefault)
+		{
+			return default(Vector2);
+		}
+
+		public Vector2 ReadVector2(string aXName, string aYName)
+		{
+			return default(Vector2);
+		}
+
+		public Vector2 ReadVector2()
+		{
+			return default(Vector2);
+		}
+
+		public JSONNode WriteVector2(Vector2 aVec, string aXName = "x", string aYName = "y")
+		{
+			return null;
+		}
+
+		public Vector3 ReadVector3(Vector3 aDefault)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 ReadVector3(string aXName, string aYName, string aZName)
+		{
+			return default(Vector3);
+		}
+
+		public Vector3 ReadVector3()
+		{
+			return default(Vector3);
+		}
+
+		public JSONNode WriteVector3(Vector3 aVec, string aXName = "x", string aYName = "y", string aZName = "z")
+		{
+			return null;
+		}
+
+		public Vector4 ReadVector4(Vector4 aDefault)
+		{
+			return default(Vector4);
+		}
+
+		public Vector4 ReadVector4()
+		{
+			return default(Vector4);
+		}
+
+		public JSONNode WriteVector4(Vector4 aVec)
+		{
+			return null;
+		}
+
+		public Quaternion ReadQuaternion(Quaternion aDefault)
+		{
+			return default(Quaternion);
+		}
+
+		public Quaternion ReadQuaternion()
+		{
+			return default(Quaternion);
+		}
+
+		public JSONNode WriteQuaternion(Quaternion aRot)
+		{
+			return null;
+		}
+
+		public Rect ReadRect(Rect aDefault)
+		{
+			return default(Rect);
+		}
+
+		public Rect ReadRect()
+		{
+			return default(Rect);
+		}
+
+		public JSONNode WriteRect(Rect aRect)
+		{
+			return null;
+		}
+
+		public RectOffset ReadRectOffset(RectOffset aDefault)
+		{
+			return null;
+		}
+
+		public RectOffset ReadRectOffset()
+		{
+			return null;
+		}
+
+		public JSONNode WriteRectOffset(RectOffset aRect)
+		{
+			return null;
+		}
+
+		public Matrix4x4 ReadMatrix()
+		{
+			return default(Matrix4x4);
+		}
+
+		public JSONNode WriteMatrix(Matrix4x4 aMatrix)
+		{
+			return null;
+		}
 	}
 }

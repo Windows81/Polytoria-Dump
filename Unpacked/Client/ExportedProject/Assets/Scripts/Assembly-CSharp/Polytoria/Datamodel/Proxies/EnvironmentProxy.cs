@@ -1,66 +1,140 @@
+using System.Collections.Generic;
+using MoonSharp.Interpreter;
+using Polytoria.Lua;
 using UnityEngine;
 
 namespace Polytoria.Datamodel.Proxies
 {
-	public class EnvironmentProxy : MonoBehaviour
+	public class EnvironmentProxy : InstanceProxy
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private readonly Environment environment;
 
-		1. No dll files were provided to AssetRipper.
+		public SkyboxPreset Skybox
+		{
+			get
+			{
+				return default(SkyboxPreset);
+			}
+			set
+			{
+			}
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public Vector3 Gravity
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public bool FogEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public float FogStartDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public float FogEndDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public Color FogColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public float PartDestroyHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public bool AutoGenerateNavMesh
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[MoonSharpHidden]
+		public EnvironmentProxy(Environment target)
+			: base(null)
+		{
+		}
 
-		5. Script Content Level 0
+		[LuaCallbackParameter("callback", typeof(Instance), "hit", false)]
+		public void CreateExplosion(Vector3 position, float radius = 10f, float force = 5000f, bool affectKinematic = true, DynValue callback = null, float damage = 10000f)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public RayResult? Raycast(Vector3 origin, Vector3 direction, float maxDistance = 1f / 0f, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public RayResult[] RaycastAll(Vector3 origin, Vector3 direction, float maxDistance = 1f / 0f, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Instance[] OverlapSphere(Vector3 position, float radius, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public Instance[] OverlapBox(Vector3 center, Vector3 halfExtents, Vector3 rotation, List<Instance> ignoreList = null)
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void RebuildNavMesh(Instance root)
+		{
+		}
 
-		*/
+		public Vector3 GetPointOnNavMesh(Vector3 position, float maxDistance = 100f)
+		{
+			return default(Vector3);
+		}
 	}
 }

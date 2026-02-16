@@ -1,66 +1,128 @@
-using UnityEngine;
-
 namespace MoonSharp.Interpreter.Tree
 {
-	public class Lexer : MonoBehaviour
+	internal class Lexer
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Token m_Current;
 
-		1. No dll files were provided to AssetRipper.
+		private readonly string m_Code;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private int m_PrevLineTo;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private int m_PrevColTo;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private int m_Cursor;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private readonly int m_StartCursor;
 
-		3. Assembly Reconstruction has not been implemented.
+		private int m_Line;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private int m_Col;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private readonly int m_SourceId;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private readonly bool m_AutoSkipComments;
 
-		5. Script Content Level 0
+		public Token Current => null;
 
-			AssetRipper was set to not load any script information.
+		public Lexer(int sourceID, string scriptContent, bool autoSkipComments)
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private Token FetchNewToken()
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public void Next()
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public Token PeekNext()
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private void CursorNext()
+		{
+		}
 
-		*/
+		private char CursorChar()
+		{
+			return '\0';
+		}
+
+		private char CursorCharNext()
+		{
+			return '\0';
+		}
+
+		private bool CursorMatches(string pattern)
+		{
+			return false;
+		}
+
+		private bool CursorNotEof()
+		{
+			return false;
+		}
+
+		private void SkipWhiteSpace()
+		{
+		}
+
+		private Token ReadToken()
+		{
+			return null;
+		}
+
+		private string ReadLongString(int fromLine, int fromCol, string startpattern, string subtypeforerrors)
+		{
+			return null;
+		}
+
+		private Token ReadNumberToken(int fromLine, int fromCol, bool leadingDot)
+		{
+			return null;
+		}
+
+		private Token CreateSingleCharToken(TokenType tokenType, int fromLine, int fromCol)
+		{
+			return null;
+		}
+
+		private Token ReadHashBang(int fromLine, int fromCol)
+		{
+			return null;
+		}
+
+		private Token ReadComment(int fromLine, int fromCol)
+		{
+			return null;
+		}
+
+		private Token ReadSimpleStringToken(int fromLine, int fromCol)
+		{
+			return null;
+		}
+
+		private Token PotentiallyDoubleCharOperator(char expectedSecondChar, TokenType singleCharToken, TokenType doubleCharToken, int fromLine, int fromCol)
+		{
+			return null;
+		}
+
+		private Token CreateNameToken(string name, int fromLine, int fromCol)
+		{
+			return null;
+		}
+
+		private Token CreateToken(TokenType tokenType, int fromLine, int fromCol, string text = null)
+		{
+			return null;
+		}
+
+		private string ReadNameToken()
+		{
+			return null;
+		}
 	}
 }

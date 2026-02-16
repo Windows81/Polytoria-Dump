@@ -1,66 +1,235 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Mirror;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class MeshPart : MonoBehaviour
+	[Instantiatable]
+	public class MeshPart : Part
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SyncVar(hook = "AssetIDChanged")]
+		protected int assetID;
 
-		1. No dll files were provided to AssetRipper.
+		[SyncVar(hook = "PlayAnimationOnStartChanged")]
+		private bool playAnimationOnStart;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SyncVar(hook = "CollisionTypeChanged")]
+		private CollisionType collisionType;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private Animation anim;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Dictionary<string, List<Animation>> animationsByName;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public Bounds defaultBounds;
 
-		3. Assembly Reconstruction has not been implemented.
+		public Action<int, int> _Mirror_SyncVarHookDelegate_assetID;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Action<bool, bool> _Mirror_SyncVarHookDelegate_playAnimationOnStart;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Action<CollisionType, CollisionType> _Mirror_SyncVarHookDelegate_collisionType;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[CreatorProperty]
+		[Archivable]
+		public int AssetID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		[CreatorProperty]
+		[Archivable]
+		public CollisionType CollisionType
+		{
+			get
+			{
+				return default(CollisionType);
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public new PartShape Shape => default(PartShape);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public new PartMaterial Material => default(PartMaterial);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public string CurrentAnimation => null;
 
-		7. An incorrect path was provided to AssetRipper.
+		public bool IsAnimationPlaying => false;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		[CreatorProperty]
+		[Archivable]
+		public bool PlayAnimationOnStart
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		[CreatorProperty]
+		[Archivable]
+		public new bool CanCollide
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public int NetworkassetID
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public bool NetworkplayAnimationOnStart
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public CollisionType NetworkcollisionType
+		{
+			get
+			{
+				return default(CollisionType);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public void UpdateColliders()
+		{
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		private void LoadMesh()
+		{
+		}
+
+		public void Hide()
+		{
+		}
+
+		private void RefreshAnimationComponents()
+		{
+		}
+
+		public void PlayAnimation(string name, string objectPath = "", float speed = 1f, bool loop = true)
+		{
+		}
+
+		public void StopAnimation(string name = null)
+		{
+		}
+
+		private void StopAllAnimations()
+		{
+		}
+
+		public string[] GetAnimations()
+		{
+			return null;
+		}
+
+		public string[] GetAnimationSources(string animationName)
+		{
+			return null;
+		}
+
+		public AnimationInfo[] GetAnimationInfo()
+		{
+			return null;
+		}
+
+		private string GetRelativePath(Transform root, Transform target)
+		{
+			return null;
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		protected override void CopyProperties(Instance clone)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetAssetID(int id)
+		{
+		}
+
+		private void PlayAnimationOnStartChanged(bool oldValue, bool newValue)
+		{
+		}
+
+		private void CollisionTypeChanged(CollisionType oldValue, CollisionType newValue)
+		{
+		}
+
+		private void AssetIDChanged(int oldValue, int newValue)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_RpcSetAssetID__Int32(int id)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetAssetID__Int32(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static MeshPart()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

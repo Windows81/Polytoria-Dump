@@ -1,66 +1,518 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class RTObjectSelection : MonoBehaviour
+	[Serializable]
+	public class RTObjectSelection : MonoSingleton<RTObjectSelection>
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[Flags]
+		private enum SelectRestrictFlags
+		{
+			None = 0,
+			ObjectLayer = 1,
+			ObjectType = 2,
+			Object = 4,
+			SelectionListener = 8,
+			All = 0xF
+		}
 
-		1. No dll files were provided to AssetRipper.
+		private struct CyclicalClickSelectInfo
+		{
+			public int LastSelectedIndex;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public GameObject LastPickedObject;
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private static readonly int _objectPickDeviceBtnIndex;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private List<GameObject> _visibleObjectBuffer;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private List<GameObject> _overlappedObjectBuffer;
 
-		3. Assembly Reconstruction has not been implemented.
+		private List<GameObjectRayHit> _objectHitBuffer;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private bool _isEnabled;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private List<Camera> _renderIgnoreCameras;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private List<GameObject> _selectedObjects;
 
-		5. Script Content Level 0
+		private MultiSelectShape _multiSelectShape;
 
-			AssetRipper was set to not load any script information.
+		private ObjectSelectionSnapshot _multiSelectPreChangeSnapshot;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private bool _wasSelectionChangedViaMultiSelectShape;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private bool _willBeDeleted;
 
-		7. An incorrect path was provided to AssetRipper.
+		private bool _doingPreSelectCustomize;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private bool _doingPreDeselectCustomize;
 
-		*/
+		private bool _firingSelectionChanged;
+
+		private ObjectSelectionManipSession _activeManipSession;
+
+		private CyclicalClickSelectInfo _cyclicalClickSelectInfo;
+
+		[SerializeField]
+		private ObjectSelectionHotkeys _hotkeys;
+
+		[SerializeField]
+		private ObjectSelectionSettings _settings;
+
+		[SerializeField]
+		private ObjectSelectionLookAndFeel _lookAndFeel;
+
+		[SerializeField]
+		private ObjectSelectionRotationSettings _rotationSettings;
+
+		[SerializeField]
+		private ObjectSelectionRotationHotkeys _rotationHotkeys;
+
+		private DeviceObjectGrabSession _grabSession;
+
+		[SerializeField]
+		private ObjectGrabSettings _grabSettings;
+
+		[SerializeField]
+		private ObjectGrabLookAndFeel _grabLookAndFeel;
+
+		[SerializeField]
+		private ObjectGrabHotkeys _grabHotkeys;
+
+		private ObjectGridSnapSession _gridSnapSession;
+
+		[SerializeField]
+		private ObjectGridSnapLookAndFeel _gridSnapLookAndFeel;
+
+		[SerializeField]
+		private ObjectGridSnapHotkeys _gridSnapHotkeys;
+
+		private Object2ObjectSnapSession _object2ObjectSnapSession;
+
+		[SerializeField]
+		private Object2ObjectSnapSettings _object2ObjectSnapSettings;
+
+		[SerializeField]
+		private Object2ObjectSnapHotkeys _object2ObjectSnapHotkeys;
+
+		[SerializeField]
+		private EditorToolbar _settingsToolbar;
+
+		public bool IsEnabled => false;
+
+		public bool IsMultiSelectShapeVisible => false;
+
+		public int NumSelectedObjects => 0;
+
+		public ObjectSelectionHotkeys Hotkeys => null;
+
+		public ObjectSelectionSettings Settings => null;
+
+		public ObjectSelectionLookAndFeel LookAndFeel => null;
+
+		public ObjectSelectionRotationSettings RotationSettings => null;
+
+		public ObjectSelectionRotationHotkeys RotationHotkeys => null;
+
+		public ObjectGrabSettings GrabSettings => null;
+
+		public ObjectGrabHotkeys GrabHotkeys => null;
+
+		public ObjectGrabLookAndFeel GrabLookAndFeel => null;
+
+		public ObjectGridSnapLookAndFeel GridSnapLookAndFeel => null;
+
+		public ObjectGridSnapHotkeys GridSnapHotkeys => null;
+
+		public Object2ObjectSnapSettings Object2ObjectSnapSettings => null;
+
+		public Object2ObjectSnapHotkeys Object2ObjectSnapHotkeys => null;
+
+		public bool IsManipSessionActive => false;
+
+		public ObjectSelectionManipSession ActiveManipSession => default(ObjectSelectionManipSession);
+
+		public bool IsGrabSessionActive => false;
+
+		public bool IsGridSnapSessionActive => false;
+
+		public bool IsObject2ObjectSnapSessionActive => false;
+
+		public List<GameObject> SelectedObjects => null;
+
+		public event ObjectSelectionManipSessionBeginHandler ManipSessionBegin
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionManipSessionEndHandler ManipSessionEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionCanClickSelectDeselectHandler CanClickSelectDeselect
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionCanMultiSelectDeselectHandler CanMultiSelectDeselect
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionChangedHandler Changed
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionWillBeDeletedHandler WillBeDeleted
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionDeletedHandler Deleted
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionWillBeDuplicatedHandler WillBeDuplicated
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionDuplicatedHandler Duplicated
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionRotatedHandler Rotated
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionPreSelectCustomizeHandler PreSelectCustomize
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionPreDeselectCustomizeHandler PreDeselectCustomize
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionEnabled Enabled
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event ObjectSelectionDisabled Disabled
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public void Initialize_SystemCall()
+		{
+		}
+
+		public void AttachGizmoController(IObjectCollectionGizmoController gizmoController)
+		{
+		}
+
+		public bool IsRenderIgnoreCamera(Camera camera)
+		{
+			return false;
+		}
+
+		public void AddRenderIgnoreCamera(Camera camera)
+		{
+		}
+
+		public void RemoveRenderIgnoreCamera(Camera camera)
+		{
+		}
+
+		public void SetEnabled(bool isEnabled)
+		{
+		}
+
+		public void SetRotation(Quaternion rotation)
+		{
+		}
+
+		public void Rotate(Axis axis, float rotationAngle, ObjectRotationPivot rotationPivot)
+		{
+		}
+
+		public void AppendObjects(List<GameObject> gameObjects, bool allowUndoRedo)
+		{
+		}
+
+		public void RemoveObjects(List<GameObject> gameObjects, bool allowUndoRedo)
+		{
+		}
+
+		public void SetSelectedObjects(List<GameObject> gameObjects, bool allowUndoRedo)
+		{
+		}
+
+		public void ClearSelection(bool allowUndoRedo)
+		{
+		}
+
+		public void Delete()
+		{
+		}
+
+		public void ForceDelete()
+		{
+		}
+
+		public bool CanBeDeleted()
+		{
+			return false;
+		}
+
+		public bool CanBeDuplicated()
+		{
+			return false;
+		}
+
+		public bool CanBeModifiedByAPI()
+		{
+			return false;
+		}
+
+		public ObjectSelectionDuplicationResult Duplicate()
+		{
+			return null;
+		}
+
+		public bool IsSelectionExactMatch(List<GameObject> gameObjectsToMatch)
+		{
+			return false;
+		}
+
+		public bool IsObjectSelected(GameObject gameObject)
+		{
+			return false;
+		}
+
+		public AABB GetWorldAABB()
+		{
+			return default(AABB);
+		}
+
+		public void Update_SystemCall()
+		{
+		}
+
+		public void Render_SystemCall(Camera renderCamera)
+		{
+		}
+
+		private void OnInputDevicePickButtonDown()
+		{
+		}
+
+		private void OnInputDevicePickButtonUp()
+		{
+		}
+
+		private void OnInputDeviceWasMoved()
+		{
+		}
+
+		private void PerformMultiSelect()
+		{
+		}
+
+		private void PerformClickSelect()
+		{
+		}
+
+		private ObjectPreSelectCustomizeInfo DoPreSelectCustomize(List<GameObject> toBeSelected, ObjectSelectReason selectReason)
+		{
+			return null;
+		}
+
+		private List<GameObject> DoPreDeselectCustomize(List<GameObject> toBeDeselected, ObjectDeselectReason deselectReason)
+		{
+			return null;
+		}
+
+		private List<GameObject> FilterByRestrictions(IEnumerable<GameObject> gameObjects, SelectRestrictFlags restrictFlags, ObjectSelectReason selectReason)
+		{
+			return null;
+		}
+
+		private List<GameObjectRayHit> FilterByRestrictions(List<GameObjectRayHit> objectHits, SelectRestrictFlags restrictFlags)
+		{
+			return null;
+		}
+
+		private bool CanSelectObject(GameObject gameObject, SelectRestrictFlags restrictFlags, ObjectSelectReason selectReason)
+		{
+			return false;
+		}
+
+		private void SelectObject(GameObject gameObject, ObjectSelectReason selectReason)
+		{
+		}
+
+		private void DeselectObject(GameObject gameObject, ObjectDeselectReason deselectReason)
+		{
+		}
+
+		private void ClearSelection(ObjectDeselectReason deselectReason)
+		{
+		}
+
+		private void OnSelectionChanged(ObjectSelectionChangedEventArgs args)
+		{
+		}
+
+		private void RemoveNullAndInactiveObjectRefs()
+		{
+		}
+
+		private void OnUndoEnd(IUndoRedoAction action)
+		{
+		}
+
+		private void OnRedoEnd(IUndoRedoAction action)
+		{
+		}
+
+		private void HandleUndoRedo(ObjectSelectionSnapshot undoRedoSnapshot, bool isUndo)
+		{
+		}
+
+		private void OnGrabSessionBegin()
+		{
+		}
+
+		private void OnGrabSessionEnd()
+		{
+		}
+
+		private void OnGridSnapSessionBegin()
+		{
+		}
+
+		private void OnGridSnapSessionEnd()
+		{
+		}
+
+		private void OnObject2ObjectSnapSessionBegin()
+		{
+		}
+
+		private void OnObject2ObjectSnapSessionEnd()
+		{
+		}
 	}
 }

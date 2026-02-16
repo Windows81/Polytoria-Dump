@@ -1,66 +1,380 @@
+using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Mirror;
+using MoonSharp.Interpreter;
+using Polytoria.Lua;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class Instance : MonoBehaviour
+	public class Instance : NetworkBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		protected Transform _transform;
 
-		1. No dll files were provided to AssetRipper.
+		[SyncVar]
+		protected string _name;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		protected string className;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		protected bool canReparent;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		protected bool hidesMembers;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		protected bool clientSpawned;
 
-		3. Assembly Reconstruction has not been implemented.
+		private DynValue shared;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public LuaEvent ChildRemoved;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public LuaEvent ChildAdded;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public LuaEvent Touched;
 
-		5. Script Content Level 0
+		public LuaEvent TouchEnded;
 
-			AssetRipper was set to not load any script information.
+		public LuaEvent MouseHover;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public LuaEvent MouseHoverEnded;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public LuaEvent Clicked;
 
-		7. An incorrect path was provided to AssetRipper.
+		public LuaEvent MouseEnter;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public LuaEvent MouseExit;
 
-		*/
+		[MoonSharpHidden]
+		public bool isHidden;
+
+		private bool isMouseOver;
+
+		public bool ClientSpawned => false;
+
+		public bool CanReparent => false;
+
+		[MoonSharpHidden]
+		public int DescendantLevel => 0;
+
+		public Instance this[string name] => null;
+
+		public Instance this[int index] => null;
+
+		[CreatorProperty]
+		[Archivable]
+		public string Name
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public string FullName => null;
+
+		[CreatorProperty]
+		public string ClassName => null;
+
+		public DynValue Shared => null;
+
+		public Instance Parent
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public string Network_name
+		{
+			get
+			{
+				return null;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		[MoonSharpHidden]
+		public event Action<Instance> _DescendantAdded
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		[MoonSharpHidden]
+		public event Action _ParentChanged
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		[MoonSharpHidden]
+		public event Action<Instance> _Touched
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public Instance GetParent()
+		{
+			return null;
+		}
+
+		public void SetParent(Instance par)
+		{
+		}
+
+		protected virtual void OnHide()
+		{
+		}
+
+		protected virtual void OnShow()
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetParent(Transform par)
+		{
+		}
+
+		public Instance FindChild(string name)
+		{
+			return null;
+		}
+
+		public Instance[] GetChildren()
+		{
+			return null;
+		}
+
+		public Instance[] GetChildrenOfClass(string className)
+		{
+			return null;
+		}
+
+		public T[] GetChildrenOfType<T>() where T : Instance
+		{
+			return null;
+		}
+
+		public T FindChildOfType<T>() where T : Instance
+		{
+			return null;
+		}
+
+		public Instance FindChildByClass(string className)
+		{
+			return null;
+		}
+
+		public bool IsA(string className)
+		{
+			return false;
+		}
+
+		public bool IsDescendantOf(Instance other)
+		{
+			return false;
+		}
+
+		public bool IsDescendantOfType<T>() where T : Instance
+		{
+			return false;
+		}
+
+		public void Destroy(float time = 0f)
+		{
+		}
+
+		public void Delete(float time = 0f)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetName(string n)
+		{
+		}
+
+		[Command(requiresAuthority = false)]
+		private void RequestParent(NetworkConnectionToClient sender = null)
+		{
+		}
+
+		[TargetRpc]
+		private void SetParentTargetRpc(NetworkConnection target, Transform par, int index)
+		{
+		}
+
+		protected virtual void Awake()
+		{
+		}
+
+		protected virtual void Start()
+		{
+		}
+
+		protected virtual void OnNetworkStart()
+		{
+		}
+
+		public override void OnStartClient()
+		{
+		}
+
+		public override void OnStartServer()
+		{
+		}
+
+		private void OnGameLoaded()
+		{
+		}
+
+		protected virtual void OnDestroy()
+		{
+		}
+
+		public static Instance New(string className, Instance parent = null)
+		{
+			return null;
+		}
+
+		protected virtual void OnCollisionEnter(Collision collision)
+		{
+		}
+
+		protected virtual void OnTriggerEnter(Collider collider)
+		{
+		}
+
+		protected virtual void OnCollisionExit(Collision collision)
+		{
+		}
+
+		protected virtual void OnTriggerExit(Collider collider)
+		{
+		}
+
+		private int GetDescendantLevel()
+		{
+			return 0;
+		}
+
+		private void OnMouseDown()
+		{
+		}
+
+		private void OnMouseEnter()
+		{
+		}
+
+		private void OnMouseExit()
+		{
+		}
+
+		[Command(requiresAuthority = false)]
+		private void CmdClicked(NetworkConnectionToClient sender = null)
+		{
+		}
+
+		public Instance Clone()
+		{
+			return null;
+		}
+
+		protected virtual void CopyProperties(Instance clone)
+		{
+		}
+
+		protected virtual void PostClone()
+		{
+		}
+
+		public Bounds GetBounds(BoundsCalculationMethod calculationMethod = BoundsCalculationMethod.Renderer)
+		{
+			return default(Bounds);
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_RpcSetParent__Transform(Transform par)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetParent__Transform(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetName__String(string n)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetName__String(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RequestParent__NetworkConnectionToClient(NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_RequestParent__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_SetParentTargetRpc__NetworkConnection__Transform__Int32(NetworkConnection target, Transform par, int index)
+		{
+		}
+
+		protected static void InvokeUserCode_SetParentTargetRpc__NetworkConnection__Transform__Int32(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdClicked__NetworkConnectionToClient(NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdClicked__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static Instance()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

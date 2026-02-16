@@ -1,66 +1,216 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class RightAngTriangle3D : MonoBehaviour
+	public class RightAngTriangle3D : Shape3D
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Vector3 _rightAngleCorner;
 
-		1. No dll files were provided to AssetRipper.
+		private float _XLength;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private float _YLength;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private AxisSign _XLengthSign;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private AxisSign _YLengthSign;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Quaternion _rotation;
 
-		3. Assembly Reconstruction has not been implemented.
+		private TriangleEpsilon _epsilon;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private Shape3DRaycastMode _raycastMode;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public Vector3 RightAngleCorner
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public float XLength
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		public float YLength
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public float RealXLength => 0f;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public float RealYLength => 0f;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public AxisSign XLengthSign
+		{
+			get
+			{
+				return default(AxisSign);
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public AxisSign YLengthSign
+		{
+			get
+			{
+				return default(AxisSign);
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Quaternion Rotation
+		{
+			get
+			{
+				return default(Quaternion);
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public Vector3 Right => default(Vector3);
+
+		public Vector3 Up => default(Vector3);
+
+		public Vector3 Look => default(Vector3);
+
+		public Vector3 Normal => default(Vector3);
+
+		public Plane Plane => default(Plane);
+
+		public TriangleEpsilon Epsilon
+		{
+			get
+			{
+				return default(TriangleEpsilon);
+			}
+			set
+			{
+			}
+		}
+
+		public float AreaEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float ExtrudeEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float WireEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public Shape3DRaycastMode RaycastMode
+		{
+			get
+			{
+				return default(Shape3DRaycastMode);
+			}
+			set
+			{
+			}
+		}
+
+		public static Vector3 ModelRight => default(Vector3);
+
+		public static Vector3 ModelUp => default(Vector3);
+
+		public static Vector3 ModelLook => default(Vector3);
+
+		public static Vector3 ModelRightAngleCorner => default(Vector3);
+
+		public static Vector3 ModelNormal => default(Vector3);
+
+		public void AlignNormal(Vector3 axis)
+		{
+		}
+
+		public void AlignRight(Vector3 axis)
+		{
+		}
+
+		public void AlignUp(Vector3 axis)
+		{
+		}
+
+		public override bool Raycast(Ray ray, out float t)
+		{
+			t = default(float);
+			return false;
+		}
+
+		public override bool RaycastWire(Ray ray, out float t)
+		{
+			t = default(float);
+			return false;
+		}
+
+		public override void RenderSolid()
+		{
+		}
+
+		public override void RenderWire()
+		{
+		}
+
+		public List<Vector3> GetPoints()
+		{
+			return null;
+		}
+
+		public override AABB GetAABB()
+		{
+			return default(AABB);
+		}
+
+		public bool ContainsPoint(Vector3 point, bool checkOnPlane)
+		{
+			return false;
+		}
 	}
 }

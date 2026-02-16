@@ -1,66 +1,139 @@
+using Mirror;
+using Polytoria.Lua;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class RemoteEvent : MonoBehaviour
+	public class RemoteEvent : Instance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public LuaEvent Invoked;
 
-		1. No dll files were provided to AssetRipper.
+		public void Invoke(string val)
+		{
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public void Invoke(bool val)
+		{
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public void Invoke(float val)
+		{
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public void Invoke(int val)
+		{
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public void Invoke(Vector3 val)
+		{
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public void Invoke(Color val)
+		{
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public void Invoke(Instance val)
+		{
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[Command(requiresAuthority = false)]
+		private void CmdInvokeString(string val, NetworkConnectionToClient sender = null)
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[Command(requiresAuthority = false)]
+		private void CmdInvokeBool(bool val, NetworkConnectionToClient sender = null)
+		{
+		}
 
-		5. Script Content Level 0
+		[Command(requiresAuthority = false)]
+		private void CmdInvokeFloat(float val, NetworkConnectionToClient sender = null)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		[Command(requiresAuthority = false)]
+		private void CmdInvokeInt(int val, NetworkConnectionToClient sender = null)
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		[Command(requiresAuthority = false)]
+		private void CmdInvokeVec3(Vector3 val, NetworkConnectionToClient sender = null)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[Command(requiresAuthority = false)]
+		private void CmdInvokeColor(Color val, NetworkConnectionToClient sender = null)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[Command(requiresAuthority = false)]
+		private void CmdInvokeInstance(Instance val, NetworkConnectionToClient sender = null)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public override bool Weaved()
+		{
+			return false;
+		}
 
-		*/
+		protected void UserCode_CmdInvokeString__String__NetworkConnectionToClient(string val, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdInvokeString__String__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdInvokeBool__Boolean__NetworkConnectionToClient(bool val, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdInvokeBool__Boolean__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdInvokeFloat__Single__NetworkConnectionToClient(float val, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdInvokeFloat__Single__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdInvokeInt__Int32__NetworkConnectionToClient(int val, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdInvokeInt__Int32__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdInvokeVec3__Vector3__NetworkConnectionToClient(Vector3 val, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdInvokeVec3__Vector3__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdInvokeColor__Color__NetworkConnectionToClient(Color val, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdInvokeColor__Color__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_CmdInvokeInstance__Instance__NetworkConnectionToClient(Instance val, NetworkConnectionToClient sender)
+		{
+		}
+
+		protected static void InvokeUserCode_CmdInvokeInstance__Instance__NetworkConnectionToClient(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static RemoteEvent()
+		{
+		}
 	}
 }

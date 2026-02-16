@@ -1,66 +1,215 @@
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using GLTFast;
+using GLTFast.Logging;
+using Polytoria.Datamodel;
 using UnityEngine;
 
 namespace Polytoria.Controllers
 {
 	public class MeshPartLoadController : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[StructLayout((LayoutKind)3)]
+		[CompilerGenerated]
+		private struct _003CGetMeshUrlAsync_003Ed__17 : IAsyncStateMachine
+		{
+			public int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			public AsyncTaskMethodBuilder<string> _003C_003Et__builder;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public int assetID;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private HttpClient _003Cclient_003E5__2;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			private TaskAwaiter<HttpResponseMessage> _003C_003Eu__1;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private TaskAwaiter<string> _003C_003Eu__2;
 
-		3. Assembly Reconstruction has not been implemented.
+			private void MoveNext()
+			{
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			void IAsyncStateMachine.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				this.MoveNext();
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			private void SetStateMachine(IAsyncStateMachine stateMachine)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			void IAsyncStateMachine.SetStateMachine(IAsyncStateMachine stateMachine)
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in SetStateMachine
+				this.SetStateMachine(stateMachine);
+			}
+		}
 
-		5. Script Content Level 0
+		[StructLayout((LayoutKind)3)]
+		[CompilerGenerated]
+		private struct _003CImportMeshAsync_003Ed__18 : IAsyncStateMachine
+		{
+			public int _003C_003E1__state;
 
-			AssetRipper was set to not load any script information.
+			public AsyncTaskMethodBuilder<GameObject> _003C_003Et__builder;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			public MeshPartLoadController _003C_003E4__this;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			public string meshUrl;
 
-		7. An incorrect path was provided to AssetRipper.
+			public MeshPartLoadRequest request;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			private TaskAwaiter<bool> _003C_003Eu__1;
 
-		*/
+			private GameObject _003CloadedObject_003E5__2;
+
+			private void MoveNext()
+			{
+			}
+
+			void IAsyncStateMachine.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				this.MoveNext();
+			}
+
+			[DebuggerHidden]
+			private void SetStateMachine(IAsyncStateMachine stateMachine)
+			{
+			}
+
+			void IAsyncStateMachine.SetStateMachine(IAsyncStateMachine stateMachine)
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in SetStateMachine
+				this.SetStateMachine(stateMachine);
+			}
+		}
+
+		[StructLayout((LayoutKind)3)]
+		[CompilerGenerated]
+		private struct _003CLoadMeshAsync_003Ed__15 : IAsyncStateMachine
+		{
+			public int _003C_003E1__state;
+
+			public AsyncTaskMethodBuilder _003C_003Et__builder;
+
+			public MeshPartLoadController _003C_003E4__this;
+
+			public MeshPartLoadRequest request;
+
+			private GameObject _003CloadedObject_003E5__2;
+
+			private TaskAwaiter<string> _003C_003Eu__1;
+
+			private TaskAwaiter<GameObject> _003C_003Eu__2;
+
+			private void MoveNext()
+			{
+			}
+
+			void IAsyncStateMachine.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				this.MoveNext();
+			}
+
+			[DebuggerHidden]
+			private void SetStateMachine(IAsyncStateMachine stateMachine)
+			{
+			}
+
+			void IAsyncStateMachine.SetStateMachine(IAsyncStateMachine stateMachine)
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in SetStateMachine
+				this.SetStateMachine(stateMachine);
+			}
+		}
+
+		public static MeshPartLoadController Instance;
+
+		private Queue<MeshPartLoadRequest> loadQueue;
+
+		private GameObject meshStorage;
+
+		private bool loading;
+
+		[SerializeField]
+		private ImportSettings importSettings;
+
+		[SerializeField]
+		private InstantiationSettings instantiationSettings;
+
+		private ConsoleLogger logger;
+
+		public GltfImport Importer { get; protected set; }
+
+		private void Awake()
+		{
+		}
+
+		private void Start()
+		{
+		}
+
+		public void LoadMesh(MeshPartLoadRequest request)
+		{
+		}
+
+		private void Update()
+		{
+		}
+
+		[AsyncStateMachine(typeof(_003CLoadMeshAsync_003Ed__15))]
+		private Task LoadMeshAsync(MeshPartLoadRequest request)
+		{
+			return null;
+		}
+
+		private GameObject FindInCache(int assetID)
+		{
+			return null;
+		}
+
+		[AsyncStateMachine(typeof(_003CGetMeshUrlAsync_003Ed__17))]
+		private Task<string> GetMeshUrlAsync(int assetID)
+		{
+			return null;
+		}
+
+		[AsyncStateMachine(typeof(_003CImportMeshAsync_003Ed__18))]
+		private Task<GameObject> ImportMeshAsync(MeshPartLoadRequest request, string meshUrl)
+		{
+			return null;
+		}
+
+		private void CacheLoadedObject(int assetID, GameObject loadedObject)
+		{
+		}
+
+		private void ProcessLoadedObject(MeshPartLoadRequest request, GameObject loadedObject)
+		{
+		}
+
+		private void ClearExistingChildren(MeshPart meshPart)
+		{
+		}
+
+		private void AdjustLoadedObjectBounds(GameObject loadedObject)
+		{
+		}
+
+		private void AttachLoadedObjectToMeshPart(MeshPartLoadRequest request, GameObject loadedObject)
+		{
+		}
+
+		private void EnableRenderers(GameObject obj, bool enabled)
+		{
+		}
 	}
 }

@@ -1,66 +1,72 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using MoonSharp.Interpreter.Interop.BasicDescriptors;
 
 namespace MoonSharp.Interpreter.Interop
 {
-	public class FunctionMemberDescriptorBase : MonoBehaviour
+	public abstract class FunctionMemberDescriptorBase : IOverloadableMemberDescriptor, IMemberDescriptor
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public bool IsStatic { get; private set; }
 
-		1. No dll files were provided to AssetRipper.
+		public string Name { get; private set; }
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public string SortDiscriminant { get; private set; }
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public ParameterDescriptor[] Parameters { get; private set; }
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public Type ExtensionMethodType { get; private set; }
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public Type VarArgsArrayType { get; private set; }
 
-		3. Assembly Reconstruction has not been implemented.
+		public Type VarArgsElementType { get; private set; }
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public MemberDescriptorAccess MemberAccess => default(MemberDescriptorAccess);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		protected void Initialize(string funcName, bool isStatic, ParameterDescriptor[] parameters, bool isExtensionMethod)
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public Func<ScriptExecutionContext, CallbackArguments, DynValue> GetCallback(Script script, object obj = null)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		public CallbackFunction GetCallbackFunction(Script script, object obj = null)
+		{
+			return null;
+		}
 
-			AssetRipper was set to not load any script information.
+		public DynValue GetCallbackAsDynValue(Script script, object obj = null)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static DynValue CreateCallbackDynValue(Script script, MethodInfo mi, object obj = null)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		protected virtual object[] BuildArgumentList(Script script, object obj, ScriptExecutionContext context, CallbackArguments args, out List<int> outParams)
+		{
+			outParams = null;
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		protected static DynValue BuildReturnValue(Script script, List<int> outParams, object[] pars, object retv)
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public abstract DynValue Execute(Script script, object obj, ScriptExecutionContext context, CallbackArguments args);
 
-		*/
+		public virtual DynValue GetValue(Script script, object obj)
+		{
+			return null;
+		}
+
+		public virtual void SetValue(Script script, object obj, DynValue v)
+		{
+		}
 	}
 }

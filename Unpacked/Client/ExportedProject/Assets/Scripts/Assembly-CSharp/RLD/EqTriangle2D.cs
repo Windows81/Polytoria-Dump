@@ -2,65 +2,130 @@ using UnityEngine;
 
 namespace RLD
 {
-	public class EqTriangle2D : MonoBehaviour
+	public class EqTriangle2D : Shape2D
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private float _sideLength;
 
-		1. No dll files were provided to AssetRipper.
+		private float _rotationDegrees;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private TriangleEpsilon _epsilon;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private Vector2[] _points;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Vector2 _centroid;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private bool _arePointsDirty;
 
-		3. Assembly Reconstruction has not been implemented.
+		public float SideLength
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public Vector2 Centroid
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public float Altitude => 0f;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public float CentroidAltitude => 0f;
 
-		5. Script Content Level 0
+		public float RotationDegrees
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public Quaternion Rotation => default(Quaternion);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public TriangleEpsilon Epsilon
+		{
+			get
+			{
+				return default(TriangleEpsilon);
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float AreaEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public Vector2 Right => default(Vector2);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Vector2 Up => default(Vector2);
 
-		*/
+		public static Vector2 ModelRight => default(Vector2);
+
+		public static Vector2 ModelUp => default(Vector2);
+
+		public static Vector2 ModelCentroid => default(Vector2);
+
+		public Vector2 GetPoint(EqTrianglePoint point)
+		{
+			return default(Vector2);
+		}
+
+		public void SetPoint(EqTrianglePoint point, Vector2 pointValue)
+		{
+		}
+
+		public Vector2 GetEdgeMidPoint(EqTriangleEdge edge)
+		{
+			return default(Vector2);
+		}
+
+		public Vector2 GetEdge(EqTriangleEdge edge)
+		{
+			return default(Vector2);
+		}
+
+		public override void RenderArea(Camera camera)
+		{
+		}
+
+		public override void RenderBorder(Camera camera)
+		{
+		}
+
+		public override bool ContainsPoint(Vector2 point)
+		{
+			return false;
+		}
+
+		public override Rect GetEncapsulatingRect()
+		{
+			return default(Rect);
+		}
+
+		private void OnPointsFoundDirty()
+		{
+		}
 	}
 }

@@ -1,66 +1,208 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class CameraPrjSwitchTransition : MonoBehaviour
+	public class CameraPrjSwitchTransition
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum Type
+		{
+			None = 0,
+			ToOrtho = 1,
+			ToPerspective = 2
+		}
 
-		1. No dll files were provided to AssetRipper.
+		[CompilerGenerated]
+		private sealed class _003CDoTransition_003Ed__41 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private object _003C_003E2__current;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public CameraPrjSwitchTransition _003C_003E4__this;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			private float _003CfrustumHeight_003E5__2;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private float _003CtargetFOV_003E5__3;
 
-		3. Assembly Reconstruction has not been implemented.
+			private float _003CinvDuration_003E5__4;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			private float _003CfovSpeed_003E5__5;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			private Transform _003C_targetTransform_003E5__6;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-		5. Script Content Level 0
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			AssetRipper was set to not load any script information.
+			[DebuggerHidden]
+			public _003CDoTransition_003Ed__41(int _003C_003E1__state)
+			{
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-		7. An incorrect path was provided to AssetRipper.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-		*/
+		private IEnumerator _transitionCrtn;
+
+		private MonoBehaviour _targetMono;
+
+		private Camera _targetCamera;
+
+		private float _camFieldOfView;
+
+		private Vector3 _camFocusPoint;
+
+		private Vector3 _camRestorePosition;
+
+		private Type _transitionType;
+
+		private float _durationInSeconds;
+
+		private float _progress;
+
+		public MonoBehaviour TargetMono
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public Camera TargetCamera
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public Type TransitionType => default(Type);
+
+		public float DurationInSeconds
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float Progress => 0f;
+
+		public float CamFieldOfView
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector3 CamFocusPoint
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
+
+		public bool IsActive => false;
+
+		public event CameraProjectionSwitchBeginHandler TransitionBegin
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event CameraProjectionSwitchUpdateHandler TransitionUpdate
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public event CameraProjectionSwitchBeginHandler TransitionEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
+
+		public void Begin()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CDoTransition_003Ed__41))]
+		private IEnumerator DoTransition()
+		{
+			return null;
+		}
 	}
 }

@@ -1,66 +1,77 @@
-using UnityEngine;
+using System.IO;
 
 namespace MoonSharp.Interpreter.CoreLib.IO
 {
-	public class StreamFileUserDataBase : MonoBehaviour
+	internal abstract class StreamFileUserDataBase : FileUserDataBase
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		protected Stream m_Stream;
 
-		1. No dll files were provided to AssetRipper.
+		protected StreamReader m_Reader;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		protected StreamWriter m_Writer;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		protected bool m_Closed;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		protected void Initialize(Stream stream, StreamReader reader, StreamWriter writer)
+		{
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private void CheckFileIsNotClosed()
+		{
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		protected override bool Eof()
+		{
+			return false;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		protected override string ReadLine()
+		{
+			return null;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		protected override string ReadToEnd()
+		{
+			return null;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		protected override string ReadBuffer(int p)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		protected override char Peek()
+		{
+			return '\0';
+		}
 
-			AssetRipper was set to not load any script information.
+		protected override void Write(string value)
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		protected override string Close()
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public override bool flush()
+		{
+			return false;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public override long seek(string whence, long offset = 0L)
+		{
+			return 0L;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public override bool setvbuf(string mode)
+		{
+			return false;
+		}
 
-		*/
+		protected internal override bool isopen()
+		{
+			return false;
+		}
 	}
 }

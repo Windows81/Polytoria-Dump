@@ -1,66 +1,72 @@
-using UnityEngine;
-
 namespace MoonSharp.Interpreter.CoreLib
 {
-	public class DebugModule : MonoBehaviour
+	[MoonSharpModule(Namespace = "debug")]
+	public class DebugModule
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[MoonSharpModuleMethod]
+		public static DynValue debug(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		1. No dll files were provided to AssetRipper.
+		[MoonSharpModuleMethod]
+		public static DynValue getuservalue(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[MoonSharpModuleMethod]
+		public static DynValue setuservalue(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[MoonSharpModuleMethod]
+		public static DynValue getregistry(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[MoonSharpModuleMethod]
+		public static DynValue getmetatable(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[MoonSharpModuleMethod]
+		public static DynValue setmetatable(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		[MoonSharpModuleMethod]
+		public static DynValue getupvalue(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[MoonSharpModuleMethod]
+		public static DynValue upvalueid(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[MoonSharpModuleMethod]
+		public static DynValue setupvalue(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[MoonSharpModuleMethod]
+		public static DynValue upvaluejoin(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
-
-			AssetRipper was set to not load any script information.
-
-		6. Cpp2IL failed to decompile Il2Cpp data
-
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
-
-		7. An incorrect path was provided to AssetRipper.
-
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
-
-		*/
+		[MoonSharpModuleMethod]
+		public static DynValue traceback(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
 	}
 }

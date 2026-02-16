@@ -1,66 +1,383 @@
+using System.Collections.Generic;
+using MoonSharp.Interpreter;
 using UnityEngine;
 
 namespace Polytoria.Datamodel
 {
-	public class Camera : MonoBehaviour
+	public class Camera : DynamicInstance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public static float sensitivityModifier;
 
-		1. No dll files were provided to AssetRipper.
+		public static Camera Instance;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public static LayerMask clipIgnoreLayers;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public static List<MeshRenderer> disableOnFirstPerson;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private UnityEngine.Camera cam;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Transform target;
 
-		3. Assembly Reconstruction has not been implemented.
+		private float distance;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private float distanceLerp;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private float xSpeed;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private float ySpeed;
 
-		5. Script Content Level 0
+		private float yMinLimit;
 
-			AssetRipper was set to not load any script information.
+		private float yMaxLimit;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private float distanceMax;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private float minDist;
 
-		7. An incorrect path was provided to AssetRipper.
+		private float maxDist;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private bool clipThroughWalls;
 
-		*/
+		private float scrollSensitivity;
+
+		private float flySpeed;
+
+		private float fastFlySpeed;
+
+		private float freeLookSensitivity;
+
+		private float x;
+
+		private float y;
+
+		private bool init;
+
+		private bool wasLocked;
+
+		private bool looking;
+
+		private bool locked;
+
+		private bool wasFirstPerson;
+
+		private int lastDisableFPCount;
+
+		private DynamicInstance followTargetInstance;
+
+		private Transform followTargetTransform;
+
+		private bool DoLerp => false;
+
+		[CreatorProperty]
+		[Archivable]
+		public CameraMode Mode { get; set; }
+
+		[CreatorProperty]
+		[Archivable]
+		public float FOV
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool Orthographic
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float OrthographicSize
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float Distance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float MinDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public float MaxDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float HorizontalSpeed
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float VerticalSpeed
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float ScrollSensitivity
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		[CreatorProperty]
+		[Archivable]
+		public bool ClipThroughWalls
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public float FlySpeed
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float FastFlySpeed
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float FreeLookSensitivity
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float LerpSpeed { get; set; }
+
+		public bool FollowLerp { get; set; }
+
+		[CreatorProperty]
+		[Archivable]
+		public bool CanLock { get; set; }
+
+		public bool CtrlLocked { get; set; }
+
+		public float SensitivityMultiplier { get; set; }
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector3 PositionOffset { get; set; }
+
+		[CreatorProperty]
+		[Archivable]
+		public Vector3 RotationOffset { get; set; }
+
+		public bool IsFirstPerson => false;
+
+		protected override bool DoTransformSync => false;
+
+		public DynamicInstance FollowTarget
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		[MoonSharpHidden]
+		private void SetFollowTarget(DynamicInstance instance)
+		{
+		}
+
+		private void LateUpdate()
+		{
+		}
+
+		private void UpdateFollow()
+		{
+		}
+
+		private void UpdateFollowTarget()
+		{
+		}
+
+		private void UpdateFollowMode(Transform followTarget)
+		{
+		}
+
+		private void HandleLockInput()
+		{
+		}
+
+		private float HandleScrollInput()
+		{
+			return 0f;
+		}
+
+		private void HandleFirstPersonRendering()
+		{
+		}
+
+		private bool ShouldProcessCameraInput()
+		{
+			return false;
+		}
+
+		private void HandleCursorLocking()
+		{
+		}
+
+		private void HandleCameraRotation()
+		{
+		}
+
+		private void HandleScrollZoom(float scroll)
+		{
+		}
+
+		private void ApplyCameraTransform(Transform followTarget)
+		{
+		}
+
+		private void ClampDistance()
+		{
+		}
+
+		private void CalculateWallClipping(Transform followTarget)
+		{
+		}
+
+		private void UpdateFree()
+		{
+		}
+
+		private void HandleFreeMovement()
+		{
+		}
+
+		private void HandleFreeLook()
+		{
+		}
+
+		private void HandleFreeZoom()
+		{
+		}
+
+		private void HandleFreeLookToggle()
+		{
+		}
+
+		private void StartLooking()
+		{
+		}
+
+		private void StopLooking()
+		{
+		}
+
+		private void OnDisable()
+		{
+		}
+
+		private static float ClampAngle(float angle, float min, float max)
+		{
+			return 0f;
+		}
+
+		[MoonSharpHidden]
+		public void SetTarget(Transform target)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
 	}
 }

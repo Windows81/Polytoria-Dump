@@ -1,66 +1,211 @@
-using UnityEngine;
+using System.Collections.Generic;
+using System.IO;
+using MoonSharp.Interpreter.Debugging;
+using MoonSharp.Interpreter.Diagnostics;
+using MoonSharp.Interpreter.Execution.VM;
 
 namespace MoonSharp.Interpreter
 {
-	public class Script : MonoBehaviour
+	public class Script : IScriptPrivateResource
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public const string VERSION = "2.0.0.0";
 
-		1. No dll files were provided to AssetRipper.
+		public const string LUA_VERSION = "5.2";
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Processor m_MainProcessor;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private ByteCode m_ByteCode;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private List<SourceCode> m_Sources;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Table m_GlobalTable;
 
-		3. Assembly Reconstruction has not been implemented.
+		private IDebugger m_Debugger;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private Table[] m_TypeMetatables;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static ScriptOptions DefaultOptions { get; }
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public ScriptOptions Options { get; private set; }
 
-		5. Script Content Level 0
+		public static ScriptGlobalOptions GlobalOptions { get; }
 
-			AssetRipper was set to not load any script information.
+		public PerformanceStatistics PerformanceStats { get; private set; }
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public Table Globals => null;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public bool DebuggerEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public int SourceCodeCount => 0;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Table Registry { get; private set; }
 
-		*/
+		Script IScriptPrivateResource.OwnerScript => null;
+
+		public Script()
+		{
+		}
+
+		public Script(CoreModules coreModules)
+		{
+		}
+
+		public DynValue LoadFunction(string code, Table globalTable = null, string funcFriendlyName = null)
+		{
+			return null;
+		}
+
+		private void SignalByteCodeChange()
+		{
+		}
+
+		private void SignalSourceCodeChange(SourceCode source)
+		{
+		}
+
+		public DynValue LoadString(string code, Table globalTable = null, string codeFriendlyName = null)
+		{
+			return null;
+		}
+
+		public DynValue LoadStream(Stream stream, Table globalTable = null, string codeFriendlyName = null)
+		{
+			return null;
+		}
+
+		public void Dump(DynValue function, Stream stream)
+		{
+		}
+
+		public DynValue LoadFile(string filename, Table globalContext = null, string friendlyFilename = null)
+		{
+			return null;
+		}
+
+		public DynValue DoString(string code, Table globalContext = null, string codeFriendlyName = null)
+		{
+			return null;
+		}
+
+		public DynValue DoStream(Stream stream, Table globalContext = null, string codeFriendlyName = null)
+		{
+			return null;
+		}
+
+		public DynValue DoFile(string filename, Table globalContext = null, string codeFriendlyName = null)
+		{
+			return null;
+		}
+
+		public static DynValue RunFile(string filename)
+		{
+			return null;
+		}
+
+		public static DynValue RunString(string code)
+		{
+			return null;
+		}
+
+		private DynValue MakeClosure(int address, Table envTable = null)
+		{
+			return null;
+		}
+
+		public DynValue Call(DynValue function)
+		{
+			return null;
+		}
+
+		public DynValue Call(DynValue function, params DynValue[] args)
+		{
+			return null;
+		}
+
+		public DynValue Call(DynValue function, params object[] args)
+		{
+			return null;
+		}
+
+		public DynValue Call(object function)
+		{
+			return null;
+		}
+
+		public DynValue Call(object function, params object[] args)
+		{
+			return null;
+		}
+
+		public DynValue CreateCoroutine(DynValue function)
+		{
+			return null;
+		}
+
+		public DynValue RecycleCoroutine(Coroutine coroutine, DynValue function)
+		{
+			return null;
+		}
+
+		public DynValue CreateCoroutine(object function)
+		{
+			return null;
+		}
+
+		public void AttachDebugger(IDebugger debugger)
+		{
+		}
+
+		public SourceCode GetSourceCode(int sourceCodeID)
+		{
+			return null;
+		}
+
+		public DynValue RequireModule(string modname, Table globalContext = null)
+		{
+			return null;
+		}
+
+		public Table GetTypeMetatable(DataType type)
+		{
+			return null;
+		}
+
+		public void SetTypeMetatable(DataType type, Table metatable)
+		{
+		}
+
+		public static void WarmUp()
+		{
+		}
+
+		public DynamicExpression CreateDynamicExpression(string code)
+		{
+			return null;
+		}
+
+		public DynamicExpression CreateConstantDynamicExpression(string code, DynValue constant)
+		{
+			return null;
+		}
+
+		internal ScriptExecutionContext CreateDynamicExecutionContext(CallbackFunction func = null)
+		{
+			return null;
+		}
+
+		public static string GetBanner(string subproduct = null)
+		{
+			return null;
+		}
 	}
 }

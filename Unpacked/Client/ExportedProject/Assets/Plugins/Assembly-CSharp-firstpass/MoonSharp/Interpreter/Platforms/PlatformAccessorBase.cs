@@ -1,66 +1,64 @@
-using UnityEngine;
+using System;
+using System.IO;
+using System.Text;
 
 namespace MoonSharp.Interpreter.Platforms
 {
-	public class PlatformAccessorBase : MonoBehaviour
+	public abstract class PlatformAccessorBase : IPlatformAccessor
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public abstract string GetPlatformNamePrefix();
 
-		1. No dll files were provided to AssetRipper.
+		public string GetPlatformName()
+		{
+			return null;
+		}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private string GetUnityRuntimeName()
+		{
+			return null;
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private string GetUnityPlatformName()
+		{
+			return null;
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public abstract void DefaultPrint(string content);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[Obsolete("Replace with DefaultInput(string)")]
+		public virtual string DefaultInput()
+		{
+			return null;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public virtual string DefaultInput(string prompt)
+		{
+			return null;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public abstract Stream IO_OpenFile(Script script, string filename, Encoding encoding, string mode);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public abstract Stream IO_GetStandardStream(StandardFileType type);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public abstract string IO_OS_GetTempFilename();
 
-		5. Script Content Level 0
+		public abstract void OS_ExitFast(int exitCode);
 
-			AssetRipper was set to not load any script information.
+		public abstract bool OS_FileExists(string file);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public abstract void OS_FileDelete(string file);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public abstract void OS_FileMove(string src, string dst);
 
-		7. An incorrect path was provided to AssetRipper.
+		public abstract int OS_Execute(string cmdline);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public abstract CoreModules FilterSupportedCoreModules(CoreModules module);
 
-		*/
+		public abstract string GetEnvironmentVariable(string envvarname);
+
+		public virtual bool IsRunningOnAOT()
+		{
+			return false;
+		}
 	}
 }

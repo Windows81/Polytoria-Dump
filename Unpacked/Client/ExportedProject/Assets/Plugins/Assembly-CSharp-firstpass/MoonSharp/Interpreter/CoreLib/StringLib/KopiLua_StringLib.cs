@@ -1,66 +1,213 @@
-using UnityEngine;
+using MoonSharp.Interpreter.Interop.LuaStateInterop;
 
 namespace MoonSharp.Interpreter.CoreLib.StringLib
 {
-	public class KopiLua_StringLib : MonoBehaviour
+	internal class KopiLua_StringLib : LuaBase
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public class MatchState
+		{
+			public class capture_
+			{
+				public CharPtr init;
 
-		1. No dll files were provided to AssetRipper.
+				public int len;
+			}
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public int matchdepth;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public CharPtr src_init;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public CharPtr src_end;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public LuaState L;
 
-		3. Assembly Reconstruction has not been implemented.
+			public int level;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			public capture_[] capture;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private class GMatchAuxData
+		{
+			public CharPtr S;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			public CharPtr P;
 
-		5. Script Content Level 0
+			public uint LS;
 
-			AssetRipper was set to not load any script information.
+			public uint POS;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public const int LUA_MAXCAPTURES = 32;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public const int CAP_UNFINISHED = -1;
 
-		7. An incorrect path was provided to AssetRipper.
+		public const int CAP_POSITION = -2;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public const int MAXCCALLS = 200;
 
-		*/
+		public const char L_ESC = '%';
+
+		public const string SPECIALS = "^$*+?.([%-";
+
+		public const int MAX_ITEM = 512;
+
+		public const string FLAGS = "-+ #0";
+
+		public static readonly int MAX_FORMAT;
+
+		private static int posrelat(int pos, uint len)
+		{
+			return 0;
+		}
+
+		private static int check_capture(MatchState ms, int l)
+		{
+			return 0;
+		}
+
+		private static int capture_to_close(MatchState ms)
+		{
+			return 0;
+		}
+
+		private static CharPtr classend(MatchState ms, CharPtr p)
+		{
+			return null;
+		}
+
+		private static int match_class(char c, char cl)
+		{
+			return 0;
+		}
+
+		private static int matchbracketclass(int c, CharPtr p, CharPtr ec)
+		{
+			return 0;
+		}
+
+		private static int singlematch(int c, CharPtr p, CharPtr ep)
+		{
+			return 0;
+		}
+
+		private static CharPtr matchbalance(MatchState ms, CharPtr s, CharPtr p)
+		{
+			return null;
+		}
+
+		private static CharPtr max_expand(MatchState ms, CharPtr s, CharPtr p, CharPtr ep)
+		{
+			return null;
+		}
+
+		private static CharPtr min_expand(MatchState ms, CharPtr s, CharPtr p, CharPtr ep)
+		{
+			return null;
+		}
+
+		private static CharPtr start_capture(MatchState ms, CharPtr s, CharPtr p, int what)
+		{
+			return null;
+		}
+
+		private static CharPtr end_capture(MatchState ms, CharPtr s, CharPtr p)
+		{
+			return null;
+		}
+
+		private static CharPtr match_capture(MatchState ms, CharPtr s, int l)
+		{
+			return null;
+		}
+
+		private static CharPtr match(MatchState ms, CharPtr s, CharPtr p)
+		{
+			return null;
+		}
+
+		private static CharPtr lmemfind(CharPtr s1, uint l1, CharPtr s2, uint l2)
+		{
+			return null;
+		}
+
+		private static void push_onecapture(MatchState ms, int i, CharPtr s, CharPtr e)
+		{
+		}
+
+		private static int push_captures(MatchState ms, CharPtr s, CharPtr e)
+		{
+			return 0;
+		}
+
+		private static int str_find_aux(LuaState L, int find)
+		{
+			return 0;
+		}
+
+		public static int str_find(LuaState L)
+		{
+			return 0;
+		}
+
+		public static int str_match(LuaState L)
+		{
+			return 0;
+		}
+
+		private static int gmatch_aux(LuaState L, GMatchAuxData auxdata)
+		{
+			return 0;
+		}
+
+		private static DynValue gmatch_aux_2(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return null;
+		}
+
+		public static int str_gmatch(LuaState L)
+		{
+			return 0;
+		}
+
+		private static int gfind_nodef(LuaState L)
+		{
+			return 0;
+		}
+
+		private static void add_s(MatchState ms, LuaLBuffer b, CharPtr s, CharPtr e)
+		{
+		}
+
+		private static void add_value(MatchState ms, LuaLBuffer b, CharPtr s, CharPtr e)
+		{
+		}
+
+		public static int str_gsub(LuaState L)
+		{
+			return 0;
+		}
+
+		private static void addquoted(LuaState L, LuaLBuffer b, int arg)
+		{
+		}
+
+		private static CharPtr scanformat(LuaState L, CharPtr strfrmt, CharPtr form)
+		{
+			return null;
+		}
+
+		private static void addintlen(CharPtr form)
+		{
+		}
+
+		public static int str_format(LuaState L)
+		{
+			return 0;
+		}
+
+		private static string PatchPattern(string charPtr)
+		{
+			return null;
+		}
 	}
 }

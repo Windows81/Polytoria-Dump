@@ -1,66 +1,331 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ObjectTransformGizmo : MonoBehaviour
+	[Serializable]
+	public class ObjectTransformGizmo : GizmoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public class ObjectRestrictions
+		{
+			private bool[] _moveAxesMask;
 
-		1. No dll files were provided to AssetRipper.
+			private bool[] _scaleAxesMask;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			private HashSet<int> _handleMask;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public bool CanMoveAlongAllAxes()
+			{
+				return false;
+			}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public bool CanScaleAlongAllAxes()
+			{
+				return false;
+			}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			public bool CanMoveAlongAxis(int axisIndex)
+			{
+				return false;
+			}
 
-		3. Assembly Reconstruction has not been implemented.
+			public bool CanScaleAlongAxis(int axisIndex)
+			{
+				return false;
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			public void SetCanMoveAlongAxis(int axisIndex, bool canMove)
+			{
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			public void SetCanScaleAlongAxis(int axisIndex, bool canScale)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			public bool IsAffectedByHandle(int handleId)
+			{
+				return false;
+			}
 
-		5. Script Content Level 0
+			public void SetIsAffectedByHandle(int handleId, bool isAffected)
+			{
+			}
 
-			AssetRipper was set to not load any script information.
+			public Vector3 AdjustMoveVector(Vector3 moveVector)
+			{
+				return default(Vector3);
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			public Vector3 AdjustScaleVector(Vector3 scaleVector)
+			{
+				return default(Vector3);
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[Flags]
+		public enum Channels
+		{
+			None = 0,
+			Position = 1,
+			Rotation = 2,
+			Scale = 4,
+			All = 7
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		private enum TargetObjectMode
+		{
+			Multiple = 0,
+			Single = 1
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private TargetObjectMode _targetObjectMode;
 
-		*/
+		private Channels _transformChannelFlags;
+
+		private IEnumerable<GameObject> _targetObjects;
+
+		private GameObject _targetPivotObject;
+
+		private List<LocalTransformSnapshot> _preTransformSnapshots;
+
+		private List<GameObject> _transformableParents;
+
+		private AABB _targetGroupAABBOnDragBegin;
+
+		private GizmoSpace _transformSpace;
+
+		private bool _isTransformSpacePermanent;
+
+		private GizmoObjectTransformPivot _transformPivot;
+
+		private bool _isTransformPivotPermanent;
+
+		private bool _scaleConstraintEnabled;
+
+		private Vector3 _minPositiveScale;
+
+		private Vector3 _customWorldPivot;
+
+		private Dictionary<GameObject, Vector3> _objectToCustomLocalPivot;
+
+		private Dictionary<GameObject, ObjectRestrictions> _objectToRestrictions;
+
+		[SerializeField]
+		private ObjectTransformGizmoSettings _settings;
+
+		private ObjectTransformGizmoSettings _sharedSettings;
+
+		public GizmoObjectTransformPivot TransformPivot => default(GizmoObjectTransformPivot);
+
+		public bool IsTransformPivotPermanent => false;
+
+		public GizmoSpace TransformSpace => default(GizmoSpace);
+
+		public bool IsTransformSpacePermanent => false;
+
+		public Channels TransformChannelFlags => default(Channels);
+
+		public bool CanAffectPosition => false;
+
+		public bool CanAffectRotation => false;
+
+		public bool CanAffectScale => false;
+
+		public Vector3 CustomWorldPivot => default(Vector3);
+
+		public ObjectTransformGizmoSettings Settings => null;
+
+		public ObjectTransformGizmoSettings SharedSettings
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
+
+		public bool ScaleConstraintEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector3 MinPositiveScale
+		{
+			get
+			{
+				return default(Vector3);
+			}
+			set
+			{
+			}
+		}
+
+		public override void OnAttached()
+		{
+		}
+
+		public override void OnDetached()
+		{
+		}
+
+		public void MakeTransformSpacePermanent()
+		{
+		}
+
+		public void MakeTransformPivotPermanent()
+		{
+		}
+
+		public bool ContainsRestrictionsForObject(GameObject targetObject)
+		{
+			return false;
+		}
+
+		public void RegisterObjectRestrictions(GameObject targetObject, ObjectRestrictions restrictions)
+		{
+		}
+
+		public void RegisterObjectRestrictions(List<GameObject> targetObjects, ObjectRestrictions restrictions)
+		{
+		}
+
+		public void UnregisterObjectRestrictions(GameObject targetObject)
+		{
+		}
+
+		public ObjectRestrictions GetObjectRestrictions(GameObject targetObject)
+		{
+			return null;
+		}
+
+		public void SetTransformChannelFlags(Channels flags)
+		{
+		}
+
+		public void SetCanAffectPosition(bool affectPosition)
+		{
+		}
+
+		public void SetCanAffectRotation(bool affectRotation)
+		{
+		}
+
+		public void SetCanAffectScale(bool affectScale)
+		{
+		}
+
+		public void SetTargetPivotObject(GameObject targetPivotObject)
+		{
+		}
+
+		public void SetTargetObjects(IEnumerable<GameObject> targetObjects)
+		{
+		}
+
+		public void SetTargetObject(GameObject targetObject)
+		{
+		}
+
+		public void SetTransformPivot(GizmoObjectTransformPivot transformPivot)
+		{
+		}
+
+		public void SetCustomWorldPivot(Vector3 pivot)
+		{
+		}
+
+		public void SetObjectCustomLocalPivot(GameObject gameObj, Vector3 pivot)
+		{
+		}
+
+		public Vector3 GetObjectCustomLocalPivot(GameObject gameObj)
+		{
+			return default(Vector3);
+		}
+
+		public void SetTransformSpace(GizmoSpace transformSpace)
+		{
+		}
+
+		public AABB GetTargetObjectGroupWorldAABB()
+		{
+			return default(AABB);
+		}
+
+		public int GetNumTransformableParentObjects()
+		{
+			return 0;
+		}
+
+		public void RefreshPosition()
+		{
+		}
+
+		public void RefreshRotation()
+		{
+		}
+
+		public void RefreshPositionAndRotation()
+		{
+		}
+
+		public override void OnGizmoDragBegin(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragUpdate(int handleId)
+		{
+		}
+
+		public override void OnGizmoDragEnd(int handleId)
+		{
+		}
+
+		private List<GameObject> GetTransformableParentObjects()
+		{
+			return null;
+		}
+
+		private void OnUndoRedoEnd(IUndoRedoAction action)
+		{
+		}
+
+		private void MoveObjects(Vector3 moveVector)
+		{
+		}
+
+		private void MoveObject(GameObject gameObject, Vector3 moveVector)
+		{
+		}
+
+		private void RotateObjects(Quaternion rotation)
+		{
+		}
+
+		private void RotateObject(GameObject gameObject, Quaternion rotation, Vector3 rotationPivot)
+		{
+		}
+
+		private void ScaleObjects()
+		{
+		}
+
+		private void ScaleObject(GameObject gameObject, Vector3 scalePivot)
+		{
+		}
+
+		private ObjectBounds.QueryConfig GetObjectBoundsQConfig()
+		{
+			return default(ObjectBounds.QueryConfig);
+		}
 	}
 }

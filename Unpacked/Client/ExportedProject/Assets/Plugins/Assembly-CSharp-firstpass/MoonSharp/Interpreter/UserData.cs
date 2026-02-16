@@ -1,66 +1,182 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using MoonSharp.Interpreter.Interop;
+using MoonSharp.Interpreter.Interop.BasicDescriptors;
+using MoonSharp.Interpreter.Interop.RegistrationPolicies;
 
 namespace MoonSharp.Interpreter
 {
-	public class UserData : MonoBehaviour
+	public class UserData : RefIdObject
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Table m_MetaTable;
 
-		1. No dll files were provided to AssetRipper.
+		public DynValue UserValue { get; set; }
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public object Object { get; private set; }
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public IUserDataDescriptor Descriptor { get; private set; }
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public Table MetaTable
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public static IRegistrationPolicy RegistrationPolicy
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public static InteropAccessMode DefaultAccessMode
+		{
+			get
+			{
+				return default(InteropAccessMode);
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private UserData()
+		{
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		static UserData()
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public static IUserDataDescriptor RegisterType<T>(InteropAccessMode accessMode = InteropAccessMode.Default, string friendlyName = null)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		public static IUserDataDescriptor RegisterType(Type type, InteropAccessMode accessMode = InteropAccessMode.Default, string friendlyName = null)
+		{
+			return null;
+		}
 
-			AssetRipper was set to not load any script information.
+		public static IUserDataDescriptor RegisterProxyType(IProxyFactory proxyFactory, InteropAccessMode accessMode = InteropAccessMode.Default, string friendlyName = null)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public static IUserDataDescriptor RegisterProxyType<TProxy, TTarget>(Func<TTarget, TProxy> wrapDelegate, InteropAccessMode accessMode = InteropAccessMode.Default, string friendlyName = null) where TProxy : class where TTarget : class
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public static IUserDataDescriptor RegisterType<T>(IUserDataDescriptor customDescriptor)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public static IUserDataDescriptor RegisterType(Type type, IUserDataDescriptor customDescriptor)
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public static IUserDataDescriptor RegisterType(IUserDataDescriptor customDescriptor)
+		{
+			return null;
+		}
 
-		*/
+		public static void RegisterAssembly(Assembly asm = null, bool includeExtensionTypes = false)
+		{
+		}
+
+		public static bool IsTypeRegistered(Type t)
+		{
+			return false;
+		}
+
+		public static bool IsTypeRegistered<T>()
+		{
+			return false;
+		}
+
+		public static void UnregisterType<T>(bool deleteHistory = false)
+		{
+		}
+
+		public static void UnregisterType(Type t, bool deleteHistory = false)
+		{
+		}
+
+		public static DynValue Create(object o, IUserDataDescriptor descr)
+		{
+			return null;
+		}
+
+		public static DynValue Create(object o)
+		{
+			return null;
+		}
+
+		public static DynValue CreateStatic(IUserDataDescriptor descr)
+		{
+			return null;
+		}
+
+		public static DynValue CreateStatic(Type t)
+		{
+			return null;
+		}
+
+		public static DynValue CreateStatic<T>()
+		{
+			return null;
+		}
+
+		public static void RegisterExtensionType(Type type, InteropAccessMode mode = InteropAccessMode.Default)
+		{
+		}
+
+		public static List<IOverloadableMemberDescriptor> GetExtensionMethodsByNameAndType(string name, Type extendedType)
+		{
+			return null;
+		}
+
+		public static int GetExtensionMethodsChangeVersion()
+		{
+			return 0;
+		}
+
+		public static IUserDataDescriptor GetDescriptorForType<T>(bool searchInterfaces)
+		{
+			return null;
+		}
+
+		public static IUserDataDescriptor GetDescriptorForType(Type type, bool searchInterfaces)
+		{
+			return null;
+		}
+
+		public static IUserDataDescriptor GetDescriptorForObject(object o)
+		{
+			return null;
+		}
+
+		public static Table GetDescriptionOfRegisteredTypes(bool useHistoricalData = false)
+		{
+			return null;
+		}
+
+		public static IEnumerable<Type> GetRegisteredTypes(bool useHistoricalData = false)
+		{
+			return null;
+		}
 	}
 }

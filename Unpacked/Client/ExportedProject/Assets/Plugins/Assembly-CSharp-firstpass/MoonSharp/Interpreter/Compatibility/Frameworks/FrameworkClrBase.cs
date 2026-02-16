@@ -1,66 +1,102 @@
-using UnityEngine;
+using System;
+using System.Reflection;
 
 namespace MoonSharp.Interpreter.Compatibility.Frameworks
 {
-	public class FrameworkClrBase : MonoBehaviour
+	internal abstract class FrameworkClrBase : FrameworkReflectionBase
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private BindingFlags BINDINGFLAGS_MEMBER;
 
-		1. No dll files were provided to AssetRipper.
+		private BindingFlags BINDINGFLAGS_INNERCLASS;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public override MethodInfo GetAddMethod(EventInfo ei)
+		{
+			return null;
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public override ConstructorInfo[] GetConstructors(Type type)
+		{
+			return null;
+		}
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public override EventInfo[] GetEvents(Type type)
+		{
+			return null;
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public override FieldInfo[] GetFields(Type type)
+		{
+			return null;
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public override Type[] GetGenericArguments(Type type)
+		{
+			return null;
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public override MethodInfo GetGetMethod(PropertyInfo pi)
+		{
+			return null;
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public override Type[] GetInterfaces(Type t)
+		{
+			return null;
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public override MethodInfo GetMethod(Type type, string name)
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		public override MethodInfo[] GetMethods(Type type)
+		{
+			return null;
+		}
 
-			AssetRipper was set to not load any script information.
+		public override Type[] GetNestedTypes(Type type)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public override PropertyInfo[] GetProperties(Type type)
+		{
+			return null;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public override PropertyInfo GetProperty(Type type, string name)
+		{
+			return null;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public override MethodInfo GetRemoveMethod(EventInfo ei)
+		{
+			return null;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public override MethodInfo GetSetMethod(PropertyInfo pi)
+		{
+			return null;
+		}
 
-		*/
+		public override bool IsAssignableFrom(Type current, Type toCompare)
+		{
+			return false;
+		}
+
+		public override bool IsInstanceOfType(Type t, object o)
+		{
+			return false;
+		}
+
+		public override MethodInfo GetMethod(Type resourcesType, string name, Type[] types)
+		{
+			return null;
+		}
+
+		public override Type[] GetAssemblyTypes(Assembly asm)
+		{
+			return null;
+		}
 	}
 }

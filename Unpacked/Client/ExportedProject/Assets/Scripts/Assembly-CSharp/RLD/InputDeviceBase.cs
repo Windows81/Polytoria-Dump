@@ -1,66 +1,98 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class InputDeviceBase : MonoBehaviour
+	public abstract class InputDeviceBase : IInputDevice
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private float _doubleTapDelay;
 
-		1. No dll files were provided to AssetRipper.
+		private float _lastTapTime;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private bool _didDoubleTap;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private int _maxNumDeltaCaptures;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private InputDeviceDeltaCapture[] _deltaCaptures;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public bool DidDoubleTap => false;
 
-		3. Assembly Reconstruction has not been implemented.
+		public float DoubleTapDelay
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public abstract InputDeviceType DeviceType { get; }
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public event InputDeviceDoubleTapHandler DoubleTap
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public InputDeviceBase()
+		{
+		}
 
-		5. Script Content Level 0
+		public void SetMaxNumDeltaCaptures(int maxNumDeltaCaptures)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public bool CreateDeltaCapture(Vector3 deltaOrigin, out int deltaCaptureId)
+		{
+			deltaCaptureId = default(int);
+			return false;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public void RemoveDeltaCapture(int deltaCaptureId)
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public Vector3 GetCaptureDelta(int deltaCaptureId)
+		{
+			return default(Vector3);
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public abstract Vector3 GetFrameDelta();
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public abstract Ray GetRay(Camera camera);
 
-		*/
+		public abstract Vector3 GetPositionYAxisUp();
+
+		public abstract bool HasPointer();
+
+		public abstract bool IsButtonPressed(int buttonIndex);
+
+		public abstract bool WasButtonPressedInCurrentFrame(int buttonIndex);
+
+		public abstract bool WasButtonReleasedInCurrentFrame(int buttonIndex);
+
+		public abstract bool WasMoved();
+
+		public void Update()
+		{
+		}
+
+		protected abstract void UpateFrameDeltas();
+
+		private void UpdateDeltaCaptures()
+		{
+		}
+
+		private void DetectAndHandleDoubleTap()
+		{
+		}
 	}
 }

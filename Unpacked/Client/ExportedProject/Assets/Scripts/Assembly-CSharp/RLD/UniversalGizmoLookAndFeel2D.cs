@@ -1,66 +1,253 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class UniversalGizmoLookAndFeel2D : MonoBehaviour
+	[Serializable]
+	public class UniversalGizmoLookAndFeel2D : Settings
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private UniversalGizmoSettingsCategory _displayCategory;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoPlaneSlider2DLookAndFeel _mvDblSliderLookAndFeel;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private GizmoLineSlider2DLookAndFeel[] _mvSglSliderLookAndFeel;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private bool _isMvDblSliderVisible;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private bool[] _mvSglSliderVis;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private bool[] _mvSglSliderCapVis;
 
-		3. Assembly Reconstruction has not been implemented.
+		public float MvScale => 0f;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public float MvSliderLength => 0f;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public float MvBoxSliderThickness => 0f;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public float MvSliderArrowCapHeight => 0f;
 
-		5. Script Content Level 0
+		public float MvSliderArrowCapBaseRadius => 0f;
 
-			AssetRipper was set to not load any script information.
+		public float MvSliderQuadCapWidth => 0f;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public float MvSliderQuadCapHeight => 0f;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public float MvSliderCircleCapRadius => 0f;
 
-		7. An incorrect path was provided to AssetRipper.
+		public float MvDblSliderQuadWidth => 0f;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float MvDblSliderQuadHeight => 0f;
 
-		*/
+		public float MvDblSliderCircleRadius => 0f;
+
+		public Color MvXColor => default(Color);
+
+		public Color MvYColor => default(Color);
+
+		public Color MvXBorderColor => default(Color);
+
+		public Color MvYBorderColor => default(Color);
+
+		public Color MvDblSliderColor => default(Color);
+
+		public Color MvDblSliderBorderColor => default(Color);
+
+		public Color MvDblSliderHoveredColor => default(Color);
+
+		public Color MvDblSliderHoveredBorderColor => default(Color);
+
+		public bool IsMvDblSliderVisible => false;
+
+		public Color MvSliderHoveredColor => default(Color);
+
+		public Color MvSliderHoveredBorderColor => default(Color);
+
+		public GizmoFillMode2D MvSliderFillMode => default(GizmoFillMode2D);
+
+		public GizmoFillMode2D MvSliderCapFillMode => default(GizmoFillMode2D);
+
+		public GizmoFillMode2D MvDblSliderFillMode => default(GizmoFillMode2D);
+
+		public GizmoCap2DType MvSliderCapType => default(GizmoCap2DType);
+
+		public GizmoLine2DType MvSliderLineType => default(GizmoLine2DType);
+
+		public GizmoPlane2DType MvDblSliderPlaneType => default(GizmoPlane2DType);
+
+		public UniversalGizmoSettingsCategory DisplayCategory
+		{
+			get
+			{
+				return default(UniversalGizmoSettingsCategory);
+			}
+			set
+			{
+			}
+		}
+
+		public void SetMvDblSliderVisible(bool isVisible)
+		{
+		}
+
+		public bool IsMvSliderVisible(int axisIndex, AxisSign axisSign)
+		{
+			return false;
+		}
+
+		public bool IsMvPositiveSliderVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public bool IsMvNegativeSliderVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public void SetMvSliderVisible(int axisIndex, AxisSign axisSign, bool isVisible)
+		{
+		}
+
+		public bool IsMvSliderCapVisible(int axisIndex, AxisSign axisSign)
+		{
+			return false;
+		}
+
+		public bool IsMvPositiveSliderCapVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public bool IsMvNegativeSliderCapVisible(int axisIndex)
+		{
+			return false;
+		}
+
+		public void SetMvSliderCapVisible(int axisIndex, AxisSign axisSign, bool isVisible)
+		{
+		}
+
+		public void SetMvAxisColor(int axisIndex, Color color)
+		{
+		}
+
+		public void SetMvAxisBorderColor(int axisIndex, Color color)
+		{
+		}
+
+		public void SetMvSliderHoveredFillColor(Color color)
+		{
+		}
+
+		public void SetMvSliderHoveredBorderColor(Color color)
+		{
+		}
+
+		public void SetMvSliderFillMode(GizmoFillMode2D fillMode)
+		{
+		}
+
+		public void SetMvDblSliderFillMode(GizmoFillMode2D fillMode)
+		{
+		}
+
+		public void SetMvSliderCapFillMode(GizmoFillMode2D fillMode)
+		{
+		}
+
+		public void SetMvSliderLineType(GizmoLine2DType lineType)
+		{
+		}
+
+		public void SetMvBoxSliderThickness(float thickness)
+		{
+		}
+
+		public void SetMvSliderLength(float length)
+		{
+		}
+
+		public void SetMvSliderCapType(GizmoCap2DType capType)
+		{
+		}
+
+		public void SetMvSliderArrowCapBaseRadius(float radius)
+		{
+		}
+
+		public void SetMvSliderArrowCapHeight(float height)
+		{
+		}
+
+		public void SetMvSliderQuadCapWidth(float width)
+		{
+		}
+
+		public void SetMvSliderQuadCapHeight(float height)
+		{
+		}
+
+		public void SetMvSliderCircleCapRadius(float radius)
+		{
+		}
+
+		public void SetMvDblSliderPlaneType(GizmoPlane2DType sliderType)
+		{
+		}
+
+		public void SetMvDblSliderQuadWidth(float width)
+		{
+		}
+
+		public void SetMvDblSliderQuadHeight(float height)
+		{
+		}
+
+		public void SetMvDblSliderCircleRadius(float radius)
+		{
+		}
+
+		public void SetMvDblSliderColor(Color color)
+		{
+		}
+
+		public void SetMvDblSliderBorderColor(Color color)
+		{
+		}
+
+		public void SetMvDblSliderHoveredColor(Color color)
+		{
+		}
+
+		public void SetMvDblSliderHoveredBorderColor(Color color)
+		{
+		}
+
+		public void SetMvScale(float scale)
+		{
+		}
+
+		public void ConnectMvSliderLookAndFeel(GizmoLineSlider2D slider, int axisIndex, AxisSign axisSign)
+		{
+		}
+
+		public void ConnectMvDblSliderLookAndFeel(GizmoPlaneSlider2D slider)
+		{
+		}
+
+		public void Inherit(MoveGizmoLookAndFeel2D lookAndFeel)
+		{
+		}
+
+		private GizmoLineSlider2DLookAndFeel GetMvSliderLookAndFeel(int axisIndex, AxisSign axisSign)
+		{
+			return null;
+		}
 	}
 }

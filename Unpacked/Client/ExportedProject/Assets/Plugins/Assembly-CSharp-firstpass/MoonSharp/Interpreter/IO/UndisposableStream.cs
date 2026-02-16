@@ -1,66 +1,130 @@
-using UnityEngine;
+using System;
+using System.IO;
 
 namespace MoonSharp.Interpreter.IO
 {
-	public class UndisposableStream : MonoBehaviour
+	public class UndisposableStream : Stream
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Stream m_Stream;
 
-		1. No dll files were provided to AssetRipper.
+		public override bool CanRead => false;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		public override bool CanSeek => false;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		public override bool CanWrite => false;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		public override long Length => 0L;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public override long Position
+		{
+			get
+			{
+				return 0L;
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public override bool CanTimeout => false;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		public override int ReadTimeout
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public override int WriteTimeout
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public UndisposableStream(Stream stream)
+		{
+		}
 
-		5. Script Content Level 0
+		protected override void Dispose(bool disposing)
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		public override void Close()
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public override void Flush()
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public override int Read(byte[] buffer, int offset, int count)
+		{
+			return 0;
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public override long Seek(long offset, SeekOrigin origin)
+		{
+			return 0L;
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public override void SetLength(long value)
+		{
+		}
 
-		*/
+		public override void Write(byte[] buffer, int offset, int count)
+		{
+		}
+
+		public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+		{
+			return null;
+		}
+
+		public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+		{
+			return null;
+		}
+
+		public override void EndWrite(IAsyncResult asyncResult)
+		{
+		}
+
+		public override int EndRead(IAsyncResult asyncResult)
+		{
+			return 0;
+		}
+
+		public override bool Equals(object obj)
+		{
+			return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return 0;
+		}
+
+		public override int ReadByte()
+		{
+			return 0;
+		}
+
+		public override string ToString()
+		{
+			return null;
+		}
+
+		public override void WriteByte(byte value)
+		{
+		}
 	}
 }

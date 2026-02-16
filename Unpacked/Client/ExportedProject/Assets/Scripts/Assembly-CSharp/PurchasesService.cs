@@ -1,63 +1,300 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using Mirror;
+using MoonSharp.Interpreter;
+using Polytoria.Datamodel;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
-public class PurchasesService : MonoBehaviour
+public class PurchasesService : NetworkBehaviour
 {
-	/*
-	Dummy class. This could have happened for several reasons:
+	public struct PurchaseRequest
+	{
+		public Player player;
 
-	1. No dll files were provided to AssetRipper.
+		public int assetID;
 
-		Unity asset bundles and serialized files do not contain script information to decompile.
-			* For Mono games, that information is contained in .NET dll files.
-			* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-			
-		AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-		A unexpected file structure could cause AssetRipper to not find the required files.
+		public int expectedPrice;
 
-	2. Incorrect dll files were provided to AssetRipper.
+		public DynValue callback;
 
-		Any of the following could cause this:
-			* Il2CppInterop assemblies
-			* Deobfuscated assemblies
-			* Older assemblies (compared to when the bundle was built)
-			* Newer assemblies (compared to when the bundle was built)
+		public DateTime timestamp;
+	}
 
-		Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+	[CompilerGenerated]
+	private sealed class _003C_003Ec__DisplayClass13_0
+	{
+		public int assetID;
 
-	3. Assembly Reconstruction has not been implemented.
+		public string refId;
 
-		Asset bundles contain a small amount of information about the script content.
-		This information can be used to recover the serializable fields of a script.
+		internal void _003CShowPurchaseModal_003Eb__0()
+		{
+		}
+	}
 
-		See: https://github.com/AssetRipper/AssetRipper/issues/655
+	[CompilerGenerated]
+	private sealed class _003CDoProcessPurchase_003Ed__18 : IEnumerator<object>, IEnumerator, IDisposable
+	{
+		private int _003C_003E1__state;
 
-	4. This script is unnecessary.
+		private object _003C_003E2__current;
 
-		If this script has no asset or script references, it can be deleted.
-		Be sure to resolve any compile errors before deleting because they can hide references.
+		public PurchaseRequest request;
 
-	5. Script Content Level 0
+		public PurchasesService _003C_003E4__this;
 
-		AssetRipper was set to not load any script information.
+		private bool _003Csuccess_003E5__2;
 
-	6. Cpp2IL failed to decompile Il2Cpp data
+		private string _003Cmessage_003E5__3;
 
-		If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-		This is an upstream problem, and the AssetRipper developer has very little control over it.
-		Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private UnityWebRequest _003Cuwr_003E5__4;
 
-	7. An incorrect path was provided to AssetRipper.
+		object IEnumerator<object>.Current
+		{
+			[DebuggerHidden]
+			get
+			{
+				return null;
+			}
+		}
 
-		This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-		AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-		An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-		Generally, AssetRipper expects users to provide the root folder of the game. For example:
-			* Windows: the folder containing the game's .exe file
-			* Mac: the .app file/folder
-			* Linux: the folder containing the game's executable file
-			* Android: the apk file
-			* iOS: the ipa file
-			* Switch: the folder containing exefs and romfs
+		object IEnumerator.Current
+		{
+			[DebuggerHidden]
+			get
+			{
+				return null;
+			}
+		}
 
-	*/
+		[DebuggerHidden]
+		public _003CDoProcessPurchase_003Ed__18(int _003C_003E1__state)
+		{
+		}
+
+		[DebuggerHidden]
+		void IDisposable.Dispose()
+		{
+		}
+
+		private bool MoveNext()
+		{
+			return false;
+		}
+
+		bool IEnumerator.MoveNext()
+		{
+			//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+			return this.MoveNext();
+		}
+
+		private void _003C_003Em__Finally1()
+		{
+		}
+
+		[DebuggerHidden]
+		void IEnumerator.Reset()
+		{
+		}
+	}
+
+	[CompilerGenerated]
+	private sealed class _003CShowPurchaseModal_003Ed__13 : IEnumerator<object>, IEnumerator, IDisposable
+	{
+		private int _003C_003E1__state;
+
+		private object _003C_003E2__current;
+
+		public int assetID;
+
+		public string refId;
+
+		private _003C_003Ec__DisplayClass13_0 _003C_003E8__1;
+
+		public PurchasesService _003C_003E4__this;
+
+		private UnityWebRequest _003Cwww_003E5__2;
+
+		private string _003CassetName_003E5__3;
+
+		private int _003Cprice_003E5__4;
+
+		private UnityWebRequest _003CthumbnailRequest_003E5__5;
+
+		private Button _003CpurchaseButton_003E5__6;
+
+		object IEnumerator<object>.Current
+		{
+			[DebuggerHidden]
+			get
+			{
+				return null;
+			}
+		}
+
+		object IEnumerator.Current
+		{
+			[DebuggerHidden]
+			get
+			{
+				return null;
+			}
+		}
+
+		[DebuggerHidden]
+		public _003CShowPurchaseModal_003Ed__13(int _003C_003E1__state)
+		{
+		}
+
+		[DebuggerHidden]
+		void IDisposable.Dispose()
+		{
+		}
+
+		private bool MoveNext()
+		{
+			return false;
+		}
+
+		bool IEnumerator.MoveNext()
+		{
+			//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+			return this.MoveNext();
+		}
+
+		private void _003C_003Em__Finally1()
+		{
+		}
+
+		private void _003C_003Em__Finally2()
+		{
+		}
+
+		[DebuggerHidden]
+		void IEnumerator.Reset()
+		{
+		}
+	}
+
+	[SerializeField]
+	private RectTransform purchaseModalPrefab;
+
+	[SerializeField]
+	private RectTransform purchaseResultPrefab;
+
+	private string currentRefId;
+
+	private Dictionary<string, PurchaseRequest> pendingPurchases;
+
+	private bool readyToPurchase;
+
+	private int currentExpectedPrice;
+
+	public static PurchasesService Instance { get; private set; }
+
+	private void Awake()
+	{
+	}
+
+	public void Prompt(Player player, int assetID, DynValue callback)
+	{
+	}
+
+	[TargetRpc]
+	private void DispatchPurchase(NetworkConnection target, int assetID, string refId)
+	{
+	}
+
+	[IteratorStateMachine(typeof(_003CShowPurchaseModal_003Ed__13))]
+	private IEnumerator ShowPurchaseModal(int assetID, string refId)
+	{
+		return null;
+	}
+
+	public void CancelButton()
+	{
+	}
+
+	public void PurchaseButton()
+	{
+	}
+
+	[Command(requiresAuthority = false)]
+	private void CmdProcessPurchase(string refId, int expectedPrice)
+	{
+	}
+
+	[Command(requiresAuthority = false)]
+	private void CmdCancelPurchase(string refId)
+	{
+	}
+
+	[IteratorStateMachine(typeof(_003CDoProcessPurchase_003Ed__18))]
+	private IEnumerator DoProcessPurchase(PurchaseRequest request)
+	{
+		return null;
+	}
+
+	[TargetRpc]
+	private void TargetPurchaseResult(NetworkConnection target, bool success, string message)
+	{
+	}
+
+	private void ShowPurchaseResultUI(bool success, string message)
+	{
+	}
+
+	private void Update()
+	{
+	}
+
+	private void CleanupExpiredPurchases()
+	{
+	}
+
+	public override bool Weaved()
+	{
+		return false;
+	}
+
+	protected void UserCode_DispatchPurchase__NetworkConnection__Int32__String(NetworkConnection target, int assetID, string refId)
+	{
+	}
+
+	protected static void InvokeUserCode_DispatchPurchase__NetworkConnection__Int32__String(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+	{
+	}
+
+	protected void UserCode_CmdProcessPurchase__String__Int32(string refId, int expectedPrice)
+	{
+	}
+
+	protected static void InvokeUserCode_CmdProcessPurchase__String__Int32(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+	{
+	}
+
+	protected void UserCode_CmdCancelPurchase__String(string refId)
+	{
+	}
+
+	protected static void InvokeUserCode_CmdCancelPurchase__String(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+	{
+	}
+
+	protected void UserCode_TargetPurchaseResult__NetworkConnection__Boolean__String(NetworkConnection target, bool success, string message)
+	{
+	}
+
+	protected static void InvokeUserCode_TargetPurchaseResult__NetworkConnection__Boolean__String(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+	{
+	}
+
+	static PurchasesService()
+	{
+	}
 }

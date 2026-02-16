@@ -1,66 +1,118 @@
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ObjectGridSnapSession : MonoBehaviour
+	public class ObjectGridSnapSession
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private enum State
+		{
+			Inactive = 0,
+			SelectPivot = 1,
+			Snap = 2
+		}
 
-		1. No dll files were provided to AssetRipper.
+		private List<GameObject> _targetParents;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private List<GameObject> _targetObjects;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private List<LocalTransformSnapshot> _preTargetTransformSnapshots;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Vector3 _snapPivotPoint;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private State _state;
 
-		3. Assembly Reconstruction has not been implemented.
+		private ObjectGridSnapHotkeys _sharedHotkeys;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private ObjectGridSnapLookAndFeel _sharedLookAndFeel;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public bool IsActive => false;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public ObjectGridSnapLookAndFeel SharedLookAndFeel
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		public ObjectGridSnapHotkeys SharedHotkeys
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public event ObjectGridSnapSessionBeginHandler SessionBegin
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public event ObjectGridSnapSessionEndHandler SessionEnd
+		{
+			[CompilerGenerated]
+			add
+			{
+			}
+			[CompilerGenerated]
+			remove
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public void Render(Camera renderCamera)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public void Update(IEnumerable<GameObject> targetObjects)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public void End()
+		{
+		}
 
-		*/
+		private bool Begin(IEnumerable<GameObject> targetObjects)
+		{
+			return false;
+		}
+
+		private bool IdentifyTargetParents(IEnumerable<GameObject> targetObjects)
+		{
+			return false;
+		}
+
+		private bool IdentifyTargetObjects(IEnumerable<GameObject> targetObjects)
+		{
+			return false;
+		}
+
+		private void SelectPivot()
+		{
+		}
+
+		private ObjectBounds.QueryConfig GetObjectBoundsQConfig()
+		{
+			return default(ObjectBounds.QueryConfig);
+		}
+
+		private void Snap()
+		{
+		}
 	}
 }

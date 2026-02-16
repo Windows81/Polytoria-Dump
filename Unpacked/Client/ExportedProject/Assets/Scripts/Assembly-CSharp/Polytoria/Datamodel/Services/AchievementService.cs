@@ -1,66 +1,178 @@
-using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using Mirror;
+using MoonSharp.Interpreter;
+using UnityEngine.Networking;
 
 namespace Polytoria.Datamodel.Services
 {
-	public class AchievementService : MonoBehaviour
+	public class AchievementService : NetworkBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CDoAward_003Ed__11 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public int achievementID;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public int userID;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			public DynValue callback;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private UnityWebRequest _003Cuwr_003E5__2;
 
-		3. Assembly Reconstruction has not been implemented.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[DebuggerHidden]
+			public _003CDoAward_003Ed__11(int _003C_003E1__state)
+			{
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-		5. Script Content Level 0
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			AssetRipper was set to not load any script information.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		[CompilerGenerated]
+		private sealed class _003CDoHasAchievement_003Ed__13 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		7. An incorrect path was provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			public int userID;
 
-		*/
+			public int achievementID;
+
+			public DynValue callback;
+
+			private UnityWebRequest _003Cuwr_003E5__2;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CDoHasAchievement_003Ed__13(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		public int MaxRequestsPerMinute;
+
+		public int RequestsPerPlayerModifier;
+
+		private int requestsThisMinute;
+
+		private int currentMinute;
+
+		public static AchievementService Instance { get; private set; }
+
+		private void Awake()
+		{
+		}
+
+		public bool UseRequest()
+		{
+			return false;
+		}
+
+		public void Award(int userID, int achievementID, DynValue callback)
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CDoAward_003Ed__11))]
+		private IEnumerator DoAward(int userID, int achievementID, DynValue callback)
+		{
+			return null;
+		}
+
+		public void HasAchievement(int userID, int achievementID, DynValue callback)
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CDoHasAchievement_003Ed__13))]
+		private IEnumerator DoHasAchievement(int userID, int achievementID, DynValue callback)
+		{
+			return null;
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
 	}
 }

@@ -1,66 +1,171 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLD
 {
-	public class ArcShape2D : MonoBehaviour
+	public class ArcShape2D : Shape2D
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		public enum BorderRenderFlags
+		{
+			None = 0,
+			ExtremitiesBorder = 1,
+			ArcBorder = 2,
+			All = 3
+		}
 
-		1. No dll files were provided to AssetRipper.
+		public class BorderRenderDescriptor
+		{
+			private BorderRenderFlags _borderFlags;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public BorderRenderFlags BorderFlags
+			{
+				get
+				{
+					return default(BorderRenderFlags);
+				}
+				set
+				{
+				}
+			}
+		}
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private BorderRenderDescriptor _borderRenderDesc;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Rect _rect;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private bool _forceShortestArc;
 
-		3. Assembly Reconstruction has not been implemented.
+		private float _radius;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private Vector2 _origin;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private Vector2 _startPoint;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private Vector2 _endPoint;
 
-		5. Script Content Level 0
+		private List<Vector2> _borderPoints;
 
-			AssetRipper was set to not load any script information.
+		private float _degreeAngleFromStart;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private int _numBorderPoints;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private bool _areBorderPointsDirty;
 
-		7. An incorrect path was provided to AssetRipper.
+		private ArcEpsilon _epsilon;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float Radius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public bool ForceShortestArc
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public float DegreeAngleFromStart
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float AbsDegreeAngleFromStart => 0f;
+
+		public Vector2 Origin
+		{
+			get
+			{
+				return default(Vector2);
+			}
+			set
+			{
+			}
+		}
+
+		public int NumBorderPoints
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public Vector2 StartPoint => default(Vector2);
+
+		public Vector2 EndPoint => default(Vector2);
+
+		public ArcEpsilon Epsilon
+		{
+			get
+			{
+				return default(ArcEpsilon);
+			}
+			set
+			{
+			}
+		}
+
+		public float AreaEps
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public BorderRenderDescriptor BorderRenderDesc => null;
+
+		public override void RenderArea(Camera camera)
+		{
+		}
+
+		public override void RenderBorder(Camera camera)
+		{
+		}
+
+		public void SetArcData(Vector2 startPoint, float radius)
+		{
+		}
+
+		public override Rect GetEncapsulatingRect()
+		{
+			return default(Rect);
+		}
+
+		public override bool ContainsPoint(Vector2 point)
+		{
+			return false;
+		}
+
+		private void OnBorderPointsFoundDirty()
+		{
+		}
+
+		private void CalculateEndPoint()
+		{
+		}
 	}
 }

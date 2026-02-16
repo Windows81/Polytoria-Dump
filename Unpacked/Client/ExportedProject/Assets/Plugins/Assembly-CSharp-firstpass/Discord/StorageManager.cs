@@ -1,66 +1,171 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Discord
 {
-	public class StorageManager : MonoBehaviour
+	public class StorageManager
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		internal struct FFIEvents
+		{
+		}
 
-		1. No dll files were provided to AssetRipper.
+		internal struct FFIMethods
+		{
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result ReadMethod(IntPtr methodsPtr, string name, byte[] data, int dataLen, ref uint read);
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ReadAsyncCallback(IntPtr ptr, Result result, IntPtr dataPtr, int dataLen);
 
-		2. Incorrect dll files were provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ReadAsyncMethod(IntPtr methodsPtr, string name, IntPtr callbackData, ReadAsyncCallback callback);
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ReadAsyncPartialCallback(IntPtr ptr, Result result, IntPtr dataPtr, int dataLen);
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void ReadAsyncPartialMethod(IntPtr methodsPtr, string name, ulong offset, ulong length, IntPtr callbackData, ReadAsyncPartialCallback callback);
 
-		3. Assembly Reconstruction has not been implemented.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result WriteMethod(IntPtr methodsPtr, string name, byte[] data, int dataLen);
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void WriteAsyncCallback(IntPtr ptr, Result result);
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void WriteAsyncMethod(IntPtr methodsPtr, string name, byte[] data, int dataLen, IntPtr callbackData, WriteAsyncCallback callback);
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result DeleteMethod(IntPtr methodsPtr, string name);
 
-		5. Script Content Level 0
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result ExistsMethod(IntPtr methodsPtr, string name, ref bool exists);
 
-			AssetRipper was set to not load any script information.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate void CountMethod(IntPtr methodsPtr, ref int count);
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result StatMethod(IntPtr methodsPtr, string name, ref FileStat stat);
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result StatAtMethod(IntPtr methodsPtr, int index, ref FileStat stat);
 
-		7. An incorrect path was provided to AssetRipper.
+			[UnmanagedFunctionPointer(CallingConvention.Winapi)]
+			internal delegate Result GetPathMethod(IntPtr methodsPtr, StringBuilder path);
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			internal ReadMethod Read;
 
-		*/
+			internal ReadAsyncMethod ReadAsync;
+
+			internal ReadAsyncPartialMethod ReadAsyncPartial;
+
+			internal WriteMethod Write;
+
+			internal WriteAsyncMethod WriteAsync;
+
+			internal DeleteMethod Delete;
+
+			internal ExistsMethod Exists;
+
+			internal CountMethod Count;
+
+			internal StatMethod Stat;
+
+			internal StatAtMethod StatAt;
+
+			internal GetPathMethod GetPath;
+		}
+
+		public delegate void ReadAsyncHandler(Result result, byte[] data);
+
+		public delegate void ReadAsyncPartialHandler(Result result, byte[] data);
+
+		public delegate void WriteAsyncHandler(Result result);
+
+		private IntPtr MethodsPtr;
+
+		private object MethodsStructure;
+
+		private FFIMethods Methods => default(FFIMethods);
+
+		internal StorageManager(IntPtr ptr, IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
+
+		private void InitEvents(IntPtr eventsPtr, ref FFIEvents events)
+		{
+		}
+
+		public uint Read(string name, byte[] data)
+		{
+			return 0u;
+		}
+
+		[MonoPInvokeCallback]
+		private static void ReadAsyncCallbackImpl(IntPtr ptr, Result result, IntPtr dataPtr, int dataLen)
+		{
+		}
+
+		public void ReadAsync(string name, ReadAsyncHandler callback)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void ReadAsyncPartialCallbackImpl(IntPtr ptr, Result result, IntPtr dataPtr, int dataLen)
+		{
+		}
+
+		public void ReadAsyncPartial(string name, ulong offset, ulong length, ReadAsyncPartialHandler callback)
+		{
+		}
+
+		public void Write(string name, byte[] data)
+		{
+		}
+
+		[MonoPInvokeCallback]
+		private static void WriteAsyncCallbackImpl(IntPtr ptr, Result result)
+		{
+		}
+
+		public void WriteAsync(string name, byte[] data, WriteAsyncHandler callback)
+		{
+		}
+
+		public void Delete(string name)
+		{
+		}
+
+		public bool Exists(string name)
+		{
+			return false;
+		}
+
+		public int Count()
+		{
+			return 0;
+		}
+
+		public FileStat Stat(string name)
+		{
+			return default(FileStat);
+		}
+
+		public FileStat StatAt(int index)
+		{
+			return default(FileStat);
+		}
+
+		public string GetPath()
+		{
+			return null;
+		}
+
+		public IEnumerable<FileStat> Files()
+		{
+			return null;
+		}
 	}
 }

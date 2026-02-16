@@ -1,66 +1,136 @@
-using UnityEngine;
+using System;
 
 namespace UnityEngine.UI.ProceduralImage
 {
-	public class ProceduralImage : MonoBehaviour
+	[ExecuteInEditMode]
+	[AddComponentMenu("UI/Procedural Image")]
+	public class ProceduralImage : Image
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private float borderWidth;
 
-		1. No dll files were provided to AssetRipper.
+		private ProceduralImageModifier modifier;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private static Material materialInstance;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private float falloffDistance;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private static Material DefaultProceduralImageMaterial
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		public float BorderWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		3. Assembly Reconstruction has not been implemented.
+		public float FalloffDistance
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		protected ProceduralImageModifier Modifier
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public System.Type ModifierType
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public override Material material
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		protected override void OnEnable()
+		{
+		}
 
-			AssetRipper was set to not load any script information.
+		protected override void OnDisable()
+		{
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private void Init()
+		{
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		protected void OnVerticesDirty()
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		protected void FixTexCoordsInCanvas()
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		protected void FixTexCoordsInCanvas(Canvas c)
+		{
+		}
 
-		*/
+		private Vector4 FixRadius(Vector4 vec)
+		{
+			return default(Vector4);
+		}
+
+		protected override void OnPopulateMesh(VertexHelper toFill)
+		{
+		}
+
+		protected override void OnTransformParentChanged()
+		{
+		}
+
+		private ProceduralImageInfo CalculateInfo()
+		{
+			return default(ProceduralImageInfo);
+		}
+
+		private void EncodeAllInfoIntoVertices(VertexHelper vh, ProceduralImageInfo info)
+		{
+		}
+
+		private float EncodeFloats_0_1_16_16(float a, float b)
+		{
+			return 0f;
+		}
 	}
 }

@@ -1,66 +1,115 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Polytoria.Datamodel.Services
 {
 	public class CoreUIService : MonoBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private GameObject userCard;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GameObject chat;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private GameObject healthBar;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private GameObject leaderboard;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private GameObject hotbar;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private GameObject menuButton;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private GameObject chatButton;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private Button resetButton;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		public static CoreUIService Instance { get; private set; }
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		public bool UserCardEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		5. Script Content Level 0
+		public bool ChatEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public bool HealthBarEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public bool LeaderboardEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public bool HotbarEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public bool MenuButtonEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public bool CanRespawn
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		private void Awake()
+		{
+		}
 	}
 }

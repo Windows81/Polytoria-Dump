@@ -1,66 +1,606 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using GLTFast;
+using Mirror;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Polytoria.Controllers
 {
-	public class AppearanceLoaderBase : MonoBehaviour
+	public class AppearanceLoaderBase : NetworkBehaviour
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CApplyBodyParts_003Ed__62 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public AppearanceLoaderBase _003C_003E4__this;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			private GameObject _003Cgo_003E5__2;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			private GltfImport _003Cgltf_003E5__3;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			private Task<bool> _003Ct_003E5__4;
 
-		3. Assembly Reconstruction has not been implemented.
+			private Task<bool> _003Ctask_003E5__5;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			[DebuggerHidden]
+			public _003CApplyBodyParts_003Ed__62(int _003C_003E1__state)
+			{
+			}
 
-		5. Script Content Level 0
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-			AssetRipper was set to not load any script information.
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		[CompilerGenerated]
+		private sealed class _003CApplyHats_003Ed__60 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+			private object _003C_003E2__current;
 
-		*/
+			public AppearanceLoaderBase _003C_003E4__this;
+
+			private SyncList<string>.Enumerator _003C_003E7__wrap1;
+
+			private string _003Curl_003E5__3;
+
+			private GameObject _003Chat_003E5__4;
+
+			private GltfImport _003Cgltf_003E5__5;
+
+			private Task<bool> _003Ct_003E5__6;
+
+			private Task<bool> _003Ctask_003E5__7;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CApplyHats_003Ed__60(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		[CompilerGenerated]
+		private sealed class _003CProcessAppearance_003Ed__57 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
+
+			private object _003C_003E2__current;
+
+			public int userID;
+
+			public AppearanceLoaderBase _003C_003E4__this;
+
+			private UnityWebRequest _003Cuwr_003E5__2;
+
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
+
+			[DebuggerHidden]
+			public _003CProcessAppearance_003Ed__57(int _003C_003E1__state)
+			{
+			}
+
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
+
+			private bool MoveNext()
+			{
+				return false;
+			}
+
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
+
+			private void _003C_003Em__Finally1()
+			{
+			}
+
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
+
+		private static Dictionary<int, AppearanceData> playerAppearanceCache;
+
+		protected Transform headObj;
+
+		protected Transform torsoObj;
+
+		protected Mesh defaultTorsoMesh;
+
+		private int currentlyLoadingUserID;
+
+		[SyncVar(hook = "ColorChanged")]
+		protected Color headColor;
+
+		[SyncVar(hook = "ColorChanged")]
+		protected Color torsoColor;
+
+		[SyncVar(hook = "ColorChanged")]
+		protected Color leftArmColor;
+
+		[SyncVar(hook = "ColorChanged")]
+		protected Color rightArmColor;
+
+		[SyncVar(hook = "ColorChanged")]
+		protected Color leftLegColor;
+
+		[SyncVar(hook = "ColorChanged")]
+		protected Color rightLegColor;
+
+		[SyncVar(hook = "ClothingChanged")]
+		protected int faceID;
+
+		[SyncVar(hook = "ClothingChanged")]
+		protected int shirtID;
+
+		[SyncVar(hook = "ClothingChanged")]
+		protected int pantsID;
+
+		[SyncVar]
+		protected int torsoID;
+
+		[SerializeField]
+		protected readonly SyncList<string> hatUrls;
+
+		[SyncVar(hook = "BodyChanged")]
+		private string torsoUrl;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_headColor;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_torsoColor;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_leftArmColor;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_rightArmColor;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_leftLegColor;
+
+		public Action<Color, Color> _Mirror_SyncVarHookDelegate_rightLegColor;
+
+		public Action<int, int> _Mirror_SyncVarHookDelegate_faceID;
+
+		public Action<int, int> _Mirror_SyncVarHookDelegate_shirtID;
+
+		public Action<int, int> _Mirror_SyncVarHookDelegate_pantsID;
+
+		public Action<string, string> _Mirror_SyncVarHookDelegate_torsoUrl;
+
+		public Color HeadColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color TorsoColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color LeftArmColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color RightArmColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color LeftLegColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color RightLegColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public int FaceID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int ShirtID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int PantsID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public int TorsoID
+		{
+			get
+			{
+				return 0;
+			}
+			set
+			{
+			}
+		}
+
+		public Color NetworkheadColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworktorsoColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkleftArmColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkrightArmColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkleftLegColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public Color NetworkrightLegColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworkfaceID
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworkshirtID
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworkpantsID
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public int NetworktorsoID
+		{
+			get
+			{
+				return 0;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public string NetworktorsoUrl
+		{
+			get
+			{
+				return null;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		public override void OnStartClient()
+		{
+		}
+
+		private void HatsChanged(SyncList<string>.Operation op, int itemIndex, string oldItem, string newItem)
+		{
+		}
+
+		private void ColorChanged(Color oldColor, Color newColor)
+		{
+		}
+
+		private void ClothingChanged(int oldClothing, int newClothing)
+		{
+		}
+
+		private void BodyChanged(string oldBody, string newBody)
+		{
+		}
+
+		protected virtual void UpdateColors()
+		{
+		}
+
+		protected virtual void UpdateClothing()
+		{
+		}
+
+		protected virtual void Awake()
+		{
+		}
+
+		public void LoadAppearance(int userID)
+		{
+		}
+
+		public virtual void ClearAppearance()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CProcessAppearance_003Ed__57))]
+		private IEnumerator ProcessAppearance(int userID)
+		{
+			return null;
+		}
+
+		private void ApplyAppearance(AppearanceData data)
+		{
+		}
+
+		private void UpdateHats()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CApplyHats_003Ed__60))]
+		private IEnumerator ApplyHats()
+		{
+			return null;
+		}
+
+		private void UpdateBodyParts()
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CApplyBodyParts_003Ed__62))]
+		private IEnumerator ApplyBodyParts()
+		{
+			return null;
+		}
+
+		protected virtual void HatLoaded(GameObject hat)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }

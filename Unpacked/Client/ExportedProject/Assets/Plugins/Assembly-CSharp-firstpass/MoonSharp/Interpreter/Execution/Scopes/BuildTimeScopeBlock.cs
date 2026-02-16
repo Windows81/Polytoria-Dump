@@ -1,66 +1,62 @@
-using UnityEngine;
+using System.Collections.Generic;
+using MoonSharp.Interpreter.Tree.Statements;
 
 namespace MoonSharp.Interpreter.Execution.Scopes
 {
-	public class BuildTimeScopeBlock : MonoBehaviour
+	internal class BuildTimeScopeBlock
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Dictionary<string, SymbolRef> m_DefinedNames;
 
-		1. No dll files were provided to AssetRipper.
+		private List<GotoStatement> m_PendingGotos;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Dictionary<string, LabelStatement> m_LocalLabels;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private string m_LastDefinedName;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		internal BuildTimeScopeBlock Parent { get; private set; }
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		internal List<BuildTimeScopeBlock> ChildNodes { get; private set; }
 
-		3. Assembly Reconstruction has not been implemented.
+		internal RuntimeScopeBlock ScopeBlock { get; private set; }
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		internal void Rename(string name)
+		{
+		}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		internal BuildTimeScopeBlock(BuildTimeScopeBlock parent)
+		{
+		}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		internal BuildTimeScopeBlock AddChild()
+		{
+			return null;
+		}
 
-		5. Script Content Level 0
+		internal SymbolRef Find(string name)
+		{
+			return null;
+		}
 
-			AssetRipper was set to not load any script information.
+		internal SymbolRef Define(string name)
+		{
+			return null;
+		}
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		internal int ResolveLRefs(BuildTimeScopeFrame buildTimeScopeFrame)
+		{
+			return 0;
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		internal void DefineLabel(LabelStatement label)
+		{
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		internal void RegisterGoto(GotoStatement gotostat)
+		{
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
-
-		*/
+		internal void ResolveGotos()
+		{
+		}
 	}
 }

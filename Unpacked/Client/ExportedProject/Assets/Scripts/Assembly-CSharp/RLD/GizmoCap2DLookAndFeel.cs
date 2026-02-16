@@ -1,66 +1,177 @@
+using System;
 using UnityEngine;
 
 namespace RLD
 {
-	public class GizmoCap2DLookAndFeel : MonoBehaviour
+	[Serializable]
+	public class GizmoCap2DLookAndFeel
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[SerializeField]
+		private GizmoFillMode2D _fillMode;
 
-		1. No dll files were provided to AssetRipper.
+		[SerializeField]
+		private GizmoCap2DType _capType;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		[SerializeField]
+		private float _scale;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		[SerializeField]
+		private float _circleRadius;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		[SerializeField]
+		private float _quadWidth;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		[SerializeField]
+		private float _quadHeight;
 
-		3. Assembly Reconstruction has not been implemented.
+		[SerializeField]
+		private float _arrowBaseRadius;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		[SerializeField]
+		private float _arrowHeight;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		[SerializeField]
+		private Color _color;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		[SerializeField]
+		private Color _hoveredColor;
 
-		5. Script Content Level 0
+		[SerializeField]
+		private Color _borderColor;
 
-			AssetRipper was set to not load any script information.
+		[SerializeField]
+		private Color _hoveredBorderColor;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public GizmoFillMode2D FillMode
+		{
+			get
+			{
+				return default(GizmoFillMode2D);
+			}
+			set
+			{
+			}
+		}
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		public GizmoCap2DType CapType
+		{
+			get
+			{
+				return default(GizmoCap2DType);
+			}
+			set
+			{
+			}
+		}
 
-		7. An incorrect path was provided to AssetRipper.
+		public float Scale
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public float CircleRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
 
-		*/
+		public float QuadWidth
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float QuadHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float ArrowBaseRadius
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public float ArrowHeight
+		{
+			get
+			{
+				return 0f;
+			}
+			set
+			{
+			}
+		}
+
+		public Color Color
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color HoveredColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color BorderColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
+
+		public Color HoveredBorderColor
+		{
+			get
+			{
+				return default(Color);
+			}
+			set
+			{
+			}
+		}
 	}
 }

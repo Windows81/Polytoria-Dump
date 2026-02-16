@@ -2,65 +2,94 @@ using UnityEngine;
 
 namespace RLD
 {
-	public class MeshPool : MonoBehaviour
+	public class MeshPool : Singleton<MeshPool>
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		private Mesh _unitTorus;
 
-		1. No dll files were provided to AssetRipper.
+		private Mesh _unitCylindricalTorus;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+		private Mesh _unitBox;
 
-		2. Incorrect dll files were provided to AssetRipper.
+		private Mesh _unitWireBox;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+		private Mesh _unitPyramid;
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+		private Mesh _unitWirePyramid;
 
-		3. Assembly Reconstruction has not been implemented.
+		private Mesh _unitTriangularPrism;
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+		private Mesh _unitWireTriangularPrism;
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+		private Mesh _unitCone;
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+		private Mesh _unitCylinder;
 
-		5. Script Content Level 0
+		private Mesh _unitSphere;
 
-			AssetRipper was set to not load any script information.
+		private Mesh _unitCoordSystem;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		private Mesh _unitSegmentX;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private Mesh _unitQuadXY;
 
-		7. An incorrect path was provided to AssetRipper.
+		private Mesh _unitQuadXZ;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		private Mesh _unitWireQuadXY;
 
-		*/
+		private Mesh _unitCircleXY;
+
+		private Mesh _unitWireCircleXY;
+
+		private Mesh _unitRightAngledTriangleXY;
+
+		private Mesh _unitWireRightAngledTriangleXY;
+
+		private Mesh _unitEqTriangleXY;
+
+		private Mesh _unitWireEqTriangleXY;
+
+		public Mesh UnitTorus => null;
+
+		public Mesh UnitCylindricalTorus => null;
+
+		public Mesh UnitQuadXY => null;
+
+		public Mesh UnitQuadXZ => null;
+
+		public Mesh UnitBox => null;
+
+		public Mesh UnitWireBox => null;
+
+		public Mesh UnitPyramid => null;
+
+		public Mesh UnitWirePyramid => null;
+
+		public Mesh UnitTriangularPrism => null;
+
+		public Mesh UnitWireTriangularPrism => null;
+
+		public Mesh UnitCone => null;
+
+		public Mesh UnitCylinder => null;
+
+		public Mesh UnitSphere => null;
+
+		public Mesh UnitCoordSystem => null;
+
+		public Mesh UnitSegmentX => null;
+
+		public Mesh UnitWireQuadXY => null;
+
+		public Mesh UnitCircleXY => null;
+
+		public Mesh UnitWireCircleXY => null;
+
+		public Mesh UnitRightAngledTriangleXY => null;
+
+		public Mesh UnitWireRightAngledTriangleXY => null;
+
+		public Mesh UnitEqTriangleXY => null;
+
+		public Mesh UnitWireEqTriangleXY => null;
 	}
 }

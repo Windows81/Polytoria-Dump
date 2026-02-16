@@ -1,66 +1,207 @@
-using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Mirror;
+using MoonSharp.Interpreter;
+using Polytoria.Lua;
 
 namespace Polytoria.Datamodel
 {
-	public class Players : MonoBehaviour
+	public class Players : Instance
 	{
-		/*
-		Dummy class. This could have happened for several reasons:
+		[CompilerGenerated]
+		private sealed class _003CDelayedPlayerAddEvent_003Ed__15 : IEnumerator<object>, IEnumerator, IDisposable
+		{
+			private int _003C_003E1__state;
 
-		1. No dll files were provided to AssetRipper.
+			private object _003C_003E2__current;
 
-			Unity asset bundles and serialized files do not contain script information to decompile.
-				* For Mono games, that information is contained in .NET dll files.
-				* For Il2Cpp games, that information is contained in compiled C++ assemblies and the global metadata.
-				
-			AssetRipper usually expects games to conform to a normal file structure for Unity games of that platform.
-			A unexpected file structure could cause AssetRipper to not find the required files.
+			public Players _003C_003E4__this;
 
-		2. Incorrect dll files were provided to AssetRipper.
+			public Player player;
 
-			Any of the following could cause this:
-				* Il2CppInterop assemblies
-				* Deobfuscated assemblies
-				* Older assemblies (compared to when the bundle was built)
-				* Newer assemblies (compared to when the bundle was built)
+			object IEnumerator<object>.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-			Note: Although assembly publicizing is bad, it alone cannot cause empty scripts. See: https://github.com/AssetRipper/AssetRipper/issues/653
+			object IEnumerator.Current
+			{
+				[DebuggerHidden]
+				get
+				{
+					return null;
+				}
+			}
 
-		3. Assembly Reconstruction has not been implemented.
+			[DebuggerHidden]
+			public _003CDelayedPlayerAddEvent_003Ed__15(int _003C_003E1__state)
+			{
+			}
 
-			Asset bundles contain a small amount of information about the script content.
-			This information can be used to recover the serializable fields of a script.
+			[DebuggerHidden]
+			void IDisposable.Dispose()
+			{
+			}
 
-			See: https://github.com/AssetRipper/AssetRipper/issues/655
-	
-		4. This script is unnecessary.
+			private bool MoveNext()
+			{
+				return false;
+			}
 
-			If this script has no asset or script references, it can be deleted.
-			Be sure to resolve any compile errors before deleting because they can hide references.
+			bool IEnumerator.MoveNext()
+			{
+				//ILSpy generated this explicit interface implementation from .override directive in MoveNext
+				return this.MoveNext();
+			}
 
-		5. Script Content Level 0
+			[DebuggerHidden]
+			void IEnumerator.Reset()
+			{
+			}
+		}
 
-			AssetRipper was set to not load any script information.
+		public LuaEvent PlayerAdded;
 
-		6. Cpp2IL failed to decompile Il2Cpp data
+		public LuaEvent PlayerRemoved;
 
-			If this happened, there will be errors in the AssetRipper.log indicating that it happened.
-			This is an upstream problem, and the AssetRipper developer has very little control over it.
-			Please post a GitHub issue at: https://github.com/SamboyCoding/Cpp2IL/issues
+		private Player _localPlayer;
 
-		7. An incorrect path was provided to AssetRipper.
+		[SyncVar]
+		private bool playerCollisions;
 
-			This is characterized by "Mixed game structure has been found at" in the AssetRipper.log file.
-			AssetRipper expects games to conform to a normal file structure for Unity games of that platform.
-			An unexpected file structure could cause AssetRipper to not find the required files for script decompilation.
-			Generally, AssetRipper expects users to provide the root folder of the game. For example:
-				* Windows: the folder containing the game's .exe file
-				* Mac: the .app file/folder
-				* Linux: the folder containing the game's executable file
-				* Android: the apk file
-				* iOS: the ipa file
-				* Switch: the folder containing exefs and romfs
+		public Player LocalPlayer => null;
 
-		*/
+		[Archivable]
+		[CreatorProperty]
+		public bool PlayerCollisionEnabled
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+			}
+		}
+
+		public bool NetworkplayerCollisions
+		{
+			get
+			{
+				return false;
+			}
+			[param: In]
+			set
+			{
+			}
+		}
+
+		protected override void Awake()
+		{
+		}
+
+		protected override void Start()
+		{
+		}
+
+		public Player[] GetPlayers()
+		{
+			return null;
+		}
+
+		public Player GetPlayer(string username)
+		{
+			return null;
+		}
+
+		public Player GetPlayerByID(int id)
+		{
+			return null;
+		}
+
+		[MoonSharpHidden]
+		public void AddPlayer(Player player)
+		{
+		}
+
+		[IteratorStateMachine(typeof(_003CDelayedPlayerAddEvent_003Ed__15))]
+		private IEnumerator DelayedPlayerAddEvent(Player player)
+		{
+			return null;
+		}
+
+		[MoonSharpHidden]
+		public void NotifyPlayerDestroyed(Player player)
+		{
+		}
+
+		[ClientRpc]
+		private void PlayerAddedClientRpc(Player p)
+		{
+		}
+
+		[ClientRpc]
+		private void PlayerRemovedClientRpc(string name)
+		{
+		}
+
+		[ClientRpc]
+		private void RpcSetPlayerCollisions(bool enabled)
+		{
+		}
+
+		[MoonSharpHidden]
+		public void SetLocalPlayer(Player player)
+		{
+		}
+
+		public override bool Weaved()
+		{
+			return false;
+		}
+
+		protected void UserCode_PlayerAddedClientRpc__Player(Player p)
+		{
+		}
+
+		protected static void InvokeUserCode_PlayerAddedClientRpc__Player(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_PlayerRemovedClientRpc__String(string name)
+		{
+		}
+
+		protected static void InvokeUserCode_PlayerRemovedClientRpc__String(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		protected void UserCode_RpcSetPlayerCollisions__Boolean(bool enabled)
+		{
+		}
+
+		protected static void InvokeUserCode_RpcSetPlayerCollisions__Boolean(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection)
+		{
+		}
+
+		static Players()
+		{
+		}
+
+		public override void SerializeSyncVars(NetworkWriter writer, bool forceAll)
+		{
+		}
+
+		public override void DeserializeSyncVars(NetworkReader reader, bool initialState)
+		{
+		}
 	}
 }
