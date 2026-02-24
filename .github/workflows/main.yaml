@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  build-and-compress:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - run: sh _.sh
+
+      - run: git add .
+
+      - run: git commit $(echo ${{ github.event.repository.updated_at }} | sed 's/[:-]//g')
+
+      - run: git push
