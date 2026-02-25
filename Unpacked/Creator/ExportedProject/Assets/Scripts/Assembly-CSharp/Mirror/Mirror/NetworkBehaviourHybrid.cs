@@ -1,0 +1,477 @@
+namespace Mirror;
+
+[Token(Token = "0x200003A")]
+public abstract class NetworkBehaviourHybrid : NetworkBehaviour
+{
+	[FieldOffset(Offset = "0x68")]
+	[Token(Token = "0x400008D")]
+	[Tooltip("Occasionally send a full reliable state to delta compress against. This only applies to Components with SyncMethod=Unreliable.")]
+	public int baselineRate; //Field offset: 0x68
+	[FieldOffset(Offset = "0x70")]
+	[Token(Token = "0x400008E")]
+	protected double lastBaselineTime; //Field offset: 0x70
+	[FieldOffset(Offset = "0x78")]
+	[Token(Token = "0x400008F")]
+	protected double lastDeltaTime; //Field offset: 0x78
+	[FieldOffset(Offset = "0x80")]
+	[Token(Token = "0x4000090")]
+	private byte lastSerializedBaselineTick; //Field offset: 0x80
+	[FieldOffset(Offset = "0x81")]
+	[Token(Token = "0x4000091")]
+	private byte lastDeserializedBaselineTick; //Field offset: 0x81
+	[FieldOffset(Offset = "0x82")]
+	[Token(Token = "0x4000092")]
+	[Tooltip("Enable to send all unreliable messages twice. Only useful for extremely fast-paced games since it doubles bandwidth costs.")]
+	public bool unreliableRedundancy; //Field offset: 0x82
+	[FieldOffset(Offset = "0x83")]
+	[Token(Token = "0x4000093")]
+	[Tooltip("When sending a reliable baseline, should we also send an unreliable delta or rely on the reliable baseline to arrive in a similar time?")]
+	public bool baselineIsDelta; //Field offset: 0x83
+	[FieldOffset(Offset = "0x84")]
+	[Token(Token = "0x4000094")]
+	private bool changedSinceBaseline; //Field offset: 0x84
+	[FieldOffset(Offset = "0x85")]
+	[Header("Debug")]
+	[Token(Token = "0x4000095")]
+	public bool debugLog; //Field offset: 0x85
+
+	[Token(Token = "0x17000028")]
+	public float baselineInterval
+	{
+		[Address(RVA = "0x1254D10", Offset = "0x1253F10", Length = "0x22")]
+		[CallerCount(Count = 0)]
+		[Token(Token = "0x6000126")]
+		 get { } //Length: 34
+	}
+
+	[Token(Token = "0x17000027")]
+	protected bool IsClientWithAuthority
+	{
+		[Address(RVA = "0x1254CC0", Offset = "0x1253EC0", Length = "0x41")]
+		[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "OnServerToClientDeltaSync", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Nullable`1<Vector3>", "System.Nullable`1<Quaternion>", "System.Nullable`1<Vector3>"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "Update", ReturnType = typeof(void))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Token(Token = "0x6000125")]
+		 get { } //Length: 65
+	}
+
+	[Address(RVA = "0x1254A20", Offset = "0x1253C20", Length = "0x20F")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(RemoteProcedureCalls), Member = "RegisterCommand", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Type), typeof(string), typeof(RemoteCallDelegate), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(RemoteProcedureCalls), Member = "RegisterRpc", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Type), typeof(string), typeof(RemoteCallDelegate)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 4)]
+	[Token(Token = "0x6000146")]
+	private static NetworkBehaviourHybrid() { }
+
+	[Address(RVA = "0x1254C30", Offset = "0x1253E30", Length = "0x85")]
+	[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = ".ctor", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x600013C")]
+	protected NetworkBehaviourHybrid() { }
+
+	[Address(RVA = "0x1252190", Offset = "0x1251390", Length = "0x16F")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(NetworkWriterExtensions), Member = "WriteArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkWriter), typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkBehaviour), Member = "SendCommandInternal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(int), typeof(NetworkWriter), typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Stack`1<System.Object>), Member = "Push", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Command(channel = 0)]
+	[Token(Token = "0x6000131")]
+	private void CmdClientToServerBaseline(ArraySegment<Byte> data) { }
+
+	[Address(RVA = "0x1252300", Offset = "0x1251500", Length = "0x175")]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "UpdateClientDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(double)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(NetworkWriterExtensions), Member = "WriteArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkWriter), typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkBehaviour), Member = "SendCommandInternal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(int), typeof(NetworkWriter), typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Stack`1<System.Object>), Member = "Push", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Command(channel = 1)]
+	[Token(Token = "0x6000132")]
+	private void CmdClientToServerDelta(ArraySegment<Byte> data) { }
+
+	[Address(RVA = "0x1254D10", Offset = "0x1253F10", Length = "0x22")]
+	[CallerCount(Count = 0)]
+	[Token(Token = "0x6000126")]
+	public float get_baselineInterval() { }
+
+	[Address(RVA = "0x1254CC0", Offset = "0x1253EC0", Length = "0x41")]
+	[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "OnServerToClientDeltaSync", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Nullable`1<Vector3>", "System.Nullable`1<Quaternion>", "System.Nullable`1<Vector3>"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "Update", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000125")]
+	protected bool get_IsClientWithAuthority() { }
+
+	[Address(RVA = "0x1252480", Offset = "0x1251680", Length = "0x186")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkReaderExtensions), Member = "ReadArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(System.ArraySegment`1<System.Byte>))]
+	[Calls(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_CmdClientToServerBaseline__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000143")]
+	protected static void InvokeUserCode_CmdClientToServerBaseline__ArraySegment`1(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection) { }
+
+	[Address(RVA = "0x1252610", Offset = "0x1251810", Length = "0x186")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkReaderExtensions), Member = "ReadArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(System.ArraySegment`1<System.Byte>))]
+	[Calls(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_CmdClientToServerDelta__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000145")]
+	protected static void InvokeUserCode_CmdClientToServerDelta__ArraySegment`1(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection) { }
+
+	[Address(RVA = "0x12527A0", Offset = "0x12519A0", Length = "0x14C")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkClient), Member = "get_active", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(NetworkReaderExtensions), Member = "ReadArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(System.ArraySegment`1<System.Byte>))]
+	[Calls(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_RpcServerToClientBaseline__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600013F")]
+	protected static void InvokeUserCode_RpcServerToClientBaseline__ArraySegment`1(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection) { }
+
+	[Address(RVA = "0x12528F0", Offset = "0x1251AF0", Length = "0x14C")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkClient), Member = "get_active", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(NetworkReaderExtensions), Member = "ReadArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(System.ArraySegment`1<System.Byte>))]
+	[Calls(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_RpcServerToClientDelta__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000141")]
+	protected static void InvokeUserCode_RpcServerToClientDelta__ArraySegment`1(NetworkBehaviour obj, NetworkReader reader, NetworkConnectionToClient senderConnection) { }
+
+	[Address(RVA = "0x1252A40", Offset = "0x1251C40", Length = "0x30")]
+	[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "OnDeserialize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader), typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadByte", ReturnType = typeof(byte))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600013B")]
+	public virtual void OnDeserialize(NetworkReader reader, bool initialState) { }
+
+	[Token(Token = "0x6000129")]
+	protected abstract void OnDeserializeBaseline(NetworkReader reader, byte baselineTick) { }
+
+	[Token(Token = "0x600012B")]
+	protected abstract void OnDeserializeDelta(NetworkReader reader, byte baselineTick) { }
+
+	[Address(RVA = "0x2C3410", Offset = "0x2C2610", Length = "0x3")]
+	[CallerCount(Count = 8626)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x600012E")]
+	protected override void OnDrop(byte lastBaselineTick, byte baselineTick, NetworkReader reader) { }
+
+	[Address(RVA = "0x1252A80", Offset = "0x1251C80", Length = "0xAD")]
+	[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "OnSerialize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkWriter), typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Time), Member = "get_frameCount", ReturnType = typeof(int))]
+	[Calls(Type = typeof(NetworkWriter), Member = "WriteByte", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(byte)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Time), Member = "get_unscaledTimeAsDouble", ReturnType = typeof(double))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x600013A")]
+	public virtual void OnSerialize(NetworkWriter writer, bool initialState) { }
+
+	[Token(Token = "0x6000128")]
+	protected abstract void OnSerializeBaseline(NetworkWriter writer) { }
+
+	[Token(Token = "0x600012A")]
+	protected abstract void OnSerializeDelta(NetworkWriter writer) { }
+
+	[Address(RVA = "0x1252B30", Offset = "0x1251D30", Length = "0x11")]
+	[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "ResetState", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Token(Token = "0x6000127")]
+	public override void ResetState() { }
+
+	[Address(RVA = "0x1252B50", Offset = "0x1251D50", Length = "0x16F")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(NetworkWriterExtensions), Member = "WriteArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkWriter), typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkBehaviour), Member = "SendRPCInternal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(int), typeof(NetworkWriter), typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Stack`1<System.Object>), Member = "Push", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[ClientRpc(channel = 0)]
+	[Token(Token = "0x600012F")]
+	private void RpcServerToClientBaseline(ArraySegment<Byte> data) { }
+
+	[Address(RVA = "0x1252CC0", Offset = "0x1251EC0", Length = "0x175")]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "UpdateServerDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(double)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(NetworkWriterExtensions), Member = "WriteArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkWriter), typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkBehaviour), Member = "SendRPCInternal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(int), typeof(NetworkWriter), typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Stack`1<System.Object>), Member = "Push", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[ClientRpc(channel = 1)]
+	[Token(Token = "0x6000130")]
+	private void RpcServerToClientDelta(ArraySegment<Byte> data) { }
+
+	[Token(Token = "0x600012D")]
+	protected abstract bool StateChanged() { }
+
+	[Token(Token = "0x600012C")]
+	protected abstract void StoreState() { }
+
+	[Address(RVA = "0x1254190", Offset = "0x1253390", Length = "0x53")]
+	[CalledBy(Type = "Mirror.NetworkTransformHybrid", Member = "Update", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000139")]
+	protected override void Update() { }
+
+	[Address(RVA = "0x1252E40", Offset = "0x1252040", Length = "0x455")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(System.Collections.Generic.Stack`1<System.Object>), Member = "Push", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(Debug), Member = "Log", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(Object), Member = "get_name", ReturnType = typeof(string))]
+	[Calls(Type = typeof(Time), Member = "get_unscaledTimeAsDouble", ReturnType = typeof(double))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(NetworkBehaviour), Member = "SendCommandInternal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(int), typeof(NetworkWriter), typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriterExtensions), Member = "WriteArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkWriter), typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArraySegment`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T[]", typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriter), Member = "WriteByte", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(byte)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Time), Member = "get_frameCount", ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CallsUnknownMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000136")]
+	protected override void UpdateClientBaseline(double localTime) { }
+
+	[Address(RVA = "0x12532A0", Offset = "0x12524A0", Length = "0x32A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(ArraySegment`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T[]", typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(NetworkWriter), Member = "WriteByte", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(byte)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(NetworkBehaviourHybrid), Member = "CmdClientToServerDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(Object), Member = "get_name", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(Debug), Member = "Log", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[CallsUnknownMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000137")]
+	protected override void UpdateClientDelta(double localTime) { }
+
+	[Address(RVA = "0x12535D0", Offset = "0x12527D0", Length = "0xF6")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Time), Member = "get_unscaledTimeAsDouble", ReturnType = typeof(double))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000138")]
+	protected override void UpdateClientSync() { }
+
+	[Address(RVA = "0x12536D0", Offset = "0x12528D0", Length = "0x5A6")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(Debug), Member = "Log", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(Object[])}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(Object), Member = "get_name", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(System.Collections.Generic.Stack`1<System.Object>), Member = "Push", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkBehaviour), Member = "SendRPCInternal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(int), typeof(NetworkWriter), typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriterExtensions), Member = "WriteArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkWriter), typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArraySegment`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T[]", typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriter), Member = "WriteByte", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(byte)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Time), Member = "get_frameCount", ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+	[Calls(Type = typeof(Time), Member = "get_unscaledTimeAsDouble", ReturnType = typeof(double))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000133")]
+	protected override void UpdateServerBaseline(double localTime) { }
+
+	[Address(RVA = "0x1253C80", Offset = "0x1252E80", Length = "0x47A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(Debug), Member = "Log", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(Object[])}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(Object), Member = "get_name", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(NetworkBehaviourHybrid), Member = "RpcServerToClientDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArraySegment`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T[]", typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriter), Member = "WriteByte", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(byte)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkWriterPool), Member = "Get", ReturnType = typeof(NetworkWriterPooled))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+	[CallsUnknownMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000134")]
+	protected override void UpdateServerDelta(double localTime) { }
+
+	[Address(RVA = "0x1254100", Offset = "0x1253300", Length = "0x86")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Time), Member = "get_unscaledTimeAsDouble", ReturnType = typeof(double))]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000135")]
+	protected override void UpdateServerSync() { }
+
+	[Address(RVA = "0x12541F0", Offset = "0x12533F0", Length = "0x103")]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "InvokeUserCode_CmdClientToServerBaseline__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkBehaviour), typeof(NetworkReader), typeof(NetworkConnectionToClient)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkReaderPool), Member = "Get", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(NetworkReaderPooled))]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadByte", ReturnType = typeof(byte))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000142")]
+	protected void UserCode_CmdClientToServerBaseline__ArraySegment`1(ArraySegment<Byte> data) { }
+
+	[Address(RVA = "0x1254300", Offset = "0x1253500", Length = "0x36B")]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "InvokeUserCode_CmdClientToServerDelta__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkBehaviour), typeof(NetworkReader), typeof(NetworkConnectionToClient)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(Object), Member = "get_name", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+	[Calls(Type = typeof(Debug), Member = "Log", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(Object[])}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadByte", ReturnType = typeof(byte))]
+	[Calls(Type = typeof(NetworkReaderPool), Member = "Get", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(NetworkReaderPooled))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000144")]
+	protected void UserCode_CmdClientToServerDelta__ArraySegment`1(ArraySegment<Byte> data) { }
+
+	[Address(RVA = "0x1254670", Offset = "0x1253870", Length = "0x153")]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "InvokeUserCode_RpcServerToClientBaseline__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkBehaviour), typeof(NetworkReader), typeof(NetworkConnectionToClient)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkReaderPool), Member = "Get", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(NetworkReaderPooled))]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadByte", ReturnType = typeof(byte))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x600013E")]
+	protected void UserCode_RpcServerToClientBaseline__ArraySegment`1(ArraySegment<Byte> data) { }
+
+	[Address(RVA = "0x12547D0", Offset = "0x12539D0", Length = "0x24E")]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "InvokeUserCode_RpcServerToClientDelta__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkBehaviour), typeof(NetworkReader), typeof(NetworkConnectionToClient)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkReaderPool), Member = "Get", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(NetworkReaderPooled))]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadByte", ReturnType = typeof(byte))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180183C50")]
+	[Calls(Type = typeof(Object), Member = "get_name", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(Debug), Member = "Log", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000140")]
+	protected void UserCode_RpcServerToClientDelta__ArraySegment`1(ArraySegment<Byte> data) { }
+
+	[Address(RVA = "0x2FE390", Offset = "0x2FD590", Length = "0x3")]
+	[CallerCount(Count = 15)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x600013D")]
+	public virtual bool Weaved() { }
+
+}
+

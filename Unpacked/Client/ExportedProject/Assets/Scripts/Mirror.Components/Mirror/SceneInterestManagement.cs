@@ -1,0 +1,128 @@
+namespace Mirror;
+
+[AddComponentMenu("Network/ Interest Management/ Scene/Scene Interest Management")]
+[Token(Token = "0x200000A")]
+public class SceneInterestManagement : InterestManagement
+{
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x400001A")]
+	private readonly Dictionary<Scene, HashSet`1<NetworkIdentity>> sceneObjects; //Field offset: 0x28
+	[FieldOffset(Offset = "0x30")]
+	[Token(Token = "0x400001B")]
+	private readonly Dictionary<NetworkIdentity, Scene> lastObjectScene; //Field offset: 0x30
+	[FieldOffset(Offset = "0x38")]
+	[Token(Token = "0x400001C")]
+	private HashSet<Scene> dirtyScenes; //Field offset: 0x38
+
+	[Address(RVA = "0x1228380", Offset = "0x1227580", Length = "0x103")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Dictionary`2), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1<UnityEngine.SceneManagement.Scene>), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(InterestManagement), Member = ".ctor", ReturnType = typeof(void))]
+	[Token(Token = "0x6000026")]
+	public SceneInterestManagement() { }
+
+	[Address(RVA = "0x1227720", Offset = "0x1226920", Length = "0x53A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1<System.Object>), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Enumerator), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(HashSet`1), Member = "GetEnumerator", ReturnType = "System.Collections.Generic.HashSet`1<T>+Enumerator<T>")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene), typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1<System.Object>), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "ContainsKey", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, UnityEngine.SceneManagement.Scene>), Member = "set_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(Scene)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene)}, ReturnType = typeof(object))]
+	[Calls(Type = typeof(GameObject), Member = "get_scene", ReturnType = typeof(Scene))]
+	[Calls(Type = typeof(Component), Member = "get_gameObject", ReturnType = typeof(GameObject))]
+	[Calls(Type = typeof(Dictionary`2), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TKey", "TValue&"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Enumerator), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(SceneInterestManagement), Member = "RebuildSceneObservers", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(HashSet`1), Member = "Clear", ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 10)]
+	[ServerCallback]
+	[Token(Token = "0x6000022")]
+	private void LateUpdate() { }
+
+	[Address(RVA = "0x1227C60", Offset = "0x1226E60", Length = "0x6F")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Component), Member = "get_gameObject", ReturnType = typeof(GameObject))]
+	[Calls(Type = typeof(GameObject), Member = "get_scene", ReturnType = typeof(Scene))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6000024")]
+	public virtual bool OnCheckObserver(NetworkIdentity identity, NetworkConnectionToClient newObserver) { }
+
+	[Address(RVA = "0x1227CD0", Offset = "0x1226ED0", Length = "0x175")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Dictionary`2), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TKey", "TValue&"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Dictionary`2), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TKey"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene), typeof(Object&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1<System.Object>), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[ServerCallback]
+	[Token(Token = "0x6000021")]
+	public virtual void OnDestroyed(NetworkIdentity identity) { }
+
+	[Address(RVA = "0x1227E50", Offset = "0x1227050", Length = "0x1DC")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Component), Member = "get_gameObject", ReturnType = typeof(GameObject))]
+	[Calls(Type = typeof(GameObject), Member = "get_scene", ReturnType = typeof(Scene))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene), typeof(Object&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1<System.Object>), Member = "GetEnumerator", ReturnType = typeof(System.Collections.Generic.HashSet`1+Enumerator<System.Object>))]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1+Enumerator<System.Object>), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Object), Member = "op_Inequality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Object), typeof(Object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x6000025")]
+	public virtual void OnRebuildObservers(NetworkIdentity identity, HashSet<NetworkConnectionToClient> newObservers) { }
+
+	[Address(RVA = "0x1228030", Offset = "0x1227230", Length = "0x1C0")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Component), Member = "get_gameObject", ReturnType = typeof(GameObject))]
+	[Calls(Type = typeof(GameObject), Member = "get_scene", ReturnType = typeof(Scene))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, UnityEngine.SceneManagement.Scene>), Member = "set_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(Scene)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene), typeof(Object&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1<System.Object>), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene), typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[ServerCallback]
+	[Token(Token = "0x6000020")]
+	public virtual void OnSpawned(NetworkIdentity identity) { }
+
+	[Address(RVA = "0x1228200", Offset = "0x1227400", Length = "0x17A")]
+	[CalledBy(Type = typeof(SceneInterestManagement), Member = "LateUpdate", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<UnityEngine.SceneManagement.Scene, System.Object>), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Scene)}, ReturnType = typeof(object))]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1<System.Object>), Member = "GetEnumerator", ReturnType = typeof(System.Collections.Generic.HashSet`1+Enumerator<System.Object>))]
+	[Calls(Type = typeof(System.Collections.Generic.HashSet`1+Enumerator<System.Object>), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Object), Member = "op_Inequality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Object), typeof(Object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(NetworkServer), Member = "RebuildObservers", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkIdentity), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x6000023")]
+	private void RebuildSceneObservers(Scene scene) { }
+
+}
+

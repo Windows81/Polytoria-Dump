@@ -1,0 +1,16 @@
+namespace MoonSharp.Interpreter.Execution;
+
+[Flags]
+[Token(Token = "0x200013B")]
+internal enum InstructionFieldUsage
+{
+	None = 0,
+	Symbol = 1,
+	SymbolList = 2,
+	Name = 4,
+	Value = 8,
+	NumVal = 16,
+	NumVal2 = 32,
+	NumValAsCodeAddress = 32784,
+}
+

@@ -1,0 +1,128 @@
+namespace System;
+
+[ComVisible(True)]
+[Token(Token = "0x20001BB")]
+public abstract class MulticastDelegate : Delegate
+{
+	[FieldOffset(Offset = "0x78")]
+	[Token(Token = "0x4000729")]
+	private Delegate[] delegates; //Field offset: 0x78
+
+	[Address(RVA = "0x14FAE00", Offset = "0x14FA000", Length = "0x3A0")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18020A4B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Array), Member = "Copy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Token(Token = "0x6000F91")]
+	protected virtual Delegate CombineImpl(Delegate follow) { }
+
+	[Address(RVA = "0x14FB1B0", Offset = "0x14FA3B0", Length = "0x16F")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Delegate), Member = "Equals", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsUnknownMethods(Count = 1)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000F8D")]
+	public virtual bool Equals(object obj) { }
+
+	[Address(RVA = "0x14F4330", Offset = "0x14F3530", Length = "0x94")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180214040")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[CallsUnknownMethods(Count = 3)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000F8E")]
+	public virtual int GetHashCode() { }
+
+	[Address(RVA = "0x14FB320", Offset = "0x14FA520", Length = "0xE5")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6000F90")]
+	public virtual Delegate[] GetInvocationList() { }
+
+	[Address(RVA = "0x14FB410", Offset = "0x14FA610", Length = "0x16D")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18020ABE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(RuntimeMethodInfo), Member = "GetMethodFromHandleNoGenericCheck", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeMethodHandle)}, ReturnType = typeof(MethodBase))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000F8F")]
+	protected virtual MethodInfo GetMethodImpl() { }
+
+	[Address(RVA = "0x14F4590", Offset = "0x14F3790", Length = "0x239")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = "System.DelegateSerializationHolder+DelegateEntry", Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(int), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(SerializationInfo), Member = "AddValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(SerializationInfo), Member = "SetType", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Type)}, ReturnType = typeof(void))]
+	[CallsUnknownMethods(Count = 2)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000F8C")]
+	public virtual void GetObjectData(SerializationInfo info, StreamingContext context) { }
+
+	[Address(RVA = "0x14FB580", Offset = "0x14FA780", Length = "0x189")]
+	[CalledBy(Type = typeof(MulticastDelegate), Member = "RemoveImpl", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000F92")]
+	private int LastIndexOf(Delegate[] haystack, Delegate[] needle) { }
+
+	[Address(RVA = "0x14FB710", Offset = "0x14FA910", Length = "0x375")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Array), Member = "Copy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(Array), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(InvalidOperationException), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(Array), Member = "LastIndexOf", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T[]", "T"}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(Array), Member = "Copy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18020A4B0")]
+	[Calls(Type = typeof(MulticastDelegate), Member = "LastIndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate[]), typeof(Delegate[])}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsUnknownMethods(Count = 3)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000F93")]
+	protected virtual Delegate RemoveImpl(Delegate value) { }
+
+}
+

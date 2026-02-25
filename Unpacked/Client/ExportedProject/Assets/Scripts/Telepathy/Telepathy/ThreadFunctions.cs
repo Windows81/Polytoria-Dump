@@ -1,0 +1,80 @@
+namespace Telepathy;
+
+[Token(Token = "0x2000016")]
+public static class ThreadFunctions
+{
+
+	[Address(RVA = "0x1805570", Offset = "0x1804770", Length = "0x272")]
+	[CalledBy(Type = typeof(ThreadFunctions), Member = "ReceiveLoop", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(TcpClient), typeof(int), typeof(MagnificentReceivePipe), typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(NetworkStreamExtensions), Member = "ReadSafely", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkStream), typeof(Byte[]), typeof(int), typeof(int)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(int), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000041")]
+	public static bool ReadMessageBlocking(NetworkStream stream, int MaxMessageSize, Byte[] headerBuffer, Byte[] payloadBuffer, out int size) { }
+
+	[Address(RVA = "0x18057F0", Offset = "0x18049F0", Length = "0x435")]
+	[CalledBy(Type = typeof(Client), Member = "ReceiveThreadFunction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ClientConnectionState), typeof(string), typeof(int), typeof(int), typeof(bool), typeof(int), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Telepathy.Server+<>c__DisplayClass16_0", Member = "<Listen>b__1", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(int), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1818015E0")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(MagnificentReceivePipe), Member = "Count", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(ThreadFunctions), Member = "ReadMessageBlocking", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkStream), typeof(int), typeof(Byte[]), typeof(Byte[]), typeof(Int32&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(MagnificentReceivePipe), Member = "Enqueue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(EventType), typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(TcpClient), Member = "GetStream", ReturnType = typeof(NetworkStream))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ArraySegment`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T[]", typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000042")]
+	public static void ReceiveLoop(int connectionId, TcpClient client, int MaxMessageSize, MagnificentReceivePipe receivePipe, int QueueLimit) { }
+
+	[Address(RVA = "0x1805C30", Offset = "0x1804E30", Length = "0x284")]
+	[CalledBy(Type = "Telepathy.Client+<>c__DisplayClass13_0", Member = "<ReceiveThreadFunction>b__0", ReturnType = typeof(void))]
+	[CalledBy(Type = "Telepathy.Server+<>c__DisplayClass16_0", Member = "<Listen>b__0", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(ThreadFunctions), Member = "SendMessagesBlocking", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkStream), typeof(Byte[]), typeof(int)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(int), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x181801670")]
+	[Calls(Type = typeof(TcpClient), Member = "Close", ReturnType = typeof(void))]
+	[Calls(Type = typeof(MagnificentSendPipe), Member = "DequeueAndSerializeAll", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]&), typeof(Int32&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(EventWaitHandle), Member = "Reset", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(TcpClient), Member = "get_Connected", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(TcpClient), Member = "GetStream", ReturnType = typeof(NetworkStream))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 4)]
+	[Token(Token = "0x6000043")]
+	public static void SendLoop(int connectionId, TcpClient client, MagnificentSendPipe sendPipe, ManualResetEvent sendPending) { }
+
+	[Address(RVA = "0x1805EC0", Offset = "0x18050C0", Length = "0xF0")]
+	[CalledBy(Type = typeof(ThreadFunctions), Member = "SendLoop", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(TcpClient), typeof(MagnificentSendPipe), typeof(ManualResetEvent)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000040")]
+	public static bool SendMessagesBlocking(NetworkStream stream, Byte[] payload, int packetSize) { }
+
+}
+

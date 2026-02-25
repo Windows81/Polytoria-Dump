@@ -1,0 +1,30 @@
+namespace UnityEngine.Experimental.Playables;
+
+[NativeHeader("Runtime/Director/Core/HPlayable.h")]
+[NativeHeader("Runtime/Graphics/Director/TextureMixerPlayable.h")]
+[NativeHeader("Runtime/Export/Director/TextureMixerPlayable.bindings.h")]
+[RequiredByNativeCode]
+[StaticAccessor("TextureMixerPlayableBindings", StaticAccessorType::DoubleColon (2))]
+[Token(Token = "0x2000317")]
+public struct TextureMixerPlayable : IEquatable<TextureMixerPlayable>
+{
+	[FieldOffset(Offset = "0x0")]
+	[Token(Token = "0x40009F8")]
+	private PlayableHandle m_Handle; //Field offset: 0x0
+
+	[Address(RVA = "0x1990BF0", Offset = "0x198FDF0", Length = "0xB3")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000EDE")]
+	public override bool Equals(TextureMixerPlayable other) { }
+
+	[Address(RVA = "0x1911580", Offset = "0x1910780", Length = "0xA")]
+	[CallerCount(Count = 0)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000EDD")]
+	public override PlayableHandle GetHandle() { }
+
+}
+

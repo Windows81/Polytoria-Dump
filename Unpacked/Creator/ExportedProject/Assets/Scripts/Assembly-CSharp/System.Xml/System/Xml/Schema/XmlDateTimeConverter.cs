@@ -1,0 +1,180 @@
+namespace System.Xml.Schema;
+
+[Token(Token = "0x200016B")]
+internal class XmlDateTimeConverter : XmlBaseConverter
+{
+
+	[Address(RVA = "0x16CE410", Offset = "0x16CD610", Length = "0x59")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(XmlBaseConverter), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(XmlSchemaType)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6000C71")]
+	protected XmlDateTimeConverter(XmlSchemaType schemaType) { }
+
+	[Address(RVA = "0x16CC7B0", Offset = "0x16CB9B0", Length = "0x483")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180009A30")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 9)]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000C7C")]
+	public virtual object ChangeType(DateTime value, Type destinationType) { }
+
+	[Address(RVA = "0x16CB710", Offset = "0x16CA910", Length = "0x4C5")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180009A30")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 9)]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000C7D")]
+	public virtual object ChangeType(string value, Type destinationType, IXmlNamespaceResolver nsResolver) { }
+
+	[Address(RVA = "0x16CBBE0", Offset = "0x16CADE0", Length = "0xBCB")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_object_unbox")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180009A30")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CallsDeduplicatedMethods(Count = 21)]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000C7E")]
+	public virtual object ChangeType(object value, Type destinationType, IXmlNamespaceResolver nsResolver) { }
+
+	[Address(RVA = "0x16CCC40", Offset = "0x16CBE40", Length = "0x85")]
+	[CalledBy(Type = typeof(Datatype_dateTimeBase), Member = "CreateValueConverter", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(XmlSchemaType)}, ReturnType = typeof(XmlValueConverter))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(XmlBaseConverter), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(XmlSchemaType)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6000C72")]
+	public static XmlValueConverter Create(XmlSchemaType schemaType) { }
+
+	[Address(RVA = "0x16CD3F0", Offset = "0x16CC5F0", Length = "0x85")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(DateTimeOffset), Member = "get_LocalDateTime", ReturnType = typeof(DateTime))]
+	[Token(Token = "0x6000C73")]
+	public virtual DateTime ToDateTime(DateTimeOffset value) { }
+
+	[Address(RVA = "0x16CD480", Offset = "0x16CC680", Length = "0x58")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[ContainsInvalidInstructions]
+	[Token(Token = "0x6000C74")]
+	public virtual DateTime ToDateTime(string value) { }
+
+	[Address(RVA = "0x16CD770", Offset = "0x16CC970", Length = "0x398")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180009A30")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_object_unbox")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 4)]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000C75")]
+	public virtual DateTime ToDateTime(object value) { }
+
+	[Address(RVA = "0x16CD0B0", Offset = "0x16CC2B0", Length = "0x23")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(DateTimeOffset), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DateTime)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6000C76")]
+	public virtual DateTimeOffset ToDateTimeOffset(DateTime value) { }
+
+	[Address(RVA = "0x16CD0E0", Offset = "0x16CC2E0", Length = "0x60")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[ContainsInvalidInstructions]
+	[Token(Token = "0x6000C77")]
+	public virtual DateTimeOffset ToDateTimeOffset(string value) { }
+
+	[Address(RVA = "0x16CCCD0", Offset = "0x16CBED0", Length = "0x3D3")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_object_unbox")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180009A30")]
+	[Calls(Type = typeof(DateTimeOffset), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DateTime)}, ReturnType = typeof(DateTimeOffset))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 4)]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000C78")]
+	public virtual DateTimeOffset ToDateTimeOffset(object value) { }
+
+	[Address(RVA = "0x16CDDF0", Offset = "0x16CCFF0", Length = "0x274")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(XsdDateTime), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DateTime), typeof(XsdDateTimeFlags)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(XsdDateTime), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(XmlBaseConverter), Member = "DateTimeToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DateTime)}, ReturnType = typeof(string))]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000C79")]
+	public virtual string ToString(DateTime value) { }
+
+	[Address(RVA = "0x16CDB10", Offset = "0x16CCD10", Length = "0x2C4")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(XsdDateTime), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DateTimeOffset), typeof(XsdDateTimeFlags)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(XsdDateTime), Member = "ToString", ReturnType = typeof(string))]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000C7A")]
+	public virtual string ToString(DateTimeOffset value) { }
+
+	[Address(RVA = "0x16CE080", Offset = "0x16CD280", Length = "0x38D")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180009A30")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_object_unbox")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CallsDeduplicatedMethods(Count = 4)]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000C7B")]
+	public virtual string ToString(object value, IXmlNamespaceResolver nsResolver) { }
+
+}
+

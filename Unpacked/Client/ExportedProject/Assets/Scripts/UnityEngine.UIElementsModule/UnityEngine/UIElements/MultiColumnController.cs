@@ -1,0 +1,621 @@
+namespace UnityEngine.UIElements;
+
+[Token(Token = "0x2000115")]
+public class MultiColumnController : IDisposable
+{
+	[Token(Token = "0x4000577")]
+	private static readonly PropertyName k_BoundColumnVePropertyName; //Field offset: 0x0
+	[Token(Token = "0x4000578")]
+	internal static readonly PropertyName bindableElementPropertyName; //Field offset: 0x4
+	[Token(Token = "0x4000579")]
+	internal static readonly string baseUssClassName; //Field offset: 0x8
+	[Token(Token = "0x400057A")]
+	private static readonly string k_HeaderContainerViewDataKey; //Field offset: 0x10
+	[Token(Token = "0x400057B")]
+	public static readonly string headerContainerUssClassName; //Field offset: 0x18
+	[Token(Token = "0x400057C")]
+	public static readonly string rowContainerUssClassName; //Field offset: 0x20
+	[Token(Token = "0x400057D")]
+	public static readonly string cellUssClassName; //Field offset: 0x28
+	[Token(Token = "0x400057E")]
+	public static readonly string cellLabelUssClassName; //Field offset: 0x30
+	[Token(Token = "0x400057F")]
+	private static readonly string k_HeaderViewDataKey; //Field offset: 0x38
+	[CompilerGenerated]
+	[DebuggerBrowsable(DebuggerBrowsableState::Never (0))]
+	[FieldOffset(Offset = "0x10")]
+	[Token(Token = "0x4000580")]
+	private Action columnSortingChanged; //Field offset: 0x10
+	[CompilerGenerated]
+	[DebuggerBrowsable(DebuggerBrowsableState::Never (0))]
+	[FieldOffset(Offset = "0x18")]
+	[Token(Token = "0x4000581")]
+	private Action<ContextualMenuPopulateEvent, Column> headerContextMenuPopulateEvent; //Field offset: 0x18
+	[FieldOffset(Offset = "0x20")]
+	[Token(Token = "0x4000582")]
+	private List<Int32> m_SortedToSourceIndex; //Field offset: 0x20
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x4000583")]
+	private List<Int32> m_SourceToSortedIndex; //Field offset: 0x28
+	[FieldOffset(Offset = "0x30")]
+	[Token(Token = "0x4000584")]
+	private ColumnSortingMode m_SortingMode; //Field offset: 0x30
+	[FieldOffset(Offset = "0x38")]
+	[Token(Token = "0x4000585")]
+	private BaseVerticalCollectionView m_View; //Field offset: 0x38
+	[FieldOffset(Offset = "0x40")]
+	[Token(Token = "0x4000586")]
+	private VisualElement m_HeaderContainer; //Field offset: 0x40
+	[FieldOffset(Offset = "0x48")]
+	[Token(Token = "0x4000587")]
+	private MultiColumnCollectionHeader m_MultiColumnHeader; //Field offset: 0x48
+
+	[Token(Token = "0x1400001F")]
+	public event Action columnSortingChanged
+	{
+		[Address(RVA = "0x1C12BE0", Offset = "0x1C11DE0", Length = "0x9E")]
+		[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(Delegate), Member = "Combine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+		[CompilerGenerated]
+		[Token(Token = "0x60008AD")]
+		 add { } //Length: 158
+		[Address(RVA = "0x1C12D30", Offset = "0x1C11F30", Length = "0x9E")]
+		[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(Delegate), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+		[CompilerGenerated]
+		[Token(Token = "0x60008AE")]
+		 remove { } //Length: 158
+	}
+
+	[Token(Token = "0x14000020")]
+	public event Action<ContextualMenuPopulateEvent, Column> headerContextMenuPopulateEvent
+	{
+		[Address(RVA = "0x1C12C80", Offset = "0x1C11E80", Length = "0xAC")]
+		[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(Delegate), Member = "Combine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+		[CompilerGenerated]
+		[Token(Token = "0x60008AF")]
+		 add { } //Length: 172
+		[Address(RVA = "0x1C12DD0", Offset = "0x1C11FD0", Length = "0xAC")]
+		[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(Delegate), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+		[CompilerGenerated]
+		[Token(Token = "0x60008B0")]
+		 remove { } //Length: 172
+	}
+
+	[Token(Token = "0x17000178")]
+	internal MultiColumnCollectionHeader header
+	{
+		[Address(RVA = "0x2DD280", Offset = "0x2DC480", Length = "0x5")]
+		[CallerCount(Count = 4)]
+		[DeduplicatedMethod]
+		[Token(Token = "0x60008B1")]
+		internal get { } //Length: 5
+	}
+
+	[Token(Token = "0x17000179")]
+	internal ColumnSortingMode sortingMode
+	{
+		[Address(RVA = "0x2F5B20", Offset = "0x2F4D20", Length = "0xAE")]
+		[CallerCount(Count = 23)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[DeduplicatedMethod]
+		[Token(Token = "0x60008B2")]
+		internal get { } //Length: 174
+		[Address(RVA = "0x1C12E80", Offset = "0x1C12080", Length = "0x26")]
+		[CalledBy(Type = typeof(MultiColumnListView), Member = "set_sortingMode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ColumnSortingMode)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(MultiColumnTreeView), Member = "set_sortingMode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ColumnSortingMode)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 4)]
+		[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "set_sortingEnabled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[ContainsUnimplementedInstructions]
+		[Token(Token = "0x60008B3")]
+		internal set { } //Length: 38
+	}
+
+	[Address(RVA = "0x1C12400", Offset = "0x1C11600", Length = "0x2A6")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(PropertyName), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(PropertyName))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Token(Token = "0x60008D2")]
+	private static MultiColumnController() { }
+
+	[Address(RVA = "0x1C126B0", Offset = "0x1C118B0", Length = "0x520")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Columns), typeof(SortColumnDescriptions), typeof(System.Collections.Generic.List`1<UnityEngine.UIElements.SortColumnDescription>)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Columns), typeof(SortColumnDescriptions), typeof(System.Collections.Generic.List`1<UnityEngine.UIElements.SortColumnDescription>)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "add_contextMenuPopulateEvent", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`2<UnityEngine.UIElements.ContextualMenuPopulateEvent, UnityEngine.UIElements.Column>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(Delegate), Member = "Combine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(Columns), Member = "add_columnReordered", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`3<UnityEngine.UIElements.Column, System.Int32, System.Int32>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Columns), Member = "add_columnRemoved", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`1<UnityEngine.UIElements.Column>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Columns), Member = "add_columnAdded", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`2<UnityEngine.UIElements.Column, System.Int32>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "add_viewDataRestored", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Action)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "add_columnResized", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`2<System.Int32, System.Single>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Action`2<System.Int32, System.Single>), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(IntPtr)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "add_columnSortingChanged", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Action)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(VisualElement), Member = "set_viewDataKey", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Columns), typeof(SortColumnDescriptions), typeof(System.Collections.Generic.List`1<UnityEngine.UIElements.SortColumnDescription>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 9)]
+	[Token(Token = "0x60008B4")]
+	public MultiColumnController(Columns columns, SortColumnDescriptions sortDescriptions, List<SortColumnDescription> sortedColumns) { }
+
+	[Address(RVA = "0x1C12BE0", Offset = "0x1C11DE0", Length = "0x9E")]
+	[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Delegate), Member = "Combine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CompilerGenerated]
+	[Token(Token = "0x60008AD")]
+	public void add_columnSortingChanged(Action value) { }
+
+	[Address(RVA = "0x1C12C80", Offset = "0x1C11E80", Length = "0xAC")]
+	[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Delegate), Member = "Combine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CompilerGenerated]
+	[Token(Token = "0x60008AF")]
+	public void add_headerContextMenuPopulateEvent(Action<ContextualMenuPopulateEvent, Column> value) { }
+
+	[Address(RVA = "0x705960", Offset = "0x704B60", Length = "0x13B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008B5")]
+	private static void BindCellItem(VisualElement ve, int rowIndex, Column column, T item) { }
+
+	[Address(RVA = "0x705F60", Offset = "0x705160", Length = "0x42D")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "BindItem", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = "BindItem", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, System.Object>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(Object&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(StyleLength), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float)}, ReturnType = typeof(StyleLength))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18002BFC0")]
+	[Calls(Type = typeof(VisualElement), Member = "get_resolvedStyle", ReturnType = typeof(IResolvedStyle))]
+	[Calls(Type = typeof(VisualElement), Member = "get_style", ReturnType = typeof(IStyle))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18002C050")]
+	[Calls(Type = typeof(VisualElement), Member = "GetProperty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PropertyName)}, ReturnType = typeof(object))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(VisualElement), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(VisualElement))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18002BF20")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(Columns), Member = "get_visibleList", ReturnType = typeof(System.Collections.Generic.IEnumerable`1<UnityEngine.UIElements.Column>))]
+	[Calls(Type = typeof(MultiColumnController), Member = "GetSourceIndex", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(VisualElement), Member = "SetProperty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PropertyName), typeof(object)}, ReturnType = typeof(void))]
+	[CallsUnknownMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008BA")]
+	public void BindItem(VisualElement element, int index, T item) { }
+
+	[Address(RVA = "0x1C0F8E0", Offset = "0x1C0EAE0", Length = "0x500")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BaseTreeViewController), Member = "GetIndentationDepth", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(int), Member = "CompareTo", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 13)]
+	[Token(Token = "0x60008C6")]
+	private int CombinedComparison(int a, int b) { }
+
+	[Address(RVA = "0x7064D0", Offset = "0x7056D0", Length = "0xA1")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008B8")]
+	private static void DefaultBindCellItem(VisualElement ve, T item) { }
+
+	[Address(RVA = "0x1C0FDF0", Offset = "0x1C0EFF0", Length = "0xA1")]
+	[CalledBy(Type = typeof(MultiColumnController), Member = "MakeItem", ReturnType = typeof(VisualElement))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Label), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(VisualElement), Member = "AddToClassList", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60008B7")]
+	private static VisualElement DefaultMakeCellItem() { }
+
+	[Address(RVA = "0x1C0FEA0", Offset = "0x1C0F0A0", Length = "0x330")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "DestroyItem", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = "DestroyItem", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(VisualElement), Member = "Children", ReturnType = typeof(System.Collections.Generic.IEnumerable`1<UnityEngine.UIElements.VisualElement>))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(VisualElement), Member = "GetProperty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PropertyName)}, ReturnType = typeof(object))]
+	[Calls(Type = typeof(VisualElement), Member = "ClearProperty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PropertyName)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60008BC")]
+	public void DestroyItem(VisualElement element) { }
+
+	[Address(RVA = "0x1C101E0", Offset = "0x1C0F3E0", Length = "0x7A4")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "Dispose", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = "Dispose", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "remove_contextMenuPopulateEvent", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`2<UnityEngine.UIElements.ContextualMenuPopulateEvent, UnityEngine.UIElements.Column>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "RemoveFromHierarchy", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(Delegate), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "remove_viewDataRestored", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Action)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "remove_columnResized", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`2<System.Int32, System.Single>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "remove_columnSortingChanged", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Action)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "Dispose", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Scroller), Member = "remove_valueChanged", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`1<System.Single>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(System.Action`2<System.Int32, System.Single>), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(IntPtr)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 13)]
+	[Token(Token = "0x60008BE")]
+	public override void Dispose() { }
+
+	[Address(RVA = "0x2DD280", Offset = "0x2DC480", Length = "0x5")]
+	[CallerCount(Count = 4)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008B1")]
+	internal MultiColumnCollectionHeader get_header() { }
+
+	[Address(RVA = "0x2F5B20", Offset = "0x2F4D20", Length = "0xAE")]
+	[CallerCount(Count = 23)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008B2")]
+	internal ColumnSortingMode get_sortingMode() { }
+
+	[Address(RVA = "0x1C10990", Offset = "0x1C0FB90", Length = "0x6B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(List`1), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = "T")]
+	[Token(Token = "0x60008C9")]
+	private static int GetIndexFromList(int index, List<Int32> indices) { }
+
+	[Address(RVA = "0x1C10A00", Offset = "0x1C0FC00", Length = "0xA0")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "GetIndexForId", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(int))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(List`1), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = "T")]
+	[Token(Token = "0x60008C8")]
+	internal int GetSortedIndex(int sourceIndex) { }
+
+	[Address(RVA = "0x1C10AA0", Offset = "0x1C0FCA0", Length = "0xA0")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "GetItemForIndex", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(object))]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "GetIdForIndex", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(MultiColumnController), Member = "BindItem", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(int), "T"}, ReturnType = typeof(void))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(List`1), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = "T")]
+	[Token(Token = "0x60008C7")]
+	internal int GetSourceIndex(int sortedIndex) { }
+
+	[Address(RVA = "0x1C10B40", Offset = "0x1C0FD40", Length = "0x36B")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "MakeItem", ReturnType = typeof(VisualElement))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = "MakeItem", ReturnType = typeof(VisualElement))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(VisualElement), Member = "set_name", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "SetProperty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PropertyName), typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(MultiColumnController), Member = "DefaultMakeCellItem", ReturnType = typeof(VisualElement))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(Columns), Member = "UpdateVisibleColumns", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(VisualElement), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(VisualElement), Member = "AddToClassList", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60008B9")]
+	public VisualElement MakeItem() { }
+
+	[Address(RVA = "0x1C10EB0", Offset = "0x1C100B0", Length = "0x1D")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "Rebuild", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008CC")]
+	private void OnColumnAdded(Column column, int index) { }
+
+	[Address(RVA = "0x1C10ED0", Offset = "0x1C100D0", Length = "0x38")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "ScheduleRebuild", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60008D0")]
+	private void OnColumnChanged(ColumnsDataType type) { }
+
+	[Address(RVA = "0x1C10F10", Offset = "0x1C10110", Length = "0xC")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(MultiColumnController), Member = "UpdateContentContainer", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BaseVerticalCollectionView)}, ReturnType = typeof(void))]
+	[Token(Token = "0x60008C1")]
+	private void OnColumnContainerGeometryChanged(GeometryChangedEvent evt) { }
+
+	[Address(RVA = "0x1C10EB0", Offset = "0x1C100B0", Length = "0x1D")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "Rebuild", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008CD")]
+	private void OnColumnRemoved(Column column) { }
+
+	[Address(RVA = "0x1C10F20", Offset = "0x1C10120", Length = "0x34")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "Rebuild", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60008CE")]
+	private void OnColumnReordered(Column column, int from, int to) { }
+
+	[Address(RVA = "0x1C10F60", Offset = "0x1C10160", Length = "0x305")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "get_isRebuildScheduled", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "get_activeItems", ReturnType = typeof(System.Collections.Generic.IEnumerable`1<UnityEngine.UIElements.ReusableCollectionItem>))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(VisualElement), Member = "ElementAt", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(VisualElement))]
+	[Calls(Type = typeof(VisualElement), Member = "get_style", ReturnType = typeof(IStyle))]
+	[Calls(Type = typeof(StyleLength), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float)}, ReturnType = typeof(StyleLength))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60008CB")]
+	private void OnColumnResized(int index, float width) { }
+
+	[Address(RVA = "0x1C112C0", Offset = "0x1C104C0", Length = "0x3A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "ScheduleRebuild", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60008CF")]
+	private void OnColumnsChanged(Column column, ColumnDataType type) { }
+
+	[Address(RVA = "0x1C11270", Offset = "0x1C10470", Length = "0x4E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(MultiColumnController), Member = "UpdateDragger", ReturnType = typeof(void))]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "RefreshItems", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60008C3")]
+	private void OnColumnSortingChanged() { }
+
+	[Address(RVA = "0x1C11300", Offset = "0x1C10500", Length = "0x19")]
+	[CallerCount(Count = 0)]
+	[CallsUnknownMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008CA")]
+	private void OnContextMenuPopulateEvent(ContextualMenuPopulateEvent evt, Column column) { }
+
+	[Address(RVA = "0x1C11320", Offset = "0x1C10520", Length = "0x1E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "ScrollHorizontally", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60008BF")]
+	private void OnHorizontalScrollerValueChanged(float v) { }
+
+	[Address(RVA = "0x1C10EB0", Offset = "0x1C100B0", Length = "0x1D")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "Rebuild", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60008D1")]
+	private void OnViewDataRestored() { }
+
+	[Address(RVA = "0x1C11340", Offset = "0x1C10540", Length = "0x298")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(VisualElement), Member = "get_resolvedStyle", ReturnType = typeof(IResolvedStyle))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18002BFC0")]
+	[Calls(Type = typeof(VisualElement), Member = "get_style", ReturnType = typeof(IStyle))]
+	[Calls(Type = typeof(StyleLength), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float)}, ReturnType = typeof(StyleLength))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(MultiColumnController), Member = "UpdateContentContainer", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BaseVerticalCollectionView)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60008C0")]
+	private void OnViewportGeometryChanged(GeometryChangedEvent evt) { }
+
+	[Address(RVA = "0x1C115E0", Offset = "0x1C107E0", Length = "0x318")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "PrepareView", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = "PrepareView", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Scroller), Member = "add_valueChanged", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Action`1<System.Single>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Hierarchy), Member = "Insert", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(VisualElement)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "set_viewDataKey", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "AddToClassList", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CallbackEventHandler), Member = "RegisterCallback", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TEventType"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UIElements.EventCallback`1<TEventType>", typeof(TrickleDown)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(VisualElement), Member = "set_name", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Debug), Member = "LogWarning", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x60008BD")]
+	public void PrepareView(BaseVerticalCollectionView collectionView) { }
+
+	[Address(RVA = "0x1C12D30", Offset = "0x1C11F30", Length = "0x9E")]
+	[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Delegate), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CompilerGenerated]
+	[Token(Token = "0x60008AE")]
+	public void remove_columnSortingChanged(Action value) { }
+
+	[Address(RVA = "0x1C12DD0", Offset = "0x1C11FD0", Length = "0xAC")]
+	[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Delegate), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CompilerGenerated]
+	[Token(Token = "0x60008B0")]
+	public void remove_headerContextMenuPopulateEvent(Action<ContextualMenuPopulateEvent, Column> value) { }
+
+	[Address(RVA = "0x1C12E80", Offset = "0x1C12080", Length = "0x26")]
+	[CalledBy(Type = typeof(MultiColumnListView), Member = "set_sortingMode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ColumnSortingMode)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnListView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeView), Member = "set_sortingMode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ColumnSortingMode)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeView), Member = "SetViewController", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CollectionViewController)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(MultiColumnCollectionHeader), Member = "set_sortingEnabled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60008B3")]
+	internal void set_sortingMode(ColumnSortingMode value) { }
+
+	[Address(RVA = "0x1C11900", Offset = "0x1C10B00", Length = "0x494")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "PreRefresh", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = "PreRefresh", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(List`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(List`1), Member = "set_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), "T"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(List`1), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = "T")]
+	[Calls(Type = typeof(List`1), Member = "Sort", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Comparison`1<T>"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(List`1), Member = "AddWithResize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(BaseVerticalCollectionView), Member = "get_itemsSource", ReturnType = typeof(IList))]
+	[Calls(Type = typeof(MultiColumnController), Member = "UpdateDragger", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60008C5")]
+	internal void SortIfNeeded() { }
+
+	[Address(RVA = "0x1C11DA0", Offset = "0x1C10FA0", Length = "0x3B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60008B6")]
+	private static void UnbindCellItem(VisualElement ve, int rowIndex, Column column) { }
+
+	[Address(RVA = "0x1C11DE0", Offset = "0x1C10FE0", Length = "0x3A2")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "UnbindItem", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnTreeViewController), Member = "UnbindItem", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(List`1), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = "T")]
+	[Calls(Type = typeof(VisualElement), Member = "Children", ReturnType = typeof(System.Collections.Generic.IEnumerable`1<UnityEngine.UIElements.VisualElement>))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(VisualElement), Member = "GetProperty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PropertyName)}, ReturnType = typeof(object))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60008BB")]
+	public void UnbindItem(VisualElement element, int index) { }
+
+	[Address(RVA = "0x1C12190", Offset = "0x1C11390", Length = "0x1B5")]
+	[CalledBy(Type = typeof(MultiColumnController), Member = "OnViewportGeometryChanged", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GeometryChangedEvent)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnController), Member = "OnColumnContainerGeometryChanged", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GeometryChangedEvent)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(VisualElement), Member = "get_layout", ReturnType = typeof(Rect))]
+	[Calls(Type = typeof(VisualElement), Member = "get_resolvedStyle", ReturnType = typeof(IResolvedStyle))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18002BFC0")]
+	[Calls(Type = typeof(VisualElement), Member = "get_style", ReturnType = typeof(IStyle))]
+	[Calls(Type = typeof(StyleLength), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float)}, ReturnType = typeof(StyleLength))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60008C2")]
+	private void UpdateContentContainer(BaseVerticalCollectionView collectionView) { }
+
+	[Address(RVA = "0x1C12350", Offset = "0x1C11550", Length = "0xA9")]
+	[CalledBy(Type = typeof(MultiColumnListViewController), Member = "SortIfNeeded", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnController), Member = "OnColumnSortingChanged", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MultiColumnController), Member = "SortIfNeeded", ReturnType = typeof(void))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(ListViewDragger), Member = "set_enabled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60008C4")]
+	internal void UpdateDragger() { }
+
+}
+

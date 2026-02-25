@@ -1,0 +1,83 @@
+namespace System.Numerics;
+
+[Token(Token = "0x2000005")]
+internal static class BigNumber
+{
+
+	[Address(RVA = "0x1625D80", Offset = "0x1624F80", Length = "0xE2")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(string), Member = "GetRawStringData", ReturnType = typeof(Char&))]
+	[Calls(Type = typeof(BigNumber), Member = "FormatBigInteger", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool), typeof(BigInteger), typeof(string), typeof(System.ReadOnlySpan`1<System.Char>), typeof(NumberFormatInfo), typeof(System.Span`1<System.Char>), typeof(Int32&), typeof(Boolean&)}, ReturnType = typeof(string))]
+	[Token(Token = "0x6000028")]
+	internal static string FormatBigInteger(BigInteger value, string format, NumberFormatInfo info) { }
+
+	[Address(RVA = "0x1625E70", Offset = "0x1625070", Length = "0xCDC")]
+	[CalledBy(Type = typeof(BigInteger), Member = "ToString", ReturnType = typeof(string))]
+	[CalledBy(Type = typeof(BigInteger), Member = "ToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(IFormatProvider)}, ReturnType = typeof(string))]
+	[CalledBy(Type = typeof(BigNumber), Member = "FormatBigInteger", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(string), typeof(NumberFormatInfo)}, ReturnType = typeof(string))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = "System.Globalization.FormatProvider+Number", Member = "ParseFormatSpecifier", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ReadOnlySpan`1<System.Char>), typeof(Int32&)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "GetRawStringData", ReturnType = typeof(Char&))]
+	[Calls(Type = typeof(int), Member = "ToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(IFormatProvider)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(int), Member = "TryFormat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Span`1<System.Char>), typeof(Int32&), typeof(System.ReadOnlySpan`1<System.Char>), typeof(IFormatProvider)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(ValueStringBuilder), Member = "TryCopyTo", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Span`1<System.Char>), typeof(Int32&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002FA0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE5F0")]
+	[Calls(Type = typeof(ValueStringBuilder), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = "System.Globalization.FormatProvider+Number", Member = "NumberToStringFormat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ValueStringBuilder&), typeof(NumberBuffer&), typeof(System.ReadOnlySpan`1<System.Char>), typeof(NumberFormatInfo)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(FormatException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(Exception)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1802B6F00")]
+	[Calls(Type = typeof(string), Member = "CreateString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Char[]), typeof(int), typeof(int)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(ReadOnlySpan`1), Member = "TryCopyTo", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Span`1<T>"}, ReturnType = typeof(bool))]
+	[Calls(Type = "System.ThrowHelper", Member = "ThrowArgumentOutOfRangeException", ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "get_Chars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(BigNumber), Member = "FormatBigIntegerToHex", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool), typeof(BigInteger), typeof(char), typeof(int), typeof(NumberFormatInfo), typeof(System.Span`1<System.Char>), typeof(Int32&), typeof(Boolean&)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = "System.Globalization.FormatProvider+Number", Member = "NumberToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ValueStringBuilder&), typeof(NumberBuffer&), typeof(char), typeof(int), typeof(NumberFormatInfo), typeof(bool)}, ReturnType = typeof(void))]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000029")]
+	private static string FormatBigInteger(bool targetSpan, BigInteger value, string formatString, ReadOnlySpan<Char> formatSpan, NumberFormatInfo info, Span<Char> destination, out int charsWritten, out bool spanSuccess) { }
+
+	[Address(RVA = "0x1625640", Offset = "0x1624840", Length = "0x73B")]
+	[CalledBy(Type = typeof(BigNumber), Member = "FormatBigInteger", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool), typeof(BigInteger), typeof(string), typeof(System.ReadOnlySpan`1<System.Char>), typeof(NumberFormatInfo), typeof(System.Span`1<System.Char>), typeof(Int32&), typeof(Boolean&)}, ReturnType = typeof(string))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F72D0")]
+	[Calls(Type = typeof(ValueStringBuilder), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(ValueStringBuilder), Member = "Insert", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(char), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "get_Chars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(ValueStringBuilder), Member = "Grow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1816220D0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1802B6F00")]
+	[Calls(Type = "System.ThrowHelper", Member = "ThrowArgumentOutOfRangeException", ReturnType = typeof(void))]
+	[Calls(Type = typeof(Span`1), Member = "TryCopyTo", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Span`1<T>"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1800300C0")]
+	[Calls(Type = typeof(BigInteger), Member = "TryGetBytes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Numerics.BigInteger+GetBytesMode", typeof(System.Span`1<System.Byte>), typeof(bool), typeof(bool), typeof(Int32&)}, ReturnType = typeof(Byte[]))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 4)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000027")]
+	private static string FormatBigIntegerToHex(bool targetSpan, BigInteger value, char format, int digits, NumberFormatInfo info, Span<Char> destination, out int charsWritten, out bool spanSuccess) { }
+
+	[Address(RVA = "0x1626B50", Offset = "0x1625D50", Length = "0x138")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000026")]
+	internal static char ParseFormatSpecifier(ReadOnlySpan<Char> format, out int digits) { }
+
+}
+

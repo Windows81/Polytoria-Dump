@@ -1,0 +1,163 @@
+namespace UnityEngine.UIElements;
+
+[Extension]
+[Token(Token = "0x2000463")]
+[VisibleToOtherModules(new IL2CPP_TYPE_STRING[] {"UnityEditor.UIBuilderModule"})]
+internal static class StyleSheetUtility
+{
+	[Token(Token = "0x4000E81")]
+	private static readonly Dictionary<String, String> SpecialEnumToStringCases; //Field offset: 0x0
+	[Token(Token = "0x4000E82")]
+	private static readonly Dictionary<String, String> SpecialStringToEnumCases; //Field offset: 0x8
+
+	[Address(RVA = "0x1B29560", Offset = "0x1B28760", Length = "0x180")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Dictionary`2), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, System.Object>), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60020F7")]
+	private static StyleSheetUtility() { }
+
+	[Address(RVA = "0x1B288F0", Offset = "0x1B27AF0", Length = "0xFC")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Regex), Member = "Replace", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "ToLowerInvariant", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CollectionExtensions), Member = "GetValueOrDefault", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TKey", "TValue"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IReadOnlyDictionary`2<TKey, TValue>", "TKey", "TValue"}, ReturnType = "TValue")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60020F4")]
+	public static string ConvertCamelToDash(string camel) { }
+
+	[Address(RVA = "0x1B289F0", Offset = "0x1B27BF0", Length = "0x4F")]
+	[CalledBy(Type = typeof(StyleSheet), Member = "ReadEnum", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TEnum"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StyleValueHandle)}, ReturnType = "TEnum")]
+	[CalledBy(Type = typeof(StyleSheet), Member = "TryReadEnum", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TEnum"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StyleValueHandle), "TEnum&"}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[ContainsInvalidInstructions]
+	[Token(Token = "0x60020F5")]
+	public static string ConvertDashToHungarian(string dash) { }
+
+	[Address(RVA = "0x1B28A40", Offset = "0x1B27C40", Length = "0x2F2")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(char), Member = "ToLowerInvariant", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, System.Object>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(Object&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(GenericPool`1), Member = "Get", ReturnType = "T")]
+	[Calls(Type = typeof(string), Member = "get_Chars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CultureInfo), Member = "get_InvariantCulture", ReturnType = typeof(CultureInfo))]
+	[Calls(Type = typeof(char), Member = "ToUpper", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), typeof(CultureInfo)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(StringBuilder), Member = "Clear", ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(GenericPool`1), Member = "Release", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x181B236D0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60020F6")]
+	public static string ConvertDashToUpperNoSpace(string dash, bool firstCase, bool addSpace) { }
+
+	[Address(RVA = "0x1B28D40", Offset = "0x1B27F40", Length = "0x14F")]
+	[CalledBy(Type = typeof(StyleSheet), Member = "WriteEnum", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TEnum"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StyleValueHandle&), "TEnum"}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Regex), Member = "Replace", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "ToLowerInvariant", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CollectionExtensions), Member = "GetValueOrDefault", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TKey", "TValue"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IReadOnlyDictionary`2<TKey, TValue>", "TKey", "TValue"}, ReturnType = "TValue")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60020F3")]
+	public static string GetEnumExportString(Enum value) { }
+
+	[Address(RVA = "0x1B291D0", Offset = "0x1B283D0", Length = "0x1BD")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Length), Member = "IsAuto", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Length), Member = "IsNone", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Dimension), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(Unit)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidCastException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Extension]
+	[Token(Token = "0x60020ED")]
+	public static Dimension ToDimension(Length length) { }
+
+	[Address(RVA = "0x1B29390", Offset = "0x1B28590", Length = "0x1C9")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Angle), Member = "IsNone", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Dimension), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(Unit)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidCastException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Extension]
+	[Token(Token = "0x60020EF")]
+	public static Dimension ToDimension(Angle angle) { }
+
+	[Address(RVA = "0x1B290C0", Offset = "0x1B282C0", Length = "0x108")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Dimension), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(Unit)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidCastException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Extension]
+	[Token(Token = "0x60020F1")]
+	public static Dimension ToDimension(TimeValue timeValue) { }
+
+	[Address(RVA = "0x1B29010", Offset = "0x1B28210", Length = "0xAE")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidCastException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Extension]
+	[Token(Token = "0x60020EE")]
+	public static Unit ToDimensionUnit(LengthUnit unit) { }
+
+	[Address(RVA = "0x1B28F40", Offset = "0x1B28140", Length = "0xCE")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidCastException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Extension]
+	[Token(Token = "0x60020F0")]
+	public static Unit ToDimensionUnit(AngleUnit unit) { }
+
+	[Address(RVA = "0x1B28E90", Offset = "0x1B28090", Length = "0xAE")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidCastException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Extension]
+	[Token(Token = "0x60020F2")]
+	public static Unit ToDimensionUnit(TimeUnit unit) { }
+
+}
+

@@ -1,0 +1,155 @@
+namespace System.Security.Cryptography.X509Certificates;
+
+[Token(Token = "0x2000139")]
+public sealed class X509EnhancedKeyUsageExtension : X509Extension
+{
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x40005B2")]
+	private OidCollection _enhKeyUsage; //Field offset: 0x28
+	[FieldOffset(Offset = "0x30")]
+	[Token(Token = "0x40005B3")]
+	private AsnDecodeStatus _status; //Field offset: 0x30
+
+	[Token(Token = "0x1700016A")]
+	public OidCollection EnhancedKeyUsages
+	{
+		[Address(RVA = "0x1790A40", Offset = "0x178FC40", Length = "0x18A")]
+		[CalledBy(Type = typeof(CertificateHelper), Member = "IsValidForClientAuthenticationEKU", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(X509EnhancedKeyUsageExtension)}, ReturnType = typeof(bool))]
+		[CallerCount(Count = 1)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(OidCollection), Member = ".ctor", ReturnType = typeof(void))]
+		[Calls(Type = typeof(OidCollection), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Oid)}, ReturnType = typeof(int))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CryptographicException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsDeduplicatedMethods(Count = 2)]
+		[Token(Token = "0x60007B9")]
+		 get { } //Length: 394
+	}
+
+	[Address(RVA = "0x1790520", Offset = "0x178F720", Length = "0xC0")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x60007B6")]
+	public X509EnhancedKeyUsageExtension() { }
+
+	[Address(RVA = "0x17905E0", Offset = "0x178F7E0", Length = "0x101")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(X509EnhancedKeyUsageExtension), Member = "Decode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(AsnDecodeStatus))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x60007B7")]
+	public X509EnhancedKeyUsageExtension(AsnEncodedData encodedEnhancedKeyUsages, bool critical) { }
+
+	[Address(RVA = "0x17906F0", Offset = "0x178F8F0", Length = "0x349")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(OidCollection), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(OidCollection), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Oid)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(X509EnhancedKeyUsageExtension), Member = "Encode", ReturnType = typeof(Byte[]))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 5)]
+	[Token(Token = "0x60007B8")]
+	public X509EnhancedKeyUsageExtension(OidCollection enhancedKeyUsages, bool critical) { }
+
+	[Address(RVA = "0x178FC30", Offset = "0x178EE30", Length = "0x22E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(AsnEncodedData), Member = "set_RawData", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(X509EnhancedKeyUsageExtension), Member = "Decode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(AsnDecodeStatus))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x60007BA")]
+	public virtual void CopyFrom(AsnEncodedData asnEncodedData) { }
+
+	[Address(RVA = "0x178FE60", Offset = "0x178F060", Length = "0x1D0")]
+	[CalledBy(Type = typeof(AsnEncodedData), Member = "EnhancedKeyUsageExtension", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(string))]
+	[CalledBy(Type = typeof(X509EnhancedKeyUsageExtension), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(AsnEncodedData), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(X509EnhancedKeyUsageExtension), Member = "CopyFrom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(AsnEncodedData)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(ASN1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(OidCollection), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Oid)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(Oid), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ASN1Convert), Member = "ToOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ASN1)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(OidCollection), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ASN1), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(ASN1))]
+	[Calls(Type = typeof(CryptographicException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x60007BB")]
+	internal AsnDecodeStatus Decode(Byte[] extension) { }
+
+	[Address(RVA = "0x1790040", Offset = "0x178F240", Length = "0x1A5")]
+	[CalledBy(Type = typeof(X509EnhancedKeyUsageExtension), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(OidCollection), typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(ASN1Convert), Member = "FromOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(ASN1))]
+	[Calls(Type = typeof(ASN1), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ASN1)}, ReturnType = typeof(ASN1))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60007BC")]
+	internal Byte[] Encode() { }
+
+	[Address(RVA = "0x1790A40", Offset = "0x178FC40", Length = "0x18A")]
+	[CalledBy(Type = typeof(CertificateHelper), Member = "IsValidForClientAuthenticationEKU", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(X509EnhancedKeyUsageExtension)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(OidCollection), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(OidCollection), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Oid)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CryptographicException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x60007B9")]
+	public OidCollection get_EnhancedKeyUsages() { }
+
+	[Address(RVA = "0x17901F0", Offset = "0x178F3F0", Length = "0x327")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(string), Member = "op_Inequality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(StringBuilder), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(OidCollection), Member = "get_Count", ReturnType = typeof(int))]
+	[Calls(Type = typeof(Environment), Member = "get_NewLine", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(X509Extension), Member = "FormatUnkownData", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60007BD")]
+	internal virtual string ToString(bool multiLine) { }
+
+}
+

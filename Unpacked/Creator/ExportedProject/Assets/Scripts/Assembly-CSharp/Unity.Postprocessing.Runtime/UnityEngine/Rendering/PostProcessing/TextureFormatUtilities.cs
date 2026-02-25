@@ -1,0 +1,105 @@
+namespace UnityEngine.Rendering.PostProcessing;
+
+[Extension]
+[Token(Token = "0x200008C")]
+public static class TextureFormatUtilities
+{
+	[Token(Token = "0x40002FC")]
+	private static Dictionary<Int32, RenderTextureFormat> s_FormatAliasMap; //Field offset: 0x0
+	[Token(Token = "0x40002FD")]
+	private static Dictionary<Int32, Boolean> s_SupportedRenderTextureFormats; //Field offset: 0x8
+	[Token(Token = "0x40002FE")]
+	private static Dictionary<Int32, Boolean> s_SupportedTextureFormats; //Field offset: 0x10
+
+	[Address(RVA = "0x1858520", Offset = "0x1857720", Length = "0xA7A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(SystemInfo), Member = "SupportsTextureFormat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(TextureFormat)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1802D83A0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Int32, System.Boolean>), Member = "set_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(SystemInfo), Member = "SupportsRenderTextureFormat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RenderTextureFormat)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(TextureFormatUtilities), Member = "IsObsolete", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_object_unbox")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(Array), Member = "GetEnumerator", ReturnType = typeof(IEnumerator))]
+	[Calls(Type = typeof(Enum), Member = "GetValues", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Type)}, ReturnType = typeof(Array))]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Int32, System.Int32Enum>), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), "System.Int32Enum"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Dictionary`2), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000256")]
+	private static TextureFormatUtilities() { }
+
+	[Address(RVA = "0x1858110", Offset = "0x1857310", Length = "0x1CB")]
+	[CalledBy(Type = typeof(TextureLerper), Member = "Lerp", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Texture), typeof(Texture), typeof(float)}, ReturnType = typeof(Texture))]
+	[CalledBy(Type = typeof(TextureLerper), Member = "Lerp", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Texture), typeof(Color), typeof(float)}, ReturnType = typeof(Texture))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(Texture2D), Member = "get_format", ReturnType = typeof(TextureFormat))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(NotSupportedException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(Dictionary`2), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TKey", "TValue&"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(RenderTexture), Member = "get_format", ReturnType = typeof(RenderTextureFormat))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000258")]
+	public static RenderTextureFormat GetUncompressedRenderTextureFormat(Texture texture) { }
+
+	[Address(RVA = "0x18582E0", Offset = "0x18574E0", Length = "0x114")]
+	[CalledBy(Type = typeof(TextureFormatUtilities), Member = ".cctor", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(Type), Member = "GetField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(FieldInfo))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CallsUnknownMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000257")]
+	private static bool IsObsolete(object value) { }
+
+	[Address(RVA = "0x1858490", Offset = "0x1857690", Length = "0x87")]
+	[CalledBy(Type = typeof(AutoExposure), Member = "IsEnabledAndSupported", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PostProcessRenderContext)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(DepthOfFieldRenderer), Member = "SelectFormat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RenderTextureFormat), typeof(RenderTextureFormat)}, ReturnType = typeof(RenderTextureFormat))]
+	[CalledBy(Type = typeof(DepthOfFieldRenderer), Member = "Render", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PostProcessRenderContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(GrainRenderer), Member = "Render", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PostProcessRenderContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(GrainRenderer), Member = "GetLookupFormat", ReturnType = typeof(RenderTextureFormat))]
+	[CalledBy(Type = typeof(MotionBlur), Member = "IsEnabledAndSupported", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PostProcessRenderContext)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(MotionBlurRenderer), Member = "Render", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PostProcessRenderContext)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 9)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Int32, System.Boolean>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(Boolean&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Extension]
+	[Token(Token = "0x6000259")]
+	internal static bool IsSupported(RenderTextureFormat format) { }
+
+	[Address(RVA = "0x1858400", Offset = "0x1857600", Length = "0x87")]
+	[CalledBy(Type = typeof(RuntimeUtilities), Member = "GetLutStrip", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(Texture2D))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Int32, System.Boolean>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(Boolean&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Extension]
+	[Token(Token = "0x600025A")]
+	internal static bool IsSupported(TextureFormat format) { }
+
+}
+

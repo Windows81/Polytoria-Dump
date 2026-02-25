@@ -1,0 +1,192 @@
+namespace MoonSharp.Interpreter.Execution;
+
+[Token(Token = "0x200013D")]
+internal class BuildTimeScope
+{
+	[FieldOffset(Offset = "0x10")]
+	[Token(Token = "0x40004D8")]
+	private List<BuildTimeScopeFrame> m_Frames; //Field offset: 0x10
+	[FieldOffset(Offset = "0x18")]
+	[Token(Token = "0x40004D9")]
+	private List<IClosureBuilder> m_ClosureBuilders; //Field offset: 0x18
+
+	[Address(RVA = "0x34F690", Offset = "0x34E890", Length = "0xBD")]
+	[CalledBy(Type = typeof(Loader_Fast), Member = "CreateLoadingContext", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Script), typeof(SourceCode)}, ReturnType = typeof(ScriptLoadingContext))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x6000BD5")]
+	public BuildTimeScope() { }
+
+	[Address(RVA = "0x34EDD0", Offset = "0x34DFD0", Length = "0xD8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BuildTimeScope), Member = "Find", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(SymbolRef), Member = "Global", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(SymbolRef)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x6000BCD")]
+	public SymbolRef CreateGlobalReference(string name) { }
+
+	[Address(RVA = "0x34EEB0", Offset = "0x34E0B0", Length = "0xF4")]
+	[CalledBy(Type = typeof(BuildTimeScope), Member = "Find", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[CalledBy(Type = typeof(BuildTimeScope), Member = "CreateUpValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BuildTimeScope), typeof(SymbolRef), typeof(int), typeof(int)}, ReturnType = typeof(SymbolRef))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BuildTimeScope), Member = "CreateUpValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BuildTimeScope), typeof(SymbolRef), typeof(int), typeof(int)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002C70")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x6000BCF")]
+	private SymbolRef CreateUpValue(BuildTimeScope buildTimeScope, SymbolRef symb, int closuredFrame, int currentFrame) { }
+
+	[Address(RVA = "0x34EFB0", Offset = "0x34E1B0", Length = "0x49")]
+	[CalledBy(Type = typeof(SymbolRefExpression), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Token), typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BD2")]
+	public bool CurrentFunctionHasVarArgs() { }
+
+	[Address(RVA = "0x34F000", Offset = "0x34E200", Length = "0x5E")]
+	[CalledBy(Type = typeof(LabelStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "DefineLabel", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(LabelStatement)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BD3")]
+	internal void DefineLabel(LabelStatement label) { }
+
+	[Address(RVA = "0x34F060", Offset = "0x34E260", Length = "0x5E")]
+	[CalledBy(Type = typeof(ChunkStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ForLoopStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(Token), typeof(Token)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(FunctionDefinitionExpression), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(bool), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(FunctionDefinitionExpression), Member = "DefineArguments", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Collections.Generic.List`1<System.String>), typeof(ScriptLoadingContext)}, ReturnType = typeof(SymbolRef[]))]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "DefineLocal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BD0")]
+	public SymbolRef DefineLocal(string name) { }
+
+	[Address(RVA = "0x34F0C0", Offset = "0x34E2C0", Length = "0x1EB")]
+	[CalledBy(Type = typeof(FunctionDefinitionStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(bool), typeof(Token)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SymbolRefExpression), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Token), typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(BuildTimeScope), Member = "Find", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[CalledBy(Type = typeof(BuildTimeScope), Member = "CreateGlobalReference", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[CalledBy(Type = typeof(BuildTimeScope), Member = "ForceEnvUpValue", ReturnType = typeof(void))]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(SymbolRef), Member = "Global", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(SymbolRef)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(BuildTimeScope), Member = "Find", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "Find", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(BuildTimeScope), Member = "CreateUpValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BuildTimeScope), typeof(SymbolRef), typeof(int), typeof(int)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x6000BCC")]
+	public SymbolRef Find(string name) { }
+
+	[Address(RVA = "0x34F2B0", Offset = "0x34E4B0", Length = "0x3C")]
+	[CalledBy(Type = typeof(FunctionDefinitionExpression), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(bool), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BuildTimeScope), Member = "Find", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[Token(Token = "0x6000BCE")]
+	public void ForceEnvUpValue() { }
+
+	[Address(RVA = "0x34F2F0", Offset = "0x34E4F0", Length = "0x4E")]
+	[CalledBy(Type = typeof(ForEachLoopStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(Token), typeof(Token)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ForLoopStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(Token), typeof(Token)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(IfStatement), Member = "CreateIfBlock", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = "MoonSharp.Interpreter.Tree.Statements.IfStatement+IfBlock")]
+	[CalledBy(Type = typeof(IfStatement), Member = "CreateElseBlock", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = "MoonSharp.Interpreter.Tree.Statements.IfStatement+IfBlock")]
+	[CalledBy(Type = typeof(RepeatStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ScopeBlockStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(WhileStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 7)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "PopBlock", ReturnType = typeof(RuntimeScopeBlock))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BCA")]
+	public RuntimeScopeBlock PopBlock() { }
+
+	[Address(RVA = "0x34F340", Offset = "0x34E540", Length = "0xD0")]
+	[CalledBy(Type = typeof(ChunkStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(FunctionDefinitionExpression), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(bool), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "ResolveLRefs", ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.List`1<System.Object>), Member = "RemoveAt", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "GetRuntimeFrameData", ReturnType = typeof(RuntimeScopeFrame))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BCB")]
+	public RuntimeScopeFrame PopFunction() { }
+
+	[Address(RVA = "0x34F420", Offset = "0x34E620", Length = "0x4E")]
+	[CalledBy(Type = typeof(ForEachLoopStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(Token), typeof(Token)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ForLoopStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(Token), typeof(Token)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(IfStatement), Member = "CreateIfBlock", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = "MoonSharp.Interpreter.Tree.Statements.IfStatement+IfBlock")]
+	[CalledBy(Type = typeof(IfStatement), Member = "CreateElseBlock", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = "MoonSharp.Interpreter.Tree.Statements.IfStatement+IfBlock")]
+	[CalledBy(Type = typeof(RepeatStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ScopeBlockStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(WhileStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 7)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "PushBlock", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BC9")]
+	public void PushBlock() { }
+
+	[Address(RVA = "0x34F470", Offset = "0x34E670", Length = "0x15F")]
+	[CalledBy(Type = typeof(ChunkStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(FunctionDefinitionExpression), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(bool), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(System.Collections.Generic.List`1<System.Object>), Member = "AddWithResize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000BC8")]
+	public void PushFunction(IClosureBuilder closureBuilder, bool hasVarArgs) { }
+
+	[Address(RVA = "0x34F5D0", Offset = "0x34E7D0", Length = "0x5E")]
+	[CalledBy(Type = typeof(GotoStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "RegisterGoto", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GotoStatement)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BD4")]
+	internal void RegisterGoto(GotoStatement gotostat) { }
+
+	[Address(RVA = "0x34F630", Offset = "0x34E830", Length = "0x5E")]
+	[CalledBy(Type = typeof(AssignmentStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(Token)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "MoonSharp.Interpreter.Tree.Statements.ForEachLoopStatement+<>c__DisplayClass7_0", Member = "<.ctor>b__0", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[CalledBy(Type = typeof(FunctionDefinitionStatement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ScriptLoadingContext), typeof(bool), typeof(Token)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Enumerable), Member = "Last", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TSource"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Collections.Generic.IEnumerable`1<TSource>"}, ReturnType = "TSource")]
+	[Calls(Type = typeof(BuildTimeScopeFrame), Member = "TryDefineLocal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(SymbolRef))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000BD1")]
+	public SymbolRef TryDefineLocal(string name) { }
+
+}
+

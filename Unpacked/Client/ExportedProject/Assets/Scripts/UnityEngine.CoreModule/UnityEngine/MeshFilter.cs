@@ -1,0 +1,200 @@
+namespace UnityEngine;
+
+[NativeHeader("Runtime/Graphics/Mesh/MeshFilter.h")]
+[RequireComponent(typeof(Transform))]
+[Token(Token = "0x20000BC")]
+public sealed class MeshFilter : Component
+{
+
+	[Token(Token = "0x170000D9")]
+	public Mesh mesh
+	{
+		[Address(RVA = "0x19336B0", Offset = "0x19328B0", Length = "0x90")]
+		[CalledBy(Type = "Polytoria.Datamodel.Part", Member = "set_Shape", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Polytoria.Datamodel.PartShape"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setAlphaVertex>b__95_0", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setAlphaVertex>b__95_1", ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.PredictedRigidbody", Member = "CopyRenderersAsGhost", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GameObject), typeof(Material)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 4)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(Unmarshal), Member = "UnmarshalUnityObject", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IntPtr)}, ReturnType = "T")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[NativeName("GetInstantiatedMeshFromScript")]
+		[Token(Token = "0x60004B9")]
+		 get { } //Length: 144
+		[Address(RVA = "0x1933880", Offset = "0x1932A80", Length = "0xBA")]
+		[CalledBy(Type = "Polytoria.Datamodel.Part", Member = "set_Shape", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Polytoria.Datamodel.PartShape"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.PredictedRigidbody", Member = "CopyRenderersAsGhost", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GameObject), typeof(Material)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "GLTFast.GameObjectInstantiator", Member = "AddPrimitive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(string), "GLTFast.MeshResult", "System.UInt32[]", "System.Nullable`1<UInt32>", "System.Single[]", typeof(int)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "GLTFast.GameObjectInstantiator", Member = "AddPrimitiveInstanced", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(string), "GLTFast.MeshResult", typeof(uint), "System.Nullable`1<NativeArray`1<Vector3>>", "System.Nullable`1<NativeArray`1<Quaternion>>", "System.Nullable`1<NativeArray`1<Vector3>>", typeof(int)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 4)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[NativeName("SetInstantiatedMesh")]
+		[Token(Token = "0x60004BA")]
+		 set { } //Length: 186
+	}
+
+	[Token(Token = "0x170000D8")]
+	public Mesh sharedMesh
+	{
+		[Address(RVA = "0x1933790", Offset = "0x1932990", Length = "0x90")]
+		[CalledBy(Type = "UnityEngine.Rendering.PostProcessing.MeshUtilities", Member = "GetPrimitive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PrimitiveType)}, ReturnType = typeof(Mesh))]
+		[CalledBy(Type = "RLD.GameObjectEx", Member = "GetMesh", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GameObject)}, ReturnType = typeof(Mesh))]
+		[CalledBy(Type = "Polytoria.Datamodel.Part", Member = "set_Shape", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Polytoria.Datamodel.PartShape"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Controllers.AppearanceLoaderBase+<ApplyBodyParts>d__62", Member = "MoveNext", ReturnType = typeof(bool))]
+		[CalledBy(Type = "Polytoria.Controllers.NPCAppearance", Member = "Awake", ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Controllers.PlayerAppearance", Member = "Awake", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.Rendering.PostProcessing.MeshUtilities", Member = "GetColliderMesh", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.Collider"}, ReturnType = typeof(Mesh))]
+		[CalledBy(Type = "UnityEngine.Rendering.PostProcessing.MeshUtilities", Member = "GetBuiltinMesh", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PrimitiveType)}, ReturnType = typeof(Mesh))]
+		[CallerCount(Count = 9)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(Unmarshal), Member = "UnmarshalUnityObject", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IntPtr)}, ReturnType = "T")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x60004B7")]
+		 get { } //Length: 144
+		[Address(RVA = "0x1933990", Offset = "0x1932B90", Length = "0xBA")]
+		[CalledBy(Type = "TMPro.TextMeshPro", Member = "SetMeshFilters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "RLD.EditorPrefabPreviewGen", Member = "BeginGenSession", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"RLD.PrefabPreviewLookAndFeel"}, ReturnType = typeof(bool))]
+		[CalledBy(Type = "RLD.EditorPrefabPreviewGen", Member = "CreateNonMeshPreviewObject", ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Controllers.AppearanceLoaderBase+<ApplyBodyParts>d__62", Member = "MoveNext", ReturnType = typeof(bool))]
+		[CalledBy(Type = "TMPro.TextMeshPro", Member = "Awake", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TextMeshPro", Member = "OnEnable", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TextMeshPro", Member = "OnDisable", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_SubMesh", Member = "OnEnable", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_SubMesh", Member = "OnDisable", ReturnType = typeof(void))]
+		[CallerCount(Count = 11)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x60004B8")]
+		 set { } //Length: 186
+	}
+
+	[Address(RVA = "0x2C7050", Offset = "0x2C6250", Length = "0x7")]
+	[CallerCount(Count = 60)]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60004BB")]
+	public MeshFilter() { }
+
+	[Address(RVA = "0x2C3410", Offset = "0x2C2610", Length = "0x3")]
+	[CallerCount(Count = 8626)]
+	[DeduplicatedMethod]
+	[RequiredByNativeCode]
+	[Token(Token = "0x60004B6")]
+	private void DontStripMeshFilter() { }
+
+	[Address(RVA = "0x19336B0", Offset = "0x19328B0", Length = "0x90")]
+	[CalledBy(Type = "Polytoria.Datamodel.Part", Member = "set_Shape", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Polytoria.Datamodel.PartShape"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setAlphaVertex>b__95_0", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setAlphaVertex>b__95_1", ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.PredictedRigidbody", Member = "CopyRenderersAsGhost", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GameObject), typeof(Material)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(Unmarshal), Member = "UnmarshalUnityObject", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IntPtr)}, ReturnType = "T")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[NativeName("GetInstantiatedMeshFromScript")]
+	[Token(Token = "0x60004B9")]
+	public Mesh get_mesh() { }
+
+	[Address(RVA = "0x1933670", Offset = "0x1932870", Length = "0x33")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60004BE")]
+	private static IntPtr get_mesh_Injected(IntPtr _unity_self) { }
+
+	[Address(RVA = "0x1933790", Offset = "0x1932990", Length = "0x90")]
+	[CalledBy(Type = "UnityEngine.Rendering.PostProcessing.MeshUtilities", Member = "GetColliderMesh", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.Collider"}, ReturnType = typeof(Mesh))]
+	[CalledBy(Type = "Polytoria.Controllers.PlayerAppearance", Member = "Awake", ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Controllers.NPCAppearance", Member = "Awake", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.Rendering.PostProcessing.MeshUtilities", Member = "GetBuiltinMesh", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PrimitiveType)}, ReturnType = typeof(Mesh))]
+	[CalledBy(Type = "Polytoria.Datamodel.Part", Member = "set_Shape", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Polytoria.Datamodel.PartShape"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "RLD.GameObjectEx", Member = "GetMesh", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GameObject)}, ReturnType = typeof(Mesh))]
+	[CalledBy(Type = "UnityEngine.Rendering.PostProcessing.MeshUtilities", Member = "GetPrimitive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(PrimitiveType)}, ReturnType = typeof(Mesh))]
+	[CalledBy(Type = "Polytoria.Controllers.AppearanceLoaderBase+<ApplyBodyParts>d__62", Member = "MoveNext", ReturnType = typeof(bool))]
+	[CallerCount(Count = 9)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(Unmarshal), Member = "UnmarshalUnityObject", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IntPtr)}, ReturnType = "T")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60004B7")]
+	public Mesh get_sharedMesh() { }
+
+	[Address(RVA = "0x1933750", Offset = "0x1932950", Length = "0x33")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60004BC")]
+	private static IntPtr get_sharedMesh_Injected(IntPtr _unity_self) { }
+
+	[Address(RVA = "0x1933880", Offset = "0x1932A80", Length = "0xBA")]
+	[CalledBy(Type = "Polytoria.Datamodel.Part", Member = "set_Shape", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Polytoria.Datamodel.PartShape"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.PredictedRigidbody", Member = "CopyRenderersAsGhost", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GameObject), typeof(Material)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "GLTFast.GameObjectInstantiator", Member = "AddPrimitive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(string), "GLTFast.MeshResult", "System.UInt32[]", "System.Nullable`1<UInt32>", "System.Single[]", typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "GLTFast.GameObjectInstantiator", Member = "AddPrimitiveInstanced", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(string), "GLTFast.MeshResult", typeof(uint), "System.Nullable`1<NativeArray`1<Vector3>>", "System.Nullable`1<NativeArray`1<Quaternion>>", "System.Nullable`1<NativeArray`1<Vector3>>", typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[NativeName("SetInstantiatedMesh")]
+	[Token(Token = "0x60004BA")]
+	public void set_mesh(Mesh value) { }
+
+	[Address(RVA = "0x1933830", Offset = "0x1932A30", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60004BF")]
+	private static void set_mesh_Injected(IntPtr _unity_self, IntPtr value) { }
+
+	[Address(RVA = "0x1933990", Offset = "0x1932B90", Length = "0xBA")]
+	[CalledBy(Type = "TMPro.TMP_SubMesh", Member = "OnDisable", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TextMeshPro", Member = "OnDisable", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TextMeshPro", Member = "OnEnable", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TextMeshPro", Member = "Awake", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TMP_SubMesh", Member = "OnEnable", ReturnType = typeof(void))]
+	[CalledBy(Type = "RLD.EditorPrefabPreviewGen", Member = "CreateNonMeshPreviewObject", ReturnType = typeof(void))]
+	[CalledBy(Type = "RLD.EditorPrefabPreviewGen", Member = "BeginGenSession", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"RLD.PrefabPreviewLookAndFeel"}, ReturnType = typeof(bool))]
+	[CalledBy(Type = "TMPro.TextMeshPro", Member = "SetMeshFilters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Controllers.AppearanceLoaderBase+<ApplyBodyParts>d__62", Member = "MoveNext", ReturnType = typeof(bool))]
+	[CallerCount(Count = 11)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60004B8")]
+	public void set_sharedMesh(Mesh value) { }
+
+	[Address(RVA = "0x1933940", Offset = "0x1932B40", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60004BD")]
+	private static void set_sharedMesh_Injected(IntPtr _unity_self, IntPtr value) { }
+
+}
+

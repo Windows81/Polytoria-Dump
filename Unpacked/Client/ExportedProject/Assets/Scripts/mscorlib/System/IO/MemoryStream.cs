@@ -1,0 +1,653 @@
+namespace System.IO;
+
+[Token(Token = "0x200062D")]
+public class MemoryStream : Stream
+{
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x400190C")]
+	private Byte[] _buffer; //Field offset: 0x28
+	[FieldOffset(Offset = "0x30")]
+	[Token(Token = "0x400190D")]
+	private int _origin; //Field offset: 0x30
+	[FieldOffset(Offset = "0x34")]
+	[Token(Token = "0x400190E")]
+	private int _position; //Field offset: 0x34
+	[FieldOffset(Offset = "0x38")]
+	[Token(Token = "0x400190F")]
+	private int _length; //Field offset: 0x38
+	[FieldOffset(Offset = "0x3C")]
+	[Token(Token = "0x4001910")]
+	private int _capacity; //Field offset: 0x3C
+	[FieldOffset(Offset = "0x40")]
+	[Token(Token = "0x4001911")]
+	private bool _expandable; //Field offset: 0x40
+	[FieldOffset(Offset = "0x41")]
+	[Token(Token = "0x4001912")]
+	private bool _writable; //Field offset: 0x41
+	[FieldOffset(Offset = "0x42")]
+	[Token(Token = "0x4001913")]
+	private bool _exposable; //Field offset: 0x42
+	[FieldOffset(Offset = "0x43")]
+	[Token(Token = "0x4001914")]
+	private bool _isOpen; //Field offset: 0x43
+	[FieldOffset(Offset = "0x48")]
+	[Token(Token = "0x4001915")]
+	private Task<Int32> _lastReadTask; //Field offset: 0x48
+
+	[Token(Token = "0x170006F7")]
+	public virtual bool CanRead
+	{
+		[Address(RVA = "0x145D750", Offset = "0x145C950", Length = "0x5")]
+		[CallerCount(Count = 0)]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6002CEA")]
+		 get { } //Length: 5
+	}
+
+	[Token(Token = "0x170006F8")]
+	public virtual bool CanSeek
+	{
+		[Address(RVA = "0x145D750", Offset = "0x145C950", Length = "0x5")]
+		[CallerCount(Count = 0)]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6002CEB")]
+		 get { } //Length: 5
+	}
+
+	[Token(Token = "0x170006F9")]
+	public virtual bool CanWrite
+	{
+		[Address(RVA = "0x145D760", Offset = "0x145C960", Length = "0x5")]
+		[CallerCount(Count = 0)]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6002CEC")]
+		 get { } //Length: 5
+	}
+
+	[Token(Token = "0x170006FA")]
+	public override int Capacity
+	{
+		[Address(RVA = "0x145D770", Offset = "0x145C970", Length = "0x40")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Token(Token = "0x6002CF7")]
+		 get { } //Length: 64
+		[Address(RVA = "0x145D850", Offset = "0x145CA50", Length = "0x1AF")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(Buffer), Member = "BlockCopy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Calls(Type = typeof(NotSupportedException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+		[CallsUnknownMethods(Count = 2)]
+		[Token(Token = "0x6002CF8")]
+		 set { } //Length: 431
+	}
+
+	[Token(Token = "0x170006FB")]
+	public virtual long Length
+	{
+		[Address(RVA = "0x145D7B0", Offset = "0x145C9B0", Length = "0x42")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Token(Token = "0x6002CF9")]
+		 get { } //Length: 66
+	}
+
+	[Token(Token = "0x170006FC")]
+	public virtual long Position
+	{
+		[Address(RVA = "0x145D800", Offset = "0x145CA00", Length = "0x42")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Token(Token = "0x6002CFA")]
+		 get { } //Length: 66
+		[Address(RVA = "0x145DA00", Offset = "0x145CC00", Length = "0x110")]
+		[CalledBy(Type = "System.Xml.XmlCachedStream", Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Uri", typeof(Stream)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 1)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+		[Token(Token = "0x6002CFB")]
+		 set { } //Length: 272
+	}
+
+	[Address(RVA = "0x145D560", Offset = "0x145C760", Length = "0x97")]
+	[CallerCount(Count = 28)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180029B10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6002CE3")]
+	public MemoryStream() { }
+
+	[Address(RVA = "0x145D600", Offset = "0x145C800", Length = "0x119")]
+	[CalledBy(Type = "UnityEngine.WWWTranscoder", Member = "Decode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]", typeof(byte), "System.Byte[]"}, ReturnType = "System.Byte[]")]
+	[CalledBy(Type = "Mirror.BouncyCastle.Utilities.Encoders.Hex", Member = "ToHexString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]"}, ReturnType = typeof(string))]
+	[CalledBy(Type = "Mirror.BouncyCastle.Utilities.Encoders.Hex", Member = "ToHexString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]", typeof(bool)}, ReturnType = typeof(string))]
+	[CalledBy(Type = "Mirror.BouncyCastle.Utilities.Encoders.Hex", Member = "ToHexString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]", typeof(int), typeof(int), typeof(bool)}, ReturnType = typeof(string))]
+	[CalledBy(Type = "Mirror.BouncyCastle.Utilities.Encoders.Hex", Member = "Encode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]", typeof(int), typeof(int)}, ReturnType = "System.Byte[]")]
+	[CalledBy(Type = "kcp2k.Kcp+<>c", Member = "<.ctor>b__61_0", ReturnType = "kcp2k.Segment")]
+	[CalledBy(Type = "kcp2k.Segment", Member = ".ctor", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.WWWForm", Member = "get_data", ReturnType = "System.Byte[]")]
+	[CalledBy(Type = "UnityEngine.WWWTranscoder", Member = "Encode", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]", typeof(byte), "System.Byte[]", "System.Byte[]", typeof(bool)}, ReturnType = "System.Byte[]")]
+	[CallerCount(Count = 9)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180029B10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6002CE4")]
+	public MemoryStream(int capacity) { }
+
+	[Address(RVA = "0x145D480", Offset = "0x145C680", Length = "0xDF")]
+	[CalledBy(Type = typeof(MethodResponse), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IMethodCallMessage), typeof(CADMethodReturnMessage)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "MoonSharp.Interpreter.Script", Member = "LoadFile", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), "MoonSharp.Interpreter.Table", typeof(string)}, ReturnType = "MoonSharp.Interpreter.DynValue")]
+	[CalledBy(Type = "MoonSharp.Interpreter.Script", Member = "LoadString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), "MoonSharp.Interpreter.Table", typeof(string)}, ReturnType = "MoonSharp.Interpreter.DynValue")]
+	[CalledBy(Type = "Polytoria.Controllers.ClipboardController", Member = "DecompressString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(string))]
+	[CalledBy(Type = typeof(CADMethodReturnMessage), Member = "GetArguments", ReturnType = typeof(ArrayList))]
+	[CalledBy(Type = typeof(CADMethodCallMessage), Member = "GetArguments", ReturnType = typeof(ArrayList))]
+	[CalledBy(Type = typeof(CADSerializer), Member = "DeserializeObjectSafe", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(object))]
+	[CalledBy(Type = typeof(MethodCall), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CADMethodCallMessage)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(RemotingServices), Member = "DeserializeCallData", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(object))]
+	[CalledBy(Type = typeof(ObjRef), Member = "DeserializeInTheCurrentDomain", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(Byte[])}, ReturnType = typeof(ObjRef))]
+	[CalledBy(Type = typeof(ClaimsIdentity), Member = "Deserialize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SerializationInfo), typeof(StreamingContext), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ClaimsIdentity), Member = "DeserializeClaims", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(AppDomain), Member = "ProcessMessageInDomain", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(CADMethodCallMessage), typeof(Byte[]&), typeof(CADMethodReturnMessage&)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(CrossAppDomainSink), Member = "SyncProcessMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IMessage)}, ReturnType = typeof(IMessage))]
+	[CallerCount(Count = 15)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6002CE5")]
+	public MemoryStream(Byte[] buffer) { }
+
+	[Address(RVA = "0x145D390", Offset = "0x145C590", Length = "0xED")]
+	[CalledBy(Type = "Mono.Security.Authenticode.AuthenticodeDeformatter", Member = "CheckSignature", ReturnType = typeof(bool))]
+	[CalledBy(Type = "System.Net.FtpWebResponse+EmptyStream", Member = ".ctor", ReturnType = typeof(void))]
+	[CalledBy(Type = "System.Net.FtpWebResponse", Member = "GetResponseStream", ReturnType = typeof(Stream))]
+	[CalledBy(Type = "Mirror.BouncyCastle.Asn1.Asn1Object", Member = "InternalGetEncoded", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = "System.Byte[]")]
+	[CalledBy(Type = "Mirror.BouncyCastle.Asn1.Asn1Object", Member = "FromByteArray", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]"}, ReturnType = "Mirror.BouncyCastle.Asn1.Asn1Object")]
+	[CalledBy(Type = "Mirror.BouncyCastle.Asn1.Asn1OctetString", Member = "GetOctetStream", ReturnType = typeof(Stream))]
+	[CalledBy(Type = "Mono.Security.Authenticode.AuthenticodeBase", Member = "Open", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]"}, ReturnType = typeof(void))]
+	[CallerCount(Count = 7)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6002CE6")]
+	public MemoryStream(Byte[] buffer, bool writable) { }
+
+	[Address(RVA = "0x145D130", Offset = "0x145C330", Length = "0x21")]
+	[CalledBy(Type = typeof(Tokenizer), Member = "ChangeFormat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Encoding)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(MemoryStream), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6002CE7")]
+	public MemoryStream(Byte[] buffer, int index, int count) { }
+
+	[Address(RVA = "0x145D720", Offset = "0x145C920", Length = "0x25")]
+	[CalledBy(Type = "Mirror.BouncyCastle.Asn1.DerBitString", Member = "GetBitStream", ReturnType = typeof(Stream))]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptedConnection", Member = "CompleteExchange", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>", "System.Byte[]"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptionCredentials", Member = "DeserializePublicKey", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>"}, ReturnType = "Mirror.BouncyCastle.Crypto.AsymmetricKeyParameter")]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptionCredentials", Member = "DeserializePrivateKey", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>"}, ReturnType = "Mirror.BouncyCastle.Crypto.AsymmetricKeyParameter")]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptionCredentials", Member = "LoadFromFile", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = "Mirror.Transports.Encryption.EncryptionCredentials")]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(MemoryStream), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6002CE8")]
+	public MemoryStream(Byte[] buffer, int index, int count, bool writable) { }
+
+	[Address(RVA = "0x145D160", Offset = "0x145C360", Length = "0x222")]
+	[CalledBy(Type = typeof(MemoryStream), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MemoryStream), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int), typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6002CE9")]
+	public MemoryStream(Byte[] buffer, int index, int count, bool writable, bool publiclyVisible) { }
+
+	[Address(RVA = "0x145B0D0", Offset = "0x145A2D0", Length = "0x134")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StreamHelpers), Member = "ValidateCopyToArgs", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Stream), typeof(Stream), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(Stream), Member = "CopyTo", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Stream), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6002D01")]
+	public virtual void CopyTo(Stream destination, int bufferSize) { }
+
+	[Address(RVA = "0x145AD50", Offset = "0x1459F50", Length = "0x37B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x181450470")]
+	[Calls(Type = typeof(AsyncTaskMethodBuilder), Member = "get_Task", ReturnType = typeof(Task))]
+	[Calls(Type = typeof(AsyncTaskMethodBuilder), Member = "Start", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"System.IO.Stream+<CopyToAsyncInternal>d__28"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(<CopyToAsyncInternal>d__28&)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Task), Member = "FromCanceled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CancellationToken)}, ReturnType = typeof(Task))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180181C20")]
+	[Calls(Type = typeof(Task), Member = "FromException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Exception)}, ReturnType = typeof(Task))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180003A10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CancellationToken), Member = "get_IsCancellationRequested", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(StreamHelpers), Member = "ValidateCopyToArgs", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Stream), typeof(Stream), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x6002D02")]
+	public virtual Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken) { }
+
+	[Address(RVA = "0x145B210", Offset = "0x145A410", Length = "0x6E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Token(Token = "0x6002CEF")]
+	protected virtual void Dispose(bool disposing) { }
+
+	[Address(RVA = "0x145B280", Offset = "0x145A480", Length = "0xB7")]
+	[CalledBy(Type = typeof(MemoryStream), Member = "SetLength", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(long)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MemoryStream), Member = "Write", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MemoryStream), Member = "Write", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ReadOnlySpan`1<System.Byte>)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(MemoryStream), Member = "WriteByte", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(byte)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(IOException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6002CF0")]
+	private bool EnsureCapacity(int value) { }
+
+	[Address(RVA = "0x145B340", Offset = "0x145A540", Length = "0x3A")]
+	[CalledBy(Type = typeof(MemoryStream), Member = "Read", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(MemoryStream), Member = "Write", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x6002CED")]
+	private void EnsureNotClosed() { }
+
+	[Address(RVA = "0x145B380", Offset = "0x145A580", Length = "0x4B")]
+	[CalledBy(Type = typeof(MemoryStream), Member = "Write", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(Error), Member = "GetWriteNotSupported", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6002CEE")]
+	private void EnsureWriteable() { }
+
+	[Address(RVA = "0x2C3410", Offset = "0x2C2610", Length = "0x3")]
+	[CallerCount(Count = 8626)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6002CF1")]
+	public virtual void Flush() { }
+
+	[Address(RVA = "0x145D750", Offset = "0x145C950", Length = "0x5")]
+	[CallerCount(Count = 0)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6002CEA")]
+	public virtual bool get_CanRead() { }
+
+	[Address(RVA = "0x145D750", Offset = "0x145C950", Length = "0x5")]
+	[CallerCount(Count = 0)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6002CEB")]
+	public virtual bool get_CanSeek() { }
+
+	[Address(RVA = "0x145D760", Offset = "0x145C960", Length = "0x5")]
+	[CallerCount(Count = 0)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6002CEC")]
+	public virtual bool get_CanWrite() { }
+
+	[Address(RVA = "0x145D770", Offset = "0x145C970", Length = "0x40")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x6002CF7")]
+	public override int get_Capacity() { }
+
+	[Address(RVA = "0x145D7B0", Offset = "0x145C9B0", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x6002CF9")]
+	public virtual long get_Length() { }
+
+	[Address(RVA = "0x145D800", Offset = "0x145CA00", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x6002CFA")]
+	public virtual long get_Position() { }
+
+	[Address(RVA = "0x145B3D0", Offset = "0x145A5D0", Length = "0x65")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(UnauthorizedAccessException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x6002CF2")]
+	public override Byte[] GetBuffer() { }
+
+	[Address(RVA = "0x145B440", Offset = "0x145A640", Length = "0x55")]
+	[CalledBy(Type = typeof(BinaryReader), Member = "InternalReadChars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Char[]), typeof(int), typeof(int)}, ReturnType = typeof(int))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x6002CF6")]
+	internal int InternalEmulateRead(int count) { }
+
+	[Address(RVA = "0x2F5BE0", Offset = "0x2F4DE0", Length = "0x5")]
+	[CallerCount(Count = 16)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6002CF3")]
+	internal Byte[] InternalGetBuffer() { }
+
+	[Address(RVA = "0x3EAB00", Offset = "0x3E9D00", Length = "0x4")]
+	[CallerCount(Count = 0)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6002CF4")]
+	internal int InternalGetPosition() { }
+
+	[Address(RVA = "0x145B4A0", Offset = "0x145A6A0", Length = "0xED")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(Error), Member = "GetEndOfFile", ReturnType = typeof(Exception))]
+	[Token(Token = "0x6002CF5")]
+	internal int InternalReadInt32() { }
+
+	[Address(RVA = "0x145BC90", Offset = "0x145AE90", Length = "0x271")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(MemoryStream), Member = "EnsureNotClosed", ReturnType = typeof(void))]
+	[Calls(Type = typeof(Buffer), Member = "BlockCopy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6002CFC")]
+	public virtual int Read(Byte[] buffer, int offset, int count) { }
+
+	[Address(RVA = "0x145BF10", Offset = "0x145B110", Length = "0x1C6")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(Math), Member = "Min", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(int)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowArgumentOutOfRangeException", ReturnType = typeof(void))]
+	[Calls(Type = typeof(Span`1), Member = "CopyTo", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Span`1<T>"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Stream), Member = "Read", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Span`1<System.Byte>)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6002CFD")]
+	public virtual int Read(Span<Byte> buffer) { }
+
+	[Address(RVA = "0x145B8D0", Offset = "0x145AAD0", Length = "0x339")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Task), Member = "FromCanceled", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TResult"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CancellationToken)}, ReturnType = "System.Threading.Tasks.Task`1<TResult>")]
+	[Calls(Type = typeof(Task), Member = "FromException", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TResult"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Exception)}, ReturnType = "System.Threading.Tasks.Task`1<TResult>")]
+	[Calls(Type = typeof(Task), Member = "FromCancellation", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TResult"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(OperationCanceledException)}, ReturnType = "System.Threading.Tasks.Task`1<TResult>")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Task), Member = "FromResult", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(System.Threading.Tasks.Task`1<System.Int32>))]
+	[Calls(Type = typeof(System.Threading.Tasks.Task`1<System.Int32>), Member = "get_Result", ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180003A10")]
+	[Calls(Type = typeof(CancellationToken), Member = "get_IsCancellationRequested", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6002CFE")]
+	public virtual Task<Int32> ReadAsync(Byte[] buffer, int offset, int count, CancellationToken cancellationToken) { }
+
+	[Address(RVA = "0x145B590", Offset = "0x145A790", Length = "0x334")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CancellationToken), Member = "get_IsCancellationRequested", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(MemoryMarshal), Member = "TryGetArray", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ReadOnlyMemory`1<T>", "System.ArraySegment`1<T>&"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Memory`1), Member = "get_Span", ReturnType = "System.Span`1<T>")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(Task), Member = "FromCancellation", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TResult"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(OperationCanceledException)}, ReturnType = "System.Threading.Tasks.Task`1<TResult>")]
+	[Calls(Type = typeof(Task), Member = "FromException", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TResult"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Exception)}, ReturnType = "System.Threading.Tasks.Task`1<TResult>")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowArgumentNullException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ExceptionArgument)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Task), Member = "FromCanceled", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"TResult"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CancellationToken)}, ReturnType = "System.Threading.Tasks.Task`1<TResult>")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6002CFF")]
+	public virtual ValueTask<Int32> ReadAsync(Memory<Byte> buffer, CancellationToken cancellationToken = null) { }
+
+	[Address(RVA = "0x145BC10", Offset = "0x145AE10", Length = "0x77")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6002D00")]
+	public virtual int ReadByte() { }
+
+	[Address(RVA = "0x145C0E0", Offset = "0x145B2E0", Length = "0x250")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(IOException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6002D03")]
+	public virtual long Seek(long offset, SeekOrigin loc) { }
+
+	[Address(RVA = "0x145D850", Offset = "0x145CA50", Length = "0x1AF")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(Buffer), Member = "BlockCopy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(NotSupportedException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6002CF8")]
+	public override void set_Capacity(int value) { }
+
+	[Address(RVA = "0x145DA00", Offset = "0x145CC00", Length = "0x110")]
+	[CalledBy(Type = "System.Xml.XmlCachedStream", Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Uri", typeof(Stream)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Token(Token = "0x6002CFB")]
+	public virtual void set_Position(long value) { }
+
+	[Address(RVA = "0x145C330", Offset = "0x145B530", Length = "0x16C")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(MemoryStream), Member = "EnsureCapacity", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Array), Member = "Clear", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(Error), Member = "GetWriteNotSupported", ReturnType = typeof(Exception))]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6002D04")]
+	public virtual void SetLength(long value) { }
+
+	[Address(RVA = "0x145C4A0", Offset = "0x145B6A0", Length = "0x9B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(Buffer), Member = "BlockCopy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180029B10")]
+	[Token(Token = "0x6002D05")]
+	public override Byte[] ToArray() { }
+
+	[Address(RVA = "0x145CE20", Offset = "0x145C020", Length = "0x303")]
+	[CalledBy(Type = "System.Net.Http.HttpContent+FixedMemoryStream", Member = "Write", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Byte[]", typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(Buffer), Member = "BlockCopy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(IOException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Array), Member = "Clear", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(MemoryStream), Member = "EnsureCapacity", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(MemoryStream), Member = "EnsureWriteable", ReturnType = typeof(void))]
+	[Calls(Type = typeof(MemoryStream), Member = "EnsureNotClosed", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Token(Token = "0x6002D06")]
+	public virtual void Write(Byte[] buffer, int offset, int count) { }
+
+	[Address(RVA = "0x145CBC0", Offset = "0x145BDC0", Length = "0x25C")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowArgumentOutOfRangeException", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(IOException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(Stream), Member = "Write", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ReadOnlySpan`1<System.Byte>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ReadOnlySpan`1), Member = "CopyTo", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Span`1<T>"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Array), Member = "Clear", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Error), Member = "GetWriteNotSupported", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(MemoryStream), Member = "EnsureCapacity", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6002D07")]
+	public virtual void Write(ReadOnlySpan<Byte> buffer) { }
+
+	[Address(RVA = "0x145C540", Offset = "0x145B740", Length = "0x28E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CancellationToken), Member = "get_IsCancellationRequested", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(MemoryMarshal), Member = "TryGetArray", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ReadOnlyMemory`1<T>", "System.ArraySegment`1<T>&"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(ReadOnlyMemory`1), Member = "get_Span", ReturnType = "System.ReadOnlySpan`1<T>")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(Task), Member = "FromCancellation", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VoidTaskResult)}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(OperationCanceledException)}, ReturnType = typeof(System.Threading.Tasks.Task`1<System.Threading.Tasks.VoidTaskResult>))]
+	[Calls(Type = typeof(Task), Member = "FromException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Exception)}, ReturnType = typeof(Task))]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowArgumentNullException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ExceptionArgument)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Task), Member = "FromCanceled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CancellationToken)}, ReturnType = typeof(Task))]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6002D09")]
+	public virtual ValueTask WriteAsync(ReadOnlyMemory<Byte> buffer, CancellationToken cancellationToken = null) { }
+
+	[Address(RVA = "0x145C7D0", Offset = "0x145B9D0", Length = "0x2C4")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Task), Member = "FromCanceled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(CancellationToken)}, ReturnType = typeof(Task))]
+	[Calls(Type = typeof(Task), Member = "FromException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Exception)}, ReturnType = typeof(Task))]
+	[Calls(Type = typeof(Task), Member = "FromCancellation", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VoidTaskResult)}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(OperationCanceledException)}, ReturnType = typeof(System.Threading.Tasks.Task`1<System.Threading.Tasks.VoidTaskResult>))]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x181450470")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180003A10")]
+	[Calls(Type = typeof(CancellationToken), Member = "get_IsCancellationRequested", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6002D08")]
+	public virtual Task WriteAsync(Byte[] buffer, int offset, int count, CancellationToken cancellationToken) { }
+
+	[Address(RVA = "0x145CAA0", Offset = "0x145BCA0", Length = "0x114")]
+	[CalledBy(Type = "System.Net.Http.HttpContent+FixedMemoryStream", Member = "WriteByte", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(byte)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(MemoryStream), Member = "EnsureCapacity", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Array), Member = "Clear", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Error), Member = "GetStreamIsClosed", ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(Error), Member = "GetWriteNotSupported", ReturnType = typeof(Exception))]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6002D0A")]
+	public virtual void WriteByte(byte value) { }
+
+}
+

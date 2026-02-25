@@ -1,0 +1,221 @@
+namespace Mirror;
+
+[Token(Token = "0x200005E")]
+public class NetworkReader
+{
+	[Token(Token = "0x4000151")]
+	public const int AllocationLimit = 16777216; //Field offset: 0x0
+	[FieldOffset(Offset = "0x10")]
+	[Token(Token = "0x400014E")]
+	internal ArraySegment<Byte> buffer; //Field offset: 0x10
+	[FieldOffset(Offset = "0x20")]
+	[Token(Token = "0x400014F")]
+	public int Position; //Field offset: 0x20
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x4000150")]
+	internal readonly UTF8Encoding encoding; //Field offset: 0x28
+
+	[Token(Token = "0x1700004D")]
+	public int Capacity
+	{
+		[Address(RVA = "0x1293DB0", Offset = "0x1292FB0", Length = "0x4F")]
+		[CalledBy(Type = typeof(Unbatcher), Member = "GetNextMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ArraySegment`1<Byte>&), typeof(Double&)}, ReturnType = typeof(bool))]
+		[CallerCount(Count = 1)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Token(Token = "0x600029D")]
+		 get { } //Length: 79
+	}
+
+	[Token(Token = "0x1700004C")]
+	public int Remaining
+	{
+		[Address(RVA = "0x1293E00", Offset = "0x1293000", Length = "0x52")]
+		[CalledBy(Type = typeof(Unbatcher), Member = "GetNextMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ArraySegment`1<Byte>&), typeof(Double&)}, ReturnType = typeof(bool))]
+		[CalledBy(Type = typeof(NetworkClient), Member = "OnTransportData", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>), typeof(int)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(NetworkReader), Member = "ReadBlittable", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = "T")]
+		[CalledBy(Type = "Mirror.Transports.Encryption.EncryptedConnection", Member = "OnReceiveRaw", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>", typeof(int)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Edgegap.EdgegapKcpClient", Member = "RawReceive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&"}, ReturnType = typeof(bool))]
+		[CalledBy(Type = "Edgegap.EdgegapKcpServer", Member = "RawReceiveFrom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&", typeof(Int32&)}, ReturnType = typeof(bool))]
+		[CallerCount(Count = 16)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Token(Token = "0x600029C")]
+		 get { } //Length: 82
+	}
+
+	[Address(RVA = "0x1293630", Offset = "0x1292830", Length = "0x8B")]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(UTF8Encoding), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x600029E")]
+	public NetworkReader(ArraySegment<Byte> segment) { }
+
+	[Address(RVA = "0x1293DB0", Offset = "0x1292FB0", Length = "0x4F")]
+	[CalledBy(Type = typeof(Unbatcher), Member = "GetNextMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ArraySegment`1<Byte>&), typeof(Double&)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Token(Token = "0x600029D")]
+	public int get_Capacity() { }
+
+	[Address(RVA = "0x1293E00", Offset = "0x1293000", Length = "0x52")]
+	[CalledBy(Type = typeof(Unbatcher), Member = "GetNextMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ArraySegment`1<Byte>&), typeof(Double&)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(NetworkClient), Member = "OnTransportData", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>), typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkReader), Member = "ReadBlittable", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = "T")]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptedConnection", Member = "OnReceiveRaw", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>", typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Edgegap.EdgegapKcpClient", Member = "RawReceive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&"}, ReturnType = typeof(bool))]
+	[CalledBy(Type = "Edgegap.EdgegapKcpServer", Member = "RawReceiveFrom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&", typeof(Int32&)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 16)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Token(Token = "0x600029C")]
+	public int get_Remaining() { }
+
+	[Address(RVA = "0x713820", Offset = "0x712A20", Length = "0xFF")]
+	[CalledBy(Type = "Mirror.Discovery.NetworkDiscoveryBase`2+<ReceiveRequestAsync>d__23", Member = "MoveNext", ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.NetworkMessages+<>c__DisplayClass8_0`2", Member = "<WrapHandler>b__0", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkConnection), typeof(NetworkReader), typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkReaderExtensions), Member = "ReadArray", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = "T[]")]
+	[CalledBy(Type = typeof(SyncList`1), Member = "OnDeserializeAll", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SyncList`1), Member = "OnDeserializeDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.Discovery.NetworkDiscoveryBase`2+<ReceiveGameBroadcastAsync>d__33", Member = "MoveNext", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F72D0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[CallsUnknownMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002A5")]
+	public T Read() { }
+
+	[Address(RVA = "0x7128A0", Offset = "0x711AA0", Length = "0x17E")]
+	[CallerCount(Count = 44)]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(EndOfStreamException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180001DB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180001F20")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002030")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002050")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkReader), Member = "get_Remaining", ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002A0")]
+	internal T ReadBlittable() { }
+
+	[Address(RVA = "0x714D50", Offset = "0x713F50", Length = "0x79")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadByte", ReturnType = typeof(byte))]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadBlittable", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = "T")]
+	[Calls(Type = typeof(Nullable`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = typeof(void))]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002A1")]
+	internal Nullable<T> ReadBlittableNullable() { }
+
+	[Address(RVA = "0x12937A0", Offset = "0x12929A0", Length = "0x39")]
+	[CalledBy(Type = typeof(SyncList`1), Member = "OnDeserializeDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptedConnection", Member = "OnReceiveRaw", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>", typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.SyncDataReaderWriter", Member = "ReadSyncData", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = "Mirror.SyncData")]
+	[CalledBy(Type = "Mirror.NetworkAnimator", Member = "OnDeserialize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.NetworkAnimator", Member = "ReadParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(Compression), Member = "DecompressVarUInt", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(ulong))]
+	[CalledBy(Type = typeof(SyncSet`1), Member = "OnDeserializeDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Edgegap.EdgegapKcpClient", Member = "RawReceive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&"}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(SyncIDictionary`2), Member = "OnDeserializeDelta", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_CmdClientToServerDelta__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_CmdClientToServerBaseline__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_RpcServerToClientDelta__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "UserCode_RpcServerToClientBaseline__ArraySegment`1", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.ArraySegment`1<System.Byte>)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkBehaviourHybrid), Member = "OnDeserialize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(NetworkBehaviour), Member = "Deserialize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader), typeof(bool)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(NetworkReader), Member = "ReadBlittableNullable", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = "System.Nullable`1<T>")]
+	[CalledBy(Type = "Edgegap.EdgegapKcpServer", Member = "RawReceiveFrom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&", typeof(Int32&)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 23)]
+	[Calls(Type = typeof(NetworkReader), Member = "ReadBlittable", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = "T")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Token(Token = "0x60002A2")]
+	public byte ReadByte() { }
+
+	[Address(RVA = "0x12939B0", Offset = "0x1292BB0", Length = "0x269")]
+	[CalledBy(Type = typeof(NetworkReaderExtensions), Member = "ReadBytes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader), typeof(int)}, ReturnType = typeof(Byte[]))]
+	[CalledBy(Type = typeof(NetworkReaderExtensions), Member = "ReadBytesAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(Byte[]))]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptedConnection", Member = "OnReceiveRaw", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>", typeof(int)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(EndOfStreamException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180001DB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180001F20")]
+	[Calls(Type = typeof(Array), Member = "Copy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Token(Token = "0x60002A3")]
+	public Byte[] ReadBytes(Byte[] bytes, int count) { }
+
+	[Address(RVA = "0x12937E0", Offset = "0x12929E0", Length = "0x1CE")]
+	[CalledBy(Type = "Edgegap.EdgegapKcpServer", Member = "RawReceiveFrom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&", typeof(Int32&)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = "Edgegap.EdgegapKcpClient", Member = "RawReceive", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>&"}, ReturnType = typeof(bool))]
+	[CalledBy(Type = "Mirror.Transports.Encryption.EncryptedConnection", Member = "OnReceiveRaw", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.ArraySegment`1<Byte>", typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(GeneratedNetworkCode), Member = "_Read_Mirror.SpawnMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(SpawnMessage))]
+	[CalledBy(Type = typeof(GeneratedNetworkCode), Member = "_Read_Mirror.RpcMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(RpcMessage))]
+	[CalledBy(Type = typeof(GeneratedNetworkCode), Member = "_Read_Mirror.EntityStateMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(EntityStateMessage))]
+	[CalledBy(Type = typeof(NetworkReaderExtensions), Member = "ReadArraySegmentAndSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(System.ArraySegment`1<System.Byte>))]
+	[CalledBy(Type = typeof(NetworkReaderExtensions), Member = "ReadString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(string))]
+	[CalledBy(Type = typeof(Unbatcher), Member = "GetNextMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ArraySegment`1<Byte>&), typeof(Double&)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(GeneratedNetworkCode), Member = "_Read_Mirror.CommandMessage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NetworkReader)}, ReturnType = typeof(CommandMessage))]
+	[CallerCount(Count = 12)]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180001DB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(EndOfStreamException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArraySegment`1), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T[]", typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Token(Token = "0x60002A4")]
+	public ArraySegment<Byte> ReadBytesSegment(int count) { }
+
+	[Address(RVA = "0x1293C20", Offset = "0x1292E20", Length = "0x28")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Token(Token = "0x600029F")]
+	public void SetBuffer(ArraySegment<Byte> segment) { }
+
+	[Address(RVA = "0x1293C50", Offset = "0x1292E50", Length = "0x15B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(BitConverter), Member = "ToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[]), typeof(int), typeof(int)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_value_box")]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60002A6")]
+	public virtual string ToString() { }
+
+}
+

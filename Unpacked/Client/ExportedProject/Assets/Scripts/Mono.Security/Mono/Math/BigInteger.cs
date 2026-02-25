@@ -1,0 +1,811 @@
+namespace Mono.Math;
+
+[Token(Token = "0x2000055")]
+public class BigInteger
+{
+	[Token(Token = "0x2000058")]
+	private sealed class Kernel
+	{
+
+		[Address(RVA = "0x12C8230", Offset = "0x12C7430", Length = "0x14B")]
+		[CallerCount(Count = 43)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000214")]
+		public static Sign Compare(BigInteger bi1, BigInteger bi2) { }
+
+		[Address(RVA = "0x12C8380", Offset = "0x12C7580", Length = "0x258")]
+		[CalledBy(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+		[CallerCount(Count = 1)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+		[CallsDeduplicatedMethods(Count = 1)]
+		[ContainsUnimplementedInstructions]
+		[Token(Token = "0x6000217")]
+		public static BigInteger[] DwordDivMod(BigInteger n, uint d) { }
+
+		[Address(RVA = "0x12C6F50", Offset = "0x12C6150", Length = "0x58")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[ContainsUnimplementedInstructions]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000216")]
+		public static uint DwordMod(BigInteger n, uint d) { }
+
+		[Address(RVA = "0x12C85E0", Offset = "0x12C77E0", Length = "0x2DA")]
+		[CalledBy(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+		[CalledBy(Type = typeof(BigInteger), Member = "op_LeftShift", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 3)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[CallsDeduplicatedMethods(Count = 2)]
+		[Token(Token = "0x6000219")]
+		public static BigInteger LeftShift(BigInteger bi, int n) { }
+
+		[Address(RVA = "0x12C88C0", Offset = "0x12C7AC0", Length = "0x116")]
+		[CallerCount(Count = 4)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[ContainsUnimplementedInstructions]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000212")]
+		public static void MinusEq(BigInteger big, BigInteger small) { }
+
+		[Address(RVA = "0x12C9300", Offset = "0x12C8500", Length = "0x11D")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[ContainsUnimplementedInstructions]
+		[Token(Token = "0x600021D")]
+		public static uint modInverse(BigInteger bi, uint modulus) { }
+
+		[Address(RVA = "0x12C9420", Offset = "0x12C8620", Length = "0x965")]
+		[CalledBy(Type = typeof(RSAManaged), Member = "GenerateKeyPair", ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(BigInteger), Member = "ModInverse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 5)]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+		[Calls(Type = typeof(ModulusRing), Member = "Difference", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[Calls(Type = typeof(BigInteger), Member = "op_Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[Calls(Type = typeof(ModulusRing), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+		[Calls(Type = typeof(ArithmeticException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[ContainsUnimplementedInstructions]
+		[Token(Token = "0x600021E")]
+		public static BigInteger modInverse(BigInteger bi, BigInteger modulus) { }
+
+		[Address(RVA = "0x12C9D90", Offset = "0x12C8F90", Length = "0x7EE")]
+		[CalledBy(Type = typeof(Kernel), Member = "modInverse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CalledBy(Type = typeof(RSAManaged), Member = "GenerateKeyPair", ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(ModulusRing), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+		[CalledBy(Type = typeof(ModulusRing), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CalledBy(Type = typeof(ModulusRing), Member = "Difference", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CalledBy(Type = typeof(BigInteger), Member = "op_Modulus", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CalledBy(Type = typeof(BigInteger), Member = "op_Division", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 12)]
+		[Calls(Type = typeof(Kernel), Member = "RightShift", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(BigInteger))]
+		[Calls(Type = typeof(Kernel), Member = "DwordDivMod", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(uint)}, ReturnType = typeof(BigInteger[]))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(Kernel), Member = "LeftShift", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(BigInteger))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+		[CallsDeduplicatedMethods(Count = 2)]
+		[ContainsUnimplementedInstructions]
+		[Token(Token = "0x6000218")]
+		public static BigInteger[] multiByteDivide(BigInteger bi1, BigInteger bi2) { }
+
+		[Address(RVA = "0x12C8B20", Offset = "0x12C7D20", Length = "0x11B")]
+		[CallerCount(Count = 4)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[DeduplicatedMethod]
+		[Token(Token = "0x600021B")]
+		public static void Multiply(UInt32[] x, uint xOffset, uint xLen, UInt32[] y, uint yOffset, uint yLen, UInt32[] d, uint dOffset) { }
+
+		[Address(RVA = "0x12C89E0", Offset = "0x12C7BE0", Length = "0x135")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[DeduplicatedMethod]
+		[Token(Token = "0x600021C")]
+		public static void MultiplyMod2p32pmod(UInt32[] x, int xOffset, int xLen, UInt32[] y, int yOffest, int yLen, UInt32[] d, int dOffset, int mod) { }
+
+		[Address(RVA = "0x12C8C40", Offset = "0x12C7E40", Length = "0x1B5")]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[ContainsUnimplementedInstructions]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000213")]
+		public static void PlusEq(BigInteger bi1, BigInteger bi2) { }
+
+		[Address(RVA = "0x12C8E00", Offset = "0x12C8000", Length = "0x232")]
+		[CalledBy(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+		[CalledBy(Type = typeof(BigInteger), Member = "op_RightShift", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsDeduplicatedMethods(Count = 1)]
+		[Token(Token = "0x600021A")]
+		public static BigInteger RightShift(BigInteger bi, int n) { }
+
+		[Address(RVA = "0x12C9040", Offset = "0x12C8240", Length = "0xA8")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[ContainsUnimplementedInstructions]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000215")]
+		public static uint SingleByteDivideInPlace(BigInteger n, uint d) { }
+
+		[Address(RVA = "0x12C90F0", Offset = "0x12C82F0", Length = "0x206")]
+		[CalledBy(Type = typeof(BigInteger), Member = "op_Subtraction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 1)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[CallsDeduplicatedMethods(Count = 1)]
+		[ContainsUnimplementedInstructions]
+		[Token(Token = "0x6000211")]
+		public static BigInteger Subtract(BigInteger big, BigInteger small) { }
+
+	}
+
+	[Token(Token = "0x2000057")]
+	internal sealed class ModulusRing
+	{
+		[FieldOffset(Offset = "0x10")]
+		[Token(Token = "0x400024F")]
+		private BigInteger mod; //Field offset: 0x10
+		[FieldOffset(Offset = "0x18")]
+		[Token(Token = "0x4000250")]
+		private BigInteger constant; //Field offset: 0x18
+
+		[Address(RVA = "0x12CD360", Offset = "0x12CC560", Length = "0x158")]
+		[CalledBy(Type = typeof(RSAManaged), Member = "EncryptValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(Byte[]))]
+		[CalledBy(Type = "Mono.Math.BigInteger+Kernel", Member = "modInverse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CalledBy(Type = typeof(BigInteger), Member = "ModPow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 3)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = "Mono.Math.BigInteger+Kernel", Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[CallsDeduplicatedMethods(Count = 2)]
+		[Token(Token = "0x600020B")]
+		public ModulusRing(BigInteger modulus) { }
+
+		[Address(RVA = "0x12CC7F0", Offset = "0x12CB9F0", Length = "0x485")]
+		[CalledBy(Type = typeof(ModulusRing), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CalledBy(Type = typeof(ModulusRing), Member = "Difference", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Sign), typeof(uint)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(IndexOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[CallsDeduplicatedMethods(Count = 8)]
+		[Token(Token = "0x600020C")]
+		public void BarrettReduction(BigInteger x) { }
+
+		[Address(RVA = "0x12CCC80", Offset = "0x12CBE80", Length = "0x20F")]
+		[CalledBy(Type = "Mono.Math.BigInteger+Kernel", Member = "modInverse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(BigInteger), Member = "op_Subtraction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[Calls(Type = typeof(ModulusRing), Member = "BarrettReduction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+		[Calls(Type = "Mono.Math.BigInteger+Kernel", Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(Exception), Member = ".ctor", ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[CallsDeduplicatedMethods(Count = 2)]
+		[Token(Token = "0x600020E")]
+		public BigInteger Difference(BigInteger a, BigInteger b) { }
+
+		[Address(RVA = "0x12CCE90", Offset = "0x12CC090", Length = "0x2C0")]
+		[CalledBy(Type = typeof(ModulusRing), Member = "Pow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+		[Calls(Type = "Mono.Math.BigInteger+Kernel", Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+		[Calls(Type = typeof(BigInteger), Member = "op_Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[Calls(Type = typeof(ModulusRing), Member = "BarrettReduction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[CallsDeduplicatedMethods(Count = 2)]
+		[Token(Token = "0x600020D")]
+		public BigInteger Multiply(BigInteger a, BigInteger b) { }
+
+		[Address(RVA = "0x12CD1E0", Offset = "0x12CC3E0", Length = "0x178")]
+		[CalledBy(Type = typeof(RSAManaged), Member = "EncryptValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(Byte[]))]
+		[CalledBy(Type = typeof(BigInteger), Member = "ModPow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(ModulusRing), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+		[Calls(Type = typeof(BigInteger), Member = "TestBit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(bool))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+		[CallsDeduplicatedMethods(Count = 1)]
+		[Token(Token = "0x600020F")]
+		public BigInteger Pow(BigInteger a, BigInteger k) { }
+
+		[Address(RVA = "0x12CD160", Offset = "0x12CC360", Length = "0x79")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+		[CLSCompliant(False)]
+		[ContainsInvalidInstructions]
+		[Token(Token = "0x6000210")]
+		public BigInteger Pow(uint b, BigInteger exp) { }
+
+	}
+
+	[Token(Token = "0x2000056")]
+	internal enum Sign
+	{
+		Negative = -1,
+		Zero = 0,
+		Positive = 1,
+	}
+
+	[Token(Token = "0x4000249")]
+	internal static readonly UInt32[] smallPrimes; //Field offset: 0x0
+	[Token(Token = "0x400024A")]
+	private static RandomNumberGenerator rng; //Field offset: 0x8
+	[FieldOffset(Offset = "0x10")]
+	[Token(Token = "0x4000247")]
+	private uint length; //Field offset: 0x10
+	[FieldOffset(Offset = "0x18")]
+	[Token(Token = "0x4000248")]
+	private UInt32[] data; //Field offset: 0x18
+
+	[Token(Token = "0x17000086")]
+	private static RandomNumberGenerator Rng
+	{
+		[Address(RVA = "0x12C6A00", Offset = "0x12C5C00", Length = "0xDB")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(RandomNumberGenerator), Member = "Create", ReturnType = typeof(RandomNumberGenerator))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Token(Token = "0x60001EE")]
+		private get { } //Length: 219
+	}
+
+	[Address(RVA = "0x12C6410", Offset = "0x12C5610", Length = "0x8C")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(RuntimeHelpers), Member = "InitializeArray", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(RuntimeFieldHandle)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Token(Token = "0x600020A")]
+	private static BigInteger() { }
+
+	[Address(RVA = "0x12C68A0", Offset = "0x12C5AA0", Length = "0x80")]
+	[CalledBy(Type = typeof(Kernel), Member = "modInverse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Subtraction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Implicit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+	[CalledBy(Type = typeof(ModulusRing), Member = "Pow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(Kernel), Member = "DwordDivMod", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(uint)}, ReturnType = typeof(BigInteger[]))]
+	[CalledBy(Type = typeof(ModulusRing), Member = "Difference", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(ModulusRing), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "GenerateKeyPair", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ModulusRing), Member = "Pow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CallerCount(Count = 20)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CLSCompliant(False)]
+	[Token(Token = "0x60001E4")]
+	public BigInteger(uint ui) { }
+
+	[Address(RVA = "0x12C6600", Offset = "0x12C5800", Length = "0x292")]
+	[CalledBy(Type = typeof(RSAManaged), Member = "EncryptValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Byte[])}, ReturnType = typeof(Byte[]))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 9)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x60001E3")]
+	public BigInteger(Byte[] inData) { }
+
+	[Address(RVA = "0x12C6590", Offset = "0x12C5790", Length = "0x69")]
+	[CalledBy(Type = typeof(ModulusRing), Member = "BarrettReduction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CLSCompliant(False)]
+	[Token(Token = "0x60001E0")]
+	public BigInteger(Sign sign, uint len) { }
+
+	[Address(RVA = "0x12C64A0", Offset = "0x12C56A0", Length = "0xE1")]
+	[CalledBy(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+	[CalledBy(Type = typeof(Kernel), Member = "RightShift", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Subtraction", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(BigInteger), Member = "ToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(string)}, ReturnType = typeof(string))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x60001E1")]
+	public BigInteger(BigInteger bi) { }
+
+	[Address(RVA = "0x12C6930", Offset = "0x12C5B30", Length = "0xC4")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CLSCompliant(False)]
+	[Token(Token = "0x60001E2")]
+	public BigInteger(BigInteger bi, uint len) { }
+
+	[Address(RVA = "0x12C53D0", Offset = "0x12C45D0", Length = "0xA2")]
+	[CallerCount(Count = 18)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001F1")]
+	public int BitCount() { }
+
+	[Address(RVA = "0x12C5480", Offset = "0x12C4680", Length = "0x54")]
+	[CallerCount(Count = 10)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000202")]
+	public void Clear() { }
+
+	[Address(RVA = "0x12C54E0", Offset = "0x12C46E0", Length = "0x158")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(BigInteger), Member = "op_Equality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_object_unbox")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000205")]
+	public virtual bool Equals(object o) { }
+
+	[Address(RVA = "0x12C5640", Offset = "0x12C4840", Length = "0x6E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000208")]
+	public static BigInteger GeneratePseudoPrime(int bits) { }
+
+	[Address(RVA = "0x12C58A0", Offset = "0x12C4AA0", Length = "0x10A")]
+	[CalledBy(Type = typeof(SequentialSearchPrimeGeneratorBase), Member = "GenerateSearchBase", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(object)}, ReturnType = typeof(BigInteger))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(RandomNumberGenerator), Member = "Create", ReturnType = typeof(RandomNumberGenerator))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(BigInteger), Member = "GenerateRandom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(RandomNumberGenerator)}, ReturnType = typeof(BigInteger))]
+	[Token(Token = "0x60001F0")]
+	public static BigInteger GenerateRandom(int bits) { }
+
+	[Address(RVA = "0x12C56B0", Offset = "0x12C48B0", Length = "0x1E3")]
+	[CalledBy(Type = typeof(BigInteger), Member = "GenerateRandom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(BigInteger))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Buffer), Member = "BlockCopy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 1)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60001EF")]
+	public static BigInteger GenerateRandom(int bits, RandomNumberGenerator rng) { }
+
+	[Address(RVA = "0x12C6A00", Offset = "0x12C5C00", Length = "0xDB")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(RandomNumberGenerator), Member = "Create", ReturnType = typeof(RandomNumberGenerator))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Token(Token = "0x60001EE")]
+	private static RandomNumberGenerator get_Rng() { }
+
+	[Address(RVA = "0x12C59B0", Offset = "0x12C4BB0", Length = "0x1CA")]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ExportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(RSAParameters))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "GetPaddedValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(Byte[]))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x60001F6")]
+	public Byte[] GetBytes() { }
+
+	[Address(RVA = "0x12C5B80", Offset = "0x12C4D80", Length = "0x3E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000203")]
+	public virtual int GetHashCode() { }
+
+	[Address(RVA = "0x12C5BC0", Offset = "0x12C4DC0", Length = "0xB6")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000209")]
+	public void Incr2() { }
+
+	[Address(RVA = "0x12C5C80", Offset = "0x12C4E80", Length = "0xEB")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(BigInteger), Member = "TestBit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x60001F5")]
+	public int LowestSetBit() { }
+
+	[Address(RVA = "0x12C5D70", Offset = "0x12C4F70", Length = "0x8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Kernel), Member = "modInverse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[Token(Token = "0x6000206")]
+	public BigInteger ModInverse(BigInteger modulus) { }
+
+	[Address(RVA = "0x12C5D80", Offset = "0x12C4F80", Length = "0x85")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ModulusRing), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ModulusRing), Member = "Pow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000207")]
+	public BigInteger ModPow(BigInteger exp, BigInteger n) { }
+
+	[Address(RVA = "0x12C5E10", Offset = "0x12C5010", Length = "0x49")]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000201")]
+	private void Normalize() { }
+
+	[Address(RVA = "0x12C6AE0", Offset = "0x12C5CE0", Length = "0x2B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x60001EA")]
+	public static BigInteger op_Division(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6B10", Offset = "0x12C5D10", Length = "0x7C")]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CLSCompliant(False)]
+	[ContainsUnimplementedInstructions]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001F7")]
+	public static bool op_Equality(BigInteger bi1, uint ui) { }
+
+	[Address(RVA = "0x12C6B90", Offset = "0x12C5D90", Length = "0xB5")]
+	[CalledBy(Type = typeof(RSAManaged), Member = "get_PublicOnly", ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ExportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(RSAParameters))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Equality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(BigInteger), Member = "op_Inequality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(BigInteger), Member = "Equals", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 15)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(BigInteger), Member = "op_Equality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(bool))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60001F9")]
+	public static bool op_Equality(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6C70", Offset = "0x12C5E70", Length = "0x16")]
+	[CallerCount(Count = 0)]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[ContainsUnimplementedInstructions]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001FB")]
+	public static bool op_GreaterThan(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6C50", Offset = "0x12C5E50", Length = "0x16")]
+	[CallerCount(Count = 0)]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001FD")]
+	public static bool op_GreaterThanOrEqual(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6C90", Offset = "0x12C5E90", Length = "0x52")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+	[CLSCompliant(False)]
+	[Token(Token = "0x60001E5")]
+	public static BigInteger op_Implicit(uint value) { }
+
+	[Address(RVA = "0x12C6CF0", Offset = "0x12C5EF0", Length = "0x9F")]
+	[CalledBy(Type = typeof(PrimalityTests), Member = "RabinMillerTest", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(ConfidenceFactor)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x60001E6")]
+	public static BigInteger op_Implicit(int value) { }
+
+	[Address(RVA = "0x12C6D90", Offset = "0x12C5F90", Length = "0xB5")]
+	[CalledBy(Type = typeof(RSAManaged), Member = "GenerateKeyPair", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ExportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(RSAParameters))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "Dispose", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 18)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(BigInteger), Member = "op_Equality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(bool))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60001FA")]
+	public static bool op_Inequality(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6E50", Offset = "0x12C6050", Length = "0x7C")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CLSCompliant(False)]
+	[ContainsUnimplementedInstructions]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001F8")]
+	public static bool op_Inequality(BigInteger bi1, uint ui) { }
+
+	[Address(RVA = "0x12C6ED0", Offset = "0x12C60D0", Length = "0x8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Kernel), Member = "LeftShift", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(BigInteger))]
+	[Token(Token = "0x60001EC")]
+	public static BigInteger op_LeftShift(BigInteger bi1, int shiftVal) { }
+
+	[Address(RVA = "0x12C6F00", Offset = "0x12C6100", Length = "0x14")]
+	[CallerCount(Count = 0)]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001FC")]
+	public static bool op_LessThan(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6EE0", Offset = "0x12C60E0", Length = "0x16")]
+	[CallerCount(Count = 0)]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[ContainsUnimplementedInstructions]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001FE")]
+	public static bool op_LessThanOrEqual(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6F50", Offset = "0x12C6150", Length = "0x58")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CLSCompliant(False)]
+	[ContainsUnimplementedInstructions]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001E8")]
+	public static uint op_Modulus(BigInteger bi, uint ui) { }
+
+	[Address(RVA = "0x12C6F20", Offset = "0x12C6120", Length = "0x2B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Kernel), Member = "multiByteDivide", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger[]))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x60001E9")]
+	public static BigInteger op_Modulus(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C6FB0", Offset = "0x12C61B0", Length = "0x30F")]
+	[CalledBy(Type = typeof(RSAManaged), Member = "GenerateKeyPair", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ModulusRing), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(Kernel), Member = "modInverse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CallerCount(Count = 7)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Sign), typeof(uint)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(IndexOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x60001EB")]
+	public static BigInteger op_Multiply(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C72C0", Offset = "0x12C64C0", Length = "0x8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(Kernel), Member = "RightShift", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(int)}, ReturnType = typeof(BigInteger))]
+	[Token(Token = "0x60001ED")]
+	public static BigInteger op_RightShift(BigInteger bi1, int shiftVal) { }
+
+	[Address(RVA = "0x12C72D0", Offset = "0x12C64D0", Length = "0x2DB")]
+	[CalledBy(Type = typeof(RSAManaged), Member = "GenerateKeyPair", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(RSAManaged), Member = "ImportParameters", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RSAParameters)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ModulusRing), Member = "Difference", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ArithmeticException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Exception), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Kernel), Member = "Subtract", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x60001E7")]
+	public static BigInteger op_Subtraction(BigInteger bi1, BigInteger bi2) { }
+
+	[Address(RVA = "0x12C5E60", Offset = "0x12C5060", Length = "0x43")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CLSCompliant(False)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001F3")]
+	public void SetBit(uint bitNum) { }
+
+	[Address(RVA = "0x12C5EB0", Offset = "0x12C50B0", Length = "0x5F")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CLSCompliant(False)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60001F4")]
+	public void SetBit(uint bitNum, bool value) { }
+
+	[Address(RVA = "0x12C5F10", Offset = "0x12C5110", Length = "0x9E")]
+	[CalledBy(Type = typeof(ModulusRing), Member = "Pow", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger), typeof(BigInteger)}, ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(BigInteger), Member = "LowestSetBit", ReturnType = typeof(int))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(IndexOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x60001F2")]
+	public bool TestBit(int bitNum) { }
+
+	[Address(RVA = "0x12C6370", Offset = "0x12C5570", Length = "0x49")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BigInteger), Member = "ToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(string)}, ReturnType = typeof(string))]
+	[CLSCompliant(False)]
+	[Token(Token = "0x60001FF")]
+	public string ToString(uint radix) { }
+
+	[Address(RVA = "0x12C63C0", Offset = "0x12C55C0", Length = "0x41")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(BigInteger), Member = "ToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(string)}, ReturnType = typeof(string))]
+	[Token(Token = "0x6000204")]
+	public virtual string ToString() { }
+
+	[Address(RVA = "0x12C5FB0", Offset = "0x12C51B0", Length = "0x3B2")]
+	[CalledBy(Type = typeof(BigInteger), Member = "ToString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint)}, ReturnType = typeof(string))]
+	[CalledBy(Type = typeof(BigInteger), Member = "ToString", ReturnType = typeof(string))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "get_Chars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[CLSCompliant(False)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6000200")]
+	public string ToString(uint radix, string characterSet) { }
+
+}
+

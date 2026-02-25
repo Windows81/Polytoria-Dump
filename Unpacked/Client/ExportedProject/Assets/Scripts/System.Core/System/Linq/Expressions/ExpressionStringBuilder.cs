@@ -1,0 +1,371 @@
+namespace System.Linq.Expressions;
+
+[Token(Token = "0x2000071")]
+internal sealed class ExpressionStringBuilder : ExpressionVisitor
+{
+	[FieldOffset(Offset = "0x10")]
+	[Token(Token = "0x40000C3")]
+	private readonly StringBuilder _out; //Field offset: 0x10
+	[FieldOffset(Offset = "0x18")]
+	[Token(Token = "0x40000C4")]
+	private Dictionary<Object, Int32> _ids; //Field offset: 0x18
+
+	[Address(RVA = "0x15A0F10", Offset = "0x15A0110", Length = "0x66")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(StringBuilder), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x60002EF")]
+	private ExpressionStringBuilder() { }
+
+	[Address(RVA = "0x15944D0", Offset = "0x15936D0", Length = "0xD5")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(StringBuilder), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 2)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002F7")]
+	internal static string CatchBlockToString(CatchBlock node) { }
+
+	[Address(RVA = "0x159E9F0", Offset = "0x159DBF0", Length = "0xB4")]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitLabel", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(LabelExpression)}, ReturnType = typeof(Expression))]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitGoto", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GotoExpression)}, ReturnType = typeof(Expression))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(string), Member = "IsNullOrEmpty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "GetId", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(int), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600030D")]
+	private void DumpLabel(LabelTarget target) { }
+
+	[Address(RVA = "0x159EAB0", Offset = "0x159DCB0", Length = "0xD5")]
+	[CalledBy(Type = typeof(Expression), Member = "ToString", ReturnType = typeof(string))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(StringBuilder), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60002F6")]
+	internal static string ExpressionToString(Expression node) { }
+
+	[Address(RVA = "0x159EB90", Offset = "0x159DD90", Length = "0x10C")]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "GetLabelId", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(LabelTarget)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "GetParamId", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ParameterExpression)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitParameter", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ParameterExpression)}, ReturnType = typeof(Expression))]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "DumpLabel", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(LabelTarget)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Dictionary`2), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Dictionary`2), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TKey", "TValue&"}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Dictionary`2), Member = "get_Count", ReturnType = typeof(int))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, System.Int32>), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60002F3")]
+	private int GetId(object o) { }
+
+	[Address(RVA = "0x159ECA0", Offset = "0x159DEA0", Length = "0x8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "GetId", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(int))]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002F1")]
+	private int GetLabelId(LabelTarget label) { }
+
+	[Address(RVA = "0x159ECA0", Offset = "0x159DEA0", Length = "0x8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "GetId", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(int))]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002F2")]
+	private int GetParamId(ParameterExpression p) { }
+
+	[Address(RVA = "0x159ECB0", Offset = "0x159DEB0", Length = "0xF8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x600030E")]
+	private static bool IsBool(Expression node) { }
+
+	[Address(RVA = "0x159EE90", Offset = "0x159E090", Length = "0x1E")]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitExpressions", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), "System.Collections.ObjectModel.ReadOnlyCollection`1<T>", typeof(char), typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitLambda", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Linq.Expressions.Expression`1<T>"}, ReturnType = typeof(Expression))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60002F4")]
+	private void Out(string s) { }
+
+	[Address(RVA = "0x159EEB0", Offset = "0x159E0B0", Length = "0x1E")]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitExpressions", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), "System.Collections.ObjectModel.ReadOnlyCollection`1<T>", typeof(char), typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitLambda", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {"System.Linq.Expressions.Expression`1<T>"}, ReturnType = typeof(Expression))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x60002F5")]
+	private void Out(char c) { }
+
+	[Address(RVA = "0x159EDB0", Offset = "0x159DFB0", Length = "0xD1")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 4)]
+	[Token(Token = "0x60002FF")]
+	private void OutMember(Expression instance, MemberInfo member) { }
+
+	[Address(RVA = "0x159EED0", Offset = "0x159E0D0", Length = "0x2A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60002F0")]
+	public virtual string ToString() { }
+
+	[Address(RVA = "0x159EF00", Offset = "0x159E100", Length = "0x230")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[CallsUnknownMethods(Count = 2)]
+	[ContainsInvalidInstructions]
+	[Token(Token = "0x60002FA")]
+	protected private virtual Expression VisitBinary(BinaryExpression node) { }
+
+	[Address(RVA = "0x159F530", Offset = "0x159E730", Length = "0x2CC")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(ReadOnlyCollection`1), Member = "GetEnumerator", ReturnType = "System.Collections.Generic.IEnumerator`1<T>")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180739630")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 4)]
+	[Token(Token = "0x6000305")]
+	protected private virtual Expression VisitBlock(BlockExpression node) { }
+
+	[Address(RVA = "0x159F800", Offset = "0x159EA00", Length = "0x108")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(string), Member = "IsNullOrEmpty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000309")]
+	protected virtual CatchBlock VisitCatchBlock(CatchBlock node) { }
+
+	[Address(RVA = "0x159F910", Offset = "0x159EB10", Length = "0x11E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 4)]
+	[Token(Token = "0x60002FD")]
+	protected private virtual Expression VisitConditional(ConditionalExpression node) { }
+
+	[Address(RVA = "0x159FA30", Offset = "0x159EC30", Length = "0x1B2")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x60002FE")]
+	protected private virtual Expression VisitConstant(ConstantExpression node) { }
+
+	[Address(RVA = "0x159FBF0", Offset = "0x159EDF0", Length = "0xB8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000306")]
+	protected private virtual Expression VisitDefault(DefaultExpression node) { }
+
+	[Address(RVA = "0x6B0D80", Offset = "0x6AFF80", Length = "0x24A")]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitExpressions", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), "System.Collections.ObjectModel.ReadOnlyCollection`1<T>", typeof(char)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "Out", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ReadOnlyCollection`1), Member = "GetEnumerator", ReturnType = "System.Collections.Generic.IEnumerator`1<T>")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F72D0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "Out", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsUnknownMethods(Count = 2)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002F9")]
+	private void VisitExpressions(char open, ReadOnlyCollection<T> expressions, char close, string seperator) { }
+
+	[Address(RVA = "0x6B0FD0", Offset = "0x6B01D0", Length = "0x94")]
+	[CalledBy(Type = typeof(ExpressionStringBuilder), Member = "VisitNewArray", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(NewArrayExpression)}, ReturnType = typeof(Expression))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "VisitExpressions", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), "System.Collections.ObjectModel.ReadOnlyCollection`1<T>", typeof(char), typeof(string)}, ReturnType = typeof(void))]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002F8")]
+	private void VisitExpressions(char open, ReadOnlyCollection<T> expressions, char close) { }
+
+	[Address(RVA = "0x159FCB0", Offset = "0x159EEB0", Length = "0x211")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(object), Member = "GetType", ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetMethod", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(Type[])}, ReturnType = typeof(MethodInfo))]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(MethodBase), Member = "get_IsStatic", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(Enum), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 5)]
+	[Token(Token = "0x600030C")]
+	protected private virtual Expression VisitExtension(Expression node) { }
+
+	[Address(RVA = "0x159FED0", Offset = "0x159F0D0", Length = "0x184")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "DumpLabel", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(LabelTarget)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidOperationException), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000308")]
+	protected private virtual Expression VisitGoto(GotoExpression node) { }
+
+	[Address(RVA = "0x15A0060", Offset = "0x159F260", Length = "0x1F3")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(IndexExpression), Member = "GetArgument", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(Expression))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[CallsUnknownMethods(Count = 5)]
+	[Token(Token = "0x600030B")]
+	protected private virtual Expression VisitIndex(IndexExpression node) { }
+
+	[Address(RVA = "0x15A0260", Offset = "0x159F460", Length = "0x134")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 4)]
+	[Token(Token = "0x6000301")]
+	protected private virtual Expression VisitInvocation(InvocationExpression node) { }
+
+	[Address(RVA = "0x15A03A0", Offset = "0x159F5A0", Length = "0x81")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "DumpLabel", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(LabelTarget)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000307")]
+	protected private virtual Expression VisitLabel(LabelExpression node) { }
+
+	[Address(RVA = "0x6B1220", Offset = "0x6B0420", Length = "0x1AB")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "Out", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "Out", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 7)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x60002FC")]
+	protected private virtual Expression VisitLambda(Expression<T> node) { }
+
+	[Address(RVA = "0x15A0430", Offset = "0x159F630", Length = "0x11A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 5)]
+	[Token(Token = "0x6000300")]
+	protected private virtual Expression VisitMember(MemberExpression node) { }
+
+	[Address(RVA = "0x15A0550", Offset = "0x159F750", Length = "0x1F8")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Type), Member = "GetTypeFromHandle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RuntimeTypeHandle)}, ReturnType = typeof(Type))]
+	[Calls(Type = typeof(CustomAttributeExtensions), Member = "GetCustomAttribute", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(MemberInfo), typeof(Type)}, ReturnType = typeof(Attribute))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 7)]
+	[Token(Token = "0x6000302")]
+	protected private virtual Expression VisitMethodCall(MethodCallExpression node) { }
+
+	[Address(RVA = "0x15A0750", Offset = "0x159F950", Length = "0x132")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "VisitExpressions", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), "System.Collections.ObjectModel.ReadOnlyCollection`1<T>", typeof(char)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000303")]
+	protected private virtual Expression VisitNewArray(NewArrayExpression node) { }
+
+	[Address(RVA = "0x15A0890", Offset = "0x159FA90", Length = "0xF1")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(string), Member = "IsNullOrEmpty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(ExpressionStringBuilder), Member = "GetId", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(int), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x60002FB")]
+	protected private virtual Expression VisitParameter(ParameterExpression node) { }
+
+	[Address(RVA = "0x15A0990", Offset = "0x159FB90", Length = "0x57")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600030A")]
+	protected private virtual Expression VisitTry(TryExpression node) { }
+
+	[Address(RVA = "0x15A09F0", Offset = "0x159FBF0", Length = "0x164")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1815A0D18")]
+	[CallsUnknownMethods(Count = 1)]
+	[ContainsInvalidInstructions]
+	[Token(Token = "0x6000304")]
+	protected private virtual Expression VisitUnary(UnaryExpression node) { }
+
+}
+

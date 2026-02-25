@@ -1,0 +1,131 @@
+namespace System.Net.Sockets;
+
+[Token(Token = "0x2000301")]
+internal sealed class SafeSocketHandle : SafeHandleMinusOneIsInvalid
+{
+	[Token(Token = "0x4000DF9")]
+	private const int SOCKET_CLOSED = 10004; //Field offset: 0x0
+	[Token(Token = "0x4000DFA")]
+	private const int ABORT_RETRIES = 10; //Field offset: 0x0
+	[Token(Token = "0x4000DFB")]
+	private static bool THROW_ON_ABORT_RETRIES; //Field offset: 0x0
+	[FieldOffset(Offset = "0x20")]
+	[Token(Token = "0x4000DF6")]
+	private List<Thread> blocking_threads; //Field offset: 0x20
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x4000DF7")]
+	private Dictionary<Thread, StackTrace> threads_stacktraces; //Field offset: 0x28
+	[FieldOffset(Offset = "0x30")]
+	[Token(Token = "0x4000DF8")]
+	private bool in_cleanup; //Field offset: 0x30
+
+	[Address(RVA = "0x171C760", Offset = "0x171B960", Length = "0x6D")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Environment), Member = "GetEnvironmentVariable", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(string))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6001376")]
+	private static SafeSocketHandle() { }
+
+	[Address(RVA = "0x171C7E0", Offset = "0x171B9E0", Length = "0xC8")]
+	[CalledBy(Type = typeof(Socket), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(AddressFamily), typeof(SocketType), typeof(ProtocolType)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(Socket), Member = "Accept_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Int32&), typeof(bool)}, ReturnType = typeof(SafeSocketHandle))]
+	[CalledBy(Type = typeof(Socket), Member = "BeginSConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SocketAsyncResult)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(SafeHandleMinusOneIsInvalid), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Dictionary`2), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Token(Token = "0x6001371")]
+	public SafeSocketHandle(IntPtr preexistingHandle, bool ownsHandle) { }
+
+	[Address(RVA = "0x171C7D0", Offset = "0x171B9D0", Length = "0xA")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(SafeHandleMinusOneIsInvalid), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Token(Token = "0x6001372")]
+	internal SafeSocketHandle() { }
+
+	[Address(RVA = "0x171BF40", Offset = "0x171B140", Length = "0x139")]
+	[CalledBy(Type = typeof(Socket), Member = "Send_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "Accept_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Int32&), typeof(bool)}, ReturnType = typeof(SafeSocketHandle))]
+	[CalledBy(Type = typeof(Socket), Member = "Connect_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(SocketAddress), typeof(Int32&), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(Socket), Member = "Receive_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(WSABUF*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "Receive_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "ReceiveFrom_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(SocketAddress&), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "Send_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(WSABUF*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "SendTo_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(SocketAddress), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CallerCount(Count = 8)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(SafeHandle), Member = "DangerousAddRef", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Boolean&)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1817165D0")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6001374")]
+	public void RegisterForBlockingSyscall() { }
+
+	[Address(RVA = "0x171C080", Offset = "0x171B280", Length = "0x53C")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180001F20")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801A9580")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1802234E0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180001DB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180009B90")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1800035E0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801A96D0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801A9430")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x181716480")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801A96E0")]
+	[Calls(Type = typeof(StringBuilder), Member = "AppendLine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(StringBuilder), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1802250E0")]
+	[Calls(Type = typeof(System.Collections.Generic.List`1+Enumerator<System.Object>), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(List`1), Member = "GetEnumerator", ReturnType = "System.Collections.Generic.List`1<T>+Enumerator<T>")]
+	[Calls(Type = typeof(Monitor), Member = "Exit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Thread), Member = "get_CurrentThread", ReturnType = typeof(Thread))]
+	[Calls(Type = typeof(Monitor), Member = "Enter", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(Boolean&)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180224E60")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180223450")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Exception), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(StringBuilder), Member = "AppendLine", ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[CallsDeduplicatedMethods(Count = 4)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6001373")]
+	protected virtual bool ReleaseHandle() { }
+
+	[Address(RVA = "0x171C5C0", Offset = "0x171B7C0", Length = "0x198")]
+	[CalledBy(Type = typeof(Socket), Member = "Accept_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Int32&), typeof(bool)}, ReturnType = typeof(SafeSocketHandle))]
+	[CalledBy(Type = typeof(Socket), Member = "Connect_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(SocketAddress), typeof(Int32&), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(Socket), Member = "Receive_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(WSABUF*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "Receive_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "ReceiveFrom_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(SocketAddress&), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "Send_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(WSABUF*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "Send_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(Socket), Member = "SendTo_internal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SafeSocketHandle), typeof(Byte*), typeof(int), typeof(SocketFlags), typeof(SocketAddress), typeof(Int32&), typeof(bool)}, ReturnType = typeof(int))]
+	[CallerCount(Count = 16)]
+	[Calls(Type = typeof(Monitor), Member = "Exit", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(Monitor), Member = "Pulse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, System.Object>), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(System.Collections.Generic.List`1<System.Object>), Member = "IndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[Calls(Type = typeof(Thread), Member = "get_CurrentThread", ReturnType = typeof(Thread))]
+	[Calls(Type = typeof(Monitor), Member = "Enter", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(Boolean&)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(System.Collections.Generic.List`1<System.Object>), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[Token(Token = "0x6001375")]
+	public void UnRegisterForBlockingSyscall() { }
+
+}
+

@@ -1,0 +1,166 @@
+namespace UnityEngine.UIElements;
+
+[Token(Token = "0x20003E5")]
+internal class StyleValueCollection
+{
+	[FieldOffset(Offset = "0x10")]
+	[Token(Token = "0x4000D29")]
+	internal List<StyleValue> m_Values; //Field offset: 0x10
+
+	[Address(RVA = "0x1B1AFA0", Offset = "0x1B1A1A0", Length = "0x77")]
+	[CalledBy(Type = typeof(StyleValues), Member = "SetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(float)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_color", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_backgroundColor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_unityBackgroundImageTintColor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_borderColor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "get_paddingTop", ReturnType = typeof(float))]
+	[CalledBy(Type = typeof(StyleValues), Member = "SetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "Values", ReturnType = typeof(StyleValueCollection))]
+	[CalledBy(Type = typeof(Lerp), Member = "Interpolate", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StyleValues), typeof(StyleValues), typeof(float)}, ReturnType = typeof(StyleValues))]
+	[CallerCount(Count = 10)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x6001DA9")]
+	public StyleValueCollection() { }
+
+	[Address(RVA = "0x1B1A640", Offset = "0x1B19840", Length = "0x247")]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_backgroundImage", ReturnType = typeof(StyleBackground))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18038DB40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Object), Member = "op_Inequality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Object), typeof(Object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Background), Member = "FromVectorImage", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VectorImage)}, ReturnType = typeof(Background))]
+	[Calls(Type = typeof(Background), Member = "FromSprite", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Sprite)}, ReturnType = typeof(Background))]
+	[Calls(Type = typeof(Background), Member = "FromTexture2D", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Texture2D)}, ReturnType = typeof(Background))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Token(Token = "0x6001DA2")]
+	public StyleBackground GetStyleBackground(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1A530", Offset = "0x1B19730", Length = "0x7C")]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_backgroundPositionX", ReturnType = typeof(StyleBackgroundPosition))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_backgroundPositionY", ReturnType = typeof(StyleBackgroundPosition))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Token(Token = "0x6001DA3")]
+	public StyleBackgroundPosition GetStyleBackgroundPosition(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1A5B0", Offset = "0x1B197B0", Length = "0x81")]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_backgroundRepeat", ReturnType = typeof(StyleBackgroundRepeat))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Token(Token = "0x6001DA4")]
+	public StyleBackgroundRepeat GetStyleBackgroundRepeat(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1A890", Offset = "0x1B19A90", Length = "0x6D")]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_backgroundColor", ReturnType = typeof(StyleColor))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderBottomColor", ReturnType = typeof(StyleColor))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderLeftColor", ReturnType = typeof(StyleColor))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderRightColor", ReturnType = typeof(StyleColor))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderTopColor", ReturnType = typeof(StyleColor))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_color", ReturnType = typeof(StyleColor))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_unityBackgroundImageTintColor", ReturnType = typeof(StyleColor))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_unityTextOutlineColor", ReturnType = typeof(StyleColor))]
+	[CallerCount(Count = 8)]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Token(Token = "0x6001DA1")]
+	public StyleColor GetStyleColor(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1A900", Offset = "0x1B19B00", Length = "0x69")]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderBottomWidth", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderLeftWidth", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderRightWidth", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_borderTopWidth", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_flexGrow", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_flexShrink", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_opacity", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_unitySliceScale", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_unityTextOutlineWidth", ReturnType = typeof(StyleFloat))]
+	[CalledBy(Type = typeof(StyleValues), Member = "get_paddingTop", ReturnType = typeof(float))]
+	[CallerCount(Count = 10)]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Token(Token = "0x6001D9F")]
+	public StyleFloat GetStyleFloat(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1AA60", Offset = "0x1B19C60", Length = "0xE6")]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_unityFont", ReturnType = typeof(StyleFont))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(GCHandle), Member = "GetTarget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IntPtr)}, ReturnType = typeof(object))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6001DA5")]
+	public StyleFont GetStyleFont(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1A970", Offset = "0x1B19B70", Length = "0xE8")]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.get_unityFontDefinition", ReturnType = typeof(StyleFontDefinition))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(GCHandle), Member = "GetTarget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IntPtr)}, ReturnType = typeof(object))]
+	[Calls(Type = typeof(FontDefinition), Member = "FromObject", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(FontDefinition))]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6001DA6")]
+	public StyleFontDefinition GetStyleFontDefinition(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1AB50", Offset = "0x1B19D50", Length = "0x73")]
+	[CallerCount(Count = 23)]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x6001DA0")]
+	public StyleInt GetStyleInt(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1ABD0", Offset = "0x1B19DD0", Length = "0xA4")]
+	[CallerCount(Count = 27)]
+	[Calls(Type = typeof(StyleValueCollection), Member = "TryGetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleValue&)}, ReturnType = typeof(bool))]
+	[Token(Token = "0x6001D9E")]
+	public StyleLength GetStyleLength(StylePropertyId id) { }
+
+	[Address(RVA = "0x1B1AC80", Offset = "0x1B19E80", Length = "0x1CA")]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_color", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(Lerp), Member = "Interpolate", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StyleValues), typeof(StyleValues), typeof(float)}, ReturnType = typeof(StyleValues))]
+	[CalledBy(Type = typeof(StyleValues), Member = "SetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "SetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(float)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_borderColor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_unityBackgroundImageTintColor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(StyleValues), Member = "set_backgroundColor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Color)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleFont)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleBackground)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleFontDefinition)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleColor)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleInt)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleFloat)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleLength)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleBackgroundRepeat)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), typeof(StyleBackgroundPosition)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "UnityEngine.UIElements.IStyle.set_backgroundRepeat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StyleBackgroundRepeat)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(InlineStyleAccess), Member = "SetStyleValue", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(StylePropertyId), "UnityEngine.UIElements.StyleEnum`1<T>"}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 18)]
+	[Calls(Type = typeof(List`1), Member = "RemoveAt", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(List`1), Member = "AddWithResize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(List`1), Member = "set_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), "T"}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(List`1), Member = "get_Item", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = "T")]
+	[Token(Token = "0x6001DA8")]
+	public void SetStyleValue(StyleValue value) { }
+
+	[Address(RVA = "0x1B1AE50", Offset = "0x1B1A050", Length = "0x149")]
+	[CallerCount(Count = 23)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(List`1), Member = "GetEnumerator", ReturnType = "System.Collections.Generic.List`1<T>+Enumerator<T>")]
+	[Calls(Type = typeof(Enumerator), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x6001DA7")]
+	public bool TryGetStyleValue(StylePropertyId id, ref StyleValue value) { }
+
+}
+

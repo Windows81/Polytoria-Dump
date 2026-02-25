@@ -1,0 +1,63 @@
+namespace System.Linq.Expressions;
+
+[Token(Token = "0x2000081")]
+internal sealed class Expression1 : Expression<TDelegate>
+{
+	[FieldOffset(Offset = "0x0")]
+	[Token(Token = "0x400012F")]
+	private object _par0; //Field offset: 0x0
+
+	[Token(Token = "0x17000088")]
+	internal virtual int ParameterCount
+	{
+		[Address(RVA = "0x2FE4E0", Offset = "0x2FD6E0", Length = "0x6")]
+		[CallerCount(Count = 23)]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000375")]
+		internal get { } //Length: 6
+	}
+
+	[Address(RVA = "0xC2FD80", Offset = "0xC2EF80", Length = "0x3D")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsUnknownMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000374")]
+	public Expression1`1(Expression body, ParameterExpression par0) { }
+
+	[Address(RVA = "0x2FE4E0", Offset = "0x2FD6E0", Length = "0x6")]
+	[CallerCount(Count = 23)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000375")]
+	internal virtual int get_ParameterCount() { }
+
+	[Address(RVA = "0xC2FBE0", Offset = "0xC2EDE0", Length = "0x77")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ExpressionUtils), Member = "ReturnObject", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = "T")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(Error), Member = "ArgumentOutOfRange", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(Exception))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000376")]
+	internal virtual ParameterExpression GetParameter(int index) { }
+
+	[Address(RVA = "0xC2FC60", Offset = "0xC2EE60", Length = "0x116")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(ExpressionUtils), Member = "ReturnObject", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = "T")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE430")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[CallsUnknownMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000377")]
+	internal virtual Expression<TDelegate> Rewrite(Expression body, ParameterExpression[] parameters) { }
+
+}
+

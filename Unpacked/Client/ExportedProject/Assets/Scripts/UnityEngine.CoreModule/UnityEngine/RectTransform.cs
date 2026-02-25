@@ -1,0 +1,823 @@
+namespace UnityEngine;
+
+[NativeClass("UI::RectTransform")]
+[NativeHeader("Runtime/Transform/RectTransform.h")]
+[Token(Token = "0x200018C")]
+public sealed class RectTransform : Transform
+{
+	[Token(Token = "0x200018D")]
+	internal enum Axis
+	{
+		Horizontal = 0,
+		Vertical = 1,
+	}
+
+	[Token(Token = "0x200018E")]
+	internal sealed class ReapplyDrivenProperties : MulticastDelegate
+	{
+
+		[Address(RVA = "0x38E330", Offset = "0x38D530", Length = "0xB4")]
+		[CallerCount(Count = 5)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED960")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE410")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000B36")]
+		public ReapplyDrivenProperties(object object, IntPtr method) { }
+
+		[Address(RVA = "0x309260", Offset = "0x308460", Length = "0xF")]
+		[CallerCount(Count = 3)]
+		[CallsUnknownMethods(Count = 1)]
+		[DeduplicatedMethod]
+		[Token(Token = "0x6000B37")]
+		public override void Invoke(RectTransform driven) { }
+
+	}
+
+	[CompilerGenerated]
+	[DebuggerBrowsable(DebuggerBrowsableState::Never (0))]
+	[Token(Token = "0x40005F4")]
+	private static ReapplyDrivenProperties reapplyDrivenProperties; //Field offset: 0x0
+
+	[Token(Token = "0x14000007")]
+	public static event ReapplyDrivenProperties reapplyDrivenProperties
+	{
+		[Address(RVA = "0x196C910", Offset = "0x196BB10", Length = "0xB4")]
+		[CalledBy(Type = "UnityEngine.UI.LayoutRebuilder", Member = ".cctor", ReturnType = typeof(void))]
+		[CallerCount(Count = 1)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(Delegate), Member = "Combine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+		[CompilerGenerated]
+		[Token(Token = "0x6000B10")]
+		 add { } //Length: 180
+		[Address(RVA = "0x196D370", Offset = "0x196C570", Length = "0xB4")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(Delegate), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+		[CompilerGenerated]
+		[Token(Token = "0x6000B11")]
+		 remove { } //Length: 180
+	}
+
+	[Token(Token = "0x170001DB")]
+	public Vector2 anchoredPosition
+	{
+		[Address(RVA = "0x196CD00", Offset = "0x196BF00", Length = "0x87")]
+		[CallerCount(Count = 54)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B17")]
+		 get { } //Length: 135
+		[Address(RVA = "0x196D7C0", Offset = "0x196C9C0", Length = "0x80")]
+		[CallerCount(Count = 60)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B18")]
+		 set { } //Length: 128
+	}
+
+	[Token(Token = "0x170001DE")]
+	public Vector3 anchoredPosition3D
+	{
+		[Address(RVA = "0x196CB90", Offset = "0x196BD90", Length = "0x11D")]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveX>b__102_0", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveX>b__102_1", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveY>b__103_0", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveY>b__103_1", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveZ>b__104_0", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveZ>b__104_1", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMove>b__109_0", ReturnType = typeof(void))]
+		[CallerCount(Count = 7)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 2)]
+		[Token(Token = "0x6000B1D")]
+		 get { } //Length: 285
+		[Address(RVA = "0x196D5F0", Offset = "0x196C7F0", Length = "0x177")]
+		[CalledBy(Type = "Polytoria.Controllers.UIController", Member = "Awake", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveX>b__102_1", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveY>b__103_1", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveZ>b__104_1", ReturnType = typeof(void))]
+		[CalledBy(Type = "LTDescr", Member = "<setCanvasMove>b__109_1", ReturnType = typeof(void))]
+		[CallerCount(Count = 5)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 3)]
+		[Token(Token = "0x6000B1E")]
+		 set { } //Length: 375
+	}
+
+	[Token(Token = "0x170001DA")]
+	public Vector2 anchorMax
+	{
+		[Address(RVA = "0x196CA20", Offset = "0x196BC20", Length = "0x87")]
+		[CalledBy(Type = "UnityEngine.UI.ScrollRect", Member = "UpdateScrollbarLayout", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutAxes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutOnAxis", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.Slider", Member = "OnDidApplyAnimationProperties", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "UpdateRect", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "GetSizeDeltaToProduceSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(int)}, ReturnType = typeof(float))]
+		[CalledBy(Type = "UnityEngine.UI.Dropdown", Member = "Show", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_Dropdown", Member = "Show", ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+		[CallerCount(Count = 17)]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B15")]
+		 get { } //Length: 135
+		[Address(RVA = "0x196D480", Offset = "0x196C680", Length = "0x80")]
+		[CallerCount(Count = 69)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B16")]
+		 set { } //Length: 128
+	}
+
+	[Token(Token = "0x170001D9")]
+	public Vector2 anchorMin
+	{
+		[Address(RVA = "0x196CB00", Offset = "0x196BD00", Length = "0x87")]
+		[CalledBy(Type = "UnityEngine.UI.RawImage", Member = "SetNativeSize", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutAxes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutOnAxis", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.Slider", Member = "OnDidApplyAnimationProperties", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.ScrollRect", Member = "UpdateScrollbarLayout", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "UpdateRect", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "GetSizeDeltaToProduceSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(int)}, ReturnType = typeof(float))]
+		[CalledBy(Type = "UnityEngine.UI.Image", Member = "SetNativeSize", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.Dropdown", Member = "Show", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_Dropdown", Member = "Show", ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+		[CallerCount(Count = 20)]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B13")]
+		 get { } //Length: 135
+		[Address(RVA = "0x196D560", Offset = "0x196C760", Length = "0x80")]
+		[CallerCount(Count = 71)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B14")]
+		 set { } //Length: 128
+	}
+
+	[Token(Token = "0x170001E0")]
+	public Vector2 offsetMax
+	{
+		[Address(RVA = "0x196CD90", Offset = "0x196BF90", Length = "0x1B8")]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Right", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Top", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredWidth", ReturnType = typeof(float))]
+		[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredHeight", ReturnType = typeof(float))]
+		[CallerCount(Count = 5)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 3)]
+		[Token(Token = "0x6000B21")]
+		 get { } //Length: 440
+		[Address(RVA = "0x196D850", Offset = "0x196CA50", Length = "0x3D2")]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Right", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Top", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateToggle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "Battlehub.UIControls.RectTransformExtensions", Member = "Stretch", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 14)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[CallsUnknownMethods(Count = 8)]
+		[Token(Token = "0x6000B22")]
+		 set { } //Length: 978
+	}
+
+	[Token(Token = "0x170001DF")]
+	public Vector2 offsetMin
+	{
+		[Address(RVA = "0x196CF50", Offset = "0x196C150", Length = "0x178")]
+		[CalledBy(Type = "Polytoria.UI.CreatorViewport", Member = "Update", ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Left", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Bottom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredWidth", ReturnType = typeof(float))]
+		[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredHeight", ReturnType = typeof(float))]
+		[CalledBy(Type = "Battlehub.UIControls.TreeViewDropMarker", Member = "SetTraget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.ItemContainer"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Battlehub.UIControls.VirtualizingTreeViewDropMarker", Member = "SetTarget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.VirtualizingItemContainer"}, ReturnType = typeof(void))]
+		[CallerCount(Count = 11)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 3)]
+		[Token(Token = "0x6000B1F")]
+		 get { } //Length: 376
+		[Address(RVA = "0x196DC30", Offset = "0x196CE30", Length = "0x3EA")]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "Battlehub.UIControls.VirtualizingTreeViewDropMarker", Member = "SetTarget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.VirtualizingItemContainer"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Battlehub.UIControls.TreeViewDropMarker", Member = "SetTraget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.ItemContainer"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Battlehub.UIControls.RectTransformExtensions", Member = "Stretch", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateToggle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Bottom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Left", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+		[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CallerCount(Count = 17)]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[CallsUnknownMethods(Count = 8)]
+		[Token(Token = "0x6000B20")]
+		 set { } //Length: 1002
+	}
+
+	[Token(Token = "0x170001DD")]
+	public Vector2 pivot
+	{
+		[Address(RVA = "0x196D120", Offset = "0x196C320", Length = "0x87")]
+		[CallerCount(Count = 42)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B1B")]
+		 get { } //Length: 135
+		[Address(RVA = "0x196E070", Offset = "0x196D270", Length = "0x80")]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutAxes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutOnAxis", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "SimpleFileBrowser.FileBrowserContextMenu", Member = "Show", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool), typeof(bool), typeof(bool), typeof(bool), typeof(Vector2), typeof(bool)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateScrollView", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "TMPro.TMP_SubMeshUI", Member = "AddSubTextObject", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TextMeshProUGUI", "TMPro.MaterialReference"}, ReturnType = "TMPro.TMP_SubMeshUI")]
+		[CalledBy(Type = "TMPro.TMP_SubMeshUI", Member = "SetPivotDirty", ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+		[CalledBy(Type = "TMPro.TextMeshProUGUI", Member = "SetArraySizes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TextProcessingElement[]"}, ReturnType = typeof(int))]
+		[CalledBy(Type = "TMPro.TextContainer", Member = "UpdateCorners", ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Datamodel.UIField", Member = "set_PivotPoint", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Vector2)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Datamodel.Text3D", Member = "set_VerticalAlignment", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.VerticalAlignmentOptions"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Polytoria.Datamodel.Text3D", Member = "set_HorizontalAlignment", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.HorizontalAlignmentOptions"}, ReturnType = typeof(void))]
+		[CalledBy(Type = "TMPro.TMP_InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+		[CallerCount(Count = 24)]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B1C")]
+		 set { } //Length: 128
+	}
+
+	[Token(Token = "0x170001D8")]
+	public Rect rect
+	{
+		[Address(RVA = "0x196D200", Offset = "0x196C400", Length = "0x8E")]
+		[CallerCount(Count = 160)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B12")]
+		 get { } //Length: 142
+	}
+
+	[Token(Token = "0x170001E1")]
+	internal bool sendChildDimensionsChange
+	{
+		[Address(RVA = "0x196E150", Offset = "0x196D350", Length = "0x86")]
+		[CalledBy(Type = "UnityEngine.UI.LayoutGroup", Member = "OnEnable", ReturnType = typeof(void))]
+		[CalledBy(Type = "UnityEngine.UI.LayoutGroup", Member = "OnDisable", ReturnType = typeof(void))]
+		[CallerCount(Count = 2)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B23")]
+		internal set { } //Length: 134
+	}
+
+	[Token(Token = "0x170001DC")]
+	public Vector2 sizeDelta
+	{
+		[Address(RVA = "0x196D2E0", Offset = "0x196C4E0", Length = "0x87")]
+		[CallerCount(Count = 85)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B19")]
+		 get { } //Length: 135
+		[Address(RVA = "0x196E230", Offset = "0x196D430", Length = "0x80")]
+		[CallerCount(Count = 93)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x6000B1A")]
+		 set { } //Length: 128
+	}
+
+	[Address(RVA = "0x195D740", Offset = "0x195C940", Length = "0x49")]
+	[CallerCount(Count = 182)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000B29")]
+	public RectTransform() { }
+
+	[Address(RVA = "0x196C910", Offset = "0x196BB10", Length = "0xB4")]
+	[CalledBy(Type = "UnityEngine.UI.LayoutRebuilder", Member = ".cctor", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Delegate), Member = "Combine", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CompilerGenerated]
+	[Token(Token = "0x6000B10")]
+	public static void add_reapplyDrivenProperties(ReapplyDrivenProperties value) { }
+
+	[Address(RVA = "0x196CD00", Offset = "0x196BF00", Length = "0x87")]
+	[CallerCount(Count = 54)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B17")]
+	public Vector2 get_anchoredPosition() { }
+
+	[Address(RVA = "0x196CCB0", Offset = "0x196BEB0", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B2F")]
+	private static void get_anchoredPosition_Injected(IntPtr _unity_self, out Vector2 ret) { }
+
+	[Address(RVA = "0x196CB90", Offset = "0x196BD90", Length = "0x11D")]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveX>b__102_0", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveX>b__102_1", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveY>b__103_0", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveY>b__103_1", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveZ>b__104_0", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveZ>b__104_1", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMove>b__109_0", ReturnType = typeof(void))]
+	[CallerCount(Count = 7)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000B1D")]
+	public Vector3 get_anchoredPosition3D() { }
+
+	[Address(RVA = "0x196CA20", Offset = "0x196BC20", Length = "0x87")]
+	[CalledBy(Type = "UnityEngine.UI.InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TMP_InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.Dropdown", Member = "Show", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "GetSizeDeltaToProduceSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(int)}, ReturnType = typeof(float))]
+	[CalledBy(Type = "TMPro.TMP_Dropdown", Member = "Show", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.Slider", Member = "OnDidApplyAnimationProperties", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutOnAxis", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutAxes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.ScrollRect", Member = "UpdateScrollbarLayout", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "UpdateRect", ReturnType = typeof(void))]
+	[CallerCount(Count = 17)]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B15")]
+	public Vector2 get_anchorMax() { }
+
+	[Address(RVA = "0x196C9D0", Offset = "0x196BBD0", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B2D")]
+	private static void get_anchorMax_Injected(IntPtr _unity_self, out Vector2 ret) { }
+
+	[Address(RVA = "0x196CB00", Offset = "0x196BD00", Length = "0x87")]
+	[CalledBy(Type = "UnityEngine.UI.InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TMP_Dropdown", Member = "Show", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.Dropdown", Member = "Show", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.Image", Member = "SetNativeSize", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "GetSizeDeltaToProduceSize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(int)}, ReturnType = typeof(float))]
+	[CalledBy(Type = "TMPro.TMP_InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.ScrollRect", Member = "UpdateScrollbarLayout", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.Slider", Member = "OnDidApplyAnimationProperties", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutOnAxis", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutAxes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.RawImage", Member = "SetNativeSize", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "UpdateRect", ReturnType = typeof(void))]
+	[CallerCount(Count = 20)]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B13")]
+	public Vector2 get_anchorMin() { }
+
+	[Address(RVA = "0x196CAB0", Offset = "0x196BCB0", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B2B")]
+	private static void get_anchorMin_Injected(IntPtr _unity_self, out Vector2 ret) { }
+
+	[Address(RVA = "0x196CD90", Offset = "0x196BF90", Length = "0x1B8")]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Right", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Top", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredWidth", ReturnType = typeof(float))]
+	[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredHeight", ReturnType = typeof(float))]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000B21")]
+	public Vector2 get_offsetMax() { }
+
+	[Address(RVA = "0x196CF50", Offset = "0x196C150", Length = "0x178")]
+	[CalledBy(Type = "Polytoria.UI.CreatorViewport", Member = "Update", ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Left", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Bottom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredWidth", ReturnType = typeof(float))]
+	[CalledBy(Type = "TMPro.TMP_InputField", Member = "get_preferredHeight", ReturnType = typeof(float))]
+	[CalledBy(Type = "Battlehub.UIControls.TreeViewDropMarker", Member = "SetTraget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.ItemContainer"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Battlehub.UIControls.VirtualizingTreeViewDropMarker", Member = "SetTarget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.VirtualizingItemContainer"}, ReturnType = typeof(void))]
+	[CallerCount(Count = 11)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000B1F")]
+	public Vector2 get_offsetMin() { }
+
+	[Address(RVA = "0x196D120", Offset = "0x196C320", Length = "0x87")]
+	[CallerCount(Count = 42)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B1B")]
+	public Vector2 get_pivot() { }
+
+	[Address(RVA = "0x196D0D0", Offset = "0x196C2D0", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B33")]
+	private static void get_pivot_Injected(IntPtr _unity_self, out Vector2 ret) { }
+
+	[Address(RVA = "0x196D200", Offset = "0x196C400", Length = "0x8E")]
+	[CallerCount(Count = 160)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B12")]
+	public Rect get_rect() { }
+
+	[Address(RVA = "0x196D1B0", Offset = "0x196C3B0", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B2A")]
+	private static void get_rect_Injected(IntPtr _unity_self, out Rect ret) { }
+
+	[Address(RVA = "0x196D2E0", Offset = "0x196C4E0", Length = "0x87")]
+	[CallerCount(Count = 85)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B19")]
+	public Vector2 get_sizeDelta() { }
+
+	[Address(RVA = "0x196D290", Offset = "0x196C490", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B31")]
+	private static void get_sizeDelta_Injected(IntPtr _unity_self, out Vector2 ret) { }
+
+	[Address(RVA = "0x196BE20", Offset = "0x196B020", Length = "0x183")]
+	[CalledBy(Type = "TMPro.TextMeshPro", Member = "GetTextContainerLocalCorners", ReturnType = "UnityEngine.Vector3[]")]
+	[CalledBy(Type = "TMPro.TextMeshProUGUI", Member = "GetTextContainerLocalCorners", ReturnType = "UnityEngine.Vector3[]")]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B24")]
+	public void GetLocalCorners(Vector3[] fourCornersArray) { }
+
+	[Address(RVA = "0x196BFB0", Offset = "0x196B1B0", Length = "0x216")]
+	[CalledBy(Type = typeof(RectTransform), Member = "SetSizeWithCurrentAnchors", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Axis), typeof(float)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(Unmarshal), Member = "UnmarshalUnityObject", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(IntPtr)}, ReturnType = "T")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000B28")]
+	private Vector2 GetParentSize() { }
+
+	[Address(RVA = "0x196C1D0", Offset = "0x196B3D0", Length = "0x2F9")]
+	[CalledBy(Type = "Battlehub.UIControls.MenuControl.Menu", Member = "Open", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.RectMask2D", Member = "get_rootCanvasRect", ReturnType = typeof(Rect))]
+	[CalledBy(Type = "UnityEngine.UI.MaskableGraphic", Member = "get_rootCanvasRect", ReturnType = typeof(Rect))]
+	[CalledBy(Type = "UnityEngine.UI.Dropdown", Member = "Show", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.ScrollRect", Member = "GetBounds", ReturnType = typeof(Bounds))]
+	[CalledBy(Type = "TMPro.TMP_TextUtilities", Member = "IsIntersectingRectTransform", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(Vector3), typeof(Camera)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = "TMPro.TMP_Dropdown", Member = "Show", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.RectangularVertexClipper", Member = "GetCanvasRect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), "UnityEngine.Canvas"}, ReturnType = typeof(Rect))]
+	[CallerCount(Count = 8)]
+	[Calls(Type = typeof(Matrix4x4), Member = "MultiplyPoint", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Vector3)}, ReturnType = typeof(Vector3))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x6000B25")]
+	public void GetWorldCorners(Vector3[] fourCornersArray) { }
+
+	[Address(RVA = "0x196D370", Offset = "0x196C570", Length = "0xB4")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Delegate), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Delegate), typeof(Delegate)}, ReturnType = typeof(Delegate))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F8B40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED970")]
+	[CompilerGenerated]
+	[Token(Token = "0x6000B11")]
+	public static void remove_reapplyDrivenProperties(ReapplyDrivenProperties value) { }
+
+	[Address(RVA = "0x196C4D0", Offset = "0x196B6D0", Length = "0x58")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[CallsUnknownMethods(Count = 1)]
+	[RequiredByNativeCode]
+	[Token(Token = "0x6000B27")]
+	internal static void SendReapplyDrivenProperties(RectTransform driven) { }
+
+	[Address(RVA = "0x196D7C0", Offset = "0x196C9C0", Length = "0x80")]
+	[CallerCount(Count = 60)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B18")]
+	public void set_anchoredPosition(Vector2 value) { }
+
+	[Address(RVA = "0x196D770", Offset = "0x196C970", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B30")]
+	private static void set_anchoredPosition_Injected(IntPtr _unity_self, in Vector2 value) { }
+
+	[Address(RVA = "0x196D5F0", Offset = "0x196C7F0", Length = "0x177")]
+	[CalledBy(Type = "Polytoria.Controllers.UIController", Member = "Awake", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveX>b__102_1", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveY>b__103_1", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMoveZ>b__104_1", ReturnType = typeof(void))]
+	[CalledBy(Type = "LTDescr", Member = "<setCanvasMove>b__109_1", ReturnType = typeof(void))]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6000B1E")]
+	public void set_anchoredPosition3D(Vector3 value) { }
+
+	[Address(RVA = "0x196D480", Offset = "0x196C680", Length = "0x80")]
+	[CallerCount(Count = 69)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B16")]
+	public void set_anchorMax(Vector2 value) { }
+
+	[Address(RVA = "0x196D430", Offset = "0x196C630", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B2E")]
+	private static void set_anchorMax_Injected(IntPtr _unity_self, in Vector2 value) { }
+
+	[Address(RVA = "0x196D560", Offset = "0x196C760", Length = "0x80")]
+	[CallerCount(Count = 71)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B14")]
+	public void set_anchorMin(Vector2 value) { }
+
+	[Address(RVA = "0x196D510", Offset = "0x196C710", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B2C")]
+	private static void set_anchorMin_Injected(IntPtr _unity_self, in Vector2 value) { }
+
+	[Address(RVA = "0x196D850", Offset = "0x196CA50", Length = "0x3D2")]
+	[CalledBy(Type = "Battlehub.UIControls.RectTransformExtensions", Member = "Stretch", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateToggle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Top", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Right", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+	[CallerCount(Count = 14)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 8)]
+	[Token(Token = "0x6000B22")]
+	public void set_offsetMax(Vector2 value) { }
+
+	[Address(RVA = "0x196DC30", Offset = "0x196CE30", Length = "0x3EA")]
+	[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Left", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "Polytoria.Datamodel.GUI", Member = "Update", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateInputField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "Polytoria.Helpers.RectTransformExtensions", Member = "Bottom", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(float)}, ReturnType = typeof(RectTransform))]
+	[CalledBy(Type = "Battlehub.UIControls.RectTransformExtensions", Member = "Stretch", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Battlehub.UIControls.TreeViewDropMarker", Member = "SetTraget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.ItemContainer"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Battlehub.UIControls.VirtualizingTreeViewDropMarker", Member = "SetTarget", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Battlehub.UIControls.VirtualizingItemContainer"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateToggle", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CallerCount(Count = 17)]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 8)]
+	[Token(Token = "0x6000B20")]
+	public void set_offsetMin(Vector2 value) { }
+
+	[Address(RVA = "0x196E070", Offset = "0x196D270", Length = "0x80")]
+	[CalledBy(Type = "TMPro.TMP_InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Datamodel.Text3D", Member = "set_HorizontalAlignment", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.HorizontalAlignmentOptions"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Datamodel.Text3D", Member = "set_VerticalAlignment", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.VerticalAlignmentOptions"}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Polytoria.Datamodel.UIField", Member = "set_PivotPoint", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Vector2)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TextMeshProUGUI", Member = "SetArraySizes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TextProcessingElement[]"}, ReturnType = typeof(int))]
+	[CalledBy(Type = "TMPro.TMP_DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TMP_DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "TMPro.TMP_SubMeshUI", Member = "SetPivotDirty", ReturnType = typeof(void))]
+	[CalledBy(Type = "TMPro.TextContainer", Member = "UpdateCorners", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateScrollView", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "UnityEngine.UI.InputField", Member = "AssignPositioningIfNeeded", ReturnType = typeof(void))]
+	[CalledBy(Type = "SimpleFileBrowser.FileBrowserContextMenu", Member = "Show", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool), typeof(bool), typeof(bool), typeof(bool), typeof(Vector2), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutOnAxis", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(int), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.RectTransformUtility", Member = "FlipLayoutAxes", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(RectTransform), typeof(bool), typeof(bool)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.DefaultControls", Member = "CreateDropdown", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"UnityEngine.UI.DefaultControls+Resources"}, ReturnType = typeof(GameObject))]
+	[CalledBy(Type = "TMPro.TMP_SubMeshUI", Member = "AddSubTextObject", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"TMPro.TextMeshProUGUI", "TMPro.MaterialReference"}, ReturnType = "TMPro.TMP_SubMeshUI")]
+	[CallerCount(Count = 24)]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B1C")]
+	public void set_pivot(Vector2 value) { }
+
+	[Address(RVA = "0x196E020", Offset = "0x196D220", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B34")]
+	private static void set_pivot_Injected(IntPtr _unity_self, in Vector2 value) { }
+
+	[Address(RVA = "0x196E150", Offset = "0x196D350", Length = "0x86")]
+	[CalledBy(Type = "UnityEngine.UI.LayoutGroup", Member = "OnEnable", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.LayoutGroup", Member = "OnDisable", ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B23")]
+	internal void set_sendChildDimensionsChange(bool value) { }
+
+	[Address(RVA = "0x196E100", Offset = "0x196D300", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B35")]
+	private static void set_sendChildDimensionsChange_Injected(IntPtr _unity_self, bool value) { }
+
+	[Address(RVA = "0x196E230", Offset = "0x196D430", Length = "0x80")]
+	[CallerCount(Count = 93)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B1A")]
+	public void set_sizeDelta(Vector2 value) { }
+
+	[Address(RVA = "0x196E1E0", Offset = "0x196D3E0", Length = "0x42")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000B32")]
+	private static void set_sizeDelta_Injected(IntPtr _unity_self, in Vector2 value) { }
+
+	[Address(RVA = "0x196C530", Offset = "0x196B730", Length = "0x3DB")]
+	[CalledBy(Type = "UnityEngine.UI.AspectRatioFitter", Member = "UpdateRect", ReturnType = typeof(void))]
+	[CalledBy(Type = "UnityEngine.UI.ContentSizeFitter", Member = "HandleSelfFittingAlongAxis", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Battlehub.UIControls.TreeView", Member = "FixScrollRect", ReturnType = typeof(void))]
+	[CalledBy(Type = "Battlehub.UIControls.VirtualizingScrollRect", Member = "OnVirtualContentTransformChaged", ReturnType = typeof(void))]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(ThrowHelper), Member = "ThrowNullReferenceException", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAB0")]
+	[Calls(Type = typeof(RectTransform), Member = "GetParentSize", ReturnType = typeof(Vector2))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(IndexOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CallsUnknownMethods(Count = 4)]
+	[Token(Token = "0x6000B26")]
+	public void SetSizeWithCurrentAnchors(Axis axis, float size) { }
+
+}
+

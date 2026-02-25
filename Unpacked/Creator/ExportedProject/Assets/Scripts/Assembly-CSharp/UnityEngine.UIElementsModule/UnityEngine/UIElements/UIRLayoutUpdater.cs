@@ -1,0 +1,191 @@
+namespace UnityEngine.UIElements;
+
+[Token(Token = "0x20002C2")]
+[VisibleToOtherModules(new IL2CPP_TYPE_STRING[] {"UnityEditor.UIBuilderModule"})]
+internal class UIRLayoutUpdater : BaseVisualTreeUpdater
+{
+	[Token(Token = "0x4000B22")]
+	private static readonly string s_Description; //Field offset: 0x0
+	[Token(Token = "0x4000B23")]
+	private static readonly ProfilerMarker s_ProfilerMarker; //Field offset: 0x8
+	[Token(Token = "0x4000B24")]
+	private static readonly ProfilerMarker k_ComputeLayoutMarker; //Field offset: 0x10
+	[Token(Token = "0x4000B25")]
+	private static readonly ProfilerMarker k_UpdateSubTreeMarker; //Field offset: 0x18
+	[Token(Token = "0x4000B26")]
+	private static readonly ProfilerMarker k_DispatchChangeEventsMarker; //Field offset: 0x20
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x4000B27")]
+	private List<ValueTuple`3<Rect, Rect, VisualElement>> changeEventsList; //Field offset: 0x28
+	[FieldOffset(Offset = "0x30")]
+	[Token(Token = "0x4000B28")]
+	private List<VisualElement> missedHierarchyChangeEventsList; //Field offset: 0x30
+
+	[Token(Token = "0x170003BA")]
+	public virtual ProfilerMarker profilerMarker
+	{
+		[Address(RVA = "0x1C91C00", Offset = "0x1C90E00", Length = "0x4F")]
+		[CallerCount(Count = 0)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Token(Token = "0x6001346")]
+		 get { } //Length: 79
+	}
+
+	[Address(RVA = "0x1C919F0", Offset = "0x1C90BF0", Length = "0x14E")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(ProfilerUnsafeUtility), Member = "CreateMarker", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(ushort), typeof(MarkerFlags), typeof(int)}, ReturnType = typeof(IntPtr))]
+	[Token(Token = "0x600134E")]
+	private static UIRLayoutUpdater() { }
+
+	[Address(RVA = "0x1C91B40", Offset = "0x1C90D40", Length = "0xBD")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x600134D")]
+	public UIRLayoutUpdater() { }
+
+	[Address(RVA = "0x1C90580", Offset = "0x1C8F780", Length = "0x295")]
+	[CalledBy(Type = typeof(UIRLayoutUpdater), Member = "Update", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(List`1), Member = "GetEnumerator", ReturnType = "System.Collections.Generic.List`1<T>+Enumerator<T>")]
+	[Calls(Type = typeof(System.Collections.Generic.List`1+Enumerator<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, System.Object>>), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(GeometryChangedEvent), Member = "GetPooled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Rect), typeof(Rect)}, ReturnType = typeof(GeometryChangedEvent))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(EventDispatchUtilities), Member = "HandleEventAtTargetAndDefaultPhase", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(EventBase), typeof(BaseVisualElementPanel), typeof(VisualElement)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsDeduplicatedMethods(Count = 3)]
+	[Token(Token = "0x600134B")]
+	private void DispatchChangeEvents(List<ValueTuple`3<Rect, Rect, VisualElement>> changeEvents, int currentLayoutPass) { }
+
+	[Address(RVA = "0x1C90820", Offset = "0x1C8FA20", Length = "0x29D")]
+	[CalledBy(Type = typeof(UIRLayoutUpdater), Member = "Update", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(List`1), Member = "GetEnumerator", ReturnType = "System.Collections.Generic.List`1<T>+Enumerator<T>")]
+	[Calls(Type = typeof(System.Collections.Generic.List`1+Enumerator<System.Object>), Member = "MoveNext", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(VisualElement), Member = "get_layout", ReturnType = typeof(Rect))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(GeometryChangedEvent), Member = "GetPooled", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Rect), typeof(Rect)}, ReturnType = typeof(GeometryChangedEvent))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(EventDispatchUtilities), Member = "HandleEventAtTargetAndDefaultPhase", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(EventBase), typeof(BaseVisualElementPanel), typeof(VisualElement)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEAE0")]
+	[CallsDeduplicatedMethods(Count = 4)]
+	[Token(Token = "0x600134C")]
+	private void DispatchMissedHierarchyChangeEvents(List<VisualElement> missedHierarchyChangeEvents, int currentLayoutPass) { }
+
+	[Address(RVA = "0x1C91C00", Offset = "0x1C90E00", Length = "0x4F")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Token(Token = "0x6001346")]
+	public virtual ProfilerMarker get_profilerMarker() { }
+
+	[Address(RVA = "0x1C90AC0", Offset = "0x1C8FCC0", Length = "0x10B")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(VisualElement), Member = "get_layoutNode", ReturnType = typeof(LayoutNode&))]
+	[Calls(Type = typeof(LayoutNode), Member = "op_Inequality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(LayoutNode), typeof(LayoutNode)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_UsesMeasure", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(LayoutNode), Member = "MarkDirty", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6001347")]
+	public virtual void OnVersionChanged(VisualElement ve, VersionChangeType versionChangeType) { }
+
+	[Address(RVA = "0x1C916E0", Offset = "0x1C908E0", Length = "0x309")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(UIRLayoutUpdater), Member = "UpdateSubTree", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(VisualElement), Member = "get_layoutNode", ReturnType = typeof(LayoutNode&))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_IsDirty", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Array), Member = "Clear", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Array), typeof(int), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(LayoutNode), Member = "CalculateLayout", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(float), typeof(float)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(UIRLayoutUpdater), Member = "DispatchChangeEvents", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(UIRLayoutUpdater), Member = "DispatchMissedHierarchyChangeEvents", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(System.Collections.Generic.List`1<UnityEngine.UIElements.VisualElement>), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Debug), Member = "LogError", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(FocusController), Member = "ReevaluateFocus", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsDeduplicatedMethods(Count = 10)]
+	[CallsUnknownMethods(Count = 3)]
+	[Token(Token = "0x6001348")]
+	public virtual void Update() { }
+
+	[Address(RVA = "0x1C90BD0", Offset = "0x1C8FDD0", Length = "0x2AA")]
+	[CalledBy(Type = typeof(UIRLayoutUpdater), Member = "UpdateHierarchyDisplayed", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>), typeof(bool)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(UIRLayoutUpdater), Member = "UpdateSubTree", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(VisualElement), Member = "get_areAncestorsAndSelfDisplayed", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1800CEAF0")]
+	[Calls(Type = typeof(System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, System.Object>), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Rect), typeof(Rect), typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "HasSelfEventInterests", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(EventCategory)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(VisualElement), Member = "IncrementVersion", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VersionChangeType)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "set_disableRendering", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(Hierarchy), Member = "get_childCount", ReturnType = typeof(int))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(VisualElement), Member = "get_resolvedStyle", ReturnType = typeof(IResolvedStyle))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(VisualElement), Member = "set_areAncestorsAndSelfDisplayed", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(UIRLayoutUpdater), Member = "UpdateHierarchyDisplayed", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>), typeof(bool)}, ReturnType = typeof(bool))]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[Token(Token = "0x6001349")]
+	private static bool UpdateHierarchyDisplayed(VisualElement ve, List<ValueTuple`3<Rect, Rect, VisualElement>> changeEvents, bool inheritedDisplayed = true) { }
+
+	[Address(RVA = "0x1C90E80", Offset = "0x1C90080", Length = "0x857")]
+	[CalledBy(Type = typeof(UIRLayoutUpdater), Member = "Update", ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(UIRLayoutUpdater), Member = "UpdateSubTree", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(ComputedStyle), Member = "get_scale", ReturnType = typeof(Scale))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1803AF610")]
+	[Calls(Type = typeof(VisualElement), Member = "IncrementVersion", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VersionChangeType)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_HasNewLayout", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Hierarchy), Member = "get_childCount", ReturnType = typeof(int))]
+	[Calls(Type = typeof(UIRLayoutUpdater), Member = "UpdateSubTree", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "HasSelfEventInterests", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(EventCategory)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(System.Collections.Generic.List`1<System.Object>), Member = "AddWithResize", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "get_boundingBoxDirtiedSinceLastLayoutPass", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18001A950")]
+	[Calls(Type = typeof(VisualElement), Member = "set_boundingBoxDirtiedSinceLastLayoutPass", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(bool)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(LayoutNode), Member = "MarkLayoutSeen", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, System.Object>), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Rect), typeof(Rect), typeof(object)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(VisualElement), Member = "get_receivesHierarchyGeometryChangedEvents", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(VisualElement), Member = "get_resolvedStyle", ReturnType = typeof(IResolvedStyle))]
+	[Calls(Type = typeof(VisualElement), Member = "get_computedStyle", ReturnType = typeof(ComputedStyle&))]
+	[Calls(Type = typeof(ComputedStyle), Member = "get_rotate", ReturnType = typeof(Rotate))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(UIRLayoutUpdater), Member = "UpdateHierarchyDisplayed", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(VisualElement), typeof(System.Collections.Generic.List`1<System.ValueTuple`3<UnityEngine.Rect, UnityEngine.Rect, UnityEngine.UIElements.VisualElement>>), typeof(bool)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(VisualElement), Member = "get_areAncestorsAndSelfDisplayed", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(VisualElement), Member = "get_layoutNode", ReturnType = typeof(LayoutNode&))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(LayoutNode), Member = "get_LayoutX", ReturnType = typeof(float))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_LayoutWidth", ReturnType = typeof(float))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_LayoutHeight", ReturnType = typeof(float))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_LayoutPaddingLeft", ReturnType = typeof(float))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_LayoutPaddingRight", ReturnType = typeof(float))]
+	[Calls(Type = typeof(LayoutNode), Member = "get_LayoutPaddingBottom", ReturnType = typeof(float))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1800CEAF0")]
+	[Calls(Type = typeof(LayoutNode), Member = "get_LayoutY", ReturnType = typeof(float))]
+	[Calls(Type = typeof(System.Collections.Generic.List`1<System.Object>), Member = "Remove", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[CallsDeduplicatedMethods(Count = 2)]
+	[ContainsUnimplementedInstructions]
+	[Token(Token = "0x600134A")]
+	private void UpdateSubTree(VisualElement ve, List<ValueTuple`3<Rect, Rect, VisualElement>> changeEvents) { }
+
+}
+

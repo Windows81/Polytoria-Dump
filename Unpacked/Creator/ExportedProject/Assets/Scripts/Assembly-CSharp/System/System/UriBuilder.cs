@@ -1,0 +1,341 @@
+namespace System;
+
+[Token(Token = "0x20000B8")]
+public class UriBuilder
+{
+	[FieldOffset(Offset = "0x10")]
+	[Token(Token = "0x400022C")]
+	private bool _changed; //Field offset: 0x10
+	[FieldOffset(Offset = "0x18")]
+	[Token(Token = "0x400022D")]
+	private string _fragment; //Field offset: 0x18
+	[FieldOffset(Offset = "0x20")]
+	[Token(Token = "0x400022E")]
+	private string _host; //Field offset: 0x20
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x400022F")]
+	private string _password; //Field offset: 0x28
+	[FieldOffset(Offset = "0x30")]
+	[Token(Token = "0x4000230")]
+	private string _path; //Field offset: 0x30
+	[FieldOffset(Offset = "0x38")]
+	[Token(Token = "0x4000231")]
+	private int _port; //Field offset: 0x38
+	[FieldOffset(Offset = "0x40")]
+	[Token(Token = "0x4000232")]
+	private string _query; //Field offset: 0x40
+	[FieldOffset(Offset = "0x48")]
+	[Token(Token = "0x4000233")]
+	private string _scheme; //Field offset: 0x48
+	[FieldOffset(Offset = "0x50")]
+	[Token(Token = "0x4000234")]
+	private string _schemeDelimiter; //Field offset: 0x50
+	[FieldOffset(Offset = "0x58")]
+	[Token(Token = "0x4000235")]
+	private Uri _uri; //Field offset: 0x58
+	[FieldOffset(Offset = "0x60")]
+	[Token(Token = "0x4000236")]
+	private string _username; //Field offset: 0x60
+
+	[Token(Token = "0x1700008E")]
+	public string Host
+	{
+		[Address(RVA = "0x1747810", Offset = "0x1746A10", Length = "0xCF")]
+		[CalledBy(Type = "Mirror.Discovery.NetworkDiscovery", Member = "ProcessResponse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Mirror.Discovery.ServerResponse", typeof(IPEndPoint)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CallerCount(Count = 6)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(string), Member = "IndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(int))]
+		[Calls(Type = typeof(string), Member = "get_Chars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(char))]
+		[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Token(Token = "0x600037A")]
+		 set { } //Length: 207
+	}
+
+	[Token(Token = "0x1700008F")]
+	public string Path
+	{
+		[Address(RVA = "0x17478E0", Offset = "0x1746AE0", Length = "0xAB")]
+		[CalledBy(Type = typeof(FtpControlStream), Member = "TryUpdateResponseUri", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(FtpWebRequest)}, ReturnType = typeof(void))]
+		[CallerCount(Count = 1)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(string), Member = "Replace", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), typeof(char)}, ReturnType = typeof(string))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(Uri), Member = "InternalEscapeString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(string))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Token(Token = "0x600037B")]
+		 set { } //Length: 171
+	}
+
+	[Token(Token = "0x17000090")]
+	public int Port
+	{
+		[Address(RVA = "0x1747990", Offset = "0x1746B90", Length = "0x6C")]
+		[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CallerCount(Count = 5)]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Token(Token = "0x600037C")]
+		 set { } //Length: 108
+	}
+
+	[Token(Token = "0x17000091")]
+	public string Scheme
+	{
+		[Address(RVA = "0x1747A00", Offset = "0x1746C00", Length = "0x131")]
+		[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CallerCount(Count = 5)]
+		[Calls(Type = typeof(string), Member = "IndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(int))]
+		[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[Calls(Type = typeof(string), Member = "ToLowerInvariant", ReturnType = typeof(string))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+		[Calls(Type = typeof(string), Member = "Substring", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(int)}, ReturnType = typeof(string))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(Uri), Member = "CheckSchemeName", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(bool))]
+		[Token(Token = "0x600037D")]
+		 set { } //Length: 305
+	}
+
+	[Token(Token = "0x17000092")]
+	public Uri Uri
+	{
+		[Address(RVA = "0x1747760", Offset = "0x1746960", Length = "0xA2")]
+		[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = typeof(UriBuilder), Member = "Equals", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+		[CalledBy(Type = typeof(UriBuilder), Member = "GetHashCode", ReturnType = typeof(int))]
+		[CalledBy(Type = typeof(FtpControlStream), Member = "TryUpdateResponseUri", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(FtpWebRequest)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.Discovery.NetworkDiscovery", Member = "ProcessResponse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Mirror.Discovery.ServerResponse", typeof(IPEndPoint)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+		[CallerCount(Count = 9)]
+		[Calls(Type = typeof(UriBuilder), Member = "SetFieldsFromUri", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Uri)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+		[Calls(Type = typeof(Uri), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+		[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+		[CallsUnknownMethods(Count = 1)]
+		[Token(Token = "0x600037E")]
+		 get { } //Length: 162
+	}
+
+	[Address(RVA = "0x1747420", Offset = "0x1746620", Length = "0x163")]
+	[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6000377")]
+	public UriBuilder() { }
+
+	[Address(RVA = "0x1747590", Offset = "0x1746790", Length = "0x1CA")]
+	[CalledBy(Type = typeof(FtpControlStream), Member = "TryUpdateResponseUri", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(FtpWebRequest)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.Discovery.NetworkDiscovery", Member = "ProcessResponse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Mirror.Discovery.ServerResponse", typeof(IPEndPoint)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(UriBuilder), Member = "Init", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Uri)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentNullException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6000378")]
+	public UriBuilder(Uri uri) { }
+
+	[Address(RVA = "0x1746AE0", Offset = "0x1745CE0", Length = "0x6A")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(UriBuilder), Member = "get_Uri", ReturnType = typeof(Uri))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 2)]
+	[Token(Token = "0x600037F")]
+	public virtual bool Equals(object rparam) { }
+
+	[Address(RVA = "0x1747760", Offset = "0x1746960", Length = "0xA2")]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.Discovery.NetworkDiscovery", Member = "ProcessResponse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Mirror.Discovery.ServerResponse", typeof(IPEndPoint)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(UriBuilder), Member = "GetHashCode", ReturnType = typeof(int))]
+	[CalledBy(Type = typeof(UriBuilder), Member = "Equals", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = typeof(FtpControlStream), Member = "TryUpdateResponseUri", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(FtpWebRequest)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 9)]
+	[Calls(Type = typeof(UriBuilder), Member = "SetFieldsFromUri", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Uri)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(Uri), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x600037E")]
+	public Uri get_Uri() { }
+
+	[Address(RVA = "0x1746B50", Offset = "0x1745D50", Length = "0x30")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(UriBuilder), Member = "get_Uri", ReturnType = typeof(Uri))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000380")]
+	public virtual int GetHashCode() { }
+
+	[Address(RVA = "0x1746B90", Offset = "0x1745D90", Length = "0x1DB")]
+	[CalledBy(Type = typeof(UriBuilder), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Uri)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(Uri), Member = "get_AbsolutePath", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Substring", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "IndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(string), Member = "IsNullOrEmpty", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Uri), Member = "get_UserInfo", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Uri), Member = "get_HasAuthority", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Uri), Member = "get_Scheme", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(string), Member = "Substring", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(int)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(Uri), Member = "get_Host", ReturnType = typeof(string))]
+	[Calls(Type = typeof(Uri), Member = "get_Query", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Uri), Member = "get_Fragment", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Uri), Member = "get_Port", ReturnType = typeof(int))]
+	[ContainsInvalidInstructions]
+	[Token(Token = "0x6000379")]
+	private void Init(Uri uri) { }
+
+	[Address(RVA = "0x1747810", Offset = "0x1746A10", Length = "0xCF")]
+	[CalledBy(Type = "Mirror.Discovery.NetworkDiscovery", Member = "ProcessResponse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {"Mirror.Discovery.ServerResponse", typeof(IPEndPoint)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(string), Member = "IndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(string), Member = "get_Chars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600037A")]
+	public void set_Host(string value) { }
+
+	[Address(RVA = "0x17478E0", Offset = "0x1746AE0", Length = "0xAB")]
+	[CalledBy(Type = typeof(FtpControlStream), Member = "TryUpdateResponseUri", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(FtpWebRequest)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(string), Member = "Replace", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char), typeof(char)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Uri), Member = "InternalEscapeString", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600037B")]
+	public void set_Path(string value) { }
+
+	[Address(RVA = "0x1747990", Offset = "0x1746B90", Length = "0x6C")]
+	[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(ArgumentOutOfRangeException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Token(Token = "0x600037C")]
+	public void set_Port(int value) { }
+
+	[Address(RVA = "0x1747A00", Offset = "0x1746C00", Length = "0x131")]
+	[CalledBy(Type = "kcp2k.KcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "kcp2k.ThreadedKcpTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.TelepathyTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ClientConnect", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[CalledBy(Type = "Mirror.SimpleWeb.SimpleWebTransport", Member = "ServerUri", ReturnType = typeof(Uri))]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[Calls(Type = typeof(string), Member = "Substring", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(int)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(Uri), Member = "CheckSchemeName", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(ArgumentException), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(string), Member = "IndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(string), Member = "ToLowerInvariant", ReturnType = typeof(string))]
+	[Token(Token = "0x600037D")]
+	public void set_Scheme(string value) { }
+
+	[Address(RVA = "0x1746D70", Offset = "0x1745F70", Length = "0x1BC")]
+	[CalledBy(Type = typeof(UriBuilder), Member = "get_Uri", ReturnType = typeof(Uri))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(Uri), Member = "get_AbsolutePath", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Substring", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "IndexOf", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(int))]
+	[Calls(Type = typeof(Uri), Member = "get_UserInfo", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(Uri), Member = "get_HasAuthority", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Uri), Member = "get_Scheme", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(string), Member = "Substring", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(int)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(Uri), Member = "get_Host", ReturnType = typeof(string))]
+	[Calls(Type = typeof(Uri), Member = "get_Query", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(Uri), Member = "get_Fragment", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Uri), Member = "get_Port", ReturnType = typeof(int))]
+	[Token(Token = "0x6000381")]
+	private void SetFieldsFromUri(Uri uri) { }
+
+	[Address(RVA = "0x1746F30", Offset = "0x1746130", Length = "0x4E2")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(System.Collections.Generic.Dictionary`2<System.Object, System.Object>), Member = "TryGetValue", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object), typeof(Object&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(int), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "get_Chars", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int)}, ReturnType = typeof(char))]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(String[])}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[Token(Token = "0x6000382")]
+	public virtual string ToString() { }
+
+}
+

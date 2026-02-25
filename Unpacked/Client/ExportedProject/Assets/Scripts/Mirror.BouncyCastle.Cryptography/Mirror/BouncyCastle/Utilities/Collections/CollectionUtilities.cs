@@ -1,0 +1,72 @@
+namespace Mirror.BouncyCastle.Utilities.Collections;
+
+[Token(Token = "0x2000015")]
+public abstract class CollectionUtilities
+{
+
+	[Address(RVA = "0x687DA0", Offset = "0x686FA0", Length = "0xEE")]
+	[CalledBy(Type = typeof(SecNamedCurves), Member = "GetByOidLazy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParametersHolder))]
+	[CalledBy(Type = typeof(AnssiNamedCurves), Member = "GetByOidLazy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParametersHolder))]
+	[CalledBy(Type = typeof(AnssiNamedCurves), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(Gost3410NamedParameters), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(Gost3410ParamSetParameters))]
+	[CalledBy(Type = typeof(ECGost3410NamedCurves), Member = "GetByOidLazy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParametersHolder))]
+	[CalledBy(Type = typeof(ECGost3410NamedCurves), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(GMNamedCurves), Member = "GetByOidLazy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParametersHolder))]
+	[CalledBy(Type = typeof(GMNamedCurves), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(TeleTrusTNamedCurves), Member = "GetByOidLazy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParametersHolder))]
+	[CalledBy(Type = typeof(SecNamedCurves), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(X962NamedCurves), Member = "GetByOidLazy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParametersHolder))]
+	[CalledBy(Type = typeof(X962NamedCurves), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(ECNamedCurveTable), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(CustomNamedCurves), Member = "GetByOidLazy", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParametersHolder))]
+	[CalledBy(Type = typeof(CustomNamedCurves), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(ECKeyPairGenerator), Member = "FindECCurveByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CalledBy(Type = typeof(TeleTrusTNamedCurves), Member = "GetByOid", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(DerObjectIdentifier)}, ReturnType = typeof(X9ECParameters))]
+	[CallerCount(Count = 19)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F72D0")]
+	[CallsUnknownMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x600007E")]
+	public static V GetValueOrNull(IDictionary<K, V> d, K k) { }
+
+	[Address(RVA = "0x687FA0", Offset = "0x6871A0", Length = "0xAD")]
+	[CalledBy(Type = typeof(PrivateKeyInfo), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Asn1Sequence)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F72D0")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE830")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(InvalidOperationException), Member = ".ctor", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA10")]
+	[DeduplicatedMethod]
+	[Token(Token = "0x600007F")]
+	public static T RequireNext(IEnumerator<T> e) { }
+
+	[Address(RVA = "0x688360", Offset = "0x687560", Length = "0x29C")]
+	[CalledBy(Type = typeof(Asn1Sequence), Member = "ToString", ReturnType = typeof(string))]
+	[CalledBy(Type = typeof(Asn1Set), Member = "ToString", ReturnType = typeof(string))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F72D0")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(char)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F7350")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(StringBuilder), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(object)}, ReturnType = typeof(StringBuilder))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(StringBuilder), Member = "Append", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string)}, ReturnType = typeof(StringBuilder))]
+	[CallsUnknownMethods(Count = 3)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x6000080")]
+	public static string ToString(IEnumerable<T> c) { }
+
+}
+

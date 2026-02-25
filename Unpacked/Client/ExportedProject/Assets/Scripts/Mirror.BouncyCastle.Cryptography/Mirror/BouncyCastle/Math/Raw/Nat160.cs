@@ -1,0 +1,243 @@
+namespace Mirror.BouncyCastle.Math.Raw;
+
+[Token(Token = "0x2000027")]
+internal static class Nat160
+{
+
+	[Address(RVA = "0x10C9F00", Offset = "0x10C9100", Length = "0x118")]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000182")]
+	public static uint Add(UInt32[] x, UInt32[] y, UInt32[] z) { }
+
+	[Address(RVA = "0x10C9DB0", Offset = "0x10C8FB0", Length = "0x144")]
+	[CalledBy(Type = typeof(SecP160K1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160K1Point), Member = "Twice", ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Twice", ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2Point), Member = "Twice", ReturnType = typeof(ECPoint))]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000183")]
+	public static uint AddBothTo(UInt32[] x, UInt32[] y, UInt32[] z) { }
+
+	[Address(RVA = "0x10CA020", Offset = "0x10C9220", Length = "0xD6")]
+	[CalledBy(Type = typeof(SecP160K1Curve), Member = "CreateCacheSafeLookupTable", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint[]), typeof(int), typeof(int)}, ReturnType = typeof(ECLookupTable))]
+	[CalledBy(Type = typeof(SecP160R1Curve), Member = "CreateCacheSafeLookupTable", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint[]), typeof(int), typeof(int)}, ReturnType = typeof(ECLookupTable))]
+	[CalledBy(Type = typeof(SecP160R2Curve), Member = "CreateCacheSafeLookupTable", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint[]), typeof(int), typeof(int)}, ReturnType = typeof(ECLookupTable))]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000184")]
+	public static void Copy(UInt32[] x, int xOff, UInt32[] z, int zOff) { }
+
+	[Address(RVA = "0x10CA140", Offset = "0x10C9340", Length = "0x35")]
+	[CallerCount(Count = 61)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Token(Token = "0x6000185")]
+	public static UInt32[] Create() { }
+
+	[Address(RVA = "0x10CA100", Offset = "0x10C9300", Length = "0x35")]
+	[CalledBy(Type = typeof(SecP160K1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Square", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "SquareN", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(int), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Square", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "SquareN", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(int), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CallerCount(Count = 9)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Token(Token = "0x6000186")]
+	public static UInt32[] CreateExt() { }
+
+	[Address(RVA = "0x10CA180", Offset = "0x10C9380", Length = "0x63")]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "Sqrt", ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "Equals", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SecP160R1FieldElement)}, ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "Sqrt", ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "Equals", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(SecP160R2FieldElement)}, ReturnType = typeof(bool))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000187")]
+	public static bool Eq(UInt32[] x, UInt32[] y) { }
+
+	[Address(RVA = "0x10CA1F0", Offset = "0x10C93F0", Length = "0x5A")]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "TestBitZero", ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "TestBitZero", ReturnType = typeof(bool))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000188")]
+	public static uint GetBit(UInt32[] x, int bit) { }
+
+	[Address(RVA = "0x10CA250", Offset = "0x10C9450", Length = "0x67")]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Twice", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "SquareN", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(int), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Reduce32", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Reduce", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "FromBigInteger", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(UInt32[]))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "AddOne", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Twice", ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Twice", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Reduce32", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "FromBigInteger", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(UInt32[]))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "AddOne", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "AddOne", ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "AddOne", ReturnType = typeof(ECFieldElement))]
+	[CallerCount(Count = 17)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000189")]
+	public static bool Gte(UInt32[] x, UInt32[] y) { }
+
+	[Address(RVA = "0x10CA2C0", Offset = "0x10C94C0", Length = "0x56")]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "get_IsOne", ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "Sqrt", ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "get_IsOne", ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "Sqrt", ReturnType = typeof(ECFieldElement))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x600018A")]
+	public static bool IsOne(UInt32[] x) { }
+
+	[Address(RVA = "0x10CA320", Offset = "0x10C9520", Length = "0x50")]
+	[CalledBy(Type = typeof(SecP160K1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "get_IsZero", ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "Sqrt", ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "get_IsZero", ReturnType = typeof(bool))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "Sqrt", ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R2Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CallerCount(Count = 10)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x600018B")]
+	public static bool IsZero(UInt32[] x) { }
+
+	[Address(RVA = "0x10CA9B0", Offset = "0x10C9BB0", Length = "0x247")]
+	[CalledBy(Type = typeof(SecP160K1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Multiply", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CallerCount(Count = 5)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x600018C")]
+	public static void Mul(UInt32[] x, UInt32[] y, UInt32[] zz) { }
+
+	[Address(RVA = "0x10CA380", Offset = "0x10C9580", Length = "0x1C4")]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Reduce", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "SquareN", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(int), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x600018E")]
+	public static ulong Mul33Add(uint w, UInt32[] x, int xOff, UInt32[] y, int yOff, UInt32[] z, int zOff) { }
+
+	[Address(RVA = "0x10CA550", Offset = "0x10C9750", Length = "0x10A")]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Reduce", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "SquareN", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(int), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x600018F")]
+	public static uint Mul33DWordAdd(uint x, ulong y, UInt32[] z, int zOff) { }
+
+	[Address(RVA = "0x10CA660", Offset = "0x10C9860", Length = "0xD8")]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Reduce32", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000190")]
+	public static uint Mul33WordAdd(uint x, uint y, UInt32[] z, int zOff) { }
+
+	[Address(RVA = "0x10CA740", Offset = "0x10C9940", Length = "0x1AA")]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "MultiplyAddToExt", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "MultiplyAddToExt", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CallerCount(Count = 3)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x600018D")]
+	public static uint MulAddTo(UInt32[] x, UInt32[] y, UInt32[] zz) { }
+
+	[Address(RVA = "0x10CA8F0", Offset = "0x10C9AF0", Length = "0xB6")]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Reduce32", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000191")]
+	public static uint MulWordsAdd(uint x, uint y, UInt32[] z, int zOff) { }
+
+	[Address(RVA = "0x10CAC00", Offset = "0x10C9E00", Length = "0x34C")]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Square", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "SquareN", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(int), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Square", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "SquareN", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(int), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CallerCount(Count = 6)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000192")]
+	public static void Square(UInt32[] x, UInt32[] zz) { }
+
+	[Address(RVA = "0x10CB040", Offset = "0x10CA240", Length = "0x118")]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Twice", ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160K1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160K1Point), Member = "Twice", ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Negate", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "Subtract", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "Subtract", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECFieldElement)}, ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R1Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Negate", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "Subtract", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(UInt32[]), typeof(UInt32[]), typeof(UInt32[])}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "Subtract", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECFieldElement)}, ReturnType = typeof(ECFieldElement))]
+	[CalledBy(Type = typeof(SecP160R2Point), Member = "Add", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(ECPoint)}, ReturnType = typeof(ECPoint))]
+	[CalledBy(Type = typeof(SecP160R2Point), Member = "Twice", ReturnType = typeof(ECPoint))]
+	[CallerCount(Count = 34)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x6000193")]
+	public static int Sub(UInt32[] x, UInt32[] y, UInt32[] z) { }
+
+	[Address(RVA = "0x10CAF50", Offset = "0x10CA150", Length = "0xE0")]
+	[CalledBy(Type = typeof(SecP160R1Field), Member = "FromBigInteger", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(UInt32[]))]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[CalledBy(Type = typeof(SecP160R2Field), Member = "FromBigInteger", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(UInt32[]))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(BigInteger)}, ReturnType = typeof(void))]
+	[CallerCount(Count = 4)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000194")]
+	public static int SubFrom(UInt32[] x, UInt32[] z) { }
+
+	[Address(RVA = "0x10CB160", Offset = "0x10CA360", Length = "0xE7")]
+	[CalledBy(Type = typeof(SecP160R1FieldElement), Member = "ToBigInteger", ReturnType = typeof(BigInteger))]
+	[CalledBy(Type = typeof(SecP160R2FieldElement), Member = "ToBigInteger", ReturnType = typeof(BigInteger))]
+	[CallerCount(Count = 2)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED9B0")]
+	[Calls(Type = typeof(Pack), Member = "UInt32_To_BE", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(uint), typeof(Byte[]), typeof(int)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA00")]
+	[Calls(Type = typeof(BigInteger), Member = ".ctor", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(int), typeof(Byte[])}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA40")]
+	[Token(Token = "0x6000195")]
+	public static BigInteger ToBigInteger(UInt32[] x) { }
+
+}
+

@@ -1,0 +1,12 @@
+namespace UnityEngine.UIElements;
+
+[Token(Token = "0x200010D")]
+internal enum ColumnsDataType
+{
+	PrimaryColumn = 0,
+	StretchMode = 1,
+	Reorderable = 2,
+	Resizable = 3,
+	ResizePreview = 4,
+}
+

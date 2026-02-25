@@ -1,0 +1,115 @@
+namespace Mirror;
+
+[AddComponentMenu("Network/Network Manager HUD")]
+[DisallowMultipleComponent]
+[HelpURL("https://mirror-networking.gitbook.io/docs/components/network-manager-hud")]
+[RequireComponent(typeof(NetworkManager))]
+[Token(Token = "0x2000058")]
+public class NetworkManagerHUD : MonoBehaviour
+{
+	[FieldOffset(Offset = "0x20")]
+	[Token(Token = "0x4000144")]
+	private NetworkManager manager; //Field offset: 0x20
+	[FieldOffset(Offset = "0x28")]
+	[Token(Token = "0x4000145")]
+	public int offsetX; //Field offset: 0x28
+	[FieldOffset(Offset = "0x2C")]
+	[Token(Token = "0x4000146")]
+	public int offsetY; //Field offset: 0x2C
+
+	[Address(RVA = "0x2C7050", Offset = "0x2C6250", Length = "0x7")]
+	[CallerCount(Count = 60)]
+	[CallsDeduplicatedMethods(Count = 1)]
+	[DeduplicatedMethod]
+	[Token(Token = "0x600028C")]
+	public NetworkManagerHUD() { }
+
+	[Address(RVA = "0x128EB00", Offset = "0x128DD00", Length = "0x49")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(Component), Member = "GetComponent", MemberTypeParameters = new IL2CPP_TYPE_OBJECT[] {"T"}, ReturnType = "T")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Token(Token = "0x6000287")]
+	private void Awake() { }
+
+	[Address(RVA = "0x128EB50", Offset = "0x128DD50", Length = "0x225")]
+	[CallerCount(Count = 0)]
+	[Calls(Type = typeof(NetworkManagerHUD), Member = "StatusLabels", ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkClient), Member = "AddPlayer", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(Object), Member = "op_Equality", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Object), typeof(Object)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x18124C760")]
+	[Calls(Type = typeof(NetworkClient), Member = "Ready", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(GUILayout), Member = "Button", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(GUILayoutOption[])}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180029B10")]
+	[Calls(Type = typeof(GUILayout), Member = "EndArea", ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkManagerHUD), Member = "StartButtons", ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkClient), Member = "get_isConnected", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(GUILayout), Member = "BeginArea", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(Rect)}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(NetworkManagerHUD), Member = "StopButtons", ReturnType = typeof(void))]
+	[Token(Token = "0x6000288")]
+	private void OnGUI() { }
+
+	[Address(RVA = "0x128ED80", Offset = "0x128DF80", Length = "0x36B")]
+	[CalledBy(Type = typeof(NetworkManagerHUD), Member = "OnGUI", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(NetworkManager), Member = "StartHost", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801F6BD0")]
+	[Calls(Type = typeof(ushort), Member = "TryParse", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(UInt16&)}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(ushort), Member = "ToString", ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180002270")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED950")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801ED930")]
+	[Calls(Type = typeof(GUILayout), Member = "TextField", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(GUILayoutOption[])}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(NetworkManager), Member = "StartClient", ReturnType = typeof(void))]
+	[Calls(Type = typeof(GUILayout), Member = "BeginHorizontal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GUILayoutOption[])}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkManager), Member = "StopClient", ReturnType = typeof(void))]
+	[Calls(Type = typeof(GUILayout), Member = "EndHorizontal", ReturnType = typeof(void))]
+	[Calls(Type = typeof(GUILayout), Member = "Button", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(GUILayoutOption[])}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(GUILayout), Member = "Label", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(GUILayoutOption[])}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180029B10")]
+	[Calls(Type = typeof(string), Member = "Concat", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(string), typeof(string)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(NetworkClient), Member = "get_active", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Calls(Type = typeof(NetworkManager), Member = "StartServer", ReturnType = typeof(void))]
+	[CallsUnknownMethods(Count = 1)]
+	[Token(Token = "0x6000289")]
+	private void StartButtons() { }
+
+	[Address(RVA = "0x128F0F0", Offset = "0x128E2F0", Length = "0x1E9")]
+	[CalledBy(Type = typeof(NetworkManagerHUD), Member = "OnGUI", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkClient), Member = "get_active", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(NetworkClient), Member = "get_isConnected", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(string), Member = "Format", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(object)}, ReturnType = typeof(string))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180029B10")]
+	[Calls(Type = typeof(GUILayout), Member = "Label", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(GUILayoutOption[])}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600028A")]
+	private void StatusLabels() { }
+
+	[Address(RVA = "0x128F2E0", Offset = "0x128E4E0", Length = "0x274")]
+	[CalledBy(Type = typeof(NetworkManagerHUD), Member = "OnGUI", ReturnType = typeof(void))]
+	[CallerCount(Count = 1)]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EE810")]
+	[Calls(Type = typeof(CppNativeMethods), Member = "il2cpp_runtime_class_init")]
+	[Calls(Type = typeof(NetworkClient), Member = "get_isConnected", ReturnType = typeof(bool))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x180029B10")]
+	[Calls(Type = typeof(GUILayout), Member = "BeginHorizontal", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(GUILayoutOption[])}, ReturnType = typeof(void))]
+	[Calls(Type = typeof(GUILayout), Member = "Button", MemberParameters = new IL2CPP_TYPE_OBJECT[] {typeof(string), typeof(GUILayoutOption[])}, ReturnType = typeof(bool))]
+	[Calls(Type = typeof(NetworkManager), Member = "StopHost", ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkManager), Member = "StopClient", ReturnType = typeof(void))]
+	[Calls(Type = typeof(GUILayout), Member = "EndHorizontal", ReturnType = typeof(void))]
+	[Calls(Type = typeof(NetworkManager), Member = "StopServer", ReturnType = typeof(void))]
+	[Calls(Type = typeof(CppNativeMethods), Member = "NativeMethod_0x1801EEA50")]
+	[Token(Token = "0x600028B")]
+	private void StopButtons() { }
+
+}
+

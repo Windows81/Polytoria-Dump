@@ -1,0 +1,11 @@
+namespace Unity.AI.Navigation;
+
+[Token(Token = "0x2000008")]
+public enum CollectObjects
+{
+	All = 0,
+	Volume = 1,
+	Children = 2,
+	MarkedWithModifier = 3,
+}
+
