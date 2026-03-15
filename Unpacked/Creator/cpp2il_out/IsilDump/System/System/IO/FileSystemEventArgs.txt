@@ -1,0 +1,278 @@
+Type: System.IO.FileSystemEventArgs
+
+Method: System.Void .ctor(System.IO.WatcherChangeTypes changeType, System.String directory, System.String name)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825CCF98h],0
+	mov rdi,r9
+	mov rsi,r8
+	mov ebp,edx
+	mov rbx,rcx
+	jne short 00000001817B9037h
+	lea rcx,[1824644B0h]
+	call 00000001801EE810h
+	lea rcx,[182495AF8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CCF98h],1
+	mov rcx,[1824644B0h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001817B904Ch
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802BC7B0h
+	lea rcx,[rbx+18h]
+	mov [rbx+10h],ebp
+	mov rdx,rdi
+	mov [rbx+18h],rdi
+	call 00000001801ED930h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rsi
+	call 00000001817B8EB0h
+	mov rcx,[182495AF8h]
+	mov rdi,rax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001817B908Fh
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rdi
+	call 000000018147A850h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rax
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x1825CCF98], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {18}
+	013 LoadAddress rcx, [0x1824644B0]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x182495AF8]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x1825CCF98], 1
+	018 Move rcx, typeof(System.EventArgs)
+	019 Compare [rcx+228], 0
+	020 JumpIfNotEqual {22}
+	021 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	022 Move rdx, 0
+	023 Move rcx, rbx
+	024 Call 0x1802BC7B0, rcx, rdx, r8
+	025 LoadAddress rcx, [rbx+24]
+	026 Move [rbx+16], rbp
+	027 Move rdx, rdi
+	028 Move [rbx+24], rdi
+	029 Call 0x1801ED930, rcx, rdx, r8, r9
+	030 Move r8, 0
+	031 Move rdx, rdi
+	032 Move rcx, rsi
+	033 Call FileSystemEventArgs.Combine, rcx, rdx, r8
+	034 Move rcx, typeof(System.IO.Path)
+	035 Move rdi, rax
+	036 Compare [rcx+228], 0
+	037 JumpIfNotEqual {39}
+	038 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	039 Move rdx, 0
+	040 Move rcx, rdi
+	041 Call Path.GetFullPath, rcx, rdx
+	042 LoadAddress rcx, [rbx+32]
+	043 Move [rbx+32], rax
+	044 Move rdx, rax
+	045 Move rbx, stack:0x30
+	046 Move rbp, stack:0x38
+	047 Move rsi, stack:0x40
+	048 ShiftStack 32
+	049 Move rdi, stack:0x0
+	050 ShiftStack 8
+	051 Call 0x1801ED930, rcx, rdx, r8, r9
+	052 Return 
+
+Method: System.String Combine(System.String directoryPath, System.String name)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [1825CCF99h],0
+	mov rsi,rdx
+	mov rbx,rcx
+	jne short 00000001817B8EDCh
+	lea rcx,[182495AF8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CCF99h],1
+	test rbx,rbx
+	je near ptr 00000001817B8FE9h
+	cmp dword ptr [rbx+10h],0
+	jle near ptr 00000001817B8F81h
+	mov edx,[rbx+10h]
+	xor r8d,r8d
+	dec edx
+	mov [rsp+30h],rdi
+	mov rcx,rbx
+	call 0000000181308CC0h
+	mov rdx,[182495AF8h]
+	movzx edi,ax
+	cmp dword ptr [rdx+0E4h],0
+	jne short 00000001817B8F26h
+	mov rcx,rdx
+	call 00000001801EEAF0h
+	mov rdx,[182495AF8h]
+	mov rcx,[rdx+0B8h]
+	cmp di,[rcx+0Ah]
+	jne short 00000001817B8F3Ah
+	mov ecx,1
+	jmp short 00000001817B8F60h
+	cmp dword ptr [rdx+0E4h],0
+	jne short 00000001817B8F52h
+	mov rcx,rdx
+	call 00000001801EEAF0h
+	mov rdx,[182495AF8h]
+	mov rax,[rdx+0B8h]
+	cmp di,[rax+8]
+	sete cl
+	mov rdi,[rsp+30h]
+	test cl,cl
+	je short 00000001817B8F88h
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rbx
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rsi
+	jmp near ptr 00000001812FF040h
+	mov rdx,[182495AF8h]
+	cmp dword ptr [rdx+0E4h],0
+	jne short 00000001817B8FA0h
+	mov rcx,rdx
+	call 00000001801EEAF0h
+	mov rdx,[182495AF8h]
+	mov rcx,[1825D37C8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001817B8FBCh
+	call 00000001801EEAF0h
+	mov rdx,[182495AF8h]
+	mov rcx,[rdx+0B8h]
+	xor edx,edx
+	add rcx,0Ah
+	call 00000001814101F0h
+	xor r9d,r9d
+	mov r8,rsi
+	mov rdx,rax
+	mov rcx,rbx
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rsi
+	jmp near ptr 00000001812FED50h
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -32
+	005 Compare [0x1825CCF99], 0
+	006 Move rsi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182495AF8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825CCF99], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {79}
+	014 Compare [rbx+16], 0
+	015 JumpIfLessOrEqual {54}
+	016 Move rdx, [rbx+16]
+	017 Move r8, 0
+	018 Subtract rdx, rdx, 1
+	019 Move stack:0x30, rdi
+	020 Move rcx, rbx
+	021 Call String.get_Chars, rcx, rdx
+	022 Move rdx, typeof(System.IO.Path)
+	023 Move rdi, rax
+	024 Compare [rdx+228], 0
+	025 JumpIfNotEqual {29}
+	026 Move rcx, rdx
+	027 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	028 Move rdx, typeof(System.IO.Path)
+	029 Move rcx, [rdx+184]
+	030 Compare rdi, [rcx+10]
+	031 JumpIfNotEqual {34}
+	032 Move rcx, 1
+	033 Goto {42}
+	034 Compare [rdx+228], 0
+	035 JumpIfNotEqual {39}
+	036 Move rcx, rdx
+	037 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	038 Move rdx, typeof(System.IO.Path)
+	039 Move rax, [rdx+184]
+	040 Compare rdi, [rax+8]
+	041 NotImplemented "sete cl"
+	042 Move rdi, stack:0x30
+	043 Compare rcx, 0
+	044 JumpIfEqual {55}
+	045 Move r8, 0
+	046 Move rdx, rsi
+	047 Move rcx, rbx
+	048 Move rbx, stack:0x38
+	049 ShiftStack 32
+	050 Move rsi, stack:0x0
+	051 ShiftStack 8
+	052 Call String.Concat, rcx, rdx, r8
+	053 Return rax
+	054 Move rdx, typeof(System.IO.Path)
+	055 Compare [rdx+228], 0
+	056 JumpIfNotEqual {60}
+	057 Move rcx, rdx
+	058 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	059 Move rdx, typeof(System.IO.Path)
+	060 Move rcx, [0x1825D37C8]
+	061 Compare [rcx+228], 0
+	062 JumpIfNotEqual {65}
+	063 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	064 Move rdx, typeof(System.IO.Path)
+	065 Move rcx, [rdx+184]
+	066 Move rdx, 0
+	067 Add rcx, rcx, 10
+	068 Call 0x1814101F0, rcx, rdx
+	069 Move r9, 0
+	070 Move r8, rsi
+	071 Move rdx, rax
+	072 Move rcx, rbx
+	073 Move rbx, stack:0x38
+	074 ShiftStack 32
+	075 Move rsi, stack:0x0
+	076 ShiftStack 8
+	077 Call String.Concat, rcx, rdx, r8, r9
+	078 Return rax
+	079 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.String get_FullPath()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+

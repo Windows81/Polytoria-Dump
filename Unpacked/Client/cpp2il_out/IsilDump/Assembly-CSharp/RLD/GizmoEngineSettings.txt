@@ -1,0 +1,35 @@
+Type: RLD.GizmoEngineSettings
+
+Method: System.Boolean get_EnableGizmoSorting()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void set_EnableGizmoSorting(System.Boolean value)
+
+Disassembly:
+	mov [rcx+28h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov byte ptr [rcx+28h],1
+	jmp near ptr 00000001805727C0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+40], 1
+	003 Call Settings..ctor, rcx, rdx
+	004 Return 
+

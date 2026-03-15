@@ -1,0 +1,248 @@
+Type: Polytoria.Datamodel.Proxies.RemoveEventProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.RemoteEvent target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x18020B990, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Move rbx, stack:0x30
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Call 0x18020B990, rcx, rdx, r8, r9
+	021 Return 
+
+Method: Polytoria.Lua.LuaEvent get_Invoked()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804CAC89h
+	mov rax,[rax+0F8h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+248]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(System.String val)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804D1139h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018048DC00h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18048DC00, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(System.Boolean val)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804D1089h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018048D4D0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18048D4D0, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(System.Single val)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804D10A9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018048D7B0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18048D7B0, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(System.Int32 val)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804D10C9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018048DA90h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18048DA90, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(UnityEngine.Vector3 val)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804D1060h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018048DD70h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call 0x18048DD70, rcx, rdx, r8
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(UnityEngine.Color val)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804D10F7h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018048D640h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call 0x18048D640, rcx, rdx, r8
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(Polytoria.Datamodel.Instance val)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804D1119h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018048D920h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18048D920, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

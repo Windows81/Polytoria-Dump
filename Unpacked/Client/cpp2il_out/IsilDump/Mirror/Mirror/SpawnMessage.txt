@@ -1,0 +1,84 @@
+Type: Mirror.SpawnMessage
+
+Method: System.Boolean get_isOwner()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+4]
+	and al,1
+	ret
+
+ISIL:
+	001 Move rax, [rcx+4]
+	002 And rax, rax, 1
+	003 Return rax
+
+Method: System.Void set_isOwner(System.Boolean value)
+
+Disassembly:
+	movzx r8d,byte ptr [rcx+4]
+	movzx eax,r8b
+	or r8b,1
+	and al,0FEh
+	movzx r8d,r8b
+	test dl,dl
+	movzx eax,al
+	cmove r8d,eax
+	mov [rcx+4],r8b
+	ret
+
+ISIL:
+	001 Move r8, [rcx+4]
+	002 Move rax, r8
+	003 Or r8, r8, 1
+	004 And rax, rax, 254
+	005 Move r8, r8
+	006 Compare rdx, 0
+	007 Move rax, rax
+	008 JumpIfNotEqual {10}
+	009 Move r8, rax
+	010 Nop 
+	011 Move [rcx+4], r8
+	012 Return 
+
+Method: System.Boolean get_isLocalPlayer()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+4]
+	shr al,1
+	and al,1
+	ret
+
+ISIL:
+	001 Move rax, [rcx+4]
+	002 ShiftRight rax, 1
+	003 And rax, rax, 1
+	004 Return rax
+
+Method: System.Void set_isLocalPlayer(System.Boolean value)
+
+Disassembly:
+	movzx r8d,byte ptr [rcx+4]
+	movzx eax,r8b
+	or r8b,2
+	and al,0FDh
+	movzx r8d,r8b
+	test dl,dl
+	movzx eax,al
+	cmove r8d,eax
+	mov [rcx+4],r8b
+	ret
+
+ISIL:
+	001 Move r8, [rcx+4]
+	002 Move rax, r8
+	003 Or r8, r8, 2
+	004 And rax, rax, 253
+	005 Move r8, r8
+	006 Compare rdx, 0
+	007 Move rax, rax
+	008 JumpIfNotEqual {10}
+	009 Move r8, rax
+	010 Nop 
+	011 Move [rcx+4], r8
+	012 Return 
+

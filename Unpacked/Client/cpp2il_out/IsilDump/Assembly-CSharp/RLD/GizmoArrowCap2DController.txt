@@ -1,0 +1,709 @@
+Type: RLD.GizmoArrowCap2DController
+
+Method: System.Void .ctor(RLD.GizmoCap2DControllerData controllerData)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Void UpdateHandles()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[rcx+10h]
+	mov rbx,rcx
+	test rax,rax
+	je short 00000001803D0E4Fh
+	mov rcx,[rax+20h]
+	test rcx,rcx
+	je short 00000001803D0E4Fh
+	mov edx,[rax+44h]
+	xor r9d,r9d
+	xor r8d,r8d
+	call 00000001803F10B0h
+	mov rcx,[rbx+10h]
+	test rcx,rcx
+	je short 00000001803D0E4Fh
+	mov rdx,rcx
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001803D0E4Fh
+	mov edx,[rdx+40h]
+	xor r9d,r9d
+	xor r8d,r8d
+	call 00000001803F10B0h
+	mov rcx,[rbx+10h]
+	test rcx,rcx
+	je short 00000001803D0E4Fh
+	mov r8,[rcx+18h]
+	mov rdx,rcx
+	test r8,r8
+	je short 00000001803D0E4Fh
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001803D0E4Fh
+	movzx r8d,byte ptr [r8+20h]
+	xor r9d,r9d
+	mov edx,[rdx+48h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001803F10B0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [rcx+16]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfEqual {44}
+	008 Move rcx, [rax+32]
+	009 Compare rcx, 0
+	010 JumpIfEqual {44}
+	011 Move rdx, [rax+68]
+	012 Move r9, 0
+	013 Move r8, 0
+	014 Call GizmoHandle.Set2DShapeVisible, rcx, rdx, r8
+	015 Move rcx, [rbx+16]
+	016 Compare rcx, 0
+	017 JumpIfEqual {44}
+	018 Move rdx, rcx
+	019 Move rcx, [rcx+32]
+	020 Compare rcx, 0
+	021 JumpIfEqual {44}
+	022 Move rdx, [rdx+64]
+	023 Move r9, 0
+	024 Move r8, 0
+	025 Call GizmoHandle.Set2DShapeVisible, rcx, rdx, r8
+	026 Move rcx, [rbx+16]
+	027 Compare rcx, 0
+	028 JumpIfEqual {44}
+	029 Move r8, [rcx+24]
+	030 Move rdx, rcx
+	031 Compare r8, 0
+	032 JumpIfEqual {44}
+	033 Move rcx, [rcx+32]
+	034 Compare rcx, 0
+	035 JumpIfEqual {44}
+	036 Move r8, [r8+32]
+	037 Move r9, 0
+	038 Move rdx, [rdx+72]
+	039 ShiftStack 32
+	040 Move rbx, stack:0x0
+	041 ShiftStack 8
+	042 Call GizmoHandle.Set2DShapeVisible, rcx, rdx, r8
+	043 Return 
+	044 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void UpdateTransforms()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,[rcx+10h]
+	mov rdi,rcx
+	test rbx,rbx
+	je near ptr 00000001803D0FA6h
+	mov rcx,rbx
+	mov rbx,[rbx+18h]
+	test rbx,rbx
+	je near ptr 00000001803D0FA6h
+	cmp qword ptr [rbx+88h],0
+	mov esi,88h
+	mov eax,esi
+	mov ebp,80h
+	cmove eax,ebp
+	mov rdx,[rax+rbx]
+	test rdx,rdx
+	je near ptr 00000001803D0FA6h
+	cmp qword ptr [rbx+88h],0
+	mov eax,esi
+	mov rcx,[rcx+38h]
+	cmove eax,ebp
+	mov r8,[rax+rbx]
+	test rcx,rcx
+	je near ptr 00000001803D0FA6h
+	movss xmm1,dword ptr [r8+18h]
+	xor r8d,r8d
+	mulss xmm1,dword ptr [rdx+2Ch]
+	call 00000001805D1FB0h
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je near ptr 00000001803D0FA6h
+	cmp qword ptr [rbx+88h],0
+	mov eax,esi
+	cmove eax,ebp
+	mov rdx,[rax+rbx]
+	test rdx,rdx
+	je near ptr 00000001803D0FA6h
+	cmp qword ptr [rbx+88h],0
+	mov rcx,[rcx+38h]
+	cmove esi,ebp
+	mov rax,[rsi+rbx]
+	test rcx,rcx
+	je short 00000001803D0FA6h
+	movss xmm1,dword ptr [rax+18h]
+	xor r8d,r8d
+	mulss xmm1,dword ptr [rdx+28h]
+	call 00000001805D1FE0h
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je short 00000001803D0FA6h
+	mov rax,[rbx+58h]
+	test rax,rax
+	je short 00000001803D0FA6h
+	mov rcx,[rcx+38h]
+	test rcx,rcx
+	je short 00000001803D0FA6h
+	movss xmm1,dword ptr [rax+64h]
+	xor r8d,r8d
+	call 00000001805D4890h
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je short 00000001803D0FA6h
+	mov rax,[rbx+58h]
+	test rax,rax
+	je short 00000001803D0FA6h
+	movss xmm0,dword ptr [rax+54h]
+	movss xmm1,dword ptr [rax+58h]
+	mov rax,[rcx+38h]
+	test rax,rax
+	je short 00000001803D0FA6h
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	movss dword ptr [rax+10h],xmm0
+	movss dword ptr [rax+14h],xmm1
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, [rcx+16]
+	008 Move rdi, rcx
+	009 Compare rbx, 0
+	010 JumpIfEqual {93}
+	011 Move rcx, rbx
+	012 Move rbx, [rbx+24]
+	013 Compare rbx, 0
+	014 JumpIfEqual {93}
+	015 Compare [rbx+136], 0
+	016 Move rsi, 136
+	017 Move rax, rsi
+	018 Move rbp, 128
+	019 JumpIfNotEqual {21}
+	020 Move rax, rbp
+	021 Nop 
+	022 Move rdx, [rax+rbx]
+	023 Compare rdx, 0
+	024 JumpIfEqual {93}
+	025 Compare [rbx+136], 0
+	026 Move rax, rsi
+	027 Move rcx, [rcx+56]
+	028 JumpIfNotEqual {30}
+	029 Move rax, rbp
+	030 Nop 
+	031 Move r8, [rax+rbx]
+	032 Compare rcx, 0
+	033 JumpIfEqual {93}
+	034 Move xmm1, [r8+24]
+	035 Move r8, 0
+	036 Multiply xmm1, xmm1, [rdx+44]
+	037 Call 0x1805D1FB0, rcx, rdx
+	038 Move rcx, [rdi+16]
+	039 Compare rcx, 0
+	040 JumpIfEqual {93}
+	041 Compare [rbx+136], 0
+	042 Move rax, rsi
+	043 JumpIfNotEqual {45}
+	044 Move rax, rbp
+	045 Nop 
+	046 Move rdx, [rax+rbx]
+	047 Compare rdx, 0
+	048 JumpIfEqual {93}
+	049 Compare [rbx+136], 0
+	050 Move rcx, [rcx+56]
+	051 JumpIfNotEqual {53}
+	052 Move rsi, rbp
+	053 Nop 
+	054 Move rax, [rsi+rbx]
+	055 Compare rcx, 0
+	056 JumpIfEqual {93}
+	057 Move xmm1, [rax+24]
+	058 Move r8, 0
+	059 Multiply xmm1, xmm1, [rdx+40]
+	060 Call 0x1805D1FE0, rcx, rdx
+	061 Move rcx, [rdi+16]
+	062 Compare rcx, 0
+	063 JumpIfEqual {93}
+	064 Move rax, [rbx+88]
+	065 Compare rax, 0
+	066 JumpIfEqual {93}
+	067 Move rcx, [rcx+56]
+	068 Compare rcx, 0
+	069 JumpIfEqual {93}
+	070 Move xmm1, [rax+100]
+	071 Move r8, 0
+	072 Call ConeShape2D.set_RotationDegrees, rcx, rdx
+	073 Move rcx, [rdi+16]
+	074 Compare rcx, 0
+	075 JumpIfEqual {93}
+	076 Move rax, [rbx+88]
+	077 Compare rax, 0
+	078 JumpIfEqual {93}
+	079 Move xmm0, [rax+84]
+	080 Move xmm1, [rax+88]
+	081 Move rax, [rcx+56]
+	082 Compare rax, 0
+	083 JumpIfEqual {93}
+	084 Move rbx, stack:0x30
+	085 Move rbp, stack:0x38
+	086 Move rsi, stack:0x40
+	087 Move [rax+16], xmm0
+	088 Move [rax+20], xmm1
+	089 ShiftStack 32
+	090 Move rdi, stack:0x0
+	091 ShiftStack 8
+	092 Return 
+	093 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void CapSlider2D(UnityEngine.Vector2 sliderDirection, UnityEngine.Vector2 sliderEndPt)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,40h
+	mov rbx,[rcx+10h]
+	mov rdi,rcx
+	movaps [rsp+30h],xmm6
+	movq xmm6,r8
+	test rbx,rbx
+	je near ptr 00000001803D0D5Eh
+	mov rbx,[rbx+18h]
+	test rbx,rbx
+	je near ptr 00000001803D0D5Eh
+	mov rbx,[rbx+58h]
+	test rbx,rbx
+	je near ptr 00000001803D0D5Eh
+	cmp byte ptr [rbx+18h],0
+	jne short 00000001803D0D27h
+	mov rax,[rbx+98h]
+	test rax,rax
+	je near ptr 00000001803D0D5Eh
+	cmp dword ptr [rax+18h],1
+	jbe near ptr 00000001803D0D64h
+	movss xmm1,dword ptr [rax+2Ch]
+	movss xmm0,dword ptr [rax+28h]
+	lea rcx,[rsp+20h]
+	unpcklps xmm0,xmm1
+	mov r8,rdx
+	movq rdx,xmm0
+	xor r9d,r9d
+	call 00000001805914D0h
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	movups xmm0,[rax]
+	movaps [rsp+20h],xmm0
+	call 0000000180591410h
+	addss xmm0,dword ptr [rbx+64h]
+	xor r8d,r8d
+	mov rcx,rbx
+	movaps xmm1,xmm0
+	call 00000001803DF0C0h
+	mov rax,[rdi+10h]
+	test rax,rax
+	je short 00000001803D0D5Eh
+	mov rcx,[rax+18h]
+	test rcx,rcx
+	je short 00000001803D0D5Eh
+	mov rcx,[rcx+58h]
+	test rcx,rcx
+	je short 00000001803D0D5Eh
+	xor r8d,r8d
+	movq rdx,xmm6
+	mov rbx,[rsp+50h]
+	movaps xmm6,[rsp+30h]
+	add rsp,40h
+	pop rdi
+	jmp near ptr 00000001803E32E0h
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -64
+	005 Move rbx, [rcx+16]
+	006 Move rdi, rcx
+	007 Move stack:0x30, xmm6
+	008 Move xmm6, r8
+	009 Compare rbx, 0
+	010 JumpIfEqual {64}
+	011 Move rbx, [rbx+24]
+	012 Compare rbx, 0
+	013 JumpIfEqual {64}
+	014 Move rbx, [rbx+88]
+	015 Compare rbx, 0
+	016 JumpIfEqual {64}
+	017 Compare [rbx+24], 0
+	018 JumpIfNotEqual {46}
+	019 Move rax, [rbx+152]
+	020 Compare rax, 0
+	021 JumpIfEqual {64}
+	022 Compare [rax+24], 1
+	023 JumpIfLessOrEqual {66}
+	024 Move xmm1, [rax+44]
+	025 Move xmm0, [rax+40]
+	026 LoadAddress rcx, stack:0x20
+	027 Move XMM_TEMP.S[0], xmm0.S[0]
+	028 Move XMM_TEMP.S[1], xmm1.S[0]
+	029 Move XMM_TEMP.S[2], xmm0.S[1]
+	030 Move XMM_TEMP.S[3], xmm1.S[1]
+	031 Move xmm0, XMM_TEMP
+	032 Move r8, rdx
+	033 Move rdx, xmm0
+	034 Move r9, 0
+	035 Call QuaternionEx.FromToRotation2D, rcx, rdx, r8
+	036 Move rdx, 0
+	037 LoadAddress rcx, stack:0x20
+	038 Move xmm0, [rax]
+	039 Move stack:0x20, xmm0
+	040 Call QuaternionEx.ConvertTo2DRotation, rcx, rdx
+	041 Add xmm0, xmm0, [rbx+100]
+	042 Move r8, 0
+	043 Move rcx, rbx
+	044 Move xmm1, xmm0
+	045 Call GizmoTransform.ChangeRotation2D, rcx, rdx
+	046 Move rax, [rdi+16]
+	047 Compare rax, 0
+	048 JumpIfEqual {64}
+	049 Move rcx, [rax+24]
+	050 Compare rcx, 0
+	051 JumpIfEqual {64}
+	052 Move rcx, [rcx+88]
+	053 Compare rcx, 0
+	054 JumpIfEqual {64}
+	055 Move r8, 0
+	056 Move rdx, xmm6
+	057 Move rbx, stack:0x50
+	058 Move xmm6, stack:0x30
+	059 ShiftStack 64
+	060 Move rdi, stack:0x0
+	061 ShiftStack 8
+	062 Call GizmoTransform.set_Position2D, rcx, rdx
+	063 Return 
+	064 Call 0x18020CAB0, rcx, rdx, r8, r9
+	065 Interrupt 
+	066 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Void CapSlider2DInvert(UnityEngine.Vector2 sliderDirection, UnityEngine.Vector2 sliderEndPt)
+
+Disassembly:
+	mov [rsp+20h],rbx
+	push rdi
+	sub rsp,40h
+	mov rax,[rcx+10h]
+	mov rdi,rcx
+	mov [rsp+28h],r8
+	mov [rsp+20h],rdx
+	test rax,rax
+	je near ptr 00000001803D0C73h
+	mov rbx,[rax+18h]
+	movss xmm1,dword ptr [rsp+20h]
+	movss xmm3,dword ptr [rsp+24h]
+	xorps xmm1,[181E5DCF0h]
+	xorps xmm3,[181E5DCF0h]
+	test rbx,rbx
+	je near ptr 00000001803D0C73h
+	mov rbx,[rbx+58h]
+	test rbx,rbx
+	je near ptr 00000001803D0C73h
+	cmp byte ptr [rbx+18h],0
+	jne short 00000001803D0BB6h
+	mov rax,[rbx+98h]
+	test rax,rax
+	je near ptr 00000001803D0C73h
+	cmp dword ptr [rax+18h],1
+	jbe near ptr 00000001803D0C79h
+	movss xmm2,dword ptr [rax+2Ch]
+	unpcklps xmm1,xmm3
+	lea rcx,[rsp+30h]
+	movq r8,xmm1
+	xor r9d,r9d
+	movss xmm1,dword ptr [rax+28h]
+	unpcklps xmm1,xmm2
+	movq rdx,xmm1
+	call 00000001805914D0h
+	xor edx,edx
+	lea rcx,[rsp+30h]
+	movups xmm0,[rax]
+	movaps [rsp+30h],xmm0
+	call 0000000180591410h
+	addss xmm0,dword ptr [rbx+64h]
+	xor r8d,r8d
+	mov rcx,rbx
+	movaps xmm1,xmm0
+	call 00000001803DF0C0h
+	mov rax,[rdi+10h]
+	test rax,rax
+	je near ptr 00000001803D0C73h
+	mov rbx,[rax+18h]
+	lea rcx,[rsp+20h]
+	xor edx,edx
+	call 0000000181A5B4E0h
+	mov rcx,[rdi+10h]
+	mov [rsp+50h],rax
+	test rcx,rcx
+	je near ptr 00000001803D0C73h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je near ptr 00000001803D0C73h
+	cmp qword ptr [rcx+88h],0
+	mov edx,88h
+	mov eax,edx
+	mov r9d,80h
+	cmove eax,r9d
+	mov r8,[rax+rcx]
+	test r8,r8
+	je short 00000001803D0C73h
+	cmp qword ptr [rcx+88h],0
+	cmove edx,r9d
+	mov rax,[rdx+rcx]
+	movss xmm1,dword ptr [rax+18h]
+	mulss xmm1,dword ptr [r8+2Ch]
+	movaps xmm0,xmm1
+	mulss xmm1,dword ptr [rsp+54h]
+	mulss xmm0,dword ptr [rsp+50h]
+	addss xmm1,dword ptr [rsp+2Ch]
+	addss xmm0,dword ptr [rsp+28h]
+	test rbx,rbx
+	je short 00000001803D0C73h
+	mov rcx,[rbx+58h]
+	test rcx,rcx
+	je short 00000001803D0C73h
+	unpcklps xmm0,xmm1
+	xor r8d,r8d
+	movq rdx,xmm0
+	call 00000001803E32E0h
+	mov rbx,[rsp+68h]
+	add rsp,40h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 Move stack:0x20, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -64
+	005 Move rax, [rcx+16]
+	006 Move rdi, rcx
+	007 Move stack:0x28, r8
+	008 Move stack:0x20, rdx
+	009 Compare rax, 0
+	010 JumpIfEqual {109}
+	011 Move rbx, [rax+24]
+	012 Move xmm1, stack:0x20
+	013 Move xmm3, stack:0x24
+	014 Xor xmm1, xmm1, [0x181E5DCF0]
+	015 Xor xmm3, xmm3, [0x181E5DCF0]
+	016 Compare rbx, 0
+	017 JumpIfEqual {109}
+	018 Move rbx, [rbx+88]
+	019 Compare rbx, 0
+	020 JumpIfEqual {109}
+	021 Compare [rbx+24], 0
+	022 JumpIfNotEqual {55}
+	023 Move rax, [rbx+152]
+	024 Compare rax, 0
+	025 JumpIfEqual {109}
+	026 Compare [rax+24], 1
+	027 JumpIfLessOrEqual {111}
+	028 Move xmm2, [rax+44]
+	029 Move XMM_TEMP.S[0], xmm1.S[0]
+	030 Move XMM_TEMP.S[1], xmm3.S[0]
+	031 Move XMM_TEMP.S[2], xmm1.S[1]
+	032 Move XMM_TEMP.S[3], xmm3.S[1]
+	033 Move xmm1, XMM_TEMP
+	034 LoadAddress rcx, stack:0x30
+	035 Move r8, xmm1
+	036 Move r9, 0
+	037 Move xmm1, [rax+40]
+	038 Move XMM_TEMP.S[0], xmm1.S[0]
+	039 Move XMM_TEMP.S[1], xmm2.S[0]
+	040 Move XMM_TEMP.S[2], xmm1.S[1]
+	041 Move XMM_TEMP.S[3], xmm2.S[1]
+	042 Move xmm1, XMM_TEMP
+	043 Move rdx, xmm1
+	044 Call QuaternionEx.FromToRotation2D, rcx, rdx, r8
+	045 Move rdx, 0
+	046 LoadAddress rcx, stack:0x30
+	047 Move xmm0, [rax]
+	048 Move stack:0x30, xmm0
+	049 Call QuaternionEx.ConvertTo2DRotation, rcx, rdx
+	050 Add xmm0, xmm0, [rbx+100]
+	051 Move r8, 0
+	052 Move rcx, rbx
+	053 Move xmm1, xmm0
+	054 Call GizmoTransform.ChangeRotation2D, rcx, rdx
+	055 Move rax, [rdi+16]
+	056 Compare rax, 0
+	057 JumpIfEqual {109}
+	058 Move rbx, [rax+24]
+	059 LoadAddress rcx, stack:0x20
+	060 Move rdx, 0
+	061 Call Vector2.Normalize, rcx, rdx
+	062 Move rcx, [rdi+16]
+	063 Move stack:0x50, rax
+	064 Compare rcx, 0
+	065 JumpIfEqual {109}
+	066 Move rcx, [rcx+24]
+	067 Compare rcx, 0
+	068 JumpIfEqual {109}
+	069 Compare [rcx+136], 0
+	070 Move rdx, 136
+	071 Move rax, rdx
+	072 Move r9, 128
+	073 JumpIfNotEqual {75}
+	074 Move rax, r9
+	075 Nop 
+	076 Move r8, [rax+rcx]
+	077 Compare r8, 0
+	078 JumpIfEqual {109}
+	079 Compare [rcx+136], 0
+	080 JumpIfNotEqual {82}
+	081 Move rdx, r9
+	082 Nop 
+	083 Move rax, [rdx+rcx]
+	084 Move xmm1, [rax+24]
+	085 Multiply xmm1, xmm1, [r8+44]
+	086 Move xmm0, xmm1
+	087 Multiply xmm1, xmm1, stack:0x54
+	088 Multiply xmm0, xmm0, stack:0x50
+	089 Add xmm1, xmm1, stack:0x2C
+	090 Add xmm0, xmm0, stack:0x28
+	091 Compare rbx, 0
+	092 JumpIfEqual {109}
+	093 Move rcx, [rbx+88]
+	094 Compare rcx, 0
+	095 JumpIfEqual {109}
+	096 Move XMM_TEMP.S[0], xmm0.S[0]
+	097 Move XMM_TEMP.S[1], xmm1.S[0]
+	098 Move XMM_TEMP.S[2], xmm0.S[1]
+	099 Move XMM_TEMP.S[3], xmm1.S[1]
+	100 Move xmm0, XMM_TEMP
+	101 Move r8, 0
+	102 Move rdx, xmm0
+	103 Call GizmoTransform.set_Position2D, rcx, rdx
+	104 Move rbx, stack:0x68
+	105 ShiftStack 64
+	106 Move rdi, stack:0x0
+	107 ShiftStack 8
+	108 Return 
+	109 Call 0x18020CAB0, rcx, rdx, r8, r9
+	110 Interrupt 
+	111 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Single GetSliderAlignedRealLength()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001803D0DC8h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001803D0DC8h
+	cmp qword ptr [rcx+88h],0
+	mov edx,88h
+	mov eax,edx
+	mov r9d,80h
+	cmove eax,r9d
+	mov r8,[rax+rcx]
+	test r8,r8
+	je short 00000001803D0DC8h
+	cmp qword ptr [rcx+88h],0
+	cmove edx,r9d
+	mov rax,[rdx+rcx]
+	movss xmm0,dword ptr [rax+18h]
+	mulss xmm0,dword ptr [r8+2Ch]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {27}
+	005 Move rcx, [rcx+24]
+	006 Compare rcx, 0
+	007 JumpIfEqual {27}
+	008 Compare [rcx+136], 0
+	009 Move rdx, 136
+	010 Move rax, rdx
+	011 Move r9, 128
+	012 JumpIfNotEqual {14}
+	013 Move rax, r9
+	014 Nop 
+	015 Move r8, [rax+rcx]
+	016 Compare r8, 0
+	017 JumpIfEqual {27}
+	018 Compare [rcx+136], 0
+	019 JumpIfNotEqual {21}
+	020 Move rdx, r9
+	021 Nop 
+	022 Move rax, [rdx+rcx]
+	023 Move xmm0, [rax+24]
+	024 Multiply xmm0, xmm0, [r8+44]
+	025 ShiftStack 40
+	026 Return xmm0
+	027 Call 0x18020CAB0, rcx, rdx, r8, r9
+

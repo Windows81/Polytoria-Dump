@@ -1,0 +1,46 @@
+Type: Mirror.NetworkDiagnostics+MessageInfo
+
+Method: System.Void .ctor(Mirror.NetworkMessage message, System.Int32 channel, System.Int32 bytes, System.Int32 count)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov esi,r9d
+	mov [rcx],rdx
+	mov ebx,r8d
+	mov rdi,rcx
+	call 000000018020B990h
+	mov eax,[rsp+50h]
+	mov [rdi+8],ebx
+	mov rbx,[rsp+30h]
+	mov [rdi+0Ch],esi
+	mov rsi,[rsp+38h]
+	mov [rdi+10h],eax
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, r9
+	007 Move [rcx], rdx
+	008 Move rbx, r8
+	009 Move rdi, rcx
+	010 Call 0x18020B990, rcx, rdx, r8, r9
+	011 Move rax, stack:0x50
+	012 Move [rdi+8], rbx
+	013 Move rbx, stack:0x30
+	014 Move [rdi+12], rsi
+	015 Move rsi, stack:0x38
+	016 Move [rdi+16], rax
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Return 
+

@@ -1,0 +1,123 @@
+Type: GLTFast.Schema.NodeBase
+
+Method: GLTFast.Schema.NodeExtensions get_Extensions()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Void UnsetExtensions()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Void JsonUtilityCleanup()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdx,[rcx]
+	mov rdi,rcx
+	mov rax,[rdx+178h]
+	mov rdx,[rdx+180h]
+	call rax
+	mov rbx,rax
+	test rax,rax
+	je short 000000018115A2D1h
+	mov rax,[rax+10h]
+	test rax,rax
+	je short 000000018115A278h
+	cmp qword ptr [rax+10h],0
+	jne short 000000018115A28Bh
+	lea rcx,[rbx+10h]
+	mov qword ptr [rbx+10h],0
+	xor edx,edx
+	call 000000018020B990h
+	mov rax,[rbx+18h]
+	test rax,rax
+	je short 000000018115A29Ah
+	cmp dword ptr [rax+10h],0
+	jge short 000000018115A2ADh
+	lea rcx,[rbx+18h]
+	mov qword ptr [rbx+18h],0
+	xor edx,edx
+	call 000000018020B990h
+	cmp qword ptr [rbx+10h],0
+	jne short 000000018115A2D1h
+	cmp qword ptr [rbx+18h],0
+	jne short 000000018115A2D1h
+	mov rdx,[rdi]
+	mov rcx,rdi
+	mov rax,[rdx+188h]
+	mov rdx,[rdx+190h]
+	call rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdx, [rcx]
+	006 Move rdi, rcx
+	007 Move rax, [rdx+376]
+	008 Move rdx, [rdx+384]
+	009 Call rax
+	010 Move rbx, rax
+	011 Compare rax, 0
+	012 JumpIfEqual {40}
+	013 Move rax, [rax+16]
+	014 Compare rax, 0
+	015 JumpIfEqual {18}
+	016 Compare [rax+16], 0
+	017 JumpIfNotEqual {22}
+	018 LoadAddress rcx, [rbx+16]
+	019 Move [rbx+16], 0
+	020 Move rdx, 0
+	021 Call 0x18020B990, rcx, rdx, r8, r9
+	022 Move rax, [rbx+24]
+	023 Compare rax, 0
+	024 JumpIfEqual {27}
+	025 Compare [rax+16], 0
+	026 JumpIfGreaterOrEqual {31}
+	027 LoadAddress rcx, [rbx+24]
+	028 Move [rbx+24], 0
+	029 Move rdx, 0
+	030 Call 0x18020B990, rcx, rdx, r8, r9
+	031 Compare [rbx+16], 0
+	032 JumpIfNotEqual {40}
+	033 Compare [rbx+24], 0
+	034 JumpIfNotEqual {40}
+	035 Move rdx, [rdi]
+	036 Move rcx, rdi
+	037 Move rax, [rdx+392]
+	038 Move rdx, [rdx+400]
+	039 Call rax
+	040 Move rbx, stack:0x30
+	041 ShiftStack 32
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+20h],0FFFFFFFFh
+	mov qword ptr [rcx+50h],0FFFFFFFFFFFFFFFFh
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+32], 0xFFFFFFFF
+	003 Move [rcx+80], 18446744073709551615
+	004 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	005 Return 
+

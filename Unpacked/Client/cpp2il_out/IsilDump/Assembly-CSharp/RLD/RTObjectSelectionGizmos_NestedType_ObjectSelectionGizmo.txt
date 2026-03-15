@@ -1,0 +1,280 @@
+Type: RLD.RTObjectSelectionGizmos+ObjectSelectionGizmo
+
+Method: System.Int32 get_Id()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: RLD.Gizmo get_Gizmo()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: RLD.BoxGizmo get_BoxScaleGizmo()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Boolean get_IsBoxScaleGizmo()
+
+Disassembly:
+	cmp qword ptr [rcx+20h],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+32], 0
+	002 NotImplemented "seta al"
+	003 Return rax
+
+Method: RLD.ObjectTransformGizmo get_TransformGizmo()
+
+Disassembly:
+	mov rax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Boolean get_IsTransformGizmo()
+
+Disassembly:
+	cmp qword ptr [rcx+28h],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+40], 0
+	002 NotImplemented "seta al"
+	003 Return rax
+
+Method: RLD.ObjectExtrudeGizmo get_ExtrudeGizmo()
+
+Disassembly:
+	mov rax,[rcx+30h]
+	ret
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	sub rsp,28h
+	cmp byte ptr [182774FA4h],0
+	jne short 0000000180316680h
+	lea rcx,[18264D3F0h]
+	call 000000018020C870h
+	mov byte ptr [182774FA4h],1
+	mov rax,[18264D3F0h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 000000018031669Fh
+	mov rcx,rax
+	call 000000018020CB50h
+	mov rax,[18264D3F0h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax+8]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 Move rax, [rcx+48]
+	002 Return rax
+	003 Interrupt 
+	004 Interrupt 
+	005 Interrupt 
+	006 Interrupt 
+	007 Interrupt 
+	008 Interrupt 
+	009 Interrupt 
+	010 Interrupt 
+	011 Interrupt 
+	012 Interrupt 
+	013 Interrupt 
+	014 ShiftStack -40
+	015 Compare [0x182774FA4], 0
+	016 JumpIfNotEqual {20}
+	017 LoadAddress rcx, [0x18264D3F0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x182774FA4], 1
+	020 Move rax, typeof(MoonSharp.Interpreter.Script)
+	021 Compare [rax+228], 0
+	022 JumpIfNotEqual {26}
+	023 Move rcx, rax
+	024 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	025 Move rax, typeof(MoonSharp.Interpreter.Script)
+	026 Move rax, [rax+184]
+	027 Move rax, [rax+8]
+	028 ShiftStack 40
+	029 Return rax
+
+Method: System.Boolean get_IsExtrudeGizmo()
+
+Disassembly:
+	cmp qword ptr [rcx+30h],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+48], 0
+	002 NotImplemented "seta al"
+	003 Return rax
+
+Method: System.Boolean get_IsUsable()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+38h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+56]
+	002 Return rax
+
+Method: System.Void set_IsUsable(System.Boolean value)
+
+Disassembly:
+	mov [rcx+38h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+56], rdx
+	002 Return 
+
+Method: System.Void .ctor(System.Int32 id, RLD.Gizmo gizmo)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [18277570Eh],0
+	mov rdi,r8
+	mov esi,edx
+	mov rbx,rcx
+	jne short 000000018040C26Bh
+	lea rcx,[18261C958h]
+	call 000000018020C870h
+	lea rcx,[18261CA60h]
+	call 000000018020C870h
+	lea rcx,[18261CAE0h]
+	call 000000018020C870h
+	mov byte ptr [18277570Eh],1
+	xor edx,edx
+	mov byte ptr [rbx+38h],1
+	mov rcx,rbx
+	call 00000001802E39B0h
+	lea rcx,[rbx+18h]
+	mov [rbx+10h],esi
+	mov rdx,rdi
+	mov [rbx+18h],rdi
+	call 000000018020B990h
+	test rdi,rdi
+	je short 000000018040C302h
+	mov rdx,[18261C958h]
+	mov rcx,rdi
+	call 0000000180708AF0h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rax
+	mov rdx,rax
+	call 000000018020B990h
+	mov rdx,[18261CAE0h]
+	mov rcx,rdi
+	call 0000000180708AF0h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rax
+	mov rdx,rax
+	call 000000018020B990h
+	mov rdx,[18261CA60h]
+	mov rcx,rdi
+	call 0000000180708AF0h
+	lea rcx,[rbx+30h]
+	mov [rbx+30h],rax
+	mov rdx,rax
+	call 000000018020B990h
+	mov rsi,[rsp+38h]
+	mov byte ptr [rbx+38h],1
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x18277570E], 0
+	007 Move rdi, r8
+	008 Move rsi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {18}
+	011 LoadAddress rcx, [0x18261C958]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x18261CA60]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x18261CAE0]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x18277570E], 1
+	018 Move rdx, 0
+	019 Move [rbx+56], 1
+	020 Move rcx, rbx
+	021 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	022 LoadAddress rcx, [rbx+24]
+	023 Move [rbx+16], rsi
+	024 Move rdx, rdi
+	025 Move [rbx+24], rdi
+	026 Call 0x18020B990, rcx, rdx, r8, r9
+	027 Compare rdi, 0
+	028 JumpIfEqual {57}
+	029 Move rdx, [0x18261C958]
+	030 Move rcx, rdi
+	031 Call 0x180708AF0, rcx, rdx
+	032 LoadAddress rcx, [rbx+32]
+	033 Move [rbx+32], rax
+	034 Move rdx, rax
+	035 Call 0x18020B990, rcx, rdx, r8, r9
+	036 Move rdx, [0x18261CAE0]
+	037 Move rcx, rdi
+	038 Call 0x180708AF0, rcx, rdx
+	039 LoadAddress rcx, [rbx+40]
+	040 Move [rbx+40], rax
+	041 Move rdx, rax
+	042 Call 0x18020B990, rcx, rdx, r8, r9
+	043 Move rdx, [0x18261CA60]
+	044 Move rcx, rdi
+	045 Call 0x180708AF0, rcx, rdx
+	046 LoadAddress rcx, [rbx+48]
+	047 Move [rbx+48], rax
+	048 Move rdx, rax
+	049 Call 0x18020B990, rcx, rdx, r8, r9
+	050 Move rsi, stack:0x38
+	051 Move [rbx+56], 1
+	052 Move rbx, stack:0x30
+	053 ShiftStack 32
+	054 Move rdi, stack:0x0
+	055 ShiftStack 8
+	056 Return 
+	057 Call 0x18020CAB0, rcx, rdx, r8, r9
+

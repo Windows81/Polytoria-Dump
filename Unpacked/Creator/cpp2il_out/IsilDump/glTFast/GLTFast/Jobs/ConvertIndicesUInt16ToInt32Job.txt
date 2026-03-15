@@ -1,0 +1,22 @@
+Type: GLTFast.Jobs.ConvertIndicesUInt16ToInt32Job
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	mov rax,[rcx]
+	movsxd r8,edx
+	movsxd rdx,edx
+	movzx r9d,word ptr [rax+r8*2]
+	mov rax,[rcx+8]
+	mov [rax+rdx*4],r9d
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Move r8, rdx
+	003 Move rdx, rdx
+	004 Move r9, [rax+r8*2]
+	005 Move rax, [rcx+8]
+	006 Move [rax+rdx*4], r9
+	007 Return 
+

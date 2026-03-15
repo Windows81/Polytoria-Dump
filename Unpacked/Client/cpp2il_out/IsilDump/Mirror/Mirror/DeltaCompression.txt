@@ -1,0 +1,499 @@
+Type: Mirror.DeltaCompression
+
+Method: System.Void Compress(Mirror.NetworkWriter writer, System.Int64 last, System.Int64 current)
+
+Disassembly:
+	sub r8,rdx
+	mov rdx,r8
+	sar rdx,3Fh
+	lea rax,[r8+r8]
+	xor r8d,r8d
+	xor rdx,rax
+	jmp near ptr 0000000181350C10h
+
+ISIL:
+	001 Subtract r8, r8, rdx
+	002 Move rdx, r8
+	003 ShiftRight rdx, 63
+	004 LoadAddress rax, [r8+r8]
+	005 Move r8, 0
+	006 Xor rdx, rdx, rax
+	007 Call Compression.CompressVarUInt, rcx, rdx, r8
+	008 Return 
+
+Method: System.Int64 Decompress(Mirror.NetworkReader reader, System.Int64 last)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rdx
+	xor edx,edx
+	call 00000001813511B0h
+	mov rcx,rax
+	and eax,1
+	neg rax
+	shr rcx,1
+	xor rax,rcx
+	add rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rdx
+	005 Move rdx, 0
+	006 Call Compression.DecompressVarUInt, rcx, rdx
+	007 Move rcx, rax
+	008 And rax, rax, 1
+	009 Neg rax
+	010 ShiftRight rcx, 1
+	011 Xor rax, rax, rcx
+	012 Add rax, rax, rbx
+	013 ShiftStack 32
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Return rax
+
+Method: System.Void Compress(Mirror.NetworkWriter writer, Mirror.Vector3Long last, Mirror.Vector3Long current)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8]
+	mov rbx,rdx
+	sub rax,[rdx]
+	mov rdi,r8
+	mov rdx,rax
+	xor r8d,r8d
+	sar rdx,3Fh
+	add rax,rax
+	xor rdx,rax
+	mov rsi,rcx
+	call 0000000181350C10h
+	mov rax,[rdi+8]
+	xor r8d,r8d
+	sub rax,[rbx+8]
+	mov rcx,rsi
+	mov rdx,rax
+	add rax,rax
+	sar rdx,3Fh
+	xor rdx,rax
+	call 0000000181350C10h
+	mov rax,[rdi+10h]
+	xor r8d,r8d
+	sub rax,[rbx+10h]
+	mov rcx,rsi
+	mov rdx,rax
+	add rax,rax
+	sar rdx,3Fh
+	xor rdx,rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000181350C10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rax, [r8]
+	007 Move rbx, rdx
+	008 Subtract rax, rax, [rdx]
+	009 Move rdi, r8
+	010 Move rdx, rax
+	011 Move r8, 0
+	012 ShiftRight rdx, 63
+	013 Add rax, rax, rax
+	014 Xor rdx, rdx, rax
+	015 Move rsi, rcx
+	016 Call Compression.CompressVarUInt, rcx, rdx, r8
+	017 Move rax, [rdi+8]
+	018 Move r8, 0
+	019 Subtract rax, rax, [rbx+8]
+	020 Move rcx, rsi
+	021 Move rdx, rax
+	022 Add rax, rax, rax
+	023 ShiftRight rdx, 63
+	024 Xor rdx, rdx, rax
+	025 Call Compression.CompressVarUInt, rcx, rdx, r8
+	026 Move rax, [rdi+16]
+	027 Move r8, 0
+	028 Subtract rax, rax, [rbx+16]
+	029 Move rcx, rsi
+	030 Move rdx, rax
+	031 Add rax, rax, rax
+	032 ShiftRight rdx, 63
+	033 Xor rdx, rdx, rax
+	034 Move rbx, stack:0x30
+	035 Move rsi, stack:0x38
+	036 ShiftStack 32
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Call Compression.CompressVarUInt, rcx, rdx, r8
+	040 Return 
+
+Method: System.Void Compress(Mirror.NetworkWriter writer, Mirror.Vector4Long last, Mirror.Vector4Long current)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8]
+	mov rbx,rdx
+	sub rax,[rdx]
+	mov rdi,r8
+	mov rdx,rax
+	xor r8d,r8d
+	sar rdx,3Fh
+	add rax,rax
+	xor rdx,rax
+	mov rsi,rcx
+	call 0000000181350C10h
+	mov rax,[rdi+8]
+	xor r8d,r8d
+	sub rax,[rbx+8]
+	mov rcx,rsi
+	mov rdx,rax
+	add rax,rax
+	sar rdx,3Fh
+	xor rdx,rax
+	call 0000000181350C10h
+	mov rax,[rdi+10h]
+	xor r8d,r8d
+	sub rax,[rbx+10h]
+	mov rcx,rsi
+	mov rdx,rax
+	add rax,rax
+	sar rdx,3Fh
+	xor rdx,rax
+	call 0000000181350C10h
+	mov rax,[rdi+18h]
+	xor r8d,r8d
+	sub rax,[rbx+18h]
+	mov rcx,rsi
+	mov rdx,rax
+	add rax,rax
+	sar rdx,3Fh
+	xor rdx,rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000181350C10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rax, [r8]
+	007 Move rbx, rdx
+	008 Subtract rax, rax, [rdx]
+	009 Move rdi, r8
+	010 Move rdx, rax
+	011 Move r8, 0
+	012 ShiftRight rdx, 63
+	013 Add rax, rax, rax
+	014 Xor rdx, rdx, rax
+	015 Move rsi, rcx
+	016 Call Compression.CompressVarUInt, rcx, rdx, r8
+	017 Move rax, [rdi+8]
+	018 Move r8, 0
+	019 Subtract rax, rax, [rbx+8]
+	020 Move rcx, rsi
+	021 Move rdx, rax
+	022 Add rax, rax, rax
+	023 ShiftRight rdx, 63
+	024 Xor rdx, rdx, rax
+	025 Call Compression.CompressVarUInt, rcx, rdx, r8
+	026 Move rax, [rdi+16]
+	027 Move r8, 0
+	028 Subtract rax, rax, [rbx+16]
+	029 Move rcx, rsi
+	030 Move rdx, rax
+	031 Add rax, rax, rax
+	032 ShiftRight rdx, 63
+	033 Xor rdx, rdx, rax
+	034 Call Compression.CompressVarUInt, rcx, rdx, r8
+	035 Move rax, [rdi+24]
+	036 Move r8, 0
+	037 Subtract rax, rax, [rbx+24]
+	038 Move rcx, rsi
+	039 Move rdx, rax
+	040 Add rax, rax, rax
+	041 ShiftRight rdx, 63
+	042 Xor rdx, rdx, rax
+	043 Move rbx, stack:0x30
+	044 Move rsi, stack:0x38
+	045 ShiftStack 32
+	046 Move rdi, stack:0x0
+	047 ShiftStack 8
+	048 Call Compression.CompressVarUInt, rcx, rdx, r8
+	049 Return 
+
+Method: Mirror.Vector3Long Decompress(Mirror.NetworkReader reader, Mirror.Vector3Long last)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,40h
+	movsd xmm0,qword ptr [r8+10h]
+	mov rsi,rdx
+	mov r14,rcx
+	movsd qword ptr [rsp+30h],xmm0
+	mov rcx,rsi
+	xor edx,edx
+	mov rbx,r8
+	call 00000001813511B0h
+	movsd xmm0,qword ptr [rbx+10h]
+	xor edx,edx
+	mov rcx,rsi
+	movsd qword ptr [rsp+30h],xmm0
+	mov rdi,rax
+	call 00000001813511B0h
+	movsd xmm1,qword ptr [rbx+10h]
+	xor edx,edx
+	mov rcx,rsi
+	movsd qword ptr [rsp+30h],xmm1
+	mov rbp,rax
+	call 00000001813511B0h
+	mov rsi,[rsp+60h]
+	mov r8,rax
+	mov rdx,rdi
+	shr rax,1
+	mov rcx,rbp
+	shr rdx,1
+	and edi,1
+	shr rcx,1
+	and ebp,1
+	neg rdi
+	neg rbp
+	xor rdx,rdi
+	add rdx,[rbx]
+	xor rcx,rbp
+	add rcx,[rbx+8]
+	and r8d,1
+	mov rbx,[rsp+50h]
+	neg r8
+	mov rbp,[rsp+58h]
+	xor rax,r8
+	add rax,[rsp+30h]
+	mov rdi,[rsp+68h]
+	mov [r14+10h],rax
+	mov rax,r14
+	mov [r14],rdx
+	mov [r14+8],rcx
+	add rsp,40h
+	pop r14
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -64
+	008 Move xmm0, [r8+16]
+	009 Move rsi, rdx
+	010 Move r14, rcx
+	011 Move stack:0x30, xmm0
+	012 Move rcx, rsi
+	013 Move rdx, 0
+	014 Move rbx, r8
+	015 Call Compression.DecompressVarUInt, rcx, rdx
+	016 Move xmm0, [rbx+16]
+	017 Move rdx, 0
+	018 Move rcx, rsi
+	019 Move stack:0x30, xmm0
+	020 Move rdi, rax
+	021 Call Compression.DecompressVarUInt, rcx, rdx
+	022 Move xmm1, [rbx+16]
+	023 Move rdx, 0
+	024 Move rcx, rsi
+	025 Move stack:0x30, xmm1
+	026 Move rbp, rax
+	027 Call Compression.DecompressVarUInt, rcx, rdx
+	028 Move rsi, stack:0x60
+	029 Move r8, rax
+	030 Move rdx, rdi
+	031 ShiftRight rax, 1
+	032 Move rcx, rbp
+	033 ShiftRight rdx, 1
+	034 And rdi, rdi, 1
+	035 ShiftRight rcx, 1
+	036 And rbp, rbp, 1
+	037 Neg rdi
+	038 Neg rbp
+	039 Xor rdx, rdx, rdi
+	040 Add rdx, rdx, [rbx]
+	041 Xor rcx, rcx, rbp
+	042 Add rcx, rcx, [rbx+8]
+	043 And r8, r8, 1
+	044 Move rbx, stack:0x50
+	045 Neg r8
+	046 Move rbp, stack:0x58
+	047 Xor rax, rax, r8
+	048 Add rax, rax, stack:0x30
+	049 Move rdi, stack:0x68
+	050 Move [r14+16], rax
+	051 Move rax, r14
+	052 Move [r14], rdx
+	053 Move [r14+8], rcx
+	054 ShiftStack 64
+	055 Move r14, stack:0x0
+	056 ShiftStack 8
+	057 Return rax
+
+Method: Mirror.Vector4Long Decompress(Mirror.NetworkReader reader, Mirror.Vector4Long last)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	push r14
+	push r15
+	sub rsp,40h
+	mov rsi,rdx
+	mov r15,rcx
+	mov rcx,rsi
+	xor edx,edx
+	mov rbx,r8
+	call 00000001813511B0h
+	xor edx,edx
+	mov rcx,rsi
+	mov rdi,rax
+	call 00000001813511B0h
+	xor edx,edx
+	mov rcx,rsi
+	mov rbp,rax
+	call 00000001813511B0h
+	xor edx,edx
+	mov rcx,rsi
+	mov r14,rax
+	call 00000001813511B0h
+	mov rsi,[rsp+70h]
+	mov rcx,rbp
+	shr rcx,1
+	and ebp,1
+	neg rbp
+	mov rdx,rdi
+	xor rcx,rbp
+	shr rdx,1
+	add rcx,[rbx+8]
+	mov r8,rax
+	mov rbp,[rsp+68h]
+	and edi,1
+	mov [r15+8],rcx
+	neg rdi
+	mov rcx,r14
+	and r8d,1
+	shr rcx,1
+	and r14d,1
+	neg r14
+	xor rdx,rdi
+	add rdx,[rbx]
+	xor rcx,r14
+	add rcx,[rbx+10h]
+	neg r8
+	mov [r15+10h],rcx
+	mov rcx,rax
+	shr rcx,1
+	mov rax,r15
+	xor rcx,r8
+	mov [r15],rdx
+	add rcx,[rbx+18h]
+	mov rbx,[rsp+60h]
+	mov [r15+18h],rcx
+	add rsp,40h
+	pop r15
+	pop r14
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -8
+	009 Move stack:0x0, r15
+	010 ShiftStack -64
+	011 Move rsi, rdx
+	012 Move r15, rcx
+	013 Move rcx, rsi
+	014 Move rdx, 0
+	015 Move rbx, r8
+	016 Call Compression.DecompressVarUInt, rcx, rdx
+	017 Move rdx, 0
+	018 Move rcx, rsi
+	019 Move rdi, rax
+	020 Call Compression.DecompressVarUInt, rcx, rdx
+	021 Move rdx, 0
+	022 Move rcx, rsi
+	023 Move rbp, rax
+	024 Call Compression.DecompressVarUInt, rcx, rdx
+	025 Move rdx, 0
+	026 Move rcx, rsi
+	027 Move r14, rax
+	028 Call Compression.DecompressVarUInt, rcx, rdx
+	029 Move rsi, stack:0x70
+	030 Move rcx, rbp
+	031 ShiftRight rcx, 1
+	032 And rbp, rbp, 1
+	033 Neg rbp
+	034 Move rdx, rdi
+	035 Xor rcx, rcx, rbp
+	036 ShiftRight rdx, 1
+	037 Add rcx, rcx, [rbx+8]
+	038 Move r8, rax
+	039 Move rbp, stack:0x68
+	040 And rdi, rdi, 1
+	041 Move [r15+8], rcx
+	042 Neg rdi
+	043 Move rcx, r14
+	044 And r8, r8, 1
+	045 ShiftRight rcx, 1
+	046 And r14, r14, 1
+	047 Neg r14
+	048 Xor rdx, rdx, rdi
+	049 Add rdx, rdx, [rbx]
+	050 Xor rcx, rcx, r14
+	051 Add rcx, rcx, [rbx+16]
+	052 Neg r8
+	053 Move [r15+16], rcx
+	054 Move rcx, rax
+	055 ShiftRight rcx, 1
+	056 Move rax, r15
+	057 Xor rcx, rcx, r8
+	058 Move [r15], rdx
+	059 Add rcx, rcx, [rbx+24]
+	060 Move rbx, stack:0x60
+	061 Move [r15+24], rcx
+	062 ShiftStack 64
+	063 Move r15, stack:0x0
+	064 ShiftStack 8
+	065 Move r14, stack:0x0
+	066 ShiftStack 8
+	067 Move rdi, stack:0x0
+	068 ShiftStack 8
+	069 Return rax
+

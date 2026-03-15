@@ -1,0 +1,62 @@
+Type: Polytoria.Datamodel.Proxies.Services.PurchasesServiceProxy
+
+Method: System.Void .ctor(PurchasesService target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802C3410h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801ED930, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Void Prompt(Polytoria.Datamodel.Player player, System.Int32 assetID, MoonSharp.Interpreter.DynValue callback)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001804AC6DFh
+	mov qword ptr [rsp+60h],0
+	add rsp,38h
+	jmp near ptr 00000001803C5B70h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move stack:0x60, 0
+	006 ShiftStack 56
+	007 Call PurchasesService.Prompt, rcx, rdx, r8, r9
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+

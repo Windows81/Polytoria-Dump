@@ -1,0 +1,37 @@
+Type: RLD.PlaneIdHelper+<>c__DisplayClass11_0
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: System.Boolean <GetQuadrantFromAxesSigns>b__0(RLD.PlaneIdHelper+PlaneQuadrantInfo item)
+
+Disassembly:
+	mov eax,[rcx+10h]
+	cmp [rdx+4],eax
+	je short 0000000180595A8Bh
+	xor al,al
+	ret
+	mov eax,[rcx+14h]
+	cmp [rdx+8],eax
+	sete al
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Compare [rdx+4], rax
+	003 JumpIfEqual {6}
+	004 Move rax, 0
+	005 Return rax
+	006 Move rax, [rcx+20]
+	007 Compare [rdx+8], rax
+	008 NotImplemented "sete al"
+	009 Return rax
+

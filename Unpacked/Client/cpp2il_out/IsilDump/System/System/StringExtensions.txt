@@ -1,0 +1,202 @@
+Type: System.StringExtensions
+
+Method: System.String SubstringTrim(System.String value, System.Int32 startIndex, System.Int32 length)
+
+Disassembly:
+	mov [rsp+18h],rbx
+	push rsi
+	sub rsp,20h
+	mov ebx,edx
+	mov rsi,rcx
+	test r8d,r8d
+	je near ptr 00000001818164E4h
+	mov [rsp+38h],rdi
+	lea edi,[r8-1]
+	add edi,edx
+	cmp edx,edi
+	jg near ptr 000000018181647Eh
+	nop dword ptr [rax+rax]
+	test rcx,rcx
+	je near ptr 0000000181816500h
+	mov [rsp+30h],rbp
+	xchg ax,ax
+	xor r8d,r8d
+	mov edx,ebx
+	mov rcx,rsi
+	call 00000001813D3560h
+	mov rcx,[1827831C8h]
+	movzx ebp,ax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000181816425h
+	call 000000018020CB50h
+	xor edx,edx
+	movzx ecx,bp
+	call 00000001814DA860h
+	test al,al
+	je short 000000018181643Bh
+	inc ebx
+	cmp ebx,edi
+	jle short 0000000181816400h
+	jmp short 0000000181816479h
+	cmp edi,ebx
+	jl short 0000000181816479h
+	nop
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rsi
+	call 00000001813D3560h
+	mov rcx,[1827831C8h]
+	movzx ebp,ax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000181816465h
+	call 000000018020CB50h
+	xor edx,edx
+	movzx ecx,bp
+	call 00000001814DA860h
+	test al,al
+	je short 0000000181816479h
+	dec edi
+	cmp edi,ebx
+	jge short 0000000181816440h
+	mov rbp,[rsp+30h]
+	sub edi,ebx
+	lea r8d,[rdi+1]
+	test r8d,r8d
+	jne short 00000001818164AAh
+	mov rax,[1827831D0h]
+	mov rdi,[rsp+38h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	mov rbx,[rsp+40h]
+	add rsp,20h
+	pop rsi
+	ret
+	test rsi,rsi
+	je short 0000000181816500h
+	cmp r8d,[rsi+10h]
+	jne short 00000001818164C8h
+	mov rdi,[rsp+38h]
+	mov rax,rsi
+	mov rbx,[rsp+40h]
+	add rsp,20h
+	pop rsi
+	ret
+	xor r9d,r9d
+	mov edx,ebx
+	mov rcx,rsi
+	mov rdi,[rsp+38h]
+	mov rbx,[rsp+40h]
+	add rsp,20h
+	pop rsi
+	jmp near ptr 00000001813D2270h
+	mov rax,[1827831D0h]
+	mov rbx,[rsp+40h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,20h
+	pop rsi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x18, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rsi, rcx
+	007 Compare r8, 0
+	008 JumpIfEqual {92}
+	009 Move stack:0x38, rdi
+	010 LoadAddress rdi, [r8-1]
+	011 Add rdi, rdi, rdx
+	012 Compare rdx, rdi
+	013 JumpIfGreater {58}
+	014 Nop 
+	015 Compare rcx, 0
+	016 JumpIfEqual {100}
+	017 Move stack:0x30, rbp
+	018 Nop 
+	019 Move r8, 0
+	020 Move rdx, rbx
+	021 Move rcx, rsi
+	022 Call String.get_Chars, rcx, rdx
+	023 Move rcx, [0x1827831C8]
+	024 Move rbp, rax
+	025 Compare [rcx+228], 0
+	026 JumpIfNotEqual {28}
+	027 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	028 Move rdx, 0
+	029 Move rcx, rbp
+	030 Call Char.IsWhiteSpace, rcx, rdx
+	031 Compare rax, 0
+	032 JumpIfEqual {37}
+	033 Add rbx, rbx, 1
+	034 Compare rbx, rdi
+	035 JumpIfLessOrEqual {19}
+	036 Goto {57}
+	037 Compare rdi, rbx
+	038 JumpIfLess {57}
+	039 Nop 
+	040 Move r8, 0
+	041 Move rdx, rdi
+	042 Move rcx, rsi
+	043 Call String.get_Chars, rcx, rdx
+	044 Move rcx, [0x1827831C8]
+	045 Move rbp, rax
+	046 Compare [rcx+228], 0
+	047 JumpIfNotEqual {49}
+	048 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	049 Move rdx, 0
+	050 Move rcx, rbp
+	051 Call Char.IsWhiteSpace, rcx, rdx
+	052 Compare rax, 0
+	053 JumpIfEqual {57}
+	054 Subtract rdi, rdi, 1
+	055 Compare rdi, rbx
+	056 JumpIfGreaterOrEqual {40}
+	057 Move rbp, stack:0x30
+	058 Subtract rdi, rdi, rbx
+	059 LoadAddress r8, [rdi+1]
+	060 Compare r8, 0
+	061 JumpIfNotEqual {71}
+	062 Move rax, [0x1827831D0]
+	063 Move rdi, stack:0x38
+	064 Move rax, [rax+184]
+	065 Move rax, [rax]
+	066 Move rbx, stack:0x40
+	067 ShiftStack 32
+	068 Move rsi, stack:0x0
+	069 ShiftStack 8
+	070 Return rax
+	071 Compare rsi, 0
+	072 JumpIfEqual {100}
+	073 Compare r8, [rsi+16]
+	074 JumpIfNotEqual {82}
+	075 Move rdi, stack:0x38
+	076 Move rax, rsi
+	077 Move rbx, stack:0x40
+	078 ShiftStack 32
+	079 Move rsi, stack:0x0
+	080 ShiftStack 8
+	081 Return rax
+	082 Move r9, 0
+	083 Move rdx, rbx
+	084 Move rcx, rsi
+	085 Move rdi, stack:0x38
+	086 Move rbx, stack:0x40
+	087 ShiftStack 32
+	088 Move rsi, stack:0x0
+	089 ShiftStack 8
+	090 Call String.Substring, rcx, rdx, r8
+	091 Return rax
+	092 Move rax, [0x1827831D0]
+	093 Move rbx, stack:0x40
+	094 Move rax, [rax+184]
+	095 Move rax, [rax]
+	096 ShiftStack 32
+	097 Move rsi, stack:0x0
+	098 ShiftStack 8
+	099 Return rax
+	100 Call 0x18020CAB0, rcx, rdx, r8, r9
+

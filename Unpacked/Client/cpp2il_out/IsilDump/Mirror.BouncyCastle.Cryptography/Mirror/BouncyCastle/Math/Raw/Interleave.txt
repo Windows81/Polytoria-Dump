@@ -1,0 +1,1058 @@
+Type: Mirror.BouncyCastle.Math.Raw.Interleave
+
+Method: System.UInt32 Expand8to16(System.Byte x)
+
+Disassembly:
+	movzx eax,cl
+	mov edx,eax
+	shl edx,4
+	or edx,eax
+	and edx,0F0Fh
+	lea ecx,[rdx*4]
+	or ecx,edx
+	and ecx,3333h
+	lea eax,[rcx+rcx]
+	or eax,ecx
+	and eax,5555h
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 Move rdx, rax
+	003 ShiftLeft rdx, 4
+	004 Or rdx, rdx, rax
+	005 And rdx, rdx, 3855
+	006 LoadAddress rcx, []
+	007 Or rcx, rcx, rdx
+	008 And rcx, rcx, 0x3333
+	009 LoadAddress rax, [rcx+rcx]
+	010 Or rax, rax, rcx
+	011 And rax, rax, 0x5555
+	012 Return rax
+
+Method: System.UInt64 Expand32to64(System.UInt32 x)
+
+Disassembly:
+	mov eax,ecx
+	shr eax,8
+	xor eax,ecx
+	and eax,0FF00h
+	mov r8d,eax
+	shl r8d,8
+	xor r8d,eax
+	xor r8d,ecx
+	mov eax,r8d
+	shr eax,4
+	xor eax,r8d
+	and eax,0F000F0h
+	mov edx,eax
+	shl edx,4
+	xor edx,eax
+	xor edx,r8d
+	mov ecx,edx
+	shr ecx,2
+	xor ecx,edx
+	and ecx,0C0C0C0Ch
+	lea eax,[rcx*4]
+	xor eax,ecx
+	xor eax,edx
+	mov edx,eax
+	shr eax,1
+	xor eax,edx
+	and eax,22222222h
+	mov ecx,eax
+	lea r8d,[rax+rax]
+	xor r8,rcx
+	xor r8,rdx
+	mov rax,r8
+	and r8d,55555555h
+	shr rax,1
+	and eax,55555555h
+	shl rax,20h
+	or rax,r8
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 ShiftRight rax, 8
+	003 Xor rax, rax, rcx
+	004 And rax, rax, 0xFF00
+	005 Move r8, rax
+	006 ShiftLeft r8, 8
+	007 Xor r8, r8, rax
+	008 Xor r8, r8, rcx
+	009 Move rax, r8
+	010 ShiftRight rax, 4
+	011 Xor rax, rax, r8
+	012 And rax, rax, 0xF000F0
+	013 Move rdx, rax
+	014 ShiftLeft rdx, 4
+	015 Xor rdx, rdx, rax
+	016 Xor rdx, rdx, r8
+	017 Move rcx, rdx
+	018 ShiftRight rcx, 2
+	019 Xor rcx, rcx, rdx
+	020 And rcx, rcx, 0xC0C0C0C
+	021 LoadAddress rax, []
+	022 Xor rax, rax, rcx
+	023 Xor rax, rax, rdx
+	024 Move rdx, rax
+	025 ShiftRight rax, 1
+	026 Xor rax, rax, rdx
+	027 And rax, rax, 0x22222222
+	028 Move rcx, rax
+	029 LoadAddress r8, [rax+rax]
+	030 Xor r8, r8, rcx
+	031 Xor r8, r8, rdx
+	032 Move rax, r8
+	033 And r8, r8, 0x55555555
+	034 ShiftRight rax, 1
+	035 And rax, rax, 0x55555555
+	036 ShiftLeft rax, 32
+	037 Or rax, rax, r8
+	038 Return rax
+
+Method: System.Void Expand64To128(System.UInt64 x, System.UInt64[] z, System.Int32 zOff)
+
+Disassembly:
+	sub rsp,28h
+	mov r10,rdx
+	mov rax,rcx
+	shr rax,10h
+	mov edx,0FFFF0000h
+	xor rax,rcx
+	and rax,rdx
+	mov rdx,0F000F000F000F0h
+	mov r9,rax
+	shl r9,10h
+	xor r9,rax
+	xor r9,rcx
+	mov rcx,0FF000000FF00h
+	mov rax,r9
+	shr rax,8
+	xor rax,r9
+	and rax,rcx
+	mov rcx,rax
+	shl rcx,8
+	xor rcx,rax
+	xor rcx,r9
+	mov rax,rcx
+	shr rax,4
+	xor rax,rcx
+	and rax,rdx
+	mov rdx,rax
+	shl rdx,4
+	xor rdx,rax
+	xor rdx,rcx
+	mov rcx,0C0C0C0C0C0C0C0Ch
+	mov rax,rdx
+	shr rax,2
+	xor rax,rdx
+	and rax,rcx
+	lea rcx,[rax*4]
+	xor rcx,rax
+	xor rcx,rdx
+	mov rdx,2222222222222222h
+	mov rax,rcx
+	shr rax,1
+	xor rax,rcx
+	and rax,rdx
+	lea rdx,[rax+rax]
+	xor rdx,rax
+	xor rdx,rcx
+	test r10,r10
+	je short 000000018118EDEFh
+	cmp r8d,[r10+18h]
+	jae short 000000018118EDF5h
+	movsxd rcx,r8d
+	mov rax,rdx
+	mov r8,5555555555555555h
+	and rax,r8
+	mov [r10+rcx*8+20h],rax
+	inc rcx
+	cmp ecx,[r10+18h]
+	jae short 000000018118EDF5h
+	shr rdx,1
+	and rdx,r8
+	mov [r10+rcx*8+20h],rdx
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r10, rdx
+	003 Move rax, rcx
+	004 ShiftRight rax, 16
+	005 Move rdx, 0xFFFF0000
+	006 Xor rax, rax, rcx
+	007 And rax, rax, rdx
+	008 Move rdx, 0xF000F000F000F0
+	009 Move r9, rax
+	010 ShiftLeft r9, 16
+	011 Xor r9, r9, rax
+	012 Xor r9, r9, rcx
+	013 Move rcx, 0xFF000000FF00
+	014 Move rax, r9
+	015 ShiftRight rax, 8
+	016 Xor rax, rax, r9
+	017 And rax, rax, rcx
+	018 Move rcx, rax
+	019 ShiftLeft rcx, 8
+	020 Xor rcx, rcx, rax
+	021 Xor rcx, rcx, r9
+	022 Move rax, rcx
+	023 ShiftRight rax, 4
+	024 Xor rax, rax, rcx
+	025 And rax, rax, rdx
+	026 Move rdx, rax
+	027 ShiftLeft rdx, 4
+	028 Xor rdx, rdx, rax
+	029 Xor rdx, rdx, rcx
+	030 Move rcx, 0xC0C0C0C0C0C0C0C
+	031 Move rax, rdx
+	032 ShiftRight rax, 2
+	033 Xor rax, rax, rdx
+	034 And rax, rax, rcx
+	035 LoadAddress rcx, []
+	036 Xor rcx, rcx, rax
+	037 Xor rcx, rcx, rdx
+	038 Move rdx, 0x2222222222222222
+	039 Move rax, rcx
+	040 ShiftRight rax, 1
+	041 Xor rax, rax, rcx
+	042 And rax, rax, rdx
+	043 LoadAddress rdx, [rax+rax]
+	044 Xor rdx, rdx, rax
+	045 Xor rdx, rdx, rcx
+	046 Compare r10, 0
+	047 JumpIfEqual {63}
+	048 Compare r8, [r10+24]
+	049 JumpIfGreaterOrEqual {65}
+	050 Move rcx, r8
+	051 Move rax, rdx
+	052 Move r8, 0x5555555555555555
+	053 And rax, rax, r8
+	054 Move [r10+32+rcx*8], rax
+	055 Add rcx, rcx, 1
+	056 Compare rcx, [r10+24]
+	057 JumpIfGreaterOrEqual {65}
+	058 ShiftRight rdx, 1
+	059 And rdx, rdx, r8
+	060 Move [r10+32+rcx*8], rdx
+	061 ShiftStack 40
+	062 Return 
+	063 Call 0x18020CAB0, rcx, rdx, r8, r9
+	064 Interrupt 
+	065 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Void Expand64To128(System.UInt64[] xs, System.Int32 xsOff, System.Int32 xsLen, System.UInt64[] zs, System.Int32 zsOff)
+
+Disassembly:
+	push rbp
+	push rsi
+	sub rsp,38h
+	mov eax,[rsp+70h]
+	lea r10d,[r8-1]
+	mov rsi,r9
+	mov rbp,rcx
+	lea r11d,[rax+r8*2]
+	test r10d,r10d
+	js near ptr 000000018118ECDEh
+	mov [rsp+50h],rbx
+	lea ebx,[r11+1]
+	mov [rsp+58h],rdi
+	lea edi,[r10+rdx]
+	mov [rsp+60h],r12
+	mov r12d,0FFFF0000h
+	mov [rsp+30h],r13
+	mov r13,0FF000000FF00h
+	mov [rsp+28h],r14
+	lea r14,[rbp+20h]
+	movsxd rax,r11d
+	add rax,5
+	movsxd rcx,r10d
+	mov [rsp+20h],r15
+	mov r15,5555555555555555h
+	lea r9,[r9+rax*8]
+	movsxd rax,edx
+	add rcx,rax
+	lea r14,[r14+rcx*8]
+	xchg ax,ax
+	sub r11d,2
+	lea r9,[r9-10h]
+	sub ebx,2
+	test rbp,rbp
+	je near ptr 000000018118ECE5h
+	cmp edi,[rbp+18h]
+	jae near ptr 000000018118ECEBh
+	mov rax,[r14]
+	mov rcx,rax
+	shr rcx,10h
+	xor rcx,rax
+	and rcx,r12
+	mov rdx,rcx
+	shl rdx,10h
+	xor rdx,rax
+	xor rdx,rcx
+	mov rcx,0F000F000F000F0h
+	mov rax,rdx
+	shr rax,8
+	xor rax,rdx
+	and rax,r13
+	mov r8,rax
+	shl r8,8
+	xor r8,rax
+	xor r8,rdx
+	mov rdx,0C0C0C0C0C0C0C0Ch
+	mov rax,r8
+	shr rax,4
+	xor rax,r8
+	and rax,rcx
+	mov rcx,rax
+	shl rcx,4
+	xor rcx,rax
+	xor rcx,r8
+	mov rax,rcx
+	shr rax,2
+	xor rax,rcx
+	and rax,rdx
+	lea rdx,[rax*4]
+	xor rdx,rax
+	mov rax,2222222222222222h
+	xor rdx,rcx
+	mov rcx,rdx
+	shr rcx,1
+	xor rcx,rdx
+	and rcx,rax
+	lea rax,[rcx+rcx]
+	xor rax,rcx
+	xor rax,rdx
+	test rsi,rsi
+	je short 000000018118ECE5h
+	cmp r11d,[rsi+18h]
+	jae short 000000018118ECEBh
+	mov rcx,rax
+	and rcx,r15
+	mov [r9-8],rcx
+	cmp ebx,[rsi+18h]
+	jae short 000000018118ECEBh
+	shr rax,1
+	dec edi
+	and rax,r15
+	sub r14,8
+	sub r10d,1
+	mov [r9],rax
+	jns near ptr 000000018118EBD0h
+	mov r14,[rsp+28h]
+	mov r13,[rsp+30h]
+	mov r12,[rsp+60h]
+	mov rdi,[rsp+58h]
+	mov rbx,[rsp+50h]
+	mov r15,[rsp+20h]
+	add rsp,38h
+	pop rsi
+	pop rbp
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, rsi
+	005 ShiftStack -56
+	006 Move rax, stack:0x70
+	007 LoadAddress r10, [r8-1]
+	008 Move rsi, r9
+	009 Move rbp, rcx
+	010 LoadAddress r11, [rax+r8*2]
+	011 Compare r10, 0
+	012 JumpIfSign {104}
+	013 Move stack:0x50, rbx
+	014 LoadAddress rbx, [r11+1]
+	015 Move stack:0x58, rdi
+	016 LoadAddress rdi, [r10+rdx]
+	017 Move stack:0x60, r12
+	018 Move r12, 0xFFFF0000
+	019 Move stack:0x30, r13
+	020 Move r13, 0xFF000000FF00
+	021 Move stack:0x28, r14
+	022 LoadAddress r14, [rbp+32]
+	023 Move rax, r11
+	024 Add rax, rax, 5
+	025 Move rcx, r10
+	026 Move stack:0x20, r15
+	027 Move r15, 0x5555555555555555
+	028 LoadAddress r9, [r9+rax*8]
+	029 Move rax, rdx
+	030 Add rcx, rcx, rax
+	031 LoadAddress r14, [r14+rcx*8]
+	032 Nop 
+	033 Subtract r11, r11, 2
+	034 LoadAddress r9, [r9-16]
+	035 Subtract rbx, rbx, 2
+	036 Compare rbp, 0
+	037 JumpIfEqual {110}
+	038 Compare rdi, [rbp+24]
+	039 JumpIfGreaterOrEqual {112}
+	040 Move rax, [r14]
+	041 Move rcx, rax
+	042 ShiftRight rcx, 16
+	043 Xor rcx, rcx, rax
+	044 And rcx, rcx, r12
+	045 Move rdx, rcx
+	046 ShiftLeft rdx, 16
+	047 Xor rdx, rdx, rax
+	048 Xor rdx, rdx, rcx
+	049 Move rcx, 0xF000F000F000F0
+	050 Move rax, rdx
+	051 ShiftRight rax, 8
+	052 Xor rax, rax, rdx
+	053 And rax, rax, r13
+	054 Move r8, rax
+	055 ShiftLeft r8, 8
+	056 Xor r8, r8, rax
+	057 Xor r8, r8, rdx
+	058 Move rdx, 0xC0C0C0C0C0C0C0C
+	059 Move rax, r8
+	060 ShiftRight rax, 4
+	061 Xor rax, rax, r8
+	062 And rax, rax, rcx
+	063 Move rcx, rax
+	064 ShiftLeft rcx, 4
+	065 Xor rcx, rcx, rax
+	066 Xor rcx, rcx, r8
+	067 Move rax, rcx
+	068 ShiftRight rax, 2
+	069 Xor rax, rax, rcx
+	070 And rax, rax, rdx
+	071 LoadAddress rdx, []
+	072 Xor rdx, rdx, rax
+	073 Move rax, 0x2222222222222222
+	074 Xor rdx, rdx, rcx
+	075 Move rcx, rdx
+	076 ShiftRight rcx, 1
+	077 Xor rcx, rcx, rdx
+	078 And rcx, rcx, rax
+	079 LoadAddress rax, [rcx+rcx]
+	080 Xor rax, rax, rcx
+	081 Xor rax, rax, rdx
+	082 Compare rsi, 0
+	083 JumpIfEqual {110}
+	084 Compare r11, [rsi+24]
+	085 JumpIfGreaterOrEqual {112}
+	086 Move rcx, rax
+	087 And rcx, rcx, r15
+	088 Move [r9-8], rcx
+	089 Compare rbx, [rsi+24]
+	090 JumpIfGreaterOrEqual {112}
+	091 ShiftRight rax, 1
+	092 Subtract rdi, rdi, 1
+	093 And rax, rax, r15
+	094 Subtract r14, r14, 8
+	095 Subtract r10, r10, 1
+	096 Move [r9], rax
+	097 JumpIfNotSign {33}
+	098 Move r14, stack:0x28
+	099 Move r13, stack:0x30
+	100 Move r12, stack:0x60
+	101 Move rdi, stack:0x58
+	102 Move rbx, stack:0x50
+	103 Move r15, stack:0x20
+	104 ShiftStack 56
+	105 Move rsi, stack:0x0
+	106 ShiftStack 8
+	107 Move rbp, stack:0x0
+	108 ShiftStack 8
+	109 Return 
+	110 Call 0x18020CAB0, rcx, rdx, r8, r9
+	111 Interrupt 
+	112 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.UInt64 Expand64To128Rev(System.UInt64 x, out System.UInt64 low)
+
+Disassembly:
+	mov rax,rcx
+	mov r9,rdx
+	shr rax,10h
+	mov edx,0FFFF0000h
+	xor rax,rcx
+	and rax,rdx
+	mov r8,rax
+	shl r8,10h
+	xor r8,rax
+	xor r8,rcx
+	mov rcx,0FF000000FF00h
+	mov rax,r8
+	shr rax,8
+	xor rax,r8
+	and rax,rcx
+	mov rcx,0F000F000F000F0h
+	mov rdx,rax
+	shl rdx,8
+	xor rdx,rax
+	xor rdx,r8
+	mov rax,rdx
+	shr rax,4
+	xor rax,rdx
+	and rax,rcx
+	mov rcx,rax
+	shl rcx,4
+	xor rcx,rax
+	xor rcx,rdx
+	mov rdx,0C0C0C0C0C0C0C0Ch
+	mov rax,rcx
+	shr rax,2
+	xor rax,rcx
+	and rax,rdx
+	lea rdx,[rax*4]
+	xor rdx,rax
+	mov rax,2222222222222222h
+	xor rdx,rcx
+	mov rcx,rdx
+	shr rcx,1
+	xor rcx,rdx
+	and rcx,rax
+	lea rax,[rcx+rcx]
+	xor rax,rcx
+	xor rax,rdx
+	mov rdx,0AAAAAAAAAAAAAAAAh
+	mov rcx,rax
+	and rcx,rdx
+	mov [r9],rcx
+	mov rcx,0D555555555555555h
+	and rax,rcx
+	add rax,rax
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 Move r9, rdx
+	003 ShiftRight rax, 16
+	004 Move rdx, 0xFFFF0000
+	005 Xor rax, rax, rcx
+	006 And rax, rax, rdx
+	007 Move r8, rax
+	008 ShiftLeft r8, 16
+	009 Xor r8, r8, rax
+	010 Xor r8, r8, rcx
+	011 Move rcx, 0xFF000000FF00
+	012 Move rax, r8
+	013 ShiftRight rax, 8
+	014 Xor rax, rax, r8
+	015 And rax, rax, rcx
+	016 Move rcx, 0xF000F000F000F0
+	017 Move rdx, rax
+	018 ShiftLeft rdx, 8
+	019 Xor rdx, rdx, rax
+	020 Xor rdx, rdx, r8
+	021 Move rax, rdx
+	022 ShiftRight rax, 4
+	023 Xor rax, rax, rdx
+	024 And rax, rax, rcx
+	025 Move rcx, rax
+	026 ShiftLeft rcx, 4
+	027 Xor rcx, rcx, rax
+	028 Xor rcx, rcx, rdx
+	029 Move rdx, 0xC0C0C0C0C0C0C0C
+	030 Move rax, rcx
+	031 ShiftRight rax, 2
+	032 Xor rax, rax, rcx
+	033 And rax, rax, rdx
+	034 LoadAddress rdx, []
+	035 Xor rdx, rdx, rax
+	036 Move rax, 0x2222222222222222
+	037 Xor rdx, rdx, rcx
+	038 Move rcx, rdx
+	039 ShiftRight rcx, 1
+	040 Xor rcx, rcx, rdx
+	041 And rcx, rcx, rax
+	042 LoadAddress rax, [rcx+rcx]
+	043 Xor rax, rax, rcx
+	044 Xor rax, rax, rdx
+	045 Move rdx, 12297829382473034410
+	046 Move rcx, rax
+	047 And rcx, rcx, rdx
+	048 Move [r9], rcx
+	049 Move rcx, 15372286728091293013
+	050 And rax, rax, rcx
+	051 Add rax, rax, rax
+	052 Return rax
+
+Method: System.UInt32 Shuffle2(System.UInt32 x)
+
+Disassembly:
+	mov eax,ecx
+	shr eax,0Ch
+	xor eax,ecx
+	and eax,0F0F0h
+	mov edx,eax
+	shl edx,0Ch
+	xor edx,eax
+	xor edx,ecx
+	mov eax,edx
+	shr eax,6
+	xor eax,edx
+	and eax,0CC00CCh
+	mov ecx,eax
+	shl ecx,6
+	xor ecx,eax
+	xor ecx,edx
+	mov eax,ecx
+	shr eax,1
+	xor eax,ecx
+	and eax,22222222h
+	lea edx,[rax+rax]
+	xor edx,eax
+	xor edx,ecx
+	mov ecx,edx
+	shr ecx,2
+	xor ecx,edx
+	and ecx,0C0C0C0Ch
+	lea eax,[rcx*4]
+	xor eax,ecx
+	xor eax,edx
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 ShiftRight rax, 12
+	003 Xor rax, rax, rcx
+	004 And rax, rax, 0xF0F0
+	005 Move rdx, rax
+	006 ShiftLeft rdx, 12
+	007 Xor rdx, rdx, rax
+	008 Xor rdx, rdx, rcx
+	009 Move rax, rdx
+	010 ShiftRight rax, 6
+	011 Xor rax, rax, rdx
+	012 And rax, rax, 0xCC00CC
+	013 Move rcx, rax
+	014 ShiftLeft rcx, 6
+	015 Xor rcx, rcx, rax
+	016 Xor rcx, rcx, rdx
+	017 Move rax, rcx
+	018 ShiftRight rax, 1
+	019 Xor rax, rax, rcx
+	020 And rax, rax, 0x22222222
+	021 LoadAddress rdx, [rax+rax]
+	022 Xor rdx, rdx, rax
+	023 Xor rdx, rdx, rcx
+	024 Move rcx, rdx
+	025 ShiftRight rcx, 2
+	026 Xor rcx, rcx, rdx
+	027 And rcx, rcx, 0xC0C0C0C
+	028 LoadAddress rax, []
+	029 Xor rax, rax, rcx
+	030 Xor rax, rax, rdx
+	031 Return rax
+
+Method: System.UInt64 Unshuffle(System.UInt64 x)
+
+Disassembly:
+	mov rax,rcx
+	mov rdx,2222222222222222h
+	shr rax,1
+	xor rax,rcx
+	and rax,rdx
+	lea rdx,[rax+rax]
+	xor rdx,rax
+	xor rdx,rcx
+	mov rcx,0C0C0C0C0C0C0C0Ch
+	mov rax,rdx
+	shr rax,2
+	xor rax,rdx
+	and rax,rcx
+	lea rcx,[rax*4]
+	xor rcx,rax
+	xor rcx,rdx
+	mov rdx,0F000F000F000F0h
+	mov rax,rcx
+	shr rax,4
+	xor rax,rcx
+	and rax,rdx
+	mov rdx,rax
+	shl rdx,4
+	xor rdx,rax
+	xor rdx,rcx
+	mov rcx,0FF000000FF00h
+	mov rax,rdx
+	shr rax,8
+	xor rax,rdx
+	and rax,rcx
+	mov r8,rax
+	shl r8,8
+	xor r8,rax
+	mov eax,0FFFF0000h
+	xor r8,rdx
+	mov rcx,r8
+	shr rcx,10h
+	xor rcx,r8
+	and rcx,rax
+	mov rax,rcx
+	shl rax,10h
+	xor rax,rcx
+	xor rax,r8
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 Move rdx, 0x2222222222222222
+	003 ShiftRight rax, 1
+	004 Xor rax, rax, rcx
+	005 And rax, rax, rdx
+	006 LoadAddress rdx, [rax+rax]
+	007 Xor rdx, rdx, rax
+	008 Xor rdx, rdx, rcx
+	009 Move rcx, 0xC0C0C0C0C0C0C0C
+	010 Move rax, rdx
+	011 ShiftRight rax, 2
+	012 Xor rax, rax, rdx
+	013 And rax, rax, rcx
+	014 LoadAddress rcx, []
+	015 Xor rcx, rcx, rax
+	016 Xor rcx, rcx, rdx
+	017 Move rdx, 0xF000F000F000F0
+	018 Move rax, rcx
+	019 ShiftRight rax, 4
+	020 Xor rax, rax, rcx
+	021 And rax, rax, rdx
+	022 Move rdx, rax
+	023 ShiftLeft rdx, 4
+	024 Xor rdx, rdx, rax
+	025 Xor rdx, rdx, rcx
+	026 Move rcx, 0xFF000000FF00
+	027 Move rax, rdx
+	028 ShiftRight rax, 8
+	029 Xor rax, rax, rdx
+	030 And rax, rax, rcx
+	031 Move r8, rax
+	032 ShiftLeft r8, 8
+	033 Xor r8, r8, rax
+	034 Move rax, 0xFFFF0000
+	035 Xor r8, r8, rdx
+	036 Move rcx, r8
+	037 ShiftRight rcx, 16
+	038 Xor rcx, rcx, r8
+	039 And rcx, rcx, rax
+	040 Move rax, rcx
+	041 ShiftLeft rax, 16
+	042 Xor rax, rax, rcx
+	043 Xor rax, rax, r8
+	044 Return rax
+
+Method: System.UInt64 Unshuffle(System.UInt64 x, out System.UInt64 even)
+
+Disassembly:
+	mov rax,rcx
+	mov r9,rdx
+	shr rax,1
+	mov rdx,2222222222222222h
+	xor rax,rcx
+	and rax,rdx
+	mov rdx,0F000F000F000F0h
+	lea r8,[rax+rax]
+	xor r8,rax
+	xor r8,rcx
+	mov rcx,0C0C0C0C0C0C0C0Ch
+	mov rax,r8
+	shr rax,2
+	xor rax,r8
+	and rax,rcx
+	lea rcx,[rax*4]
+	xor rcx,rax
+	xor rcx,r8
+	mov rax,rcx
+	shr rax,4
+	xor rax,rcx
+	and rax,rdx
+	mov rdx,rax
+	shl rdx,4
+	xor rdx,rax
+	xor rdx,rcx
+	mov rcx,0FF000000FF00h
+	mov rax,rdx
+	shr rax,8
+	xor rax,rdx
+	and rax,rcx
+	mov r8,rax
+	shl r8,8
+	xor r8,rax
+	mov eax,0FFFF0000h
+	xor r8,rdx
+	mov rcx,r8
+	shr rcx,10h
+	xor rcx,r8
+	and rcx,rax
+	mov rax,rcx
+	shl rax,10h
+	xor rax,rcx
+	xor rax,r8
+	mov ecx,eax
+	mov [r9],rcx
+	shr rax,20h
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 Move r9, rdx
+	003 ShiftRight rax, 1
+	004 Move rdx, 0x2222222222222222
+	005 Xor rax, rax, rcx
+	006 And rax, rax, rdx
+	007 Move rdx, 0xF000F000F000F0
+	008 LoadAddress r8, [rax+rax]
+	009 Xor r8, r8, rax
+	010 Xor r8, r8, rcx
+	011 Move rcx, 0xC0C0C0C0C0C0C0C
+	012 Move rax, r8
+	013 ShiftRight rax, 2
+	014 Xor rax, rax, r8
+	015 And rax, rax, rcx
+	016 LoadAddress rcx, []
+	017 Xor rcx, rcx, rax
+	018 Xor rcx, rcx, r8
+	019 Move rax, rcx
+	020 ShiftRight rax, 4
+	021 Xor rax, rax, rcx
+	022 And rax, rax, rdx
+	023 Move rdx, rax
+	024 ShiftLeft rdx, 4
+	025 Xor rdx, rdx, rax
+	026 Xor rdx, rdx, rcx
+	027 Move rcx, 0xFF000000FF00
+	028 Move rax, rdx
+	029 ShiftRight rax, 8
+	030 Xor rax, rax, rdx
+	031 And rax, rax, rcx
+	032 Move r8, rax
+	033 ShiftLeft r8, 8
+	034 Xor r8, r8, rax
+	035 Move rax, 0xFFFF0000
+	036 Xor r8, r8, rdx
+	037 Move rcx, r8
+	038 ShiftRight rcx, 16
+	039 Xor rcx, rcx, r8
+	040 And rcx, rcx, rax
+	041 Move rax, rcx
+	042 ShiftLeft rax, 16
+	043 Xor rax, rax, rcx
+	044 Xor rax, rax, r8
+	045 Move rcx, rax
+	046 Move [r9], rcx
+	047 ShiftRight rax, 32
+	048 Return rax
+
+Method: System.UInt64 Unshuffle(System.UInt64 x0, System.UInt64 x1, out System.UInt64 even)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	mov rax,rcx
+	mov r10,rdx
+	shr rax,1
+	mov rbp,2222222222222222h
+	xor rax,rcx
+	mov rsi,0C0C0C0C0C0C0C0Ch
+	and rax,rbp
+	mov r11,r8
+	mov rdi,0F000F000F000F0h
+	mov r8d,0FFFF0000h
+	mov rbx,0FF000000FF00h
+	lea r9,[rax+rax]
+	xor r9,rax
+	xor r9,rcx
+	mov rax,r9
+	shr rax,2
+	xor rax,r9
+	and rax,rsi
+	lea rcx,[rax*4]
+	xor rcx,rax
+	xor rcx,r9
+	mov rax,rcx
+	shr rax,4
+	xor rax,rcx
+	and rax,rdi
+	mov rdx,rax
+	shl rdx,4
+	xor rdx,rax
+	xor rdx,rcx
+	mov rax,rdx
+	shr rax,8
+	xor rax,rdx
+	and rax,rbx
+	mov rcx,rax
+	shl rcx,8
+	xor rcx,rax
+	xor rcx,rdx
+	mov rax,rcx
+	shr rax,10h
+	xor rax,rcx
+	and rax,r8
+	mov r9,rax
+	shl r9,10h
+	xor r9,rax
+	mov rax,r10
+	shr rax,1
+	xor r9,rcx
+	xor rax,r10
+	and rax,rbp
+	lea rcx,[rax+rax]
+	xor rcx,rax
+	xor rcx,r10
+	mov rax,rcx
+	shr rax,2
+	xor rax,rcx
+	and rax,rsi
+	lea rdx,[rax*4]
+	xor rdx,rax
+	xor rdx,rcx
+	mov rax,rdx
+	shr rax,4
+	xor rax,rdx
+	and rax,rdi
+	mov rcx,rax
+	shl rcx,4
+	xor rcx,rax
+	xor rcx,rdx
+	mov rax,rcx
+	shr rax,8
+	xor rax,rcx
+	and rax,rbx
+	mov rdx,rax
+	shl rdx,8
+	xor rdx,rax
+	xor rdx,rcx
+	mov rax,rdx
+	shr rax,10h
+	xor rax,rdx
+	and rax,r8
+	mov r8,rax
+	shl r8,10h
+	mov rbx,[rsp+8]
+	xor r8,rax
+	mov rbp,[rsp+10h]
+	xor r8,rdx
+	mov rsi,[rsp+18h]
+	mov rdx,r8
+	mov rdi,[rsp+20h]
+	mov rax,0FFFFFFFF00000000h
+	mov ecx,r9d
+	and rax,r8
+	shl rdx,20h
+	or rdx,rcx
+	shr r9,20h
+	mov [r11],rdx
+	or rax,r9
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 Move rax, rcx
+	006 Move r10, rdx
+	007 ShiftRight rax, 1
+	008 Move rbp, 0x2222222222222222
+	009 Xor rax, rax, rcx
+	010 Move rsi, 0xC0C0C0C0C0C0C0C
+	011 And rax, rax, rbp
+	012 Move r11, r8
+	013 Move rdi, 0xF000F000F000F0
+	014 Move r8, 0xFFFF0000
+	015 Move rbx, 0xFF000000FF00
+	016 LoadAddress r9, [rax+rax]
+	017 Xor r9, r9, rax
+	018 Xor r9, r9, rcx
+	019 Move rax, r9
+	020 ShiftRight rax, 2
+	021 Xor rax, rax, r9
+	022 And rax, rax, rsi
+	023 LoadAddress rcx, []
+	024 Xor rcx, rcx, rax
+	025 Xor rcx, rcx, r9
+	026 Move rax, rcx
+	027 ShiftRight rax, 4
+	028 Xor rax, rax, rcx
+	029 And rax, rax, rdi
+	030 Move rdx, rax
+	031 ShiftLeft rdx, 4
+	032 Xor rdx, rdx, rax
+	033 Xor rdx, rdx, rcx
+	034 Move rax, rdx
+	035 ShiftRight rax, 8
+	036 Xor rax, rax, rdx
+	037 And rax, rax, rbx
+	038 Move rcx, rax
+	039 ShiftLeft rcx, 8
+	040 Xor rcx, rcx, rax
+	041 Xor rcx, rcx, rdx
+	042 Move rax, rcx
+	043 ShiftRight rax, 16
+	044 Xor rax, rax, rcx
+	045 And rax, rax, r8
+	046 Move r9, rax
+	047 ShiftLeft r9, 16
+	048 Xor r9, r9, rax
+	049 Move rax, r10
+	050 ShiftRight rax, 1
+	051 Xor r9, r9, rcx
+	052 Xor rax, rax, r10
+	053 And rax, rax, rbp
+	054 LoadAddress rcx, [rax+rax]
+	055 Xor rcx, rcx, rax
+	056 Xor rcx, rcx, r10
+	057 Move rax, rcx
+	058 ShiftRight rax, 2
+	059 Xor rax, rax, rcx
+	060 And rax, rax, rsi
+	061 LoadAddress rdx, []
+	062 Xor rdx, rdx, rax
+	063 Xor rdx, rdx, rcx
+	064 Move rax, rdx
+	065 ShiftRight rax, 4
+	066 Xor rax, rax, rdx
+	067 And rax, rax, rdi
+	068 Move rcx, rax
+	069 ShiftLeft rcx, 4
+	070 Xor rcx, rcx, rax
+	071 Xor rcx, rcx, rdx
+	072 Move rax, rcx
+	073 ShiftRight rax, 8
+	074 Xor rax, rax, rcx
+	075 And rax, rax, rbx
+	076 Move rdx, rax
+	077 ShiftLeft rdx, 8
+	078 Xor rdx, rdx, rax
+	079 Xor rdx, rdx, rcx
+	080 Move rax, rdx
+	081 ShiftRight rax, 16
+	082 Xor rax, rax, rdx
+	083 And rax, rax, r8
+	084 Move r8, rax
+	085 ShiftLeft r8, 16
+	086 Move rbx, stack:0x8
+	087 Xor r8, r8, rax
+	088 Move rbp, stack:0x10
+	089 Xor r8, r8, rdx
+	090 Move rsi, stack:0x18
+	091 Move rdx, r8
+	092 Move rdi, stack:0x20
+	093 Move rax, 18446744069414584320
+	094 Move rcx, r9
+	095 And rax, rax, r8
+	096 ShiftLeft rdx, 32
+	097 Or rdx, rdx, rcx
+	098 ShiftRight r9, 32
+	099 Move [r11], rdx
+	100 Or rax, rax, r9
+	101 Return rax
+

@@ -1,0 +1,46 @@
+Type: GLTFast.Jobs.ConvertScalarInt16ToFloatNormalizedJob
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	mov rax,[rcx]
+	mov r9,rcx
+	movss xmm0,dword ptr [181D30C8Ch]
+	movsxd r8,edx
+	movsx r8d,word ptr [rax+r8*2]
+	movd eax,xmm0
+	movd xmm1,r8d
+	btr eax,1Fh
+	cvtdq2ps xmm1,xmm1
+	divss xmm1,dword ptr [181D31294h]
+	cmp eax,7F800000h
+	ja short 000000018108B71Ah
+	comiss xmm1,xmm0
+	jbe short 000000018108B71Dh
+	movaps xmm0,xmm1
+	mov rax,[r9+8]
+	movsxd rcx,edx
+	movss dword ptr [rax+rcx*4],xmm0
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Move r9, rcx
+	003 Move xmm0, [0x181D30C8C]
+	004 Move r8, rdx
+	005 Move r8, [rax+r8*2]
+	006 Move rax, xmm0
+	007 Move xmm1, r8
+	008 NotImplemented "btr eax,1Fh"
+	009 Move xmm1, xmm1
+	010 Divide xmm1, xmm1, [0x181D31294]
+	011 Compare rax, 0x7F800000
+	012 JumpIfGreater {15}
+	013 Compare xmm1, xmm0
+	014 JumpIfLessOrEqual {16}
+	015 Move xmm0, xmm1
+	016 Move rax, [r9+8]
+	017 Move rcx, rdx
+	018 Move [rax+rcx*4], xmm0
+	019 Return 
+

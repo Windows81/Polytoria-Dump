@@ -1,0 +1,827 @@
+Type: MoonSharp.Interpreter.Tree.NodeBase
+
+Method: MoonSharp.Interpreter.Script get_Script()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_Script(MoonSharp.Interpreter.Script value)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: MoonSharp.Interpreter.Execution.ScriptLoadingContext get_LoadingContext()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_LoadingContext(MoonSharp.Interpreter.Execution.ScriptLoadingContext value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor(MoonSharp.Interpreter.Execution.ScriptLoadingContext lcontext)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	test rdi,rdi
+	je short 000000018033CDC7h
+	mov rdx,[rdi+10h]
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 Compare rdi, 0
+	010 JumpIfEqual {20}
+	011 Move rdx, [rdi+16]
+	012 LoadAddress rcx, [rbx+16]
+	013 Move [rbx+16], rdx
+	014 Move rbx, stack:0x30
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Call 0x18020B990, rcx, rdx, r8, r9
+	019 Return 
+	020 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Compile(MoonSharp.Interpreter.Execution.VM.ByteCode bc)
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: MoonSharp.Interpreter.Tree.Token UnexpectedTokenType(MoonSharp.Interpreter.Tree.Token t)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	mov rbp,rcx
+	lea rcx,[18263EA70h]
+	call 000000018020C890h
+	mov rcx,rax
+	mov edx,1
+	call 000000018020BA10h
+	mov rcx,rbp
+	mov rsi,rax
+	call 0000000180001EF0h
+	xor edx,edx
+	mov rcx,rbp
+	call 0000000180316650h
+	mov rcx,rsi
+	mov rbx,rax
+	call 0000000180001EF0h
+	mov rdx,rbx
+	mov rcx,rsi
+	call 0000000180001D10h
+	mov r8,rbx
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000180001F10h
+	lea rcx,[182601730h]
+	call 000000018020C890h
+	mov rcx,rax
+	call 000000018020CA60h
+	lea rcx,[1826287F8h]
+	mov rdi,rax
+	call 000000018020C890h
+	mov r8,rax
+	mov qword ptr [rsp+20h],0
+	mov r9,rsi
+	mov rdx,rbp
+	mov rcx,rdi
+	call 0000000180330B00h
+	mov rcx,rbp
+	call 0000000180001EF0h
+	mov ebx,[rbp+2Ch]
+	mov rcx,rdi
+	call 0000000180001EF0h
+	test ebx,ebx
+	mov rcx,rdi
+	sete dl
+	xor r8d,r8d
+	call 00000001803166B0h
+	lea rcx,[182609860h]
+	call 000000018020C890h
+	mov rdx,rax
+	mov rcx,rdi
+	call 000000018020CA70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Move rbp, rcx
+	008 LoadAddress rcx, [0x18263EA70]
+	009 Call 0x18020C890, rcx, rdx, r8, r9
+	010 Move rcx, rax
+	011 Move rdx, 1
+	012 Call "SzArrayNew", rcx, rdx, r8, r9
+	013 Move rcx, rbp
+	014 Move rsi, rax
+	015 Call 0x180001EF0, rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rbp
+	018 Call 0x180316650, rcx, rdx
+	019 Move rcx, rsi
+	020 Move rbx, rax
+	021 Call 0x180001EF0, rcx, rdx, r8, r9
+	022 Move rdx, rbx
+	023 Move rcx, rsi
+	024 Call 0x180001D10, rcx, rdx, r8, r9
+	025 Move r8, rbx
+	026 Move rdx, 0
+	027 Move rcx, rsi
+	028 Call 0x180001F10, rcx, rdx, r8, r9
+	029 LoadAddress rcx, [0x182601730]
+	030 Call 0x18020C890, rcx, rdx, r8, r9
+	031 Move rcx, rax
+	032 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	033 LoadAddress rcx, [0x1826287F8]
+	034 Move rdi, rax
+	035 Call 0x18020C890, rcx, rdx, r8, r9
+	036 Move r8, rax
+	037 Move stack:0x20, 0
+	038 Move r9, rsi
+	039 Move rdx, rbp
+	040 Move rcx, rdi
+	041 Call SyntaxErrorException..ctor, rcx, rdx, r8, r9
+	042 Move rcx, rbp
+	043 Call 0x180001EF0, rcx, rdx, r8, r9
+	044 Move rbx, [rbp+44]
+	045 Move rcx, rdi
+	046 Call 0x180001EF0, rcx, rdx, r8, r9
+	047 Compare rbx, 0
+	048 Move rcx, rdi
+	049 NotImplemented "sete dl"
+	050 Move r8, 0
+	051 Call 0x1803166B0, rcx, rdx
+	052 LoadAddress rcx, [0x182609860]
+	053 Call 0x18020C890, rcx, rdx, r8, r9
+	054 Move rdx, rax
+	055 Move rcx, rdi
+	056 Call 0x18020CA70, rcx, rdx, r8, r9
+
+Method: MoonSharp.Interpreter.Tree.Token CheckTokenType(MoonSharp.Interpreter.Execution.ScriptLoadingContext lcontext, MoonSharp.Interpreter.Tree.TokenType tokenType)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov esi,edx
+	mov rdi,rcx
+	test rcx,rcx
+	je short 0000000180347AD9h
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 0000000180347AD9h
+	xor edx,edx
+	call 0000000180323FE0h
+	mov rbx,rax
+	test rax,rax
+	je short 0000000180347AD9h
+	cmp [rax+2Ch],esi
+	jne short 0000000180347ADFh
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je short 0000000180347AD9h
+	xor edx,edx
+	call 0000000180321E30h
+	mov rsi,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+	int 3
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180347C10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, rdx
+	007 Move rdi, rcx
+	008 Compare rcx, 0
+	009 JumpIfEqual {32}
+	010 Move rcx, [rcx+48]
+	011 Compare rcx, 0
+	012 JumpIfEqual {32}
+	013 Move rdx, 0
+	014 Call Lexer.get_Current, rcx, rdx
+	015 Move rbx, rax
+	016 Compare rax, 0
+	017 JumpIfEqual {32}
+	018 Compare [rax+44], rsi
+	019 JumpIfNotEqual {34}
+	020 Move rcx, [rdi+48]
+	021 Compare rcx, 0
+	022 JumpIfEqual {32}
+	023 Move rdx, 0
+	024 Call Lexer.Next, rcx, rdx
+	025 Move rsi, stack:0x38
+	026 Move rax, rbx
+	027 Move rbx, stack:0x30
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return rax
+	032 Call 0x18020CAB0, rcx, rdx, r8, r9
+	033 Interrupt 
+	034 Move rdx, 0
+	035 Move rcx, rbx
+	036 Call NodeBase.UnexpectedTokenType, rcx, rdx
+
+Method: MoonSharp.Interpreter.Tree.Token CheckTokenType(MoonSharp.Interpreter.Execution.ScriptLoadingContext lcontext, MoonSharp.Interpreter.Tree.TokenType tokenType1, MoonSharp.Interpreter.Tree.TokenType tokenType2)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov esi,r8d
+	mov ebp,edx
+	mov rdi,rcx
+	test rcx,rcx
+	je short 0000000180347BFBh
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 0000000180347BFBh
+	xor edx,edx
+	call 0000000180323FE0h
+	mov rbx,rax
+	test rax,rax
+	je short 0000000180347BFBh
+	cmp [rax+2Ch],ebp
+	je short 0000000180347BD3h
+	cmp [rax+2Ch],esi
+	jne short 0000000180347C01h
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je short 0000000180347BFBh
+	xor edx,edx
+	call 0000000180321E30h
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+	int 3
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180347C10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rsi, r8
+	008 Move rbp, rdx
+	009 Move rdi, rcx
+	010 Compare rcx, 0
+	011 JumpIfEqual {37}
+	012 Move rcx, [rcx+48]
+	013 Compare rcx, 0
+	014 JumpIfEqual {37}
+	015 Move rdx, 0
+	016 Call Lexer.get_Current, rcx, rdx
+	017 Move rbx, rax
+	018 Compare rax, 0
+	019 JumpIfEqual {37}
+	020 Compare [rax+44], rbp
+	021 JumpIfEqual {24}
+	022 Compare [rax+44], rsi
+	023 JumpIfNotEqual {39}
+	024 Move rcx, [rdi+48]
+	025 Compare rcx, 0
+	026 JumpIfEqual {37}
+	027 Move rdx, 0
+	028 Call Lexer.Next, rcx, rdx
+	029 Move rbp, stack:0x38
+	030 Move rax, rbx
+	031 Move rbx, stack:0x30
+	032 Move rsi, stack:0x40
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+	037 Call 0x18020CAB0, rcx, rdx, r8, r9
+	038 Interrupt 
+	039 Move rdx, 0
+	040 Move rcx, rbx
+	041 Call NodeBase.UnexpectedTokenType, rcx, rdx
+
+Method: MoonSharp.Interpreter.Tree.Token CheckTokenType(MoonSharp.Interpreter.Execution.ScriptLoadingContext lcontext, MoonSharp.Interpreter.Tree.TokenType tokenType1, MoonSharp.Interpreter.Tree.TokenType tokenType2, MoonSharp.Interpreter.Tree.TokenType tokenType3)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,20h
+	mov esi,r9d
+	mov ebp,r8d
+	mov r14d,edx
+	mov rdi,rcx
+	test rcx,rcx
+	je short 0000000180347B71h
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 0000000180347B71h
+	xor edx,edx
+	call 0000000180323FE0h
+	mov rbx,rax
+	test rax,rax
+	je short 0000000180347B71h
+	cmp [rax+2Ch],r14d
+	je short 0000000180347B43h
+	cmp [rax+2Ch],ebp
+	je short 0000000180347B43h
+	cmp [rax+2Ch],esi
+	jne short 0000000180347B77h
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je short 0000000180347B71h
+	xor edx,edx
+	call 0000000180321E30h
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	mov rdi,[rsp+48h]
+	add rsp,20h
+	pop r14
+	ret
+	call 000000018020CAB0h
+	int 3
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180347C10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -32
+	008 Move rsi, r9
+	009 Move rbp, r8
+	010 Move r14, rdx
+	011 Move rdi, rcx
+	012 Compare rcx, 0
+	013 JumpIfEqual {42}
+	014 Move rcx, [rcx+48]
+	015 Compare rcx, 0
+	016 JumpIfEqual {42}
+	017 Move rdx, 0
+	018 Call Lexer.get_Current, rcx, rdx
+	019 Move rbx, rax
+	020 Compare rax, 0
+	021 JumpIfEqual {42}
+	022 Compare [rax+44], r14
+	023 JumpIfEqual {28}
+	024 Compare [rax+44], rbp
+	025 JumpIfEqual {28}
+	026 Compare [rax+44], rsi
+	027 JumpIfNotEqual {44}
+	028 Move rcx, [rdi+48]
+	029 Compare rcx, 0
+	030 JumpIfEqual {42}
+	031 Move rdx, 0
+	032 Call Lexer.Next, rcx, rdx
+	033 Move rbp, stack:0x38
+	034 Move rax, rbx
+	035 Move rbx, stack:0x30
+	036 Move rsi, stack:0x40
+	037 Move rdi, stack:0x48
+	038 ShiftStack 32
+	039 Move r14, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+	042 Call 0x18020CAB0, rcx, rdx, r8, r9
+	043 Interrupt 
+	044 Move rdx, 0
+	045 Move rcx, rbx
+	046 Call NodeBase.UnexpectedTokenType, rcx, rdx
+
+Method: System.Void CheckTokenTypeNotNext(MoonSharp.Interpreter.Execution.ScriptLoadingContext lcontext, MoonSharp.Interpreter.Tree.TokenType tokenType)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov ebx,edx
+	test rcx,rcx
+	je short 0000000180347A78h
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 0000000180347A78h
+	xor edx,edx
+	call 0000000180323FE0h
+	test rax,rax
+	je short 0000000180347A78h
+	cmp [rax+2Ch],ebx
+	jne short 0000000180347A6Dh
+	add rsp,20h
+	pop rbx
+	ret
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180347C10h
+	int 3
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rdx
+	005 Compare rcx, 0
+	006 JumpIfEqual {24}
+	007 Move rcx, [rcx+48]
+	008 Compare rcx, 0
+	009 JumpIfEqual {24}
+	010 Move rdx, 0
+	011 Call Lexer.get_Current, rcx, rdx
+	012 Compare rax, 0
+	013 JumpIfEqual {24}
+	014 Compare [rax+44], rbx
+	015 JumpIfNotEqual {20}
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return 
+	020 Move rdx, 0
+	021 Move rcx, rax
+	022 Call NodeBase.UnexpectedTokenType, rcx, rdx
+	023 Interrupt 
+	024 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: MoonSharp.Interpreter.Tree.Token CheckMatch(MoonSharp.Interpreter.Execution.ScriptLoadingContext lcontext, MoonSharp.Interpreter.Tree.Token originalToken, MoonSharp.Interpreter.Tree.TokenType expectedTokenType, System.String expectedTokenText)
+
+Disassembly:
+	push rbx
+	push rdi
+	push r12
+	push r14
+	push r15
+	sub rsp,30h
+	mov r12,r9
+	mov edi,r8d
+	mov r15,rdx
+	mov rbx,rcx
+	test rcx,rcx
+	je short 000000018034788Bh
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 000000018034788Bh
+	xor edx,edx
+	call 0000000180323FE0h
+	mov r14,rax
+	test rax,rax
+	je short 000000018034788Bh
+	cmp [rax+2Ch],edi
+	jne short 0000000180347891h
+	mov rcx,[rbx+30h]
+	test rcx,rcx
+	je short 000000018034788Bh
+	xor edx,edx
+	call 0000000180321E30h
+	mov rax,r14
+	add rsp,30h
+	pop r15
+	pop r14
+	pop r12
+	pop rdi
+	pop rbx
+	ret
+	call 000000018020CAB0h
+	int 3
+	mov [rsp+68h],rbp
+	mov rcx,rbx
+	mov [rsp+70h],rsi
+	call 0000000180001EF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180316650h
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180001EF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180323FE0h
+	lea rcx,[18263EA70h]
+	mov rbp,rax
+	call 000000018020C890h
+	mov rcx,rax
+	mov edx,4
+	call 000000018020BA10h
+	mov rcx,rax
+	mov rsi,rax
+	call 0000000180001EF0h
+	mov rdx,r12
+	mov rcx,rsi
+	call 0000000180001D10h
+	mov r8,r12
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000180001F10h
+	mov rcx,r15
+	call 0000000180001EF0h
+	xor edx,edx
+	mov rcx,r15
+	call 0000000180316650h
+	mov rcx,rsi
+	mov rbx,rax
+	call 0000000180001EF0h
+	mov rdx,rbx
+	mov rcx,rsi
+	call 0000000180001D10h
+	mov r8,rbx
+	mov edx,1
+	mov rcx,rsi
+	call 0000000180001F10h
+	mov rcx,r15
+	call 0000000180001EF0h
+	mov eax,[r15+1Ch]
+	lea rdx,[rsp+60h]
+	mov rcx,[182783188h]
+	mov [rsp+60h],eax
+	call 000000018020B970h
+	mov rcx,rsi
+	mov rbx,rax
+	call 0000000180001EF0h
+	mov rdx,rbx
+	mov rcx,rsi
+	call 0000000180001D10h
+	mov r8,rbx
+	mov edx,2
+	mov rcx,rsi
+	call 0000000180001F10h
+	mov rcx,r14
+	call 0000000180001EF0h
+	xor edx,edx
+	mov rcx,r14
+	call 0000000180316650h
+	mov rcx,rsi
+	mov rbx,rax
+	call 0000000180001EF0h
+	mov rdx,rbx
+	mov rcx,rsi
+	call 0000000180001D10h
+	mov r8,rbx
+	mov edx,3
+	mov rcx,rsi
+	call 0000000180001F10h
+	lea rcx,[182601730h]
+	call 000000018020C890h
+	mov rcx,rax
+	call 000000018020CA60h
+	mov rdi,rax
+	lea rcx,[1826490A8h]
+	call 000000018020C890h
+	mov r8,rax
+	mov qword ptr [rsp+20h],0
+	mov r9,rsi
+	mov rdx,rbp
+	mov rcx,rdi
+	call 0000000180330B00h
+	mov rcx,r14
+	call 0000000180001EF0h
+	mov ebx,[r14+2Ch]
+	mov rcx,rdi
+	call 0000000180001EF0h
+	test ebx,ebx
+	mov rcx,rdi
+	sete dl
+	xor r8d,r8d
+	call 00000001803166B0h
+	lea rcx,[1826097E0h]
+	call 000000018020C890h
+	mov rdx,rax
+	mov rcx,rdi
+	call 000000018020CA70h
+	mov rsi,[rsp+70h]
+	mov rbp,[rsp+68h]
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r12
+	007 ShiftStack -8
+	008 Move stack:0x0, r14
+	009 ShiftStack -8
+	010 Move stack:0x0, r15
+	011 ShiftStack -48
+	012 Move r12, r9
+	013 Move rdi, r8
+	014 Move r15, rdx
+	015 Move rbx, rcx
+	016 Compare rcx, 0
+	017 JumpIfEqual {46}
+	018 Move rcx, [rcx+48]
+	019 Compare rcx, 0
+	020 JumpIfEqual {46}
+	021 Move rdx, 0
+	022 Call Lexer.get_Current, rcx, rdx
+	023 Move r14, rax
+	024 Compare rax, 0
+	025 JumpIfEqual {46}
+	026 Compare [rax+44], rdi
+	027 JumpIfNotEqual {48}
+	028 Move rcx, [rbx+48]
+	029 Compare rcx, 0
+	030 JumpIfEqual {46}
+	031 Move rdx, 0
+	032 Call Lexer.Next, rcx, rdx
+	033 Move rax, r14
+	034 ShiftStack 48
+	035 Move r15, stack:0x0
+	036 ShiftStack 8
+	037 Move r14, stack:0x0
+	038 ShiftStack 8
+	039 Move r12, stack:0x0
+	040 ShiftStack 8
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Move rbx, stack:0x0
+	044 ShiftStack 8
+	045 Return rax
+	046 Call 0x18020CAB0, rcx, rdx, r8, r9
+	047 Interrupt 
+	048 Move stack:0x68, rbp
+	049 Move rcx, rbx
+	050 Move stack:0x70, rsi
+	051 Call 0x180001EF0, rcx, rdx, r8, r9
+	052 Move rdx, 0
+	053 Move rcx, rbx
+	054 Call 0x180316650, rcx, rdx
+	055 Move rcx, rax
+	056 Move rbx, rax
+	057 Call 0x180001EF0, rcx, rdx, r8, r9
+	058 Move rdx, 0
+	059 Move rcx, rbx
+	060 Call Lexer.get_Current, rcx, rdx
+	061 LoadAddress rcx, [0x18263EA70]
+	062 Move rbp, rax
+	063 Call 0x18020C890, rcx, rdx, r8, r9
+	064 Move rcx, rax
+	065 Move rdx, 4
+	066 Call "SzArrayNew", rcx, rdx, r8, r9
+	067 Move rcx, rax
+	068 Move rsi, rax
+	069 Call 0x180001EF0, rcx, rdx, r8, r9
+	070 Move rdx, r12
+	071 Move rcx, rsi
+	072 Call 0x180001D10, rcx, rdx, r8, r9
+	073 Move r8, r12
+	074 Move rdx, 0
+	075 Move rcx, rsi
+	076 Call 0x180001F10, rcx, rdx, r8, r9
+	077 Move rcx, r15
+	078 Call 0x180001EF0, rcx, rdx, r8, r9
+	079 Move rdx, 0
+	080 Move rcx, r15
+	081 Call 0x180316650, rcx, rdx
+	082 Move rcx, rsi
+	083 Move rbx, rax
+	084 Call 0x180001EF0, rcx, rdx, r8, r9
+	085 Move rdx, rbx
+	086 Move rcx, rsi
+	087 Call 0x180001D10, rcx, rdx, r8, r9
+	088 Move r8, rbx
+	089 Move rdx, 1
+	090 Move rcx, rsi
+	091 Call 0x180001F10, rcx, rdx, r8, r9
+	092 Move rcx, r15
+	093 Call 0x180001EF0, rcx, rdx, r8, r9
+	094 Move rax, [r15+28]
+	095 LoadAddress rdx, stack:0x60
+	096 Move rcx, [0x182783188]
+	097 Move stack:0x60, rax
+	098 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	099 Move rcx, rsi
+	100 Move rbx, rax
+	101 Call 0x180001EF0, rcx, rdx, r8, r9
+	102 Move rdx, rbx
+	103 Move rcx, rsi
+	104 Call 0x180001D10, rcx, rdx, r8, r9
+	105 Move r8, rbx
+	106 Move rdx, 2
+	107 Move rcx, rsi
+	108 Call 0x180001F10, rcx, rdx, r8, r9
+	109 Move rcx, r14
+	110 Call 0x180001EF0, rcx, rdx, r8, r9
+	111 Move rdx, 0
+	112 Move rcx, r14
+	113 Call 0x180316650, rcx, rdx
+	114 Move rcx, rsi
+	115 Move rbx, rax
+	116 Call 0x180001EF0, rcx, rdx, r8, r9
+	117 Move rdx, rbx
+	118 Move rcx, rsi
+	119 Call 0x180001D10, rcx, rdx, r8, r9
+	120 Move r8, rbx
+	121 Move rdx, 3
+	122 Move rcx, rsi
+	123 Call 0x180001F10, rcx, rdx, r8, r9
+	124 LoadAddress rcx, [0x182601730]
+	125 Call 0x18020C890, rcx, rdx, r8, r9
+	126 Move rcx, rax
+	127 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	128 Move rdi, rax
+	129 LoadAddress rcx, [0x1826490A8]
+	130 Call 0x18020C890, rcx, rdx, r8, r9
+	131 Move r8, rax
+	132 Move stack:0x20, 0
+	133 Move r9, rsi
+	134 Move rdx, rbp
+	135 Move rcx, rdi
+	136 Call SyntaxErrorException..ctor, rcx, rdx, r8, r9
+	137 Move rcx, r14
+	138 Call 0x180001EF0, rcx, rdx, r8, r9
+	139 Move rbx, [r14+44]
+	140 Move rcx, rdi
+	141 Call 0x180001EF0, rcx, rdx, r8, r9
+	142 Compare rbx, 0
+	143 Move rcx, rdi
+	144 NotImplemented "sete dl"
+	145 Move r8, 0
+	146 Call 0x1803166B0, rcx, rdx
+	147 LoadAddress rcx, [0x1826097E0]
+	148 Call 0x18020C890, rcx, rdx, r8, r9
+	149 Move rdx, rax
+	150 Move rcx, rdi
+	151 Call 0x18020CA70, rcx, rdx, r8, r9
+	152 Move rsi, stack:0x70
+	153 Move rbp, stack:0x68
+

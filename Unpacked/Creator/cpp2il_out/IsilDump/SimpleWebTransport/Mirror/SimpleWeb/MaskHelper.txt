@@ -1,0 +1,168 @@
+Type: Mirror.SimpleWeb.MaskHelper
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825CBAC3h],0
+	mov rdi,rcx
+	jne short 0000000181556CD5h
+	lea rcx,[182492CD8h]
+	call 00000001801EE810h
+	lea rcx,[18249AE68h]
+	call 00000001801EE810h
+	mov byte ptr [1825CBAC3h],1
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001802C3410h
+	mov rcx,[182492CD8h]
+	mov edx,4
+	call 00000001801ED9B0h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rax
+	mov rdx,rax
+	call 00000001801ED930h
+	mov rcx,[18249AE68h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018134D510h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rbx
+	mov rdx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825CBAC3], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {13}
+	008 LoadAddress rcx, [0x182492CD8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x18249AE68]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x1825CBAC3], 1
+	013 Move rdx, 0
+	014 Move rcx, rdi
+	015 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	016 Move rcx, typeof(System.Byte[1])
+	017 Move rdx, 4
+	018 Call "SzArrayNew", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [rdi+16]
+	020 Move [rdi+16], rax
+	021 Move rdx, rax
+	022 Call 0x1801ED930, rcx, rdx, r8, r9
+	023 Move rcx, typeof(System.Security.Cryptography.RNGCryptoServiceProvider)
+	024 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	025 Move rdx, 0
+	026 Move rcx, rax
+	027 Move rbx, rax
+	028 Call RNGCryptoServiceProvider..ctor, rcx, rdx
+	029 LoadAddress rcx, [rdi+24]
+	030 Move [rdi+24], rbx
+	031 Move rdx, rbx
+	032 Move rbx, stack:0x30
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Call 0x1801ED930, rcx, rdx, r8, r9
+	037 Return 
+
+Method: System.Void Dispose()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 0000000181556C18h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 000000018133D1A0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call RandomNumberGenerator.Dispose, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Int32 WriteMask(System.Byte[] buffer, System.Int32 offset)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,30h
+	mov rbx,rcx
+	mov edi,r8d
+	mov rcx,[rcx+18h]
+	mov rsi,rdx
+	test rcx,rcx
+	je short 0000000181556C8Dh
+	mov r8,[rcx]
+	mov rdx,[rbx+10h]
+	mov rax,[r8+198h]
+	mov r8,[r8+1A0h]
+	call rax
+	mov rcx,[rbx+10h]
+	mov r9d,edi
+	mov r8,rsi
+	mov qword ptr [rsp+28h],0
+	xor edx,edx
+	mov dword ptr [rsp+20h],4
+	call 00000001814D0D10h
+	mov rbx,[rsp+40h]
+	lea eax,[rdi+4]
+	mov rsi,[rsp+48h]
+	add rsp,30h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -48
+	006 Move rbx, rcx
+	007 Move rdi, r8
+	008 Move rcx, [rcx+24]
+	009 Move rsi, rdx
+	010 Compare rcx, 0
+	011 JumpIfEqual {31}
+	012 Move r8, [rcx]
+	013 Move rdx, [rbx+16]
+	014 Move rax, [r8+408]
+	015 Move r8, [r8+416]
+	016 Call rax
+	017 Move rcx, [rbx+16]
+	018 Move r9, rdi
+	019 Move r8, rsi
+	020 Move stack:0x28, 0
+	021 Move rdx, 0
+	022 Move stack:0x20, 4
+	023 Call Buffer.BlockCopy, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	024 Move rbx, stack:0x40
+	025 LoadAddress rax, [rdi+4]
+	026 Move rsi, stack:0x48
+	027 ShiftStack 48
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+	031 Call 0x1801EEA50, rcx, rdx, r8, r9
+

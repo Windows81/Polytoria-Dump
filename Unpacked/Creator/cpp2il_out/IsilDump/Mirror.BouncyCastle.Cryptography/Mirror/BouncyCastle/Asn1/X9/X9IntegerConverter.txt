@@ -1,0 +1,146 @@
+Type: Mirror.BouncyCastle.Asn1.X9.X9IntegerConverter
+
+Method: System.Int32 GetByteLength(Mirror.BouncyCastle.Math.EC.ECFieldElement fe)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 00000001810BD631h
+	mov rdx,[rcx]
+	mov rax,[rdx+2C8h]
+	mov rdx,[rdx+2D0h]
+	add rsp,28h
+	jmp rax
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {9}
+	004 Move rdx, [rcx]
+	005 Move rax, [rdx+712]
+	006 Move rdx, [rdx+720]
+	007 ShiftStack 40
+	008 CallNoReturn rax
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Byte[] IntegerToBytes(Mirror.BouncyCastle.Math.BigInteger s, System.Int32 qLength)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [1825C97D6h],0
+	mov edi,edx
+	mov rbx,rcx
+	jne short 000000018111E18Bh
+	lea rcx,[182492CD8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C97D6h],1
+	test rbx,rbx
+	je near ptr 000000018111E22Ch
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001810B37B0h
+	mov rbx,rax
+	test rax,rax
+	je near ptr 000000018111E22Ch
+	cmp edi,[rax+18h]
+	jl short 000000018111E1F9h
+	jle short 000000018111E1EEh
+	mov rcx,[182492CD8h]
+	mov edx,edi
+	call 00000001801ED9B0h
+	mov rdi,rax
+	test rax,rax
+	je short 000000018111E22Ch
+	mov ecx,[rbx+18h]
+	mov r8,rax
+	mov r9d,[rax+18h]
+	sub r9d,ecx
+	mov qword ptr [rsp+28h],0
+	xor edx,edx
+	mov [rsp+20h],ecx
+	mov rcx,rbx
+	call 00000001814B50C0h
+	mov rax,rdi
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+	mov rcx,[182492CD8h]
+	mov edx,edi
+	call 00000001801ED9B0h
+	mov rdi,rax
+	test rax,rax
+	je short 000000018111E22Ch
+	mov ecx,[rax+18h]
+	mov r8,rax
+	mov edx,[rbx+18h]
+	sub edx,ecx
+	mov qword ptr [rsp+28h],0
+	xor r9d,r9d
+	mov [rsp+20h],ecx
+	jmp short 000000018111E1E3h
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x1825C97D6], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182492CD8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C97D6], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {58}
+	014 Move rdx, 0
+	015 Move rcx, rbx
+	016 Call BigInteger.ToByteArrayUnsigned, rcx, rdx
+	017 Move rbx, rax
+	018 Compare rax, 0
+	019 JumpIfEqual {58}
+	020 Compare rdi, [rax+24]
+	021 JumpIfLess {44}
+	022 JumpIfLessOrEqual {39}
+	023 Move rcx, typeof(System.Byte[1])
+	024 Move rdx, rdi
+	025 Call "SzArrayNew", rcx, rdx, r8, r9
+	026 Move rdi, rax
+	027 Compare rax, 0
+	028 JumpIfEqual {58}
+	029 Move rcx, [rbx+24]
+	030 Move r8, rax
+	031 Move r9, [rax+24]
+	032 Subtract r9, r9, rcx
+	033 Move stack:0x28, 0
+	034 Move rdx, 0
+	035 Move stack:0x20, rcx
+	036 Move rcx, rbx
+	037 Call Array.Copy, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	038 Move rax, rdi
+	039 Move rbx, stack:0x40
+	040 ShiftStack 48
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Return rax
+	044 Move rcx, typeof(System.Byte[1])
+	045 Move rdx, rdi
+	046 Call "SzArrayNew", rcx, rdx, r8, r9
+	047 Move rdi, rax
+	048 Compare rax, 0
+	049 JumpIfEqual {58}
+	050 Move rcx, [rax+24]
+	051 Move r8, rax
+	052 Move rdx, [rbx+24]
+	053 Subtract rdx, rdx, rcx
+	054 Move stack:0x28, 0
+	055 Move r9, 0
+	056 Move stack:0x20, rcx
+	057 Goto {36}
+	058 Call 0x1801EEA50, rcx, rdx, r8, r9
+

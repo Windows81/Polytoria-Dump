@@ -1,0 +1,99 @@
+Type: RLD.PolygonShape2D+BorderRenderDescriptor
+
+Method: RLD.Shape2DBorderType get_BorderType()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_BorderType(RLD.Shape2DBorderType value)
+
+Disassembly:
+	mov [rcx+10h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: System.Single get_Thickness()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+14h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+20]
+	002 Return xmm0
+
+Method: System.Void set_Thickness(System.Single value)
+
+Disassembly:
+	andps xmm1,[181D30CE0h]
+	movss dword ptr [rcx+14h],xmm1
+	ret
+
+ISIL:
+	001 And xmm1, xmm1, [0x181D30CE0]
+	002 Move [rcx+20], xmm1
+	003 Return 
+
+Method: RLD.Shape2DBorderDirection get_Direction()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_Direction(RLD.Shape2DBorderDirection value)
+
+Disassembly:
+	mov [rcx+18h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Return 
+
+Method: RLD.PolygonShape2D+ThickBorderFillMode get_FillMode()
+
+Disassembly:
+	mov eax,[rcx+1Ch]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+28]
+	002 Return rax
+
+Method: System.Void set_FillMode(RLD.PolygonShape2D+ThickBorderFillMode value)
+
+Disassembly:
+	mov [rcx+1Ch],edx
+	ret
+
+ISIL:
+	001 Move [rcx+28], rdx
+	002 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+14h],40A00000h
+	mov dword ptr [rcx+18h],1
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+20], 0x40A00000
+	003 Move [rcx+24], 1
+	004 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	005 Return 
+

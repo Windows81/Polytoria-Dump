@@ -1,0 +1,341 @@
+Type: GLTFast.GameObjectSceneInstance
+
+Method: System.Void set_MaterialsVariantsControl(GLTFast.MaterialsVariantsControl value)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: UnityEngine.Animation get_LegacyAnimation()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_LegacyAnimation(UnityEngine.Animation value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void AddCamera(UnityEngine.Camera camera)
+
+Disassembly:
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [1827785B0h],0
+	mov rsi,rdx
+	mov [rsp+38h],rdi
+	mov rdi,rcx
+	jne short 000000018111EE95h
+	lea rcx,[182630FF0h]
+	call 000000018020C870h
+	lea rcx,[182630EE0h]
+	call 000000018020C870h
+	lea rcx,[1826107B8h]
+	call 000000018020C870h
+	mov byte ptr [1827785B0h],1
+	cmp qword ptr [rdi+38h],0
+	jne short 000000018111EED4h
+	mov rcx,[1826107B8h]
+	mov [rsp+30h],rbx
+	call 000000018020CA60h
+	mov rdx,[182630EE0h]
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180E9DFA0h
+	lea rcx,[rdi+38h]
+	mov [rdi+38h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	mov rbx,[rsp+30h]
+	mov rcx,[rdi+38h]
+	mov rdi,[rsp+38h]
+	test rcx,rcx
+	je short 000000018111EF41h
+	mov r9,[182630FF0h]
+	inc dword ptr [rcx+1Ch]
+	mov r8,[rcx+10h]
+	test r8,r8
+	je short 000000018111EF41h
+	movsxd rdx,dword ptr [rcx+18h]
+	cmp edx,[r8+18h]
+	jb short 000000018111EF1Bh
+	mov rax,[r9+20h]
+	mov rdx,rsi
+	mov r8,[rax+0C0h]
+	mov r8,[r8+70h]
+	add rsp,20h
+	pop rsi
+	jmp near ptr 0000000180F131B0h
+	lea eax,[rdx+1]
+	mov [rcx+18h],eax
+	cmp edx,[r8+18h]
+	jae short 000000018111EF47h
+	mov [r8+rdx*8+20h],rsi
+	add r8,20h
+	lea rcx,[r8+rdx*8]
+	mov rdx,rsi
+	add rsp,20h
+	pop rsi
+	jmp near ptr 000000018020B990h
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rsi
+	003 ShiftStack -32
+	004 Compare [0x1827785B0], 0
+	005 Move rsi, rdx
+	006 Move stack:0x38, rdi
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {16}
+	009 LoadAddress rcx, [0x182630FF0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182630EE0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x1826107B8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1827785B0], 1
+	016 Compare [rdi+56], 0
+	017 JumpIfNotEqual {30}
+	018 Move rcx, typeof(System.Collections.Generic.List`1<Camera>)
+	019 Move stack:0x30, rbx
+	020 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	021 Move rdx, [0x182630EE0]
+	022 Move rcx, rax
+	023 Move rbx, rax
+	024 Call 0x180E9DFA0, rcx, rdx
+	025 LoadAddress rcx, [rdi+56]
+	026 Move [rdi+56], rbx
+	027 Move rdx, rbx
+	028 Call 0x18020B990, rcx, rdx, r8, r9
+	029 Move rbx, stack:0x30
+	030 Move rcx, [rdi+56]
+	031 Move rdi, stack:0x38
+	032 Compare rcx, 0
+	033 JumpIfEqual {64}
+	034 Move r9, [0x182630FF0]
+	035 Add [rcx+28], [rcx+28], 1
+	036 Move r8, [rcx+16]
+	037 Compare r8, 0
+	038 JumpIfEqual {64}
+	039 Move rdx, [rcx+24]
+	040 Compare rdx, [r8+24]
+	041 JumpIfLess {51}
+	042 Move rax, [r9+32]
+	043 Move rdx, rsi
+	044 Move r8, [rax+192]
+	045 Move r8, [r8+112]
+	046 ShiftStack 32
+	047 Move rsi, stack:0x0
+	048 ShiftStack 8
+	049 Call List`1<Object>.AddWithResize, rcx, rdx
+	050 Return 
+	051 LoadAddress rax, [rdx+1]
+	052 Move [rcx+24], rax
+	053 Compare rdx, [r8+24]
+	054 JumpIfGreaterOrEqual {66}
+	055 Move [r8+32+rdx*8], rsi
+	056 Add r8, r8, 32
+	057 LoadAddress rcx, [r8+rdx*8]
+	058 Move rdx, rsi
+	059 ShiftStack 32
+	060 Move rsi, stack:0x0
+	061 ShiftStack 8
+	062 Call 0x18020B990, rcx, rdx, r8, r9
+	063 Return 
+	064 Call 0x18020CAB0, rcx, rdx, r8, r9
+	065 Interrupt 
+	066 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Void AddLight(UnityEngine.Light light)
+
+Disassembly:
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [1827785B1h],0
+	mov rsi,rdx
+	mov [rsp+38h],rdi
+	mov rdi,rcx
+	jne short 000000018111EF95h
+	lea rcx,[182645CD0h]
+	call 000000018020C870h
+	lea rcx,[182645C48h]
+	call 000000018020C870h
+	lea rcx,[182614200h]
+	call 000000018020C870h
+	mov byte ptr [1827785B1h],1
+	cmp qword ptr [rdi+40h],0
+	jne short 000000018111EFD4h
+	mov rcx,[182614200h]
+	mov [rsp+30h],rbx
+	call 000000018020CA60h
+	mov rdx,[182645C48h]
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180E9DFA0h
+	lea rcx,[rdi+40h]
+	mov [rdi+40h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	mov rbx,[rsp+30h]
+	mov rcx,[rdi+40h]
+	mov rdi,[rsp+38h]
+	test rcx,rcx
+	je short 000000018111F041h
+	mov r9,[182645CD0h]
+	inc dword ptr [rcx+1Ch]
+	mov r8,[rcx+10h]
+	test r8,r8
+	je short 000000018111F041h
+	movsxd rdx,dword ptr [rcx+18h]
+	cmp edx,[r8+18h]
+	jb short 000000018111F01Bh
+	mov rax,[r9+20h]
+	mov rdx,rsi
+	mov r8,[rax+0C0h]
+	mov r8,[r8+70h]
+	add rsp,20h
+	pop rsi
+	jmp near ptr 0000000180F131B0h
+	lea eax,[rdx+1]
+	mov [rcx+18h],eax
+	cmp edx,[r8+18h]
+	jae short 000000018111F047h
+	mov [r8+rdx*8+20h],rsi
+	add r8,20h
+	lea rcx,[r8+rdx*8]
+	mov rdx,rsi
+	add rsp,20h
+	pop rsi
+	jmp near ptr 000000018020B990h
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rsi
+	003 ShiftStack -32
+	004 Compare [0x1827785B1], 0
+	005 Move rsi, rdx
+	006 Move stack:0x38, rdi
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {16}
+	009 LoadAddress rcx, [0x182645CD0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182645C48]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182614200]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1827785B1], 1
+	016 Compare [rdi+64], 0
+	017 JumpIfNotEqual {30}
+	018 Move rcx, typeof(System.Collections.Generic.List`1<Light>)
+	019 Move stack:0x30, rbx
+	020 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	021 Move rdx, [0x182645C48]
+	022 Move rcx, rax
+	023 Move rbx, rax
+	024 Call 0x180E9DFA0, rcx, rdx
+	025 LoadAddress rcx, [rdi+64]
+	026 Move [rdi+64], rbx
+	027 Move rdx, rbx
+	028 Call 0x18020B990, rcx, rdx, r8, r9
+	029 Move rbx, stack:0x30
+	030 Move rcx, [rdi+64]
+	031 Move rdi, stack:0x38
+	032 Compare rcx, 0
+	033 JumpIfEqual {64}
+	034 Move r9, [0x182645CD0]
+	035 Add [rcx+28], [rcx+28], 1
+	036 Move r8, [rcx+16]
+	037 Compare r8, 0
+	038 JumpIfEqual {64}
+	039 Move rdx, [rcx+24]
+	040 Compare rdx, [r8+24]
+	041 JumpIfLess {51}
+	042 Move rax, [r9+32]
+	043 Move rdx, rsi
+	044 Move r8, [rax+192]
+	045 Move r8, [r8+112]
+	046 ShiftStack 32
+	047 Move rsi, stack:0x0
+	048 ShiftStack 8
+	049 Call List`1<Object>.AddWithResize, rcx, rdx
+	050 Return 
+	051 LoadAddress rax, [rdx+1]
+	052 Move [rcx+24], rax
+	053 Compare rdx, [r8+24]
+	054 JumpIfGreaterOrEqual {66}
+	055 Move [r8+32+rdx*8], rsi
+	056 Add r8, r8, 32
+	057 LoadAddress rcx, [r8+rdx*8]
+	058 Move rdx, rsi
+	059 ShiftStack 32
+	060 Move rsi, stack:0x0
+	061 ShiftStack 8
+	062 Call 0x18020B990, rcx, rdx, r8, r9
+	063 Return 
+	064 Call 0x18020CAB0, rcx, rdx, r8, r9
+	065 Interrupt 
+	066 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Void SetMaterialsVariantsControl(GLTFast.MaterialsVariantsControl control)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void SetLegacyAnimation(UnityEngine.Animation animation)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

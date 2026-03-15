@@ -1,0 +1,88 @@
+Type: RLD.Object2ObjectSnapSettings
+
+Method: System.Int32 get_SnapDestinationLayers()
+
+Disassembly:
+	mov eax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void set_SnapDestinationLayers(System.Int32 value)
+
+Disassembly:
+	mov [rcx+28h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Return 
+
+Method: System.Boolean get_CanClimbObjects()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+2Ch]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+44]
+	002 Return rax
+
+Method: System.Void set_CanClimbObjects(System.Boolean value)
+
+Disassembly:
+	mov [rcx+2Ch],dl
+	ret
+
+ISIL:
+	001 Move [rcx+44], rdx
+	002 Return 
+
+Method: System.Single get_SnapRadius()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+30h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+48]
+	002 Return xmm0
+
+Method: System.Void set_SnapRadius(System.Single value)
+
+Disassembly:
+	xchg ax,ax
+	xorps xmm0,xmm0
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+30h],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, 0
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+48], xmm0
+	008 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+28h],0FFFFFFFFh
+	mov byte ptr [rcx+2Ch],1
+	mov dword ptr [rcx+30h],3F333333h
+	jmp near ptr 00000001805727C0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+40], 0xFFFFFFFF
+	003 Move [rcx+44], 1
+	004 Move [rcx+48], 0x3F333333
+	005 Call Settings..ctor, rcx, rdx
+	006 Return 
+

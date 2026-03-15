@@ -1,0 +1,770 @@
+Type: System.Net.Security.CertificateHelper
+
+Method: System.Security.Cryptography.X509Certificates.X509Certificate2 GetEligibleClientCertificate(System.Security.Cryptography.X509Certificates.X509CertificateCollection candidateCerts)
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825CC950h],0
+	mov rdi,rcx
+	jne short 0000000181717FF5h
+	lea rcx,[18246A238h]
+	call 00000001801EE810h
+	mov byte ptr [1825CC950h],1
+	mov [rsp+30h],rbx
+	test rdi,rdi
+	je near ptr 00000001817180CBh
+	xor edx,edx
+	mov rcx,rdi
+	call 000000018143D440h
+	test eax,eax
+	je near ptr 00000001817180BEh
+	mov rcx,[18246A238h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001812BA7A0h
+	test rbx,rbx
+	je near ptr 00000001817180CBh
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	call 0000000181788DF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018143D440h
+	test eax,eax
+	je short 00000001817180AFh
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001817846A0h
+	mov rdi,rax
+	test rax,rax
+	je short 00000001817180CBh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181784AC0h
+	test al,al
+	je short 00000001817180AFh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181784C70h
+	mov rbx,rax
+	test rax,rax
+	je short 00000001817180CBh
+	xor edx,edx
+	mov rcx,rax
+	call 00000001817885C0h
+	test al,al
+	je short 0000000181718065h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181718280h
+	test al,al
+	je short 0000000181718065h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor ebx,ebx
+	mov eax,ebx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	xor eax,eax
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [0x1825CC950], 0
+	005 Move rdi, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x18246A238]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x1825CC950], 1
+	010 Move stack:0x30, rbx
+	011 Compare rdi, 0
+	012 JumpIfEqual {81}
+	013 Move rdx, 0
+	014 Move rcx, rdi
+	015 Call 0x18143D440, rcx, rdx
+	016 Compare rax, 0
+	017 JumpIfEqual {75}
+	018 Move rcx, typeof(System.Security.Cryptography.X509Certificates.X509Certificate2Collection)
+	019 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	020 Move rdx, 0
+	021 Move rcx, rax
+	022 Move rbx, rax
+	023 Call 0x1812BA7A0, rcx, rdx
+	024 Compare rbx, 0
+	025 JumpIfEqual {81}
+	026 Move r8, 0
+	027 Move rdx, rdi
+	028 Move rcx, rbx
+	029 Call X509CertificateCollection.AddRange, rcx, rdx
+	030 Move rdx, 0
+	031 Move rcx, rbx
+	032 Call 0x18143D440, rcx, rdx
+	033 Compare rax, 0
+	034 JumpIfEqual {68}
+	035 Move rdx, 0
+	036 Move rcx, rbx
+	037 Call X509Certificate2Collection.GetEnumerator, rcx, rdx
+	038 Move rdi, rax
+	039 Compare rax, 0
+	040 JumpIfEqual {81}
+	041 Move rdx, 0
+	042 Move rcx, rdi
+	043 Call X509Certificate2Enumerator.MoveNext, rcx, rdx
+	044 Compare rax, 0
+	045 JumpIfEqual {68}
+	046 Move rdx, 0
+	047 Move rcx, rdi
+	048 Call X509Certificate2Enumerator.get_Current, rcx, rdx
+	049 Move rbx, rax
+	050 Compare rax, 0
+	051 JumpIfEqual {81}
+	052 Move rdx, 0
+	053 Move rcx, rax
+	054 Call X509Certificate2.get_HasPrivateKey, rcx, rdx
+	055 Compare rax, 0
+	056 JumpIfEqual {41}
+	057 Move rdx, 0
+	058 Move rcx, rbx
+	059 Call CertificateHelper.IsValidClientCertificate, rcx, rdx
+	060 Compare rax, 0
+	061 JumpIfEqual {41}
+	062 Move rax, rbx
+	063 Move rbx, stack:0x30
+	064 ShiftStack 32
+	065 Move rdi, stack:0x0
+	066 ShiftStack 8
+	067 Return rax
+	068 Move rbx, 0
+	069 Move rax, rbx
+	070 Move rbx, stack:0x30
+	071 ShiftStack 32
+	072 Move rdi, stack:0x0
+	073 ShiftStack 8
+	074 Return rax
+	075 Move rbx, stack:0x30
+	076 Move rax, 0
+	077 ShiftStack 32
+	078 Move rdi, stack:0x0
+	079 ShiftStack 8
+	080 Return rax
+	081 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Security.Cryptography.X509Certificates.X509Certificate2 GetEligibleClientCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2Collection candidateCerts)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	test rcx,rcx
+	je short 0000000181717FBCh
+	xor edx,edx
+	call 000000018143D440h
+	test eax,eax
+	je short 0000000181717FAFh
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001817846A0h
+	mov rdi,rax
+	nop word ptr [rax+rax]
+	test rax,rax
+	je short 0000000181717FBCh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181784AC0h
+	test al,al
+	je short 0000000181717FAFh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181784C70h
+	mov rbx,rax
+	test rax,rax
+	je short 0000000181717FBCh
+	xor edx,edx
+	mov rcx,rax
+	call 00000001817885C0h
+	test al,al
+	je short 0000000181717F65h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181718280h
+	test al,al
+	je short 0000000181717F65h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	xor eax,eax
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 Compare rcx, 0
+	007 JumpIfEqual {52}
+	008 Move rdx, 0
+	009 Call 0x18143D440, rcx, rdx
+	010 Compare rax, 0
+	011 JumpIfEqual {46}
+	012 Move rdx, 0
+	013 Move rcx, rbx
+	014 Call X509Certificate2Collection.GetEnumerator, rcx, rdx
+	015 Move rdi, rax
+	016 Nop 
+	017 Compare rax, 0
+	018 JumpIfEqual {52}
+	019 Move rdx, 0
+	020 Move rcx, rdi
+	021 Call X509Certificate2Enumerator.MoveNext, rcx, rdx
+	022 Compare rax, 0
+	023 JumpIfEqual {46}
+	024 Move rdx, 0
+	025 Move rcx, rdi
+	026 Call X509Certificate2Enumerator.get_Current, rcx, rdx
+	027 Move rbx, rax
+	028 Compare rax, 0
+	029 JumpIfEqual {52}
+	030 Move rdx, 0
+	031 Move rcx, rax
+	032 Call X509Certificate2.get_HasPrivateKey, rcx, rdx
+	033 Compare rax, 0
+	034 JumpIfEqual {19}
+	035 Move rdx, 0
+	036 Move rcx, rbx
+	037 Call CertificateHelper.IsValidClientCertificate, rcx, rdx
+	038 Compare rax, 0
+	039 JumpIfEqual {19}
+	040 Move rax, rbx
+	041 Move rbx, stack:0x30
+	042 ShiftStack 32
+	043 Move rdi, stack:0x0
+	044 ShiftStack 8
+	045 Return rax
+	046 Move rbx, stack:0x30
+	047 Move rax, 0
+	048 ShiftStack 32
+	049 Move rdi, stack:0x0
+	050 ShiftStack 8
+	051 Return rax
+	052 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean IsValidClientCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2 cert)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1825CC951h],0
+	mov rbx,rcx
+	jne short 00000001817182B1h
+	lea rcx,[18246AC68h]
+	call 00000001801EE810h
+	lea rcx,[18246B048h]
+	call 00000001801EE810h
+	mov byte ptr [1825CC951h],1
+	mov [rsp+30h],rdi
+	test rbx,rbx
+	je near ptr 000000018171835Fh
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181788270h
+	test rax,rax
+	je near ptr 000000018171835Fh
+	xor edx,edx
+	mov rcx,rax
+	call 0000000181790C60h
+	mov rdi,rax
+	nop
+	test rax,rax
+	je short 000000018171835Fh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181791210h
+	test al,al
+	je short 0000000181718352h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181791360h
+	mov rbx,rax
+	test rax,rax
+	je short 00000001817182E5h
+	mov rdx,[18246AC68h]
+	xor ecx,ecx
+	cmp [rax],rdx
+	cmove rcx,rax
+	test rcx,rcx
+	je short 0000000181718325h
+	xor edx,edx
+	call 0000000181718370h
+	test al,al
+	je short 0000000181718345h
+	mov rax,[18246B048h]
+	xor ecx,ecx
+	cmp [rbx],rax
+	cmove rcx,rbx
+	test rcx,rcx
+	je short 00000001817182E5h
+	xor edx,edx
+	call 00000001817926C0h
+	test al,al
+	js short 00000001817182E5h
+	xor al,al
+	mov rdi,[rsp+30h]
+	add rsp,20h
+	pop rbx
+	ret
+	mov rdi,[rsp+30h]
+	mov al,1
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1825CC951], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {12}
+	007 LoadAddress rcx, [0x18246AC68]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x18246B048]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825CC951], 1
+	012 Move stack:0x30, rdi
+	013 Compare rbx, 0
+	014 JumpIfEqual {74}
+	015 Move rdx, 0
+	016 Move rcx, rbx
+	017 Call X509Certificate2.get_Extensions, rcx, rdx
+	018 Compare rax, 0
+	019 JumpIfEqual {74}
+	020 Move rdx, 0
+	021 Move rcx, rax
+	022 Call X509ExtensionCollection.GetEnumerator, rcx, rdx
+	023 Move rdi, rax
+	024 Nop 
+	025 Compare rax, 0
+	026 JumpIfEqual {74}
+	027 Move rdx, 0
+	028 Move rcx, rdi
+	029 Call X509ExtensionEnumerator.MoveNext, rcx, rdx
+	030 Compare rax, 0
+	031 JumpIfEqual {68}
+	032 Move rdx, 0
+	033 Move rcx, rdi
+	034 Call X509ExtensionEnumerator.get_Current, rcx, rdx
+	035 Move rbx, rax
+	036 Compare rax, 0
+	037 JumpIfEqual {27}
+	038 Move rdx, typeof(System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension)
+	039 Move rcx, 0
+	040 Compare [rax], rdx
+	041 JumpIfNotEqual {43}
+	042 Move rcx, rax
+	043 Nop 
+	044 Compare rcx, 0
+	045 JumpIfEqual {50}
+	046 Move rdx, 0
+	047 Call CertificateHelper.IsValidForClientAuthenticationEKU, rcx, rdx
+	048 Compare rax, 0
+	049 JumpIfEqual {62}
+	050 Move rax, typeof(System.Security.Cryptography.X509Certificates.X509KeyUsageExtension)
+	051 Move rcx, 0
+	052 Compare [rbx], rax
+	053 JumpIfNotEqual {55}
+	054 Move rcx, rbx
+	055 Nop 
+	056 Compare rcx, 0
+	057 JumpIfEqual {27}
+	058 Move rdx, 0
+	059 Call X509KeyUsageExtension.get_KeyUsages, rcx, rdx
+	060 Compare rax, 0
+	061 JumpIfSign {27}
+	062 Move rax, 0
+	063 Move rdi, stack:0x30
+	064 ShiftStack 32
+	065 Move rbx, stack:0x0
+	066 ShiftStack 8
+	067 Return rax
+	068 Move rdi, stack:0x30
+	069 Move rax, 1
+	070 ShiftStack 32
+	071 Move rbx, stack:0x0
+	072 ShiftStack 8
+	073 Return rax
+	074 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean IsValidForClientAuthenticationEKU(System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension eku)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1825CC952h],0
+	mov rbx,rcx
+	jne short 0000000181718395h
+	lea rcx,[1824A6668h]
+	call 00000001801EE810h
+	mov byte ptr [1825CC952h],1
+	test rbx,rbx
+	je short 0000000181718404h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181790A40h
+	test rax,rax
+	je short 0000000181718404h
+	xor edx,edx
+	mov rcx,rax
+	call 000000018177F390h
+	mov rbx,rax
+	test rax,rax
+	je short 0000000181718404h
+	nop dword ptr [rax+rax]
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018177F760h
+	test al,al
+	je short 00000001817183FCh
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018177F7E0h
+	test rax,rax
+	je short 0000000181718404h
+	mov rdx,[1824A6668h]
+	xor r8d,r8d
+	mov rcx,[rax+10h]
+	call 00000001813010A0h
+	test al,al
+	je short 00000001817183C0h
+	mov al,1
+	add rsp,20h
+	pop rbx
+	ret
+	xor al,al
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1825CC952], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x1824A6668]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x1825CC952], 1
+	010 Compare rbx, 0
+	011 JumpIfEqual {50}
+	012 Move rdx, 0
+	013 Move rcx, rbx
+	014 Call X509EnhancedKeyUsageExtension.get_EnhancedKeyUsages, rcx, rdx
+	015 Compare rax, 0
+	016 JumpIfEqual {50}
+	017 Move rdx, 0
+	018 Move rcx, rax
+	019 Call 0x18177F390, rcx, rdx
+	020 Move rbx, rax
+	021 Compare rax, 0
+	022 JumpIfEqual {50}
+	023 Nop 
+	024 Move rdx, 0
+	025 Move rcx, rbx
+	026 Call OidEnumerator.MoveNext, rcx, rdx
+	027 Compare rax, 0
+	028 JumpIfEqual {45}
+	029 Move rdx, 0
+	030 Move rcx, rbx
+	031 Call 0x18177F7E0, rcx, rdx
+	032 Compare rax, 0
+	033 JumpIfEqual {50}
+	034 Move rdx, "1.3.6.1.5.5.7.3.2"
+	035 Move r8, 0
+	036 Move rcx, [rax+16]
+	037 Call 0x1813010A0, rcx, rdx, r8
+	038 Compare rax, 0
+	039 JumpIfEqual {24}
+	040 Move rax, 1
+	041 ShiftStack 32
+	042 Move rbx, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 Move rax, 0
+	046 ShiftStack 32
+	047 Move rbx, stack:0x0
+	048 ShiftStack 8
+	049 Return rax
+	050 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean IsValidForDigitalSignatureUsage(System.Security.Cryptography.X509Certificates.X509KeyUsageExtension ku)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018171842Ah
+	xor edx,edx
+	call 00000001817926C0h
+	shr eax,7
+	and al,1
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {10}
+	004 Move rdx, 0
+	005 Call X509KeyUsageExtension.get_KeyUsages, rcx, rdx
+	006 ShiftRight rax, 7
+	007 And rax, rax, 1
+	008 ShiftStack 40
+	009 Return rax
+	010 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Security.Cryptography.X509Certificates.X509Certificate2 GetEligibleClientCertificate()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,40h
+	cmp byte ptr [1825CC953h],0
+	jne short 0000000181718112h
+	lea rcx,[1824750C0h]
+	call 00000001801EE810h
+	lea rcx,[18246B3A8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CC953h],1
+	mov qword ptr [rsp+60h],0
+	mov rcx,[18246B3A8h]
+	call 00000001801EEA00h
+	mov rbx,rax
+	xor r9d,r9d
+	mov edx,5
+	mov r8d,1
+	mov rcx,rax
+	call 0000000181792B20h
+	mov [rsp+58h],rbx
+	mov qword ptr [rsp+28h],0
+	lea rax,[rsp+58h]
+	mov [rsp+30h],rax
+	mov rcx,[rsp+58h]
+	test rcx,rcx
+	je near ptr 000000018171826Ah
+	xor r8d,r8d
+	mov edx,4
+	call 0000000181792770h
+	mov rcx,[rsp+58h]
+	test rcx,rcx
+	je near ptr 0000000181718264h
+	xor edx,edx
+	call 0000000181792C80h
+	mov rbx,rax
+	mov [rsp+60h],rax
+	mov r8,[rsp+58h]
+	test r8,r8
+	je short 00000001817181A8h
+	xor ecx,ecx
+	mov rdx,[1824750C0h]
+	call 0000000180002270h
+	jmp short 00000001817181D5h
+	mov r8,[rsp+58h]
+	test r8,r8
+	je short 00000001817181C2h
+	xor ecx,ecx
+	mov rdx,[1824750C0h]
+	call 0000000180002270h
+	mov rcx,[rsp+28h]
+	test rcx,rcx
+	jne near ptr 0000000181718270h
+	mov rbx,[rsp+60h]
+	test rbx,rbx
+	je near ptr 000000018171825Eh
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018143D440h
+	test eax,eax
+	je short 000000018171824Fh
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001817846A0h
+	mov rdi,rax
+	nop dword ptr [rax]
+	test rax,rax
+	je short 000000018171825Eh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181784AC0h
+	test al,al
+	je short 000000018171824Fh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181784C70h
+	mov rbx,rax
+	test rax,rax
+	je short 000000018171825Eh
+	xor edx,edx
+	mov rcx,rax
+	call 00000001817885C0h
+	test al,al
+	je short 0000000181718205h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181718280h
+	test al,al
+	je short 0000000181718205h
+	mov rax,rbx
+	mov rbx,[rsp+50h]
+	add rsp,40h
+	pop rdi
+	ret
+	xor ebx,ebx
+	mov eax,ebx
+	mov rbx,[rsp+50h]
+	add rsp,40h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+	nop
+	call 00000001801EEA50h
+	nop
+	call 00000001801EEA50h
+	nop
+	call 00000001801EEAE0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -64
+	005 Compare [0x1825CC953], 0
+	006 JumpIfNotEqual {12}
+	007 LoadAddress rcx, [0x1824750C0]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x18246B3A8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825CC953], 1
+	012 Move stack:0x60, 0
+	013 Move rcx, typeof(System.Security.Cryptography.X509Certificates.X509Store)
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rbx, rax
+	016 Move r9, 0
+	017 Move rdx, 5
+	018 Move r8, 1
+	019 Move rcx, rax
+	020 Call X509Store..ctor, rcx, rdx, r8
+	021 Move stack:0x58, rbx
+	022 Move stack:0x28, 0
+	023 LoadAddress rax, stack:0x58
+	024 Move stack:0x30, rax
+	025 Move rcx, stack:0x58
+	026 Compare rcx, 0
+	027 JumpIfEqual {107}
+	028 Move r8, 0
+	029 Move rdx, 4
+	030 Call X509Store.Open, rcx, rdx
+	031 Move rcx, stack:0x58
+	032 Compare rcx, 0
+	033 JumpIfEqual {105}
+	034 Move rdx, 0
+	035 Call X509Store.get_Certificates, rcx, rdx
+	036 Move rbx, rax
+	037 Move stack:0x60, rax
+	038 Move r8, stack:0x58
+	039 Compare r8, 0
+	040 JumpIfEqual {44}
+	041 Move rcx, 0
+	042 Move rdx, typeof(System.IDisposable)
+	043 Call 0x180002270, rcx, rdx, r8, r9
+	044 Goto {55}
+	045 Move r8, stack:0x58
+	046 Compare r8, 0
+	047 JumpIfEqual {51}
+	048 Move rcx, 0
+	049 Move rdx, typeof(System.IDisposable)
+	050 Call 0x180002270, rcx, rdx, r8, r9
+	051 Move rcx, stack:0x28
+	052 Compare rcx, 0
+	053 JumpIfNotEqual {109}
+	054 Move rbx, stack:0x60
+	055 Compare rbx, 0
+	056 JumpIfEqual {103}
+	057 Move rdx, 0
+	058 Move rcx, rbx
+	059 Call 0x18143D440, rcx, rdx
+	060 Compare rax, 0
+	061 JumpIfEqual {96}
+	062 Move rdx, 0
+	063 Move rcx, rbx
+	064 Call X509Certificate2Collection.GetEnumerator, rcx, rdx
+	065 Move rdi, rax
+	066 Nop 
+	067 Compare rax, 0
+	068 JumpIfEqual {103}
+	069 Move rdx, 0
+	070 Move rcx, rdi
+	071 Call X509Certificate2Enumerator.MoveNext, rcx, rdx
+	072 Compare rax, 0
+	073 JumpIfEqual {96}
+	074 Move rdx, 0
+	075 Move rcx, rdi
+	076 Call X509Certificate2Enumerator.get_Current, rcx, rdx
+	077 Move rbx, rax
+	078 Compare rax, 0
+	079 JumpIfEqual {103}
+	080 Move rdx, 0
+	081 Move rcx, rax
+	082 Call X509Certificate2.get_HasPrivateKey, rcx, rdx
+	083 Compare rax, 0
+	084 JumpIfEqual {69}
+	085 Move rdx, 0
+	086 Move rcx, rbx
+	087 Call CertificateHelper.IsValidClientCertificate, rcx, rdx
+	088 Compare rax, 0
+	089 JumpIfEqual {69}
+	090 Move rax, rbx
+	091 Move rbx, stack:0x50
+	092 ShiftStack 64
+	093 Move rdi, stack:0x0
+	094 ShiftStack 8
+	095 Return rax
+	096 Move rbx, 0
+	097 Move rax, rbx
+	098 Move rbx, stack:0x50
+	099 ShiftStack 64
+	100 Move rdi, stack:0x0
+	101 ShiftStack 8
+	102 Return rax
+	103 Call 0x1801EEA50, rcx, rdx, r8, r9
+	104 Nop 
+	105 Call 0x1801EEA50, rcx, rdx, r8, r9
+	106 Nop 
+	107 Call 0x1801EEA50, rcx, rdx, r8, r9
+	108 Nop 
+	109 Call 0x1801EEAE0, rcx, rdx, r8, r9
+

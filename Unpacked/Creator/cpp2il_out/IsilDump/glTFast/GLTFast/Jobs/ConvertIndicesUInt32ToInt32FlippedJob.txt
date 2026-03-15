@@ -1,0 +1,56 @@
+Type: GLTFast.Jobs.ConvertIndicesUInt32ToInt32FlippedJob
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	sub rsp,18h
+	movsxd r9,edx
+	mov r10,rcx
+	lea eax,[r9+r9*2]
+	movsxd r8,eax
+	mov rax,[rcx]
+	mov r8d,[rax+r8*4]
+	lea eax,[r9+r9*2]
+	mov [rsp],r8d
+	movsxd r8,eax
+	mov rax,[rcx]
+	mov r8d,[rax+r8*4+8]
+	lea eax,[r9+r9*2]
+	movsxd rcx,eax
+	mov rax,[r10]
+	mov [rsp+4],r8d
+	movsd xmm0,qword ptr [rsp]
+	mov edx,[rax+rcx*4+4]
+	lea rcx,[r9+r9*2]
+	mov rax,[r10+8]
+	movsd qword ptr [rax+rcx*4],xmm0
+	mov [rax+rcx*4+8],edx
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move r9, rdx
+	003 Move r10, rcx
+	004 LoadAddress rax, [r9+r9*2]
+	005 Move r8, rax
+	006 Move rax, [rcx]
+	007 Move r8, [rax+r8*4]
+	008 LoadAddress rax, [r9+r9*2]
+	009 Move stack:0x0, r8
+	010 Move r8, rax
+	011 Move rax, [rcx]
+	012 Move r8, [rax+8+r8*4]
+	013 LoadAddress rax, [r9+r9*2]
+	014 Move rcx, rax
+	015 Move rax, [r10]
+	016 Move stack:0x4, r8
+	017 Move xmm0, stack:0x0
+	018 Move rdx, [rax+4+rcx*4]
+	019 LoadAddress rcx, [r9+r9*2]
+	020 Move rax, [r10+8]
+	021 Move [rax+rcx*4], xmm0
+	022 Move [rax+8+rcx*4], rdx
+	023 ShiftStack 24
+	024 Return 
+

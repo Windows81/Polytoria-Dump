@@ -1,0 +1,28 @@
+Type: GLTFast.Jobs.ConvertScalarUInt8ToFloatNormalizedJob
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	mov rax,[rcx]
+	movsxd r8,edx
+	movsxd rdx,edx
+	movzx r8d,byte ptr [r8+rax]
+	mov rax,[rcx+8]
+	movd xmm0,r8d
+	cvtdq2ps xmm0,xmm0
+	divss xmm0,dword ptr [181D30D48h]
+	movss dword ptr [rax+rdx*4],xmm0
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Move r8, rdx
+	003 Move rdx, rdx
+	004 Move r8, [r8+rax]
+	005 Move rax, [rcx+8]
+	006 Move xmm0, r8
+	007 Move xmm0, xmm0
+	008 Divide xmm0, xmm0, [0x181D30D48]
+	009 Move [rax+rdx*4], xmm0
+	010 Return 
+

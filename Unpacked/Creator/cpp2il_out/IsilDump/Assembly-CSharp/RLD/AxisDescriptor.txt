@@ -1,0 +1,184 @@
+Type: RLD.AxisDescriptor
+
+Method: RLD.AxisSign get_Sign()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Int32 get_Index()
+
+Disassembly:
+	mov eax,[rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Boolean get_IsPositive()
+
+Disassembly:
+	cmp dword ptr [rcx+10h],0
+	sete al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 0
+	002 NotImplemented "sete al"
+	003 Return rax
+
+Method: System.Boolean get_IsNegative()
+
+Disassembly:
+	cmp dword ptr [rcx+10h],1
+	sete al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 1
+	002 NotImplemented "sete al"
+	003 Return rax
+
+Method: System.Void .ctor(System.Int32 axisIndex, RLD.AxisSign axisSign)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov esi,edx
+	mov edi,r8d
+	xor edx,edx
+	mov rbx,rcx
+	call 00000001802C3410h
+	mov [rbx+14h],esi
+	mov rsi,[rsp+38h]
+	mov [rbx+10h],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, rdx
+	007 Move rdi, r8
+	008 Move rdx, 0
+	009 Move rbx, rcx
+	010 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	011 Move [rbx+20], rsi
+	012 Move rsi, stack:0x38
+	013 Move [rbx+16], rdi
+	014 Move rbx, stack:0x30
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+
+Method: System.Void .ctor(System.Int32 axisIndex, System.Boolean isNegative)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov esi,edx
+	movzx edi,r8b
+	xor edx,edx
+	mov rbx,rcx
+	call 00000001802C3410h
+	test rbx,rbx
+	je short 000000018055717Ah
+	mov [rbx+10h],edi
+	mov [rbx+14h],esi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, rdx
+	007 Move rdi, r8
+	008 Move rdx, 0
+	009 Move rbx, rcx
+	010 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	011 Compare rbx, 0
+	012 JumpIfEqual {21}
+	013 Move [rbx+16], rdi
+	014 Move [rbx+20], rsi
+	015 Move rbx, stack:0x30
+	016 Move rsi, stack:0x38
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Return 
+	021 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: RLD.BoxFace GetAssociatedBoxFace()
+
+Disassembly:
+	cmp dword ptr [rcx+10h],1
+	mov eax,[rcx+14h]
+	je short 00000001805570E4h
+	test eax,eax
+	je short 00000001805570DEh
+	mov edx,1
+	mov eax,5
+	cmp [rcx+14h],edx
+	cmovne eax,edx
+	ret
+	mov eax,3
+	ret
+	test eax,eax
+	je short 00000001805570F7h
+	xor edx,edx
+	mov eax,4
+	cmp dword ptr [rcx+14h],1
+	cmovne eax,edx
+	ret
+	mov eax,2
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 1
+	002 Move rax, [rcx+20]
+	003 JumpIfEqual {15}
+	004 Compare rax, 0
+	005 JumpIfEqual {13}
+	006 Move rdx, 1
+	007 Move rax, 5
+	008 Compare [rcx+20], rdx
+	009 JumpIfEqual {11}
+	010 Move rax, rdx
+	011 Nop 
+	012 Return rax
+	013 Move rax, 3
+	014 Return rax
+	015 Compare rax, 0
+	016 JumpIfEqual {24}
+	017 Move rdx, 0
+	018 Move rax, 4
+	019 Compare [rcx+20], 1
+	020 JumpIfEqual {22}
+	021 Move rax, rdx
+	022 Nop 
+	023 Return rax
+	024 Move rax, 2
+	025 Return rax
+

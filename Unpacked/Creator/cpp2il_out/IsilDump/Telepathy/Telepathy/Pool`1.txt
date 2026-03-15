@@ -1,0 +1,214 @@
+Type: Telepathy.Pool`1
+
+Method: System.Void .ctor(System.Func`1<T> objectGenerator)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+20h]
+	mov rsi,r8
+	mov rbp,rdx
+	mov rdi,rcx
+	mov r9,[rax+0C0h]
+	mov rax,[r9]
+	test byte ptr [rax+135h],1
+	jne short 0000000180E6D5BCh
+	mov rcx,rax
+	call 00000001801F72D0h
+	mov rcx,rax
+	call 00000001801EEA00h
+	mov rcx,[rsi+20h]
+	mov rbx,rax
+	mov rdx,[rcx+0C0h]
+	mov rcx,rax
+	mov rdx,[rdx+8]
+	call 0000000180F64050h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001802C3410h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rbp
+	mov rdx,rbp
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+32]
+	008 Move rsi, r8
+	009 Move rbp, rdx
+	010 Move rdi, rcx
+	011 Move r9, [rax+192]
+	012 Move rax, [r9]
+	013 Compare [rax+309], 1
+	014 JumpIfNotEqual {17}
+	015 Move rcx, rax
+	016 Call 0x1801F72D0, rcx, rdx, r8, r9
+	017 Move rcx, rax
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move rcx, [rsi+32]
+	020 Move rbx, rax
+	021 Move rdx, [rcx+192]
+	022 Move rcx, rax
+	023 Move rdx, [rdx+8]
+	024 Call 0x180F64050, rcx, rdx
+	025 LoadAddress rcx, [rdi+16]
+	026 Move [rdi+16], rbx
+	027 Move rdx, rbx
+	028 Call 0x1801ED930, rcx, rdx, r8, r9
+	029 Move rdx, 0
+	030 Move rcx, rdi
+	031 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	032 LoadAddress rcx, [rdi+24]
+	033 Move [rdi+24], rbp
+	034 Move rdx, rbp
+	035 Move rbx, stack:0x30
+	036 Move rbp, stack:0x38
+	037 Move rsi, stack:0x40
+	038 ShiftStack 32
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Call 0x1801ED930, rcx, rdx, r8, r9
+	042 Return 
+
+Method: T Take()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 0000000180E6D36Bh
+	cmp dword ptr [rax+18h],0
+	jle short 0000000180E6D34Fh
+	mov rax,[rdx+20h]
+	mov rcx,[rcx+10h]
+	mov rdx,[rax+0C0h]
+	mov rdx,[rdx+38h]
+	add rsp,28h
+	jmp near ptr 0000000180F62D60h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 0000000180E6D36Bh
+	mov rax,[rcx+18h]
+	mov rdx,[rcx+28h]
+	mov rcx,[rcx+40h]
+	add rsp,28h
+	jmp rax
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {22}
+	005 Compare [rax+24], 0
+	006 JumpIfLessOrEqual {14}
+	007 Move rax, [rdx+32]
+	008 Move rcx, [rcx+16]
+	009 Move rdx, [rax+192]
+	010 Move rdx, [rdx+56]
+	011 ShiftStack 40
+	012 Call Stack`1<Object>.Pop, rcx, rdx
+	013 Return rax
+	014 Move rcx, [rcx+24]
+	015 Compare rcx, 0
+	016 JumpIfEqual {22}
+	017 Move rax, [rcx+24]
+	018 Move rdx, [rcx+40]
+	019 Move rcx, [rcx+64]
+	020 ShiftStack 40
+	021 CallNoReturn rax
+	022 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Return(T item)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000180E6CDC5h
+	mov rax,[r8+20h]
+	mov r8,[rax+0C0h]
+	mov r8,[r8+40h]
+	add rsp,28h
+	jmp near ptr 0000000180F63520h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {11}
+	005 Move rax, [r8+32]
+	006 Move r8, [rax+192]
+	007 Move r8, [r8+64]
+	008 ShiftStack 40
+	009 Call Stack`1<Object>.Push, rcx, rdx
+	010 Return 
+	011 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Clear()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000180E6CA45h
+	mov rax,[rdx+20h]
+	mov rdx,[rax+0C0h]
+	mov rdx,[rdx+48h]
+	add rsp,28h
+	jmp near ptr 0000000180F62900h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {11}
+	005 Move rax, [rdx+32]
+	006 Move rdx, [rax+192]
+	007 Move rdx, [rdx+72]
+	008 ShiftStack 40
+	009 Call 0x180F62900, rcx, rdx
+	010 Return 
+	011 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Int32 Count()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 0000000180513D45h
+	mov eax,[rax+18h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+24]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+

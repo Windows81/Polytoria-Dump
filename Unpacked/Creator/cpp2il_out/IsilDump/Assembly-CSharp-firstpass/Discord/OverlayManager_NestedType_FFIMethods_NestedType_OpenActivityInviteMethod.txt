@@ -1,0 +1,203 @@
+Type: Discord.OverlayManager+FFIMethods+OpenActivityInviteMethod
+
+Method: System.Void .ctor(System.Object object, System.IntPtr method)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+8]
+	mov rbx,r8
+	mov [rcx+10h],rax
+	mov rdi,rcx
+	mov [rcx+28h],rbx
+	mov rsi,rdx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 00000001801ED930h
+	movzx ebp,byte ptr [rbx+52h]
+	mov rcx,rbx
+	mov [rdi+40h],rdi
+	call 00000001801ED960h
+	test al,al
+	je short 000000018038E1B9h
+	cmp bpl,4
+	jne short 000000018038E1BEh
+	lea rax,[180009E50h]
+	jmp short 000000018038E1CAh
+	test rsi,rsi
+	je short 000000018038E1EEh
+	mov rax,[rdi+20h]
+	mov [rdi+40h],rax
+	mov rax,[rdi+10h]
+	mov [rdi+18h],rax
+	lea rax,[180009DC0h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov [rdi+38h],rax
+	add rsp,20h
+	pop rdi
+	ret
+	lea rdx,[181D30D00h]
+	xor ecx,ecx
+	call 00000001801EE410h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+8]
+	008 Move rbx, r8
+	009 Move [rcx+16], rax
+	010 Move rdi, rcx
+	011 Move [rcx+40], rbx
+	012 Move rsi, rdx
+	013 Move [rcx+32], rdx
+	014 Add rcx, rcx, 32
+	015 Call 0x1801ED930, rcx, rdx, r8, r9
+	016 Move rbp, [rbx+82]
+	017 Move rcx, rbx
+	018 Move [rdi+64], rdi
+	019 Call 0x1801ED960, rcx, rdx, r8, r9
+	020 Compare rax, 0
+	021 JumpIfEqual {26}
+	022 Compare rbp, 4
+	023 JumpIfNotEqual {28}
+	024 LoadAddress rax, [0x180009E50]
+	025 Goto {31}
+	026 Compare rsi, 0
+	027 JumpIfEqual {41}
+	028 Move rax, [rdi+32]
+	029 Move [rdi+64], rax
+	030 Move rax, [rdi+16]
+	031 Move [rdi+24], rax
+	032 LoadAddress rax, [0x180009DC0]
+	033 Move rbx, stack:0x30
+	034 Move rbp, stack:0x38
+	035 Move rsi, stack:0x40
+	036 Move [rdi+56], rax
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return 
+	041 LoadAddress rdx, [0x181D30D00]
+	042 Move rcx, 0
+	043 Call 0x1801EE410, rcx, rdx, r8, r9
+	044 Move rcx, rax
+	045 Move rdx, 0
+	046 Call 0x1801EEA10, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(System.IntPtr methodsPtr, Discord.ActivityActionType type, System.IntPtr callbackData, Discord.OverlayManager+FFIMethods+OpenActivityInviteCallback callback)
+
+Disassembly:
+	mov rax,[rcx+28h]
+	mov r10,[rcx+18h]
+	mov rcx,[rcx+40h]
+	mov [rsp+30h],rax
+	jmp r10
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Move r10, [rcx+24]
+	003 Move rcx, [rcx+64]
+	004 Move stack:0x30, rax
+	005 CallNoReturn r10
+
+Method: System.IAsyncResult BeginInvoke(System.IntPtr methodsPtr, Discord.ActivityActionType type, System.IntPtr callbackData, Discord.OverlayManager+FFIMethods+OpenActivityInviteCallback callback, System.AsyncCallback __callback, System.Object object)
+
+Disassembly:
+	mov [rsp+20h],r9
+	mov [rsp+18h],r8d
+	mov [rsp+10h],rdx
+	push rbx
+	sub rsp,50h
+	cmp byte ptr [1825C6412h],0
+	mov rbx,rcx
+	jne short 00000001803A7923h
+	lea rcx,[18249D240h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6412h],1
+	mov rcx,[1825D3798h]
+	lea rdx,[rsp+68h]
+	mov qword ptr [rsp+40h],0
+	call 00000001801ED910h
+	mov rcx,[18249D240h]
+	lea rdx,[rsp+70h]
+	mov [rsp+20h],rax
+	call 00000001801ED910h
+	mov rcx,[1825D3798h]
+	lea rdx,[rsp+78h]
+	mov [rsp+28h],rax
+	call 00000001801ED910h
+	mov r9,[rsp+90h]
+	lea rdx,[rsp+20h]
+	mov r8,[rsp+88h]
+	mov rcx,rbx
+	mov [rsp+30h],rax
+	mov rax,[rsp+80h]
+	mov [rsp+38h],rax
+	call 00000001801EE3F0h
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 Move stack:0x20, r9
+	002 Move stack:0x18, r8
+	003 Move stack:0x10, rdx
+	004 ShiftStack -8
+	005 Move stack:0x0, rbx
+	006 ShiftStack -80
+	007 Compare [0x1825C6412], 0
+	008 Move rbx, rcx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x18249D240]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x1825C6412], 1
+	013 Move rcx, [0x1825D3798]
+	014 LoadAddress rdx, stack:0x68
+	015 Move stack:0x40, 0
+	016 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	017 Move rcx, typeof(Discord.ActivityActionType)
+	018 LoadAddress rdx, stack:0x70
+	019 Move stack:0x20, rax
+	020 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	021 Move rcx, [0x1825D3798]
+	022 LoadAddress rdx, stack:0x78
+	023 Move stack:0x28, rax
+	024 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	025 Move r9, stack:0x90
+	026 LoadAddress rdx, stack:0x20
+	027 Move r8, stack:0x88
+	028 Move rcx, rbx
+	029 Move stack:0x30, rax
+	030 Move rax, stack:0x80
+	031 Move stack:0x38, rax
+	032 Call 0x1801EE3F0, rcx, rdx, r8, r9
+	033 ShiftStack 80
+	034 Move rbx, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+
+Method: System.Void EndInvoke(System.IAsyncResult result)
+
+Disassembly:
+	mov rcx,rdx
+	xor edx,edx
+	jmp near ptr 00000001801EE400h
+
+ISIL:
+	001 Move rcx, rdx
+	002 Move rdx, 0
+	003 Call 0x1801EE400, rcx, rdx, r8, r9
+	004 Return 
+

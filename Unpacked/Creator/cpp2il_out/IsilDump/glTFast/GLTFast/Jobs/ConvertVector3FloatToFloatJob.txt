@@ -1,0 +1,40 @@
+Type: GLTFast.Jobs.ConvertVector3FloatToFloatJob
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	sub rsp,18h
+	movsxd rax,edx
+	lea r8,[rax+rax*2]
+	mov rax,[rcx]
+	movsd xmm1,qword ptr [rax+r8*4]
+	mov r9d,[rax+r8*4+8]
+	movaps xmm0,xmm1
+	mulss xmm0,dword ptr [181D30C8Ch]
+	movsxd rax,edx
+	movss xmm1,xmm0
+	lea rdx,[rax+rax*2]
+	mov rax,[rcx+8]
+	movsd qword ptr [rax+rdx*4],xmm1
+	mov [rax+rdx*4+8],r9d
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move rax, rdx
+	003 LoadAddress r8, [rax+rax*2]
+	004 Move rax, [rcx]
+	005 Move xmm1, [rax+r8*4]
+	006 Move r9, [rax+8+r8*4]
+	007 Move xmm0, xmm1
+	008 Multiply xmm0, xmm0, [0x181D30C8C]
+	009 Move rax, rdx
+	010 Move xmm1, xmm0
+	011 LoadAddress rdx, [rax+rax*2]
+	012 Move rax, [rcx+8]
+	013 Move [rax+rdx*4], xmm1
+	014 Move [rax+8+rdx*4], r9
+	015 ShiftStack 24
+	016 Return 
+

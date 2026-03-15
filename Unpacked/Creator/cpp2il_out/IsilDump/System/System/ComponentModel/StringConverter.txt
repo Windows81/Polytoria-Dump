@@ -1,0 +1,239 @@
+Type: System.ComponentModel.StringConverter
+
+Method: System.Boolean CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rcx,[1825D3820h]
+	mov rdi,r8
+	mov rbx,[1825D37D0h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001817996C9h
+	call 00000001801EEAF0h
+	xor edx,edx
+	lea rcx,[rbx+20h]
+	call 00000001814C87A0h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001802D8A50h
+	test al,al
+	je short 00000001817996F3h
+	mov al,1
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	cmp byte ptr [1825CCF19h],0
+	jne short 000000018179970Fh
+	lea rcx,[182478F10h]
+	call 00000001801EE810h
+	mov byte ptr [1825CCF19h],1
+	mov rcx,[1825D3820h]
+	mov rbx,[182478F10h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018179972Bh
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814C87A0h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001802D8A50h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rcx, [0x1825D3820]
+	006 Move rdi, r8
+	007 Move rbx, [0x1825D37D0]
+	008 Compare [rcx+228], 0
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Move rdx, 0
+	012 LoadAddress rcx, [rbx+32]
+	013 Call Type.GetTypeFromHandle, rcx, rdx
+	014 Move r8, 0
+	015 Move rdx, rax
+	016 Move rcx, rdi
+	017 Call 0x1802D8A50, rcx, rdx, r8
+	018 Compare rax, 0
+	019 JumpIfEqual {26}
+	020 Move rax, 1
+	021 Move rbx, stack:0x30
+	022 ShiftStack 32
+	023 Move rdi, stack:0x0
+	024 ShiftStack 8
+	025 Return rax
+	026 Compare [0x1825CCF19], 0
+	027 JumpIfNotEqual {31}
+	028 LoadAddress rcx, [0x182478F10]
+	029 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	030 Move [0x1825CCF19], 1
+	031 Move rcx, [0x1825D3820]
+	032 Move rbx, typeof(System.ComponentModel.Design.Serialization.InstanceDescriptor)
+	033 Compare [rcx+228], 0
+	034 JumpIfNotEqual {36}
+	035 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	036 Move rdx, 0
+	037 Move rcx, rbx
+	038 Call Type.GetTypeFromHandle, rcx, rdx
+	039 Move r8, 0
+	040 Move rdx, rax
+	041 Move rcx, rdi
+	042 Call 0x1802D8A50, rcx, rdx, r8
+	043 Move rbx, stack:0x30
+	044 ShiftStack 32
+	045 Move rdi, stack:0x0
+	046 ShiftStack 8
+	047 Return rax
+
+Method: System.Object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, System.Object value)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rsi
+	sub rsp,20h
+	mov rbx,r9
+	mov rsi,rcx
+	test r9,r9
+	je near ptr 00000001817A97ECh
+	mov rdx,[1825D37D0h]
+	mov [rsp+30h],rdi
+	xor edi,edi
+	cmp [r9],rdx
+	mov eax,edi
+	cmove rax,rbx
+	test rax,rax
+	jne short 00000001817A97CDh
+	cmp [1825CCF1Ah],dil
+	jne short 00000001817A97A1h
+	lea rcx,[18247E3D8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CCF1Ah],1
+	mov rax,[18247E3D8h]
+	cmp [rbx],rax
+	cmove rdi,rbx
+	test rdi,rdi
+	je short 00000001817A9808h
+	xor edx,edx
+	mov rcx,rdi
+	mov rdi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rsi
+	jmp near ptr 00000001817A0070h
+	cmp [r9],rdx
+	cmove rdi,rbx
+	test rdi,rdi
+	je short 00000001817A9817h
+	mov rax,rdi
+	mov rdi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rsi
+	ret
+	mov rax,[1825D37D0h]
+	mov rbx,[rsp+38h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,20h
+	pop rsi
+	ret
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rsi
+	call 00000001817AA4D0h
+	int 3
+	mov rcx,rbx
+	call 00000001801ED970h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -32
+	005 Move rbx, r9
+	006 Move rsi, rcx
+	007 Compare r9, 0
+	008 JumpIfEqual {53}
+	009 Move rdx, [0x1825D37D0]
+	010 Move stack:0x30, rdi
+	011 Move rdi, 0
+	012 Compare [r9], rdx
+	013 Move rax, rdi
+	014 JumpIfNotEqual {16}
+	015 Move rax, rbx
+	016 Nop 
+	017 Compare rax, 0
+	018 JumpIfNotEqual {40}
+	019 Compare [0x1825CCF1A], rdi
+	020 JumpIfNotEqual {24}
+	021 LoadAddress rcx, [0x18247E3D8]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 Move [0x1825CCF1A], 1
+	024 Move rax, typeof(System.ComponentModel.Design.Serialization.InstanceDescriptor)
+	025 Compare [rbx], rax
+	026 JumpIfNotEqual {28}
+	027 Move rdi, rbx
+	028 Nop 
+	029 Compare rdi, 0
+	030 JumpIfEqual {61}
+	031 Move rdx, 0
+	032 Move rcx, rdi
+	033 Move rdi, stack:0x30
+	034 Move rbx, stack:0x38
+	035 ShiftStack 32
+	036 Move rsi, stack:0x0
+	037 ShiftStack 8
+	038 Call InstanceDescriptor.Invoke, rcx, rdx
+	039 Return rax
+	040 Compare [r9], rdx
+	041 JumpIfNotEqual {43}
+	042 Move rdi, rbx
+	043 Nop 
+	044 Compare rdi, 0
+	045 JumpIfEqual {66}
+	046 Move rax, rdi
+	047 Move rdi, stack:0x30
+	048 Move rbx, stack:0x38
+	049 ShiftStack 32
+	050 Move rsi, stack:0x0
+	051 ShiftStack 8
+	052 Return rax
+	053 Move rax, [0x1825D37D0]
+	054 Move rbx, stack:0x38
+	055 Move rax, [rax+184]
+	056 Move rax, [rax]
+	057 ShiftStack 32
+	058 Move rsi, stack:0x0
+	059 ShiftStack 8
+	060 Return rax
+	061 Move r8, 0
+	062 Move rdx, rbx
+	063 Move rcx, rsi
+	064 Call TypeConverter.GetConvertFromException, rcx, rdx
+	065 Interrupt 
+	066 Move rcx, rbx
+	067 Call 0x1801ED970, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

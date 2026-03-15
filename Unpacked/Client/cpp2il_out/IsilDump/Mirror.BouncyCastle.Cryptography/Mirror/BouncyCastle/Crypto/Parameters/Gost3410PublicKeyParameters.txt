@@ -1,0 +1,149 @@
+Type: Mirror.BouncyCastle.Crypto.Parameters.Gost3410PublicKeyParameters
+
+Method: System.Void .ctor(Mirror.BouncyCastle.Math.BigInteger y, Mirror.BouncyCastle.Asn1.DerObjectIdentifier publicKeyParamSet)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rsi,rdx
+	mov rbx,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 00000001802E39B0h
+	xor edx,edx
+	mov byte ptr [rdi+10h],0
+	mov rcx,rbx
+	call 00000001812B6510h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rax
+	mov rdx,rax
+	call 000000018020B990h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	test rsi,rsi
+	je short 00000001812B6D83h
+	cmp dword ptr [rsi+18h],1
+	jl short 00000001812B6D89h
+	mov rdx,[rdi+18h]
+	test rdx,rdx
+	je short 00000001812B6D83h
+	mov rdx,[rdx+10h]
+	xor r8d,r8d
+	mov rcx,rsi
+	call 0000000181175560h
+	test eax,eax
+	jns short 00000001812B6D89h
+	lea rcx,[rdi+28h]
+	mov [rdi+28h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+	call 000000018020CAB0h
+	int 3
+	lea rcx,[1826481E8h]
+	call 000000018020C890h
+	mov rcx,rax
+	call 000000018020CA60h
+	lea rcx,[182638208h]
+	mov rdi,rax
+	call 000000018020C890h
+	lea rcx,[182626A88h]
+	mov rbx,rax
+	call 000000018020C890h
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001814D5990h
+	lea rcx,[18261E740h]
+	call 000000018020C890h
+	mov rdx,rax
+	mov rcx,rdi
+	call 000000018020CA70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, rdx
+	007 Move rbx, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	011 Move rdx, 0
+	012 Move [rdi+16], 0
+	013 Move rcx, rbx
+	014 Call Gost3410KeyParameters.LookupParameters, rcx, rdx
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rax
+	017 Move rdx, rax
+	018 Call 0x18020B990, rcx, rdx, r8, r9
+	019 LoadAddress rcx, [rdi+32]
+	020 Move [rdi+32], rbx
+	021 Move rdx, rbx
+	022 Call 0x18020B990, rcx, rdx, r8, r9
+	023 Compare rsi, 0
+	024 JumpIfEqual {46}
+	025 Compare [rsi+24], 1
+	026 JumpIfLess {48}
+	027 Move rdx, [rdi+24]
+	028 Compare rdx, 0
+	029 JumpIfEqual {46}
+	030 Move rdx, [rdx+16]
+	031 Move r8, 0
+	032 Move rcx, rsi
+	033 Call BigInteger.CompareTo, rcx, rdx
+	034 Compare rax, 0
+	035 JumpIfNotSign {48}
+	036 LoadAddress rcx, [rdi+40]
+	037 Move [rdi+40], rsi
+	038 Move rdx, rsi
+	039 Move rbx, stack:0x30
+	040 Move rsi, stack:0x38
+	041 ShiftStack 32
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Call 0x18020B990, rcx, rdx, r8, r9
+	045 Return 
+	046 Call 0x18020CAB0, rcx, rdx, r8, r9
+	047 Interrupt 
+	048 LoadAddress rcx, [0x1826481E8]
+	049 Call 0x18020C890, rcx, rdx, r8, r9
+	050 Move rcx, rax
+	051 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	052 LoadAddress rcx, [0x182638208]
+	053 Move rdi, rax
+	054 Call 0x18020C890, rcx, rdx, r8, r9
+	055 LoadAddress rcx, [0x182626A88]
+	056 Move rbx, rax
+	057 Call 0x18020C890, rcx, rdx, r8, r9
+	058 Move r9, 0
+	059 Move r8, rbx
+	060 Move rdx, rax
+	061 Move rcx, rdi
+	062 Call ArgumentException..ctor, rcx, rdx, r8
+	063 LoadAddress rcx, [0x18261E740]
+	064 Call 0x18020C890, rcx, rdx, r8, r9
+	065 Move rdx, rax
+	066 Move rcx, rdi
+	067 Call 0x18020CA70, rcx, rdx, r8, r9
+
+Method: Mirror.BouncyCastle.Math.BigInteger get_Y()
+
+Disassembly:
+	mov rax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+

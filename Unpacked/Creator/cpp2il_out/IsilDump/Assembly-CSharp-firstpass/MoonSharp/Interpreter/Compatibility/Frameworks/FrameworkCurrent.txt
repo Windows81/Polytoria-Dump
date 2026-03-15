@@ -1,0 +1,141 @@
+Type: MoonSharp.Interpreter.Compatibility.Frameworks.FrameworkCurrent
+
+Method: System.Type GetTypeInfoFromType(System.Type t)
+
+Disassembly:
+	mov rax,rdx
+	ret
+
+ISIL:
+	001 Move rax, rdx
+	002 Return rax
+
+Method: System.Boolean IsDbNull(System.Object o)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1825C630Bh],0
+	mov rbx,rdx
+	jne short 0000000180396485h
+	lea rcx,[182458088h]
+	call 00000001801EE810h
+	mov byte ptr [1825C630Bh],1
+	test rbx,rbx
+	jne short 0000000180396492h
+	xor al,al
+	add rsp,20h
+	pop rbx
+	ret
+	mov rcx,[182458088h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001803964A7h
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000181412560h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1825C630B], 0
+	005 Move rbx, rdx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x182458088]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x1825C630B], 1
+	010 Compare rbx, 0
+	011 JumpIfNotEqual {17}
+	012 Move rax, 0
+	013 ShiftStack 32
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Return rax
+	017 Move rcx, typeof(System.Convert)
+	018 Compare [rcx+228], 0
+	019 JumpIfNotEqual {21}
+	020 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	021 Move rdx, 0
+	022 Move rcx, rbx
+	023 ShiftStack 32
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Call Convert.IsDBNull, rcx, rdx
+	027 Return rax
+
+Method: System.Boolean StringContainsChar(System.String str, System.Char chr)
+
+Disassembly:
+	sub rsp,28h
+	movzx r9d,r8w
+	mov rax,rdx
+	test rdx,rdx
+	je short 00000001803964E3h
+	xor r8d,r8d
+	movzx edx,r9w
+	mov rcx,rax
+	add rsp,28h
+	jmp near ptr 00000001812FF720h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r9, r8
+	003 Move rax, rdx
+	004 Compare rdx, 0
+	005 JumpIfEqual {12}
+	006 Move r8, 0
+	007 Move rdx, r9
+	008 Move rcx, rax
+	009 ShiftStack 40
+	010 Call String.Contains, rcx, rdx
+	011 Return rax
+	012 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Type GetInterface(System.Type type, System.String name)
+
+Disassembly:
+	sub rsp,28h
+	mov r9,r8
+	mov rax,rdx
+	test rdx,rdx
+	je short 0000000180396451h
+	xor r8d,r8d
+	mov rdx,r9
+	mov rcx,rax
+	add rsp,28h
+	jmp near ptr 00000001814C77C0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r9, r8
+	003 Move rax, rdx
+	004 Compare rdx, 0
+	005 JumpIfEqual {12}
+	006 Move r8, 0
+	007 Move rdx, r9
+	008 Move rcx, rax
+	009 ShiftStack 40
+	010 Call Type.GetInterface, rcx, rdx
+	011 Return rax
+	012 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+10h],3Ch
+	mov dword ptr [rcx+14h],30h
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+16], 60
+	003 Move [rcx+20], 48
+	004 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	005 Return 
+

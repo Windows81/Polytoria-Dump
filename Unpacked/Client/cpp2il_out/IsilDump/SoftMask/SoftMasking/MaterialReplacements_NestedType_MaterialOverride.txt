@@ -1,0 +1,126 @@
+Type: SoftMasking.MaterialReplacements+MaterialOverride
+
+Method: System.Void .ctor(UnityEngine.Material original, UnityEngine.Material replacement)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,r8
+	xor edx,edx
+	mov rsi,rcx
+	call 00000001802E39B0h
+	lea rcx,[rsi+18h]
+	mov [rsi+18h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	lea rcx,[rsi+20h]
+	mov [rsi+20h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	mov rbx,[rsp+30h]
+	mov dword ptr [rsi+10h],1
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rdi, r8
+	008 Move rdx, 0
+	009 Move rsi, rcx
+	010 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	011 LoadAddress rcx, [rsi+24]
+	012 Move [rsi+24], rbx
+	013 Move rdx, rbx
+	014 Call 0x18020B990, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rsi+32]
+	016 Move [rsi+32], rdi
+	017 Move rdx, rdi
+	018 Call 0x18020B990, rcx, rdx, r8, r9
+	019 Move rbx, stack:0x30
+	020 Move [rsi+16], 1
+	021 Move rsi, stack:0x38
+	022 ShiftStack 32
+	023 Move rdi, stack:0x0
+	024 ShiftStack 8
+	025 Return 
+
+Method: UnityEngine.Material get_original()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_original(UnityEngine.Material value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: UnityEngine.Material get_replacement()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void set_replacement(UnityEngine.Material value)
+
+Disassembly:
+	mov [rcx+20h],rdx
+	add rcx,20h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+32], rdx
+	002 Add rcx, rcx, 32
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: UnityEngine.Material Get()
+
+Disassembly:
+	inc dword ptr [rcx+10h]
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Add [rcx+16], [rcx+16], 1
+	002 Move rax, [rcx+32]
+	003 Return rax
+
+Method: System.Boolean Release()
+
+Disassembly:
+	sub dword ptr [rcx+10h],1
+	sete al
+	ret
+
+ISIL:
+	001 Subtract [rcx+16], [rcx+16], 1
+	002 NotImplemented "sete al"
+	003 Return rax
+

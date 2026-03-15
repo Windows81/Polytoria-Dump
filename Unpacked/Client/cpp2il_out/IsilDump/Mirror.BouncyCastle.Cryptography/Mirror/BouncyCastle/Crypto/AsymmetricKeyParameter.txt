@@ -1,0 +1,173 @@
+Type: Mirror.BouncyCastle.Crypto.AsymmetricKeyParameter
+
+Method: System.Void .ctor(System.Boolean privateKey)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	movzx edi,dl
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	mov [rbx+10h],dil
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 Move [rbx+16], rdi
+	010 Move rbx, stack:0x30
+	011 ShiftStack 32
+	012 Move rdi, stack:0x0
+	013 ShiftStack 8
+	014 Return 
+
+Method: System.Boolean get_IsPrivate()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1827790EBh],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 00000001812A6CFCh
+	lea rcx,[182649D68h]
+	call 000000018020C870h
+	mov byte ptr [1827790EBh],1
+	test rbx,rbx
+	je short 00000001812A6D41h
+	mov rdx,[182649D68h]
+	mov r8,[rbx]
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r8+130h],al
+	jb short 00000001812A6D41h
+	movzx ecx,al
+	mov rax,[r8+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	jne short 00000001812A6D41h
+	movzx eax,byte ptr [rbx+10h]
+	cmp [rdi+10h],al
+	sete al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	xor al,al
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1827790EB], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182649D68]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1827790EB], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {31}
+	014 Move rdx, typeof(Mirror.BouncyCastle.Crypto.AsymmetricKeyParameter)
+	015 Move r8, [rbx]
+	016 Move rax, [rdx+304]
+	017 Compare [r8+304], rax
+	018 JumpIfLess {31}
+	019 Move rcx, rax
+	020 Move rax, [r8+200]
+	021 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	022 JumpIfNotEqual {31}
+	023 Move rax, [rbx+16]
+	024 Compare [rdi+16], rax
+	025 NotImplemented "sete al"
+	026 Move rbx, stack:0x30
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+	031 Move rbx, stack:0x30
+	032 Move rax, 0
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+
+Method: System.Boolean Equals(Mirror.BouncyCastle.Crypto.AsymmetricKeyParameter other)
+
+Disassembly:
+	sub rsp,28h
+	test rdx,rdx
+	je short 00000001812A6CC8h
+	movzx eax,byte ptr [rdx+10h]
+	cmp [rcx+10h],al
+	sete al
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rdx, 0
+	003 JumpIfEqual {9}
+	004 Move rax, [rdx+16]
+	005 Compare [rcx+16], rax
+	006 NotImplemented "sete al"
+	007 ShiftStack 40
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	sub rsp,28h
+	movzx eax,byte ptr [rcx+10h]
+	mov rcx,[182783168h]
+	mov [rsp+30h],al
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001812A6D71h
+	call 000000018020CB50h
+	xor edx,edx
+	lea rcx,[rsp+30h]
+	call 00000001814D6EB0h
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Move rcx, [0x182783168]
+	004 Move stack:0x30, rax
+	005 Compare [rcx+228], 0
+	006 JumpIfNotEqual {8}
+	007 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	008 Move rdx, 0
+	009 LoadAddress rcx, stack:0x30
+	010 Call Boolean.GetHashCode, rcx, rdx
+	011 ShiftStack 40
+	012 Return rax
+

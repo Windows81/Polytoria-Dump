@@ -1,0 +1,128 @@
+Type: RLD.ObjectLayerGrabSettings
+
+Method: System.Int32 get_Layer()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Boolean get_IsActive()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Void set_IsActive(System.Boolean value)
+
+Disassembly:
+	mov [rcx+14h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+20], rdx
+	002 Return 
+
+Method: System.Boolean get_AlignAxis()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+15h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+21]
+	002 Return rax
+
+Method: System.Void set_AlignAxis(System.Boolean value)
+
+Disassembly:
+	mov [rcx+15h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+21], rdx
+	002 Return 
+
+Method: RLD.TransformAxis get_AlignmentAxis()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_AlignmentAxis(RLD.TransformAxis value)
+
+Disassembly:
+	mov [rcx+18h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Return 
+
+Method: System.Single get_DefaultOffsetFromSurface()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+1Ch]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+28]
+	002 Return xmm0
+
+Method: System.Void set_DefaultOffsetFromSurface(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+1Ch],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+28], xmm1
+	002 Return 
+
+Method: System.Void .ctor(System.Int32 layer)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov edi,edx
+	mov byte ptr [rcx+15h],1
+	xor edx,edx
+	mov dword ptr [rcx+18h],2
+	mov rbx,rcx
+	call 00000001802E39B0h
+	mov [rbx+10h],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move [rcx+21], 1
+	007 Move rdx, 0
+	008 Move [rcx+24], 2
+	009 Move rbx, rcx
+	010 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	011 Move [rbx+16], rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Return 
+

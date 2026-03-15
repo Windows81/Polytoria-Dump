@@ -1,0 +1,112 @@
+Type: GLTFast.GltfGlobals
+
+Method: System.Boolean IsGltfBinary(Unity.Collections.NativeArray`1+ReadOnly<System.Byte> data)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1827785D0h],0
+	mov rbx,rcx
+	jne short 0000000181120583h
+	lea rcx,[182633BA0h]
+	call 000000018020C870h
+	mov byte ptr [1827785D0h],1
+	mov rax,[182633BA0h]
+	mov rdi,[rbx]
+	mov rcx,[rax+20h]
+	test byte ptr [rcx+135h],1
+	jne short 00000001811205A6h
+	call 0000000180215330h
+	mov rax,[182633BA0h]
+	mov rcx,[rax+20h]
+	movzx ebp,byte ptr [rdi]
+	test byte ptr [rcx+135h],1
+	jne short 00000001811205C2h
+	call 0000000180215330h
+	mov rax,[182633BA0h]
+	mov rcx,[rax+20h]
+	movzx esi,byte ptr [rdi+1]
+	test byte ptr [rcx+135h],1
+	jne short 00000001811205DFh
+	call 0000000180215330h
+	mov rax,[182633BA0h]
+	mov rcx,[rax+20h]
+	movzx edi,byte ptr [rdi+2]
+	mov rbx,[rbx]
+	test byte ptr [rcx+135h],1
+	jne short 00000001811205F8h
+	call 0000000180215330h
+	movzx ecx,byte ptr [rbx+3]
+	mov rbx,[rsp+30h]
+	shl ecx,8
+	or ecx,edi
+	shl ecx,8
+	or ecx,esi
+	mov rsi,[rsp+40h]
+	shl ecx,8
+	or ecx,ebp
+	mov rbp,[rsp+38h]
+	cmp ecx,46546C67h
+	sete al
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x1827785D0], 0
+	008 Move rbx, rcx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x182633BA0]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x1827785D0], 1
+	013 Move rax, [0x182633BA0]
+	014 Move rdi, [rbx]
+	015 Move rcx, [rax+32]
+	016 Compare [rcx+309], 1
+	017 JumpIfNotEqual {20}
+	018 Call 0x180215330, rcx, rdx, r8, r9
+	019 Move rax, [0x182633BA0]
+	020 Move rcx, [rax+32]
+	021 Move rbp, [rdi]
+	022 Compare [rcx+309], 1
+	023 JumpIfNotEqual {26}
+	024 Call 0x180215330, rcx, rdx, r8, r9
+	025 Move rax, [0x182633BA0]
+	026 Move rcx, [rax+32]
+	027 Move rsi, [rdi+1]
+	028 Compare [rcx+309], 1
+	029 JumpIfNotEqual {32}
+	030 Call 0x180215330, rcx, rdx, r8, r9
+	031 Move rax, [0x182633BA0]
+	032 Move rcx, [rax+32]
+	033 Move rdi, [rdi+2]
+	034 Move rbx, [rbx]
+	035 Compare [rcx+309], 1
+	036 JumpIfNotEqual {38}
+	037 Call 0x180215330, rcx, rdx, r8, r9
+	038 Move rcx, [rbx+3]
+	039 Move rbx, stack:0x30
+	040 ShiftLeft rcx, 8
+	041 Or rcx, rcx, rdi
+	042 ShiftLeft rcx, 8
+	043 Or rcx, rcx, rsi
+	044 Move rsi, stack:0x40
+	045 ShiftLeft rcx, 8
+	046 Or rcx, rcx, rbp
+	047 Move rbp, stack:0x38
+	048 Compare rcx, 0x46546C67
+	049 NotImplemented "sete al"
+	050 ShiftStack 32
+	051 Move rdi, stack:0x0
+	052 ShiftStack 8
+	053 Return rax
+

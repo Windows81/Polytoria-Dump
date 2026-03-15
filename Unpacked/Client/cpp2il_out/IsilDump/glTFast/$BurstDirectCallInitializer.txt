@@ -1,0 +1,35 @@
+Type: $BurstDirectCallInitializer
+
+Method: System.Void Initialize()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [182778750h],0
+	jne short 000000018115C270h
+	lea rcx,[1825F7F20h]
+	call 000000018020C870h
+	mov byte ptr [182778750h],1
+	mov rcx,[1825F7F20h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018115C289h
+	add rsp,28h
+	jmp near ptr 000000018020CB50h
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x182778750], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x1825F7F20]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x182778750], 1
+	007 Move rcx, typeof(Unity.Burst.BurstCompiler)
+	008 Compare [rcx+228], 0
+	009 JumpIfNotEqual {13}
+	010 ShiftStack 40
+	011 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	012 Return 
+	013 ShiftStack 40
+	014 Return 
+

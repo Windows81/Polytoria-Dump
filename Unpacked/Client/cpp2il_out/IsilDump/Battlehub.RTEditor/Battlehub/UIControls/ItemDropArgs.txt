@@ -1,0 +1,202 @@
+Type: Battlehub.UIControls.ItemDropArgs
+
+Method: System.Object[] get_DragItems()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_DragItems(System.Object[] value)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Object get_DropTarget()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_DropTarget(System.Object value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: Battlehub.UIControls.ItemDropAction get_Action()
+
+Disassembly:
+	mov eax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void set_Action(Battlehub.UIControls.ItemDropAction value)
+
+Disassembly:
+	mov [rcx+20h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+32], rdx
+	002 Return 
+
+Method: System.Boolean get_IsExternal()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+24h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+36]
+	002 Return rax
+
+Method: System.Void set_IsExternal(System.Boolean value)
+
+Disassembly:
+	mov [rcx+24h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+36], rdx
+	002 Return 
+
+Method: UnityEngine.EventSystems.PointerEventData get_PointerEventData()
+
+Disassembly:
+	mov rax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void set_PointerEventData(UnityEngine.EventSystems.PointerEventData value)
+
+Disassembly:
+	mov [rcx+28h],rdx
+	add rcx,28h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Add rcx, rcx, 40
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor(System.Object[] dragItems, System.Object dropTarget, Battlehub.UIControls.ItemDropAction action, System.Boolean isExternal, UnityEngine.EventSystems.PointerEventData pointerEventData)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1827763B5h],0
+	mov ebp,r9d
+	mov rdi,r8
+	mov rsi,rdx
+	mov rbx,rcx
+	jne short 00000001805F03DCh
+	lea rcx,[18260B628h]
+	call 000000018020C870h
+	mov byte ptr [1827763B5h],1
+	mov rcx,[18260B628h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001805F03F1h
+	call 000000018020CB50h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802DC8B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rsi
+	mov rdx,rsi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	movzx eax,byte ptr [rsp+50h]
+	lea rcx,[rbx+28h]
+	mov rdx,[rsp+58h]
+	mov [rbx+24h],al
+	mov [rbx+28h],rdx
+	mov [rbx+20h],ebp
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x1827763B5], 0
+	008 Move rbp, r9
+	009 Move rdi, r8
+	010 Move rsi, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x18260B628]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1827763B5], 1
+	016 Move rcx, typeof(System.EventArgs)
+	017 Compare [rcx+228], 0
+	018 JumpIfNotEqual {20}
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move rdx, 0
+	021 Move rcx, rbx
+	022 Call 0x1802DC8B0, rcx, rdx, r8
+	023 LoadAddress rcx, [rbx+16]
+	024 Move [rbx+16], rsi
+	025 Move rdx, rsi
+	026 Call 0x18020B990, rcx, rdx, r8, r9
+	027 LoadAddress rcx, [rbx+24]
+	028 Move [rbx+24], rdi
+	029 Move rdx, rdi
+	030 Call 0x18020B990, rcx, rdx, r8, r9
+	031 Move rax, stack:0x50
+	032 LoadAddress rcx, [rbx+40]
+	033 Move rdx, stack:0x58
+	034 Move [rbx+36], rax
+	035 Move [rbx+40], rdx
+	036 Move [rbx+32], rbp
+	037 Move rbx, stack:0x30
+	038 Move rbp, stack:0x38
+	039 Move rsi, stack:0x40
+	040 ShiftStack 32
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Call 0x18020B990, rcx, rdx, r8, r9
+	044 Return 
+

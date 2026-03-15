@@ -1,0 +1,118 @@
+Type: RLD.SphereTreeNodeRayHit`1
+
+Method: RLD.SphereTreeNode`1<T> get_HitNode()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: UnityEngine.Vector3 get_HitPoint()
+
+Disassembly:
+	mov eax,[rdx+20h]
+	movsd xmm0,qword ptr [rdx+18h]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+32]
+	002 Move xmm0, [rdx+24]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Single get_HitEnter()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+24h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+36]
+	002 Return xmm0
+
+Method: System.Void .ctor(UnityEngine.Ray ray, RLD.SphereTreeNode`1<T> hitNode, System.Single hitEnter)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,30h
+	mov rdi,rdx
+	movaps [rsp+20h],xmm6
+	xor edx,edx
+	movaps xmm6,xmm3
+	mov rbx,r8
+	mov rsi,rcx
+	call 00000001802E39B0h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	mov rbx,[rsp+40h]
+	movaps xmm0,xmm6
+	mulss xmm0,dword ptr [rdi+0Ch]
+	movaps xmm1,xmm6
+	mulss xmm1,dword ptr [rdi+10h]
+	addss xmm0,dword ptr [rdi]
+	movss dword ptr [rsi+24h],xmm6
+	mulss xmm6,dword ptr [rdi+14h]
+	addss xmm1,dword ptr [rdi+4]
+	addss xmm6,dword ptr [rdi+8]
+	unpcklps xmm0,xmm1
+	movsd qword ptr [rsi+18h],xmm0
+	movss dword ptr [rsi+20h],xmm6
+	mov rsi,[rsp+48h]
+	movaps xmm6,[rsp+20h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -48
+	006 Move rdi, rdx
+	007 Move stack:0x20, xmm6
+	008 Move rdx, 0
+	009 Move xmm6, xmm3
+	010 Move rbx, r8
+	011 Move rsi, rcx
+	012 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	013 LoadAddress rcx, [rsi+16]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Move rbx, stack:0x40
+	018 Move xmm0, xmm6
+	019 Multiply xmm0, xmm0, [rdi+12]
+	020 Move xmm1, xmm6
+	021 Multiply xmm1, xmm1, [rdi+16]
+	022 Add xmm0, xmm0, [rdi]
+	023 Move [rsi+36], xmm6
+	024 Multiply xmm6, xmm6, [rdi+20]
+	025 Add xmm1, xmm1, [rdi+4]
+	026 Add xmm6, xmm6, [rdi+8]
+	027 Move XMM_TEMP.S[0], xmm0.S[0]
+	028 Move XMM_TEMP.S[1], xmm1.S[0]
+	029 Move XMM_TEMP.S[2], xmm0.S[1]
+	030 Move XMM_TEMP.S[3], xmm1.S[1]
+	031 Move xmm0, XMM_TEMP
+	032 Move [rsi+24], xmm0
+	033 Move [rsi+32], xmm6
+	034 Move rsi, stack:0x48
+	035 Move xmm6, stack:0x20
+	036 ShiftStack 48
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return 
+

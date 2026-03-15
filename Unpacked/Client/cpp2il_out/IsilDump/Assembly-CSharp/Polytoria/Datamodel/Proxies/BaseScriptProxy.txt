@@ -1,0 +1,116 @@
+Type: Polytoria.Datamodel.Proxies.BaseScriptProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.BaseScript target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x18020B990, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Move rbx, stack:0x30
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Call 0x18020B990, rcx, rdx, r8, r9
+	021 Return 
+
+Method: System.Object get_Item(System.String name)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C5A19h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180423850h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call BaseScript.get_Item, rcx, rdx
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Item(System.String name, System.Object value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C5A39h
+	xor r9d,r9d
+	add rsp,28h
+	jmp near ptr 0000000180423880h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r9, 0
+	006 ShiftStack 40
+	007 Call BaseScript.set_Item, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Call(System.String function, System.Object[] args)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C59F9h
+	xor r9d,r9d
+	add rsp,28h
+	jmp near ptr 00000001804225B0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r9, 0
+	006 ShiftStack 40
+	007 Call BaseScript.Call, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

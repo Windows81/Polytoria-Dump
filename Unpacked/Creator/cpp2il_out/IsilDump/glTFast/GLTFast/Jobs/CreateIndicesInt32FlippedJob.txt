@@ -1,0 +1,34 @@
+Type: GLTFast.Jobs.CreateIndicesInt32FlippedJob
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	movsxd r9,edx
+	mov eax,55555556h
+	imul r9d
+	mov eax,edx
+	shr eax,1Fh
+	add edx,eax
+	mov rax,[rcx]
+	lea r8d,[rdx+rdx*2]
+	add r8d,r8d
+	sub r8d,r9d
+	add r8d,2
+	mov [rax+r9*4],r8d
+	ret
+
+ISIL:
+	001 Move r9, rdx
+	002 Move rax, 0x55555556
+	003 NotImplemented "imul r9d"
+	004 Move rax, rdx
+	005 ShiftRight rax, 31
+	006 Add rdx, rdx, rax
+	007 Move rax, [rcx]
+	008 LoadAddress r8, [rdx+rdx*2]
+	009 Add r8, r8, r8
+	010 Subtract r8, r8, r9
+	011 Add r8, r8, 2
+	012 Move [rax+r9*4], r8
+	013 Return 
+

@@ -1,0 +1,99 @@
+Type: MoonSharp.Interpreter.Debugging.DebugService
+
+Method: System.Void .ctor(MoonSharp.Interpreter.Script script, MoonSharp.Interpreter.Execution.VM.Processor processor)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 00000001802E39B0h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	011 LoadAddress rcx, [rdi+24]
+	012 Move [rdi+24], rbx
+	013 Move rdx, rbx
+	014 Call 0x18020B990, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+16]
+	016 Move [rdi+16], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x18020B990, rcx, rdx, r8, r9
+	024 Return 
+
+Method: MoonSharp.Interpreter.Script get_OwnerScript()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_OwnerScript(MoonSharp.Interpreter.Script value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Collections.Generic.HashSet`1<System.Int32> ResetBreakPoints(MoonSharp.Interpreter.Debugging.SourceCode src, System.Collections.Generic.HashSet`1<System.Int32> lines)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000180398CF9h
+	xor r9d,r9d
+	add rsp,28h
+	jmp near ptr 0000000180388960h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r9, 0
+	006 ShiftStack 40
+	007 Call Processor.ResetBreakPoints, rcx, rdx, r8
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

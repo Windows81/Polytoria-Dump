@@ -1,0 +1,50 @@
+Type: GLTFast.Jobs.ConvertBoneWeightsFloatToFloatInterleavedJob
+
+Method: System.Void Execute(System.Int32 i, System.Int32 count)
+
+Disassembly:
+	mov eax,edx
+	mov r10d,r8d
+	imul eax,[rcx+10h]
+	imul edx,[rcx]
+	movsxd r9,eax
+	add r9,[rcx+18h]
+	movsxd rax,edx
+	add rax,[rcx+8]
+	test r8d,r8d
+	jle short 000000018108A513h
+	movsxd rdx,dword ptr [rcx+10h]
+	movsxd r8,dword ptr [rcx]
+	mov ecx,r10d
+	nop dword ptr [rax]
+	movups xmm0,[rax]
+	add rax,r8
+	movups [r9],xmm0
+	add r9,rdx
+	sub rcx,1
+	jne short 000000018108A500h
+	ret
+
+ISIL:
+	001 Move rax, rdx
+	002 Move r10, r8
+	003 Multiply rax, rax, [rcx+16]
+	004 Multiply rdx, rdx, [rcx]
+	005 Move r9, rax
+	006 Add r9, r9, [rcx+24]
+	007 Move rax, rdx
+	008 Add rax, rax, [rcx+8]
+	009 Compare r8, 0
+	010 JumpIfLessOrEqual {21}
+	011 Move rdx, [rcx+16]
+	012 Move r8, [rcx]
+	013 Move rcx, r10
+	014 Nop 
+	015 Move xmm0, [rax]
+	016 Add rax, rax, r8
+	017 Move [r9], xmm0
+	018 Add r9, r9, rdx
+	019 Subtract rcx, rcx, 1
+	020 JumpIfNotEqual {15}
+	021 Return 
+

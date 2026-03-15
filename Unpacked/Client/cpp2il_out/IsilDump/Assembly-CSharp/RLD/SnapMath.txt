@@ -1,0 +1,176 @@
+Type: RLD.SnapMath
+
+Method: RLD.NumSnapSteps CalculateNumSnapSteps(System.Single snapStep, System.Single total)
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	xor eax,eax
+	movaps [rsp+40h],xmm6
+	mov [rcx+4],rax
+	mov rbx,rcx
+	mov [rcx+0Ch],rax
+	cmp byte ptr [1827760E0h],0
+	movups xmm3,[rcx]
+	divss xmm2,xmm1
+	movss xmm3,xmm2
+	movups [rcx],xmm3
+	movups xmm0,[rcx]
+	andps xmm3,[181E5DCE0h]
+	shufps xmm0,xmm0,0E1h
+	movss xmm0,xmm3
+	shufps xmm0,xmm0,0E1h
+	movups [rcx],xmm0
+	cvttss2si eax,xmm0
+	mov [rcx+8],eax
+	movups xmm6,[rcx]
+	jne short 00000001805AEF15h
+	lea rcx,[18262F800h]
+	call 000000018020C870h
+	mov byte ptr [1827760E0h],1
+	mov rcx,[18262F800h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001805AEF2Ah
+	call 000000018020CB50h
+	psrldq xmm6,8
+	movd eax,xmm6
+	movaps xmm6,[rsp+40h]
+	mov ecx,eax
+	neg ecx
+	cmovs ecx,eax
+	mov [rbx+0Ch],ecx
+	mov rax,[rbx+8]
+	movss xmm1,dword ptr [rbx+4]
+	shr rax,20h
+	movd xmm0,eax
+	mov rax,rbx
+	cvtdq2ps xmm0,xmm0
+	subss xmm1,xmm0
+	movss dword ptr [rbx+10h],xmm1
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move rax, 0
+	005 Move stack:0x40, xmm6
+	006 Move [rcx+4], rax
+	007 Move rbx, rcx
+	008 Move [rcx+12], rax
+	009 Compare [0x1827760E0], 0
+	010 Move xmm3, [rcx]
+	011 Divide xmm2, xmm2, xmm1
+	012 Move xmm3, xmm2
+	013 Move [rcx], xmm3
+	014 Move xmm0, [rcx]
+	015 And xmm3, xmm3, [0x181E5DCE0]
+	016 Move XMM_TEMP.S[0], xmm0.S[1]
+	017 Move XMM_TEMP.S[1], xmm0.S[0]
+	018 Move XMM_TEMP.S[2], xmm0.S[2]
+	019 Move XMM_TEMP.S[3], xmm0.S[3]
+	020 Move xmm0, XMM_TEMP
+	021 Move xmm0, xmm3
+	022 Move XMM_TEMP.S[0], xmm0.S[1]
+	023 Move XMM_TEMP.S[1], xmm0.S[0]
+	024 Move XMM_TEMP.S[2], xmm0.S[2]
+	025 Move XMM_TEMP.S[3], xmm0.S[3]
+	026 Move xmm0, XMM_TEMP
+	027 Move [rcx], xmm0
+	028 NotImplemented "cvttss2si eax,xmm0"
+	029 Move [rcx+8], rax
+	030 Move xmm6, [rcx]
+	031 JumpIfNotEqual {35}
+	032 LoadAddress rcx, [0x18262F800]
+	033 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	034 Move [0x1827760E0], 1
+	035 Move rcx, typeof(System.Math)
+	036 Compare [rcx+228], 0
+	037 JumpIfNotEqual {39}
+	038 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	039 NotImplemented "psrldq xmm6,8"
+	040 Move rax, xmm6
+	041 Move xmm6, stack:0x40
+	042 Move rcx, rax
+	043 Neg rcx
+	044 JumpIfNotSign {46}
+	045 Move rcx, rax
+	046 Nop 
+	047 Move [rbx+12], rcx
+	048 Move rax, [rbx+8]
+	049 Move xmm1, [rbx+4]
+	050 ShiftRight rax, 32
+	051 Move xmm0, rax
+	052 Move rax, rbx
+	053 Move xmm0, xmm0
+	054 Subtract xmm1, xmm1, xmm0
+	055 Move [rbx+16], xmm1
+	056 ShiftStack 80
+	057 Move rbx, stack:0x0
+	058 ShiftStack 8
+	059 Return rax
+
+Method: System.Boolean CanExtractSnap(System.Single snapStep, System.Single accumulated)
+
+Disassembly:
+	andps xmm1,[181E5DCE0h]
+	comiss xmm1,xmm0
+	setae al
+	ret
+
+ISIL:
+	001 And xmm1, xmm1, [0x181E5DCE0]
+	002 Compare xmm1, xmm0
+	003 NotImplemented "setae al"
+	004 Return rax
+
+Method: System.Single ExtractSnap(System.Single snapStep, ref System.Single accumulated)
+
+Disassembly:
+	movss xmm1,dword ptr [rdx]
+	divss xmm1,xmm0
+	cvttss2si eax,xmm1
+	movss xmm1,dword ptr [rdx]
+	movd xmm2,eax
+	cvtdq2ps xmm2,xmm2
+	mulss xmm2,xmm0
+	subss xmm1,xmm2
+	movaps xmm0,xmm2
+	movss dword ptr [rdx],xmm1
+	ret
+
+ISIL:
+	001 Move xmm1, [rdx]
+	002 Divide xmm1, xmm1, xmm0
+	003 NotImplemented "cvttss2si eax,xmm1"
+	004 Move xmm1, [rdx]
+	005 Move xmm2, rax
+	006 Move xmm2, xmm2
+	007 Multiply xmm2, xmm2, xmm0
+	008 Subtract xmm1, xmm1, xmm2
+	009 Move xmm0, xmm2
+	010 Move [rdx], xmm1
+	011 Return xmm0
+
+Method: System.Single ExtractSnap(System.Single snapStep, System.Single accumulated)
+
+Disassembly:
+	movaps xmm2,xmm0
+	divss xmm1,xmm2
+	cvttss2si eax,xmm1
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	mulss xmm0,xmm2
+	ret
+
+ISIL:
+	001 Move xmm2, xmm0
+	002 Divide xmm1, xmm1, xmm2
+	003 NotImplemented "cvttss2si eax,xmm1"
+	004 Move xmm0, rax
+	005 Move xmm0, xmm0
+	006 Multiply xmm0, xmm0, xmm2
+	007 Return xmm0
+

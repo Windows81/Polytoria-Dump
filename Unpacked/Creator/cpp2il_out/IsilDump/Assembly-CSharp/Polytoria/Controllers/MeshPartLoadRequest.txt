@@ -1,0 +1,45 @@
+Type: Polytoria.Controllers.MeshPartLoadRequest
+
+Method: System.Void .ctor(System.Int32 assetID, Polytoria.Datamodel.MeshPart meshPart, System.Action onLoadComplete = null)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov [rcx],edx
+	mov rbx,rcx
+	mov [rcx+8],r8
+	mov rdx,r8
+	add rcx,8
+	mov rdi,r9
+	call 00000001801ED930h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move [rcx], rdx
+	006 Move rbx, rcx
+	007 Move [rcx+8], r8
+	008 Move rdx, r8
+	009 Add rcx, rcx, 8
+	010 Move rdi, r9
+	011 Call 0x1801ED930, rcx, rdx, r8, r9
+	012 LoadAddress rcx, [rbx+16]
+	013 Move [rbx+16], rdi
+	014 Move rdx, rdi
+	015 Move rbx, stack:0x30
+	016 ShiftStack 32
+	017 Move rdi, stack:0x0
+	018 ShiftStack 8
+	019 Call 0x1801ED930, rcx, rdx, r8, r9
+	020 Return 
+

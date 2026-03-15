@@ -1,0 +1,26 @@
+Type: RLD.ObjectSurfaceSnap+SnapConfig
+
+Method: System.Boolean IsSurfaceMesh()
+
+Disassembly:
+	cmp dword ptr [rcx+8],1
+	je short 00000001803FF2A4h
+	cmp dword ptr [rcx+8],3
+	je short 00000001803FF2A4h
+	cmp dword ptr [rcx+8],2
+	sete al
+	ret
+	mov al,1
+	ret
+
+ISIL:
+	001 Compare [rcx+8], 1
+	002 JumpIfEqual {8}
+	003 Compare [rcx+8], 3
+	004 JumpIfEqual {8}
+	005 Compare [rcx+8], 2
+	006 NotImplemented "sete al"
+	007 Return rax
+	008 Move rax, 1
+	009 Return rax
+

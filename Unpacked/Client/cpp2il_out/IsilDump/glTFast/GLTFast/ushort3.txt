@@ -1,0 +1,104 @@
+Type: GLTFast.ushort3
+
+Method: Unity.Mathematics.float3 GltfToUnityFloat3()
+
+Disassembly:
+	movzx eax,word ptr [rdx]
+	neg eax
+	movd xmm0,eax
+	movzx eax,word ptr [rdx+2]
+	cvtdq2ps xmm0,xmm0
+	movd xmm1,eax
+	movzx eax,word ptr [rdx+4]
+	movss dword ptr [rcx],xmm0
+	cvtdq2ps xmm1,xmm1
+	movd xmm0,eax
+	mov rax,rcx
+	cvtdq2ps xmm0,xmm0
+	movss dword ptr [rcx+4],xmm1
+	movss dword ptr [rcx+8],xmm0
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Neg rax
+	003 Move xmm0, rax
+	004 Move rax, [rdx+2]
+	005 Move xmm0, xmm0
+	006 Move xmm1, rax
+	007 Move rax, [rdx+4]
+	008 Move [rcx], xmm0
+	009 Move xmm1, xmm1
+	010 Move xmm0, rax
+	011 Move rax, rcx
+	012 Move xmm0, xmm0
+	013 Move [rcx+4], xmm1
+	014 Move [rcx+8], xmm0
+	015 Return rax
+
+Method: Unity.Mathematics.float3 GltfToUnityNormalizedFloat3()
+
+Disassembly:
+	movzx eax,word ptr [rdx]
+	movss xmm2,dword ptr [181E5E1A8h]
+	movd xmm0,eax
+	movzx eax,word ptr [rdx+2]
+	cvtdq2ps xmm0,xmm0
+	divss xmm0,xmm2
+	xorps xmm0,[181E5DCF0h]
+	movss dword ptr [rcx],xmm0
+	movd xmm0,eax
+	movzx eax,word ptr [rdx+4]
+	cvtdq2ps xmm0,xmm0
+	movd xmm1,eax
+	mov rax,rcx
+	cvtdq2ps xmm1,xmm1
+	divss xmm0,xmm2
+	divss xmm1,xmm2
+	movss dword ptr [rcx+4],xmm0
+	movss dword ptr [rcx+8],xmm1
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Move xmm2, [0x181E5E1A8]
+	003 Move xmm0, rax
+	004 Move rax, [rdx+2]
+	005 Move xmm0, xmm0
+	006 Divide xmm0, xmm0, xmm2
+	007 Xor xmm0, xmm0, [0x181E5DCF0]
+	008 Move [rcx], xmm0
+	009 Move xmm0, rax
+	010 Move rax, [rdx+4]
+	011 Move xmm0, xmm0
+	012 Move xmm1, rax
+	013 Move rax, rcx
+	014 Move xmm1, xmm1
+	015 Divide xmm0, xmm0, xmm2
+	016 Divide xmm1, xmm1, xmm2
+	017 Move [rcx+4], xmm0
+	018 Move [rcx+8], xmm1
+	019 Return rax
+
+Method: Unity.Mathematics.int3 GltfToUnityTriangleIndies()
+
+Disassembly:
+	movzx eax,word ptr [rdx]
+	mov [rcx],eax
+	movzx eax,word ptr [rdx+4]
+	mov [rcx+4],eax
+	movzx eax,word ptr [rdx+2]
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Move [rcx], rax
+	003 Move rax, [rdx+4]
+	004 Move [rcx+4], rax
+	005 Move rax, [rdx+2]
+	006 Move [rcx+8], rax
+	007 Move rax, rcx
+	008 Return rax
+

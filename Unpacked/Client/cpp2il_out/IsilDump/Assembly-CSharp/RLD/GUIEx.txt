@@ -1,0 +1,261 @@
+Type: RLD.GUIEx
+
+Method: System.Void PushColor(UnityEngine.Color color)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [1827760CAh],0
+	mov rdi,rcx
+	jne short 0000000180564D31h
+	lea rcx,[1826104E0h]
+	call 000000018020C870h
+	lea rcx,[1826103E8h]
+	call 000000018020C870h
+	lea rcx,[1826414C8h]
+	call 000000018020C870h
+	mov byte ptr [1827760CAh],1
+	mov rax,[1826104E0h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180564D50h
+	mov rcx,rax
+	call 000000018020CB50h
+	mov rax,[1826104E0h]
+	mov rcx,[1826103E8h]
+	mov rax,[rax+0B8h]
+	cmp dword ptr [rcx+0E4h],0
+	mov rbx,[rax]
+	jne short 0000000180564D6Fh
+	call 000000018020CB50h
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	call 0000000181AA97B0h
+	test rbx,rbx
+	je short 0000000180564DBBh
+	movups xmm0,[rax]
+	mov r8,[1826414C8h]
+	lea rdx,[rsp+20h]
+	mov rcx,rbx
+	movaps [rsp+20h],xmm0
+	call 0000000180899400h
+	movups xmm0,[rdi]
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 0000000181AA9DC0h
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x1827760CA], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {15}
+	008 LoadAddress rcx, [0x1826104E0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x1826103E8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x1826414C8]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x1827760CA], 1
+	015 Move rax, typeof(RLD.GUIEx)
+	016 Compare [rax+228], 0
+	017 JumpIfNotEqual {21}
+	018 Move rcx, rax
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move rax, typeof(RLD.GUIEx)
+	021 Move rcx, typeof(UnityEngine.GUI)
+	022 Move rax, [rax+184]
+	023 Compare [rcx+228], 0
+	024 Move rbx, [rax]
+	025 JumpIfNotEqual {27}
+	026 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	027 Move rdx, 0
+	028 LoadAddress rcx, stack:0x20
+	029 Call GUI.get_color, rcx
+	030 Compare rbx, 0
+	031 JumpIfEqual {48}
+	032 Move xmm0, [rax]
+	033 Move r8, [0x1826414C8]
+	034 LoadAddress rdx, stack:0x20
+	035 Move rcx, rbx
+	036 Move stack:0x20, xmm0
+	037 Call 0x180899400, rcx, rdx
+	038 Move xmm0, [rdi]
+	039 Move rdx, 0
+	040 LoadAddress rcx, stack:0x20
+	041 Move stack:0x20, xmm0
+	042 Call GUI.set_color, rcx, rdx
+	043 Move rbx, stack:0x40
+	044 ShiftStack 48
+	045 Move rdi, stack:0x0
+	046 ShiftStack 8
+	047 Return 
+	048 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void PopColor()
+
+Disassembly:
+	sub rsp,38h
+	cmp byte ptr [1827760CBh],0
+	jne short 0000000180564C44h
+	lea rcx,[1826104E0h]
+	call 000000018020C870h
+	lea rcx,[1826103E8h]
+	call 000000018020C870h
+	lea rcx,[182641440h]
+	call 000000018020C870h
+	lea rcx,[182641550h]
+	call 000000018020C870h
+	mov byte ptr [1827760CBh],1
+	mov rcx,[1826104E0h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180564C60h
+	call 000000018020CB50h
+	mov rcx,[1826104E0h]
+	mov rax,[rcx+0B8h]
+	mov rdx,[rax]
+	test rdx,rdx
+	je short 0000000180564CDBh
+	cmp dword ptr [rdx+18h],0
+	jle short 0000000180564CD6h
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180564C8Ah
+	call 000000018020CB50h
+	mov rcx,[1826104E0h]
+	mov rax,[rcx+0B8h]
+	mov rdx,[rax]
+	test rdx,rdx
+	je short 0000000180564CDBh
+	mov r8,[182641440h]
+	lea rcx,[rsp+20h]
+	call 00000001808987E0h
+	mov rcx,[1826103E8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180564CBFh
+	call 000000018020CB50h
+	movups xmm0,[rsp+20h]
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	movdqa [rsp+20h],xmm0
+	call 0000000181AA9DC0h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Compare [0x1827760CB], 0
+	003 JumpIfNotEqual {13}
+	004 LoadAddress rcx, [0x1826104E0]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x1826103E8]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x182641440]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x182641550]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x1827760CB], 1
+	013 Move rcx, typeof(RLD.GUIEx)
+	014 Compare [rcx+228], 0
+	015 JumpIfNotEqual {18}
+	016 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	017 Move rcx, typeof(RLD.GUIEx)
+	018 Move rax, [rcx+184]
+	019 Move rdx, [rax]
+	020 Compare rdx, 0
+	021 JumpIfEqual {46}
+	022 Compare [rdx+24], 0
+	023 JumpIfLessOrEqual {44}
+	024 Compare [rcx+228], 0
+	025 JumpIfNotEqual {28}
+	026 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	027 Move rcx, typeof(RLD.GUIEx)
+	028 Move rax, [rcx+184]
+	029 Move rdx, [rax]
+	030 Compare rdx, 0
+	031 JumpIfEqual {46}
+	032 Move r8, [0x182641440]
+	033 LoadAddress rcx, stack:0x20
+	034 Call 0x1808987E0, rcx, rdx
+	035 Move rcx, typeof(UnityEngine.GUI)
+	036 Compare [rcx+228], 0
+	037 JumpIfNotEqual {39}
+	038 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	039 Move xmm0, stack:0x20
+	040 Move rdx, 0
+	041 LoadAddress rcx, stack:0x20
+	042 Move stack:0x20, xmm0
+	043 Call GUI.set_color, rcx, rdx
+	044 ShiftStack 56
+	045 Return 
+	046 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1827760CCh],0
+	jne short 0000000180564E0Ah
+	lea rcx,[1826104E0h]
+	call 000000018020C870h
+	lea rcx,[1826413B8h]
+	call 000000018020C870h
+	lea rcx,[1826257D8h]
+	call 000000018020C870h
+	mov byte ptr [1827760CCh],1
+	mov rcx,[1826257D8h]
+	call 000000018020CA60h
+	mov rdx,[1826413B8h]
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018089A480h
+	mov rcx,[1826104E0h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[1826104E0h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1827760CC], 0
+	005 JumpIfNotEqual {13}
+	006 LoadAddress rcx, [0x1826104E0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x1826413B8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x1826257D8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x1827760CC], 1
+	013 Move rcx, typeof(System.Collections.Generic.Stack`1<Color>)
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rdx, [0x1826413B8]
+	016 Move rcx, rax
+	017 Move rbx, rax
+	018 Call 0x18089A480, rcx, rdx
+	019 Move rcx, typeof(RLD.GUIEx)
+	020 Move rdx, [rcx+184]
+	021 Move [rdx], rbx
+	022 Move rdx, rbx
+	023 Move rcx, typeof(RLD.GUIEx)
+	024 Move rcx, [rcx+184]
+	025 ShiftStack 32
+	026 Move rbx, stack:0x0
+	027 ShiftStack 8
+	028 Call 0x18020B990, rcx, rdx, r8, r9
+	029 Return 
+

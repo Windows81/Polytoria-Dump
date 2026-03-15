@@ -1,0 +1,65 @@
+Type: System.Collections.Generic.SortedDictionary`2+KeyCollection+<>c__DisplayClass5_0
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: System.Boolean <CopyTo>b__0(System.Collections.Generic.SortedSet`1+Node<System.Collections.Generic.KeyValuePair`2<TKey, TValue>> node)
+
+Disassembly:
+	sub rsp,28h
+	movsxd r9,dword ptr [rcx+18h]
+	mov r8,[rcx+10h]
+	lea eax,[r9+1]
+	mov [rcx+18h],eax
+	test rdx,rdx
+	je short 0000000180800B05h
+	movups xmm0,[rdx+10h]
+	test r8,r8
+	je short 0000000180800B05h
+	cmp r9d,[r8+18h]
+	jae short 0000000180800B0Bh
+	movq rdx,xmm0
+	mov [r8+r9*8+20h],rdx
+	add r8,20h
+	lea rcx,[r8+r9*8]
+	call 00000001801ED930h
+	mov al,1
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r9, [rcx+24]
+	003 Move r8, [rcx+16]
+	004 LoadAddress rax, [r9+1]
+	005 Move [rcx+24], rax
+	006 Compare rdx, 0
+	007 JumpIfEqual {21}
+	008 Move xmm0, [rdx+16]
+	009 Compare r8, 0
+	010 JumpIfEqual {21}
+	011 Compare r9, [r8+24]
+	012 JumpIfGreaterOrEqual {23}
+	013 Move rdx, xmm0
+	014 Move [r8+32+r9*8], rdx
+	015 Add r8, r8, 32
+	016 LoadAddress rcx, [r8+r9*8]
+	017 Call 0x1801ED930, rcx, rdx, r8, r9
+	018 Move rax, 1
+	019 ShiftStack 40
+	020 Return rax
+	021 Call 0x1801EEA50, rcx, rdx, r8, r9
+	022 Interrupt 
+	023 Call 0x1801EEA40, rcx, rdx, r8, r9
+

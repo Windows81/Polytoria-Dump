@@ -1,0 +1,568 @@
+Type: RLD.GizmoBoxLineSlider3DController
+
+Method: System.Void .ctor(RLD.GizmoLineSlider3DControllerData controllerData)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Void UpdateHandles()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[rcx+10h]
+	mov rbx,rcx
+	test rax,rax
+	je short 000000018051F93Fh
+	mov rcx,[rax+20h]
+	test rcx,rcx
+	je short 000000018051F93Fh
+	mov edx,[rax+48h]
+	xor r9d,r9d
+	xor r8d,r8d
+	call 00000001803F1190h
+	mov rcx,[rbx+10h]
+	test rcx,rcx
+	je short 000000018051F93Fh
+	mov rdx,rcx
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 000000018051F93Fh
+	mov edx,[rdx+40h]
+	xor r9d,r9d
+	xor r8d,r8d
+	call 00000001803F1190h
+	mov rcx,[rbx+10h]
+	test rcx,rcx
+	je short 000000018051F93Fh
+	mov r8,[rcx+18h]
+	mov rdx,rcx
+	test r8,r8
+	je short 000000018051F93Fh
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 000000018051F93Fh
+	movzx r8d,byte ptr [r8+20h]
+	xor r9d,r9d
+	mov edx,[rdx+44h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001803F1190h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [rcx+16]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfEqual {44}
+	008 Move rcx, [rax+32]
+	009 Compare rcx, 0
+	010 JumpIfEqual {44}
+	011 Move rdx, [rax+72]
+	012 Move r9, 0
+	013 Move r8, 0
+	014 Call GizmoHandle.Set3DShapeVisible, rcx, rdx, r8
+	015 Move rcx, [rbx+16]
+	016 Compare rcx, 0
+	017 JumpIfEqual {44}
+	018 Move rdx, rcx
+	019 Move rcx, [rcx+32]
+	020 Compare rcx, 0
+	021 JumpIfEqual {44}
+	022 Move rdx, [rdx+64]
+	023 Move r9, 0
+	024 Move r8, 0
+	025 Call GizmoHandle.Set3DShapeVisible, rcx, rdx, r8
+	026 Move rcx, [rbx+16]
+	027 Compare rcx, 0
+	028 JumpIfEqual {44}
+	029 Move r8, [rcx+24]
+	030 Move rdx, rcx
+	031 Compare r8, 0
+	032 JumpIfEqual {44}
+	033 Move rcx, [rcx+32]
+	034 Compare rcx, 0
+	035 JumpIfEqual {44}
+	036 Move r8, [r8+32]
+	037 Move r9, 0
+	038 Move rdx, [rdx+68]
+	039 ShiftStack 32
+	040 Move rbx, stack:0x0
+	041 ShiftStack 8
+	042 Call GizmoHandle.Set3DShapeVisible, rcx, rdx, r8
+	043 Return 
+	044 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void UpdateTransforms(System.Single zoomFactor)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,70h
+	mov rbx,[rcx+10h]
+	mov rdi,rcx
+	movaps [rsp+60h],xmm6
+	movaps xmm6,xmm1
+	movaps [rsp+50h],xmm7
+	movaps [rsp+40h],xmm8
+	test rbx,rbx
+	je near ptr 000000018051FA9Bh
+	mov rsi,[rbx+30h]
+	mov rbx,[rbx+18h]
+	test rbx,rbx
+	je near ptr 000000018051FA9Bh
+	xor r8d,r8d
+	lea rcx,[rsp+30h]
+	mov rdx,rbx
+	call 0000000180525E90h
+	test rsi,rsi
+	je near ptr 000000018051FA9Bh
+	movsd xmm0,qword ptr [rax]
+	lea rdx,[rsp+20h]
+	mov eax,[rax+8]
+	xor r8d,r8d
+	mov rcx,rsi
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 00000001805D0F30h
+	mov rax,[rdi+10h]
+	test rax,rax
+	je near ptr 000000018051FA9Bh
+	mov rsi,[rax+30h]
+	xor r8d,r8d
+	movaps xmm1,xmm6
+	mov rcx,rbx
+	call 0000000180526290h
+	xor r8d,r8d
+	movaps xmm1,xmm6
+	mov rcx,rbx
+	movaps xmm7,xmm0
+	call 0000000180525D50h
+	xor r8d,r8d
+	movaps xmm1,xmm6
+	mov rcx,rbx
+	movaps xmm8,xmm0
+	call 0000000180525CB0h
+	test rsi,rsi
+	je near ptr 000000018051FA9Bh
+	unpcklps xmm7,xmm8
+	lea rdx,[rsp+20h]
+	xor r8d,r8d
+	movsd qword ptr [rsp+20h],xmm7
+	mov rcx,rsi
+	movss dword ptr [rsp+28h],xmm0
+	call 00000001805D21F0h
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je short 000000018051FA9Bh
+	mov rax,[rbx+0A8h]
+	test rax,rax
+	je short 000000018051FA9Bh
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 000000018051FA9Bh
+	movsd xmm0,qword ptr [rax+1Ch]
+	lea r8,[rsp+20h]
+	mov eax,[rax+24h]
+	xor r9d,r9d
+	mov edx,2
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 00000001805D1970h
+	movaps xmm6,[rsp+60h]
+	lea r11,[rsp+70h]
+	mov rbx,[r11+10h]
+	mov rsi,[r11+18h]
+	movaps xmm8,[r11-30h]
+	movaps xmm7,[rsp+50h]
+	mov rsp,r11
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -112
+	006 Move rbx, [rcx+16]
+	007 Move rdi, rcx
+	008 Move stack:0x60, xmm6
+	009 Move xmm6, xmm1
+	010 Move stack:0x50, xmm7
+	011 Move stack:0x40, xmm8
+	012 Compare rbx, 0
+	013 JumpIfEqual {90}
+	014 Move rsi, [rbx+48]
+	015 Move rbx, [rbx+24]
+	016 Compare rbx, 0
+	017 JumpIfEqual {90}
+	018 Move r8, 0
+	019 LoadAddress rcx, stack:0x30
+	020 Move rdx, rbx
+	021 Call GizmoLineSlider3D.GetRealDirection, rcx, rdx
+	022 Compare rsi, 0
+	023 JumpIfEqual {90}
+	024 Move xmm0, [rax]
+	025 LoadAddress rdx, stack:0x20
+	026 Move rax, [rax+8]
+	027 Move r8, 0
+	028 Move rcx, rsi
+	029 Move stack:0x20, xmm0
+	030 Move stack:0x28, rax
+	031 Call BoxShape3D.AlignWidth, rcx, rdx
+	032 Move rax, [rdi+16]
+	033 Compare rax, 0
+	034 JumpIfEqual {90}
+	035 Move rsi, [rax+48]
+	036 Move r8, 0
+	037 Move xmm1, xmm6
+	038 Move rcx, rbx
+	039 Call GizmoLineSlider3D.GetRealLength, rcx, rdx
+	040 Move r8, 0
+	041 Move xmm1, xmm6
+	042 Move rcx, rbx
+	043 Move xmm7, xmm0
+	044 Call GizmoLineSlider3D.GetRealBoxHeight, rcx, rdx
+	045 Move r8, 0
+	046 Move xmm1, xmm6
+	047 Move rcx, rbx
+	048 Move xmm8, xmm0
+	049 Call GizmoLineSlider3D.GetRealBoxDepth, rcx, rdx
+	050 Compare rsi, 0
+	051 JumpIfEqual {90}
+	052 Move XMM_TEMP.S[0], xmm7.S[0]
+	053 Move XMM_TEMP.S[1], xmm8.S[0]
+	054 Move XMM_TEMP.S[2], xmm7.S[1]
+	055 Move XMM_TEMP.S[3], xmm8.S[1]
+	056 Move xmm7, XMM_TEMP
+	057 LoadAddress rdx, stack:0x20
+	058 Move r8, 0
+	059 Move stack:0x20, xmm7
+	060 Move rcx, rsi
+	061 Move stack:0x28, xmm0
+	062 Call BoxShape3D.set_Size, rcx, rdx
+	063 Move rcx, [rdi+16]
+	064 Compare rcx, 0
+	065 JumpIfEqual {90}
+	066 Move rax, [rbx+168]
+	067 Compare rax, 0
+	068 JumpIfEqual {90}
+	069 Move rcx, [rcx+48]
+	070 Compare rcx, 0
+	071 JumpIfEqual {90}
+	072 Move xmm0, [rax+28]
+	073 LoadAddress r8, stack:0x20
+	074 Move rax, [rax+36]
+	075 Move r9, 0
+	076 Move rdx, 2
+	077 Move stack:0x20, xmm0
+	078 Move stack:0x28, rax
+	079 Call BoxShape3D.SetFaceCenter, rcx, rdx, r8
+	080 Move xmm6, stack:0x60
+	081 LoadAddress r11, stack:0x70
+	082 Move rbx, [r11+16]
+	083 Move rsi, [r11+24]
+	084 Move xmm8, [r11-48]
+	085 Move xmm7, stack:0x50
+	086 Move rsp, r11
+	087 Move rdi, stack:0x0
+	088 ShiftStack 8
+	089 Return 
+	090 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void UpdateEpsilons(System.Single zoomFactor)
+
+Disassembly:
+	sub rsp,38h
+	mov rdx,[rcx+10h]
+	mov r8,rcx
+	test rdx,rdx
+	je short 000000018051F8ADh
+	mov rdx,[rdx+18h]
+	test rdx,rdx
+	je short 000000018051F8ADh
+	cmp qword ptr [rdx+0D0h],0
+	mov ecx,0C8h
+	mov eax,0D0h
+	cmove eax,ecx
+	mov rcx,[rax+rdx]
+	test rcx,rcx
+	je short 000000018051F8ADh
+	mov rax,[r8+10h]
+	mulss xmm1,dword ptr [rcx+14h]
+	mov rcx,[rax+30h]
+	test rcx,rcx
+	je short 000000018051F8ADh
+	xorps xmm0,xmm0
+	movss dword ptr [rsp+28h],xmm1
+	unpcklps xmm0,xmm1
+	lea rdx,[rsp+20h]
+	xor r8d,r8d
+	movsd qword ptr [rsp+20h],xmm0
+	call 00000001805D21C0h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rdx, [rcx+16]
+	003 Move r8, rcx
+	004 Compare rdx, 0
+	005 JumpIfEqual {36}
+	006 Move rdx, [rdx+24]
+	007 Compare rdx, 0
+	008 JumpIfEqual {36}
+	009 Compare [rdx+208], 0
+	010 Move rcx, 200
+	011 Move rax, 208
+	012 JumpIfNotEqual {14}
+	013 Move rax, rcx
+	014 Nop 
+	015 Move rcx, [rax+rdx]
+	016 Compare rcx, 0
+	017 JumpIfEqual {36}
+	018 Move rax, [r8+16]
+	019 Multiply xmm1, xmm1, [rcx+20]
+	020 Move rcx, [rax+48]
+	021 Compare rcx, 0
+	022 JumpIfEqual {36}
+	023 Move xmm0, 0
+	024 Move stack:0x28, xmm1
+	025 Move XMM_TEMP.S[0], xmm0.S[0]
+	026 Move XMM_TEMP.S[1], xmm1.S[0]
+	027 Move XMM_TEMP.S[2], xmm0.S[1]
+	028 Move XMM_TEMP.S[3], xmm1.S[1]
+	029 Move xmm0, XMM_TEMP
+	030 LoadAddress rdx, stack:0x20
+	031 Move r8, 0
+	032 Move stack:0x20, xmm0
+	033 Call BoxShape3D.set_SizeEps, rcx, rdx
+	034 ShiftStack 56
+	035 Return 
+	036 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single GetRealSizeAlongDirection(UnityEngine.Vector3 direction, System.Single zoomFactor)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,80h
+	mov rbx,rdx
+	movaps [rsp+70h],xmm6
+	mov rsi,rcx
+	xor edx,edx
+	mov rcx,rbx
+	movaps xmm6,xmm2
+	call 00000001802DC630h
+	movaps xmm3,xmm0
+	comiss xmm3,dword ptr [181E5DB84h]
+	ja short 000000018051F711h
+	xorps xmm0,xmm0
+	xorps xmm1,xmm1
+	xorps xmm2,xmm2
+	jmp short 000000018051F72Bh
+	movss xmm0,dword ptr [rbx+8]
+	movss xmm1,dword ptr [rbx+4]
+	movss xmm2,dword ptr [rbx]
+	divss xmm0,xmm3
+	divss xmm1,xmm3
+	divss xmm2,xmm3
+	movaps [rsp+60h],xmm7
+	movaps [rsp+50h],xmm8
+	movss dword ptr [rbx],xmm2
+	movss dword ptr [rbx+4],xmm1
+	movss dword ptr [rbx+8],xmm0
+	mov rdi,[rsi+10h]
+	test rdi,rdi
+	je near ptr 000000018051F832h
+	mov rdi,[rdi+18h]
+	test rdi,rdi
+	je near ptr 000000018051F832h
+	xor r8d,r8d
+	movaps xmm1,xmm6
+	mov rcx,rdi
+	call 0000000180526290h
+	xor r8d,r8d
+	movaps xmm1,xmm6
+	mov rcx,rdi
+	movaps xmm7,xmm0
+	call 0000000180525D50h
+	xor r8d,r8d
+	movaps xmm1,xmm6
+	mov rcx,rdi
+	movaps xmm8,xmm0
+	call 0000000180525CB0h
+	mov rax,[rsi+10h]
+	test rax,rax
+	je near ptr 000000018051F832h
+	mov rax,[rax+30h]
+	test rax,rax
+	je near ptr 000000018051F832h
+	movss dword ptr [rsp+28h],xmm0
+	lea r8,[rsp+20h]
+	movups xmm0,[rax+30h]
+	lea rdx,[rsp+40h]
+	xor r9d,r9d
+	unpcklps xmm7,xmm8
+	lea rcx,[rsp+30h]
+	movaps [rsp+40h],xmm0
+	movsd qword ptr [rsp+20h],xmm7
+	call 0000000181A542F0h
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	lea rcx,[rsp+30h]
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rsp+20h],xmm0
+	movsd xmm0,qword ptr [rbx]
+	mov [rsp+28h],eax
+	mov eax,[rbx+8]
+	movsd qword ptr [rsp+30h],xmm0
+	mov [rsp+38h],eax
+	call 0000000180596160h
+	movaps xmm8,[rsp+50h]
+	lea r11,[rsp+80h]
+	mov rbx,[r11+10h]
+	mov rsi,[r11+18h]
+	movaps xmm7,[rsp+60h]
+	movaps xmm6,[rsp+70h]
+	mov rsp,r11
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -128
+	006 Move rbx, rdx
+	007 Move stack:0x70, xmm6
+	008 Move rsi, rcx
+	009 Move rdx, 0
+	010 Move rcx, rbx
+	011 Move xmm6, xmm2
+	012 Call 0x1802DC630, rcx, rdx, r8, r9
+	013 Move xmm3, xmm0
+	014 Compare xmm3, [0x181E5DB84]
+	015 JumpIfGreater {20}
+	016 Move xmm0, 0
+	017 Move xmm1, 0
+	018 Move xmm2, 0
+	019 Goto {26}
+	020 Move xmm0, [rbx+8]
+	021 Move xmm1, [rbx+4]
+	022 Move xmm2, [rbx]
+	023 Divide xmm0, xmm0, xmm3
+	024 Divide xmm1, xmm1, xmm3
+	025 Divide xmm2, xmm2, xmm3
+	026 Move stack:0x60, xmm7
+	027 Move stack:0x50, xmm8
+	028 Move [rbx], xmm2
+	029 Move [rbx+4], xmm1
+	030 Move [rbx+8], xmm0
+	031 Move rdi, [rsi+16]
+	032 Compare rdi, 0
+	033 JumpIfEqual {93}
+	034 Move rdi, [rdi+24]
+	035 Compare rdi, 0
+	036 JumpIfEqual {93}
+	037 Move r8, 0
+	038 Move xmm1, xmm6
+	039 Move rcx, rdi
+	040 Call GizmoLineSlider3D.GetRealLength, rcx, rdx
+	041 Move r8, 0
+	042 Move xmm1, xmm6
+	043 Move rcx, rdi
+	044 Move xmm7, xmm0
+	045 Call GizmoLineSlider3D.GetRealBoxHeight, rcx, rdx
+	046 Move r8, 0
+	047 Move xmm1, xmm6
+	048 Move rcx, rdi
+	049 Move xmm8, xmm0
+	050 Call GizmoLineSlider3D.GetRealBoxDepth, rcx, rdx
+	051 Move rax, [rsi+16]
+	052 Compare rax, 0
+	053 JumpIfEqual {93}
+	054 Move rax, [rax+48]
+	055 Compare rax, 0
+	056 JumpIfEqual {93}
+	057 Move stack:0x28, xmm0
+	058 LoadAddress r8, stack:0x20
+	059 Move xmm0, [rax+48]
+	060 LoadAddress rdx, stack:0x40
+	061 Move r9, 0
+	062 Move XMM_TEMP.S[0], xmm7.S[0]
+	063 Move XMM_TEMP.S[1], xmm8.S[0]
+	064 Move XMM_TEMP.S[2], xmm7.S[1]
+	065 Move XMM_TEMP.S[3], xmm8.S[1]
+	066 Move xmm7, XMM_TEMP
+	067 LoadAddress rcx, stack:0x30
+	068 Move stack:0x40, xmm0
+	069 Move stack:0x20, xmm7
+	070 Call Quaternion.op_Multiply, rcx, rdx, r8
+	071 Move r8, 0
+	072 LoadAddress rdx, stack:0x20
+	073 LoadAddress rcx, stack:0x30
+	074 Move xmm0, [rax]
+	075 Move rax, [rax+8]
+	076 Move stack:0x20, xmm0
+	077 Move xmm0, [rbx]
+	078 Move stack:0x28, rax
+	079 Move rax, [rbx+8]
+	080 Move stack:0x30, xmm0
+	081 Move stack:0x38, rax
+	082 Call Vector3Ex.AbsDot, rcx, rdx, r8
+	083 Move xmm8, stack:0x50
+	084 LoadAddress r11, stack:0x80
+	085 Move rbx, [r11+16]
+	086 Move rsi, [r11+24]
+	087 Move xmm7, stack:0x60
+	088 Move xmm6, stack:0x70
+	089 Move rsp, r11
+	090 Move rdi, stack:0x0
+	091 ShiftStack 8
+	092 Return xmm0
+	093 Call 0x18020CAB0, rcx, rdx, r8, r9
+

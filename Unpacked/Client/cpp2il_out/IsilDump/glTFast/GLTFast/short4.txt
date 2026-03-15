@@ -1,0 +1,116 @@
+Type: GLTFast.short4
+
+Method: Unity.Mathematics.quaternion GltfToUnityRotation()
+
+Disassembly:
+	movsx eax,word ptr [rdx]
+	movss xmm1,dword ptr [181E5DC8Ch]
+	movss xmm5,dword ptr [181E5E2A0h]
+	movd xmm4,eax
+	cvtdq2ps xmm4,xmm4
+	movd eax,xmm1
+	divss xmm4,xmm5
+	btr eax,1Fh
+	cmp eax,7F800000h
+	ja short 000000018114A975h
+	comiss xmm4,xmm1
+	ja short 000000018114A975h
+	movaps xmm4,xmm1
+	movsx eax,word ptr [rdx+2]
+	movd xmm3,eax
+	cvtdq2ps xmm3,xmm3
+	movd eax,xmm1
+	divss xmm3,xmm5
+	btr eax,1Fh
+	cmp eax,7F800000h
+	ja short 000000018114A99Bh
+	comiss xmm3,xmm1
+	ja short 000000018114A99Bh
+	movaps xmm3,xmm1
+	movsx eax,word ptr [rdx+4]
+	movd xmm2,eax
+	cvtdq2ps xmm2,xmm2
+	movd eax,xmm1
+	divss xmm2,xmm5
+	btr eax,1Fh
+	cmp eax,7F800000h
+	ja short 000000018114A9C1h
+	comiss xmm2,xmm1
+	ja short 000000018114A9C1h
+	movaps xmm2,xmm1
+	movsx eax,word ptr [rdx+6]
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	movd eax,xmm1
+	divss xmm0,xmm5
+	btr eax,1Fh
+	cmp eax,7F800000h
+	ja short 000000018114A9E4h
+	comiss xmm0,xmm1
+	jbe short 000000018114A9E7h
+	movaps xmm1,xmm0
+	xorps xmm3,[181E5DCF0h]
+	mov rax,rcx
+	xorps xmm2,[181E5DCF0h]
+	movss dword ptr [rcx+4],xmm3
+	movss dword ptr [rcx+8],xmm2
+	movss dword ptr [rcx],xmm4
+	movss dword ptr [rcx+0Ch],xmm1
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Move xmm1, [0x181E5DC8C]
+	003 Move xmm5, [0x181E5E2A0]
+	004 Move xmm4, rax
+	005 Move xmm4, xmm4
+	006 Move rax, xmm1
+	007 Divide xmm4, xmm4, xmm5
+	008 NotImplemented "btr eax,1Fh"
+	009 Compare rax, 0x7F800000
+	010 JumpIfGreater {14}
+	011 Compare xmm4, xmm1
+	012 JumpIfGreater {14}
+	013 Move xmm4, xmm1
+	014 Move rax, [rdx+2]
+	015 Move xmm3, rax
+	016 Move xmm3, xmm3
+	017 Move rax, xmm1
+	018 Divide xmm3, xmm3, xmm5
+	019 NotImplemented "btr eax,1Fh"
+	020 Compare rax, 0x7F800000
+	021 JumpIfGreater {25}
+	022 Compare xmm3, xmm1
+	023 JumpIfGreater {25}
+	024 Move xmm3, xmm1
+	025 Move rax, [rdx+4]
+	026 Move xmm2, rax
+	027 Move xmm2, xmm2
+	028 Move rax, xmm1
+	029 Divide xmm2, xmm2, xmm5
+	030 NotImplemented "btr eax,1Fh"
+	031 Compare rax, 0x7F800000
+	032 JumpIfGreater {36}
+	033 Compare xmm2, xmm1
+	034 JumpIfGreater {36}
+	035 Move xmm2, xmm1
+	036 Move rax, [rdx+6]
+	037 Move xmm0, rax
+	038 Move xmm0, xmm0
+	039 Move rax, xmm1
+	040 Divide xmm0, xmm0, xmm5
+	041 NotImplemented "btr eax,1Fh"
+	042 Compare rax, 0x7F800000
+	043 JumpIfGreater {46}
+	044 Compare xmm0, xmm1
+	045 JumpIfLessOrEqual {47}
+	046 Move xmm1, xmm0
+	047 Xor xmm3, xmm3, [0x181E5DCF0]
+	048 Move rax, rcx
+	049 Xor xmm2, xmm2, [0x181E5DCF0]
+	050 Move [rcx+4], xmm3
+	051 Move [rcx+8], xmm2
+	052 Move [rcx], xmm4
+	053 Move [rcx+12], xmm1
+	054 Return rax
+

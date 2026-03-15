@@ -1,0 +1,71 @@
+Type: GLTFast.InstantiationSettings
+
+Method: GLTFast.ComponentType get_Mask()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Int32 get_Layer()
+
+Disassembly:
+	mov eax,[rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Boolean get_SkinUpdateWhenOffscreen()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Single get_LightIntensityFactor()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+1Ch]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+28]
+	002 Return xmm0
+
+Method: GLTFast.SceneObjectCreation get_SceneObjectCreation()
+
+Disassembly:
+	mov eax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+10h],0FFFFFFFFh
+	mov byte ptr [rcx+18h],1
+	mov dword ptr [rcx+1Ch],3F800000h
+	mov dword ptr [rcx+20h],2
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+16], 0xFFFFFFFF
+	003 Move [rcx+24], 1
+	004 Move [rcx+28], 0x3F800000
+	005 Move [rcx+32], 2
+	006 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	007 Return 
+

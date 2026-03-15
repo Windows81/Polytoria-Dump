@@ -1,0 +1,53 @@
+Type: MoonSharp.Interpreter.DataStructs.ReferenceEqualityComparer
+
+Method: System.Boolean System.Collections.Generic.IEqualityComparer<System.Object>.Equals(System.Object x, System.Object y)
+
+Disassembly:
+	cmp rdx,r8
+	sete al
+	ret
+
+ISIL:
+	001 Compare rdx, r8
+	002 NotImplemented "sete al"
+	003 Return rax
+
+Method: System.Int32 System.Collections.Generic.IEqualityComparer<System.Object>.GetHashCode(System.Object obj)
+
+Disassembly:
+	sub rsp,28h
+	mov r8,rdx
+	test rdx,rdx
+	je short 00000001803882B7h
+	mov rdx,[rdx]
+	mov rcx,r8
+	mov rax,[rdx+158h]
+	mov rdx,[rdx+160h]
+	add rsp,28h
+	jmp rax
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r8, rdx
+	003 Compare rdx, 0
+	004 JumpIfEqual {11}
+	005 Move rdx, [rdx]
+	006 Move rcx, r8
+	007 Move rax, [rdx+344]
+	008 Move rdx, [rdx+352]
+	009 ShiftStack 40
+	010 CallNoReturn rax
+	011 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

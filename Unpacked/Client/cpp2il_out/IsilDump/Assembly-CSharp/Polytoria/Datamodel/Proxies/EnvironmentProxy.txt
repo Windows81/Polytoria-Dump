@@ -1,0 +1,784 @@
+Type: Polytoria.Datamodel.Proxies.EnvironmentProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.Environment target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x18020B990, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Move rbx, stack:0x30
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Call 0x18020B990, rcx, rdx, r8, r9
+	021 Return 
+
+Method: Polytoria.Datamodel.SkyboxPreset get_Skybox()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804C8778h
+	mov eax,[rax+0F8h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+248]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Skybox(Polytoria.Datamodel.SkyboxPreset value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C88A9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180443D10h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Environment.set_Skybox, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector3 get_Gravity()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rdx+18h]
+	test rax,rax
+	je short 00000001804C873Ah
+	movsd xmm0,qword ptr [rax+0FCh]
+	mov eax,[rax+104h]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rdx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rax+252]
+	006 Move rax, [rax+260]
+	007 Move [rcx], xmm0
+	008 Move [rcx+8], rax
+	009 Move rax, rcx
+	010 ShiftStack 40
+	011 Return rax
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Gravity(UnityEngine.Vector3 value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C8860h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 0000000180443590h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Environment.set_Gravity, rcx, rdx
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_FogEnabled()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804C86C9h
+	movzx eax,byte ptr [rax+108h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+264]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_FogEnabled(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C87E9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180442EF0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Environment.set_FogEnabled, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_FogStartDistance()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804C870Ah
+	movss xmm0,dword ptr [rax+10Ch]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move xmm0, [rax+268]
+	006 ShiftStack 40
+	007 Return xmm0
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_FogStartDistance(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C8829h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180443370h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Environment.set_FogStartDistance, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_FogEndDistance()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804C86EAh
+	movss xmm0,dword ptr [rax+110h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move xmm0, [rax+272]
+	006 ShiftStack 40
+	007 Return xmm0
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_FogEndDistance(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C8809h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180443150h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Environment.set_FogEndDistance, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_FogColor()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rdx+18h]
+	test rax,rax
+	je short 00000001804C869Fh
+	movups xmm0,[rax+114h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rdx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {10}
+	005 Move xmm0, [rax+276]
+	006 Move rax, rcx
+	007 Move [rcx], xmm0
+	008 ShiftStack 40
+	009 Return rax
+	010 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_FogColor(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C87C7h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 0000000180442CB0h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call Environment.set_FogColor, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_PartDestroyHeight()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804C875Ah
+	movss xmm0,dword ptr [rax+124h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move xmm0, [rax+292]
+	006 ShiftStack 40
+	007 Return xmm0
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_PartDestroyHeight(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C8889h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180443B90h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x180443B90, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_AutoGenerateNavMesh()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804C8679h
+	movzx eax,byte ptr [rax+128h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+296]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_AutoGenerateNavMesh(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C8799h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180442BF0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x180442BF0, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void CreateExplosion(UnityEngine.Vector3 position, System.Single radius = 10, System.Single force = 5000, System.Boolean affectKinematic = True, MoonSharp.Interpreter.DynValue callback = null, System.Single damage = 10000)
+
+Disassembly:
+	sub rsp,58h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C83DEh
+	movsd xmm0,qword ptr [rdx]
+	mov eax,[rdx+8]
+	lea rdx,[rsp+40h]
+	mov [rsp+48h],eax
+	mov rax,[rsp+88h]
+	mov qword ptr [rsp+38h],0
+	movsd qword ptr [rsp+40h],xmm0
+	movss xmm0,dword ptr [rsp+90h]
+	movss dword ptr [rsp+30h],xmm0
+	mov [rsp+28h],rax
+	movzx eax,byte ptr [rsp+80h]
+	mov [rsp+20h],al
+	call 000000018043E5B0h
+	add rsp,58h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -88
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {20}
+	005 Move xmm0, [rdx]
+	006 Move rax, [rdx+8]
+	007 LoadAddress rdx, stack:0x40
+	008 Move stack:0x48, rax
+	009 Move rax, stack:0x88
+	010 Move stack:0x38, 0
+	011 Move stack:0x40, xmm0
+	012 Move xmm0, stack:0x90
+	013 Move stack:0x30, xmm0
+	014 Move stack:0x28, rax
+	015 Move rax, stack:0x80
+	016 Move stack:0x20, rax
+	017 Call Environment.CreateExplosion, rcx, xmm1, xmm2, r9, stack:0x0, stack:0x8, stack:0x10
+	018 ShiftStack 88
+	019 Return 
+	020 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Nullable`1<Polytoria.Datamodel.RayResult> Raycast(UnityEngine.Vector3 origin, UnityEngine.Vector3 direction, System.Single maxDistance = ∞, System.Collections.Generic.List`1<Polytoria.Datamodel.Instance> ignoreList = null)
+
+Disassembly:
+	push rbx
+	sub rsp,0B0h
+	mov rdx,[rdx+18h]
+	mov rbx,rcx
+	test rdx,rdx
+	je near ptr 00000001804C862Ch
+	mov eax,[r9+8]
+	lea rcx,[rsp+60h]
+	movsd xmm0,qword ptr [r9]
+	lea r9,[rsp+40h]
+	movsd qword ptr [rsp+40h],xmm0
+	movsd xmm0,qword ptr [r8]
+	mov [rsp+48h],eax
+	mov eax,[r8+8]
+	lea r8,[rsp+50h]
+	mov [rsp+58h],eax
+	mov rax,[rsp+0E8h]
+	movsd qword ptr [rsp+50h],xmm0
+	movss xmm0,dword ptr [rsp+0E0h]
+	mov qword ptr [rsp+30h],0
+	mov [rsp+28h],rax
+	movss dword ptr [rsp+20h],xmm0
+	call 00000001804409A0h
+	movups xmm0,[rax]
+	movups xmm1,[rax+10h]
+	movups [rbx],xmm0
+	movups xmm0,[rax+20h]
+	movups [rbx+10h],xmm1
+	movups xmm1,[rax+30h]
+	movups [rbx+20h],xmm0
+	movsd xmm0,qword ptr [rax+40h]
+	mov rax,rbx
+	movups [rbx+30h],xmm1
+	movsd qword ptr [rbx+40h],xmm0
+	add rsp,0B0h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -176
+	004 Move rdx, [rdx+24]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {40}
+	008 Move rax, [r9+8]
+	009 LoadAddress rcx, stack:0x60
+	010 Move xmm0, [r9]
+	011 LoadAddress r9, stack:0x40
+	012 Move stack:0x40, xmm0
+	013 Move xmm0, [r8]
+	014 Move stack:0x48, rax
+	015 Move rax, [r8+8]
+	016 LoadAddress r8, stack:0x50
+	017 Move stack:0x58, rax
+	018 Move rax, stack:0xE8
+	019 Move stack:0x50, xmm0
+	020 Move xmm0, stack:0xE0
+	021 Move stack:0x30, 0
+	022 Move stack:0x28, rax
+	023 Move stack:0x20, xmm0
+	024 Call Environment.Raycast, rcx, rdx, xmm2, r9, stack:0x0
+	025 Move xmm0, [rax]
+	026 Move xmm1, [rax+16]
+	027 Move [rbx], xmm0
+	028 Move xmm0, [rax+32]
+	029 Move [rbx+16], xmm1
+	030 Move xmm1, [rax+48]
+	031 Move [rbx+32], xmm0
+	032 Move xmm0, [rax+64]
+	033 Move rax, rbx
+	034 Move [rbx+48], xmm1
+	035 Move [rbx+64], xmm0
+	036 ShiftStack 176
+	037 Move rbx, stack:0x0
+	038 ShiftStack 8
+	039 Return rax
+	040 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Polytoria.Datamodel.RayResult[] RaycastAll(UnityEngine.Vector3 origin, UnityEngine.Vector3 direction, System.Single maxDistance = ∞, System.Collections.Generic.List`1<Polytoria.Datamodel.Instance> ignoreList = null)
+
+Disassembly:
+	sub rsp,58h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C856Bh
+	mov eax,[r8+8]
+	movsd xmm0,qword ptr [r8]
+	lea r8,[rsp+30h]
+	mov [rsp+38h],eax
+	mov eax,[rdx+8]
+	mov [rsp+48h],eax
+	mov rax,[rsp+80h]
+	movsd qword ptr [rsp+30h],xmm0
+	movsd xmm0,qword ptr [rdx]
+	lea rdx,[rsp+40h]
+	mov qword ptr [rsp+28h],0
+	mov [rsp+20h],rax
+	movsd qword ptr [rsp+40h],xmm0
+	call 0000000180440450h
+	add rsp,58h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -88
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {21}
+	005 Move rax, [r8+8]
+	006 Move xmm0, [r8]
+	007 LoadAddress r8, stack:0x30
+	008 Move stack:0x38, rax
+	009 Move rax, [rdx+8]
+	010 Move stack:0x48, rax
+	011 Move rax, stack:0x80
+	012 Move stack:0x30, xmm0
+	013 Move xmm0, [rdx]
+	014 LoadAddress rdx, stack:0x40
+	015 Move stack:0x28, 0
+	016 Move stack:0x20, rax
+	017 Move stack:0x40, xmm0
+	018 Call Environment.RaycastAll, rcx, rdx, xmm2, r9, stack:0x0
+	019 ShiftStack 88
+	020 Return rax
+	021 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Polytoria.Datamodel.Instance[] OverlapSphere(UnityEngine.Vector3 position, System.Single radius, System.Collections.Generic.List`1<Polytoria.Datamodel.Instance> ignoreList = null)
+
+Disassembly:
+	sub rsp,48h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C8506h
+	movsd xmm0,qword ptr [rdx]
+	mov eax,[rdx+8]
+	lea rdx,[rsp+30h]
+	movsd qword ptr [rsp+30h],xmm0
+	mov [rsp+38h],eax
+	mov qword ptr [rsp+20h],0
+	call 0000000180440100h
+	add rsp,48h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -72
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move rax, [rdx+8]
+	007 LoadAddress rdx, stack:0x30
+	008 Move stack:0x30, xmm0
+	009 Move stack:0x38, rax
+	010 Move stack:0x20, 0
+	011 Call Environment.OverlapSphere, rcx, xmm1, r8, r9
+	012 ShiftStack 72
+	013 Return rax
+	014 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Polytoria.Datamodel.Instance[] OverlapBox(UnityEngine.Vector3 center, UnityEngine.Vector3 halfExtents, UnityEngine.Vector3 rotation, System.Collections.Generic.List`1<Polytoria.Datamodel.Instance> ignoreList = null)
+
+Disassembly:
+	sub rsp,68h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C84C3h
+	mov eax,[r9+8]
+	movsd xmm0,qword ptr [r9]
+	lea r9,[rsp+30h]
+	mov [rsp+38h],eax
+	mov eax,[r8+8]
+	movsd qword ptr [rsp+30h],xmm0
+	movsd xmm0,qword ptr [r8]
+	lea r8,[rsp+40h]
+	mov [rsp+48h],eax
+	mov eax,[rdx+8]
+	movsd qword ptr [rsp+40h],xmm0
+	movsd xmm0,qword ptr [rdx]
+	lea rdx,[rsp+50h]
+	mov [rsp+58h],eax
+	mov rax,[rsp+90h]
+	mov qword ptr [rsp+28h],0
+	movsd qword ptr [rsp+50h],xmm0
+	mov [rsp+20h],rax
+	call 000000018043FCE0h
+	add rsp,68h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -104
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {26}
+	005 Move rax, [r9+8]
+	006 Move xmm0, [r9]
+	007 LoadAddress r9, stack:0x30
+	008 Move stack:0x38, rax
+	009 Move rax, [r8+8]
+	010 Move stack:0x30, xmm0
+	011 Move xmm0, [r8]
+	012 LoadAddress r8, stack:0x40
+	013 Move stack:0x48, rax
+	014 Move rax, [rdx+8]
+	015 Move stack:0x40, xmm0
+	016 Move xmm0, [rdx]
+	017 LoadAddress rdx, stack:0x50
+	018 Move stack:0x58, rax
+	019 Move rax, stack:0x90
+	020 Move stack:0x28, 0
+	021 Move stack:0x50, xmm0
+	022 Move stack:0x20, rax
+	023 Call Environment.OverlapBox, rcx, rdx, r8, r9, stack:0x0
+	024 ShiftStack 104
+	025 Return rax
+	026 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void RebuildNavMesh(Polytoria.Datamodel.Instance root)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804C8659h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180440F40h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Environment.RebuildNavMesh, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector3 GetPointOnNavMesh(UnityEngine.Vector3 position, System.Single maxDistance = 100)
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	mov rdx,[rdx+18h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804C8444h
+	movsd xmm0,qword ptr [r8]
+	lea rcx,[rsp+40h]
+	mov eax,[r8+8]
+	lea r8,[rsp+30h]
+	movsd qword ptr [rsp+30h],xmm0
+	mov [rsp+38h],eax
+	mov qword ptr [rsp+20h],0
+	call 000000018043F130h
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rbx],xmm0
+	mov [rbx+8],eax
+	mov rax,rbx
+	add rsp,50h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move rdx, [rdx+24]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {25}
+	008 Move xmm0, [r8]
+	009 LoadAddress rcx, stack:0x40
+	010 Move rax, [r8+8]
+	011 LoadAddress r8, stack:0x30
+	012 Move stack:0x30, xmm0
+	013 Move stack:0x38, rax
+	014 Move stack:0x20, 0
+	015 Call Environment.GetPointOnNavMesh, rcx, xmm1, r8
+	016 Move xmm0, [rax]
+	017 Move rax, [rax+8]
+	018 Move [rbx], xmm0
+	019 Move [rbx+8], rax
+	020 Move rax, rbx
+	021 ShiftStack 80
+	022 Move rbx, stack:0x0
+	023 ShiftStack 8
+	024 Return rax
+	025 Call 0x18020CAB0, rcx, rdx, r8, r9
+

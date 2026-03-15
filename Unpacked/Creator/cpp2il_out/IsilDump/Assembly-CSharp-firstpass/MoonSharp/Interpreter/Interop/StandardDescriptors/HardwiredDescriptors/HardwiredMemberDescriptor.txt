@@ -1,0 +1,404 @@
+Type: MoonSharp.Interpreter.Interop.StandardDescriptors.HardwiredDescriptors.HardwiredMemberDescriptor
+
+Method: System.Type get_MemberType()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_MemberType(System.Type value)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x1801ED930, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor(System.Type memberType, System.String name, System.Boolean isStatic, MoonSharp.Interpreter.Interop.BasicDescriptors.MemberDescriptorAccess access)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbp,rdx
+	movzx ebx,r9b
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 00000001802C3410h
+	lea rcx,[rsi+20h]
+	mov [rsi+18h],bl
+	mov rdx,rdi
+	mov [rsi+20h],rdi
+	call 00000001801ED930h
+	mov eax,[rsp+50h]
+	lea rcx,[rsi+10h]
+	mov rdx,rbp
+	mov [rsi+28h],eax
+	mov [rsi+10h],rbp
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbp, rdx
+	008 Move rbx, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	013 LoadAddress rcx, [rsi+32]
+	014 Move [rsi+24], rbx
+	015 Move rdx, rdi
+	016 Move [rsi+32], rdi
+	017 Call 0x1801ED930, rcx, rdx, r8, r9
+	018 Move rax, stack:0x50
+	019 LoadAddress rcx, [rsi+16]
+	020 Move rdx, rbp
+	021 Move [rsi+40], rax
+	022 Move [rsi+16], rbp
+	023 Move rbx, stack:0x30
+	024 Move rbp, stack:0x38
+	025 Move rsi, stack:0x40
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Call 0x1801ED930, rcx, rdx, r8, r9
+	030 Return 
+
+Method: System.Boolean get_IsStatic()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_IsStatic(System.Boolean value)
+
+Disassembly:
+	mov [rcx+18h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Return 
+
+Method: System.String get_Name()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void set_Name(System.String value)
+
+Disassembly:
+	mov [rcx+20h],rdx
+	add rcx,20h
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move [rcx+32], rdx
+	002 Add rcx, rcx, 32
+	003 Call 0x1801ED930, rcx, rdx, r8, r9
+	004 Return 
+
+Method: MoonSharp.Interpreter.Interop.BasicDescriptors.MemberDescriptorAccess get_MemberAccess()
+
+Disassembly:
+	mov eax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void set_MemberAccess(MoonSharp.Interpreter.Interop.BasicDescriptors.MemberDescriptorAccess value)
+
+Disassembly:
+	mov [rcx+28h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Return 
+
+Method: MoonSharp.Interpreter.DynValue GetValue(MoonSharp.Interpreter.Script script, System.Object obj)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rsi,rdx
+	xor r9d,r9d
+	mov edx,1
+	mov rbx,r8
+	mov rdi,rcx
+	call 000000018035AA90h
+	mov r9,[rdi]
+	mov r8,rbx
+	mov rdx,rsi
+	mov rcx,rdi
+	mov rax,[r9+1C8h]
+	mov r9,[r9+1D0h]
+	call rax
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180352D70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, rdx
+	007 Move r9, 0
+	008 Move rdx, 1
+	009 Move rbx, r8
+	010 Move rdi, rcx
+	011 Call MemberDescriptor.CheckAccess, rcx, rdx, r8, r9
+	012 Move r9, [rdi]
+	013 Move r8, rbx
+	014 Move rdx, rsi
+	015 Move rcx, rdi
+	016 Move rax, [r9+456]
+	017 Move r9, [r9+464]
+	018 Call rax
+	019 Move r8, 0
+	020 Move rdx, rax
+	021 Move rcx, rsi
+	022 Move rbx, stack:0x30
+	023 Move rsi, stack:0x38
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Call ClrToScriptConversions.ObjectToDynValue, rcx, rdx, r8
+	028 Return rax
+
+Method: System.Void SetValue(MoonSharp.Interpreter.Script script, System.Object obj, MoonSharp.Interpreter.DynValue value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	mov [rsp+18h],rdi
+	push r14
+	sub rsp,30h
+	mov rbx,r9
+	mov rsi,rdx
+	xor r9d,r9d
+	mov edx,2
+	mov rdi,r8
+	mov r14,rcx
+	call 000000018035AA90h
+	mov rdx,[r14+10h]
+	xor r9d,r9d
+	xor r8d,r8d
+	mov qword ptr [rsp+20h],0
+	mov rcx,rbx
+	call 0000000180369DB0h
+	mov rcx,[r14]
+	mov r9,rax
+	mov r8,rdi
+	mov rdx,rsi
+	mov r10,[rcx+1D8h]
+	mov rcx,[rcx+1E0h]
+	mov [rsp+60h],rcx
+	mov rcx,r14
+	mov rbx,[rsp+40h]
+	mov rsi,[rsp+48h]
+	mov rdi,[rsp+50h]
+	add rsp,30h
+	pop r14
+	jmp r10
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 Move stack:0x18, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -48
+	007 Move rbx, r9
+	008 Move rsi, rdx
+	009 Move r9, 0
+	010 Move rdx, 2
+	011 Move rdi, r8
+	012 Move r14, rcx
+	013 Call MemberDescriptor.CheckAccess, rcx, rdx, r8, r9
+	014 Move rdx, [r14+16]
+	015 Move r9, 0
+	016 Move r8, 0
+	017 Move stack:0x20, 0
+	018 Move rcx, rbx
+	019 Call ScriptToClrConversions.DynValueToObjectOfType, rcx, rdx, r8, r9, stack:0x0
+	020 Move rcx, [r14]
+	021 Move r9, rax
+	022 Move r8, rdi
+	023 Move rdx, rsi
+	024 Move r10, [rcx+472]
+	025 Move rcx, [rcx+480]
+	026 Move stack:0x60, rcx
+	027 Move rcx, r14
+	028 Move rbx, stack:0x40
+	029 Move rsi, stack:0x48
+	030 Move rdi, stack:0x50
+	031 ShiftStack 48
+	032 Move r14, stack:0x0
+	033 ShiftStack 8
+	034 CallNoReturn r10
+
+Method: System.Object GetValueImpl(MoonSharp.Interpreter.Script script, System.Object obj)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor edx,edx
+	call 00000001802F72B0h
+	lea rcx,[1824A7120h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rcx,rax
+	xor r8d,r8d
+	mov rdx,rbx
+	call 00000001812FF040h
+	lea rcx,[18247FAB0h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001814A19E0h
+	lea rcx,[182467D70h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdx, 0
+	006 Call 0x1802F72B0, rcx, rdx
+	007 LoadAddress rcx, [0x1824A7120]
+	008 Move rbx, rax
+	009 Call 0x1801EE830, rcx, rdx, r8, r9
+	010 Move rcx, rax
+	011 Move r8, 0
+	012 Move rdx, rbx
+	013 Call String.Concat, rcx, rdx, r8
+	014 LoadAddress rcx, [0x18247FAB0]
+	015 Move rbx, rax
+	016 Call 0x1801EE830, rcx, rdx, r8, r9
+	017 Move rcx, rax
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move r8, 0
+	020 Move rdx, rbx
+	021 Move rcx, rax
+	022 Move rdi, rax
+	023 Call InvalidOperationException..ctor, rcx, rdx
+	024 LoadAddress rcx, [0x182467D70]
+	025 Call 0x1801EE830, rcx, rdx, r8, r9
+	026 Move rdx, rax
+	027 Move rcx, rdi
+	028 Call 0x1801EEA10, rcx, rdx, r8, r9
+
+Method: System.Void SetValueImpl(MoonSharp.Interpreter.Script script, System.Object obj, System.Object value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor edx,edx
+	call 00000001802F72B0h
+	lea rcx,[1824A3848h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rcx,rax
+	xor r8d,r8d
+	mov rdx,rbx
+	call 00000001812FF040h
+	lea rcx,[18247FAB0h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001814A19E0h
+	lea rcx,[182467DE8h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdx, 0
+	006 Call 0x1802F72B0, rcx, rdx
+	007 LoadAddress rcx, [0x1824A3848]
+	008 Move rbx, rax
+	009 Call 0x1801EE830, rcx, rdx, r8, r9
+	010 Move rcx, rax
+	011 Move r8, 0
+	012 Move rdx, rbx
+	013 Call String.Concat, rcx, rdx, r8
+	014 LoadAddress rcx, [0x18247FAB0]
+	015 Move rbx, rax
+	016 Call 0x1801EE830, rcx, rdx, r8, r9
+	017 Move rcx, rax
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move r8, 0
+	020 Move rdx, rbx
+	021 Move rcx, rax
+	022 Move rdi, rax
+	023 Call InvalidOperationException..ctor, rcx, rdx
+	024 LoadAddress rcx, [0x182467DE8]
+	025 Call 0x1801EE830, rcx, rdx, r8, r9
+	026 Move rdx, rax
+	027 Move rcx, rdi
+	028 Call 0x1801EEA10, rcx, rdx, r8, r9
+

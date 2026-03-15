@@ -1,0 +1,53 @@
+Type: System.Web.Util.Helpers
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [18277C022h],0
+	jne short 000000018182138Ch
+	lea rcx,[1825FFB08h]
+	call 000000018020C870h
+	lea rcx,[182618328h]
+	call 000000018020C870h
+	mov byte ptr [18277C022h],1
+	mov rcx,[1825FFB08h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001818213A1h
+	call 000000018020CB50h
+	xor ecx,ecx
+	call 00000001814F7DB0h
+	mov rcx,[182618328h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rax
+	mov rdx,rax
+	mov rcx,[182618328h]
+	mov rcx,[rcx+0B8h]
+	add rsp,28h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x18277C022], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x1825FFB08]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x182618328]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x18277C022], 1
+	009 Move rcx, typeof(System.Globalization.CultureInfo)
+	010 Compare [rcx+228], 0
+	011 JumpIfNotEqual {13}
+	012 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	013 Move rcx, 0
+	014 Call CultureInfo.get_InvariantCulture, rcx
+	015 Move rcx, typeof(System.Web.Util.Helpers)
+	016 Move rdx, [rcx+184]
+	017 Move [rdx], rax
+	018 Move rdx, rax
+	019 Move rcx, typeof(System.Web.Util.Helpers)
+	020 Move rcx, [rcx+184]
+	021 ShiftStack 40
+	022 Call 0x18020B990, rcx, rdx, r8, r9
+	023 Return 
+

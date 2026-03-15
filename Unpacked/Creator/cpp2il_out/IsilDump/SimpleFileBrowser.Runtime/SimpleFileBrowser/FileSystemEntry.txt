@@ -1,0 +1,170 @@
+Type: SimpleFileBrowser.FileSystemEntry
+
+Method: System.Boolean get_IsDirectory()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	shr eax,4
+	and al,1
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 ShiftRight rax, 4
+	003 And rax, rax, 1
+	004 Return rax
+
+Method: System.Void .ctor(System.String path, System.String name, System.String extension, System.Boolean isDirectory)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,r9
+	mov [rcx],rdx
+	mov rbx,r8
+	mov rsi,rcx
+	call 00000001801ED930h
+	lea rcx,[rsi+8]
+	mov [rsi+8],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	cmp byte ptr [rsp+50h],0
+	mov eax,10h
+	mov rbx,[rsp+30h]
+	mov ecx,80h
+	cmove eax,ecx
+	mov [rsi+18h],eax
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rdi, r9
+	007 Move [rcx], rdx
+	008 Move rbx, r8
+	009 Move rsi, rcx
+	010 Call 0x1801ED930, rcx, rdx, r8, r9
+	011 LoadAddress rcx, [rsi+8]
+	012 Move [rsi+8], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801ED930, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rsi+16]
+	016 Move [rsi+16], rdi
+	017 Move rdx, rdi
+	018 Call 0x1801ED930, rcx, rdx, r8, r9
+	019 Compare stack:0x50, 0
+	020 Move rax, 16
+	021 Move rbx, stack:0x30
+	022 Move rcx, 128
+	023 JumpIfNotEqual {25}
+	024 Move rax, rcx
+	025 Nop 
+	026 Move [rsi+24], rax
+	027 Move rsi, stack:0x38
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return 
+
+Method: System.Void .ctor(System.IO.FileSystemInfo fileInfo, System.String extension)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rsi,r8
+	mov rbx,rdx
+	mov rdi,rcx
+	test rdx,rdx
+	je short 000000018154EBE4h
+	mov rdx,[rdx]
+	mov rcx,rbx
+	mov rax,[rdx+1B8h]
+	mov rdx,[rdx+1C0h]
+	call rax
+	mov rdx,rax
+	mov [rdi],rax
+	mov rcx,rdi
+	call 00000001801ED930h
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rax,[rdx+1C8h]
+	mov rdx,[rdx+1D0h]
+	call rax
+	lea rcx,[rdi+8]
+	mov [rdi+8],rax
+	mov rdx,rax
+	call 00000001801ED930h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rsi
+	mov rdx,rsi
+	call 00000001801ED930h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181456700h
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	mov [rdi+18h],eax
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, r8
+	007 Move rbx, rdx
+	008 Move rdi, rcx
+	009 Compare rdx, 0
+	010 JumpIfEqual {43}
+	011 Move rdx, [rdx]
+	012 Move rcx, rbx
+	013 Move rax, [rdx+440]
+	014 Move rdx, [rdx+448]
+	015 Call rax
+	016 Move rdx, rax
+	017 Move [rdi], rax
+	018 Move rcx, rdi
+	019 Call 0x1801ED930, rcx, rdx, r8, r9
+	020 Move rdx, [rbx]
+	021 Move rcx, rbx
+	022 Move rax, [rdx+456]
+	023 Move rdx, [rdx+464]
+	024 Call rax
+	025 LoadAddress rcx, [rdi+8]
+	026 Move [rdi+8], rax
+	027 Move rdx, rax
+	028 Call 0x1801ED930, rcx, rdx, r8, r9
+	029 LoadAddress rcx, [rdi+16]
+	030 Move [rdi+16], rsi
+	031 Move rdx, rsi
+	032 Call 0x1801ED930, rcx, rdx, r8, r9
+	033 Move rdx, 0
+	034 Move rcx, rbx
+	035 Call FileSystemInfo.get_Attributes, rcx, rdx
+	036 Move rbx, stack:0x30
+	037 Move rsi, stack:0x38
+	038 Move [rdi+24], rax
+	039 ShiftStack 32
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 Return 
+	043 Call 0x1801EEA50, rcx, rdx, r8, r9
+

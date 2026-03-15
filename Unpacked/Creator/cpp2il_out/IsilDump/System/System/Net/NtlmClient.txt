@@ -1,0 +1,165 @@
+Type: System.Net.NtlmClient
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825CD196h],0
+	mov rdi,rcx
+	jne short 00000001817FB7E9h
+	lea rcx,[182490280h]
+	call 00000001801EE810h
+	mov byte ptr [1825CD196h],1
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001802C3410h
+	mov rcx,[182490280h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802BC7B0h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825CD196], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x182490280]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x1825CD196], 1
+	011 Move rdx, 0
+	012 Move rcx, rdi
+	013 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	014 Move rcx, typeof(Mono.Http.NtlmClient)
+	015 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rax
+	018 Move rbx, rax
+	019 Call 0x1802BC7B0, rcx, rdx, r8
+	020 LoadAddress rcx, [rdi+16]
+	021 Move [rdi+16], rbx
+	022 Move rdx, rbx
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Call 0x1801ED930, rcx, rdx, r8, r9
+	028 Return 
+
+Method: System.Net.Authorization Authenticate(System.String challenge, System.Net.WebRequest webRequest, System.Net.ICredentials credentials)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [1825CD197h],0
+	mov rdi,r9
+	mov rsi,r8
+	mov rbp,rdx
+	mov rbx,rcx
+	jne short 00000001817FB77Ch
+	lea rcx,[182472C18h]
+	call 00000001801EE810h
+	mov byte ptr [1825CD197h],1
+	cmp qword ptr [rbx+10h],0
+	je short 00000001817FB7A4h
+	mov r8,[rbx+10h]
+	xor ecx,ecx
+	mov rdx,[182472C18h]
+	mov r9,rbp
+	mov [rsp+28h],rdi
+	mov [rsp+20h],rsi
+	call 0000000180009410h
+	jmp short 00000001817FB7A6h
+	xor eax,eax
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Compare [0x1825CD197], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x182472C18]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825CD197], 1
+	016 Compare [rbx+16], 0
+	017 JumpIfEqual {26}
+	018 Move r8, [rbx+16]
+	019 Move rcx, 0
+	020 Move rdx, typeof(System.Net.IAuthenticationModule)
+	021 Move r9, rbp
+	022 Move stack:0x28, rdi
+	023 Move stack:0x20, rsi
+	024 Call 0x180009410, rcx, rdx, r8, r9
+	025 Goto {27}
+	026 Move rax, 0
+	027 Move rbx, stack:0x40
+	028 Move rbp, stack:0x48
+	029 Move rsi, stack:0x50
+	030 ShiftStack 48
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return rax
+
+Method: System.Net.Authorization PreAuthenticate(System.Net.WebRequest webRequest, System.Net.ICredentials credentials)
+
+Disassembly:
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+
+Method: System.String get_AuthenticationType()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825CD198h],0
+	jne short 00000001817FB850h
+	lea rcx,[18247B6A8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CD198h],1
+	mov rax,[18247B6A8h]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825CD198], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x18247B6A8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825CD198], 1
+	007 Move rax, "NTLM"
+	008 ShiftStack 40
+	009 Return rax
+

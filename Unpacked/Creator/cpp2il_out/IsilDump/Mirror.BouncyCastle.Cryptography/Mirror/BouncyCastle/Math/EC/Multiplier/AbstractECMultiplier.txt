@@ -1,0 +1,173 @@
+Type: Mirror.BouncyCastle.Math.EC.Multiplier.AbstractECMultiplier
+
+Method: Mirror.BouncyCastle.Math.EC.ECPoint Multiply(Mirror.BouncyCastle.Math.EC.ECPoint p, Mirror.BouncyCastle.Math.BigInteger k)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,r8
+	mov rbx,rdx
+	mov rsi,rcx
+	test r8,r8
+	je near ptr 0000000181155505h
+	mov ebp,[r8+18h]
+	test rdx,rdx
+	je near ptr 0000000181155505h
+	test ebp,ebp
+	je near ptr 00000001811554D1h
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018113FA90h
+	test al,al
+	jne short 00000001811554D1h
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001810AB990h
+	mov r9,[rsi]
+	mov r8,rax
+	mov rdx,rbx
+	mov rcx,rsi
+	mov r10,[r9+198h]
+	mov r9,[r9+1A0h]
+	call r10
+	mov rcx,rax
+	test ebp,ebp
+	jg short 00000001811554A2h
+	test rax,rax
+	je short 0000000181155505h
+	mov rdx,[rax]
+	mov rax,[rdx+2C8h]
+	mov rdx,[rdx+2D0h]
+	call rax
+	mov rcx,rax
+	mov r8,[rsi]
+	mov rdx,rcx
+	mov rcx,rsi
+	mov r9,[r8+1A8h]
+	mov r8,[r8+1B0h]
+	call r9
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rax,[rdx+198h]
+	mov rdx,[rdx+1A0h]
+	call rax
+	test rax,rax
+	je short 0000000181155505h
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+288h]
+	mov rdx,[rdx+290h]
+	call r8
+	jmp short 00000001811554BCh
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rdi, r8
+	008 Move rbx, rdx
+	009 Move rsi, rcx
+	010 Compare r8, 0
+	011 JumpIfEqual {68}
+	012 Move rbp, [r8+24]
+	013 Compare rdx, 0
+	014 JumpIfEqual {68}
+	015 Compare rbp, 0
+	016 JumpIfEqual {55}
+	017 Move rdx, 0
+	018 Move rcx, rbx
+	019 Call ECPoint.get_IsInfinity, rcx, rdx
+	020 Compare rax, 0
+	021 JumpIfNotEqual {55}
+	022 Move rdx, 0
+	023 Move rcx, rdi
+	024 Call BigInteger.Abs, rcx, rdx
+	025 Move r9, [rsi]
+	026 Move r8, rax
+	027 Move rdx, rbx
+	028 Move rcx, rsi
+	029 Move r10, [r9+408]
+	030 Move r9, [r9+416]
+	031 Call r10
+	032 Move rcx, rax
+	033 Compare rbp, 0
+	034 JumpIfGreater {42}
+	035 Compare rax, 0
+	036 JumpIfEqual {68}
+	037 Move rdx, [rax]
+	038 Move rax, [rdx+712]
+	039 Move rdx, [rdx+720]
+	040 Call rax
+	041 Move rcx, rax
+	042 Move r8, [rsi]
+	043 Move rdx, rcx
+	044 Move rcx, rsi
+	045 Move r9, [r8+424]
+	046 Move r8, [r8+432]
+	047 Call r9
+	048 Move rbx, stack:0x30
+	049 Move rbp, stack:0x38
+	050 Move rsi, stack:0x40
+	051 ShiftStack 32
+	052 Move rdi, stack:0x0
+	053 ShiftStack 8
+	054 Return rax
+	055 Move rdx, [rbx]
+	056 Move rcx, rbx
+	057 Move rax, [rdx+408]
+	058 Move rdx, [rdx+416]
+	059 Call rax
+	060 Compare rax, 0
+	061 JumpIfEqual {68}
+	062 Move rdx, [rax]
+	063 Move rcx, rax
+	064 Move r8, [rdx+648]
+	065 Move rdx, [rdx+656]
+	066 Call r8
+	067 Goto {48}
+	068 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: Mirror.BouncyCastle.Math.EC.ECPoint MultiplyPositive(Mirror.BouncyCastle.Math.EC.ECPoint p, Mirror.BouncyCastle.Math.BigInteger k)
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: Mirror.BouncyCastle.Math.EC.ECPoint CheckResult(Mirror.BouncyCastle.Math.EC.ECPoint p)
+
+Disassembly:
+	mov rcx,rdx
+	xor edx,edx
+	jmp near ptr 000000018113A300h
+
+ISIL:
+	001 Move rcx, rdx
+	002 Move rdx, 0
+	003 Call ECAlgorithms.ImplCheckResult, rcx, rdx
+	004 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

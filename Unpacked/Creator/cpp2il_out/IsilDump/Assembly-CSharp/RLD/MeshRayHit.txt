@@ -1,0 +1,148 @@
+Type: RLD.MeshRayHit
+
+Method: System.Int32 get_HitTriangleIndex()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: UnityEngine.Vector3 get_HitPoint()
+
+Disassembly:
+	mov eax,[rdx+1Ch]
+	movsd xmm0,qword ptr [rdx+14h]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+28]
+	002 Move xmm0, [rdx+20]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Single get_HitEnter()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+20h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+32]
+	002 Return xmm0
+
+Method: UnityEngine.Vector3 get_HitNormal()
+
+Disassembly:
+	mov eax,[rdx+2Ch]
+	movsd xmm0,qword ptr [rdx+24h]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+44]
+	002 Move xmm0, [rdx+36]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Void .ctor(UnityEngine.Ray ray, System.Int32 hitTriangleIndex, System.Single hitEnter, UnityEngine.Vector3 hitNormal)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,50h
+	mov rdi,rdx
+	movaps [rsp+40h],xmm6
+	xor edx,edx
+	movaps xmm6,xmm3
+	mov ebx,r8d
+	mov rsi,rcx
+	call 00000001802C3410h
+	xor r9d,r9d
+	mov [rsi+10h],ebx
+	movaps xmm2,xmm6
+	lea rcx,[rsp+20h]
+	mov rdx,rdi
+	call 000000018193A4B0h
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	mov ecx,[rax+8]
+	movsd xmm0,qword ptr [rax]
+	mov rax,[rsp+80h]
+	movsd qword ptr [rsi+14h],xmm0
+	mov [rsi+1Ch],ecx
+	lea rcx,[rsp+30h]
+	movss dword ptr [rsi+20h],xmm6
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 00000001802BC310h
+	mov rbx,[rsp+60h]
+	movaps xmm6,[rsp+40h]
+	movsd xmm0,qword ptr [rax]
+	mov ecx,[rax+8]
+	movsd qword ptr [rsi+24h],xmm0
+	mov [rsi+2Ch],ecx
+	mov rsi,[rsp+68h]
+	add rsp,50h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -80
+	006 Move rdi, rdx
+	007 Move stack:0x40, xmm6
+	008 Move rdx, 0
+	009 Move xmm6, xmm3
+	010 Move rbx, r8
+	011 Move rsi, rcx
+	012 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	013 Move r9, 0
+	014 Move [rsi+16], rbx
+	015 Move xmm2, xmm6
+	016 LoadAddress rcx, stack:0x20
+	017 Move rdx, rdi
+	018 Call Ray.GetPoint, rcx, rdx
+	019 Move r8, 0
+	020 LoadAddress rdx, stack:0x20
+	021 Move rcx, [rax+8]
+	022 Move xmm0, [rax]
+	023 Move rax, stack:0x80
+	024 Move [rsi+20], xmm0
+	025 Move [rsi+28], rcx
+	026 LoadAddress rcx, stack:0x30
+	027 Move [rsi+32], xmm6
+	028 Move xmm0, [rax]
+	029 Move rax, [rax+8]
+	030 Move stack:0x20, xmm0
+	031 Move stack:0x28, rax
+	032 Call Vector3.Normalize, rcx, rdx
+	033 Move rbx, stack:0x60
+	034 Move xmm6, stack:0x40
+	035 Move xmm0, [rax]
+	036 Move rcx, [rax+8]
+	037 Move [rsi+36], xmm0
+	038 Move [rsi+44], rcx
+	039 Move rsi, stack:0x68
+	040 ShiftStack 80
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Return 
+

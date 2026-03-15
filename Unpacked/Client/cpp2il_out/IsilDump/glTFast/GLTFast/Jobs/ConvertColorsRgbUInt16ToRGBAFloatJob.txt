@@ -1,0 +1,86 @@
+Type: GLTFast.Jobs.ConvertColorsRgbUInt16ToRGBAFloatJob
+
+Method: System.Void Execute(System.Int32 index)
+
+Disassembly:
+	sub rsp,18h
+	mov r8,[rcx+8]
+	mov eax,edx
+	imul eax,[rcx]
+	mov r10,rcx
+	movss xmm0,dword ptr [181E5E1A8h]
+	mov dword ptr [rsp+0Ch],3F800000h
+	movsxd rcx,edx
+	add rcx,rcx
+	movsxd r9,eax
+	movzx eax,word ptr [r9+r8]
+	movd xmm1,eax
+	movzx eax,word ptr [r9+r8+2]
+	cvtdq2ps xmm1,xmm1
+	movd xmm2,eax
+	movzx eax,word ptr [r9+r8+4]
+	divss xmm1,xmm0
+	movd xmm3,eax
+	mov rax,[r10+10h]
+	cvtdq2ps xmm2,xmm2
+	cvtdq2ps xmm3,xmm3
+	divss xmm2,xmm0
+	divss xmm3,xmm0
+	movups xmm0,[rsp]
+	movss xmm0,xmm1
+	shufps xmm0,xmm0,0E1h
+	movss xmm0,xmm2
+	shufps xmm0,xmm0,0C6h
+	movss xmm0,xmm3
+	shufps xmm0,xmm0,0C9h
+	movups [rax+rcx*8],xmm0
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move r8, [rcx+8]
+	003 Move rax, rdx
+	004 Multiply rax, rax, [rcx]
+	005 Move r10, rcx
+	006 Move xmm0, [0x181E5E1A8]
+	007 Move stack:0xC, 0x3F800000
+	008 Move rcx, rdx
+	009 Add rcx, rcx, rcx
+	010 Move r9, rax
+	011 Move rax, [r9+r8]
+	012 Move xmm1, rax
+	013 Move rax, [r9+2+r8]
+	014 Move xmm1, xmm1
+	015 Move xmm2, rax
+	016 Move rax, [r9+4+r8]
+	017 Divide xmm1, xmm1, xmm0
+	018 Move xmm3, rax
+	019 Move rax, [r10+16]
+	020 Move xmm2, xmm2
+	021 Move xmm3, xmm3
+	022 Divide xmm2, xmm2, xmm0
+	023 Divide xmm3, xmm3, xmm0
+	024 Move xmm0, stack:0x0
+	025 Move xmm0, xmm1
+	026 Move XMM_TEMP.S[0], xmm0.S[1]
+	027 Move XMM_TEMP.S[1], xmm0.S[0]
+	028 Move XMM_TEMP.S[2], xmm0.S[2]
+	029 Move XMM_TEMP.S[3], xmm0.S[3]
+	030 Move xmm0, XMM_TEMP
+	031 Move xmm0, xmm2
+	032 Move XMM_TEMP.S[0], xmm0.S[2]
+	033 Move XMM_TEMP.S[1], xmm0.S[1]
+	034 Move XMM_TEMP.S[2], xmm0.S[0]
+	035 Move XMM_TEMP.S[3], xmm0.S[3]
+	036 Move xmm0, XMM_TEMP
+	037 Move xmm0, xmm3
+	038 Move XMM_TEMP.S[0], xmm0.S[1]
+	039 Move XMM_TEMP.S[1], xmm0.S[2]
+	040 Move XMM_TEMP.S[2], xmm0.S[0]
+	041 Move XMM_TEMP.S[3], xmm0.S[3]
+	042 Move xmm0, XMM_TEMP
+	043 Move [rax+rcx*8], xmm0
+	044 ShiftStack 24
+	045 Return 
+

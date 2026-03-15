@@ -1,0 +1,329 @@
+Type: MoonSharp.Interpreter.TablePair
+
+Method: MoonSharp.Interpreter.DynValue get_Key()
+
+Disassembly:
+	mov rax,[rcx]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Return rax
+
+Method: System.Void set_Key(MoonSharp.Interpreter.DynValue value)
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825C5EA2h],0
+	jne short 0000000180310560h
+	lea rcx,[18245A7E8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5EA2h],1
+	mov rcx,[18245A7E8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180310544h
+	call 00000001801EEAF0h
+	jmp short 0000000180310544h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825C5EA2], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x18245A7E8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825C5EA2], 1
+	007 Move rcx, typeof(MoonSharp.Interpreter.TablePair)
+	008 Compare [rcx+228], 0
+	009 JumpIfNotEqual {2}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Goto {2}
+
+Method: MoonSharp.Interpreter.DynValue get_Value()
+
+Disassembly:
+	mov rax,[rcx+8]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+8]
+	002 Return rax
+
+Method: System.Void set_Value(MoonSharp.Interpreter.DynValue value)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	nop dword ptr [rax]
+	cmp byte ptr [1825C5EA3h],0
+	jne short 00000001803105ACh
+	lea rcx,[18245A7E8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5EA3h],1
+	mov rax,[rbx]
+	test rax,rax
+	je short 00000001803105DDh
+	cmp dword ptr [rax+30h],0
+	je short 00000001803105D7h
+	cmp dword ptr [rax+30h],1
+	je short 00000001803105D7h
+	mov rcx,[18245A7E8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180310590h
+	call 00000001801EEAF0h
+	jmp short 0000000180310590h
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Nop 
+	006 Compare [0x1825C5EA3], 0
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x18245A7E8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x1825C5EA3], 1
+	011 Move rax, [rbx]
+	012 Compare rax, 0
+	013 JumpIfEqual {27}
+	014 Compare [rax+48], 0
+	015 JumpIfEqual {23}
+	016 Compare [rax+48], 1
+	017 JumpIfEqual {23}
+	018 Move rcx, typeof(MoonSharp.Interpreter.TablePair)
+	019 Compare [rcx+228], 0
+	020 JumpIfNotEqual {6}
+	021 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	022 Goto {6}
+	023 ShiftStack 32
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Return 
+	027 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void .ctor(MoonSharp.Interpreter.DynValue key, MoonSharp.Interpreter.DynValue val)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,r8
+	mov [rcx],rdx
+	mov rbx,rcx
+	call 00000001801ED930h
+	lea rcx,[rbx+8]
+	mov [rbx+8],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, r8
+	006 Move [rcx], rdx
+	007 Move rbx, rcx
+	008 Call 0x1801ED930, rcx, rdx, r8, r9
+	009 LoadAddress rcx, [rbx+8]
+	010 Move [rbx+8], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801ED930, rcx, rdx, r8, r9
+	017 Return 
+
+Method: MoonSharp.Interpreter.TablePair get_Nil()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1825C5EA4h],0
+	mov rbx,rcx
+	jne short 00000001803104F5h
+	lea rcx,[18245A7E8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5EA4h],1
+	mov rax,[18245A7E8h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180310514h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[18245A7E8h]
+	mov rax,[rax+0B8h]
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1825C5EA4], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x18245A7E8]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x1825C5EA4], 1
+	010 Move rax, typeof(MoonSharp.Interpreter.TablePair)
+	011 Compare [rax+228], 0
+	012 JumpIfNotEqual {16}
+	013 Move rcx, rax
+	014 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	015 Move rax, typeof(MoonSharp.Interpreter.TablePair)
+	016 Move rax, [rax+184]
+	017 Move xmm0, [rax]
+	018 Move rax, rbx
+	019 Move [rbx], xmm0
+	020 ShiftStack 32
+	021 Move rbx, stack:0x0
+	022 ShiftStack 8
+	023 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [1825C5EA5h],0
+	jne short 0000000180310382h
+	lea rcx,[182460FE8h]
+	call 00000001801EE810h
+	lea rcx,[18245A7E8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5EA5h],1
+	mov rcx,[182460FE8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180310397h
+	call 00000001801EEAF0h
+	movzx ecx,byte ptr [1825C5F4Ch]
+	test cl,cl
+	jne short 00000001803103B6h
+	lea rcx,[182460FE8h]
+	call 00000001801EE810h
+	mov cl,1
+	mov [1825C5F4Ch],cl
+	mov rax,[182460FE8h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 00000001803103D5h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	movzx ecx,byte ptr [1825C5F4Ch]
+	mov rax,[182460FE8h]
+	mov rdx,[rax+0B8h]
+	mov rdi,[rdx+10h]
+	test cl,cl
+	jne short 00000001803103FEh
+	lea rcx,[182460FE8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5F4Ch],1
+	mov rcx,[182460FE8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180310413h
+	call 00000001801EEAF0h
+	mov rax,[182460FE8h]
+	mov rdx,rdi
+	mov rcx,[rax+0B8h]
+	mov rbx,[rcx+10h]
+	lea rcx,[rsp+20h]
+	mov qword ptr [rsp+28h],0
+	mov [rsp+20h],rdi
+	call 00000001801ED930h
+	mov rdx,rbx
+	mov [rsp+28h],rbx
+	lea rcx,[rsp+28h]
+	call 00000001801ED930h
+	mov rax,[18245A7E8h]
+	xor edx,edx
+	movups xmm0,[rsp+20h]
+	mov rcx,[rax+0B8h]
+	movups [rcx],xmm0
+	mov rcx,[18245A7E8h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801ED930h
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x1825C5EA5], 0
+	006 JumpIfNotEqual {12}
+	007 LoadAddress rcx, [0x182460FE8]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x18245A7E8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C5EA5], 1
+	012 Move rcx, typeof(MoonSharp.Interpreter.DynValue)
+	013 Compare [rcx+228], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Move rcx, [0x1825C5F4C]
+	017 Compare rcx, 0
+	018 JumpIfNotEqual {23}
+	019 LoadAddress rcx, [0x182460FE8]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 Move rcx, 1
+	022 Move [0x1825C5F4C], rcx
+	023 Move rax, typeof(MoonSharp.Interpreter.DynValue)
+	024 Compare [rax+228], 0
+	025 JumpIfNotEqual {29}
+	026 Move rcx, rax
+	027 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	028 Move rcx, [0x1825C5F4C]
+	029 Move rax, typeof(MoonSharp.Interpreter.DynValue)
+	030 Move rdx, [rax+184]
+	031 Move rdi, [rdx+16]
+	032 Compare rcx, 0
+	033 JumpIfNotEqual {37}
+	034 LoadAddress rcx, [0x182460FE8]
+	035 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	036 Move [0x1825C5F4C], 1
+	037 Move rcx, typeof(MoonSharp.Interpreter.DynValue)
+	038 Compare [rcx+228], 0
+	039 JumpIfNotEqual {41}
+	040 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	041 Move rax, typeof(MoonSharp.Interpreter.DynValue)
+	042 Move rdx, rdi
+	043 Move rcx, [rax+184]
+	044 Move rbx, [rcx+16]
+	045 LoadAddress rcx, stack:0x20
+	046 Move stack:0x28, 0
+	047 Move stack:0x20, rdi
+	048 Call 0x1801ED930, rcx, rdx, r8, r9
+	049 Move rdx, rbx
+	050 Move stack:0x28, rbx
+	051 LoadAddress rcx, stack:0x28
+	052 Call 0x1801ED930, rcx, rdx, r8, r9
+	053 Move rax, typeof(MoonSharp.Interpreter.TablePair)
+	054 Move rdx, 0
+	055 Move xmm0, stack:0x20
+	056 Move rcx, [rax+184]
+	057 Move [rcx], xmm0
+	058 Move rcx, typeof(MoonSharp.Interpreter.TablePair)
+	059 Move rcx, [rcx+184]
+	060 Call 0x1801ED930, rcx, rdx, r8, r9
+	061 Move rbx, stack:0x40
+	062 ShiftStack 48
+	063 Move rdi, stack:0x0
+	064 ShiftStack 8
+	065 Return 
+

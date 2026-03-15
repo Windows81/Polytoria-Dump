@@ -1,0 +1,137 @@
+Type: RLD.BoxGizmoSettings3D
+
+Method: System.Single get_XSnapStep()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+40]
+	002 Return xmm0
+
+Method: System.Single get_YSnapStep()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+2Ch]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+44]
+	002 Return xmm0
+
+Method: System.Single get_ZSnapStep()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+30h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+48]
+	002 Return xmm0
+
+Method: System.Single get_DragSensitivity()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+34h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+52]
+	002 Return xmm0
+
+Method: System.Void SetXSnapStep(System.Single snapStep)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [181E5DB88h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+28h],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [0x181E5DB88]
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+40], xmm0
+	008 Return 
+
+Method: System.Void SetYSnapStep(System.Single snapStep)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [181E5DB88h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+2Ch],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [0x181E5DB88]
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+44], xmm0
+	008 Return 
+
+Method: System.Void SetZSnapStep(System.Single snapStep)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [181E5DB88h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+30h],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [0x181E5DB88]
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+48], xmm0
+	008 Return 
+
+Method: System.Void SetDragSensitivity(System.Single sensitivity)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [181E5DB88h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+34h],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [0x181E5DB88]
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+52], xmm0
+	008 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+28h],3DCCCCCDh
+	mov dword ptr [rcx+2Ch],3DCCCCCDh
+	mov dword ptr [rcx+30h],3DCCCCCDh
+	mov dword ptr [rcx+34h],3F800000h
+	jmp near ptr 00000001805727C0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+40], 0x3DCCCCCD
+	003 Move [rcx+44], 0x3DCCCCCD
+	004 Move [rcx+48], 0x3DCCCCCD
+	005 Move [rcx+52], 0x3F800000
+	006 Call Settings..ctor, rcx, rdx
+	007 Return 
+

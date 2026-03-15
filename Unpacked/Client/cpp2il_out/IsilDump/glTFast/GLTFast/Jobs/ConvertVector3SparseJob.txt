@@ -1,0 +1,100 @@
+Type: GLTFast.Jobs.ConvertVector3SparseJob
+
+Method: System.Void Execute(System.Int32 index)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [18277873Dh],0
+	mov edi,edx
+	mov rbx,rcx
+	jne short 0000000181153397h
+	lea rcx,[182616338h]
+	call 000000018020C870h
+	lea rcx,[182615C80h]
+	call 000000018020C870h
+	mov byte ptr [18277873Dh],1
+	mov rdx,[182616338h]
+	lea rcx,[rbx+8]
+	mov [rsp+30h],rsi
+	call 0000000180DE2CC0h
+	test rax,rax
+	je short 0000000181153412h
+	mov r10,[rax+18h]
+	mov r8d,edi
+	mov r9,[rax+28h]
+	mov rdx,[rbx]
+	mov rcx,[rax+40h]
+	call r10
+	imul eax,[rbx+28h]
+	lea rcx,[rbx+20h]
+	mov rdx,[182615C80h]
+	movsxd rsi,eax
+	add rsi,[rbx+30h]
+	call 0000000180DE2CC0h
+	test rax,rax
+	je short 0000000181153412h
+	imul edi,[rbx+10h]
+	mov rdx,rsi
+	mov r10,[rax+18h]
+	mov r9,[rax+28h]
+	mov rcx,[rax+40h]
+	movsxd r8,edi
+	add r8,[rbx+18h]
+	mov rsi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp r10
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x18277873D], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x182616338]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182615C80]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x18277873D], 1
+	014 Move rdx, [0x182616338]
+	015 LoadAddress rcx, [rbx+8]
+	016 Move stack:0x30, rsi
+	017 Call 0x180DE2CC0, rcx, rdx
+	018 Compare rax, 0
+	019 JumpIfEqual {47}
+	020 Move r10, [rax+24]
+	021 Move r8, rdi
+	022 Move r9, [rax+40]
+	023 Move rdx, [rbx]
+	024 Move rcx, [rax+64]
+	025 Call r10
+	026 Multiply rax, rax, [rbx+40]
+	027 LoadAddress rcx, [rbx+32]
+	028 Move rdx, [0x182615C80]
+	029 Move rsi, rax
+	030 Add rsi, rsi, [rbx+48]
+	031 Call 0x180DE2CC0, rcx, rdx
+	032 Compare rax, 0
+	033 JumpIfEqual {47}
+	034 Multiply rdi, rdi, [rbx+16]
+	035 Move rdx, rsi
+	036 Move r10, [rax+24]
+	037 Move r9, [rax+40]
+	038 Move rcx, [rax+64]
+	039 Move r8, rdi
+	040 Add r8, r8, [rbx+24]
+	041 Move rsi, stack:0x30
+	042 Move rbx, stack:0x38
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 CallNoReturn r10
+	047 Call 0x18020CAB0, rcx, rdx, r8, r9
+

@@ -1,0 +1,82 @@
+Type: MoonSharp.Interpreter.Loaders.FileSystemScriptLoader
+
+Method: System.Boolean ScriptFileExists(System.String name)
+
+Disassembly:
+	mov rcx,rdx
+	xor edx,edx
+	jmp near ptr 00000001815229E0h
+
+ISIL:
+	001 Move rcx, rdx
+	002 Move rdx, 0
+	003 Call File.Exists, rcx, rdx
+	004 Return rax
+
+Method: System.Object LoadFile(System.String file, MoonSharp.Interpreter.Table globalContext)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [18277503Ch],0
+	mov rdi,rdx
+	jne short 000000018033DCA9h
+	lea rcx,[18260DA10h]
+	call 000000018020C870h
+	mov byte ptr [18277503Ch],1
+	mov rcx,[18260DA10h]
+	call 000000018020CA60h
+	mov r9d,1
+	mov qword ptr [rsp+28h],0
+	mov r8d,3
+	mov dword ptr [rsp+20h],3
+	mov rdx,rdi
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018153FAE0h
+	mov rax,rbx
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x18277503C], 0
+	006 Move rdi, rdx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x18260DA10]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x18277503C], 1
+	011 Move rcx, typeof(System.IO.FileStream)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move r9, 1
+	014 Move stack:0x28, 0
+	015 Move r8, 3
+	016 Move stack:0x20, 3
+	017 Move rdx, rdi
+	018 Move rcx, rax
+	019 Move rbx, rax
+	020 Call FileStream..ctor, rcx, rdx, r8, r9, stack:0x0
+	021 Move rax, rbx
+	022 Move rbx, stack:0x40
+	023 ShiftStack 48
+	024 Move rdi, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

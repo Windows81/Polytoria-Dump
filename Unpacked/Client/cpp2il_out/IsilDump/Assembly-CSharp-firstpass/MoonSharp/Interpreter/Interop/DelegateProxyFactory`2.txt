@@ -1,0 +1,227 @@
+Type: MoonSharp.Interpreter.Interop.DelegateProxyFactory`2
+
+Method: System.Void .ctor(System.Func`2<TTarget, TProxy> wrapDelegate)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Return 
+
+Method: TProxy CreateProxyObject(TTarget target)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000180B69000h
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	add rsp,28h
+	jmp rax
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {10}
+	005 Move rax, [rcx+24]
+	006 Move r8, [rcx+40]
+	007 Move rcx, [rcx+64]
+	008 ShiftStack 40
+	009 CallNoReturn rax
+	010 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Object CreateProxyObject(System.Object o)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+20h]
+	mov rdi,rdx
+	mov rsi,rcx
+	mov r8,[rax+0C0h]
+	mov rbx,[r8+10h]
+	test byte ptr [rbx+135h],1
+	jne short 0000000180B68F88h
+	mov rcx,rbx
+	call 0000000180215330h
+	mov rbx,rax
+	test rdi,rdi
+	jne short 0000000180B68F91h
+	xor edx,edx
+	jmp short 0000000180B68FA4h
+	mov rdx,rbx
+	mov rcx,rdi
+	call 000000018020B9B0h
+	mov rdx,rax
+	test rax,rax
+	je short 0000000180B68FCBh
+	mov rcx,[rsi+10h]
+	test rcx,rcx
+	je short 0000000180B68FD7h
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+	mov rdx,rbx
+	mov rcx,rdi
+	call 000000018020B9D0h
+	int 3
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rax, [r8+32]
+	007 Move rdi, rdx
+	008 Move rsi, rcx
+	009 Move r8, [rax+192]
+	010 Move rbx, [r8+16]
+	011 Compare [rbx+309], 1
+	012 JumpIfNotEqual {16}
+	013 Move rcx, rbx
+	014 Call 0x180215330, rcx, rdx, r8, r9
+	015 Move rbx, rax
+	016 Compare rdi, 0
+	017 JumpIfNotEqual {20}
+	018 Move rdx, 0
+	019 Goto {26}
+	020 Move rdx, rbx
+	021 Move rcx, rdi
+	022 Call 0x18020B9B0, rcx, rdx, r8, r9
+	023 Move rdx, rax
+	024 Compare rax, 0
+	025 JumpIfEqual {38}
+	026 Move rcx, [rsi+16]
+	027 Compare rcx, 0
+	028 JumpIfEqual {42}
+	029 Move rax, [rcx+24]
+	030 Move r8, [rcx+40]
+	031 Move rcx, [rcx+64]
+	032 Move rbx, stack:0x30
+	033 Move rsi, stack:0x38
+	034 ShiftStack 32
+	035 Move rdi, stack:0x0
+	036 ShiftStack 8
+	037 CallNoReturn rax
+	038 Move rdx, rbx
+	039 Move rcx, rdi
+	040 Call 0x18020B9D0, rcx, rdx, r8, r9
+	041 Interrupt 
+	042 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Type get_TargetType()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[rdx+20h]
+	mov rcx,[182783220h]
+	mov rbx,[rax+0C0h]
+	cmp dword ptr [rcx+0E4h],0
+	mov rbx,[rbx+30h]
+	jne short 0000000180B6907Ah
+	call 000000018020CB50h
+	xor edx,edx
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000181598270h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [rdx+32]
+	005 Move rcx, [0x182783220]
+	006 Move rbx, [rax+192]
+	007 Compare [rcx+228], 0
+	008 Move rbx, [rbx+48]
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Move rdx, 0
+	012 Move rcx, rbx
+	013 ShiftStack 32
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Call Type.GetTypeFromHandle, rcx, rdx
+	017 Return rax
+
+Method: System.Type get_ProxyType()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[rdx+20h]
+	mov rcx,[182783220h]
+	mov rbx,[rax+0C0h]
+	cmp dword ptr [rcx+0E4h],0
+	mov rbx,[rbx+38h]
+	jne short 0000000180B6903Ah
+	call 000000018020CB50h
+	xor edx,edx
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000181598270h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [rdx+32]
+	005 Move rcx, [0x182783220]
+	006 Move rbx, [rax+192]
+	007 Compare [rcx+228], 0
+	008 Move rbx, [rbx+56]
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Move rdx, 0
+	012 Move rcx, rbx
+	013 ShiftStack 32
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Call Type.GetTypeFromHandle, rcx, rdx
+	017 Return rax
+

@@ -1,0 +1,44 @@
+Type: Mirror.QueuedMessage
+
+Method: System.Void .ctor(System.Int32 connectionId, System.Byte[] bytes, System.Double time, System.Int32 channelId)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov [rcx],edx
+	mov rbx,rcx
+	mov [rcx+8],r8
+	mov rdx,r8
+	movaps [rsp+20h],xmm6
+	add rcx,8
+	movaps xmm6,xmm3
+	call 00000001801ED930h
+	mov eax,[rsp+60h]
+	movsd qword ptr [rbx+10h],xmm6
+	movaps xmm6,[rsp+20h]
+	mov [rbx+18h],eax
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move [rcx], rdx
+	005 Move rbx, rcx
+	006 Move [rcx+8], r8
+	007 Move rdx, r8
+	008 Move stack:0x20, xmm6
+	009 Add rcx, rcx, 8
+	010 Move xmm6, xmm3
+	011 Call 0x1801ED930, rcx, rdx, r8, r9
+	012 Move rax, stack:0x60
+	013 Move [rbx+16], xmm6
+	014 Move xmm6, stack:0x20
+	015 Move [rbx+24], rax
+	016 ShiftStack 48
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return 
+

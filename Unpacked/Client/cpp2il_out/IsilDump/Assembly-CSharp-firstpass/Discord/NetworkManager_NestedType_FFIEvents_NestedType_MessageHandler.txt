@@ -1,0 +1,205 @@
+Type: Discord.NetworkManager+FFIEvents+MessageHandler
+
+Method: System.Void .ctor(System.Object object, System.IntPtr method)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+8]
+	mov rbx,r8
+	mov [rcx+10h],rax
+	mov rdi,rcx
+	mov [rcx+28h],rbx
+	mov rsi,rdx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 000000018020B990h
+	movzx ebp,byte ptr [rbx+52h]
+	mov rcx,rbx
+	mov [rdi+40h],rdi
+	call 000000018020B9C0h
+	test al,al
+	je short 00000001803C6ED9h
+	cmp bpl,5
+	jne short 00000001803C6EDEh
+	lea rax,[180015490h]
+	jmp short 00000001803C6EEAh
+	test rsi,rsi
+	je short 00000001803C6F0Eh
+	mov rax,[rdi+20h]
+	mov [rdi+40h],rax
+	mov rax,[rdi+10h]
+	mov [rdi+18h],rax
+	lea rax,[1800153E0h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov [rdi+38h],rax
+	add rsp,20h
+	pop rdi
+	ret
+	lea rdx,[181E5DD00h]
+	xor ecx,ecx
+	call 000000018020C470h
+	mov rcx,rax
+	xor edx,edx
+	call 000000018020CA70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+8]
+	008 Move rbx, r8
+	009 Move [rcx+16], rax
+	010 Move rdi, rcx
+	011 Move [rcx+40], rbx
+	012 Move rsi, rdx
+	013 Move [rcx+32], rdx
+	014 Add rcx, rcx, 32
+	015 Call 0x18020B990, rcx, rdx, r8, r9
+	016 Move rbp, [rbx+82]
+	017 Move rcx, rbx
+	018 Move [rdi+64], rdi
+	019 Call 0x18020B9C0, rcx, rdx, r8, r9
+	020 Compare rax, 0
+	021 JumpIfEqual {26}
+	022 Compare rbp, 5
+	023 JumpIfNotEqual {28}
+	024 LoadAddress rax, [0x180015490]
+	025 Goto {31}
+	026 Compare rsi, 0
+	027 JumpIfEqual {41}
+	028 Move rax, [rdi+32]
+	029 Move [rdi+64], rax
+	030 Move rax, [rdi+16]
+	031 Move [rdi+24], rax
+	032 LoadAddress rax, [0x1800153E0]
+	033 Move rbx, stack:0x30
+	034 Move rbp, stack:0x38
+	035 Move rsi, stack:0x40
+	036 Move [rdi+56], rax
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return 
+	041 LoadAddress rdx, [0x181E5DD00]
+	042 Move rcx, 0
+	043 Call 0x18020C470, rcx, rdx, r8, r9
+	044 Move rcx, rax
+	045 Move rdx, 0
+	046 Call 0x18020CA70, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(System.IntPtr ptr, System.UInt64 peerId, System.Byte channelId, System.IntPtr dataPtr, System.Int32 dataLen)
+
+Disassembly:
+	mov rax,[rcx+28h]
+	mov r10,[rcx+18h]
+	mov rcx,[rcx+40h]
+	mov [rsp+38h],rax
+	jmp r10
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Move r10, [rcx+24]
+	003 Move rcx, [rcx+64]
+	004 Move stack:0x38, rax
+	005 CallNoReturn r10
+
+Method: System.IAsyncResult BeginInvoke(System.IntPtr ptr, System.UInt64 peerId, System.Byte channelId, System.IntPtr dataPtr, System.Int32 dataLen, System.AsyncCallback callback, System.Object object)
+
+Disassembly:
+	mov [rsp+20h],r9b
+	mov [rsp+18h],r8
+	mov [rsp+10h],rdx
+	push rbx
+	sub rsp,50h
+	mov rbx,rcx
+	mov qword ptr [rsp+48h],0
+	mov rcx,[182783198h]
+	lea rdx,[rsp+68h]
+	call 000000018020B970h
+	mov rcx,[1827831B0h]
+	lea rdx,[rsp+70h]
+	mov [rsp+20h],rax
+	call 000000018020B970h
+	mov rcx,[182783158h]
+	lea rdx,[rsp+78h]
+	mov [rsp+28h],rax
+	call 000000018020B970h
+	mov rcx,[182783198h]
+	lea rdx,[rsp+80h]
+	mov [rsp+30h],rax
+	call 000000018020B970h
+	mov rcx,[182783188h]
+	lea rdx,[rsp+88h]
+	mov [rsp+38h],rax
+	call 000000018020B970h
+	mov r9,[rsp+98h]
+	lea rdx,[rsp+20h]
+	mov r8,[rsp+90h]
+	mov rcx,rbx
+	mov [rsp+40h],rax
+	call 000000018020C450h
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 Move stack:0x20, r9
+	002 Move stack:0x18, r8
+	003 Move stack:0x10, rdx
+	004 ShiftStack -8
+	005 Move stack:0x0, rbx
+	006 ShiftStack -80
+	007 Move rbx, rcx
+	008 Move stack:0x48, 0
+	009 Move rcx, [0x182783198]
+	010 LoadAddress rdx, stack:0x68
+	011 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	012 Move rcx, [0x1827831B0]
+	013 LoadAddress rdx, stack:0x70
+	014 Move stack:0x20, rax
+	015 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	016 Move rcx, [0x182783158]
+	017 LoadAddress rdx, stack:0x78
+	018 Move stack:0x28, rax
+	019 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	020 Move rcx, [0x182783198]
+	021 LoadAddress rdx, stack:0x80
+	022 Move stack:0x30, rax
+	023 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	024 Move rcx, [0x182783188]
+	025 LoadAddress rdx, stack:0x88
+	026 Move stack:0x38, rax
+	027 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	028 Move r9, stack:0x98
+	029 LoadAddress rdx, stack:0x20
+	030 Move r8, stack:0x90
+	031 Move rcx, rbx
+	032 Move stack:0x40, rax
+	033 Call 0x18020C450, rcx, rdx, r8, r9
+	034 ShiftStack 80
+	035 Move rbx, stack:0x0
+	036 ShiftStack 8
+	037 Return rax
+
+Method: System.Void EndInvoke(System.IAsyncResult result)
+
+Disassembly:
+	mov rcx,rdx
+	xor edx,edx
+	jmp near ptr 000000018020C460h
+
+ISIL:
+	001 Move rcx, rdx
+	002 Move rdx, 0
+	003 Call 0x18020C460, rcx, rdx, r8, r9
+	004 Return 
+

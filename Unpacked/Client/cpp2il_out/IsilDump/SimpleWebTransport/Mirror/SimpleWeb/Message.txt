@@ -1,0 +1,122 @@
+Type: Mirror.SimpleWeb.Message
+
+Method: System.Void .ctor(Mirror.SimpleWeb.EventType type)
+
+Disassembly:
+	xorps xmm0,xmm0
+	xor eax,eax
+	movups [rcx],xmm0
+	mov [rcx+10h],rax
+	mov [rcx+4],edx
+	ret
+
+ISIL:
+	001 Move xmm0, 0
+	002 Move rax, 0
+	003 Move [rcx], xmm0
+	004 Move [rcx+16], rax
+	005 Move [rcx+4], rdx
+	006 Return 
+
+Method: System.Void .ctor(Mirror.SimpleWeb.ArrayBuffer data)
+
+Disassembly:
+	xor eax,eax
+	mov [rcx],eax
+	mov [rcx+10h],rax
+	mov dword ptr [rcx+4],1
+	mov [rcx+8],rdx
+	add rcx,8
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move rax, 0
+	002 Move [rcx], rax
+	003 Move [rcx+16], rax
+	004 Move [rcx+4], 1
+	005 Move [rcx+8], rdx
+	006 Add rcx, rcx, 8
+	007 Call 0x18020B990, rcx, rdx, r8, r9
+	008 Return 
+
+Method: System.Void .ctor(System.Exception exception)
+
+Disassembly:
+	xor eax,eax
+	mov [rcx],eax
+	mov [rcx+8],rax
+	mov dword ptr [rcx+4],3
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move rax, 0
+	002 Move [rcx], rax
+	003 Move [rcx+8], rax
+	004 Move [rcx+4], 3
+	005 Move [rcx+16], rdx
+	006 Add rcx, rcx, 16
+	007 Call 0x18020B990, rcx, rdx, r8, r9
+	008 Return 
+
+Method: System.Void .ctor(System.Int32 connId, Mirror.SimpleWeb.EventType type)
+
+Disassembly:
+	xor eax,eax
+	mov [rcx+8],rax
+	mov [rcx+10h],rax
+	mov [rcx],edx
+	mov [rcx+4],r8d
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Move [rcx+8], rax
+	003 Move [rcx+16], rax
+	004 Move [rcx], rdx
+	005 Move [rcx+4], r8
+	006 Return 
+
+Method: System.Void .ctor(System.Int32 connId, Mirror.SimpleWeb.ArrayBuffer data)
+
+Disassembly:
+	mov qword ptr [rcx+10h],0
+	mov [rcx],edx
+	mov rdx,r8
+	mov dword ptr [rcx+4],1
+	mov [rcx+8],r8
+	add rcx,8
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+16], 0
+	002 Move [rcx], rdx
+	003 Move rdx, r8
+	004 Move [rcx+4], 1
+	005 Move [rcx+8], r8
+	006 Add rcx, rcx, 8
+	007 Call 0x18020B990, rcx, rdx, r8, r9
+	008 Return 
+
+Method: System.Void .ctor(System.Int32 connId, System.Exception exception)
+
+Disassembly:
+	mov qword ptr [rcx+8],0
+	mov [rcx],edx
+	mov rdx,r8
+	mov dword ptr [rcx+4],3
+	mov [rcx+10h],r8
+	add rcx,10h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+8], 0
+	002 Move [rcx], rdx
+	003 Move rdx, r8
+	004 Move [rcx+4], 3
+	005 Move [rcx+16], r8
+	006 Add rcx, rcx, 16
+	007 Call 0x18020B990, rcx, rdx, r8, r9
+	008 Return 
+

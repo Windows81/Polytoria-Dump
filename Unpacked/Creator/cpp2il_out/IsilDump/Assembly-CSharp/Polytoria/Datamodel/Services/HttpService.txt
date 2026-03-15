@@ -1,0 +1,1310 @@
+Type: Polytoria.Datamodel.Services.HttpService
+
+Method: System.Void Awake()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1825C6BFAh],0
+	mov rbx,rcx
+	jne short 0000000180487185h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6BFAh],1
+	mov rax,[182472288h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 00000001804871A4h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182472288h]
+	mov rax,[rax+0B8h]
+	mov rdx,rbx
+	mov [rax],rbx
+	mov rcx,[182472288h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1825C6BFA], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x182472288]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x1825C6BFA], 1
+	010 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	011 Compare [rax+228], 0
+	012 JumpIfNotEqual {16}
+	013 Move rcx, rax
+	014 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	015 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	016 Move rax, [rax+184]
+	017 Move rdx, rbx
+	018 Move [rax], rbx
+	019 Move rcx, typeof(Polytoria.Datamodel.Services.HttpService)
+	020 Move rcx, [rcx+184]
+	021 ShiftStack 32
+	022 Move rbx, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x1801ED930, rcx, rdx, r8, r9
+	025 Return 
+
+Method: System.Boolean RateLimit(MoonSharp.Interpreter.DynValue callback = null)
+
+Disassembly:
+	push rbp
+	sub rsp,40h
+	cmp byte ptr [1825C6BFBh],0
+	mov rbp,rcx
+	jne short 0000000180487809h
+	lea rcx,[182477E50h]
+	call 00000001801EE810h
+	lea rcx,[18245CC90h]
+	call 00000001801EE810h
+	lea rcx,[182469860h]
+	call 00000001801EE810h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	lea rcx,[182497748h]
+	call 00000001801EE810h
+	lea rcx,[1824A36D0h]
+	call 00000001801EE810h
+	lea rcx,[182456C20h]
+	call 00000001801EE810h
+	lea rcx,[182479150h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6BFBh],1
+	mov rax,[182469860h]
+	xorps xmm0,xmm0
+	movups [rsp+20h],xmm0
+	mov rcx,[rax+0B8h]
+	mov rcx,[rcx]
+	test rcx,rcx
+	je near ptr 0000000180487BAEh
+	mov rdx,[182477E50h]
+	call 0000000180688FD0h
+	test rax,rax
+	je near ptr 0000000180487BAEh
+	cmp byte ptr [rax+21h],0
+	mov [rsp+50h],rbx
+	mov [rsp+58h],rsi
+	mov [rsp+68h],rdi
+	je near ptr 0000000180487A90h
+	mov rcx,[18245CC90h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018048786Eh
+	call 00000001801EEAF0h
+	xor edx,edx
+	lea rcx,[rsp+30h]
+	call 0000000181487540h
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	movups xmm0,[rax]
+	movups [rsp+20h],xmm0
+	call 0000000181485AE0h
+	mov r9,[182472288h]
+	mov rcx,rax
+	mov eax,88888889h
+	imul ecx
+	lea ebx,[rcx+rdx]
+	sar ebx,5
+	mov eax,ebx
+	shr eax,1Fh
+	add ebx,eax
+	cmp dword ptr [r9+0E4h],0
+	jne short 00000001804878C5h
+	mov rcx,r9
+	call 00000001801EEAF0h
+	mov r9,[182472288h]
+	mov rax,[r9+0B8h]
+	cmp ebx,[rax+10h]
+	je short 0000000180487910h
+	cmp dword ptr [r9+0E4h],0
+	jne short 00000001804878EAh
+	mov rcx,r9
+	call 00000001801EEAF0h
+	mov r9,[182472288h]
+	mov rax,[r9+0B8h]
+	mov [rax+10h],ebx
+	mov rax,[182472288h]
+	mov rcx,[rax+0B8h]
+	mov dword ptr [rcx+0Ch],0
+	mov r9,[182472288h]
+	cmp dword ptr [r9+0E4h],0
+	jne short 0000000180487929h
+	mov rcx,r9
+	call 00000001801EEAF0h
+	mov r9,[182472288h]
+	mov r8,[r9+0B8h]
+	mov edx,[r8+8]
+	cmp [r8+0Ch],edx
+	jge short 0000000180487979h
+	cmp dword ptr [r9+0E4h],0
+	jne short 0000000180487953h
+	mov rcx,r9
+	call 00000001801EEAF0h
+	mov r9,[182472288h]
+	mov rax,[r9+0B8h]
+	mov ecx,[rax+0Ch]
+	inc ecx
+	mov [rax+0Ch],ecx
+	mov al,1
+	mov rsi,[rsp+58h]
+	mov rbx,[rsp+50h]
+	mov rdi,[rsp+68h]
+	add rsp,40h
+	pop rbp
+	ret
+	mov rcx,[1824A36D0h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018048798Eh
+	call 00000001801EEAF0h
+	cmp byte ptr [1825C67BDh],0
+	jne short 00000001804879AAh
+	lea rcx,[1824A36D0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C67BDh],1
+	mov rcx,[1824A36D0h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001804879BFh
+	call 00000001801EEAF0h
+	mov rax,[1824A36D0h]
+	mov edx,3
+	mov rcx,[rax+0B8h]
+	mov rsi,[rcx]
+	mov rcx,[182497748h]
+	call 00000001801ED9B0h
+	mov rcx,[1825D3768h]
+	lea rdx,[rsp+60h]
+	mov rbx,rax
+	mov byte ptr [rsp+60h],1
+	call 00000001801ED910h
+	mov rdi,rax
+	test rbx,rbx
+	je near ptr 0000000180487BD4h
+	test rax,rax
+	je short 0000000180487A23h
+	mov rdx,[rbx]
+	mov rcx,rax
+	mov rdx,[rdx+40h]
+	call 00000001801ED950h
+	test rax,rax
+	je near ptr 0000000180487BB4h
+	cmp dword ptr [rbx+18h],1
+	jbe near ptr 0000000180487BDAh
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	mov rax,[182456C20h]
+	test rax,rax
+	je short 0000000180487A68h
+	mov rdx,[rbx]
+	mov rcx,rax
+	mov rdx,[rdx+40h]
+	call 00000001801ED950h
+	test rax,rax
+	je near ptr 0000000180487BC4h
+	mov rax,[182456C20h]
+	cmp dword ptr [rbx+18h],2
+	jbe near ptr 0000000180487BDAh
+	lea rcx,[rbx+30h]
+	mov [rbx+30h],rax
+	mov rdx,rax
+	call 00000001801ED930h
+	test rsi,rsi
+	je near ptr 0000000180487BD4h
+	jmp near ptr 0000000180487B96h
+	mov rcx,[1824A36D0h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180487AA5h
+	call 00000001801EEAF0h
+	cmp byte ptr [1825C67BDh],0
+	jne short 0000000180487AC1h
+	lea rcx,[1824A36D0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C67BDh],1
+	mov rcx,[1824A36D0h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180487AD6h
+	call 00000001801EEAF0h
+	mov rax,[1824A36D0h]
+	mov edx,3
+	mov rcx,[rax+0B8h]
+	mov rsi,[rcx]
+	mov rcx,[182497748h]
+	call 00000001801ED9B0h
+	mov rcx,[1825D3768h]
+	lea rdx,[rsp+60h]
+	mov rbx,rax
+	mov byte ptr [rsp+60h],1
+	call 00000001801ED910h
+	mov rdi,rax
+	test rbx,rbx
+	je near ptr 0000000180487C06h
+	test rax,rax
+	je short 0000000180487B3Ah
+	mov rdx,[rbx]
+	mov rcx,rax
+	mov rdx,[rdx+40h]
+	call 00000001801ED950h
+	test rax,rax
+	je near ptr 0000000180487BE0h
+	cmp dword ptr [rbx+18h],1
+	jbe near ptr 0000000180487C00h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	mov rax,[182479150h]
+	test rax,rax
+	je short 0000000180487B7Bh
+	mov rdx,[rbx]
+	mov rcx,rax
+	mov rdx,[rdx+40h]
+	call 00000001801ED950h
+	test rax,rax
+	je short 0000000180487BF0h
+	mov rax,[182479150h]
+	cmp dword ptr [rbx+18h],2
+	jbe short 0000000180487C00h
+	lea rcx,[rbx+30h]
+	mov [rbx+30h],rax
+	mov rdx,rax
+	call 00000001801ED930h
+	test rsi,rsi
+	je short 0000000180487C06h
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rbp
+	mov rcx,rsi
+	call 000000018048DCB0h
+	xor al,al
+	jmp near ptr 0000000180487964h
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EE430h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EE430h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+	int 3
+	call 00000001801EE430h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EE430h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA40h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbp
+	003 ShiftStack -64
+	004 Compare [0x1825C6BFB], 0
+	005 Move rbp, rcx
+	006 JumpIfNotEqual {24}
+	007 LoadAddress rcx, [0x182477E50]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x18245CC90]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182469860]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182472288]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x182497748]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x1824A36D0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x182456C20]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x182479150]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 Move [0x1825C6BFB], 1
+	024 Move rax, typeof(Polytoria.Datamodel.Game)
+	025 Move xmm0, 0
+	026 Move stack:0x20, xmm0
+	027 Move rcx, [rax+184]
+	028 Move rcx, [rcx]
+	029 Compare rcx, 0
+	030 JumpIfEqual {232}
+	031 Move rdx, [0x182477E50]
+	032 Call 0x180688FD0, rcx, rdx
+	033 Compare rax, 0
+	034 JumpIfEqual {232}
+	035 Compare [rax+33], 0
+	036 Move stack:0x50, rbx
+	037 Move stack:0x58, rsi
+	038 Move stack:0x68, rdi
+	039 JumpIfEqual {166}
+	040 Move rcx, typeof(System.DateTimeOffset)
+	041 Compare [rcx+228], 0
+	042 JumpIfNotEqual {44}
+	043 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	044 Move rdx, 0
+	045 LoadAddress rcx, stack:0x30
+	046 Call DateTimeOffset.get_Now, rcx
+	047 Move rdx, 0
+	048 LoadAddress rcx, stack:0x20
+	049 Move xmm0, [rax]
+	050 Move stack:0x20, xmm0
+	051 Call DateTimeOffset.ToUnixTimeSeconds, rcx, rdx
+	052 Move r9, typeof(Polytoria.Datamodel.Services.HttpService)
+	053 Move rcx, rax
+	054 Move rax, 0x88888889
+	055 NotImplemented "imul ecx"
+	056 LoadAddress rbx, [rcx+rdx]
+	057 ShiftRight rbx, 5
+	058 Move rax, rbx
+	059 ShiftRight rax, 31
+	060 Add rbx, rbx, rax
+	061 Compare [r9+228], 0
+	062 JumpIfNotEqual {66}
+	063 Move rcx, r9
+	064 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	065 Move r9, typeof(Polytoria.Datamodel.Services.HttpService)
+	066 Move rax, [r9+184]
+	067 Compare rbx, [rax+16]
+	068 JumpIfEqual {80}
+	069 Compare [r9+228], 0
+	070 JumpIfNotEqual {74}
+	071 Move rcx, r9
+	072 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	073 Move r9, typeof(Polytoria.Datamodel.Services.HttpService)
+	074 Move rax, [r9+184]
+	075 Move [rax+16], rbx
+	076 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	077 Move rcx, [rax+184]
+	078 Move [rcx+12], 0
+	079 Move r9, typeof(Polytoria.Datamodel.Services.HttpService)
+	080 Compare [r9+228], 0
+	081 JumpIfNotEqual {85}
+	082 Move rcx, r9
+	083 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	084 Move r9, typeof(Polytoria.Datamodel.Services.HttpService)
+	085 Move r8, [r9+184]
+	086 Move rdx, [r8+8]
+	087 Compare [r8+12], rdx
+	088 JumpIfGreaterOrEqual {106}
+	089 Compare [r9+228], 0
+	090 JumpIfNotEqual {94}
+	091 Move rcx, r9
+	092 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	093 Move r9, typeof(Polytoria.Datamodel.Services.HttpService)
+	094 Move rax, [r9+184]
+	095 Move rcx, [rax+12]
+	096 Add rcx, rcx, 1
+	097 Move [rax+12], rcx
+	098 Move rax, 1
+	099 Move rsi, stack:0x58
+	100 Move rbx, stack:0x50
+	101 Move rdi, stack:0x68
+	102 ShiftStack 64
+	103 Move rbp, stack:0x0
+	104 ShiftStack 8
+	105 Return rax
+	106 Move rcx, typeof(Polytoria.Datamodel.Services.ScriptService)
+	107 Compare [rcx+228], 0
+	108 JumpIfNotEqual {110}
+	109 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	110 Compare [0x1825C67BD], 0
+	111 JumpIfNotEqual {115}
+	112 LoadAddress rcx, [0x1824A36D0]
+	113 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	114 Move [0x1825C67BD], 1
+	115 Move rcx, typeof(Polytoria.Datamodel.Services.ScriptService)
+	116 Compare [rcx+228], 0
+	117 JumpIfNotEqual {119}
+	118 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	119 Move rax, typeof(Polytoria.Datamodel.Services.ScriptService)
+	120 Move rdx, 3
+	121 Move rcx, [rax+184]
+	122 Move rsi, [rcx]
+	123 Move rcx, typeof(System.Object[1])
+	124 Call "SzArrayNew", rcx, rdx, r8, r9
+	125 Move rcx, [0x1825D3768]
+	126 LoadAddress rdx, stack:0x60
+	127 Move rbx, rax
+	128 Move stack:0x60, 1
+	129 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	130 Move rdi, rax
+	131 Compare rbx, 0
+	132 JumpIfEqual {244}
+	133 Compare rax, 0
+	134 JumpIfEqual {141}
+	135 Move rdx, [rbx]
+	136 Move rcx, rax
+	137 Move rdx, [rdx+64]
+	138 Call 0x1801ED950, rcx, rdx, r8, r9
+	139 Compare rax, 0
+	140 JumpIfEqual {234}
+	141 Compare [rbx+24], 1
+	142 JumpIfLessOrEqual {246}
+	143 LoadAddress rcx, [rbx+40]
+	144 Move [rbx+40], rdi
+	145 Move rdx, rdi
+	146 Call 0x1801ED930, rcx, rdx, r8, r9
+	147 Move rax, "Http limit exceeded"
+	148 Compare rax, 0
+	149 JumpIfEqual {157}
+	150 Move rdx, [rbx]
+	151 Move rcx, rax
+	152 Move rdx, [rdx+64]
+	153 Call 0x1801ED950, rcx, rdx, r8, r9
+	154 Compare rax, 0
+	155 JumpIfEqual {239}
+	156 Move rax, "Http limit exceeded"
+	157 Compare [rbx+24], 2
+	158 JumpIfLessOrEqual {246}
+	159 LoadAddress rcx, [rbx+48]
+	160 Move [rbx+48], rax
+	161 Move rdx, rax
+	162 Call 0x1801ED930, rcx, rdx, r8, r9
+	163 Compare rsi, 0
+	164 JumpIfEqual {244}
+	165 Goto {225}
+	166 Move rcx, typeof(Polytoria.Datamodel.Services.ScriptService)
+	167 Compare [rcx+228], 0
+	168 JumpIfNotEqual {170}
+	169 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	170 Compare [0x1825C67BD], 0
+	171 JumpIfNotEqual {175}
+	172 LoadAddress rcx, [0x1824A36D0]
+	173 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	174 Move [0x1825C67BD], 1
+	175 Move rcx, typeof(Polytoria.Datamodel.Services.ScriptService)
+	176 Compare [rcx+228], 0
+	177 JumpIfNotEqual {179}
+	178 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	179 Move rax, typeof(Polytoria.Datamodel.Services.ScriptService)
+	180 Move rdx, 3
+	181 Move rcx, [rax+184]
+	182 Move rsi, [rcx]
+	183 Move rcx, typeof(System.Object[1])
+	184 Call "SzArrayNew", rcx, rdx, r8, r9
+	185 Move rcx, [0x1825D3768]
+	186 LoadAddress rdx, stack:0x60
+	187 Move rbx, rax
+	188 Move stack:0x60, 1
+	189 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	190 Move rdi, rax
+	191 Compare rbx, 0
+	192 JumpIfEqual {260}
+	193 Compare rax, 0
+	194 JumpIfEqual {201}
+	195 Move rdx, [rbx]
+	196 Move rcx, rax
+	197 Move rdx, [rdx+64]
+	198 Call 0x1801ED950, rcx, rdx, r8, r9
+	199 Compare rax, 0
+	200 JumpIfEqual {248}
+	201 Compare [rbx+24], 1
+	202 JumpIfLessOrEqual {258}
+	203 LoadAddress rcx, [rbx+40]
+	204 Move [rbx+40], rdi
+	205 Move rdx, rdi
+	206 Call 0x1801ED930, rcx, rdx, r8, r9
+	207 Move rax, "Cannot call Http functions from client"
+	208 Compare rax, 0
+	209 JumpIfEqual {217}
+	210 Move rdx, [rbx]
+	211 Move rcx, rax
+	212 Move rdx, [rdx+64]
+	213 Call 0x1801ED950, rcx, rdx, r8, r9
+	214 Compare rax, 0
+	215 JumpIfEqual {253}
+	216 Move rax, "Cannot call Http functions from client"
+	217 Compare [rbx+24], 2
+	218 JumpIfLessOrEqual {258}
+	219 LoadAddress rcx, [rbx+48]
+	220 Move [rbx+48], rax
+	221 Move rdx, rax
+	222 Call 0x1801ED930, rcx, rdx, r8, r9
+	223 Compare rsi, 0
+	224 JumpIfEqual {260}
+	225 Move r9, 0
+	226 Move r8, rbx
+	227 Move rdx, rbp
+	228 Move rcx, rsi
+	229 Call ScriptService.CallFunc, rcx, rdx, r8
+	230 Move rax, 0
+	231 Goto {99}
+	232 Call 0x1801EEA50, rcx, rdx, r8, r9
+	233 Interrupt 
+	234 Call 0x1801EE430, rcx, rdx, r8, r9
+	235 Move rcx, rax
+	236 Move rdx, 0
+	237 Call 0x1801EEA10, rcx, rdx, r8, r9
+	238 Interrupt 
+	239 Call 0x1801EE430, rcx, rdx, r8, r9
+	240 Move rcx, rax
+	241 Move rdx, 0
+	242 Call 0x1801EEA10, rcx, rdx, r8, r9
+	243 Interrupt 
+	244 Call 0x1801EEA50, rcx, rdx, r8, r9
+	245 Interrupt 
+	246 Call 0x1801EEA40, rcx, rdx, r8, r9
+	247 Interrupt 
+	248 Call 0x1801EE430, rcx, rdx, r8, r9
+	249 Move rcx, rax
+	250 Move rdx, 0
+	251 Call 0x1801EEA10, rcx, rdx, r8, r9
+	252 Interrupt 
+	253 Call 0x1801EE430, rcx, rdx, r8, r9
+	254 Move rcx, rax
+	255 Move rdx, 0
+	256 Call 0x1801EEA10, rcx, rdx, r8, r9
+	257 Interrupt 
+	258 Call 0x1801EEA40, rcx, rdx, r8, r9
+	259 Interrupt 
+	260 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Get(System.String url, MoonSharp.Interpreter.DynValue callback = null, MoonSharp.Interpreter.Table headers = null)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	push rsi
+	sub rsp,30h
+	cmp byte ptr [1825C6BFCh],0
+	mov rsi,r8
+	mov rbx,rdx
+	mov rbp,rcx
+	jne short 00000001804873E0h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	lea rcx,[1824A4798h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6BFCh],1
+	mov rcx,[182472288h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001804873F5h
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180487790h
+	test al,al
+	je short 000000018048746Ch
+	mov rax,[182472288h]
+	mov [rsp+40h],rdi
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180487427h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182472288h]
+	mov rax,[rax+0B8h]
+	mov r9,rbx
+	mov rcx,[1824A4798h]
+	xor r8d,r8d
+	mov qword ptr [rsp+28h],0
+	mov rdx,rbp
+	mov [rsp+20h],rsi
+	mov rdi,[rax]
+	call 00000001804872C0h
+	test rdi,rdi
+	je short 000000018048747Ch
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 0000000181964DB0h
+	mov rdi,[rsp+40h]
+	mov rbx,[rsp+48h]
+	mov rbp,[rsp+50h]
+	add rsp,30h
+	pop rsi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, rsi
+	005 ShiftStack -48
+	006 Compare [0x1825C6BFC], 0
+	007 Move rsi, r8
+	008 Move rbx, rdx
+	009 Move rbp, rcx
+	010 JumpIfNotEqual {16}
+	011 LoadAddress rcx, [0x182472288]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x1824A4798]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825C6BFC], 1
+	016 Move rcx, typeof(Polytoria.Datamodel.Services.HttpService)
+	017 Compare [rcx+228], 0
+	018 JumpIfNotEqual {20}
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move rdx, 0
+	021 Move rcx, rbx
+	022 Call HttpService.RateLimit, rcx, rdx
+	023 Compare rax, 0
+	024 JumpIfEqual {48}
+	025 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	026 Move stack:0x40, rdi
+	027 Compare [rax+228], 0
+	028 JumpIfNotEqual {32}
+	029 Move rcx, rax
+	030 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	031 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	032 Move rax, [rax+184]
+	033 Move r9, rbx
+	034 Move rcx, "GET"
+	035 Move r8, 0
+	036 Move stack:0x28, 0
+	037 Move rdx, rbp
+	038 Move stack:0x20, rsi
+	039 Move rdi, [rax]
+	040 Call HttpService.DoRequest, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	041 Compare rdi, 0
+	042 JumpIfEqual {54}
+	043 Move r8, 0
+	044 Move rdx, rax
+	045 Move rcx, rdi
+	046 Call 0x181964DB0, rcx, rdx
+	047 Move rdi, stack:0x40
+	048 Move rbx, stack:0x48
+	049 Move rbp, stack:0x50
+	050 ShiftStack 48
+	051 Move rsi, stack:0x0
+	052 ShiftStack 8
+	053 Return 
+	054 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Post(System.String url, System.String body, MoonSharp.Interpreter.DynValue callback = null, MoonSharp.Interpreter.Table headers = null)
+
+Disassembly:
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,30h
+	cmp byte ptr [1825C6BFDh],0
+	mov rsi,r9
+	mov rdi,r8
+	mov rbp,rdx
+	mov r14,rcx
+	jne short 00000001804875D9h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	lea rcx,[182489CB0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6BFDh],1
+	mov rcx,[182472288h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001804875EEh
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180487790h
+	test al,al
+	je short 0000000180487665h
+	mov rax,[182472288h]
+	mov [rsp+40h],rbx
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180487620h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182472288h]
+	mov rax,[rax+0B8h]
+	mov r9,rdi
+	mov rcx,[182489CB0h]
+	mov r8,rbp
+	mov qword ptr [rsp+28h],0
+	mov rdx,r14
+	mov [rsp+20h],rsi
+	mov rbx,[rax]
+	call 00000001804872C0h
+	test rbx,rbx
+	je short 000000018048767Bh
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rbx
+	call 0000000181964DB0h
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	mov rdi,[rsp+58h]
+	add rsp,30h
+	pop r14
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbp
+	002 Move stack:0x18, rsi
+	003 Move stack:0x20, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -48
+	007 Compare [0x1825C6BFD], 0
+	008 Move rsi, r9
+	009 Move rdi, r8
+	010 Move rbp, rdx
+	011 Move r14, rcx
+	012 JumpIfNotEqual {18}
+	013 LoadAddress rcx, [0x182472288]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x182489CB0]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x1825C6BFD], 1
+	018 Move rcx, typeof(Polytoria.Datamodel.Services.HttpService)
+	019 Compare [rcx+228], 0
+	020 JumpIfNotEqual {22}
+	021 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	022 Move rdx, 0
+	023 Move rcx, rdi
+	024 Call HttpService.RateLimit, rcx, rdx
+	025 Compare rax, 0
+	026 JumpIfEqual {50}
+	027 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	028 Move stack:0x40, rbx
+	029 Compare [rax+228], 0
+	030 JumpIfNotEqual {34}
+	031 Move rcx, rax
+	032 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	033 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	034 Move rax, [rax+184]
+	035 Move r9, rdi
+	036 Move rcx, "POST"
+	037 Move r8, rbp
+	038 Move stack:0x28, 0
+	039 Move rdx, r14
+	040 Move stack:0x20, rsi
+	041 Move rbx, [rax]
+	042 Call HttpService.DoRequest, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	043 Compare rbx, 0
+	044 JumpIfEqual {57}
+	045 Move r8, 0
+	046 Move rdx, rax
+	047 Move rcx, rbx
+	048 Call 0x181964DB0, rcx, rdx
+	049 Move rbx, stack:0x40
+	050 Move rbp, stack:0x48
+	051 Move rsi, stack:0x50
+	052 Move rdi, stack:0x58
+	053 ShiftStack 48
+	054 Move r14, stack:0x0
+	055 ShiftStack 8
+	056 Return 
+	057 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Put(System.String url, System.String body, MoonSharp.Interpreter.DynValue callback = null, MoonSharp.Interpreter.Table headers = null)
+
+Disassembly:
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,30h
+	cmp byte ptr [1825C6BFEh],0
+	mov rsi,r9
+	mov rdi,r8
+	mov rbp,rdx
+	mov r14,rcx
+	jne short 00000001804876D9h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	lea rcx,[18248A030h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6BFEh],1
+	mov rcx,[182472288h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001804876EEh
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180487790h
+	test al,al
+	je short 0000000180487765h
+	mov rax,[182472288h]
+	mov [rsp+40h],rbx
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180487720h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182472288h]
+	mov rax,[rax+0B8h]
+	mov r9,rdi
+	mov rcx,[18248A030h]
+	mov r8,rbp
+	mov qword ptr [rsp+28h],0
+	mov rdx,r14
+	mov [rsp+20h],rsi
+	mov rbx,[rax]
+	call 00000001804872C0h
+	test rbx,rbx
+	je short 000000018048777Bh
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rbx
+	call 0000000181964DB0h
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	mov rdi,[rsp+58h]
+	add rsp,30h
+	pop r14
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbp
+	002 Move stack:0x18, rsi
+	003 Move stack:0x20, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -48
+	007 Compare [0x1825C6BFE], 0
+	008 Move rsi, r9
+	009 Move rdi, r8
+	010 Move rbp, rdx
+	011 Move r14, rcx
+	012 JumpIfNotEqual {18}
+	013 LoadAddress rcx, [0x182472288]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x18248A030]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x1825C6BFE], 1
+	018 Move rcx, typeof(Polytoria.Datamodel.Services.HttpService)
+	019 Compare [rcx+228], 0
+	020 JumpIfNotEqual {22}
+	021 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	022 Move rdx, 0
+	023 Move rcx, rdi
+	024 Call HttpService.RateLimit, rcx, rdx
+	025 Compare rax, 0
+	026 JumpIfEqual {50}
+	027 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	028 Move stack:0x40, rbx
+	029 Compare [rax+228], 0
+	030 JumpIfNotEqual {34}
+	031 Move rcx, rax
+	032 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	033 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	034 Move rax, [rax+184]
+	035 Move r9, rdi
+	036 Move rcx, "PUT"
+	037 Move r8, rbp
+	038 Move stack:0x28, 0
+	039 Move rdx, r14
+	040 Move stack:0x20, rsi
+	041 Move rbx, [rax]
+	042 Call HttpService.DoRequest, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	043 Compare rbx, 0
+	044 JumpIfEqual {57}
+	045 Move r8, 0
+	046 Move rdx, rax
+	047 Move rcx, rbx
+	048 Call 0x181964DB0, rcx, rdx
+	049 Move rbx, stack:0x40
+	050 Move rbp, stack:0x48
+	051 Move rsi, stack:0x50
+	052 Move rdi, stack:0x58
+	053 ShiftStack 48
+	054 Move r14, stack:0x0
+	055 ShiftStack 8
+	056 Return 
+	057 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Delete(System.String url, MoonSharp.Interpreter.DynValue callback = null, MoonSharp.Interpreter.Table headers = null)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	push rsi
+	sub rsp,30h
+	cmp byte ptr [1825C6BFFh],0
+	mov rsi,r8
+	mov rbx,rdx
+	mov rbp,rcx
+	jne short 0000000180487210h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	lea rcx,[182489F80h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6BFFh],1
+	mov rcx,[182472288h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180487225h
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180487790h
+	test al,al
+	je short 000000018048729Ch
+	mov rax,[182472288h]
+	mov [rsp+40h],rdi
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180487257h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182472288h]
+	mov rax,[rax+0B8h]
+	mov r9,rbx
+	mov rcx,[182489F80h]
+	xor r8d,r8d
+	mov qword ptr [rsp+28h],0
+	mov rdx,rbp
+	mov [rsp+20h],rsi
+	mov rdi,[rax]
+	call 00000001804872C0h
+	test rdi,rdi
+	je short 00000001804872ACh
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 0000000181964DB0h
+	mov rdi,[rsp+40h]
+	mov rbx,[rsp+48h]
+	mov rbp,[rsp+50h]
+	add rsp,30h
+	pop rsi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, rsi
+	005 ShiftStack -48
+	006 Compare [0x1825C6BFF], 0
+	007 Move rsi, r8
+	008 Move rbx, rdx
+	009 Move rbp, rcx
+	010 JumpIfNotEqual {16}
+	011 LoadAddress rcx, [0x182472288]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182489F80]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825C6BFF], 1
+	016 Move rcx, typeof(Polytoria.Datamodel.Services.HttpService)
+	017 Compare [rcx+228], 0
+	018 JumpIfNotEqual {20}
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move rdx, 0
+	021 Move rcx, rbx
+	022 Call HttpService.RateLimit, rcx, rdx
+	023 Compare rax, 0
+	024 JumpIfEqual {48}
+	025 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	026 Move stack:0x40, rdi
+	027 Compare [rax+228], 0
+	028 JumpIfNotEqual {32}
+	029 Move rcx, rax
+	030 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	031 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	032 Move rax, [rax+184]
+	033 Move r9, rbx
+	034 Move rcx, "DELETE"
+	035 Move r8, 0
+	036 Move stack:0x28, 0
+	037 Move rdx, rbp
+	038 Move stack:0x20, rsi
+	039 Move rdi, [rax]
+	040 Call HttpService.DoRequest, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	041 Compare rdi, 0
+	042 JumpIfEqual {54}
+	043 Move r8, 0
+	044 Move rdx, rax
+	045 Move rcx, rdi
+	046 Call 0x181964DB0, rcx, rdx
+	047 Move rdi, stack:0x40
+	048 Move rbx, stack:0x48
+	049 Move rbp, stack:0x50
+	050 ShiftStack 48
+	051 Move rsi, stack:0x0
+	052 ShiftStack 8
+	053 Return 
+	054 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Patch(System.String url, System.String body, MoonSharp.Interpreter.DynValue callback = null, MoonSharp.Interpreter.Table headers = null)
+
+Disassembly:
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,30h
+	cmp byte ptr [1825C6C00h],0
+	mov rsi,r9
+	mov rdi,r8
+	mov rbp,rdx
+	mov r14,rcx
+	jne short 00000001804874D9h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	lea rcx,[182489730h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6C00h],1
+	mov rcx,[182472288h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001804874EEh
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180487790h
+	test al,al
+	je short 0000000180487565h
+	mov rax,[182472288h]
+	mov [rsp+40h],rbx
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180487520h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182472288h]
+	mov rax,[rax+0B8h]
+	mov r9,rdi
+	mov rcx,[182489730h]
+	mov r8,rbp
+	mov qword ptr [rsp+28h],0
+	mov rdx,r14
+	mov [rsp+20h],rsi
+	mov rbx,[rax]
+	call 00000001804872C0h
+	test rbx,rbx
+	je short 000000018048757Bh
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rbx
+	call 0000000181964DB0h
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	mov rdi,[rsp+58h]
+	add rsp,30h
+	pop r14
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbp
+	002 Move stack:0x18, rsi
+	003 Move stack:0x20, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -48
+	007 Compare [0x1825C6C00], 0
+	008 Move rsi, r9
+	009 Move rdi, r8
+	010 Move rbp, rdx
+	011 Move r14, rcx
+	012 JumpIfNotEqual {18}
+	013 LoadAddress rcx, [0x182472288]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x182489730]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x1825C6C00], 1
+	018 Move rcx, typeof(Polytoria.Datamodel.Services.HttpService)
+	019 Compare [rcx+228], 0
+	020 JumpIfNotEqual {22}
+	021 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	022 Move rdx, 0
+	023 Move rcx, rdi
+	024 Call HttpService.RateLimit, rcx, rdx
+	025 Compare rax, 0
+	026 JumpIfEqual {50}
+	027 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	028 Move stack:0x40, rbx
+	029 Compare [rax+228], 0
+	030 JumpIfNotEqual {34}
+	031 Move rcx, rax
+	032 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	033 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	034 Move rax, [rax+184]
+	035 Move r9, rdi
+	036 Move rcx, "PATCH"
+	037 Move r8, rbp
+	038 Move stack:0x28, 0
+	039 Move rdx, r14
+	040 Move stack:0x20, rsi
+	041 Move rbx, [rax]
+	042 Call HttpService.DoRequest, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	043 Compare rbx, 0
+	044 JumpIfEqual {57}
+	045 Move r8, 0
+	046 Move rdx, rax
+	047 Move rcx, rbx
+	048 Call 0x181964DB0, rcx, rdx
+	049 Move rbx, stack:0x40
+	050 Move rbp, stack:0x48
+	051 Move rsi, stack:0x50
+	052 Move rdi, stack:0x58
+	053 ShiftStack 48
+	054 Move r14, stack:0x0
+	055 ShiftStack 8
+	056 Return 
+	057 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Collections.IEnumerator DoRequest(System.String method, System.String url, System.String body = null, MoonSharp.Interpreter.DynValue callback = null, MoonSharp.Interpreter.Table headers = null)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,20h
+	cmp byte ptr [1825C6C01h],0
+	mov rdi,r9
+	mov rsi,r8
+	mov rbp,rdx
+	mov r14,rcx
+	jne short 0000000180487302h
+	lea rcx,[182483B70h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6C01h],1
+	mov rcx,[182483B70h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802C3410h
+	lea rcx,[rbx+28h]
+	mov dword ptr [rbx+10h],0
+	mov rdx,r14
+	mov [rbx+28h],r14
+	call 00000001801ED930h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rbp
+	mov rdx,rbp
+	call 00000001801ED930h
+	lea rcx,[rbx+30h]
+	mov [rbx+30h],rsi
+	mov rdx,rsi
+	call 00000001801ED930h
+	lea rcx,[rbx+40h]
+	mov [rbx+40h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	mov rdx,[rsp+50h]
+	lea rcx,[rbx+38h]
+	mov [rbx+38h],rdx
+	call 00000001801ED930h
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	mov rdi,[rsp+48h]
+	add rsp,20h
+	pop r14
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -32
+	008 Compare [0x1825C6C01], 0
+	009 Move rdi, r9
+	010 Move rsi, r8
+	011 Move rbp, rdx
+	012 Move r14, rcx
+	013 JumpIfNotEqual {17}
+	014 LoadAddress rcx, [0x182483B70]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x1825C6C01], 1
+	017 Move rcx, typeof(Polytoria.Datamodel.Services.HttpService+<DoRequest>d__11)
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move rdx, 0
+	020 Move rcx, rax
+	021 Move rbx, rax
+	022 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	023 LoadAddress rcx, [rbx+40]
+	024 Move [rbx+16], 0
+	025 Move rdx, r14
+	026 Move [rbx+40], r14
+	027 Call 0x1801ED930, rcx, rdx, r8, r9
+	028 LoadAddress rcx, [rbx+32]
+	029 Move [rbx+32], rbp
+	030 Move rdx, rbp
+	031 Call 0x1801ED930, rcx, rdx, r8, r9
+	032 LoadAddress rcx, [rbx+48]
+	033 Move [rbx+48], rsi
+	034 Move rdx, rsi
+	035 Call 0x1801ED930, rcx, rdx, r8, r9
+	036 LoadAddress rcx, [rbx+64]
+	037 Move [rbx+64], rdi
+	038 Move rdx, rdi
+	039 Call 0x1801ED930, rcx, rdx, r8, r9
+	040 Move rdx, stack:0x50
+	041 LoadAddress rcx, [rbx+56]
+	042 Move [rbx+56], rdx
+	043 Call 0x1801ED930, rcx, rdx, r8, r9
+	044 Move rbp, stack:0x38
+	045 Move rax, rbx
+	046 Move rbx, stack:0x30
+	047 Move rsi, stack:0x40
+	048 Move rdi, stack:0x48
+	049 ShiftStack 32
+	050 Move r14, stack:0x0
+	051 ShiftStack 8
+	052 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018195D740h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18195D740, rcx, rdx
+	003 Return 
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825C6C02h],0
+	jne short 0000000180487C30h
+	lea rcx,[182472288h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6C02h],1
+	mov rax,[182472288h]
+	mov rcx,[rax+0B8h]
+	mov dword ptr [rcx+8],5Ah
+	mov rax,[182472288h]
+	mov rcx,[rax+0B8h]
+	mov dword ptr [rcx+0Ch],0
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825C6C02], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x182472288]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825C6C02], 1
+	007 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	008 Move rcx, [rax+184]
+	009 Move [rcx+8], 90
+	010 Move rax, typeof(Polytoria.Datamodel.Services.HttpService)
+	011 Move rcx, [rax+184]
+	012 Move [rcx+12], 0
+	013 ShiftStack 40
+	014 Return 
+

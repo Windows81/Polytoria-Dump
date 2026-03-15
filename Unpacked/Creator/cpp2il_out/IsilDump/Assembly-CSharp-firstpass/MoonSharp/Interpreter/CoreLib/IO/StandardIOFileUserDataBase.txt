@@ -1,0 +1,237 @@
+Type: MoonSharp.Interpreter.CoreLib.IO.StandardIOFileUserDataBase
+
+Method: System.String Close()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825C6301h],0
+	jne short 00000001803A1EA0h
+	lea rcx,[182458240h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6301h],1
+	mov rax,[182458240h]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825C6301], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x182458240]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825C6301], 1
+	007 Move rax, "cannot close standard file"
+	008 ShiftStack 40
+	009 Return rax
+
+Method: MoonSharp.Interpreter.CoreLib.IO.StandardIOFileUserDataBase CreateInputStream(System.IO.Stream stream)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C6302h],0
+	mov rdi,rcx
+	jne short 00000001803A1EEAh
+	lea rcx,[182455FB8h]
+	call 00000001801EE810h
+	lea rcx,[182456870h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6302h],1
+	mov rcx,[182455FB8h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001803087A0h
+	mov rcx,[182456870h]
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rax
+	mov rsi,rax
+	call 0000000181463E80h
+	test rbx,rbx
+	je short 00000001803A1F6Bh
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rsi
+	mov rdx,rsi
+	call 00000001801ED930h
+	lea rcx,[rbx+28h]
+	mov qword ptr [rbx+28h],0
+	xor edx,edx
+	call 00000001801ED930h
+	mov rsi,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x1825C6302], 0
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x182455FB8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182456870]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1825C6302], 1
+	014 Move rcx, typeof(MoonSharp.Interpreter.CoreLib.IO.StandardIOFileUserDataBase)
+	015 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rax
+	018 Move rbx, rax
+	019 Call 0x1803087A0, rcx, rdx
+	020 Move rcx, typeof(System.IO.StreamReader)
+	021 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	022 Move r8, 0
+	023 Move rdx, rdi
+	024 Move rcx, rax
+	025 Move rsi, rax
+	026 Call StreamReader..ctor, rcx, rdx
+	027 Compare rbx, 0
+	028 JumpIfEqual {48}
+	029 LoadAddress rcx, [rbx+24]
+	030 Move [rbx+24], rdi
+	031 Move rdx, rdi
+	032 Call 0x1801ED930, rcx, rdx, r8, r9
+	033 LoadAddress rcx, [rbx+32]
+	034 Move [rbx+32], rsi
+	035 Move rdx, rsi
+	036 Call 0x1801ED930, rcx, rdx, r8, r9
+	037 LoadAddress rcx, [rbx+40]
+	038 Move [rbx+40], 0
+	039 Move rdx, 0
+	040 Call 0x1801ED930, rcx, rdx, r8, r9
+	041 Move rsi, stack:0x38
+	042 Move rax, rbx
+	043 Move rbx, stack:0x30
+	044 ShiftStack 32
+	045 Move rdi, stack:0x0
+	046 ShiftStack 8
+	047 Return rax
+	048 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: MoonSharp.Interpreter.CoreLib.IO.StandardIOFileUserDataBase CreateOutputStream(System.IO.Stream stream)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C6303h],0
+	mov rdi,rcx
+	jne short 00000001803A1FBAh
+	lea rcx,[182455FB8h]
+	call 00000001801EE810h
+	lea rcx,[1824568F0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6303h],1
+	mov rcx,[182455FB8h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001803087A0h
+	mov rcx,[1824568F0h]
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rax
+	mov rsi,rax
+	call 0000000181465410h
+	test rbx,rbx
+	je short 00000001803A203Bh
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	lea rcx,[rbx+20h]
+	mov qword ptr [rbx+20h],0
+	xor edx,edx
+	call 00000001801ED930h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rsi
+	mov rdx,rsi
+	call 00000001801ED930h
+	mov rsi,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x1825C6303], 0
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x182455FB8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x1824568F0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1825C6303], 1
+	014 Move rcx, typeof(MoonSharp.Interpreter.CoreLib.IO.StandardIOFileUserDataBase)
+	015 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rax
+	018 Move rbx, rax
+	019 Call 0x1803087A0, rcx, rdx
+	020 Move rcx, typeof(System.IO.StreamWriter)
+	021 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	022 Move r8, 0
+	023 Move rdx, rdi
+	024 Move rcx, rax
+	025 Move rsi, rax
+	026 Call StreamWriter..ctor, rcx, rdx
+	027 Compare rbx, 0
+	028 JumpIfEqual {48}
+	029 LoadAddress rcx, [rbx+24]
+	030 Move [rbx+24], rdi
+	031 Move rdx, rdi
+	032 Call 0x1801ED930, rcx, rdx, r8, r9
+	033 LoadAddress rcx, [rbx+32]
+	034 Move [rbx+32], 0
+	035 Move rdx, 0
+	036 Call 0x1801ED930, rcx, rdx, r8, r9
+	037 LoadAddress rcx, [rbx+40]
+	038 Move [rbx+40], rsi
+	039 Move rdx, rsi
+	040 Call 0x1801ED930, rcx, rdx, r8, r9
+	041 Move rsi, stack:0x38
+	042 Move rax, rbx
+	043 Move rbx, stack:0x30
+	044 ShiftStack 32
+	045 Move rdi, stack:0x0
+	046 ShiftStack 8
+	047 Return rax
+	048 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001803087A0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1803087A0, rcx, rdx
+	003 Return 
+

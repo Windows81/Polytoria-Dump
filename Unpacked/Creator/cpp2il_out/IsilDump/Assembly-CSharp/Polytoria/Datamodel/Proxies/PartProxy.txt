@@ -1,0 +1,1060 @@
+Type: Polytoria.Datamodel.Proxies.PartProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.Part target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802C3410h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x1801ED930, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Call 0x1801ED930, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rbx+32]
+	018 Move [rbx+32], rdi
+	019 Move rdx, rdi
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x1801ED930, rcx, rdx, r8, r9
+	025 Return 
+
+Method: UnityEngine.Color get_Color()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rdx+20h]
+	test rax,rax
+	je short 00000001804A666Fh
+	movups xmm0,[rax+214h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rdx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {10}
+	005 Move xmm0, [rax+532]
+	006 Move rax, rcx
+	007 Move [rcx], xmm0
+	008 ShiftStack 40
+	009 Return rax
+	010 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Color(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6887h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 0000000180444430h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call Part.set_Color, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean get_Anchored()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804A6589h
+	movzx eax,byte ptr [rax+212h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+530]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Anchored(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6799h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180443350h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_Anchored, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean get_CanCollide()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804A6629h
+	movzx eax,byte ptr [rax+213h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+531]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_CanCollide(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6839h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180444020h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_CanCollide, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean get_IsSpawn()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804A66D9h
+	movzx eax,byte ptr [rax+211h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+529]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_IsSpawn(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A68E9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180444E50h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_IsSpawn, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: Polytoria.Datamodel.PartShape get_Shape()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804A6738h
+	mov eax,[rax+224h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+548]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Shape(Polytoria.Datamodel.PartShape value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6949h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180445AF0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_Shape, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: Polytoria.Datamodel.PartMaterial get_Material()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804A6718h
+	mov eax,[rax+228h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+552]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Material(Polytoria.Datamodel.PartMaterial value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6929h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180445120h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_Material, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector3 get_Velocity()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804A6776h
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 0000000180443250h
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rbx],xmm0
+	mov [rbx+8],eax
+	mov rax,rbx
+	add rsp,30h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {20}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call Part.get_Velocity, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, [rax+8]
+	013 Move [rbx], xmm0
+	014 Move [rbx+8], rax
+	015 Move rax, rbx
+	016 ShiftStack 48
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+	020 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Velocity(UnityEngine.Vector3 value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A69A0h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 00000001804463A0h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.set_Velocity, rcx, rdx
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Single get_Drag()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6698h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180442EE0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call Part.get_Drag, rcx, rdx
+	008 Return xmm0
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Drag(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A68A9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180444660h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_Drag, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Single get_AngularDrag()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A65A8h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180442BA0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call Part.get_AngularDrag, rcx, rdx
+	008 Return xmm0
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_AngularDrag(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A67B9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180443790h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_AngularDrag, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Single get_Mass()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A66F8h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180443140h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call Part.get_Mass, rcx, rdx
+	008 Return xmm0
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Mass(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6909h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180445030h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_Mass, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector3 get_AngularVelocity()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804A65E6h
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 0000000180442C30h
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rbx],xmm0
+	mov [rbx+8],eax
+	mov rax,rbx
+	add rsp,30h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {20}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call Part.get_AngularVelocity, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, [rax+8]
+	013 Move [rbx], xmm0
+	014 Move [rbx+8], rax
+	015 Move rax, rbx
+	016 ShiftStack 48
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+	020 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_AngularVelocity(UnityEngine.Vector3 value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A67F0h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 00000001804439D0h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.set_AngularVelocity, rcx, rdx
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean get_UseGravity()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804A1269h
+	movzx eax,byte ptr [rax+244h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+580]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_UseGravity(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6969h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180446160h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_UseGravity, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Single get_Bounciness()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6608h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180442DE0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call Part.get_Bounciness, rcx, rdx
+	008 Return xmm0
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Bounciness(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6819h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180443D50h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_Bounciness, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Single get_Friction()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A66B8h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180443050h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call Part.get_Friction, rcx, rdx
+	008 Return xmm0
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Friction(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A68C9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180444B70h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_Friction, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean get_CastShadows()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804A6649h
+	movzx eax,byte ptr [rax+238h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+568]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_CastShadows(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6859h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180444340h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Part.set_CastShadows, rcx, rdx
+	008 Return 
+	009 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void MovePosition(UnityEngine.Vector3 pos)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6520h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018043F6A0h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.MovePosition, rcx, rdx
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void MoveRotation(UnityEngine.Vector3 rot)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6560h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018043F7B0h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.MoveRotation, rcx, rdx
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void AddForce(UnityEngine.Vector3 force, UnityEngine.ForceMode mode = 0)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6420h
+	movsd xmm0,qword ptr [rdx]
+	xor r9d,r9d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018043D710h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r9, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.AddForce, rcx, rdx, r8
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void AddTorque(UnityEngine.Vector3 torque, UnityEngine.ForceMode mode = 0)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A64E0h
+	movsd xmm0,qword ptr [rdx]
+	xor r9d,r9d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018043D980h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r9, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.AddTorque, rcx, rdx, r8
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void AddForceAtPosition(UnityEngine.Vector3 force, UnityEngine.Vector3 position, UnityEngine.ForceMode mode = 0)
+
+Disassembly:
+	sub rsp,58h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A63DEh
+	movsd xmm0,qword ptr [r8]
+	mov eax,[r8+8]
+	lea r8,[rsp+30h]
+	movsd qword ptr [rsp+30h],xmm0
+	movsd xmm0,qword ptr [rdx]
+	mov [rsp+38h],eax
+	mov eax,[rdx+8]
+	lea rdx,[rsp+40h]
+	movsd qword ptr [rsp+40h],xmm0
+	mov [rsp+48h],eax
+	mov qword ptr [rsp+20h],0
+	call 000000018043D610h
+	add rsp,58h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -88
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {19}
+	005 Move xmm0, [r8]
+	006 Move rax, [r8+8]
+	007 LoadAddress r8, stack:0x30
+	008 Move stack:0x30, xmm0
+	009 Move xmm0, [rdx]
+	010 Move stack:0x38, rax
+	011 Move rax, [rdx+8]
+	012 LoadAddress rdx, stack:0x40
+	013 Move stack:0x40, xmm0
+	014 Move stack:0x48, rax
+	015 Move stack:0x20, 0
+	016 Call Part.AddForceAtPosition, rcx, rdx, r8, r9
+	017 ShiftStack 88
+	018 Return 
+	019 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void AddRelativeForce(UnityEngine.Vector3 force, UnityEngine.ForceMode mode = 0)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A6460h
+	movsd xmm0,qword ptr [rdx]
+	xor r9d,r9d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018043D7E0h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r9, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.AddRelativeForce, rcx, rdx, r8
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void AddRelativeTorque(UnityEngine.Vector3 torque, UnityEngine.ForceMode mode = 0)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804A64A0h
+	movsd xmm0,qword ptr [rdx]
+	xor r9d,r9d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018043D8B0h
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r9, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call Part.AddRelativeTorque, rcx, rdx, r8
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+

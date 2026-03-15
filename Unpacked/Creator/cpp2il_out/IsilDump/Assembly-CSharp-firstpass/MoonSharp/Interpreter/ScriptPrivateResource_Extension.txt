@@ -1,0 +1,456 @@
+Type: MoonSharp.Interpreter.ScriptPrivateResource_Extension
+
+Method: System.Void CheckScriptOwnership(MoonSharp.Interpreter.IScriptPrivateResource containingResource, MoonSharp.Interpreter.DynValue[] values)
+
+Disassembly:
+	mov [rsp+18h],rbx
+	mov [rsp+20h],rbp
+	push r14
+	sub rsp,20h
+	xor ebx,ebx
+	mov rbp,rdx
+	mov r14,rcx
+	mov eax,ebx
+	test rdx,rdx
+	je near ptr 000000018030991Dh
+	mov [rsp+38h],rdi
+	lea rdi,[rdx+20h]
+	mov [rsp+30h],rsi
+	cmp eax,[rbp+18h]
+	jge short 00000001803098FCh
+	cmp ebx,[rbp+18h]
+	jae short 0000000180309917h
+	mov rsi,[rdi]
+	test rsi,rsi
+	je short 00000001803098F2h
+	cmp byte ptr [1825C5E6Bh],0
+	jne short 00000001803098CFh
+	lea rcx,[18247A4B0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5E6Bh],1
+	mov rdx,[18247A4B0h]
+	mov rcx,[rsi+28h]
+	call 00000001801ED950h
+	test rax,rax
+	je short 00000001803098F2h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,r14
+	call 00000001803096A0h
+	inc ebx
+	add rdi,8
+	mov eax,ebx
+	jmp short 00000001803098A1h
+	mov rsi,[rsp+30h]
+	mov rdi,[rsp+38h]
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	add rsp,20h
+	pop r14
+	ret
+	call 00000001801EEA40h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x18, rbx
+	002 Move stack:0x20, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, r14
+	005 ShiftStack -32
+	006 Move rbx, 0
+	007 Move rbp, rdx
+	008 Move r14, rcx
+	009 Move rax, rbx
+	010 Compare rdx, 0
+	011 JumpIfEqual {50}
+	012 Move stack:0x38, rdi
+	013 LoadAddress rdi, [rdx+32]
+	014 Move stack:0x30, rsi
+	015 Compare rax, [rbp+24]
+	016 JumpIfGreaterOrEqual {40}
+	017 Compare rbx, [rbp+24]
+	018 JumpIfGreaterOrEqual {48}
+	019 Move rsi, [rdi]
+	020 Compare rsi, 0
+	021 JumpIfEqual {36}
+	022 Compare [0x1825C5E6B], 0
+	023 JumpIfNotEqual {27}
+	024 LoadAddress rcx, [0x18247A4B0]
+	025 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	026 Move [0x1825C5E6B], 1
+	027 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	028 Move rcx, [rsi+40]
+	029 Call 0x1801ED950, rcx, rdx, r8, r9
+	030 Compare rax, 0
+	031 JumpIfEqual {36}
+	032 Move r8, 0
+	033 Move rdx, rax
+	034 Move rcx, r14
+	035 Call ScriptPrivateResource_Extension.CheckScriptOwnership, rcx, rdx, r8
+	036 Add rbx, rbx, 1
+	037 Add rdi, rdi, 8
+	038 Move rax, rbx
+	039 Goto {15}
+	040 Move rsi, stack:0x30
+	041 Move rdi, stack:0x38
+	042 Move rbx, stack:0x40
+	043 Move rbp, stack:0x48
+	044 ShiftStack 32
+	045 Move r14, stack:0x0
+	046 ShiftStack 8
+	047 Return 
+	048 Call 0x1801EEA40, rcx, rdx, r8, r9
+	049 Interrupt 
+	050 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void CheckScriptOwnership(MoonSharp.Interpreter.IScriptPrivateResource containingResource, MoonSharp.Interpreter.DynValue value)
+
+Disassembly:
+	test rdx,rdx
+	je short 000000018030986Eh
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5E6Bh],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000180309841h
+	lea rcx,[18247A4B0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5E6Bh],1
+	mov rdx,[18247A4B0h]
+	mov rcx,[rbx+28h]
+	call 00000001801ED950h
+	test rax,rax
+	je short 0000000180309864h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001803096A0h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Compare rdx, 0
+	002 JumpIfEqual {27}
+	003 Move stack:0x8, rbx
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x1825C5E6B], 0
+	008 Move rbx, rdx
+	009 Move rdi, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x18247A4B0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1825C5E6B], 1
+	014 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	015 Move rcx, [rbx+40]
+	016 Call 0x1801ED950, rcx, rdx, r8, r9
+	017 Compare rax, 0
+	018 JumpIfEqual {23}
+	019 Move r8, 0
+	020 Move rdx, rax
+	021 Move rcx, rdi
+	022 Call ScriptPrivateResource_Extension.CheckScriptOwnership, rcx, rdx, r8
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return 
+
+Method: System.Void CheckScriptOwnership(MoonSharp.Interpreter.IScriptPrivateResource resource, MoonSharp.Interpreter.Script script)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5E71h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 000000018030995Ch
+	lea rcx,[18247A4B0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5E71h],1
+	test rbx,rbx
+	je near ptr 00000001803099EAh
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rbx
+	call 0000000180002270h
+	test rax,rax
+	je short 0000000180309996h
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rbx
+	call 0000000180002270h
+	cmp rax,rdi
+	je short 0000000180309996h
+	test rdi,rdi
+	jne short 00000001803099A1h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	lea rcx,[1824A3650h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	lea rcx,[18246BF60h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001802FDAC0h
+	lea rcx,[1824723D8h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5E71], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x18247A4B0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C5E71], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {50}
+	014 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	015 Move rcx, 0
+	016 Move r8, rbx
+	017 Call 0x180002270, rcx, rdx, r8, r9
+	018 Compare rax, 0
+	019 JumpIfEqual {28}
+	020 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	021 Move rcx, 0
+	022 Move r8, rbx
+	023 Call 0x180002270, rcx, rdx, r8, r9
+	024 Compare rax, rdi
+	025 JumpIfEqual {28}
+	026 Compare rdi, 0
+	027 JumpIfNotEqual {33}
+	028 Move rbx, stack:0x30
+	029 ShiftStack 32
+	030 Move rdi, stack:0x0
+	031 ShiftStack 8
+	032 Return 
+	033 LoadAddress rcx, [0x1824A3650]
+	034 Call 0x1801EE830, rcx, rdx, r8, r9
+	035 Move rcx, rax
+	036 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	037 LoadAddress rcx, [0x18246BF60]
+	038 Move rbx, rax
+	039 Call 0x1801EE830, rcx, rdx, r8, r9
+	040 Move rdx, rax
+	041 Move r8, 0
+	042 Move rcx, rbx
+	043 Call 0x1802FDAC0, rcx, rdx
+	044 LoadAddress rcx, [0x1824723D8]
+	045 Call 0x1801EE830, rcx, rdx, r8, r9
+	046 Move rdx, rax
+	047 Move rcx, rbx
+	048 Call 0x1801EEA10, rcx, rdx, r8, r9
+	049 Interrupt 
+	050 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void CheckScriptOwnership(MoonSharp.Interpreter.IScriptPrivateResource containingResource, MoonSharp.Interpreter.IScriptPrivateResource itemResource)
+
+Disassembly:
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5E72h],0
+	mov rdi,rdx
+	mov rsi,rcx
+	jne short 00000001803096CCh
+	lea rcx,[18247A4B0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5E72h],1
+	test rdi,rdi
+	je near ptr 000000018030976Ah
+	test rsi,rsi
+	je near ptr 0000000180309807h
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rsi
+	mov [rsp+30h],rbx
+	call 0000000180002270h
+	test rax,rax
+	je short 0000000180309739h
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rsi
+	call 0000000180002270h
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rdi
+	mov rbx,rax
+	call 0000000180002270h
+	cmp rbx,rax
+	je short 0000000180309739h
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rdi
+	call 0000000180002270h
+	test rax,rax
+	jne short 0000000180309775h
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rsi
+	call 0000000180002270h
+	test rax,rax
+	jne short 0000000180309765h
+	mov rdx,[18247A4B0h]
+	xor ecx,ecx
+	mov r8,rdi
+	call 0000000180002270h
+	test rax,rax
+	jne short 00000001803097BEh
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	lea rcx,[1824A3650h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	lea rcx,[18246C3C0h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001802FDAC0h
+	lea rcx,[182472350h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+	int 3
+	lea rcx,[1824A3650h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	lea rcx,[18246C340h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001802FDAC0h
+	lea rcx,[182472350h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rsi
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5E72], 0
+	006 Move rdi, rdx
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x18247A4B0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C5E72], 1
+	012 Compare rdi, 0
+	013 JumpIfEqual {53}
+	014 Compare rsi, 0
+	015 JumpIfEqual {92}
+	016 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	017 Move rcx, 0
+	018 Move r8, rsi
+	019 Move stack:0x30, rbx
+	020 Call 0x180002270, rcx, rdx, r8, r9
+	021 Compare rax, 0
+	022 JumpIfEqual {40}
+	023 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	024 Move rcx, 0
+	025 Move r8, rsi
+	026 Call 0x180002270, rcx, rdx, r8, r9
+	027 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	028 Move rcx, 0
+	029 Move r8, rdi
+	030 Move rbx, rax
+	031 Call 0x180002270, rcx, rdx, r8, r9
+	032 Compare rbx, rax
+	033 JumpIfEqual {40}
+	034 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	035 Move rcx, 0
+	036 Move r8, rdi
+	037 Call 0x180002270, rcx, rdx, r8, r9
+	038 Compare rax, 0
+	039 JumpIfNotEqual {58}
+	040 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	041 Move rcx, 0
+	042 Move r8, rsi
+	043 Call 0x180002270, rcx, rdx, r8, r9
+	044 Compare rax, 0
+	045 JumpIfNotEqual {52}
+	046 Move rdx, typeof(MoonSharp.Interpreter.IScriptPrivateResource)
+	047 Move rcx, 0
+	048 Move r8, rdi
+	049 Call 0x180002270, rcx, rdx, r8, r9
+	050 Compare rax, 0
+	051 JumpIfNotEqual {75}
+	052 Move rbx, stack:0x30
+	053 Move rsi, stack:0x38
+	054 ShiftStack 32
+	055 Move rdi, stack:0x0
+	056 ShiftStack 8
+	057 Return 
+	058 LoadAddress rcx, [0x1824A3650]
+	059 Call 0x1801EE830, rcx, rdx, r8, r9
+	060 Move rcx, rax
+	061 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	062 LoadAddress rcx, [0x18246C3C0]
+	063 Move rbx, rax
+	064 Call 0x1801EE830, rcx, rdx, r8, r9
+	065 Move rdx, rax
+	066 Move r8, 0
+	067 Move rcx, rbx
+	068 Call 0x1802FDAC0, rcx, rdx
+	069 LoadAddress rcx, [0x182472350]
+	070 Call 0x1801EE830, rcx, rdx, r8, r9
+	071 Move rdx, rax
+	072 Move rcx, rbx
+	073 Call 0x1801EEA10, rcx, rdx, r8, r9
+	074 Interrupt 
+	075 LoadAddress rcx, [0x1824A3650]
+	076 Call 0x1801EE830, rcx, rdx, r8, r9
+	077 Move rcx, rax
+	078 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	079 LoadAddress rcx, [0x18246C340]
+	080 Move rbx, rax
+	081 Call 0x1801EE830, rcx, rdx, r8, r9
+	082 Move rdx, rax
+	083 Move r8, 0
+	084 Move rcx, rbx
+	085 Call 0x1802FDAC0, rcx, rdx
+	086 LoadAddress rcx, [0x182472350]
+	087 Call 0x1801EE830, rcx, rdx, r8, r9
+	088 Move rdx, rax
+	089 Move rcx, rbx
+	090 Call 0x1801EEA10, rcx, rdx, r8, r9
+	091 Interrupt 
+	092 Call 0x1801EEA50, rcx, rdx, r8, r9
+

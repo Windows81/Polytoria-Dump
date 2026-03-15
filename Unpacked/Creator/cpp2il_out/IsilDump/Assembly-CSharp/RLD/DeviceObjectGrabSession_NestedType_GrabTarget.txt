@@ -1,0 +1,79 @@
+Type: RLD.DeviceObjectGrabSession+GrabTarget
+
+Method: UnityEngine.GameObject get_GameObject()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: UnityEngine.Transform get_Transform()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void .ctor(UnityEngine.GameObject parentObject)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,rcx
+	xor edx,edx
+	call 00000001802C3410h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je short 0000000180595051h
+	xor edx,edx
+	call 0000000181963000h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rax
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rdi, rcx
+	007 Move rdx, 0
+	008 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rdi+16]
+	010 Move [rdi+16], rbx
+	011 Move rdx, rbx
+	012 Call 0x1801ED930, rcx, rdx, r8, r9
+	013 Move rcx, [rdi+16]
+	014 Compare rcx, 0
+	015 JumpIfEqual {27}
+	016 Move rdx, 0
+	017 Call GameObject.get_transform, rcx, rdx
+	018 LoadAddress rcx, [rdi+24]
+	019 Move [rdi+24], rax
+	020 Move rdx, rax
+	021 Move rbx, stack:0x30
+	022 ShiftStack 32
+	023 Move rdi, stack:0x0
+	024 ShiftStack 8
+	025 Call 0x1801ED930, rcx, rdx, r8, r9
+	026 Return 
+	027 Call 0x1801EEA50, rcx, rdx, r8, r9
+

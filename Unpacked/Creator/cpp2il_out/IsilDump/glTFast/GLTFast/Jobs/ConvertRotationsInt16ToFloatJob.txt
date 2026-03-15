@@ -1,0 +1,128 @@
+Type: GLTFast.Jobs.ConvertRotationsInt16ToFloatJob
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	mov r9,rcx
+	movss xmm3,dword ptr [181D31294h]
+	lea eax,[rdx*4]
+	movss xmm2,dword ptr [181D30C8Ch]
+	movsxd r8,eax
+	mov rax,[rcx]
+	movsx r8d,word ptr [rax+r8*2]
+	lea eax,[rdx*4]
+	movsxd rcx,eax
+	mov rax,[r9+8]
+	movd xmm0,r8d
+	cvtdq2ps xmm0,xmm0
+	divss xmm0,xmm3
+	maxss xmm0,xmm2
+	movss dword ptr [rax+rcx*4],xmm0
+	lea eax,[rdx*4]
+	movsxd rcx,eax
+	mov rax,[r9]
+	movsx ecx,word ptr [rax+rcx*2+2]
+	lea eax,[rdx*4]
+	movd xmm0,ecx
+	cvtdq2ps xmm0,xmm0
+	movsxd rcx,eax
+	mov rax,[r9+8]
+	divss xmm0,xmm3
+	maxss xmm0,xmm2
+	xorps xmm0,[181D30CF0h]
+	movss dword ptr [rax+rcx*4+4],xmm0
+	lea eax,[rdx*4]
+	movsxd rcx,eax
+	mov rax,[r9]
+	movsx ecx,word ptr [rax+rcx*2+4]
+	lea eax,[rdx*4]
+	movd xmm0,ecx
+	cvtdq2ps xmm0,xmm0
+	movsxd rcx,eax
+	mov rax,[r9+8]
+	divss xmm0,xmm3
+	maxss xmm0,xmm2
+	xorps xmm0,[181D30CF0h]
+	movss dword ptr [rax+rcx*4+8],xmm0
+	lea eax,[rdx*4]
+	movsxd rcx,eax
+	mov rax,[r9]
+	movsx ecx,word ptr [rax+rcx*2+6]
+	lea eax,[rdx*4]
+	movd xmm0,ecx
+	cvtdq2ps xmm0,xmm0
+	movsxd rcx,eax
+	mov rax,[r9+8]
+	divss xmm0,xmm3
+	maxss xmm0,xmm2
+	movss dword ptr [rax+rcx*4+0Ch],xmm0
+	ret
+
+ISIL:
+	001 Move r9, rcx
+	002 Move xmm3, [0x181D31294]
+	003 LoadAddress rax, []
+	004 Move xmm2, [0x181D30C8C]
+	005 Move r8, rax
+	006 Move rax, [rcx]
+	007 Move r8, [rax+r8*2]
+	008 LoadAddress rax, []
+	009 Move rcx, rax
+	010 Move rax, [r9+8]
+	011 Move xmm0, r8
+	012 Move xmm0, xmm0
+	013 Divide xmm0, xmm0, xmm3
+	014 Compare xmm0, xmm2
+	015 JumpIfGreaterOrEqual {17}
+	016 Move xmm0, xmm2
+	017 Nop 
+	018 Move [rax+rcx*4], xmm0
+	019 LoadAddress rax, []
+	020 Move rcx, rax
+	021 Move rax, [r9]
+	022 Move rcx, [rax+2+rcx*2]
+	023 LoadAddress rax, []
+	024 Move xmm0, rcx
+	025 Move xmm0, xmm0
+	026 Move rcx, rax
+	027 Move rax, [r9+8]
+	028 Divide xmm0, xmm0, xmm3
+	029 Compare xmm0, xmm2
+	030 JumpIfGreaterOrEqual {32}
+	031 Move xmm0, xmm2
+	032 Nop 
+	033 Xor xmm0, xmm0, [0x181D30CF0]
+	034 Move [rax+4+rcx*4], xmm0
+	035 LoadAddress rax, []
+	036 Move rcx, rax
+	037 Move rax, [r9]
+	038 Move rcx, [rax+4+rcx*2]
+	039 LoadAddress rax, []
+	040 Move xmm0, rcx
+	041 Move xmm0, xmm0
+	042 Move rcx, rax
+	043 Move rax, [r9+8]
+	044 Divide xmm0, xmm0, xmm3
+	045 Compare xmm0, xmm2
+	046 JumpIfGreaterOrEqual {48}
+	047 Move xmm0, xmm2
+	048 Nop 
+	049 Xor xmm0, xmm0, [0x181D30CF0]
+	050 Move [rax+8+rcx*4], xmm0
+	051 LoadAddress rax, []
+	052 Move rcx, rax
+	053 Move rax, [r9]
+	054 Move rcx, [rax+6+rcx*2]
+	055 LoadAddress rax, []
+	056 Move xmm0, rcx
+	057 Move xmm0, xmm0
+	058 Move rcx, rax
+	059 Move rax, [r9+8]
+	060 Divide xmm0, xmm0, xmm3
+	061 Compare xmm0, xmm2
+	062 JumpIfGreaterOrEqual {64}
+	063 Move xmm0, xmm2
+	064 Nop 
+	065 Move [rax+12+rcx*4], xmm0
+	066 Return 
+

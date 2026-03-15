@@ -1,0 +1,46 @@
+Type: Polytoria.Types.NumberRange
+
+Method: System.Void .ctor(System.Single min, System.Single max)
+
+Disassembly:
+	movss dword ptr [rcx],xmm1
+	movss dword ptr [rcx+4],xmm2
+	ret
+
+ISIL:
+	001 Move [rcx], xmm1
+	002 Move [rcx+4], xmm2
+	003 Return 
+
+Method: System.Single Lerp(System.Single t)
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+4]
+	subss xmm0,dword ptr [rcx]
+	mulss xmm0,xmm1
+	addss xmm0,dword ptr [rcx]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+4]
+	002 Subtract xmm0, xmm0, [rcx]
+	003 Multiply xmm0, xmm0, xmm1
+	004 Add xmm0, xmm0, [rcx]
+	005 Return xmm0
+
+Method: Polytoria.Types.NumberRange New(System.Single min, System.Single max)
+
+Disassembly:
+	unpcklps xmm0,xmm1
+	movq rax,xmm0
+	ret
+
+ISIL:
+	001 Move XMM_TEMP.S[0], xmm0.S[0]
+	002 Move XMM_TEMP.S[1], xmm1.S[0]
+	003 Move XMM_TEMP.S[2], xmm0.S[1]
+	004 Move XMM_TEMP.S[3], xmm1.S[1]
+	005 Move xmm0, XMM_TEMP
+	006 Move rax, xmm0
+	007 Return rax
+

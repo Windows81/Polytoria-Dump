@@ -1,0 +1,161 @@
+Type: MoonSharp.Interpreter.Execution.RuntimeScopeBlock
+
+Method: System.Int32 get_From()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_From(System.Int32 value)
+
+Disassembly:
+	mov [rcx+10h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: System.Int32 get_To()
+
+Disassembly:
+	mov eax,[rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Void set_To(System.Int32 value)
+
+Disassembly:
+	mov [rcx+14h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+20], rdx
+	002 Return 
+
+Method: System.Int32 get_ToInclusive()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_ToInclusive(System.Int32 value)
+
+Disassembly:
+	mov [rcx+18h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Return 
+
+Method: System.String ToString()
+
+Disassembly:
+	push rbx
+	push rsi
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [1827751B2h],0
+	mov rsi,rcx
+	jne short 0000000180389DA7h
+	lea rcx,[18260D230h]
+	call 000000018020C870h
+	mov byte ptr [1827751B2h],1
+	mov eax,[rsi+10h]
+	lea rdx,[rsp+50h]
+	mov rcx,[182783188h]
+	mov [rsp+50h],eax
+	call 000000018020B970h
+	mov ecx,[rsi+14h]
+	lea rdx,[rsp+60h]
+	mov [rsp+60h],ecx
+	mov rdi,rax
+	mov rcx,[182783188h]
+	call 000000018020B970h
+	mov ecx,[rsi+18h]
+	lea rdx,[rsp+68h]
+	mov [rsp+68h],ecx
+	mov rbx,rax
+	mov rcx,[182783188h]
+	call 000000018020B970h
+	mov rcx,[18260D230h]
+	mov r9,rax
+	mov r8,rbx
+	mov qword ptr [rsp+20h],0
+	mov rdx,rdi
+	call 00000001813CC7E0h
+	add rsp,30h
+	pop rdi
+	pop rsi
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -8
+	004 Move stack:0x0, rsi
+	005 ShiftStack -8
+	006 Move stack:0x0, rdi
+	007 ShiftStack -48
+	008 Compare [0x1827751B2], 0
+	009 Move rsi, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x18260D230]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1827751B2], 1
+	014 Move rax, [rsi+16]
+	015 LoadAddress rdx, stack:0x50
+	016 Move rcx, [0x182783188]
+	017 Move stack:0x50, rax
+	018 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	019 Move rcx, [rsi+20]
+	020 LoadAddress rdx, stack:0x60
+	021 Move stack:0x60, rcx
+	022 Move rdi, rax
+	023 Move rcx, [0x182783188]
+	024 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	025 Move rcx, [rsi+24]
+	026 LoadAddress rdx, stack:0x68
+	027 Move stack:0x68, rcx
+	028 Move rbx, rax
+	029 Move rcx, [0x182783188]
+	030 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	031 Move rcx, "ScopeBlock : {0} -> {1} --> {2}"
+	032 Move r9, rax
+	033 Move r8, rbx
+	034 Move stack:0x20, 0
+	035 Move rdx, rdi
+	036 Call String.Format, rcx, rdx, r8, r9, stack:0x0
+	037 ShiftStack 48
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Move rsi, stack:0x0
+	041 ShiftStack 8
+	042 Move rbx, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

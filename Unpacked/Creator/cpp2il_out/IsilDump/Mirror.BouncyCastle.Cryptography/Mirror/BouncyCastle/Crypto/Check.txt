@@ -1,0 +1,156 @@
+Type: Mirror.BouncyCastle.Crypto.Check
+
+Method: System.Void DataLength(System.Byte[] buf, System.Int32 off, System.Int32 len, System.String message)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 00000001811DDF73h
+	mov eax,[rcx+18h]
+	sub eax,r8d
+	cmp edx,eax
+	jg short 00000001811DDF68h
+	add rsp,28h
+	ret
+	xor edx,edx
+	mov rcx,r9
+	call 00000001811DDFB0h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {14}
+	004 Move rax, [rcx+24]
+	005 Subtract rax, rax, r8
+	006 Compare rdx, rax
+	007 JumpIfGreater {10}
+	008 ShiftStack 40
+	009 Return 
+	010 Move rdx, 0
+	011 Move rcx, r9
+	012 Call Check.ThrowDataLengthException, rcx, rdx
+	013 Interrupt 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void OutputLength(System.Byte[] buf, System.Int32 off, System.Int32 len, System.String message)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 00000001811DDFA3h
+	mov eax,[rcx+18h]
+	sub eax,r8d
+	cmp edx,eax
+	jg short 00000001811DDF98h
+	add rsp,28h
+	ret
+	xor edx,edx
+	mov rcx,r9
+	call 00000001811DE000h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {14}
+	004 Move rax, [rcx+24]
+	005 Subtract rax, rax, r8
+	006 Compare rdx, rax
+	007 JumpIfGreater {10}
+	008 ShiftStack 40
+	009 Return 
+	010 Move rdx, 0
+	011 Move rcx, r9
+	012 Call Check.ThrowOutputLengthException, rcx, rdx
+	013 Interrupt 
+	014 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void ThrowDataLengthException(System.String message)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	lea rcx,[18245A748h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001811DE2E0h
+	lea rcx,[1824719E8h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 LoadAddress rcx, [0x18245A748]
+	007 Call 0x1801EE830, rcx, rdx, r8, r9
+	008 Move rcx, rax
+	009 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	010 Move r8, 0
+	011 Move rdx, rbx
+	012 Move rcx, rax
+	013 Move rdi, rax
+	014 Call 0x1811DE2E0, rcx, rdx
+	015 LoadAddress rcx, [0x1824719E8]
+	016 Call 0x1801EE830, rcx, rdx, r8, r9
+	017 Move rdx, rax
+	018 Move rcx, rdi
+	019 Call 0x1801EEA10, rcx, rdx, r8, r9
+
+Method: System.Void ThrowOutputLengthException(System.String message)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	lea rcx,[1824941F8h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001811DE2E0h
+	lea rcx,[182471A70h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 LoadAddress rcx, [0x1824941F8]
+	007 Call 0x1801EE830, rcx, rdx, r8, r9
+	008 Move rcx, rax
+	009 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	010 Move r8, 0
+	011 Move rdx, rbx
+	012 Move rcx, rax
+	013 Move rdi, rax
+	014 Call 0x1811DE2E0, rcx, rdx
+	015 LoadAddress rcx, [0x182471A70]
+	016 Call 0x1801EE830, rcx, rdx, r8, r9
+	017 Move rdx, rax
+	018 Move rcx, rdi
+	019 Call 0x1801EEA10, rcx, rdx, r8, r9
+

@@ -1,0 +1,315 @@
+Type: Mirror.SimpleWeb.SslConfigLoader
+
+Method: Mirror.SimpleWeb.SslConfig Load(System.Boolean sslEnabled, System.String sslCertJson, System.Security.Authentication.SslProtocols sslProtocols)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,60h
+	mov esi,r9d
+	mov rbp,r8
+	movzx edi,dl
+	mov rbx,rcx
+	test dl,dl
+	je near ptr 000000018155DCB2h
+	cmp byte ptr [1825CBAE3h],0
+	jne short 000000018155DBF4h
+	lea rcx,[182477BD8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CBAE3h],1
+	xor edx,edx
+	mov rcx,rbp
+	call 000000018145A860h
+	mov r8,[182477BD8h]
+	lea rcx,[rsp+30h]
+	mov rdx,rax
+	call 00000001806E85F0h
+	movaps xmm0,[rsp+30h]
+	xor edx,edx
+	movq rcx,xmm0
+	movdqa [rsp+20h],xmm0
+	call 0000000181303760h
+	test al,al
+	jne near ptr 000000018155DCD7h
+	mov rcx,[rsp+28h]
+	xor edx,edx
+	call 0000000181303750h
+	test al,al
+	je short 000000018155DC61h
+	mov rax,[1825D37D0h]
+	mov rcx,[rax+0B8h]
+	mov rdx,[rcx]
+	lea rcx,[rsp+28h]
+	mov [rsp+28h],rdx
+	call 00000001801ED930h
+	mov rdx,[rsp+20h]
+	lea rcx,[rsp+48h]
+	xorps xmm0,xmm0
+	movups [rsp+40h],xmm0
+	mov [rsp+40h],dil
+	mov [rsp+48h],rdx
+	movups [rsp+50h],xmm0
+	call 00000001801ED930h
+	mov rdx,[rsp+28h]
+	lea rcx,[rsp+50h]
+	mov [rsp+50h],rdx
+	call 00000001801ED930h
+	movups xmm0,[rsp+40h]
+	mov [rsp+58h],esi
+	movups xmm1,[rsp+50h]
+	movups [rbx],xmm0
+	movups [rbx+10h],xmm1
+	jmp short 000000018155DCBCh
+	xorps xmm0,xmm0
+	movups [rcx],xmm0
+	movups [rcx+10h],xmm0
+	mov rbp,[rsp+78h]
+	mov rax,rbx
+	mov rbx,[rsp+70h]
+	mov rsi,[rsp+80h]
+	add rsp,60h
+	pop rdi
+	ret
+	lea rcx,[18247F918h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	lea rcx,[18247E5B8h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001817C4640h
+	lea rcx,[18247F6B0h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -96
+	007 Move rsi, r9
+	008 Move rbp, r8
+	009 Move rdi, rdx
+	010 Move rbx, rcx
+	011 Compare rdx, 0
+	012 JumpIfEqual {61}
+	013 Compare [0x1825CBAE3], 0
+	014 JumpIfNotEqual {18}
+	015 LoadAddress rcx, [0x182477BD8]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x1825CBAE3], 1
+	018 Move rdx, 0
+	019 Move rcx, rbp
+	020 Call File.ReadAllText, rcx, rdx
+	021 Move r8, [0x182477BD8]
+	022 LoadAddress rcx, stack:0x30
+	023 Move rdx, rax
+	024 Call 0x1806E85F0, rcx, rdx
+	025 Move xmm0, stack:0x30
+	026 Move rdx, 0
+	027 Move rcx, xmm0
+	028 Move stack:0x20, xmm0
+	029 Call String.IsNullOrWhiteSpace, rcx, rdx
+	030 Compare rax, 0
+	031 JumpIfNotEqual {72}
+	032 Move rcx, stack:0x28
+	033 Move rdx, 0
+	034 Call String.IsNullOrEmpty, rcx, rdx
+	035 Compare rax, 0
+	036 JumpIfEqual {43}
+	037 Move rax, [0x1825D37D0]
+	038 Move rcx, [rax+184]
+	039 Move rdx, [rcx]
+	040 LoadAddress rcx, stack:0x28
+	041 Move stack:0x28, rdx
+	042 Call 0x1801ED930, rcx, rdx, r8, r9
+	043 Move rdx, stack:0x20
+	044 LoadAddress rcx, stack:0x48
+	045 Move xmm0, 0
+	046 Move stack:0x40, xmm0
+	047 Move stack:0x40, rdi
+	048 Move stack:0x48, rdx
+	049 Move stack:0x50, xmm0
+	050 Call 0x1801ED930, rcx, rdx, r8, r9
+	051 Move rdx, stack:0x28
+	052 LoadAddress rcx, stack:0x50
+	053 Move stack:0x50, rdx
+	054 Call 0x1801ED930, rcx, rdx, r8, r9
+	055 Move xmm0, stack:0x40
+	056 Move stack:0x58, rsi
+	057 Move xmm1, stack:0x50
+	058 Move [rbx], xmm0
+	059 Move [rbx+16], xmm1
+	060 Goto {64}
+	061 Move xmm0, 0
+	062 Move [rcx], xmm0
+	063 Move [rcx+16], xmm0
+	064 Move rbp, stack:0x78
+	065 Move rax, rbx
+	066 Move rbx, stack:0x70
+	067 Move rsi, stack:0x80
+	068 ShiftStack 96
+	069 Move rdi, stack:0x0
+	070 ShiftStack 8
+	071 Return rax
+	072 LoadAddress rcx, [0x18247F918]
+	073 Call 0x1801EE830, rcx, rdx, r8, r9
+	074 Move rcx, rax
+	075 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	076 LoadAddress rcx, [0x18247E5B8]
+	077 Move rbx, rax
+	078 Call 0x1801EE830, rcx, rdx, r8, r9
+	079 Move rdx, rax
+	080 Move r8, 0
+	081 Move rcx, rbx
+	082 Call InvalidDataException..ctor, rcx, rdx
+	083 LoadAddress rcx, [0x18247F6B0]
+	084 Call 0x1801EE830, rcx, rdx, r8, r9
+	085 Move rdx, rax
+	086 Move rcx, rbx
+	087 Call 0x1801EEA10, rcx, rdx, r8, r9
+
+Method: Mirror.SimpleWeb.SslConfigLoader+Cert LoadCertJson(System.String certJsonPath)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [1825CBAE3h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 000000018155DAECh
+	lea rcx,[182477BD8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CBAE3h],1
+	xorps xmm0,xmm0
+	xor edx,edx
+	mov rcx,rdi
+	movups [rbx],xmm0
+	call 000000018145A860h
+	mov r8,[182477BD8h]
+	lea rcx,[rsp+20h]
+	mov rdx,rax
+	call 00000001806E85F0h
+	movups xmm0,[rsp+20h]
+	xor edx,edx
+	movups [rbx],xmm0
+	mov rcx,[rbx]
+	call 0000000181303760h
+	test al,al
+	jne short 000000018155DB61h
+	mov rcx,[rbx+8]
+	xor edx,edx
+	call 0000000181303750h
+	test al,al
+	je short 000000018155DB53h
+	mov rax,[1825D37D0h]
+	mov rcx,[rax+0B8h]
+	mov rdx,[rcx]
+	lea rcx,[rbx+8]
+	mov [rbx+8],rdx
+	call 00000001801ED930h
+	mov rax,rbx
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+	lea rcx,[18247F918h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	lea rcx,[18247E5B8h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001817C4640h
+	lea rcx,[18247F6B0h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x1825CBAE3], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182477BD8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825CBAE3], 1
+	012 Move xmm0, 0
+	013 Move rdx, 0
+	014 Move rcx, rdi
+	015 Move [rbx], xmm0
+	016 Call File.ReadAllText, rcx, rdx
+	017 Move r8, [0x182477BD8]
+	018 LoadAddress rcx, stack:0x20
+	019 Move rdx, rax
+	020 Call 0x1806E85F0, rcx, rdx
+	021 Move xmm0, stack:0x20
+	022 Move rdx, 0
+	023 Move [rbx], xmm0
+	024 Move rcx, [rbx]
+	025 Call String.IsNullOrWhiteSpace, rcx, rdx
+	026 Compare rax, 0
+	027 JumpIfNotEqual {45}
+	028 Move rcx, [rbx+8]
+	029 Move rdx, 0
+	030 Call String.IsNullOrEmpty, rcx, rdx
+	031 Compare rax, 0
+	032 JumpIfEqual {39}
+	033 Move rax, [0x1825D37D0]
+	034 Move rcx, [rax+184]
+	035 Move rdx, [rcx]
+	036 LoadAddress rcx, [rbx+8]
+	037 Move [rbx+8], rdx
+	038 Call 0x1801ED930, rcx, rdx, r8, r9
+	039 Move rax, rbx
+	040 Move rbx, stack:0x40
+	041 ShiftStack 48
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 LoadAddress rcx, [0x18247F918]
+	046 Call 0x1801EE830, rcx, rdx, r8, r9
+	047 Move rcx, rax
+	048 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	049 LoadAddress rcx, [0x18247E5B8]
+	050 Move rbx, rax
+	051 Call 0x1801EE830, rcx, rdx, r8, r9
+	052 Move rdx, rax
+	053 Move r8, 0
+	054 Move rcx, rbx
+	055 Call InvalidDataException..ctor, rcx, rdx
+	056 LoadAddress rcx, [0x18247F6B0]
+	057 Call 0x1801EE830, rcx, rdx, r8, r9
+	058 Move rdx, rax
+	059 Move rcx, rbx
+	060 Call 0x1801EEA10, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

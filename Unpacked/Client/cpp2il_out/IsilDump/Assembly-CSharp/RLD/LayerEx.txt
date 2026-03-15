@@ -1,0 +1,190 @@
+Type: RLD.LayerEx
+
+Method: System.Int32 GetMinLayer()
+
+Disassembly:
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+
+Method: System.Int32 GetMaxLayer()
+
+Disassembly:
+	mov eax,1Fh
+	ret
+
+ISIL:
+	001 Move rax, 31
+	002 Return rax
+
+Method: System.Boolean IsLayerBitSet(System.Int32 layerBits, System.Int32 layerNumber)
+
+Disassembly:
+	and edx,1Fh
+	mov r8d,ecx
+	movzx ecx,dl
+	mov eax,1
+	shl eax,cl
+	test r8d,eax
+	seta al
+	ret
+
+ISIL:
+	001 And rdx, rdx, 31
+	002 Move r8, rcx
+	003 Move rcx, rdx
+	004 Move rax, 1
+	005 ShiftLeft rax, rcx
+	006 Compare r8, rax
+	007 NotImplemented "seta al"
+	008 Return rax
+
+Method: System.Int32 SetLayerBit(System.Int32 layerBits, System.Int32 layerNumber)
+
+Disassembly:
+	and edx,1Fh
+	bts ecx,edx
+	mov eax,ecx
+	ret
+
+ISIL:
+	001 And rdx, rdx, 31
+	002 NotImplemented "bts ecx,edx"
+	003 Move rax, rcx
+	004 Return rax
+
+Method: System.Int32 ClearLayerBit(System.Int32 layerBits, System.Int32 layerNumber)
+
+Disassembly:
+	and edx,1Fh
+	btr ecx,edx
+	mov eax,ecx
+	ret
+
+ISIL:
+	001 And rdx, rdx, 31
+	002 NotImplemented "btr ecx,edx"
+	003 Move rax, rcx
+	004 Return rax
+
+Method: System.Boolean IsLayerValid(System.Int32 layerNumber)
+
+Disassembly:
+	test ecx,ecx
+	jns short 0000000180568277h
+	xor al,al
+	ret
+	cmp ecx,1Fh
+	setle al
+	ret
+
+ISIL:
+	001 Compare rcx, 0
+	002 JumpIfNotSign {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Compare rcx, 31
+	006 NotImplemented "setle al"
+	007 Return rax
+
+Method: System.Collections.Generic.List`1<System.String> GetAllLayerNames()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1827760CDh],0
+	jne short 00000001805681D3h
+	lea rcx,[1825FE1C0h]
+	call 000000018020C870h
+	lea rcx,[1825FE040h]
+	call 000000018020C870h
+	lea rcx,[182617718h]
+	call 000000018020C870h
+	mov byte ptr [1827760CDh],1
+	mov rcx,[182617718h]
+	call 000000018020CA60h
+	mov rdx,[1825FE040h]
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180E9DFA0h
+	xor ebx,ebx
+	xor edx,edx
+	mov ecx,ebx
+	call 0000000181A4A2F0h
+	xor edx,edx
+	mov rcx,rax
+	mov rsi,rax
+	call 00000001813CDFE0h
+	test al,al
+	jne short 0000000180568224h
+	test rdi,rdi
+	je short 000000018056823Eh
+	mov r8,[1825FE1C0h]
+	mov rdx,rsi
+	mov rcx,rdi
+	call 0000000180001E00h
+	inc ebx
+	cmp ebx,1Fh
+	jle short 00000001805681F3h
+	mov rbx,[rsp+30h]
+	mov rax,rdi
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x1827760CD], 0
+	007 JumpIfNotEqual {15}
+	008 LoadAddress rcx, [0x1825FE1C0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x1825FE040]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x182617718]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x1827760CD], 1
+	015 Move rcx, typeof(System.Collections.Generic.List`1<String>)
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move rdx, [0x1825FE040]
+	018 Move rcx, rax
+	019 Move rdi, rax
+	020 Call 0x180E9DFA0, rcx, rdx
+	021 Move rbx, 0
+	022 Move rdx, 0
+	023 Move rcx, rbx
+	024 Call LayerMask.LayerToName, rcx, rdx
+	025 Move rdx, 0
+	026 Move rcx, rax
+	027 Move rsi, rax
+	028 Call String.IsNullOrEmpty, rcx, rdx
+	029 Compare rax, 0
+	030 JumpIfNotEqual {37}
+	031 Compare rdi, 0
+	032 JumpIfEqual {47}
+	033 Move r8, [0x1825FE1C0]
+	034 Move rdx, rsi
+	035 Move rcx, rdi
+	036 Call 0x180001E00, rcx, rdx, r8, r9
+	037 Add rbx, rbx, 1
+	038 Compare rbx, 31
+	039 JumpIfLessOrEqual {22}
+	040 Move rbx, stack:0x30
+	041 Move rax, rdi
+	042 Move rsi, stack:0x38
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Return rax
+	047 Call 0x18020CAB0, rcx, rdx, r8, r9
+

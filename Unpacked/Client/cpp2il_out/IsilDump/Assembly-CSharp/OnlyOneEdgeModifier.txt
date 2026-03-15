@@ -1,0 +1,169 @@
+Type: OnlyOneEdgeModifier
+
+Method: System.Single get_Radius()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+40]
+	002 Return xmm0
+
+Method: System.Void set_Radius(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	xor edx,edx
+	movss dword ptr [rcx+28h],xmm1
+	call 000000018051B260h
+	test rax,rax
+	je short 00000001803E59B0h
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+2F8h]
+	mov rdx,[rdx+300h]
+	add rsp,28h
+	jmp r8
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, 0
+	003 Move [rcx+40], xmm1
+	004 Call ProceduralImageModifier.get__Graphic, rcx, rdx
+	005 Compare rax, 0
+	006 JumpIfEqual {13}
+	007 Move rdx, [rax]
+	008 Move rcx, rax
+	009 Move r8, [rdx+760]
+	010 Move rdx, [rdx+768]
+	011 ShiftStack 40
+	012 CallNoReturn r8
+	013 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: OnlyOneEdgeModifier+ProceduralImageEdge get_Side()
+
+Disassembly:
+	mov eax,[rcx+2Ch]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+44]
+	002 Return rax
+
+Method: System.Void set_Side(OnlyOneEdgeModifier+ProceduralImageEdge value)
+
+Disassembly:
+	mov [rcx+2Ch],edx
+	ret
+
+ISIL:
+	001 Move [rcx+44], rdx
+	002 Return 
+
+Method: UnityEngine.Vector4 CalculateRadius(UnityEngine.Rect imageRect)
+
+Disassembly:
+	mov r8,rdx
+	mov edx,[rdx+2Ch]
+	test edx,edx
+	je short 00000001803E5961h
+	sub edx,1
+	je short 00000001803E594Eh
+	sub edx,1
+	je short 00000001803E593Bh
+	cmp edx,1
+	je short 00000001803E5926h
+	xor edx,edx
+	mov rax,rcx
+	mov [rcx],rdx
+	mov [rcx+8],rdx
+	ret
+	mov eax,[r8+28h]
+	xor edx,edx
+	mov [rcx+4],eax
+	mov [rcx+8],eax
+	mov rax,rcx
+	mov [rcx],edx
+	mov [rcx+0Ch],edx
+	ret
+	mov eax,[r8+28h]
+	xor edx,edx
+	mov [rcx],eax
+	mov [rcx+0Ch],eax
+	mov rax,rcx
+	mov [rcx+4],rdx
+	ret
+	mov eax,[r8+28h]
+	xor edx,edx
+	mov [rcx+8],eax
+	mov [rcx+0Ch],eax
+	mov rax,rcx
+	mov [rcx],rdx
+	ret
+	mov eax,[r8+28h]
+	xor edx,edx
+	mov [rcx],eax
+	mov [rcx+4],eax
+	mov rax,rcx
+	mov [rcx+8],rdx
+	ret
+
+ISIL:
+	001 Move r8, rdx
+	002 Move rdx, [rdx+44]
+	003 Compare rdx, 0
+	004 JumpIfEqual {38}
+	005 Subtract rdx, rdx, 1
+	006 JumpIfEqual {31}
+	007 Subtract rdx, rdx, 1
+	008 JumpIfEqual {24}
+	009 Compare rdx, 1
+	010 JumpIfEqual {16}
+	011 Move rdx, 0
+	012 Move rax, rcx
+	013 Move [rcx], rdx
+	014 Move [rcx+8], rdx
+	015 Return rax
+	016 Move rax, [r8+40]
+	017 Move rdx, 0
+	018 Move [rcx+4], rax
+	019 Move [rcx+8], rax
+	020 Move rax, rcx
+	021 Move [rcx], rdx
+	022 Move [rcx+12], rdx
+	023 Return rax
+	024 Move rax, [r8+40]
+	025 Move rdx, 0
+	026 Move [rcx], rax
+	027 Move [rcx+12], rax
+	028 Move rax, rcx
+	029 Move [rcx+4], rdx
+	030 Return rax
+	031 Move rax, [r8+40]
+	032 Move rdx, 0
+	033 Move [rcx+8], rax
+	034 Move [rcx+12], rax
+	035 Move rax, rcx
+	036 Move [rcx], rdx
+	037 Return rax
+	038 Move rax, [r8+40]
+	039 Move rdx, 0
+	040 Move [rcx], rax
+	041 Move [rcx+4], rax
+	042 Move rax, rcx
+	043 Move [rcx+8], rdx
+	044 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E75F0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E75F0, rcx, rdx
+	003 Return 
+

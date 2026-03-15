@@ -1,0 +1,37 @@
+Type: Battlehub.UIControls.ItemDropCancelArgs
+
+Method: System.Boolean get_Cancel()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+30h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+48]
+	002 Return rax
+
+Method: System.Void set_Cancel(System.Boolean value)
+
+Disassembly:
+	mov [rcx+30h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+48], rdx
+	002 Return 
+
+Method: System.Void .ctor(System.Object[] dragItems, System.Object dropTarget, Battlehub.UIControls.ItemDropAction action, System.Boolean isExternal, UnityEngine.EventSystems.PointerEventData pointerEventData)
+
+Disassembly:
+	mov qword ptr [rsp+38h],0
+	movzx eax,byte ptr [rsp+28h]
+	mov [rsp+28h],al
+	jmp near ptr 00000001805F03A0h
+
+ISIL:
+	001 Move stack:0x38, 0
+	002 Move rax, stack:0x28
+	003 Move stack:0x28, rax
+	004 Call ItemDropArgs..ctor, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	005 Return 
+

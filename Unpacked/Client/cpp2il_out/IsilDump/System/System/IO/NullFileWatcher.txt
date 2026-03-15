@@ -1,0 +1,130 @@
+Type: System.IO.NullFileWatcher
+
+Method: System.Void StartDispatching(System.Object handle)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void StopDispatching(System.Object handle)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void Dispose(System.Object handle)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Boolean GetInstance(out System.IO.IFileWatcher watcher)
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [18277C325h],0
+	mov rdi,rcx
+	jne short 00000001818994A5h
+	lea rcx,[182638E48h]
+	call 000000018020C870h
+	mov byte ptr [18277C325h],1
+	mov rcx,[182638E48h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	jne short 0000000181899512h
+	mov [rsp+30h],rbx
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802E39B0h
+	mov rdx,rbx
+	mov [rdi],rbx
+	mov rcx,rdi
+	call 000000018020B990h
+	mov rcx,[182638E48h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[182638E48h]
+	mov rcx,[rcx+0B8h]
+	call 000000018020B990h
+	mov rbx,[rsp+30h]
+	mov al,1
+	add rsp,20h
+	pop rdi
+	ret
+	mov rdx,[rax]
+	mov rcx,rdi
+	mov [rdi],rdx
+	call 000000018020B990h
+	mov al,1
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [0x18277C325], 0
+	005 Move rdi, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x182638E48]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x18277C325], 1
+	010 Move rcx, typeof(System.IO.NullFileWatcher)
+	011 Move rax, [rcx+184]
+	012 Compare [rax], 0
+	013 JumpIfNotEqual {37}
+	014 Move stack:0x30, rbx
+	015 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rax
+	018 Move rbx, rax
+	019 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	020 Move rdx, rbx
+	021 Move [rdi], rbx
+	022 Move rcx, rdi
+	023 Call 0x18020B990, rcx, rdx, r8, r9
+	024 Move rcx, typeof(System.IO.NullFileWatcher)
+	025 Move rdx, [rcx+184]
+	026 Move [rdx], rbx
+	027 Move rdx, rbx
+	028 Move rcx, typeof(System.IO.NullFileWatcher)
+	029 Move rcx, [rcx+184]
+	030 Call 0x18020B990, rcx, rdx, r8, r9
+	031 Move rbx, stack:0x30
+	032 Move rax, 1
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+	037 Move rdx, [rax]
+	038 Move rcx, rdi
+	039 Move [rdi], rdx
+	040 Call 0x18020B990, rcx, rdx, r8, r9
+	041 Move rax, 1
+	042 ShiftStack 32
+	043 Move rdi, stack:0x0
+	044 ShiftStack 8
+	045 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

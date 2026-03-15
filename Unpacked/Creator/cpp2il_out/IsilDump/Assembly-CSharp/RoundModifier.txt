@@ -1,0 +1,42 @@
+Type: RoundModifier
+
+Method: UnityEngine.Vector4 CalculateRadius(UnityEngine.Rect imageRect)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [r8+8]
+	mov rax,rcx
+	minss xmm0,dword ptr [r8+0Ch]
+	mulss xmm0,dword ptr [181D30BC4h]
+	shufps xmm0,xmm0,0
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [r8+8]
+	003 Move rax, rcx
+	004 Compare xmm0, [r8+12]
+	005 JumpIfLessOrEqual {7}
+	006 Move xmm0, [r8+12]
+	007 Nop 
+	008 Multiply xmm0, xmm0, [0x181D30BC4]
+	009 Move XMM_TEMP.S[0], xmm0.S[0]
+	010 Move XMM_TEMP.S[1], xmm0.S[0]
+	011 Move XMM_TEMP.S[2], xmm0.S[0]
+	012 Move XMM_TEMP.S[3], xmm0.S[0]
+	013 Move xmm0, XMM_TEMP
+	014 Move [rcx], xmm0
+	015 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C7050h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C7050, rcx, rdx
+	003 Return 
+

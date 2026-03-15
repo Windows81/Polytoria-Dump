@@ -1,0 +1,54 @@
+Type: Mirror.TimeSnapshot
+
+Method: System.Double get_remoteTime()
+
+Disassembly:
+	movsd xmm0,qword ptr [rcx]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx]
+	002 Return xmm0
+
+Method: System.Void set_remoteTime(System.Double value)
+
+Disassembly:
+	movsd qword ptr [rcx],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx], xmm1
+	002 Return 
+
+Method: System.Double get_localTime()
+
+Disassembly:
+	movsd xmm0,qword ptr [rcx+8]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+8]
+	002 Return xmm0
+
+Method: System.Void set_localTime(System.Double value)
+
+Disassembly:
+	movsd qword ptr [rcx+8],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+8], xmm1
+	002 Return 
+
+Method: System.Void .ctor(System.Double remoteTime, System.Double localTime)
+
+Disassembly:
+	movsd qword ptr [rcx],xmm1
+	movsd qword ptr [rcx+8],xmm2
+	ret
+
+ISIL:
+	001 Move [rcx], xmm1
+	002 Move [rcx+8], xmm2
+	003 Return 
+

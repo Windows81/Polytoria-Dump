@@ -1,0 +1,124 @@
+Type: RLD.ObjectSurfaceSnap+MeshSurfaceRaycaster
+
+Method: System.Void .ctor(UnityEngine.GameObject surfaceObject, System.Boolean raycastReverse)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	movzx esi,r8b
+	xor edx,edx
+	mov rdi,rcx
+	call 00000001802C3410h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	mov rbx,[rsp+30h]
+	mov [rdi+18h],sil
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801ED930, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x30
+	016 Move [rdi+24], rsi
+	017 Move rsi, stack:0x38
+	018 ShiftStack 32
+	019 Move rdi, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+
+Method: RLD.GameObjectRayHit Raycast(UnityEngine.Ray ray)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,40h
+	cmp byte ptr [1825C6616h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001803E79B8h
+	lea rcx,[182465368h]
+	call 00000001801EE810h
+	lea rcx,[182476B20h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6616h],1
+	mov rcx,[182476B20h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001803E79CDh
+	call 00000001801EEAF0h
+	mov rcx,[182465368h]
+	call 0000000180E0AA40h
+	test rax,rax
+	je short 00000001803E7A10h
+	movups xmm0,[rdi]
+	lea rdx,[rsp+20h]
+	mov r8,[rbx+10h]
+	movsd xmm1,qword ptr [rdi+10h]
+	xor r9d,r9d
+	mov rcx,rax
+	movaps [rsp+20h],xmm0
+	movsd qword ptr [rsp+30h],xmm1
+	call 00000001805A00A0h
+	mov rbx,[rsp+50h]
+	add rsp,40h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -64
+	005 Compare [0x1825C6616], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x182465368]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182476B20]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1825C6616], 1
+	014 Move rcx, typeof(RLD.MonoSingleton`1<RTScene>)
+	015 Compare [rcx+228], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rcx, [0x182465368]
+	019 Call 0x180E0AA40, rcx
+	020 Compare rax, 0
+	021 JumpIfEqual {36}
+	022 Move xmm0, [rdi]
+	023 LoadAddress rdx, stack:0x20
+	024 Move r8, [rbx+16]
+	025 Move xmm1, [rdi+16]
+	026 Move r9, 0
+	027 Move rcx, rax
+	028 Move stack:0x20, xmm0
+	029 Move stack:0x30, xmm1
+	030 Call RTScene.RaycastMeshObject, rcx, rdx, r8
+	031 Move rbx, stack:0x50
+	032 ShiftStack 64
+	033 Move rdi, stack:0x0
+	034 ShiftStack 8
+	035 Return rax
+	036 Call 0x1801EEA50, rcx, rdx, r8, r9
+

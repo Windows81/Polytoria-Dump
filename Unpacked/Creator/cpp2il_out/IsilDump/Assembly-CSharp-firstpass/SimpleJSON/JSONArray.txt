@@ -1,0 +1,1252 @@
+Type: SimpleJSON.JSONArray
+
+Method: System.Boolean get_Inline()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_Inline(System.Boolean value)
+
+Disassembly:
+	mov [rcx+18h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Return 
+
+Method: SimpleJSON.JSONNodeType get_Tag()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Boolean get_IsArray()
+
+Disassembly:
+	mov al,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: SimpleJSON.JSONNode+Enumerator GetEnumerator()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,40h
+	cmp byte ptr [1825C5DE0h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001802FDF5Ch
+	lea rcx,[182493188h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE0h],1
+	mov rdx,[rdi+10h]
+	test rdx,rdx
+	je short 00000001802FDFBBh
+	mov r8,[182493188h]
+	lea rcx,[rsp+20h]
+	call 0000000180D0EB40h
+	movsd xmm1,qword ptr [rsp+30h]
+	lea rcx,[rbx+30h]
+	xorps xmm0,xmm0
+	mov qword ptr [rbx],1
+	movups [rbx+8],xmm0
+	xor eax,eax
+	xor edx,edx
+	movups [rbx+18h],xmm0
+	mov [rbx+28h],rax
+	movups xmm0,[rsp+20h]
+	movups [rbx+30h],xmm0
+	movsd qword ptr [rbx+40h],xmm1
+	call 00000001801ED930h
+	mov rax,rbx
+	mov rbx,[rsp+50h]
+	add rsp,40h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -64
+	005 Compare [0x1825C5DE0], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182493188]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C5DE0], 1
+	012 Move rdx, [rdi+16]
+	013 Compare rdx, 0
+	014 JumpIfEqual {37}
+	015 Move r8, [0x182493188]
+	016 LoadAddress rcx, stack:0x20
+	017 Call 0x180D0EB40, rcx, rdx
+	018 Move xmm1, stack:0x30
+	019 LoadAddress rcx, [rbx+48]
+	020 Move xmm0, 0
+	021 Move [rbx], 1
+	022 Move [rbx+8], xmm0
+	023 Move rax, 0
+	024 Move rdx, 0
+	025 Move [rbx+24], xmm0
+	026 Move [rbx+40], rax
+	027 Move xmm0, stack:0x20
+	028 Move [rbx+48], xmm0
+	029 Move [rbx+64], xmm1
+	030 Call 0x1801ED930, rcx, rdx, r8, r9
+	031 Move rax, rbx
+	032 Move rbx, stack:0x50
+	033 ShiftStack 64
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+	037 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: SimpleJSON.JSONNode get_Item(System.Int32 aIndex)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE1h],0
+	mov ebx,edx
+	mov rdi,rcx
+	jne short 00000001802FE3E3h
+	lea rcx,[1824806E8h]
+	call 00000001801EE810h
+	lea rcx,[182493308h]
+	call 00000001801EE810h
+	lea rcx,[182493388h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE1h],1
+	test ebx,ebx
+	js short 00000001802FE410h
+	mov rax,[rdi+10h]
+	test rax,rax
+	je short 00000001802FE45Ah
+	cmp ebx,[rax+18h]
+	jge short 00000001802FE410h
+	mov r8,[182493388h]
+	mov edx,ebx
+	mov rcx,rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180D19920h
+	mov rcx,[1824806E8h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802BC7B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	lea rcx,[rbx+18h]
+	mov qword ptr [rbx+18h],0
+	xor edx,edx
+	call 00000001801ED930h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DE1], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {16}
+	009 LoadAddress rcx, [0x1824806E8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182493308]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182493388]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825C5DE1], 1
+	016 Compare rbx, 0
+	017 JumpIfSign {32}
+	018 Move rax, [rdi+16]
+	019 Compare rax, 0
+	020 JumpIfEqual {52}
+	021 Compare rbx, [rax+24]
+	022 JumpIfGreaterOrEqual {32}
+	023 Move r8, [0x182493388]
+	024 Move rdx, rbx
+	025 Move rcx, rax
+	026 Move rbx, stack:0x30
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Call 0x180D19920, rcx, rdx
+	031 Return rax
+	032 Move rcx, typeof(SimpleJSON.JSONLazyCreator)
+	033 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	034 Move rdx, 0
+	035 Move rcx, rax
+	036 Move rbx, rax
+	037 Call 0x1802BC7B0, rcx, rdx, r8
+	038 LoadAddress rcx, [rbx+16]
+	039 Move [rbx+16], rdi
+	040 Move rdx, rdi
+	041 Call 0x1801ED930, rcx, rdx, r8, r9
+	042 LoadAddress rcx, [rbx+24]
+	043 Move [rbx+24], 0
+	044 Move rdx, 0
+	045 Call 0x1801ED930, rcx, rdx, r8, r9
+	046 Move rax, rbx
+	047 Move rbx, stack:0x30
+	048 ShiftStack 32
+	049 Move rdi, stack:0x0
+	050 ShiftStack 8
+	051 Return rax
+	052 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void set_Item(System.Int32 aIndex, SimpleJSON.JSONNode value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE2h],0
+	mov rbx,r8
+	mov edi,edx
+	mov rsi,rcx
+	jne short 00000001802FE557h
+	lea rcx,[1824807F8h]
+	call 00000001801EE810h
+	lea rcx,[182493108h]
+	call 00000001801EE810h
+	lea rcx,[182493308h]
+	call 00000001801EE810h
+	lea rcx,[182493408h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE2h],1
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802DC210h
+	test al,al
+	je short 00000001802FE587h
+	mov rcx,[1824807F8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001802FE57Dh
+	call 00000001801EEAF0h
+	xor ecx,ecx
+	call 00000001802FF740h
+	mov rbx,rax
+	test edi,edi
+	js short 00000001802FE5C0h
+	mov rax,[rsi+10h]
+	test rax,rax
+	je near ptr 00000001802FE63Ch
+	cmp edi,[rax+18h]
+	jge short 00000001802FE5C0h
+	mov r9,[182493408h]
+	mov r8,rbx
+	mov edx,edi
+	mov rcx,rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180D7A320h
+	mov rcx,[rsi+10h]
+	test rcx,rcx
+	je short 00000001802FE63Ch
+	mov r9,[182493108h]
+	inc dword ptr [rcx+1Ch]
+	mov r8,[rcx+10h]
+	test r8,r8
+	je short 00000001802FE63Ch
+	movsxd rdx,dword ptr [rcx+18h]
+	cmp edx,[r8+18h]
+	jb short 00000001802FE60Ch
+	mov rax,[r9+20h]
+	mov rdx,rbx
+	mov r8,[rax+0C0h]
+	mov r8,[r8+70h]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180D69050h
+	lea eax,[rdx+1]
+	mov [rcx+18h],eax
+	cmp edx,[r8+18h]
+	jae short 00000001802FE642h
+	mov [r8+rdx*8+20h],rbx
+	add r8,20h
+	lea rcx,[r8+rdx*8]
+	mov rdx,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x1825C5DE2], 0
+	007 Move rbx, r8
+	008 Move rdi, rdx
+	009 Move rsi, rcx
+	010 JumpIfNotEqual {20}
+	011 LoadAddress rcx, [0x1824807F8]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182493108]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x182493308]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x182493408]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x1825C5DE2], 1
+	020 Move r8, 0
+	021 Move rdx, 0
+	022 Move rcx, rbx
+	023 Call JSONNode.op_Equality, rcx, rdx, r8
+	024 Compare rax, 0
+	025 JumpIfEqual {33}
+	026 Move rcx, typeof(SimpleJSON.JSONNull)
+	027 Compare [rcx+228], 0
+	028 JumpIfNotEqual {30}
+	029 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	030 Move rcx, 0
+	031 Call JSONNull.CreateOrGet, rcx
+	032 Move rbx, rax
+	033 Compare rdi, 0
+	034 JumpIfSign {51}
+	035 Move rax, [rsi+16]
+	036 Compare rax, 0
+	037 JumpIfEqual {88}
+	038 Compare rdi, [rax+24]
+	039 JumpIfGreaterOrEqual {51}
+	040 Move r9, [0x182493408]
+	041 Move r8, rbx
+	042 Move rdx, rdi
+	043 Move rcx, rax
+	044 Move rbx, stack:0x30
+	045 Move rsi, stack:0x38
+	046 ShiftStack 32
+	047 Move rdi, stack:0x0
+	048 ShiftStack 8
+	049 Call List`1<Object>.set_Item, rcx, rdx, r8
+	050 Return 
+	051 Move rcx, [rsi+16]
+	052 Compare rcx, 0
+	053 JumpIfEqual {88}
+	054 Move r9, [0x182493108]
+	055 Add [rcx+28], [rcx+28], 1
+	056 Move r8, [rcx+16]
+	057 Compare r8, 0
+	058 JumpIfEqual {88}
+	059 Move rdx, [rcx+24]
+	060 Compare rdx, [r8+24]
+	061 JumpIfLess {73}
+	062 Move rax, [r9+32]
+	063 Move rdx, rbx
+	064 Move r8, [rax+192]
+	065 Move r8, [r8+112]
+	066 Move rbx, stack:0x30
+	067 Move rsi, stack:0x38
+	068 ShiftStack 32
+	069 Move rdi, stack:0x0
+	070 ShiftStack 8
+	071 Call List`1<Object>.AddWithResize, rcx, rdx
+	072 Return 
+	073 LoadAddress rax, [rdx+1]
+	074 Move [rcx+24], rax
+	075 Compare rdx, [r8+24]
+	076 JumpIfGreaterOrEqual {90}
+	077 Move [r8+32+rdx*8], rbx
+	078 Add r8, r8, 32
+	079 LoadAddress rcx, [r8+rdx*8]
+	080 Move rdx, rbx
+	081 Move rbx, stack:0x30
+	082 Move rsi, stack:0x38
+	083 ShiftStack 32
+	084 Move rdi, stack:0x0
+	085 ShiftStack 8
+	086 Call 0x1801ED930, rcx, rdx, r8, r9
+	087 Return 
+	088 Call 0x1801EEA50, rcx, rdx, r8, r9
+	089 Interrupt 
+	090 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: SimpleJSON.JSONNode get_Item(System.String aKey)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE3h],0
+	mov rdi,rcx
+	jne short 00000001802FE489h
+	lea rcx,[1824806E8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE3h],1
+	mov rcx,[1824806E8h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802BC7B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	lea rcx,[rbx+18h]
+	mov qword ptr [rbx+18h],0
+	xor edx,edx
+	call 00000001801ED930h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DE3], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x1824806E8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x1825C5DE3], 1
+	011 Move rcx, typeof(SimpleJSON.JSONLazyCreator)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call 0x1802BC7B0, rcx, rdx, r8
+	017 LoadAddress rcx, [rbx+16]
+	018 Move [rbx+16], rdi
+	019 Move rdx, rdi
+	020 Call 0x1801ED930, rcx, rdx, r8, r9
+	021 LoadAddress rcx, [rbx+24]
+	022 Move [rbx+24], 0
+	023 Move rdx, 0
+	024 Call 0x1801ED930, rcx, rdx, r8, r9
+	025 Move rax, rbx
+	026 Move rbx, stack:0x30
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+
+Method: System.Void set_Item(System.String aKey, SimpleJSON.JSONNode value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE4h],0
+	mov rbx,r8
+	mov rdi,rcx
+	jne short 00000001802FE688h
+	lea rcx,[1824807F8h]
+	call 00000001801EE810h
+	lea rcx,[182493108h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE4h],1
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802DC210h
+	test al,al
+	je short 00000001802FE6B8h
+	mov rcx,[1824807F8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001802FE6AEh
+	call 00000001801EEAF0h
+	xor ecx,ecx
+	call 00000001802FF740h
+	mov rbx,rax
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je short 00000001802FE72Ah
+	mov r9,[182493108h]
+	inc dword ptr [rcx+1Ch]
+	mov r8,[rcx+10h]
+	test r8,r8
+	je short 00000001802FE72Ah
+	movsxd rdx,dword ptr [rcx+18h]
+	cmp edx,[r8+18h]
+	jb short 00000001802FE6FFh
+	mov rax,[r9+20h]
+	mov rdx,rbx
+	mov r8,[rax+0C0h]
+	mov r8,[r8+70h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180D69050h
+	lea eax,[rdx+1]
+	mov [rcx+18h],eax
+	cmp edx,[r8+18h]
+	jae short 00000001802FE730h
+	mov [r8+rdx*8+20h],rbx
+	add r8,20h
+	lea rcx,[r8+rdx*8]
+	mov rdx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DE4], 0
+	006 Move rbx, r8
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x1824807F8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182493108]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1825C5DE4], 1
+	014 Move r8, 0
+	015 Move rdx, 0
+	016 Move rcx, rbx
+	017 Call JSONNode.op_Equality, rcx, rdx, r8
+	018 Compare rax, 0
+	019 JumpIfEqual {27}
+	020 Move rcx, typeof(SimpleJSON.JSONNull)
+	021 Compare [rcx+228], 0
+	022 JumpIfNotEqual {24}
+	023 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	024 Move rcx, 0
+	025 Call JSONNull.CreateOrGet, rcx
+	026 Move rbx, rax
+	027 Move rcx, [rdi+16]
+	028 Compare rcx, 0
+	029 JumpIfEqual {62}
+	030 Move r9, [0x182493108]
+	031 Add [rcx+28], [rcx+28], 1
+	032 Move r8, [rcx+16]
+	033 Compare r8, 0
+	034 JumpIfEqual {62}
+	035 Move rdx, [rcx+24]
+	036 Compare rdx, [r8+24]
+	037 JumpIfLess {48}
+	038 Move rax, [r9+32]
+	039 Move rdx, rbx
+	040 Move r8, [rax+192]
+	041 Move r8, [r8+112]
+	042 Move rbx, stack:0x30
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Call List`1<Object>.AddWithResize, rcx, rdx
+	047 Return 
+	048 LoadAddress rax, [rdx+1]
+	049 Move [rcx+24], rax
+	050 Compare rdx, [r8+24]
+	051 JumpIfGreaterOrEqual {64}
+	052 Move [r8+32+rdx*8], rbx
+	053 Add r8, r8, 32
+	054 LoadAddress rcx, [r8+rdx*8]
+	055 Move rdx, rbx
+	056 Move rbx, stack:0x30
+	057 ShiftStack 32
+	058 Move rdi, stack:0x0
+	059 ShiftStack 8
+	060 Call 0x1801ED930, rcx, rdx, r8, r9
+	061 Return 
+	062 Call 0x1801EEA50, rcx, rdx, r8, r9
+	063 Interrupt 
+	064 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: System.Int32 get_Count()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1825C5DE5h],0
+	mov rbx,rcx
+	jne short 00000001802FE375h
+	lea rcx,[182493308h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE5h],1
+	mov rax,[rbx+10h]
+	test rax,rax
+	je short 00000001802FE387h
+	mov eax,[rax+18h]
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1825C5DE5], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x182493308]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x1825C5DE5], 1
+	010 Move rax, [rbx+16]
+	011 Compare rax, 0
+	012 JumpIfEqual {18}
+	013 Move rax, [rax+24]
+	014 ShiftStack 32
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Add(System.String aKey, SimpleJSON.JSONNode aItem)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE6h],0
+	mov rbx,r8
+	mov rdi,rcx
+	jne short 00000001802FDE78h
+	lea rcx,[1824807F8h]
+	call 00000001801EE810h
+	lea rcx,[182493108h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE6h],1
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802DC210h
+	test al,al
+	je short 00000001802FDEA8h
+	mov rcx,[1824807F8h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001802FDE9Eh
+	call 00000001801EEAF0h
+	xor ecx,ecx
+	call 00000001802FF740h
+	mov rbx,rax
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je short 00000001802FDF1Ah
+	mov r9,[182493108h]
+	inc dword ptr [rcx+1Ch]
+	mov r8,[rcx+10h]
+	test r8,r8
+	je short 00000001802FDF1Ah
+	movsxd rdx,dword ptr [rcx+18h]
+	cmp edx,[r8+18h]
+	jb short 00000001802FDEEFh
+	mov rax,[r9+20h]
+	mov rdx,rbx
+	mov r8,[rax+0C0h]
+	mov r8,[r8+70h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180D69050h
+	lea eax,[rdx+1]
+	mov [rcx+18h],eax
+	cmp edx,[r8+18h]
+	jae short 00000001802FDF20h
+	mov [r8+rdx*8+20h],rbx
+	add r8,20h
+	lea rcx,[r8+rdx*8]
+	mov rdx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DE6], 0
+	006 Move rbx, r8
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x1824807F8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182493108]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1825C5DE6], 1
+	014 Move r8, 0
+	015 Move rdx, 0
+	016 Move rcx, rbx
+	017 Call JSONNode.op_Equality, rcx, rdx, r8
+	018 Compare rax, 0
+	019 JumpIfEqual {27}
+	020 Move rcx, typeof(SimpleJSON.JSONNull)
+	021 Compare [rcx+228], 0
+	022 JumpIfNotEqual {24}
+	023 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	024 Move rcx, 0
+	025 Call JSONNull.CreateOrGet, rcx
+	026 Move rbx, rax
+	027 Move rcx, [rdi+16]
+	028 Compare rcx, 0
+	029 JumpIfEqual {62}
+	030 Move r9, [0x182493108]
+	031 Add [rcx+28], [rcx+28], 1
+	032 Move r8, [rcx+16]
+	033 Compare r8, 0
+	034 JumpIfEqual {62}
+	035 Move rdx, [rcx+24]
+	036 Compare rdx, [r8+24]
+	037 JumpIfLess {48}
+	038 Move rax, [r9+32]
+	039 Move rdx, rbx
+	040 Move r8, [rax+192]
+	041 Move r8, [r8+112]
+	042 Move rbx, stack:0x30
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Call List`1<Object>.AddWithResize, rcx, rdx
+	047 Return 
+	048 LoadAddress rax, [rdx+1]
+	049 Move [rcx+24], rax
+	050 Compare rdx, [r8+24]
+	051 JumpIfGreaterOrEqual {64}
+	052 Move [r8+32+rdx*8], rbx
+	053 Add r8, r8, 32
+	054 LoadAddress rcx, [r8+rdx*8]
+	055 Move rdx, rbx
+	056 Move rbx, stack:0x30
+	057 ShiftStack 32
+	058 Move rdi, stack:0x0
+	059 ShiftStack 8
+	060 Call 0x1801ED930, rcx, rdx, r8, r9
+	061 Return 
+	062 Call 0x1801EEA50, rcx, rdx, r8, r9
+	063 Interrupt 
+	064 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: SimpleJSON.JSONNode Remove(System.Int32 aIndex)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE7h],0
+	mov ebx,edx
+	mov rdi,rcx
+	jne short 00000001802FE013h
+	lea rcx,[182493288h]
+	call 00000001801EE810h
+	lea rcx,[182493308h]
+	call 00000001801EE810h
+	lea rcx,[182493388h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE7h],1
+	mov [rsp+30h],rsi
+	test ebx,ebx
+	js short 00000001802FE068h
+	mov rax,[rdi+10h]
+	test rax,rax
+	je short 00000001802FE07Ah
+	cmp ebx,[rax+18h]
+	jge short 00000001802FE068h
+	mov r8,[182493388h]
+	mov edx,ebx
+	mov rcx,rax
+	call 0000000180D19920h
+	mov rcx,[rdi+10h]
+	mov rsi,rax
+	test rcx,rcx
+	je short 00000001802FE07Ah
+	mov r8,[182493288h]
+	mov edx,ebx
+	call 0000000180D716A0h
+	mov rax,rsi
+	mov rsi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rsi,[rsp+30h]
+	xor eax,eax
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DE7], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {16}
+	009 LoadAddress rcx, [0x182493288]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182493308]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182493388]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825C5DE7], 1
+	016 Move stack:0x30, rsi
+	017 Compare rbx, 0
+	018 JumpIfSign {42}
+	019 Move rax, [rdi+16]
+	020 Compare rax, 0
+	021 JumpIfEqual {49}
+	022 Compare rbx, [rax+24]
+	023 JumpIfGreaterOrEqual {42}
+	024 Move r8, [0x182493388]
+	025 Move rdx, rbx
+	026 Move rcx, rax
+	027 Call 0x180D19920, rcx, rdx
+	028 Move rcx, [rdi+16]
+	029 Move rsi, rax
+	030 Compare rcx, 0
+	031 JumpIfEqual {49}
+	032 Move r8, [0x182493288]
+	033 Move rdx, rbx
+	034 Call List`1<Object>.RemoveAt, rcx, rdx
+	035 Move rax, rsi
+	036 Move rsi, stack:0x30
+	037 Move rbx, stack:0x38
+	038 ShiftStack 32
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+	042 Move rsi, stack:0x30
+	043 Move rax, 0
+	044 Move rbx, stack:0x38
+	045 ShiftStack 32
+	046 Move rdi, stack:0x0
+	047 ShiftStack 8
+	048 Return rax
+	049 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: SimpleJSON.JSONNode Remove(SimpleJSON.JSONNode aNode)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE8h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 00000001802FE0ACh
+	lea rcx,[182493208h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE8h],1
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je short 00000001802FE0D2h
+	mov r8,[182493208h]
+	mov rdx,rbx
+	call 0000000180D71B20h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DE8], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182493208]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C5DE8], 1
+	012 Move rcx, [rdi+16]
+	013 Compare rcx, 0
+	014 JumpIfEqual {24}
+	015 Move r8, [0x182493208]
+	016 Move rdx, rbx
+	017 Call List`1<Object>.Remove, rcx, rdx
+	018 Move rax, rbx
+	019 Move rbx, stack:0x30
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Return rax
+	024 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Collections.Generic.IEnumerable`1<SimpleJSON.JSONNode> get_Children()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DE9h],0
+	mov rdi,rcx
+	jne short 00000001802FE2F9h
+	lea rcx,[182488168h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DE9h],1
+	mov rcx,[182488168h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802C3410h
+	xor ecx,ecx
+	mov dword ptr [rbx+10h],0FFFFFFFEh
+	call 0000000180364370h
+	lea rcx,[rbx+28h]
+	mov [rbx+20h],eax
+	mov rdx,rdi
+	mov [rbx+28h],rdi
+	call 00000001801ED930h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DE9], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x182488168]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x1825C5DE9], 1
+	011 Move rcx, typeof(SimpleJSON.JSONArray+<get_Children>d__22)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	017 Move rcx, 0
+	018 Move [rbx+16], 0xFFFFFFFE
+	019 Call 0x180364370, rcx
+	020 LoadAddress rcx, [rbx+40]
+	021 Move [rbx+32], rax
+	022 Move rdx, rdi
+	023 Move [rbx+40], rdi
+	024 Call 0x1801ED930, rcx, rdx, r8, r9
+	025 Move rax, rbx
+	026 Move rbx, stack:0x30
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+
+Method: System.Void WriteToStringBuilder(System.Text.StringBuilder aSB, System.Int32 aIndent, System.Int32 aIndentInc, SimpleJSON.JSONTextMode aMode)
+
+Disassembly:
+	mov [rsp+20h],rbx
+	push rbp
+	push r14
+	push r15
+	sub rsp,30h
+	cmp byte ptr [1825C5DEAh],0
+	mov ebp,r9d
+	mov r14d,r8d
+	mov rbx,rdx
+	mov r15,rcx
+	jne short 00000001802FE122h
+	lea rcx,[182493308h]
+	call 00000001801EE810h
+	lea rcx,[182493388h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DEAh],1
+	mov [rsp+50h],rsi
+	mov [rsp+58h],rdi
+	mov [rsp+60h],r12
+	test rbx,rbx
+	je near ptr 00000001802FE23Eh
+	mov edx,5Bh
+	xor r8d,r8d
+	mov rcx,rbx
+	call 000000018130F450h
+	mov rax,[r15+10h]
+	test rax,rax
+	je near ptr 00000001802FE23Eh
+	mov r12d,[rax+18h]
+	xor edi,edi
+	mov esi,edi
+	cmp [r15+18h],sil
+	cmove esi,[rsp+70h]
+	test r12d,r12d
+	jle short 00000001802FE1EAh
+	nop dword ptr [rax]
+	test edi,edi
+	je short 00000001802FE184h
+	mov edx,2Ch
+	xor r8d,r8d
+	mov rcx,rbx
+	call 000000018130F450h
+	cmp esi,1
+	jne short 00000001802FE1A7h
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018130EF60h
+	lea r8d,[r14+rbp]
+	mov edx,20h
+	xor r9d,r9d
+	mov rcx,rbx
+	call 000000018130F7A0h
+	mov rcx,[r15+10h]
+	test rcx,rcx
+	je near ptr 00000001802FE23Eh
+	mov r8,[182493388h]
+	mov edx,edi
+	call 0000000180D19920h
+	test rax,rax
+	je short 00000001802FE23Eh
+	lea r9d,[r14+rbp]
+	mov [rsp+28h],esi
+	mov ecx,1Bh
+	mov [rsp+20h],ebp
+	mov r8,rbx
+	mov rdx,rax
+	call 0000000180002390h
+	inc edi
+	cmp edi,r12d
+	jl short 00000001802FE170h
+	cmp esi,1
+	jne short 00000001802FE211h
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018130EF60h
+	test rax,rax
+	je short 00000001802FE23Eh
+	mov edx,20h
+	xor r9d,r9d
+	mov r8d,r14d
+	mov rcx,rax
+	call 000000018130F7A0h
+	mov edx,5Dh
+	xor r8d,r8d
+	mov rcx,rbx
+	mov r12,[rsp+60h]
+	mov rdi,[rsp+58h]
+	mov rsi,[rsp+50h]
+	mov rbx,[rsp+68h]
+	add rsp,30h
+	pop r15
+	pop r14
+	pop rbp
+	jmp near ptr 000000018130F450h
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x20, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rbp
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -8
+	007 Move stack:0x0, r15
+	008 ShiftStack -48
+	009 Compare [0x1825C5DEA], 0
+	010 Move rbp, r9
+	011 Move r14, r8
+	012 Move rbx, rdx
+	013 Move r15, rcx
+	014 JumpIfNotEqual {20}
+	015 LoadAddress rcx, [0x182493308]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x182493388]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x1825C5DEA], 1
+	020 Move stack:0x50, rsi
+	021 Move stack:0x58, rdi
+	022 Move stack:0x60, r12
+	023 Compare rbx, 0
+	024 JumpIfEqual {104}
+	025 Move rdx, 91
+	026 Move r8, 0
+	027 Move rcx, rbx
+	028 Call StringBuilder.Append, rcx, rdx
+	029 Move rax, [r15+16]
+	030 Compare rax, 0
+	031 JumpIfEqual {104}
+	032 Move r12, [rax+24]
+	033 Move rdi, 0
+	034 Move rsi, rdi
+	035 Compare [r15+24], rsi
+	036 JumpIfNotEqual {38}
+	037 Move rsi, stack:0x70
+	038 Nop 
+	039 Compare r12, 0
+	040 JumpIfLessOrEqual {76}
+	041 Nop 
+	042 Compare rdi, 0
+	043 JumpIfEqual {48}
+	044 Move rdx, 44
+	045 Move r8, 0
+	046 Move rcx, rbx
+	047 Call StringBuilder.Append, rcx, rdx
+	048 Compare rsi, 1
+	049 JumpIfNotEqual {58}
+	050 Move rdx, 0
+	051 Move rcx, rbx
+	052 Call StringBuilder.AppendLine, rcx, rdx
+	053 LoadAddress r8, [r14+rbp]
+	054 Move rdx, 32
+	055 Move r9, 0
+	056 Move rcx, rbx
+	057 Call StringBuilder.Append, rcx, rdx, r8
+	058 Move rcx, [r15+16]
+	059 Compare rcx, 0
+	060 JumpIfEqual {104}
+	061 Move r8, [0x182493388]
+	062 Move rdx, rdi
+	063 Call 0x180D19920, rcx, rdx
+	064 Compare rax, 0
+	065 JumpIfEqual {104}
+	066 LoadAddress r9, [r14+rbp]
+	067 Move stack:0x28, rsi
+	068 Move rcx, 27
+	069 Move stack:0x20, rbp
+	070 Move r8, rbx
+	071 Move rdx, rax
+	072 Call 0x180002390, rcx, rdx, r8, r9
+	073 Add rdi, rdi, 1
+	074 Compare rdi, r12
+	075 JumpIfLess {42}
+	076 Compare rsi, 1
+	077 JumpIfNotEqual {88}
+	078 Move rdx, 0
+	079 Move rcx, rbx
+	080 Call StringBuilder.AppendLine, rcx, rdx
+	081 Compare rax, 0
+	082 JumpIfEqual {104}
+	083 Move rdx, 32
+	084 Move r9, 0
+	085 Move r8, r14
+	086 Move rcx, rax
+	087 Call StringBuilder.Append, rcx, rdx, r8
+	088 Move rdx, 93
+	089 Move r8, 0
+	090 Move rcx, rbx
+	091 Move r12, stack:0x60
+	092 Move rdi, stack:0x58
+	093 Move rsi, stack:0x50
+	094 Move rbx, stack:0x68
+	095 ShiftStack 48
+	096 Move r15, stack:0x0
+	097 ShiftStack 8
+	098 Move r14, stack:0x0
+	099 ShiftStack 8
+	100 Move rbp, stack:0x0
+	101 ShiftStack 8
+	102 Call StringBuilder.Append, rcx, rdx
+	103 Return 
+	104 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5DEBh],0
+	mov rdi,rcx
+	jne short 00000001802FE285h
+	lea rcx,[182493088h]
+	call 00000001801EE810h
+	lea rcx,[18246E988h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5DEBh],1
+	mov rcx,[18246E988h]
+	call 00000001801EEA00h
+	mov rdx,[182493088h]
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180CFD0C0h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	xor edx,edx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001802BC7B0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C5DEB], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {13}
+	008 LoadAddress rcx, [0x182493088]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x18246E988]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x1825C5DEB], 1
+	013 Move rcx, typeof(System.Collections.Generic.List`1<JSONNode>)
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rdx, [0x182493088]
+	016 Move rcx, rax
+	017 Move rbx, rax
+	018 Call 0x180CFD0C0, rcx, rdx
+	019 LoadAddress rcx, [rdi+16]
+	020 Move [rdi+16], rbx
+	021 Move rdx, rbx
+	022 Call 0x1801ED930, rcx, rdx, r8, r9
+	023 Move rdx, 0
+	024 Move rcx, rdi
+	025 Move rbx, stack:0x30
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Call 0x1802BC7B0, rcx, rdx, r8
+	030 Return 
+

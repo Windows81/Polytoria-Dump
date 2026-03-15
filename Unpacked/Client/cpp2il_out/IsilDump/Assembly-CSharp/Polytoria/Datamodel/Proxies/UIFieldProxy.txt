@@ -1,0 +1,493 @@
+Type: Polytoria.Datamodel.Proxies.UIFieldProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.UIField target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x18020B990, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Move rbx, stack:0x30
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Call 0x18020B990, rcx, rdx, r8, r9
+	021 Return 
+
+Method: Polytoria.Lua.LuaEvent get_MouseUp()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804CAC89h
+	mov rax,[rax+0F8h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+248]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Polytoria.Lua.LuaEvent get_MouseDown()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804C89D9h
+	mov rax,[rax+100h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+256]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector2 get_PositionOffset()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804DA20Ah
+	movss xmm0,dword ptr [rax+10Ch]
+	movss xmm1,dword ptr [rax+108h]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {15}
+	005 Move xmm0, [rax+268]
+	006 Move xmm1, [rax+264]
+	007 Move XMM_TEMP.S[0], xmm1.S[0]
+	008 Move XMM_TEMP.S[1], xmm0.S[0]
+	009 Move XMM_TEMP.S[2], xmm1.S[1]
+	010 Move XMM_TEMP.S[3], xmm0.S[1]
+	011 Move xmm1, XMM_TEMP
+	012 Move rax, xmm1
+	013 ShiftStack 40
+	014 Return rax
+	015 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_PositionOffset(UnityEngine.Vector2 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA339h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B9230h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x1804B9230, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector2 get_PositionRelative()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804DA23Ah
+	movss xmm0,dword ptr [rax+11Ch]
+	movss xmm1,dword ptr [rax+118h]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {15}
+	005 Move xmm0, [rax+284]
+	006 Move xmm1, [rax+280]
+	007 Move XMM_TEMP.S[0], xmm1.S[0]
+	008 Move XMM_TEMP.S[1], xmm0.S[0]
+	009 Move XMM_TEMP.S[2], xmm1.S[1]
+	010 Move XMM_TEMP.S[3], xmm0.S[1]
+	011 Move xmm1, XMM_TEMP
+	012 Move rax, xmm1
+	013 ShiftStack 40
+	014 Return rax
+	015 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_PositionRelative(UnityEngine.Vector2 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA359h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B92A0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x1804B92A0, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_Rotation()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA258h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 00000001804B9040h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call UIField.get_Rotation, rcx, rdx
+	008 Return xmm0
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Rotation(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA379h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B9570h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call UIField.set_Rotation, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector2 get_SizeOffset()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804DA28Ah
+	movss xmm0,dword ptr [rax+114h]
+	movss xmm1,dword ptr [rax+110h]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {15}
+	005 Move xmm0, [rax+276]
+	006 Move xmm1, [rax+272]
+	007 Move XMM_TEMP.S[0], xmm1.S[0]
+	008 Move XMM_TEMP.S[1], xmm0.S[0]
+	009 Move XMM_TEMP.S[2], xmm1.S[1]
+	010 Move XMM_TEMP.S[3], xmm0.S[1]
+	011 Move xmm1, XMM_TEMP
+	012 Move rax, xmm1
+	013 ShiftStack 40
+	014 Return rax
+	015 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_SizeOffset(UnityEngine.Vector2 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA399h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B9380h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x1804B9380, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector2 get_SizeRelative()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804DA2BAh
+	movss xmm0,dword ptr [rax+124h]
+	movss xmm1,dword ptr [rax+120h]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {15}
+	005 Move xmm0, [rax+292]
+	006 Move xmm1, [rax+288]
+	007 Move XMM_TEMP.S[0], xmm1.S[0]
+	008 Move XMM_TEMP.S[1], xmm0.S[0]
+	009 Move XMM_TEMP.S[2], xmm1.S[1]
+	010 Move XMM_TEMP.S[3], xmm0.S[1]
+	011 Move xmm1, XMM_TEMP
+	012 Move rax, xmm1
+	013 ShiftStack 40
+	014 Return rax
+	015 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_SizeRelative(UnityEngine.Vector2 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA3B9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B93F0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x1804B93F0, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector2 get_PivotPoint()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA1D8h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 00000001804B9010h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call UIField.get_PivotPoint, rcx, rdx
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_PivotPoint(UnityEngine.Vector2 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA319h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B94D0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call UIField.set_PivotPoint, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_Visible()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804DA2D9h
+	movzx eax,byte ptr [rax+134h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+308]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Visible(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA3D9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B9620h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call UIField.set_Visible, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_ClipDescendants()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 00000001804DA1B9h
+	movzx eax,byte ptr [rax+135h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+309]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_ClipDescendants(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001804DA2F9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 00000001804B9070h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+24]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call UIField.set_ClipDescendants, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

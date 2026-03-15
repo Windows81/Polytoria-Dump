@@ -1,0 +1,118 @@
+Type: GLTFast.Jobs.ConvertColorsRgbaUInt16ToRGBAFloatJob
+
+Method: System.Void Execute(System.Int32 i, System.Int32 count)
+
+Disassembly:
+	sub rsp,18h
+	mov eax,edx
+	movsxd r10,edx
+	imul eax,[rcx]
+	movsxd r9,eax
+	lea eax,[rdx+r8]
+	add r9,[rcx+8]
+	movsxd r8,eax
+	cmp r10,r8
+	jge near ptr 000000018108A90Dh
+	movsxd r11,dword ptr [rcx]
+	movss xmm4,dword ptr [181D311A8h]
+	shl r10,4
+	add r10,[rcx+10h]
+	movsxd rax,edx
+	sub r8,rax
+	nop dword ptr [rax]
+	movzx eax,word ptr [r9]
+	lea r10,[r10+10h]
+	xorps xmm3,xmm3
+	xorps xmm0,xmm0
+	xorps xmm1,xmm1
+	xorps xmm2,xmm2
+	cvtsi2ss xmm3,eax
+	movzx eax,word ptr [r9+2]
+	cvtsi2ss xmm0,eax
+	movzx eax,word ptr [r9+4]
+	divss xmm3,xmm4
+	cvtsi2ss xmm1,eax
+	movzx eax,word ptr [r9+6]
+	add r9,r11
+	shufps xmm3,xmm3,0E1h
+	divss xmm0,xmm4
+	cvtsi2ss xmm2,eax
+	movss xmm3,xmm0
+	shufps xmm3,xmm3,0C6h
+	divss xmm1,xmm4
+	divss xmm2,xmm4
+	movss xmm3,xmm1
+	shufps xmm3,xmm3,27h
+	movss xmm3,xmm2
+	shufps xmm3,xmm3,39h
+	movups [r10-10h],xmm3
+	sub r8,1
+	jne short 000000018108A8A0h
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move rax, rdx
+	003 Move r10, rdx
+	004 Multiply rax, rax, [rcx]
+	005 Move r9, rax
+	006 LoadAddress rax, [rdx+r8]
+	007 Add r9, r9, [rcx+8]
+	008 Move r8, rax
+	009 Compare r10, r8
+	010 JumpIfGreaterOrEqual {62}
+	011 Move r11, [rcx]
+	012 Move xmm4, [0x181D311A8]
+	013 ShiftLeft r10, 4
+	014 Add r10, r10, [rcx+16]
+	015 Move rax, rdx
+	016 Subtract r8, r8, rax
+	017 Nop 
+	018 Move rax, [r9]
+	019 LoadAddress r10, [r10+16]
+	020 Move xmm3, 0
+	021 Move xmm0, 0
+	022 Move xmm1, 0
+	023 Move xmm2, 0
+	024 NotImplemented "cvtsi2ss xmm3,eax"
+	025 Move rax, [r9+2]
+	026 NotImplemented "cvtsi2ss xmm0,eax"
+	027 Move rax, [r9+4]
+	028 Divide xmm3, xmm3, xmm4
+	029 NotImplemented "cvtsi2ss xmm1,eax"
+	030 Move rax, [r9+6]
+	031 Add r9, r9, r11
+	032 Move XMM_TEMP.S[0], xmm3.S[1]
+	033 Move XMM_TEMP.S[1], xmm3.S[0]
+	034 Move XMM_TEMP.S[2], xmm3.S[2]
+	035 Move XMM_TEMP.S[3], xmm3.S[3]
+	036 Move xmm3, XMM_TEMP
+	037 Divide xmm0, xmm0, xmm4
+	038 NotImplemented "cvtsi2ss xmm2,eax"
+	039 Move xmm3, xmm0
+	040 Move XMM_TEMP.S[0], xmm3.S[2]
+	041 Move XMM_TEMP.S[1], xmm3.S[1]
+	042 Move XMM_TEMP.S[2], xmm3.S[0]
+	043 Move XMM_TEMP.S[3], xmm3.S[3]
+	044 Move xmm3, XMM_TEMP
+	045 Divide xmm1, xmm1, xmm4
+	046 Divide xmm2, xmm2, xmm4
+	047 Move xmm3, xmm1
+	048 Move XMM_TEMP.S[0], xmm3.S[3]
+	049 Move XMM_TEMP.S[1], xmm3.S[1]
+	050 Move XMM_TEMP.S[2], xmm3.S[2]
+	051 Move XMM_TEMP.S[3], xmm3.S[0]
+	052 Move xmm3, XMM_TEMP
+	053 Move xmm3, xmm2
+	054 Move XMM_TEMP.S[0], xmm3.S[1]
+	055 Move XMM_TEMP.S[1], xmm3.S[2]
+	056 Move XMM_TEMP.S[2], xmm3.S[3]
+	057 Move XMM_TEMP.S[3], xmm3.S[0]
+	058 Move xmm3, XMM_TEMP
+	059 Move [r10-16], xmm3
+	060 Subtract r8, r8, 1
+	061 JumpIfNotEqual {18}
+	062 ShiftStack 24
+	063 Return 
+

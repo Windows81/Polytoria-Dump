@@ -1,0 +1,106 @@
+Type: Mirror.Mathd
+
+Method: System.Double Clamp(System.Double value, System.Double min, System.Double max)
+
+Disassembly:
+	comisd xmm1,xmm0
+	ja short 000000018128EAA0h
+	comisd xmm0,xmm2
+	jbe short 000000018128EAA3h
+	movaps xmm0,xmm2
+	ret
+	movaps xmm0,xmm1
+	ret
+
+ISIL:
+	001 NotImplemented "comisd xmm1,xmm0"
+	002 JumpIfGreater {7}
+	003 NotImplemented "comisd xmm0,xmm2"
+	004 JumpIfLessOrEqual {8}
+	005 Move xmm0, xmm2
+	006 Return xmm0
+	007 Move xmm0, xmm1
+	008 Return xmm0
+
+Method: System.Double Clamp01(System.Double value)
+
+Disassembly:
+	xorps xmm1,xmm1
+	comisd xmm1,xmm0
+	ja short 000000018128EA8Bh
+	movsd xmm1,qword ptr [181D30C30h]
+	comisd xmm0,xmm1
+	jbe short 000000018128EA8Eh
+	movaps xmm0,xmm1
+	ret
+	xorps xmm0,xmm0
+	ret
+
+ISIL:
+	001 Move xmm1, 0
+	002 NotImplemented "comisd xmm1,xmm0"
+	003 JumpIfGreater {9}
+	004 Move xmm1, [0x181D30C30]
+	005 NotImplemented "comisd xmm0,xmm1"
+	006 JumpIfLessOrEqual {10}
+	007 Move xmm0, xmm1
+	008 Return xmm0
+	009 Move xmm0, 0
+	010 Return xmm0
+
+Method: System.Double InverseLerp(System.Double a, System.Double b, System.Double value)
+
+Disassembly:
+	ucomisd xmm0,xmm1
+	jp short 000000018128EABCh
+	jne short 000000018128EABCh
+	xorps xmm0,xmm0
+	ret
+	subsd xmm2,xmm0
+	subsd xmm1,xmm0
+	xorps xmm0,xmm0
+	divsd xmm2,xmm1
+	comisd xmm0,xmm2
+	ja short 000000018128EAE0h
+	movsd xmm0,qword ptr [181D30C30h]
+	comisd xmm2,xmm0
+	jbe short 000000018128EAE3h
+	ret
+	xorps xmm2,xmm2
+	movaps xmm0,xmm2
+	ret
+
+ISIL:
+	001 NotImplemented "ucomisd xmm0,xmm1"
+	002 NotImplemented "jp short 000000018128EABCh"
+	003 JumpIfNotEqual {6}
+	004 Move xmm0, 0
+	005 Return xmm0
+	006 NotImplemented "subsd xmm2,xmm0"
+	007 NotImplemented "subsd xmm1,xmm0"
+	008 Move xmm0, 0
+	009 NotImplemented "divsd xmm2,xmm1"
+	010 NotImplemented "comisd xmm0,xmm2"
+	011 JumpIfGreater {16}
+	012 Move xmm0, [0x181D30C30]
+	013 NotImplemented "comisd xmm2,xmm0"
+	014 JumpIfLessOrEqual {17}
+	015 Return xmm0
+	016 Move xmm2, 0
+	017 Move xmm0, xmm2
+	018 Return xmm0
+
+Method: System.Double LerpUnclamped(System.Double a, System.Double b, System.Double t)
+
+Disassembly:
+	subsd xmm1,xmm0
+	mulsd xmm1,xmm2
+	addsd xmm0,xmm1
+	ret
+
+ISIL:
+	001 NotImplemented "subsd xmm1,xmm0"
+	002 NotImplemented "mulsd xmm1,xmm2"
+	003 NotImplemented "addsd xmm0,xmm1"
+	004 Return xmm0
+

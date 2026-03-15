@@ -1,0 +1,51 @@
+Type: UnityEngine.UI.ProceduralImage.ProceduralImageInfo
+
+Method: System.Void .ctor(System.Single width, System.Single height, System.Single fallOffDistance, System.Single pixelSize, UnityEngine.Vector4 radius, System.Single borderWidth)
+
+Disassembly:
+	andps xmm1,[181D30CE0h]
+	andps xmm2,[181D30CE0h]
+	movss dword ptr [rcx],xmm1
+	movss dword ptr [rcx+4],xmm2
+	mov rax,[rsp+30h]
+	xorps xmm0,xmm0
+	maxss xmm0,xmm3
+	xorps xmm1,xmm1
+	movss dword ptr [rcx+8],xmm0
+	movups xmm0,[rax]
+	movups [rcx+0Ch],xmm0
+	movss xmm0,dword ptr [rsp+38h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+1Ch],xmm0
+	maxss xmm1,dword ptr [rsp+28h]
+	movss dword ptr [rcx+20h],xmm1
+	ret
+
+ISIL:
+	001 And xmm1, xmm1, [0x181D30CE0]
+	002 And xmm2, xmm2, [0x181D30CE0]
+	003 Move [rcx], xmm1
+	004 Move [rcx+4], xmm2
+	005 Move rax, stack:0x30
+	006 Move xmm0, 0
+	007 Compare xmm0, xmm3
+	008 JumpIfGreaterOrEqual {10}
+	009 Move xmm0, xmm3
+	010 Nop 
+	011 Move xmm1, 0
+	012 Move [rcx+8], xmm0
+	013 Move xmm0, [rax]
+	014 Move [rcx+12], xmm0
+	015 Move xmm0, stack:0x38
+	016 Compare xmm0, xmm1
+	017 JumpIfGreaterOrEqual {19}
+	018 Move xmm0, xmm1
+	019 Nop 
+	020 Move [rcx+28], xmm0
+	021 Compare xmm1, stack:0x28
+	022 JumpIfGreaterOrEqual {24}
+	023 Move xmm1, stack:0x28
+	024 Nop 
+	025 Move [rcx+32], xmm1
+	026 Return 
+

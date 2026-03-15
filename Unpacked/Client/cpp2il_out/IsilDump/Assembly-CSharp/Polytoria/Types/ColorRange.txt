@@ -1,0 +1,180 @@
+Type: Polytoria.Types.ColorRange
+
+Method: System.Void .ctor(UnityEngine.Color min, UnityEngine.Color max)
+
+Disassembly:
+	movups xmm0,[rdx]
+	movups [rcx],xmm0
+	movups xmm0,[r8]
+	movups [rcx+10h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx], xmm0
+	003 Move xmm0, [r8]
+	004 Move [rcx+16], xmm0
+	005 Return 
+
+Method: UnityEngine.Color Lerp(System.Single t)
+
+Disassembly:
+	sub rsp,28h
+	movups xmm5,[rdx+10h]
+	xorps xmm0,xmm0
+	movaps [rsp+10h],xmm6
+	comiss xmm0,xmm2
+	movups xmm6,[rdx]
+	movaps xmm4,xmm2
+	ja short 00000001804290DDh
+	movss xmm0,dword ptr [181E5DC04h]
+	comiss xmm2,xmm0
+	jbe short 00000001804290E0h
+	movaps xmm4,xmm0
+	jmp short 00000001804290E0h
+	xorps xmm4,xmm4
+	movaps xmm2,xmm5
+	movaps xmm3,xmm5
+	shufps xmm2,xmm5,55h
+	subss xmm3,xmm6
+	movaps xmm1,xmm5
+	movaps xmm0,xmm6
+	shufps xmm1,xmm5,0AAh
+	shufps xmm0,xmm6,55h
+	subss xmm2,xmm0
+	shufps xmm5,xmm5,0FFh
+	mulss xmm3,xmm4
+	mulss xmm2,xmm4
+	addss xmm3,xmm6
+	addss xmm2,xmm0
+	movaps xmm0,xmm6
+	shufps xmm0,xmm6,0AAh
+	shufps xmm6,xmm6,0FFh
+	subss xmm1,xmm0
+	subss xmm5,xmm6
+	mulss xmm1,xmm4
+	mulss xmm5,xmm4
+	addss xmm1,xmm0
+	addss xmm5,xmm6
+	movaps xmm6,[rsp+10h]
+	mov rax,rcx
+	shufps xmm3,xmm3,0E1h
+	movss xmm3,xmm2
+	shufps xmm3,xmm3,0C6h
+	movss xmm3,xmm1
+	shufps xmm3,xmm3,27h
+	movss xmm3,xmm5
+	shufps xmm3,xmm3,39h
+	movups [rcx],xmm3
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move xmm5, [rdx+16]
+	003 Move xmm0, 0
+	004 Move stack:0x10, xmm6
+	005 Compare xmm0, xmm2
+	006 Move xmm6, [rdx]
+	007 Move xmm4, xmm2
+	008 JumpIfGreater {14}
+	009 Move xmm0, [0x181E5DC04]
+	010 Compare xmm2, xmm0
+	011 JumpIfLessOrEqual {15}
+	012 Move xmm4, xmm0
+	013 Goto {15}
+	014 Move xmm4, 0
+	015 Move xmm2, xmm5
+	016 Move xmm3, xmm5
+	017 Move XMM_TEMP.S[0], xmm2.S[1]
+	018 Move XMM_TEMP.S[1], xmm2.S[1]
+	019 Move XMM_TEMP.S[2], xmm5.S[1]
+	020 Move XMM_TEMP.S[3], xmm5.S[1]
+	021 Move xmm2, XMM_TEMP
+	022 Subtract xmm3, xmm3, xmm6
+	023 Move xmm1, xmm5
+	024 Move xmm0, xmm6
+	025 Move XMM_TEMP.S[0], xmm1.S[2]
+	026 Move XMM_TEMP.S[1], xmm1.S[2]
+	027 Move XMM_TEMP.S[2], xmm5.S[2]
+	028 Move XMM_TEMP.S[3], xmm5.S[2]
+	029 Move xmm1, XMM_TEMP
+	030 Move XMM_TEMP.S[0], xmm0.S[1]
+	031 Move XMM_TEMP.S[1], xmm0.S[1]
+	032 Move XMM_TEMP.S[2], xmm6.S[1]
+	033 Move XMM_TEMP.S[3], xmm6.S[1]
+	034 Move xmm0, XMM_TEMP
+	035 Subtract xmm2, xmm2, xmm0
+	036 Move XMM_TEMP.S[0], xmm5.S[3]
+	037 Move XMM_TEMP.S[1], xmm5.S[3]
+	038 Move XMM_TEMP.S[2], xmm5.S[3]
+	039 Move XMM_TEMP.S[3], xmm5.S[3]
+	040 Move xmm5, XMM_TEMP
+	041 Multiply xmm3, xmm3, xmm4
+	042 Multiply xmm2, xmm2, xmm4
+	043 Add xmm3, xmm3, xmm6
+	044 Add xmm2, xmm2, xmm0
+	045 Move xmm0, xmm6
+	046 Move XMM_TEMP.S[0], xmm0.S[2]
+	047 Move XMM_TEMP.S[1], xmm0.S[2]
+	048 Move XMM_TEMP.S[2], xmm6.S[2]
+	049 Move XMM_TEMP.S[3], xmm6.S[2]
+	050 Move xmm0, XMM_TEMP
+	051 Move XMM_TEMP.S[0], xmm6.S[3]
+	052 Move XMM_TEMP.S[1], xmm6.S[3]
+	053 Move XMM_TEMP.S[2], xmm6.S[3]
+	054 Move XMM_TEMP.S[3], xmm6.S[3]
+	055 Move xmm6, XMM_TEMP
+	056 Subtract xmm1, xmm1, xmm0
+	057 Subtract xmm5, xmm5, xmm6
+	058 Multiply xmm1, xmm1, xmm4
+	059 Multiply xmm5, xmm5, xmm4
+	060 Add xmm1, xmm1, xmm0
+	061 Add xmm5, xmm5, xmm6
+	062 Move xmm6, stack:0x10
+	063 Move rax, rcx
+	064 Move XMM_TEMP.S[0], xmm3.S[1]
+	065 Move XMM_TEMP.S[1], xmm3.S[0]
+	066 Move XMM_TEMP.S[2], xmm3.S[2]
+	067 Move XMM_TEMP.S[3], xmm3.S[3]
+	068 Move xmm3, XMM_TEMP
+	069 Move xmm3, xmm2
+	070 Move XMM_TEMP.S[0], xmm3.S[2]
+	071 Move XMM_TEMP.S[1], xmm3.S[1]
+	072 Move XMM_TEMP.S[2], xmm3.S[0]
+	073 Move XMM_TEMP.S[3], xmm3.S[3]
+	074 Move xmm3, XMM_TEMP
+	075 Move xmm3, xmm1
+	076 Move XMM_TEMP.S[0], xmm3.S[3]
+	077 Move XMM_TEMP.S[1], xmm3.S[1]
+	078 Move XMM_TEMP.S[2], xmm3.S[2]
+	079 Move XMM_TEMP.S[3], xmm3.S[0]
+	080 Move xmm3, XMM_TEMP
+	081 Move xmm3, xmm5
+	082 Move XMM_TEMP.S[0], xmm3.S[1]
+	083 Move XMM_TEMP.S[1], xmm3.S[2]
+	084 Move XMM_TEMP.S[2], xmm3.S[3]
+	085 Move XMM_TEMP.S[3], xmm3.S[0]
+	086 Move xmm3, XMM_TEMP
+	087 Move [rcx], xmm3
+	088 ShiftStack 40
+	089 Return rax
+
+Method: Polytoria.Types.ColorRange New(UnityEngine.Color min, UnityEngine.Color max)
+
+Disassembly:
+	movups xmm0,[rdx]
+	mov rax,rcx
+	movups [rcx],xmm0
+	movups xmm0,[r8]
+	movups [rcx+10h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Move xmm0, [r8]
+	005 Move [rcx+16], xmm0
+	006 Return rax
+

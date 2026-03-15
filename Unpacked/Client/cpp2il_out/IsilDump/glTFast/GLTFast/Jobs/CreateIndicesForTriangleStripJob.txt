@@ -1,0 +1,100 @@
+Type: GLTFast.Jobs.CreateIndicesForTriangleStripJob
+
+Method: System.Void Execute(System.Int32 index)
+
+Disassembly:
+	movsxd r10,edx
+	mov r11,rcx
+	mov eax,55555556h
+	mov ecx,r10d
+	imul r10d
+	mov eax,55555556h
+	mov r9d,edx
+	shr r9d,1Fh
+	add r9d,edx
+	imul r10d
+	mov eax,edx
+	shr eax,1Fh
+	add edx,eax
+	lea eax,[rdx+rdx*2]
+	sub ecx,eax
+	je short 00000001811534E7h
+	sub ecx,1
+	je short 00000001811534FEh
+	cmp ecx,1
+	je short 00000001811534C7h
+	mov rax,[r11]
+	mov r9d,[rax+r10*4]
+	mov [rax+r10*4],r9d
+	ret
+	mov eax,r9d
+	and eax,80000001h
+	jge short 00000001811534D8h
+	dec eax
+	or eax,0FFFFFFFEh
+	inc eax
+	sub r9d,eax
+	mov rax,[r11]
+	add r9d,2
+	mov [rax+r10*4],r9d
+	ret
+	mov eax,r9d
+	and eax,80000001h
+	jge short 00000001811534F8h
+	dec eax
+	or eax,0FFFFFFFEh
+	inc eax
+	inc r9d
+	add r9d,eax
+	mov rax,[r11]
+	mov [rax+r10*4],r9d
+	ret
+
+ISIL:
+	001 Move r10, rdx
+	002 Move r11, rcx
+	003 Move rax, 0x55555556
+	004 Move rcx, r10
+	005 NotImplemented "imul r10d"
+	006 Move rax, 0x55555556
+	007 Move r9, rdx
+	008 ShiftRight r9, 31
+	009 Add r9, r9, rdx
+	010 NotImplemented "imul r10d"
+	011 Move rax, rdx
+	012 ShiftRight rax, 31
+	013 Add rdx, rdx, rax
+	014 LoadAddress rax, [rdx+rdx*2]
+	015 Subtract rcx, rcx, rax
+	016 JumpIfEqual {36}
+	017 Subtract rcx, rcx, 1
+	018 JumpIfEqual {44}
+	019 Compare rcx, 1
+	020 JumpIfEqual {25}
+	021 Move rax, [r11]
+	022 Move r9, [rax+r10*4]
+	023 Move [rax+r10*4], r9
+	024 Return 
+	025 Move rax, r9
+	026 And rax, rax, 0x80000001
+	027 JumpIfGreaterOrEqual {31}
+	028 Subtract rax, rax, 1
+	029 Or rax, rax, 18446744073709551614
+	030 Add rax, rax, 1
+	031 Subtract r9, r9, rax
+	032 Move rax, [r11]
+	033 Add r9, r9, 2
+	034 Move [rax+r10*4], r9
+	035 Return 
+	036 Move rax, r9
+	037 And rax, rax, 0x80000001
+	038 JumpIfGreaterOrEqual {42}
+	039 Subtract rax, rax, 1
+	040 Or rax, rax, 18446744073709551614
+	041 Add rax, rax, 1
+	042 Add r9, r9, 1
+	043 Add r9, r9, rax
+	044 Move rax, [r11]
+	045 Move [rax+r10*4], r9
+	046 Return 
+

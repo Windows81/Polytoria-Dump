@@ -1,0 +1,75 @@
+Type: UniformModifier
+
+Method: System.Single get_Radius()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+40]
+	002 Return xmm0
+
+Method: System.Void set_Radius(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	xor edx,edx
+	movss dword ptr [rcx+28h],xmm1
+	call 00000001804F6400h
+	test rax,rax
+	je short 00000001803C4680h
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+2F8h]
+	mov rdx,[rdx+300h]
+	add rsp,28h
+	jmp r8
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, 0
+	003 Move [rcx+40], xmm1
+	004 Call ProceduralImageModifier.get__Graphic, rcx, rdx
+	005 Compare rax, 0
+	006 JumpIfEqual {13}
+	007 Move rdx, [rax]
+	008 Move rcx, rax
+	009 Move r8, [rdx+760]
+	010 Move rdx, [rdx+768]
+	011 ShiftStack 40
+	012 CallNoReturn r8
+	013 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector4 CalculateRadius(UnityEngine.Rect imageRect)
+
+Disassembly:
+	movss xmm0,dword ptr [rdx+28h]
+	mov rax,rcx
+	shufps xmm0,xmm0,0
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+40]
+	002 Move rax, rcx
+	003 Move XMM_TEMP.S[0], xmm0.S[0]
+	004 Move XMM_TEMP.S[1], xmm0.S[0]
+	005 Move XMM_TEMP.S[2], xmm0.S[0]
+	006 Move XMM_TEMP.S[3], xmm0.S[0]
+	007 Move xmm0, XMM_TEMP
+	008 Move [rcx], xmm0
+	009 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C7050h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C7050, rcx, rdx
+	003 Return 
+

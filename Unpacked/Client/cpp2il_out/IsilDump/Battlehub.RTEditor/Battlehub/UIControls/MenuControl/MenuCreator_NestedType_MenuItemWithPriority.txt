@@ -1,0 +1,112 @@
+Type: Battlehub.UIControls.MenuControl.MenuCreator+MenuItemWithPriority
+
+Method: System.Void .ctor(Battlehub.UIControls.MenuControl.MenuItemInfo menuItemInfo, System.Int32 priority)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov esi,r8d
+	xor edx,edx
+	mov rdi,rcx
+	call 00000001802E39B0h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	mov rbx,[rsp+30h]
+	mov [rdi+18h],esi
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x18020B990, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x30
+	016 Move [rdi+24], rsi
+	017 Move rsi, stack:0x38
+	018 ShiftStack 32
+	019 Move rdi, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [182776546h],0
+	mov rdi,rcx
+	jne short 0000000180613459h
+	lea rcx,[1826305D0h]
+	call 000000018020C870h
+	mov byte ptr [182776546h],1
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001802E39B0h
+	mov rcx,[1826305D0h]
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	mov byte ptr [rax+40h],1
+	call 00000001802E39B0h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	mov rbx,[rsp+30h]
+	mov dword ptr [rdi+18h],7FFFFFFFh
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x182776546], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x1826305D0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x182776546], 1
+	011 Move rdx, 0
+	012 Move rcx, rdi
+	013 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	014 Move rcx, typeof(Battlehub.UIControls.MenuControl.MenuItemInfo)
+	015 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rax
+	018 Move rbx, rax
+	019 Move [rax+64], 1
+	020 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	021 LoadAddress rcx, [rdi+16]
+	022 Move [rdi+16], rbx
+	023 Move rdx, rbx
+	024 Call 0x18020B990, rcx, rdx, r8, r9
+	025 Move rbx, stack:0x30
+	026 Move [rdi+24], 0x7FFFFFFF
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return 
+

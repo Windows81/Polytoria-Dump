@@ -1,0 +1,45 @@
+Type: SoftMasking.SoftMask+Diagnostics+<>c__DisplayClass2_0
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: System.Boolean <PollErrors>b__0(SoftMasking.SoftMaskable m)
+
+Disassembly:
+	sub rsp,28h
+	test rdx,rdx
+	je short 0000000181569FA3h
+	mov rax,[rcx+10h]
+	cmp [rdx+20h],rax
+	je short 0000000181569F9Ah
+	xor al,al
+	add rsp,28h
+	ret
+	movzx eax,byte ptr [rdx+3Ah]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rdx, 0
+	003 JumpIfEqual {13}
+	004 Move rax, [rcx+16]
+	005 Compare [rdx+32], rax
+	006 JumpIfEqual {10}
+	007 Move rax, 0
+	008 ShiftStack 40
+	009 Return rax
+	010 Move rax, [rdx+58]
+	011 ShiftStack 40
+	012 Return rax
+	013 Call 0x1801EEA50, rcx, rdx, r8, r9
+

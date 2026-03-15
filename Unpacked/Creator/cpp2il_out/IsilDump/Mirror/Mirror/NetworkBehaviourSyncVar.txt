@@ -1,0 +1,128 @@
+Type: Mirror.NetworkBehaviourSyncVar
+
+Method: System.Void .ctor(System.UInt32 netId, System.Int32 componentIndex)
+
+Disassembly:
+	xor eax,eax
+	mov [rcx],rax
+	mov [rcx],edx
+	mov [rcx+4],r8b
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Move [rcx], rax
+	003 Move [rcx], rdx
+	004 Move [rcx+4], r8
+	005 Return 
+
+Method: System.Boolean Equals(Mirror.NetworkBehaviourSyncVar other)
+
+Disassembly:
+	cmp edx,[rcx]
+	je short 0000000181254D47h
+	xor al,al
+	ret
+	shr rdx,20h
+	cmp dl,[rcx+4]
+	sete al
+	ret
+
+ISIL:
+	001 Compare rdx, [rcx]
+	002 JumpIfEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 ShiftRight rdx, 32
+	006 Compare rdx, [rcx+4]
+	007 NotImplemented "sete al"
+	008 Return rax
+
+Method: System.Boolean Equals(System.UInt32 netId, System.Int32 componentIndex)
+
+Disassembly:
+	cmp [rcx],edx
+	je short 0000000181254D67h
+	xor al,al
+	ret
+	movzx eax,byte ptr [rcx+4]
+	cmp eax,r8d
+	sete al
+	ret
+
+ISIL:
+	001 Compare [rcx], rdx
+	002 JumpIfEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Move rax, [rcx+4]
+	006 Compare rax, r8
+	007 NotImplemented "sete al"
+	008 Return rax
+
+Method: System.String ToString()
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825CA150h],0
+	mov rdi,rcx
+	jne short 0000000181254DA9h
+	lea rcx,[18248DE40h]
+	call 00000001801EE810h
+	mov byte ptr [1825CA150h],1
+	mov eax,[rdi]
+	lea rdx,[rsp+40h]
+	mov rcx,[1825D3790h]
+	mov [rsp+40h],eax
+	call 00000001801ED910h
+	movzx ecx,byte ptr [rdi+4]
+	lea rdx,[rsp+30h]
+	mov [rsp+30h],cl
+	mov rbx,rax
+	mov rcx,[1825D3758h]
+	call 00000001801ED910h
+	mov rcx,[18248DE40h]
+	xor r9d,r9d
+	mov r8,rax
+	mov rdx,rbx
+	call 0000000181302340h
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825CA150], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x18248DE40]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x1825CA150], 1
+	011 Move rax, [rdi]
+	012 LoadAddress rdx, stack:0x40
+	013 Move rcx, [0x1825D3790]
+	014 Move stack:0x40, rax
+	015 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	016 Move rcx, [rdi+4]
+	017 LoadAddress rdx, stack:0x30
+	018 Move stack:0x30, rcx
+	019 Move rbx, rax
+	020 Move rcx, [0x1825D3758]
+	021 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	022 Move rcx, "[netId:{0} compIndex:{1}]"
+	023 Move r9, 0
+	024 Move r8, rax
+	025 Move rdx, rbx
+	026 Call String.Format, rcx, rdx, r8, r9
+	027 Move rbx, stack:0x38
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return rax
+

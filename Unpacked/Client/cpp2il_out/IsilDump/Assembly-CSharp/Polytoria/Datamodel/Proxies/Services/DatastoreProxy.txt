@@ -1,0 +1,174 @@
+Type: Polytoria.Datamodel.Proxies.Services.DatastoreProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.Services.Datastore target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.String get_Key()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001804C7906h
+	mov rax,[rax+10h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+16]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_Loading()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001804C7946h
+	movzx eax,byte ptr [rax+18h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+24]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Polytoria.Lua.LuaEvent get_Loaded()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001804C7926h
+	mov rax,[rax+30h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+48]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Get(System.String key, MoonSharp.Interpreter.DynValue callback)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001804C7899h
+	xor r9d,r9d
+	add rsp,28h
+	jmp near ptr 00000001804A8250h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r9, 0
+	006 ShiftStack 40
+	007 Call Datastore.Get, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Set(System.String key, MoonSharp.Interpreter.DynValue value, MoonSharp.Interpreter.DynValue callback = null)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001804C78DFh
+	mov qword ptr [rsp+60h],0
+	add rsp,38h
+	jmp near ptr 00000001804A8CF0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move stack:0x60, 0
+	006 ShiftStack 56
+	007 Call Datastore.Set, rcx, rdx, r8, r9
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Remove(System.String key, MoonSharp.Interpreter.DynValue callback = null)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001804C78B9h
+	xor r9d,r9d
+	add rsp,28h
+	jmp near ptr 00000001804A88D0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r9, 0
+	006 ShiftStack 40
+	007 Call Datastore.Remove, rcx, rdx, r8
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

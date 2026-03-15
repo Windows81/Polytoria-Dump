@@ -1,0 +1,125 @@
+Type: Battlehub.UIControls.RectTransformExtensions
+
+Method: System.Void Stretch(UnityEngine.RectTransform rt)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	xorps xmm1,xmm1
+	test rcx,rcx
+	je near ptr 00000001805D14A7h
+	xorps xmm0,xmm0
+	xor r8d,r8d
+	unpcklps xmm0,xmm1
+	movq rdx,xmm0
+	call 000000018196D560h
+	movss xmm1,dword ptr [181D30C04h]
+	xor r8d,r8d
+	movaps xmm0,xmm1
+	mov rcx,rbx
+	unpcklps xmm0,xmm1
+	movq rdx,xmm0
+	call 000000018196D480h
+	cmp byte ptr [1825C5C8Ch],0
+	jne short 00000001805D1432h
+	lea rcx,[182465F00h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5C8Ch],1
+	mov rax,[182465F00h]
+	mov rdx,[rax+0B8h]
+	movss xmm1,dword ptr [rdx+4]
+	movss xmm0,dword ptr [rdx]
+	xor r8d,r8d
+	unpcklps xmm0,xmm1
+	mov rcx,rbx
+	movq rdx,xmm0
+	call 000000018196DC30h
+	cmp byte ptr [1825C5C8Ch],0
+	jne short 00000001805D1478h
+	lea rcx,[182465F00h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5C8Ch],1
+	mov rax,[182465F00h]
+	mov rcx,[rax+0B8h]
+	movss xmm1,dword ptr [rcx+4]
+	movss xmm0,dword ptr [rcx]
+	xor r8d,r8d
+	unpcklps xmm0,xmm1
+	mov rcx,rbx
+	movq rdx,xmm0
+	add rsp,20h
+	pop rbx
+	jmp near ptr 000000018196D850h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move xmm1, 0
+	006 Compare rcx, 0
+	007 JumpIfEqual {68}
+	008 Move xmm0, 0
+	009 Move r8, 0
+	010 Move XMM_TEMP.S[0], xmm0.S[0]
+	011 Move XMM_TEMP.S[1], xmm1.S[0]
+	012 Move XMM_TEMP.S[2], xmm0.S[1]
+	013 Move XMM_TEMP.S[3], xmm1.S[1]
+	014 Move xmm0, XMM_TEMP
+	015 Move rdx, xmm0
+	016 Call RectTransform.set_anchorMin, rcx, rdx
+	017 Move xmm1, [0x181D30C04]
+	018 Move r8, 0
+	019 Move xmm0, xmm1
+	020 Move rcx, rbx
+	021 Move XMM_TEMP.S[0], xmm0.S[0]
+	022 Move XMM_TEMP.S[1], xmm1.S[0]
+	023 Move XMM_TEMP.S[2], xmm0.S[1]
+	024 Move XMM_TEMP.S[3], xmm1.S[1]
+	025 Move xmm0, XMM_TEMP
+	026 Move rdx, xmm0
+	027 Call RectTransform.set_anchorMax, rcx, rdx
+	028 Compare [0x1825C5C8C], 0
+	029 JumpIfNotEqual {33}
+	030 LoadAddress rcx, [0x182465F00]
+	031 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	032 Move [0x1825C5C8C], 1
+	033 Move rax, typeof(UnityEngine.Vector2)
+	034 Move rdx, [rax+184]
+	035 Move xmm1, [rdx+4]
+	036 Move xmm0, [rdx]
+	037 Move r8, 0
+	038 Move XMM_TEMP.S[0], xmm0.S[0]
+	039 Move XMM_TEMP.S[1], xmm1.S[0]
+	040 Move XMM_TEMP.S[2], xmm0.S[1]
+	041 Move XMM_TEMP.S[3], xmm1.S[1]
+	042 Move xmm0, XMM_TEMP
+	043 Move rcx, rbx
+	044 Move rdx, xmm0
+	045 Call RectTransform.set_offsetMin, rcx, rdx
+	046 Compare [0x1825C5C8C], 0
+	047 JumpIfNotEqual {51}
+	048 LoadAddress rcx, [0x182465F00]
+	049 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	050 Move [0x1825C5C8C], 1
+	051 Move rax, typeof(UnityEngine.Vector2)
+	052 Move rcx, [rax+184]
+	053 Move xmm1, [rcx+4]
+	054 Move xmm0, [rcx]
+	055 Move r8, 0
+	056 Move XMM_TEMP.S[0], xmm0.S[0]
+	057 Move XMM_TEMP.S[1], xmm1.S[0]
+	058 Move XMM_TEMP.S[2], xmm0.S[1]
+	059 Move XMM_TEMP.S[3], xmm1.S[1]
+	060 Move xmm0, XMM_TEMP
+	061 Move rcx, rbx
+	062 Move rdx, xmm0
+	063 ShiftStack 32
+	064 Move rbx, stack:0x0
+	065 ShiftStack 8
+	066 Call RectTransform.set_offsetMax, rcx, rdx
+	067 Return 
+	068 Call 0x1801EEA50, rcx, rdx, r8, r9
+

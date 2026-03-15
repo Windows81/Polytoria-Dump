@@ -1,0 +1,317 @@
+Type: MoonSharp.Interpreter.REPL.ReplHistoryInterpreter
+
+Method: System.Void .ctor(MoonSharp.Interpreter.Script script, System.Int32 historySize)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C5FC9h],0
+	mov esi,r8d
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000180328AF4h
+	lea rcx,[182498CC8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5FC9h],1
+	mov qword ptr [rbx+30h],0FFFFFFFFFFFFFFFFh
+	lea rcx,[rbx+18h]
+	mov rax,[1825D37D0h]
+	mov rdx,[rax+0B8h]
+	mov rdx,[rdx]
+	mov [rbx+18h],rdx
+	call 00000001801ED930h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802C3410h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	mov rcx,[182498CC8h]
+	mov edx,esi
+	call 00000001801ED9B0h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rax
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x1825C5FC9], 0
+	007 Move rsi, r8
+	008 Move rdi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x182498CC8]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x1825C5FC9], 1
+	014 Move [rbx+48], 18446744073709551615
+	015 LoadAddress rcx, [rbx+24]
+	016 Move rax, [0x1825D37D0]
+	017 Move rdx, [rax+184]
+	018 Move rdx, [rdx]
+	019 Move [rbx+24], rdx
+	020 Call 0x1801ED930, rcx, rdx, r8, r9
+	021 Move rdx, 0
+	022 Move rcx, rbx
+	023 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	024 LoadAddress rcx, [rbx+16]
+	025 Move [rbx+16], rdi
+	026 Move rdx, rdi
+	027 Call 0x1801ED930, rcx, rdx, r8, r9
+	028 Move rcx, typeof(System.String[1])
+	029 Move rdx, rsi
+	030 Call "SzArrayNew", rcx, rdx, r8, r9
+	031 LoadAddress rcx, [rbx+40]
+	032 Move [rbx+40], rax
+	033 Move rdx, rax
+	034 Move rbx, stack:0x30
+	035 Move rsi, stack:0x38
+	036 ShiftStack 32
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Call 0x1801ED930, rcx, rdx, r8, r9
+	040 Return 
+
+Method: MoonSharp.Interpreter.DynValue Evaluate(System.String input)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	mov dword ptr [rcx+34h],0FFFFFFFFh
+	mov rcx,[rcx+28h]
+	mov rdi,rdx
+	test rcx,rcx
+	je short 00000001803289E9h
+	mov eax,[rbx+30h]
+	inc eax
+	cdq
+	idiv dword ptr [rcx+18h]
+	mov [rbx+30h],edx
+	test rcx,rcx
+	je short 00000001803289E9h
+	cmp edx,[rcx+18h]
+	jae short 00000001803289EFh
+	movsxd rax,edx
+	mov [rcx+rax*8+20h],rdi
+	movsxd rax,edx
+	mov rdx,rdi
+	lea rcx,[rcx+rax*8]
+	add rcx,20h
+	call 00000001801ED930h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180328DD0h
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 Move [rcx+52], 0xFFFFFFFF
+	007 Move rcx, [rcx+40]
+	008 Move rdi, rdx
+	009 Compare rcx, 0
+	010 JumpIfEqual {43}
+	011 Move rax, [rbx+48]
+	012 Add rax, rax, 1
+	013 Move TEMP, rax
+	014 ShiftRight TEMP, 31
+	015 Compare TEMP, 1
+	016 JumpIfNotEqual {19}
+	017 Move rdx, 0xFFFFFFFF
+	018 Goto {20}
+	019 Move rdx, 0
+	020 Nop 
+	021 NotImplemented "idiv dword ptr [rcx+18h]"
+	022 Move [rbx+48], rdx
+	023 Compare rcx, 0
+	024 JumpIfEqual {43}
+	025 Compare rdx, [rcx+24]
+	026 JumpIfGreaterOrEqual {45}
+	027 Move rax, rdx
+	028 Move [rcx+32+rax*8], rdi
+	029 Move rax, rdx
+	030 Move rdx, rdi
+	031 LoadAddress rcx, [rcx+rax*8]
+	032 Add rcx, rcx, 32
+	033 Call 0x1801ED930, rcx, rdx, r8, r9
+	034 Move r8, 0
+	035 Move rdx, rdi
+	036 Move rcx, rbx
+	037 Move rbx, stack:0x30
+	038 ShiftStack 32
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Call ReplInterpreter.Evaluate, rcx, rdx
+	042 Return rax
+	043 Call 0x1801EEA50, rcx, rdx, r8, r9
+	044 Interrupt 
+	045 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: System.String HistoryPrev()
+
+Disassembly:
+	sub rsp,28h
+	cmp dword ptr [rcx+34h],0FFFFFFFFh
+	je short 0000000180328A85h
+	mov rdx,[rcx+28h]
+	test rdx,rdx
+	je short 0000000180328AB2h
+	mov eax,[rcx+34h]
+	mov r8,rdx
+	dec eax
+	add eax,[rdx+18h]
+	cdq
+	idiv dword ptr [r8+18h]
+	jmp short 0000000180328A88h
+	mov edx,[rcx+30h]
+	mov [rcx+34h],edx
+	test edx,edx
+	jns short 0000000180328A96h
+	xor eax,eax
+	add rsp,28h
+	ret
+	mov r8,[rcx+28h]
+	test r8,r8
+	je short 0000000180328AB2h
+	cmp edx,[r8+18h]
+	jae short 0000000180328AB8h
+	movsxd rax,edx
+	mov rax,[r8+rax*8+20h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+52], 18446744073709551615
+	003 JumpIfEqual {21}
+	004 Move rdx, [rcx+40]
+	005 Compare rdx, 0
+	006 JumpIfEqual {37}
+	007 Move rax, [rcx+52]
+	008 Move r8, rdx
+	009 Subtract rax, rax, 1
+	010 Add rax, rax, [rdx+24]
+	011 Move TEMP, rax
+	012 ShiftRight TEMP, 31
+	013 Compare TEMP, 1
+	014 JumpIfNotEqual {17}
+	015 Move rdx, 0xFFFFFFFF
+	016 Goto {18}
+	017 Move rdx, 0
+	018 Nop 
+	019 NotImplemented "idiv dword ptr [r8+18h]"
+	020 Goto {22}
+	021 Move rdx, [rcx+48]
+	022 Move [rcx+52], rdx
+	023 Compare rdx, 0
+	024 JumpIfNotSign {28}
+	025 Move rax, 0
+	026 ShiftStack 40
+	027 Return rax
+	028 Move r8, [rcx+40]
+	029 Compare r8, 0
+	030 JumpIfEqual {37}
+	031 Compare rdx, [r8+24]
+	032 JumpIfGreaterOrEqual {39}
+	033 Move rax, rdx
+	034 Move rax, [r8+32+rax*8]
+	035 ShiftStack 40
+	036 Return rax
+	037 Call 0x1801EEA50, rcx, rdx, r8, r9
+	038 Interrupt 
+	039 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: System.String HistoryNext()
+
+Disassembly:
+	sub rsp,28h
+	cmp dword ptr [rcx+34h],0FFFFFFFFh
+	je short 0000000180328A41h
+	mov r8,[rcx+28h]
+	test r8,r8
+	je short 0000000180328A4Eh
+	mov eax,[rcx+34h]
+	inc eax
+	cdq
+	idiv dword ptr [r8+18h]
+	movsxd r8,edx
+	mov [rcx+34h],r8d
+	test edx,edx
+	js short 0000000180328A41h
+	mov rdx,[rcx+28h]
+	test rdx,rdx
+	je short 0000000180328A4Eh
+	cmp r8d,[rdx+18h]
+	jae short 0000000180328A48h
+	mov rax,[rdx+r8*8+20h]
+	add rsp,28h
+	ret
+	xor eax,eax
+	add rsp,28h
+	ret
+	call 00000001801EEA40h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+52], 18446744073709551615
+	003 JumpIfEqual {30}
+	004 Move r8, [rcx+40]
+	005 Compare r8, 0
+	006 JumpIfEqual {35}
+	007 Move rax, [rcx+52]
+	008 Add rax, rax, 1
+	009 Move TEMP, rax
+	010 ShiftRight TEMP, 31
+	011 Compare TEMP, 1
+	012 JumpIfNotEqual {15}
+	013 Move rdx, 0xFFFFFFFF
+	014 Goto {16}
+	015 Move rdx, 0
+	016 Nop 
+	017 NotImplemented "idiv dword ptr [r8+18h]"
+	018 Move r8, rdx
+	019 Move [rcx+52], r8
+	020 Compare rdx, 0
+	021 JumpIfSign {30}
+	022 Move rdx, [rcx+40]
+	023 Compare rdx, 0
+	024 JumpIfEqual {35}
+	025 Compare r8, [rdx+24]
+	026 JumpIfGreaterOrEqual {33}
+	027 Move rax, [rdx+32+r8*8]
+	028 ShiftStack 40
+	029 Return rax
+	030 Move rax, 0
+	031 ShiftStack 40
+	032 Return rax
+	033 Call 0x1801EEA40, rcx, rdx, r8, r9
+	034 Interrupt 
+	035 Call 0x1801EEA50, rcx, rdx, r8, r9
+

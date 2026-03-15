@@ -1,0 +1,98 @@
+Type: Mono.X509Pal
+
+Method: Mono.X509PalImpl get_Instance()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825CBF97h],0
+	jne short 0000000181606120h
+	lea rcx,[182459408h]
+	call 00000001801EE810h
+	mov byte ptr [1825CBF97h],1
+	mov rcx,[182459408h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000181606135h
+	call 00000001801EEAF0h
+	cmp byte ptr [1825CBF93h],0
+	jne short 0000000181606151h
+	lea rcx,[182459408h]
+	call 00000001801EE810h
+	mov byte ptr [1825CBF93h],1
+	mov rcx,[182459408h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000181606166h
+	call 00000001801EEAF0h
+	xor ecx,ecx
+	call 00000001815FDC60h
+	mov rax,[182459408h]
+	mov rcx,[rax+0B8h]
+	mov rax,[rcx]
+	test rax,rax
+	je short 00000001816061D9h
+	cmp qword ptr [rax+10h],0
+	je short 00000001816061D9h
+	cmp byte ptr [1825CBF90h],0
+	jne short 00000001816061A6h
+	lea rcx,[182459298h]
+	call 00000001801EE810h
+	mov byte ptr [1825CBF90h],1
+	mov rcx,[182459298h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001816061BBh
+	call 00000001801EEAF0h
+	xor ecx,ecx
+	call 00000001815FD250h
+	mov rax,[182459298h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax+10h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825CBF97], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x182459408]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825CBF97], 1
+	007 Move rcx, typeof(Mono.SystemDependencyProvider)
+	008 Compare [rcx+228], 0
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Compare [0x1825CBF93], 0
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x182459408]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825CBF93], 1
+	016 Move rcx, typeof(Mono.SystemDependencyProvider)
+	017 Compare [rcx+228], 0
+	018 JumpIfNotEqual {20}
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move rcx, 0
+	021 Call SystemDependencyProvider.Initialize, rcx
+	022 Move rax, typeof(Mono.SystemDependencyProvider)
+	023 Move rcx, [rax+184]
+	024 Move rax, [rcx]
+	025 Compare rax, 0
+	026 JumpIfEqual {45}
+	027 Compare [rax+16], 0
+	028 JumpIfEqual {45}
+	029 Compare [0x1825CBF90], 0
+	030 JumpIfNotEqual {34}
+	031 LoadAddress rcx, [0x182459298]
+	032 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	033 Move [0x1825CBF90], 1
+	034 Move rcx, typeof(Mono.SystemCertificateProvider)
+	035 Compare [rcx+228], 0
+	036 JumpIfNotEqual {38}
+	037 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	038 Move rcx, 0
+	039 Call SystemCertificateProvider.EnsureInitialized, rcx
+	040 Move rax, typeof(Mono.SystemCertificateProvider)
+	041 Move rax, [rax+184]
+	042 Move rax, [rax+16]
+	043 ShiftStack 40
+	044 Return rax
+	045 Call 0x1801EEA50, rcx, rdx, r8, r9
+

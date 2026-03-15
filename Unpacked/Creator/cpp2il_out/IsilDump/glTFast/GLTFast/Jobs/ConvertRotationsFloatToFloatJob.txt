@@ -1,0 +1,70 @@
+Type: GLTFast.Jobs.ConvertRotationsFloatToFloatJob
+
+Method: System.Void Execute(System.Int32 i)
+
+Disassembly:
+	sub rsp,18h
+	mov rax,[rcx]
+	mov r9,rcx
+	movsxd r8,edx
+	add r8,r8
+	movsxd rcx,edx
+	add rcx,rcx
+	movups xmm2,[rax+r8*8]
+	mov rax,[r9+8]
+	movups [rsp],xmm2
+	movups xmm0,[rsp]
+	movss xmm1,dword ptr [rsp+8]
+	mulss xmm1,dword ptr [181D30C8Ch]
+	shufps xmm0,xmm0,0E1h
+	shufps xmm2,xmm2,55h
+	mulss xmm2,dword ptr [181D30C8Ch]
+	movss xmm0,xmm2
+	shufps xmm0,xmm0,0C6h
+	movss xmm0,xmm1
+	shufps xmm0,xmm0,0C9h
+	movups [rax+rcx*8],xmm0
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move rax, [rcx]
+	003 Move r9, rcx
+	004 Move r8, rdx
+	005 Add r8, r8, r8
+	006 Move rcx, rdx
+	007 Add rcx, rcx, rcx
+	008 Move xmm2, [rax+r8*8]
+	009 Move rax, [r9+8]
+	010 Move stack:0x0, xmm2
+	011 Move xmm0, stack:0x0
+	012 Move xmm1, stack:0x8
+	013 Multiply xmm1, xmm1, [0x181D30C8C]
+	014 Move XMM_TEMP.S[0], xmm0.S[1]
+	015 Move XMM_TEMP.S[1], xmm0.S[0]
+	016 Move XMM_TEMP.S[2], xmm0.S[2]
+	017 Move XMM_TEMP.S[3], xmm0.S[3]
+	018 Move xmm0, XMM_TEMP
+	019 Move XMM_TEMP.S[0], xmm2.S[1]
+	020 Move XMM_TEMP.S[1], xmm2.S[1]
+	021 Move XMM_TEMP.S[2], xmm2.S[1]
+	022 Move XMM_TEMP.S[3], xmm2.S[1]
+	023 Move xmm2, XMM_TEMP
+	024 Multiply xmm2, xmm2, [0x181D30C8C]
+	025 Move xmm0, xmm2
+	026 Move XMM_TEMP.S[0], xmm0.S[2]
+	027 Move XMM_TEMP.S[1], xmm0.S[1]
+	028 Move XMM_TEMP.S[2], xmm0.S[0]
+	029 Move XMM_TEMP.S[3], xmm0.S[3]
+	030 Move xmm0, XMM_TEMP
+	031 Move xmm0, xmm1
+	032 Move XMM_TEMP.S[0], xmm0.S[1]
+	033 Move XMM_TEMP.S[1], xmm0.S[2]
+	034 Move XMM_TEMP.S[2], xmm0.S[0]
+	035 Move XMM_TEMP.S[3], xmm0.S[3]
+	036 Move xmm0, XMM_TEMP
+	037 Move [rax+rcx*8], xmm0
+	038 ShiftStack 24
+	039 Return 
+

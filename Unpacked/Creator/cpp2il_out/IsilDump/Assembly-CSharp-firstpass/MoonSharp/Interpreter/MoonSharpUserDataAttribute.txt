@@ -1,0 +1,48 @@
+Type: MoonSharp.Interpreter.MoonSharpUserDataAttribute
+
+Method: MoonSharp.Interpreter.InteropAccessMode get_AccessMode()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_AccessMode(MoonSharp.Interpreter.InteropAccessMode value)
+
+Disassembly:
+	mov [rcx+10h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor edx,edx
+	mov rbx,rcx
+	call 00000001802BC7B0h
+	mov dword ptr [rbx+10h],7
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rdx, 0
+	005 Move rbx, rcx
+	006 Call 0x1802BC7B0, rcx, rdx, r8
+	007 Move [rbx+16], 7
+	008 ShiftStack 32
+	009 Move rbx, stack:0x0
+	010 ShiftStack 8
+	011 Return 
+

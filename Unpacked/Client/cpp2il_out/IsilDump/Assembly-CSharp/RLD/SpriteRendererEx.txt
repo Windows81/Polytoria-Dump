@@ -1,0 +1,741 @@
+Type: RLD.SpriteRendererEx
+
+Method: UnityEngine.Vector3 GetWorldCenterPoint(UnityEngine.SpriteRenderer spriteRenderer)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,80h
+	mov rbx,rdx
+	mov rdi,rcx
+	test rdx,rdx
+	je near ptr 0000000180593685h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181A45080h
+	xor r8d,r8d
+	lea rcx,[rsp+60h]
+	mov rdx,rbx
+	mov rsi,rax
+	call 0000000180593490h
+	movsd xmm1,qword ptr [rax+10h]
+	movsd qword ptr [rsp+50h],xmm1
+	movups xmm0,[rax]
+	movups [rsp+40h],xmm0
+	test rsi,rsi
+	je short 0000000180593685h
+	movsd xmm0,qword ptr [rsp+4Ch]
+	lea r8,[rsp+20h]
+	mov eax,[rsp+54h]
+	lea rcx,[rsp+30h]
+	xor r9d,r9d
+	movsd qword ptr [rsp+20h],xmm0
+	mov rdx,rsi
+	mov [rsp+28h],eax
+	call 0000000181A759F0h
+	lea r11,[rsp+80h]
+	mov rbx,[r11+10h]
+	mov rsi,[r11+18h]
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rdi],xmm0
+	mov [rdi+8],eax
+	mov rax,rdi
+	mov rsp,r11
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -128
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Compare rdx, 0
+	009 JumpIfEqual {45}
+	010 Move rdx, 0
+	011 Move rcx, rbx
+	012 Call Component.get_transform, rcx, rdx
+	013 Move r8, 0
+	014 LoadAddress rcx, stack:0x60
+	015 Move rdx, rbx
+	016 Move rsi, rax
+	017 Call SpriteRendererEx.GetModelSpaceAABB, rcx, rdx
+	018 Move xmm1, [rax+16]
+	019 Move stack:0x50, xmm1
+	020 Move xmm0, [rax]
+	021 Move stack:0x40, xmm0
+	022 Compare rsi, 0
+	023 JumpIfEqual {45}
+	024 Move xmm0, stack:0x4C
+	025 LoadAddress r8, stack:0x20
+	026 Move rax, stack:0x54
+	027 LoadAddress rcx, stack:0x30
+	028 Move r9, 0
+	029 Move stack:0x20, xmm0
+	030 Move rdx, rsi
+	031 Move stack:0x28, rax
+	032 Call Transform.TransformPoint, rcx, rdx
+	033 LoadAddress r11, stack:0x80
+	034 Move rbx, [r11+16]
+	035 Move rsi, [r11+24]
+	036 Move xmm0, [rax]
+	037 Move rax, [rax+8]
+	038 Move [rdi], xmm0
+	039 Move [rdi+8], rax
+	040 Move rax, rdi
+	041 Move rsp, r11
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector3 GetModelSpaceSize(UnityEngine.SpriteRenderer spriteRenderer)
+
+Disassembly:
+	push rbx
+	sub rsp,60h
+	mov rbx,rcx
+	xor r8d,r8d
+	lea rcx,[rsp+40h]
+	call 0000000180593490h
+	movups xmm2,[rax]
+	mov rax,rbx
+	movsd qword ptr [rbx],xmm2
+	psrldq xmm2,8
+	movd dword ptr [rbx+8],xmm2
+	add rsp,60h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -96
+	004 Move rbx, rcx
+	005 Move r8, 0
+	006 LoadAddress rcx, stack:0x40
+	007 Call SpriteRendererEx.GetModelSpaceAABB, rcx, rdx
+	008 Move xmm2, [rax]
+	009 Move rax, rbx
+	010 Move [rbx], xmm2
+	011 NotImplemented "psrldq xmm2,8"
+	012 Move [rbx+8], xmm2
+	013 ShiftStack 96
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Return rax
+
+Method: RLD.AABB GetModelSpaceAABB(UnityEngine.SpriteRenderer spriteRenderer)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rsi
+	sub rsp,40h
+	cmp byte ptr [1827760EAh],0
+	mov rbx,rdx
+	mov rsi,rcx
+	jne short 00000001805934D4h
+	lea rcx,[182607B28h]
+	call 000000018020C870h
+	lea rcx,[1826190E0h]
+	call 000000018020C870h
+	lea rcx,[182639860h]
+	call 000000018020C870h
+	mov byte ptr [1827760EAh],1
+	test rbx,rbx
+	je near ptr 00000001805935A5h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181A21FB0h
+	mov rcx,[182639860h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001805934FFh
+	call 000000018020CB50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181A507A0h
+	test al,al
+	jne short 000000018059357Ch
+	test rbx,rbx
+	je near ptr 00000001805935A5h
+	xor edx,edx
+	mov [rsp+50h],rdi
+	mov rcx,rbx
+	call 0000000181A23C70h
+	mov rcx,[1826190E0h]
+	mov rbx,rax
+	call 000000018020CA60h
+	mov r8,[182607B28h]
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180F68C30h
+	xor eax,eax
+	xorps xmm0,xmm0
+	movups [rsi],xmm0
+	mov [rsi+10h],rax
+	xor r8d,r8d
+	mov rdx,rdi
+	mov [rsi+18h],eax
+	mov rcx,rsi
+	call 0000000180579090h
+	mov rdi,[rsp+50h]
+	mov rax,rsi
+	mov rbx,[rsp+58h]
+	add rsp,40h
+	pop rsi
+	ret
+	mov rbx,[rsp+58h]
+	xor eax,eax
+	xorps xmm0,xmm0
+	mov [rsp+30h],rax
+	movups [rsi],xmm0
+	movsd xmm0,qword ptr [rsp+30h]
+	movsd qword ptr [rsi+10h],xmm0
+	mov [rsi+18h],eax
+	mov rax,rsi
+	add rsp,40h
+	pop rsi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -64
+	005 Compare [0x1827760EA], 0
+	006 Move rbx, rdx
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {16}
+	009 LoadAddress rcx, [0x182607B28]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x1826190E0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182639860]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1827760EA], 1
+	016 Compare rbx, 0
+	017 JumpIfEqual {75}
+	018 Move rdx, 0
+	019 Move rcx, rbx
+	020 Call SpriteRenderer.get_sprite, rcx, rdx
+	021 Move rcx, typeof(UnityEngine.Object)
+	022 Move rbx, rax
+	023 Compare [rcx+228], 0
+	024 JumpIfNotEqual {26}
+	025 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	026 Move r8, 0
+	027 Move rdx, 0
+	028 Move rcx, rbx
+	029 Call Object.op_Equality, rcx, rdx, r8
+	030 Compare rax, 0
+	031 JumpIfNotEqual {62}
+	032 Compare rbx, 0
+	033 JumpIfEqual {75}
+	034 Move rdx, 0
+	035 Move stack:0x50, rdi
+	036 Move rcx, rbx
+	037 Call Sprite.get_vertices, rcx, rdx
+	038 Move rcx, typeof(System.Collections.Generic.List`1<Vector2>)
+	039 Move rbx, rax
+	040 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	041 Move r8, [0x182607B28]
+	042 Move rdx, rbx
+	043 Move rcx, rax
+	044 Move rdi, rax
+	045 Call List`1<Vector2>..ctor, rcx, rdx
+	046 Move rax, 0
+	047 Move xmm0, 0
+	048 Move [rsi], xmm0
+	049 Move [rsi+16], rax
+	050 Move r8, 0
+	051 Move rdx, rdi
+	052 Move [rsi+24], rax
+	053 Move rcx, rsi
+	054 Call AABB..ctor, rcx, rdx
+	055 Move rdi, stack:0x50
+	056 Move rax, rsi
+	057 Move rbx, stack:0x58
+	058 ShiftStack 64
+	059 Move rsi, stack:0x0
+	060 ShiftStack 8
+	061 Return rax
+	062 Move rbx, stack:0x58
+	063 Move rax, 0
+	064 Move xmm0, 0
+	065 Move stack:0x30, rax
+	066 Move [rsi], xmm0
+	067 Move xmm0, stack:0x30
+	068 Move [rsi+16], xmm0
+	069 Move [rsi+24], rax
+	070 Move rax, rsi
+	071 ShiftStack 64
+	072 Move rsi, stack:0x0
+	073 ShiftStack 8
+	074 Return rax
+	075 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean IsPixelFullyTransparent(UnityEngine.SpriteRenderer spriteRenderer, UnityEngine.Vector3 worldPos)
+
+Disassembly:
+	mov rax,rsp
+	mov [rax+10h],rbx
+	mov [rax+18h],rsi
+	mov [rax+20h],rdi
+	push r14
+	sub rsp,120h
+	movaps [rax-18h],xmm6
+	movaps [rax-28h],xmm7
+	movaps [rax-38h],xmm8
+	movaps [rax-48h],xmm9
+	movaps [rax-58h],xmm10
+	movaps [rax-68h],xmm11
+	movaps [rax-78h],xmm12
+	movaps [rax-88h],xmm13
+	mov rbx,rdx
+	mov rdi,rcx
+	cmp byte ptr [1827760EBh],0
+	jne short 00000001805936F3h
+	lea rcx,[182639860h]
+	call 000000018020C870h
+	mov byte ptr [1827760EBh],1
+	mov dword ptr [rsp+7Ch],0
+	test rdi,rdi
+	je near ptr 0000000180593A72h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181A21FB0h
+	mov rsi,rax
+	mov rcx,[182639860h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180593726h
+	call 000000018020CB50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181A507A0h
+	test al,al
+	jne near ptr 0000000180593A6Eh
+	test rsi,rsi
+	je near ptr 0000000180593A72h
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181A23A10h
+	mov r14,rax
+	mov rcx,[182639860h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180593766h
+	call 000000018020CB50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,r14
+	call 0000000181A507A0h
+	test al,al
+	jne near ptr 0000000180593A6Eh
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181A45080h
+	test rax,rax
+	je near ptr 0000000180593A72h
+	movsd xmm0,qword ptr [rbx]
+	movsd qword ptr [rsp+30h],xmm0
+	mov ecx,[rbx+8]
+	mov [rsp+38h],ecx
+	xor r9d,r9d
+	lea r8,[rsp+30h]
+	mov rdx,rax
+	lea rcx,[rsp+40h]
+	call 0000000181A74360h
+	movsd xmm6,qword ptr [rax]
+	mov ebx,[rax+8]
+	cmp byte ptr [182774CD0h],0
+	jne short 00000001805937D7h
+	lea rcx,[18260F030h]
+	call 000000018020C870h
+	mov byte ptr [182774CD0h],1
+	mov rax,[18260F030h]
+	mov rcx,[rax+0B8h]
+	movsd xmm7,qword ptr [rcx+48h]
+	movsd qword ptr [rsp+40h],xmm7
+	movss dword ptr [rsp+70h],xmm7
+	movss xmm8,dword ptr [rsp+44h]
+	movss dword ptr [rsp+74h],xmm8
+	movss xmm9,dword ptr [rcx+50h]
+	movss dword ptr [rsp+78h],xmm9
+	xor edx,edx
+	lea rcx,[rsp+70h]
+	call 00000001802DC630h
+	comiss xmm0,dword ptr [181E5DB84h]
+	ja short 0000000180593833h
+	xorps xmm7,xmm7
+	xorps xmm8,xmm8
+	xorps xmm9,xmm9
+	jmp short 0000000180593841h
+	divss xmm7,xmm0
+	divss xmm8,xmm0
+	divss xmm9,xmm0
+	movsd qword ptr [rsp+30h],xmm6
+	mov [rsp+38h],ebx
+	movss dword ptr [rsp+40h],xmm7
+	movss dword ptr [rsp+44h],xmm8
+	movss dword ptr [rsp+48h],xmm9
+	mov dword ptr [rsp+4Ch],0
+	xor r9d,r9d
+	lea r8,[rsp+30h]
+	lea rdx,[rsp+40h]
+	lea rcx,[rsp+70h]
+	call 000000018056AAB0h
+	movsd xmm6,qword ptr [rax]
+	movsd qword ptr [rsp+40h],xmm6
+	mov ebx,[rax+8]
+	xor r8d,r8d
+	mov rdx,rdi
+	lea rcx,[rsp+70h]
+	call 0000000180593490h
+	movups xmm11,[rax]
+	movups [rsp+50h],xmm11
+	movsd xmm0,qword ptr [rax+10h]
+	movsd qword ptr [rsp+60h],xmm0
+	mov eax,[rax+18h]
+	mov [rsp+68h],eax
+	movaps xmm12,xmm11
+	shufps xmm12,xmm11,55h
+	movss xmm13,dword ptr [181E5DC04h]
+	movaps xmm0,xmm11
+	unpcklps xmm0,xmm12
+	movsd qword ptr [rsp+50h],xmm0
+	movss dword ptr [rsp+58h],xmm13
+	movsd qword ptr [rsp+30h],xmm6
+	mov [rsp+38h],ebx
+	xor r8d,r8d
+	lea rdx,[rsp+30h]
+	lea rcx,[rsp+50h]
+	call 0000000180577A60h
+	test al,al
+	je near ptr 0000000180593A6Eh
+	movss xmm10,dword ptr [181E5DBC4h]
+	mulss xmm11,xmm10
+	movss xmm0,dword ptr [rsp+5Ch]
+	subss xmm0,xmm11
+	mulss xmm12,xmm10
+	movss xmm2,dword ptr [rsp+60h]
+	subss xmm2,xmm12
+	mulss xmm13,xmm10
+	movss xmm1,dword ptr [rsp+64h]
+	subss xmm1,xmm13
+	unpcklps xmm0,xmm2
+	movsd qword ptr [rsp+30h],xmm0
+	movss dword ptr [rsp+38h],xmm1
+	movss dword ptr [rsp+50h],xmm7
+	movss dword ptr [rsp+54h],xmm8
+	movss dword ptr [rsp+58h],xmm9
+	mov dword ptr [rsp+5Ch],0
+	xor r9d,r9d
+	lea r8,[rsp+30h]
+	lea rdx,[rsp+50h]
+	lea rcx,[rsp+70h]
+	call 000000018056AAB0h
+	movsd xmm8,qword ptr [rax]
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181A23870h
+	movaps xmm6,xmm0
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181A23870h
+	movss xmm7,dword ptr [rsp+44h]
+	movaps xmm1,xmm8
+	shufps xmm1,xmm1,55h
+	subss xmm7,xmm1
+	mulss xmm7,xmm0
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181A23340h
+	mov [rsp+130h],rax
+	movss xmm0,dword ptr [rsp+40h]
+	subss xmm0,xmm8
+	mulss xmm0,xmm6
+	addss xmm0,dword ptr [rsp+130h]
+	movss xmm1,dword ptr [rsp+134h]
+	addss xmm1,xmm7
+	test r14,r14
+	je near ptr 0000000180593A78h
+	addss xmm1,xmm10
+	cvttss2si r9d,xmm1
+	addss xmm0,xmm10
+	cvttss2si r8d,xmm0
+	mov qword ptr [rsp+20h],0
+	mov rdx,r14
+	lea rcx,[rsp+50h]
+	call 0000000181A3A770h
+	movss xmm0,dword ptr [181E5DB8Ch]
+	comiss xmm0,dword ptr [rax+0Ch]
+	setae al
+	jmp short 0000000180593A2Ch
+	xor al,al
+	lea r11,[rsp+120h]
+	mov rbx,[r11+18h]
+	mov rsi,[r11+20h]
+	mov rdi,[r11+28h]
+	movaps xmm6,[r11-10h]
+	movaps xmm7,[r11-20h]
+	movaps xmm8,[r11-30h]
+	movaps xmm9,[r11-40h]
+	movaps xmm10,[r11-50h]
+	movaps xmm11,[r11-60h]
+	movaps xmm12,[r11-70h]
+	movaps xmm13,[r11-80h]
+	mov rsp,r11
+	pop r14
+	ret
+	mov al,1
+	jmp short 0000000180593A2Ch
+	call 000000018020CAB0h
+	nop
+	call 000000018020CAB0h
+	nop
+
+ISIL:
+	001 Move rax, rsp
+	002 Move [rax+16], rbx
+	003 Move [rax+24], rsi
+	004 Move [rax+32], rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -288
+	008 Move [rax-24], xmm6
+	009 Move [rax-40], xmm7
+	010 Move [rax-56], xmm8
+	011 Move [rax-72], xmm9
+	012 Move [rax-88], xmm10
+	013 Move [rax-104], xmm11
+	014 Move [rax-120], xmm12
+	015 Move [rax-136], xmm13
+	016 Move rbx, rdx
+	017 Move rdi, rcx
+	018 Compare [0x1827760EB], 0
+	019 JumpIfNotEqual {23}
+	020 LoadAddress rcx, [0x182639860]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 Move [0x1827760EB], 1
+	023 Move stack:0x7C, 0
+	024 Compare rdi, 0
+	025 JumpIfEqual {231}
+	026 Move rdx, 0
+	027 Move rcx, rdi
+	028 Call SpriteRenderer.get_sprite, rcx, rdx
+	029 Move rsi, rax
+	030 Move rcx, typeof(UnityEngine.Object)
+	031 Compare [rcx+228], 0
+	032 JumpIfNotEqual {34}
+	033 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	034 Move r8, 0
+	035 Move rdx, 0
+	036 Move rcx, rsi
+	037 Call Object.op_Equality, rcx, rdx, r8
+	038 Compare rax, 0
+	039 JumpIfNotEqual {229}
+	040 Compare rsi, 0
+	041 JumpIfEqual {231}
+	042 Move rdx, 0
+	043 Move rcx, rsi
+	044 Call Sprite.get_texture, rcx, rdx
+	045 Move r14, rax
+	046 Move rcx, typeof(UnityEngine.Object)
+	047 Compare [rcx+228], 0
+	048 JumpIfNotEqual {50}
+	049 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	050 Move r8, 0
+	051 Move rdx, 0
+	052 Move rcx, r14
+	053 Call Object.op_Equality, rcx, rdx, r8
+	054 Compare rax, 0
+	055 JumpIfNotEqual {229}
+	056 Move rdx, 0
+	057 Move rcx, rdi
+	058 Call Component.get_transform, rcx, rdx
+	059 Compare rax, 0
+	060 JumpIfEqual {231}
+	061 Move xmm0, [rbx]
+	062 Move stack:0x30, xmm0
+	063 Move rcx, [rbx+8]
+	064 Move stack:0x38, rcx
+	065 Move r9, 0
+	066 LoadAddress r8, stack:0x30
+	067 Move rdx, rax
+	068 LoadAddress rcx, stack:0x40
+	069 Call Transform.InverseTransformPoint, rcx, rdx
+	070 Move xmm6, [rax]
+	071 Move rbx, [rax+8]
+	072 Compare [0x182774CD0], 0
+	073 JumpIfNotEqual {77}
+	074 LoadAddress rcx, [0x18260F030]
+	075 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	076 Move [0x182774CD0], 1
+	077 Move rax, typeof(UnityEngine.Vector3)
+	078 Move rcx, [rax+184]
+	079 Move xmm7, [rcx+72]
+	080 Move stack:0x40, xmm7
+	081 Move stack:0x70, xmm7
+	082 Move xmm8, stack:0x44
+	083 Move stack:0x74, xmm8
+	084 Move xmm9, [rcx+80]
+	085 Move stack:0x78, xmm9
+	086 Move rdx, 0
+	087 LoadAddress rcx, stack:0x70
+	088 Call 0x1802DC630, rcx, rdx, r8, r9
+	089 Compare xmm0, [0x181E5DB84]
+	090 JumpIfGreater {95}
+	091 Move xmm7, 0
+	092 Move xmm8, 0
+	093 Move xmm9, 0
+	094 Goto {98}
+	095 Divide xmm7, xmm7, xmm0
+	096 Divide xmm8, xmm8, xmm0
+	097 Divide xmm9, xmm9, xmm0
+	098 Move stack:0x30, xmm6
+	099 Move stack:0x38, rbx
+	100 Move stack:0x40, xmm7
+	101 Move stack:0x44, xmm8
+	102 Move stack:0x48, xmm9
+	103 Move stack:0x4C, 0
+	104 Move r9, 0
+	105 LoadAddress r8, stack:0x30
+	106 LoadAddress rdx, stack:0x40
+	107 LoadAddress rcx, stack:0x70
+	108 Call PlaneEx.ProjectPoint, rcx, rdx, r8
+	109 Move xmm6, [rax]
+	110 Move stack:0x40, xmm6
+	111 Move rbx, [rax+8]
+	112 Move r8, 0
+	113 Move rdx, rdi
+	114 LoadAddress rcx, stack:0x70
+	115 Call SpriteRendererEx.GetModelSpaceAABB, rcx, rdx
+	116 Move xmm11, [rax]
+	117 Move stack:0x50, xmm11
+	118 Move xmm0, [rax+16]
+	119 Move stack:0x60, xmm0
+	120 Move rax, [rax+24]
+	121 Move stack:0x68, rax
+	122 Move xmm12, xmm11
+	123 Move XMM_TEMP.S[0], xmm12.S[1]
+	124 Move XMM_TEMP.S[1], xmm12.S[1]
+	125 Move XMM_TEMP.S[2], xmm11.S[1]
+	126 Move XMM_TEMP.S[3], xmm11.S[1]
+	127 Move xmm12, XMM_TEMP
+	128 Move xmm13, [0x181E5DC04]
+	129 Move xmm0, xmm11
+	130 Move XMM_TEMP.S[0], xmm0.S[0]
+	131 Move XMM_TEMP.S[1], xmm12.S[0]
+	132 Move XMM_TEMP.S[2], xmm0.S[1]
+	133 Move XMM_TEMP.S[3], xmm12.S[1]
+	134 Move xmm0, XMM_TEMP
+	135 Move stack:0x50, xmm0
+	136 Move stack:0x58, xmm13
+	137 Move stack:0x30, xmm6
+	138 Move stack:0x38, rbx
+	139 Move r8, 0
+	140 LoadAddress rdx, stack:0x30
+	141 LoadAddress rcx, stack:0x50
+	142 Call AABB.ContainsPoint, rcx, rdx
+	143 Compare rax, 0
+	144 JumpIfEqual {229}
+	145 Move xmm10, [0x181E5DBC4]
+	146 Multiply xmm11, xmm11, xmm10
+	147 Move xmm0, stack:0x5C
+	148 Subtract xmm0, xmm0, xmm11
+	149 Multiply xmm12, xmm12, xmm10
+	150 Move xmm2, stack:0x60
+	151 Subtract xmm2, xmm2, xmm12
+	152 Multiply xmm13, xmm13, xmm10
+	153 Move xmm1, stack:0x64
+	154 Subtract xmm1, xmm1, xmm13
+	155 Move XMM_TEMP.S[0], xmm0.S[0]
+	156 Move XMM_TEMP.S[1], xmm2.S[0]
+	157 Move XMM_TEMP.S[2], xmm0.S[1]
+	158 Move XMM_TEMP.S[3], xmm2.S[1]
+	159 Move xmm0, XMM_TEMP
+	160 Move stack:0x30, xmm0
+	161 Move stack:0x38, xmm1
+	162 Move stack:0x50, xmm7
+	163 Move stack:0x54, xmm8
+	164 Move stack:0x58, xmm9
+	165 Move stack:0x5C, 0
+	166 Move r9, 0
+	167 LoadAddress r8, stack:0x30
+	168 LoadAddress rdx, stack:0x50
+	169 LoadAddress rcx, stack:0x70
+	170 Call PlaneEx.ProjectPoint, rcx, rdx, r8
+	171 Move xmm8, [rax]
+	172 Move rdx, 0
+	173 Move rcx, rsi
+	174 Call Sprite.get_pixelsPerUnit, rcx, rdx
+	175 Move xmm6, xmm0
+	176 Move rdx, 0
+	177 Move rcx, rsi
+	178 Call Sprite.get_pixelsPerUnit, rcx, rdx
+	179 Move xmm7, stack:0x44
+	180 Move xmm1, xmm8
+	181 Move XMM_TEMP.S[0], xmm1.S[1]
+	182 Move XMM_TEMP.S[1], xmm1.S[1]
+	183 Move XMM_TEMP.S[2], xmm1.S[1]
+	184 Move XMM_TEMP.S[3], xmm1.S[1]
+	185 Move xmm1, XMM_TEMP
+	186 Subtract xmm7, xmm7, xmm1
+	187 Multiply xmm7, xmm7, xmm0
+	188 Move rdx, 0
+	189 Move rcx, rsi
+	190 Call 0x181A23340, rcx, rdx
+	191 Move stack:0x130, rax
+	192 Move xmm0, stack:0x40
+	193 Subtract xmm0, xmm0, xmm8
+	194 Multiply xmm0, xmm0, xmm6
+	195 Add xmm0, xmm0, stack:0x130
+	196 Move xmm1, stack:0x134
+	197 Add xmm1, xmm1, xmm7
+	198 Compare r14, 0
+	199 JumpIfEqual {233}
+	200 Add xmm1, xmm1, xmm10
+	201 NotImplemented "cvttss2si r9d,xmm1"
+	202 Add xmm0, xmm0, xmm10
+	203 NotImplemented "cvttss2si r8d,xmm0"
+	204 Move stack:0x20, 0
+	205 Move rdx, r14
+	206 LoadAddress rcx, stack:0x50
+	207 Call Texture2D.GetPixel, rcx, rdx, r8
+	208 Move xmm0, [0x181E5DB8C]
+	209 Compare xmm0, [rax+12]
+	210 NotImplemented "setae al"
+	211 Goto {213}
+	212 Move rax, 0
+	213 LoadAddress r11, stack:0x120
+	214 Move rbx, [r11+24]
+	215 Move rsi, [r11+32]
+	216 Move rdi, [r11+40]
+	217 Move xmm6, [r11-16]
+	218 Move xmm7, [r11-32]
+	219 Move xmm8, [r11-48]
+	220 Move xmm9, [r11-64]
+	221 Move xmm10, [r11-80]
+	222 Move xmm11, [r11-96]
+	223 Move xmm12, [r11-112]
+	224 Move xmm13, [r11-128]
+	225 Move rsp, r11
+	226 Move r14, stack:0x0
+	227 ShiftStack 8
+	228 Return rax
+	229 Move rax, 1
+	230 Goto {213}
+	231 Call 0x18020CAB0, rcx, rdx, r8, r9
+	232 Nop 
+	233 Call 0x18020CAB0, rcx, rdx, r8, r9
+	234 Nop 
+

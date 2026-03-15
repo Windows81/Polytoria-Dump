@@ -1,0 +1,400 @@
+Type: SoftMasking.SoftMask+Mathr
+
+Method: UnityEngine.Vector4 ToVector(UnityEngine.Rect r)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,[rdx]
+	movss xmm0,dword ptr [rdx+8]
+	movss xmm1,dword ptr [rdx+0Ch]
+	addss xmm0,dword ptr [rdx]
+	addss xmm1,dword ptr [rdx+4]
+	mov [rcx],eax
+	mov eax,[rdx+4]
+	mov [rcx+4],eax
+	mov rax,rcx
+	movss dword ptr [rcx+8],xmm0
+	movss dword ptr [rcx+0Ch],xmm1
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rdx]
+	003 Move xmm0, [rdx+8]
+	004 Move xmm1, [rdx+12]
+	005 Add xmm0, xmm0, [rdx]
+	006 Add xmm1, xmm1, [rdx+4]
+	007 Move [rcx], rax
+	008 Move rax, [rdx+4]
+	009 Move [rcx+4], rax
+	010 Move rax, rcx
+	011 Move [rcx+8], xmm0
+	012 Move [rcx+12], xmm1
+	013 Return rax
+
+Method: UnityEngine.Vector4 Div(UnityEngine.Vector4 v, UnityEngine.Vector2 s)
+
+Disassembly:
+	movss xmm0,dword ptr [rdx]
+	mov rax,rcx
+	movss xmm1,dword ptr [rdx+4]
+	mov [rsp+8],r8
+	divss xmm0,dword ptr [rsp+8]
+	divss xmm1,dword ptr [rsp+0Ch]
+	movss dword ptr [rcx],xmm0
+	movss xmm0,dword ptr [rdx+8]
+	divss xmm0,dword ptr [rsp+8]
+	movss dword ptr [rcx+4],xmm1
+	movss xmm1,dword ptr [rdx+0Ch]
+	divss xmm1,dword ptr [rsp+0Ch]
+	movss dword ptr [rcx+8],xmm0
+	movss dword ptr [rcx+0Ch],xmm1
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, rcx
+	003 Move xmm1, [rdx+4]
+	004 Move stack:0x8, r8
+	005 Divide xmm0, xmm0, stack:0x8
+	006 Divide xmm1, xmm1, stack:0xC
+	007 Move [rcx], xmm0
+	008 Move xmm0, [rdx+8]
+	009 Divide xmm0, xmm0, stack:0x8
+	010 Move [rcx+4], xmm1
+	011 Move xmm1, [rdx+12]
+	012 Divide xmm1, xmm1, stack:0xC
+	013 Move [rcx+8], xmm0
+	014 Move [rcx+12], xmm1
+	015 Return rax
+
+Method: UnityEngine.Vector2 Div(UnityEngine.Vector2 v, UnityEngine.Vector2 s)
+
+Disassembly:
+	sub rsp,18h
+	mov [rsp+38h],rcx
+	movss xmm0,dword ptr [rsp+38h]
+	movss xmm1,dword ptr [rsp+3Ch]
+	mov [rsp],rdx
+	divss xmm0,dword ptr [rsp]
+	divss xmm1,dword ptr [rsp+4]
+	unpcklps xmm0,xmm1
+	movq rax,xmm0
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move stack:0x38, rcx
+	003 Move xmm0, stack:0x38
+	004 Move xmm1, stack:0x3C
+	005 Move stack:0x0, rdx
+	006 Divide xmm0, xmm0, stack:0x0
+	007 Divide xmm1, xmm1, stack:0x4
+	008 Move XMM_TEMP.S[0], xmm0.S[0]
+	009 Move XMM_TEMP.S[1], xmm1.S[0]
+	010 Move XMM_TEMP.S[2], xmm0.S[1]
+	011 Move XMM_TEMP.S[3], xmm1.S[1]
+	012 Move xmm0, XMM_TEMP
+	013 Move rax, xmm0
+	014 ShiftStack 24
+	015 Return rax
+
+Method: UnityEngine.Vector4 Mul(UnityEngine.Vector4 v, UnityEngine.Vector2 s)
+
+Disassembly:
+	mov [rsp+8],r8
+	mov rax,rcx
+	movss xmm3,dword ptr [rsp+8]
+	movss xmm2,dword ptr [rsp+0Ch]
+	movaps xmm0,xmm3
+	mulss xmm0,dword ptr [rdx]
+	movaps xmm1,xmm2
+	mulss xmm1,dword ptr [rdx+4]
+	mulss xmm3,dword ptr [rdx+8]
+	mulss xmm2,dword ptr [rdx+0Ch]
+	movss dword ptr [rcx],xmm0
+	movss dword ptr [rcx+4],xmm1
+	movss dword ptr [rcx+8],xmm3
+	movss dword ptr [rcx+0Ch],xmm2
+	ret
+
+ISIL:
+	001 Move stack:0x8, r8
+	002 Move rax, rcx
+	003 Move xmm3, stack:0x8
+	004 Move xmm2, stack:0xC
+	005 Move xmm0, xmm3
+	006 Multiply xmm0, xmm0, [rdx]
+	007 Move xmm1, xmm2
+	008 Multiply xmm1, xmm1, [rdx+4]
+	009 Multiply xmm3, xmm3, [rdx+8]
+	010 Multiply xmm2, xmm2, [rdx+12]
+	011 Move [rcx], xmm0
+	012 Move [rcx+4], xmm1
+	013 Move [rcx+8], xmm3
+	014 Move [rcx+12], xmm2
+	015 Return rax
+
+Method: UnityEngine.Vector2 Size(UnityEngine.Vector4 r)
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+8]
+	movss xmm1,dword ptr [rcx+0Ch]
+	subss xmm0,dword ptr [rcx]
+	subss xmm1,dword ptr [rcx+4]
+	unpcklps xmm0,xmm1
+	movq rax,xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+8]
+	002 Move xmm1, [rcx+12]
+	003 Subtract xmm0, xmm0, [rcx]
+	004 Subtract xmm1, xmm1, [rcx+4]
+	005 Move XMM_TEMP.S[0], xmm0.S[0]
+	006 Move XMM_TEMP.S[1], xmm1.S[0]
+	007 Move XMM_TEMP.S[2], xmm0.S[1]
+	008 Move XMM_TEMP.S[3], xmm1.S[1]
+	009 Move xmm0, XMM_TEMP
+	010 Move rax, xmm0
+	011 Return rax
+
+Method: UnityEngine.Vector4 ApplyBorder(UnityEngine.Vector4 v, UnityEngine.Vector4 b)
+
+Disassembly:
+	movss xmm0,dword ptr [rdx]
+	mov rax,rcx
+	addss xmm0,dword ptr [r8]
+	movss xmm1,dword ptr [rdx+4]
+	addss xmm1,dword ptr [r8+4]
+	movss dword ptr [rcx],xmm0
+	movss xmm0,dword ptr [rdx+8]
+	subss xmm0,dword ptr [r8+8]
+	movss dword ptr [rcx+4],xmm1
+	movss xmm1,dword ptr [rdx+0Ch]
+	subss xmm1,dword ptr [r8+0Ch]
+	movss dword ptr [rcx+8],xmm0
+	movss dword ptr [rcx+0Ch],xmm1
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, rcx
+	003 Add xmm0, xmm0, [r8]
+	004 Move xmm1, [rdx+4]
+	005 Add xmm1, xmm1, [r8+4]
+	006 Move [rcx], xmm0
+	007 Move xmm0, [rdx+8]
+	008 Subtract xmm0, xmm0, [r8+8]
+	009 Move [rcx+4], xmm1
+	010 Move xmm1, [rdx+12]
+	011 Subtract xmm1, xmm1, [r8+12]
+	012 Move [rcx+8], xmm0
+	013 Move [rcx+12], xmm1
+	014 Return rax
+
+Method: UnityEngine.Vector2 Min(UnityEngine.Vector4 r)
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+4]
+	movss xmm1,dword ptr [rcx]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+4]
+	002 Move xmm1, [rcx]
+	003 Move XMM_TEMP.S[0], xmm1.S[0]
+	004 Move XMM_TEMP.S[1], xmm0.S[0]
+	005 Move XMM_TEMP.S[2], xmm1.S[1]
+	006 Move XMM_TEMP.S[3], xmm0.S[1]
+	007 Move xmm1, XMM_TEMP
+	008 Move rax, xmm1
+	009 Return rax
+
+Method: UnityEngine.Vector2 Max(UnityEngine.Vector4 r)
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+0Ch]
+	movss xmm1,dword ptr [rcx+8]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+12]
+	002 Move xmm1, [rcx+8]
+	003 Move XMM_TEMP.S[0], xmm1.S[0]
+	004 Move XMM_TEMP.S[1], xmm0.S[0]
+	005 Move XMM_TEMP.S[2], xmm1.S[1]
+	006 Move XMM_TEMP.S[3], xmm0.S[1]
+	007 Move xmm1, XMM_TEMP
+	008 Move rax, xmm1
+	009 Return rax
+
+Method: UnityEngine.Vector2 Remap(UnityEngine.Vector2 c, UnityEngine.Vector4 from, UnityEngine.Vector4 to)
+
+Disassembly:
+	sub rsp,38h
+	movaps [rsp+20h],xmm6
+	movaps [rsp+10h],xmm7
+	movups xmm7,[rdx]
+	mov [rsp+48h],rcx
+	movaps [rsp],xmm8
+	movups xmm3,xmm7
+	movups xmm8,[r8]
+	movups xmm6,xmm8
+	movups xmm2,xmm7
+	movss xmm5,dword ptr [rsp+48h]
+	movaps xmm0,xmm7
+	subss xmm5,xmm2
+	shufps xmm0,xmm7,0AAh
+	movaps xmm1,xmm8
+	shufps xmm2,xmm2,55h
+	shufps xmm1,xmm8,0AAh
+	subss xmm0,xmm3
+	subss xmm1,xmm6
+	shufps xmm7,xmm7,0FFh
+	movups xmm4,xmm8
+	shufps xmm3,xmm3,55h
+	subss xmm7,xmm3
+	shufps xmm8,xmm8,0FFh
+	shufps xmm6,xmm6,55h
+	divss xmm5,xmm0
+	subss xmm8,xmm6
+	mulss xmm5,xmm1
+	movss xmm1,dword ptr [rsp+4Ch]
+	subss xmm1,xmm2
+	addss xmm5,xmm4
+	shufps xmm4,xmm4,55h
+	divss xmm1,xmm7
+	mulss xmm1,xmm8
+	addss xmm1,xmm4
+	movaps xmm6,[rsp+20h]
+	movaps xmm7,[rsp+10h]
+	movaps xmm8,[rsp]
+	unpcklps xmm5,xmm1
+	movq rax,xmm5
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move stack:0x20, xmm6
+	003 Move stack:0x10, xmm7
+	004 Move xmm7, [rdx]
+	005 Move stack:0x48, rcx
+	006 Move stack:0x0, xmm8
+	007 Move xmm3, xmm7
+	008 Move xmm8, [r8]
+	009 Move xmm6, xmm8
+	010 Move xmm2, xmm7
+	011 Move xmm5, stack:0x48
+	012 Move xmm0, xmm7
+	013 Subtract xmm5, xmm5, xmm2
+	014 Move XMM_TEMP.S[0], xmm0.S[2]
+	015 Move XMM_TEMP.S[1], xmm0.S[2]
+	016 Move XMM_TEMP.S[2], xmm7.S[2]
+	017 Move XMM_TEMP.S[3], xmm7.S[2]
+	018 Move xmm0, XMM_TEMP
+	019 Move xmm1, xmm8
+	020 Move XMM_TEMP.S[0], xmm2.S[1]
+	021 Move XMM_TEMP.S[1], xmm2.S[1]
+	022 Move XMM_TEMP.S[2], xmm2.S[1]
+	023 Move XMM_TEMP.S[3], xmm2.S[1]
+	024 Move xmm2, XMM_TEMP
+	025 Move XMM_TEMP.S[0], xmm1.S[2]
+	026 Move XMM_TEMP.S[1], xmm1.S[2]
+	027 Move XMM_TEMP.S[2], xmm8.S[2]
+	028 Move XMM_TEMP.S[3], xmm8.S[2]
+	029 Move xmm1, XMM_TEMP
+	030 Subtract xmm0, xmm0, xmm3
+	031 Subtract xmm1, xmm1, xmm6
+	032 Move XMM_TEMP.S[0], xmm7.S[3]
+	033 Move XMM_TEMP.S[1], xmm7.S[3]
+	034 Move XMM_TEMP.S[2], xmm7.S[3]
+	035 Move XMM_TEMP.S[3], xmm7.S[3]
+	036 Move xmm7, XMM_TEMP
+	037 Move xmm4, xmm8
+	038 Move XMM_TEMP.S[0], xmm3.S[1]
+	039 Move XMM_TEMP.S[1], xmm3.S[1]
+	040 Move XMM_TEMP.S[2], xmm3.S[1]
+	041 Move XMM_TEMP.S[3], xmm3.S[1]
+	042 Move xmm3, XMM_TEMP
+	043 Subtract xmm7, xmm7, xmm3
+	044 Move XMM_TEMP.S[0], xmm8.S[3]
+	045 Move XMM_TEMP.S[1], xmm8.S[3]
+	046 Move XMM_TEMP.S[2], xmm8.S[3]
+	047 Move XMM_TEMP.S[3], xmm8.S[3]
+	048 Move xmm8, XMM_TEMP
+	049 Move XMM_TEMP.S[0], xmm6.S[1]
+	050 Move XMM_TEMP.S[1], xmm6.S[1]
+	051 Move XMM_TEMP.S[2], xmm6.S[1]
+	052 Move XMM_TEMP.S[3], xmm6.S[1]
+	053 Move xmm6, XMM_TEMP
+	054 Divide xmm5, xmm5, xmm0
+	055 Subtract xmm8, xmm8, xmm6
+	056 Multiply xmm5, xmm5, xmm1
+	057 Move xmm1, stack:0x4C
+	058 Subtract xmm1, xmm1, xmm2
+	059 Add xmm5, xmm5, xmm4
+	060 Move XMM_TEMP.S[0], xmm4.S[1]
+	061 Move XMM_TEMP.S[1], xmm4.S[1]
+	062 Move XMM_TEMP.S[2], xmm4.S[1]
+	063 Move XMM_TEMP.S[3], xmm4.S[1]
+	064 Move xmm4, XMM_TEMP
+	065 Divide xmm1, xmm1, xmm7
+	066 Multiply xmm1, xmm1, xmm8
+	067 Add xmm1, xmm1, xmm4
+	068 Move xmm6, stack:0x20
+	069 Move xmm7, stack:0x10
+	070 Move xmm8, stack:0x0
+	071 Move XMM_TEMP.S[0], xmm5.S[0]
+	072 Move XMM_TEMP.S[1], xmm1.S[0]
+	073 Move XMM_TEMP.S[2], xmm5.S[1]
+	074 Move XMM_TEMP.S[3], xmm1.S[1]
+	075 Move xmm5, XMM_TEMP
+	076 Move rax, xmm5
+	077 ShiftStack 56
+	078 Return rax
+
+Method: System.Boolean Inside(UnityEngine.Vector2 v, UnityEngine.Vector4 r)
+
+Disassembly:
+	mov [rsp+10h],rcx
+	movss xmm2,dword ptr [rsp+10h]
+	comiss xmm2,dword ptr [rdx]
+	jb short 0000000181564822h
+	movss xmm1,dword ptr [rsp+14h]
+	comiss xmm1,dword ptr [rdx+4]
+	jb short 0000000181564822h
+	movss xmm0,dword ptr [rdx+8]
+	comiss xmm0,xmm2
+	jb short 0000000181564822h
+	movss xmm0,dword ptr [rdx+0Ch]
+	comiss xmm0,xmm1
+	setae al
+	ret
+	xor al,al
+	ret
+
+ISIL:
+	001 Move stack:0x10, rcx
+	002 Move xmm2, stack:0x10
+	003 Compare xmm2, [rdx]
+	004 JumpIfLess {15}
+	005 Move xmm1, stack:0x14
+	006 Compare xmm1, [rdx+4]
+	007 JumpIfLess {15}
+	008 Move xmm0, [rdx+8]
+	009 Compare xmm0, xmm2
+	010 JumpIfLess {15}
+	011 Move xmm0, [rdx+12]
+	012 Compare xmm0, xmm1
+	013 NotImplemented "setae al"
+	014 Return rax
+	015 Move rax, 0
+	016 Return rax
+

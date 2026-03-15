@@ -1,0 +1,121 @@
+Type: MoonSharp.Interpreter.Interop.LuaStateInterop.LuaLBuffer
+
+Method: System.Text.StringBuilder get_StringBuilder()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_StringBuilder(System.Text.StringBuilder value)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: MoonSharp.Interpreter.Interop.LuaStateInterop.LuaState get_LuaState()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_LuaState(MoonSharp.Interpreter.Interop.LuaStateInterop.LuaState value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x18020B990, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor(MoonSharp.Interpreter.Interop.LuaStateInterop.LuaState l)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [182775149h],0
+	mov rsi,rdx
+	mov rdi,rcx
+	jne short 000000018037ACD1h
+	lea rcx,[1825FECB8h]
+	call 000000018020C870h
+	mov byte ptr [182775149h],1
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001802E39B0h
+	mov rcx,[1825FECB8h]
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001813DCB70h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 000000018020B990h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x182775149], 0
+	007 Move rsi, rdx
+	008 Move rdi, rcx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x1825FECB8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x182775149], 1
+	013 Move rdx, 0
+	014 Move rcx, rdi
+	015 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	016 Move rcx, typeof(System.Text.StringBuilder)
+	017 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	018 Move rdx, 0
+	019 Move rcx, rax
+	020 Move rbx, rax
+	021 Call StringBuilder..ctor, rcx, rdx
+	022 LoadAddress rcx, [rdi+16]
+	023 Move [rdi+16], rbx
+	024 Move rdx, rbx
+	025 Call 0x18020B990, rcx, rdx, r8, r9
+	026 LoadAddress rcx, [rdi+24]
+	027 Move [rdi+24], rsi
+	028 Move rdx, rsi
+	029 Move rbx, stack:0x30
+	030 Move rsi, stack:0x38
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 Call 0x18020B990, rcx, rdx, r8, r9
+	035 Return 
+

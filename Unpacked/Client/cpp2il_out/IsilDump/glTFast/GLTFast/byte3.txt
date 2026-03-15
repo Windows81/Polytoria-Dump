@@ -1,0 +1,205 @@
+Type: GLTFast.byte3
+
+Method: Unity.Mathematics.float3 GltfToUnityFloat3()
+
+Disassembly:
+	movzx eax,byte ptr [rdx]
+	neg eax
+	movd xmm0,eax
+	movzx eax,byte ptr [rdx+1]
+	cvtdq2ps xmm0,xmm0
+	movd xmm1,eax
+	movzx eax,byte ptr [rdx+2]
+	movss dword ptr [rcx],xmm0
+	cvtdq2ps xmm1,xmm1
+	movd xmm0,eax
+	mov rax,rcx
+	cvtdq2ps xmm0,xmm0
+	movss dword ptr [rcx+4],xmm1
+	movss dword ptr [rcx+8],xmm0
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Neg rax
+	003 Move xmm0, rax
+	004 Move rax, [rdx+1]
+	005 Move xmm0, xmm0
+	006 Move xmm1, rax
+	007 Move rax, [rdx+2]
+	008 Move [rcx], xmm0
+	009 Move xmm1, xmm1
+	010 Move xmm0, rax
+	011 Move rax, rcx
+	012 Move xmm0, xmm0
+	013 Move [rcx+4], xmm1
+	014 Move [rcx+8], xmm0
+	015 Return rax
+
+Method: Unity.Mathematics.float3 GltfToUnityNormalizedFloat3()
+
+Disassembly:
+	movzx eax,byte ptr [rdx]
+	movss xmm2,dword ptr [181E5DD48h]
+	movd xmm0,eax
+	movzx eax,byte ptr [rdx+1]
+	cvtdq2ps xmm0,xmm0
+	divss xmm0,xmm2
+	xorps xmm0,[181E5DCF0h]
+	movss dword ptr [rcx],xmm0
+	movd xmm0,eax
+	movzx eax,byte ptr [rdx+2]
+	cvtdq2ps xmm0,xmm0
+	movd xmm1,eax
+	mov rax,rcx
+	cvtdq2ps xmm1,xmm1
+	divss xmm0,xmm2
+	divss xmm1,xmm2
+	movss dword ptr [rcx+4],xmm0
+	movss dword ptr [rcx+8],xmm1
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Move xmm2, [0x181E5DD48]
+	003 Move xmm0, rax
+	004 Move rax, [rdx+1]
+	005 Move xmm0, xmm0
+	006 Divide xmm0, xmm0, xmm2
+	007 Xor xmm0, xmm0, [0x181E5DCF0]
+	008 Move [rcx], xmm0
+	009 Move xmm0, rax
+	010 Move rax, [rdx+2]
+	011 Move xmm0, xmm0
+	012 Move xmm1, rax
+	013 Move rax, rcx
+	014 Move xmm1, xmm1
+	015 Divide xmm0, xmm0, xmm2
+	016 Divide xmm1, xmm1, xmm2
+	017 Move [rcx+4], xmm0
+	018 Move [rcx+8], xmm1
+	019 Return rax
+
+Method: Unity.Mathematics.int3 GltfToUnityTriangleIndies()
+
+Disassembly:
+	movzx eax,byte ptr [rdx]
+	mov [rcx],eax
+	movzx eax,byte ptr [rdx+2]
+	mov [rcx+4],eax
+	movzx eax,byte ptr [rdx+1]
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [182778672h],0
+	mov rax,[rcx]
+	mov rbx,[rax]
+	jne short 00000001811346A8h
+	lea rcx,[18261CAD0h]
+	call 000000018020C870h
+	mov byte ptr [182778672h],1
+	cmp qword ptr [rbx+30h],0
+	mov dword ptr [rbx+10h],0FFFFFFFFh
+	je short 00000001811346CDh
+	mov r8,[rbx+30h]
+	xor ecx,ecx
+	mov rdx,[18261CAD0h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180002250h
+	add rsp,20h
+	pop rbx
+	ret
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	xchg ax,ax
+	mov rcx,[rcx]
+	xor edx,edx
+	mov rcx,[rcx]
+	jmp near ptr 000000018113F640h
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Move [rcx], rax
+	003 Move rax, [rdx+2]
+	004 Move [rcx+4], rax
+	005 Move rax, [rdx+1]
+	006 Move [rcx+8], rax
+	007 Move rax, rcx
+	008 Return rax
+	009 Interrupt 
+	010 Interrupt 
+	011 Interrupt 
+	012 Interrupt 
+	013 Interrupt 
+	014 Interrupt 
+	015 Interrupt 
+	016 Interrupt 
+	017 Interrupt 
+	018 ShiftStack -8
+	019 Move stack:0x0, rbx
+	020 ShiftStack -32
+	021 Compare [0x182778672], 0
+	022 Move rax, [rcx]
+	023 Move rbx, [rax]
+	024 JumpIfNotEqual {28}
+	025 LoadAddress rcx, [0x18261CAD0]
+	026 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	027 Move [0x182778672], 1
+	028 Compare [rbx+48], 0
+	029 Move [rbx+16], 0xFFFFFFFF
+	030 JumpIfEqual {39}
+	031 Move r8, [rbx+48]
+	032 Move rcx, 0
+	033 Move rdx, typeof(System.IDisposable)
+	034 ShiftStack 32
+	035 Move rbx, stack:0x0
+	036 ShiftStack 8
+	037 Call 0x180002250, rcx, rdx, r8, r9
+	038 Return rax
+	039 ShiftStack 32
+	040 Move rbx, stack:0x0
+	041 ShiftStack 8
+	042 Return rax
+	043 Interrupt 
+	044 Interrupt 
+	045 Interrupt 
+	046 Interrupt 
+	047 Interrupt 
+	048 Interrupt 
+	049 Interrupt 
+	050 Interrupt 
+	051 Interrupt 
+	052 Interrupt 
+	053 Interrupt 
+	054 Interrupt 
+	055 Interrupt 
+	056 Nop 
+	057 Move rcx, [rcx]
+	058 Move rdx, 0
+	059 Move rcx, [rcx]
+	060 Call <IterateSubMeshes>d__17.System.IDisposable.Dispose, rcx, rdx
+	061 Return rax
+

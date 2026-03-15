@@ -1,0 +1,137 @@
+Type: GLTFast.ReadOnlyNativeArrayFromManagedArray`1
+
+Method: GLTFast.ReadOnlyNativeArray`1<T> get_Array()
+
+Disassembly:
+	movups xmm0,[rdx+10h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+16]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Void .ctor(T[] original)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,30h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 00000001802E39B0h
+	test rbx,rbx
+	je short 00000001810D7F63h
+	xor r8d,r8d
+	mov edx,3
+	mov rcx,rbx
+	call 0000000181484B50h
+	mov [rdi+20h],rax
+	cmp dword ptr [rbx+18h],0
+	jbe short 00000001810D7FA0h
+	mov rsi,[rsp+48h]
+	lea rax,[rbx+20h]
+	mov [rsp+20h],rax
+	mov eax,[rbx+18h]
+	mov rbx,[rsp+40h]
+	mov [rsp+28h],eax
+	mov dword ptr [rsp+2Ch],0
+	movups xmm0,[rsp+20h]
+	mov byte ptr [rdi+28h],1
+	movups [rdi+10h],xmm0
+	add rsp,30h
+	pop rdi
+	ret
+	lea rcx,[182648268h]
+	call 000000018020C890h
+	mov rcx,rax
+	call 000000018020CA60h
+	lea rcx,[182608670h]
+	mov rbx,rax
+	call 000000018020C890h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001814D5B30h
+	mov rdx,rsi
+	mov rcx,rbx
+	call 000000018020CA70h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -48
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	011 Compare rbx, 0
+	012 JumpIfEqual {34}
+	013 Move r8, 0
+	014 Move rdx, 3
+	015 Move rcx, rbx
+	016 Call GCHandle.Alloc, rcx, rdx, r8
+	017 Move [rdi+32], rax
+	018 Compare [rbx+24], 0
+	019 JumpIfLessOrEqual {49}
+	020 Move rsi, stack:0x48
+	021 LoadAddress rax, [rbx+32]
+	022 Move stack:0x20, rax
+	023 Move rax, [rbx+24]
+	024 Move rbx, stack:0x40
+	025 Move stack:0x28, rax
+	026 Move stack:0x2C, 0
+	027 Move xmm0, stack:0x20
+	028 Move [rdi+40], 1
+	029 Move [rdi+16], xmm0
+	030 ShiftStack 48
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return 
+	034 LoadAddress rcx, [0x182648268]
+	035 Call 0x18020C890, rcx, rdx, r8, r9
+	036 Move rcx, rax
+	037 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	038 LoadAddress rcx, [0x182608670]
+	039 Move rbx, rax
+	040 Call 0x18020C890, rcx, rdx, r8, r9
+	041 Move rdx, rax
+	042 Move r8, 0
+	043 Move rcx, rbx
+	044 Call ArgumentNullException..ctor, rcx, rdx
+	045 Move rdx, rsi
+	046 Move rcx, rbx
+	047 Call 0x18020CA70, rcx, rdx, r8, r9
+	048 Interrupt 
+	049 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Void Dispose()
+
+Disassembly:
+	cmp byte ptr [rcx+28h],0
+	je short 00000001810D7EE1h
+	add rcx,20h
+	xor edx,edx
+	jmp near ptr 0000000181484C40h
+	ret
+
+ISIL:
+	001 Compare [rcx+40], 0
+	002 JumpIfEqual {7}
+	003 Add rcx, rcx, 32
+	004 Move rdx, 0
+	005 Call GCHandle.Free, rcx, rdx
+	006 Return 
+	007 Return 
+

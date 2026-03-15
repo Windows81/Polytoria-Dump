@@ -1,0 +1,101 @@
+Type: Polytoria.Datamodel.Proxies.InstanceValueProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.InstanceValue target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x18020B990, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rbx+32]
+	018 Move [rbx+32], rdi
+	019 Move rdx, rdi
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x18020B990, rcx, rdx, r8, r9
+	025 Return 
+
+Method: Polytoria.Datamodel.Instance get_Value()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA198h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180449F50h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call 0x180449F50, rcx, rdx
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Value(Polytoria.Datamodel.Instance value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA1B9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018044A100h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call InstanceValue.set_Value, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

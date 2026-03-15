@@ -1,0 +1,200 @@
+Type: Mirror.ConnectionQualityHeuristics
+
+Method: UnityEngine.Color ColorCode(Mirror.ConnectionQuality quality)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rbx,rcx
+	movzx ecx,dl
+	sub ecx,1
+	je short 000000018124D511h
+	sub ecx,1
+	je short 000000018124D4F3h
+	sub ecx,1
+	je short 000000018124D4DFh
+	cmp ecx,1
+	je short 000000018124D4CBh
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	call 0000000181943660h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	movdqa xmm0,[181D30EC0h]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	movdqa xmm0,[181D31200h]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	mov dword ptr [rbx],3F800000h
+	mov rax,rbx
+	mov qword ptr [rbx+4],3F25A1CBh
+	mov dword ptr [rbx+0Ch],3F800000h
+	add rsp,30h
+	pop rbx
+	ret
+	movdqa xmm0,[181D312C0h]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rbx, rcx
+	005 Move rcx, rdx
+	006 Subtract rcx, rcx, 1
+	007 JumpIfEqual {46}
+	008 Subtract rcx, rcx, 1
+	009 JumpIfEqual {38}
+	010 Subtract rcx, rcx, 1
+	011 JumpIfEqual {31}
+	012 Compare rcx, 1
+	013 JumpIfEqual {24}
+	014 Move rdx, 0
+	015 LoadAddress rcx, stack:0x20
+	016 Call 0x181943660, rcx
+	017 Move xmm0, [rax]
+	018 Move rax, rbx
+	019 Move [rbx], xmm0
+	020 ShiftStack 48
+	021 Move rbx, stack:0x0
+	022 ShiftStack 8
+	023 Return rax
+	024 Move xmm0, [0x181D30EC0]
+	025 Move rax, rbx
+	026 Move [rbx], xmm0
+	027 ShiftStack 48
+	028 Move rbx, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+	031 Move xmm0, [0x181D31200]
+	032 Move rax, rbx
+	033 Move [rbx], xmm0
+	034 ShiftStack 48
+	035 Move rbx, stack:0x0
+	036 ShiftStack 8
+	037 Return rax
+	038 Move [rbx], 0x3F800000
+	039 Move rax, rbx
+	040 Move [rbx+4], 0x3F25A1CB
+	041 Move [rbx+12], 0x3F800000
+	042 ShiftStack 48
+	043 Move rbx, stack:0x0
+	044 ShiftStack 8
+	045 Return rax
+	046 Move xmm0, [0x181D312C0]
+	047 Move rax, rbx
+	048 Move [rbx], xmm0
+	049 ShiftStack 48
+	050 Move rbx, stack:0x0
+	051 ShiftStack 8
+	052 Return rax
+
+Method: Mirror.ConnectionQuality Simple(System.Double rtt, System.Double jitter)
+
+Disassembly:
+	movaps xmm2,xmm0
+	movsd xmm0,qword ptr [181DBF640h]
+	comisd xmm0,xmm2
+	jb short 000000018124D58Ah
+	comisd xmm0,xmm1
+	jb short 000000018124D58Ah
+	mov al,4
+	ret
+	movsd xmm0,qword ptr [181DBF648h]
+	comisd xmm0,xmm2
+	jb short 000000018124D5A1h
+	comisd xmm0,xmm1
+	jb short 000000018124D5A1h
+	mov al,3
+	ret
+	movsd xmm0,qword ptr [181DBF650h]
+	comisd xmm0,xmm2
+	jb short 000000018124D5C1h
+	movsd xmm0,qword ptr [181D30C20h]
+	comisd xmm0,xmm1
+	setae al
+	inc al
+	ret
+	mov al,1
+	ret
+
+ISIL:
+	001 Move xmm2, xmm0
+	002 Move xmm0, [0x181DBF640]
+	003 NotImplemented "comisd xmm0,xmm2"
+	004 JumpIfLess {9}
+	005 NotImplemented "comisd xmm0,xmm1"
+	006 JumpIfLess {9}
+	007 Move rax, 4
+	008 Return rax
+	009 Move xmm0, [0x181DBF648]
+	010 NotImplemented "comisd xmm0,xmm2"
+	011 JumpIfLess {16}
+	012 NotImplemented "comisd xmm0,xmm1"
+	013 JumpIfLess {16}
+	014 Move rax, 3
+	015 Return rax
+	016 Move xmm0, [0x181DBF650]
+	017 NotImplemented "comisd xmm0,xmm2"
+	018 JumpIfLess {24}
+	019 Move xmm0, [0x181D30C20]
+	020 NotImplemented "comisd xmm0,xmm1"
+	021 NotImplemented "setae al"
+	022 Add rax, rax, 1
+	023 Return rax
+	024 Move rax, 1
+	025 Return rax
+
+Method: Mirror.ConnectionQuality Pragmatic(System.Double targetBufferTime, System.Double currentBufferTime)
+
+Disassembly:
+	divsd xmm1,xmm0
+	movsd xmm0,qword ptr [181DBF658h]
+	comisd xmm0,xmm1
+	jae short 000000018124D565h
+	movsd xmm0,qword ptr [181DBF660h]
+	comisd xmm0,xmm1
+	jae short 000000018124D562h
+	movsd xmm0,qword ptr [181DBF668h]
+	comisd xmm0,xmm1
+	setae al
+	inc al
+	ret
+	mov al,3
+	ret
+	mov al,4
+	ret
+
+ISIL:
+	001 NotImplemented "divsd xmm1,xmm0"
+	002 Move xmm0, [0x181DBF658]
+	003 NotImplemented "comisd xmm0,xmm1"
+	004 JumpIfGreaterOrEqual {15}
+	005 Move xmm0, [0x181DBF660]
+	006 NotImplemented "comisd xmm0,xmm1"
+	007 JumpIfGreaterOrEqual {13}
+	008 Move xmm0, [0x181DBF668]
+	009 NotImplemented "comisd xmm0,xmm1"
+	010 NotImplemented "setae al"
+	011 Add rax, rax, 1
+	012 Return rax
+	013 Move rax, 3
+	014 Return rax
+	015 Move rax, 4
+	016 Return rax
+

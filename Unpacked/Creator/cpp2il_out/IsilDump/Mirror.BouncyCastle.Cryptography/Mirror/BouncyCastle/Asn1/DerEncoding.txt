@@ -1,0 +1,109 @@
+Type: Mirror.BouncyCastle.Asn1.DerEncoding
+
+Method: System.Void .ctor(System.Int32 tagClass, System.Int32 tagNo)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov esi,r8d
+	xor edx,edx
+	mov rdi,rcx
+	call 00000001802C3410h
+	mov [rdi+10h],ebx
+	mov rbx,[rsp+30h]
+	mov [rdi+14h],esi
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	011 Move [rdi+16], rbx
+	012 Move rbx, stack:0x30
+	013 Move [rdi+20], rsi
+	014 Move rsi, stack:0x38
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+
+Method: System.Int32 CompareLengthAndContents(Mirror.BouncyCastle.Asn1.DerEncoding other)
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Int32 CompareTo(Mirror.BouncyCastle.Asn1.DerEncoding other)
+
+Disassembly:
+	test rdx,rdx
+	je short 0000000181104F07h
+	mov eax,[rdx+10h]
+	cmp [rcx+10h],eax
+	jne short 0000000181104F00h
+	mov eax,[rdx+14h]
+	cmp [rcx+14h],eax
+	jne short 0000000181104EF9h
+	mov r8,[rcx]
+	mov rax,[r8+1A8h]
+	mov r8,[r8+1B0h]
+	jmp rax
+	mov eax,[rcx+14h]
+	sub eax,[rdx+14h]
+	ret
+	mov eax,[rcx+10h]
+	sub eax,[rdx+10h]
+	ret
+	mov eax,1
+	ret
+
+ISIL:
+	001 Compare rdx, 0
+	002 JumpIfEqual {19}
+	003 Move rax, [rdx+16]
+	004 Compare [rcx+16], rax
+	005 JumpIfNotEqual {16}
+	006 Move rax, [rdx+20]
+	007 Compare [rcx+20], rax
+	008 JumpIfNotEqual {13}
+	009 Move r8, [rcx]
+	010 Move rax, [r8+424]
+	011 Move r8, [r8+432]
+	012 CallNoReturn rax
+	013 Move rax, [rcx+20]
+	014 Subtract rax, rax, [rdx+20]
+	015 Return rax
+	016 Move rax, [rcx+16]
+	017 Subtract rax, rax, [rdx+16]
+	018 Return rax
+	019 Move rax, 1
+	020 Return rax
+
+Method: System.Void Encode(Mirror.BouncyCastle.Asn1.Asn1OutputStream asn1Out)
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Int32 GetLength()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated

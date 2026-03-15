@@ -1,0 +1,152 @@
+Type: RLD.CameraFocus+Data
+
+Method: UnityEngine.Vector3 get_CameraWorldPosition()
+
+Disassembly:
+	mov eax,[rdx+18h]
+	movsd xmm0,qword ptr [rdx+10h]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+24]
+	002 Move xmm0, [rdx+16]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: UnityEngine.Vector3 get_FocusPoint()
+
+Disassembly:
+	mov eax,[rdx+24h]
+	movsd xmm0,qword ptr [rdx+1Ch]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+36]
+	002 Move xmm0, [rdx+28]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Single get_FocusPointOffset()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+40]
+	002 Return xmm0
+
+Method: System.Void .ctor(UnityEngine.Vector3 cameraWorldPosition, UnityEngine.Vector3 focusPoint)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,30h
+	mov rdi,rdx
+	mov rbx,r8
+	xor edx,edx
+	mov rsi,rcx
+	call 00000001802C3410h
+	movsd xmm0,qword ptr [rdi]
+	mov eax,[rdi+8]
+	movsd qword ptr [rsi+10h],xmm0
+	movsd xmm0,qword ptr [rbx]
+	movaps xmm1,xmm0
+	movsd qword ptr [rsi+1Ch],xmm0
+	movsd xmm0,qword ptr [rdi]
+	movaps xmm3,xmm0
+	movsd qword ptr [rsp+20h],xmm0
+	movaps xmm2,xmm0
+	movsd qword ptr [rsp+20h],xmm1
+	movaps xmm0,xmm1
+	mov [rsi+18h],eax
+	mov eax,[rbx+8]
+	subss xmm3,xmm1
+	movss xmm1,dword ptr [rdi+8]
+	subss xmm1,dword ptr [rbx+8]
+	shufps xmm0,xmm0,55h
+	shufps xmm2,xmm2,55h
+	subss xmm2,xmm0
+	mov [rsi+24h],eax
+	unpcklps xmm3,xmm2
+	lea rcx,[rsp+20h]
+	xor edx,edx
+	movsd qword ptr [rsp+20h],xmm3
+	movss dword ptr [rsp+28h],xmm1
+	call 00000001802BC4C0h
+	mov rbx,[rsp+40h]
+	movss dword ptr [rsi+28h],xmm0
+	mov rsi,[rsp+48h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -48
+	006 Move rdi, rdx
+	007 Move rbx, r8
+	008 Move rdx, 0
+	009 Move rsi, rcx
+	010 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	011 Move xmm0, [rdi]
+	012 Move rax, [rdi+8]
+	013 Move [rsi+16], xmm0
+	014 Move xmm0, [rbx]
+	015 Move xmm1, xmm0
+	016 Move [rsi+28], xmm0
+	017 Move xmm0, [rdi]
+	018 Move xmm3, xmm0
+	019 Move stack:0x20, xmm0
+	020 Move xmm2, xmm0
+	021 Move stack:0x20, xmm1
+	022 Move xmm0, xmm1
+	023 Move [rsi+24], rax
+	024 Move rax, [rbx+8]
+	025 Subtract xmm3, xmm3, xmm1
+	026 Move xmm1, [rdi+8]
+	027 Subtract xmm1, xmm1, [rbx+8]
+	028 Move XMM_TEMP.S[0], xmm0.S[1]
+	029 Move XMM_TEMP.S[1], xmm0.S[1]
+	030 Move XMM_TEMP.S[2], xmm0.S[1]
+	031 Move XMM_TEMP.S[3], xmm0.S[1]
+	032 Move xmm0, XMM_TEMP
+	033 Move XMM_TEMP.S[0], xmm2.S[1]
+	034 Move XMM_TEMP.S[1], xmm2.S[1]
+	035 Move XMM_TEMP.S[2], xmm2.S[1]
+	036 Move XMM_TEMP.S[3], xmm2.S[1]
+	037 Move xmm2, XMM_TEMP
+	038 Subtract xmm2, xmm2, xmm0
+	039 Move [rsi+36], rax
+	040 Move XMM_TEMP.S[0], xmm3.S[0]
+	041 Move XMM_TEMP.S[1], xmm2.S[0]
+	042 Move XMM_TEMP.S[2], xmm3.S[1]
+	043 Move XMM_TEMP.S[3], xmm2.S[1]
+	044 Move xmm3, XMM_TEMP
+	045 LoadAddress rcx, stack:0x20
+	046 Move rdx, 0
+	047 Move stack:0x20, xmm3
+	048 Move stack:0x28, xmm1
+	049 Call 0x1802BC4C0, rcx, rdx, r8, r9
+	050 Move rbx, stack:0x40
+	051 Move [rsi+40], xmm0
+	052 Move rsi, stack:0x48
+	053 ShiftStack 48
+	054 Move rdi, stack:0x0
+	055 ShiftStack 8
+	056 Return 
+

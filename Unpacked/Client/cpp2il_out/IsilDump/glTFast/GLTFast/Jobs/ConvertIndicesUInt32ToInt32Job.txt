@@ -1,0 +1,60 @@
+Type: GLTFast.Jobs.ConvertIndicesUInt32ToInt32Job
+
+Method: System.Void Execute(System.Int32 index)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [182778736h],0
+	mov rdi,rcx
+	movsxd rbx,edx
+	jne short 0000000181151061h
+	lea rcx,[182633F58h]
+	call 000000018020C870h
+	mov byte ptr [182778736h],1
+	mov rax,[182633F58h]
+	mov rsi,[rdi]
+	mov rcx,[rax+20h]
+	test byte ptr [rcx+135h],1
+	jne short 000000018115107Dh
+	call 0000000180215330h
+	mov eax,[rsi+rbx*4]
+	mov rcx,[rdi+10h]
+	mov rsi,[rsp+38h]
+	mov [rcx+rbx*4],eax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x182778736], 0
+	007 Move rdi, rcx
+	008 Move rbx, rdx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x182633F58]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x182778736], 1
+	013 Move rax, [0x182633F58]
+	014 Move rsi, [rdi]
+	015 Move rcx, [rax+32]
+	016 Compare [rcx+309], 1
+	017 JumpIfNotEqual {19}
+	018 Call 0x180215330, rcx, rdx, r8, r9
+	019 Move rax, [rsi+rbx*4]
+	020 Move rcx, [rdi+16]
+	021 Move rsi, stack:0x38
+	022 Move [rcx+rbx*4], rax
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return 
+

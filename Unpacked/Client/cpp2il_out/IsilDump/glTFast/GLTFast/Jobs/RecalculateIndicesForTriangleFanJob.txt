@@ -1,0 +1,44 @@
+Type: GLTFast.Jobs.RecalculateIndicesForTriangleFanJob
+
+Method: System.Void Execute(System.Int32 index)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov rax,[rcx]
+	lea r11d,[rdx+rdx*2]
+	mov r8,[rcx+10h]
+	mov rbx,[rsp+8]
+	movsxd r10,edx
+	movsxd r9,r11d
+	mov eax,[rax+r10*4+4]
+	mov [r8+r9*4+4],eax
+	mov rax,[rcx]
+	movsxd r9,edx
+	mov rdx,[rcx+10h]
+	movsxd r8,r11d
+	movsxd rcx,r11d
+	mov eax,[rax+r9*4+8]
+	mov [rdx+r8*4],eax
+	mov dword ptr [rdx+rcx*4+8],0
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move rax, [rcx]
+	003 LoadAddress r11, [rdx+rdx*2]
+	004 Move r8, [rcx+16]
+	005 Move rbx, stack:0x8
+	006 Move r10, rdx
+	007 Move r9, r11
+	008 Move rax, [rax+4+r10*4]
+	009 Move [r8+4+r9*4], rax
+	010 Move rax, [rcx]
+	011 Move r9, rdx
+	012 Move rdx, [rcx+16]
+	013 Move r8, r11
+	014 Move rcx, r11
+	015 Move rax, [rax+8+r9*4]
+	016 Move [rdx+r8*4], rax
+	017 Move [rdx+8+rcx*4], 0
+	018 Return 
+

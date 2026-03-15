@@ -1,0 +1,36 @@
+Type: Mirror.AccurateInterval
+
+Method: System.Boolean Elapsed(System.Double time, System.Double interval, ref System.Double lastTime)
+
+Disassembly:
+	movaps xmm2,xmm1
+	addsd xmm2,qword ptr [r8]
+	comisd xmm2,xmm0
+	ja short 00000001813509EBh
+	divsd xmm0,xmm1
+	cvttsd2si rax,xmm0
+	xorps xmm0,xmm0
+	cvtsi2sd xmm0,rax
+	mov al,1
+	mulsd xmm0,xmm1
+	movsd qword ptr [r8],xmm0
+	ret
+	xor al,al
+	ret
+
+ISIL:
+	001 Move xmm2, xmm1
+	002 NotImplemented "addsd xmm2,qword ptr [r8]"
+	003 NotImplemented "comisd xmm2,xmm0"
+	004 JumpIfGreater {13}
+	005 NotImplemented "divsd xmm0,xmm1"
+	006 Move rax, xmm0
+	007 Move xmm0, 0
+	008 NotImplemented "cvtsi2sd xmm0,rax"
+	009 Move rax, 1
+	010 NotImplemented "mulsd xmm0,xmm1"
+	011 Move [r8], xmm0
+	012 Return rax
+	013 Move rax, 0
+	014 Return rax
+

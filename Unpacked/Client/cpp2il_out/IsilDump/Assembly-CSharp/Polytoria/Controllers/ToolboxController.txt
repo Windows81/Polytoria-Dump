@@ -1,0 +1,925 @@
+Type: Polytoria.Controllers.ToolboxController
+
+Method: System.Int32 get_Page()
+
+Disassembly:
+	mov eax,[rcx+40h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+64]
+	002 Return rax
+
+Method: System.Void set_Page(System.Int32 value)
+
+Disassembly:
+	cmp edx,1
+	jl short 0000000180505218h
+	mov eax,[rcx+44h]
+	cmp edx,eax
+	jle short 000000018050521Dh
+	mov edx,eax
+	xor edx,edx
+	mov [rcx+40h],eax
+	jmp near ptr 0000000180504E90h
+	mov edx,1
+	mov [rcx+40h],edx
+	xor edx,edx
+	jmp near ptr 0000000180504E90h
+
+ISIL:
+	001 Compare rdx, 1
+	002 JumpIfLess {11}
+	003 Move rax, [rcx+68]
+	004 Compare rdx, rax
+	005 JumpIfLessOrEqual {12}
+	006 Move rdx, rax
+	007 Move rdx, 0
+	008 Move [rcx+64], rax
+	009 Call ToolboxController.ReloadToolbox, rcx, rdx
+	010 Return 
+	011 Move rdx, 1
+	012 Move [rcx+64], rdx
+	013 Move rdx, 0
+	014 Call ToolboxController.ReloadToolbox, rcx, rdx
+	015 Return 
+
+Method: Polytoria.Controllers.ToolboxController+ToolboxCategory get_Category()
+
+Disassembly:
+	mov eax,[rcx+48h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+72]
+	002 Return rax
+
+Method: System.Void set_Category(Polytoria.Controllers.ToolboxController+ToolboxCategory value)
+
+Disassembly:
+	mov [rcx+48h],edx
+	xor edx,edx
+	jmp near ptr 0000000180504E90h
+
+ISIL:
+	001 Move [rcx+72], rdx
+	002 Move rdx, 0
+	003 Call ToolboxController.ReloadToolbox, rcx, rdx
+	004 Return 
+
+Method: System.String get_SearchQuery()
+
+Disassembly:
+	mov rax,[rcx+50h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+80]
+	002 Return rax
+
+Method: System.Void set_SearchQuery(System.String value)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov [rcx+50h],rdx
+	add rcx,50h
+	call 000000018020B990h
+	xor edx,edx
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180504E90h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move [rcx+80], rdx
+	006 Add rcx, rcx, 80
+	007 Call 0x18020B990, rcx, rdx, r8, r9
+	008 Move rdx, 0
+	009 Move rcx, rbx
+	010 ShiftStack 32
+	011 Move rbx, stack:0x0
+	012 ShiftStack 8
+	013 Call ToolboxController.ReloadToolbox, rcx, rdx
+	014 Return 
+
+Method: System.Void Start()
+
+Disassembly:
+	mov [rsp+20h],rbx
+	push rsi
+	push r13
+	push r15
+	sub rsp,20h
+	cmp byte ptr [182775E82h],0
+	mov r13,rcx
+	jne short 0000000180504FC9h
+	lea rcx,[182611690h]
+	call 000000018020C870h
+	lea rcx,[18264C920h]
+	call 000000018020C870h
+	lea rcx,[182646D40h]
+	call 000000018020C870h
+	lea rcx,[18262C310h]
+	call 000000018020C870h
+	lea rcx,[18264A128h]
+	call 000000018020C870h
+	lea rcx,[18263B1F8h]
+	call 000000018020C870h
+	mov byte ptr [182775E82h],1
+	mov rcx,[182783220h]
+	mov rbx,[18262C310h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180504FE5h
+	call 000000018020CB50h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181598270h
+	mov rcx,[1827831D8h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180505007h
+	call 000000018020CB50h
+	mov [rsp+40h],rbp
+	xor edx,edx
+	mov [rsp+48h],rdi
+	mov rcx,rbx
+	mov [rsp+50h],r14
+	call 00000001815A89D0h
+	xor ecx,ecx
+	xor esi,esi
+	mov r15,rax
+	test rax,rax
+	je near ptr 00000001805051BFh
+	lea r14,[rax+20h]
+	cmp ecx,[r15+18h]
+	jge near ptr 0000000180505131h
+	cmp esi,[r15+18h]
+	jae near ptr 00000001805051C5h
+	mov rcx,[r13+20h]
+	mov rbx,[r14]
+	test rcx,rcx
+	je near ptr 00000001805051BFh
+	xor edx,edx
+	call 0000000181962A70h
+	mov rcx,[182646D40h]
+	mov rdi,rax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180505077h
+	call 000000018020CB50h
+	mov r8,[18263B1F8h]
+	xor r9d,r9d
+	mov rdx,[18264A128h]
+	mov rcx,rbx
+	call 0000000181833870h
+	mov rcx,[18264C920h]
+	mov rbx,rax
+	call 000000018020CA60h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rbp,rax
+	call 000000018195B7F0h
+	test rdi,rdi
+	je near ptr 00000001805051BFh
+	mov rax,[182611690h]
+	inc dword ptr [rdi+1Ch]
+	mov rdx,[rdi+10h]
+	test rdx,rdx
+	je near ptr 00000001805051BFh
+	movsxd rcx,dword ptr [rdi+18h]
+	cmp ecx,[rdx+18h]
+	jb short 0000000180505100h
+	mov rax,[rax+20h]
+	mov rdx,rbp
+	mov rcx,rdi
+	mov r8,[rax+0C0h]
+	mov r8,[r8+70h]
+	call 0000000180F131B0h
+	inc esi
+	add r14,8
+	mov ecx,esi
+	jmp near ptr 0000000180505034h
+	lea eax,[rcx+1]
+	mov [rdi+18h],eax
+	cmp ecx,[rdx+18h]
+	jae near ptr 00000001805051C5h
+	lea rax,[rdx+20h]
+	mov [rdx+rcx*8+20h],rbp
+	lea rcx,[rax+rcx*8]
+	mov rdx,rbp
+	call 000000018020B990h
+	inc esi
+	add r14,8
+	mov ecx,esi
+	jmp near ptr 0000000180505034h
+	mov rcx,[r13+20h]
+	test rcx,rcx
+	je near ptr 00000001805051BFh
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181962C40h
+	cmp byte ptr [182775E83h],0
+	jne short 0000000180505164h
+	lea rcx,[1825F84F8h]
+	call 000000018020C870h
+	mov byte ptr [182775E83h],1
+	mov rcx,[1825F84F8h]
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802E39B0h
+	lea rcx,[rbx+20h]
+	mov dword ptr [rbx+10h],0
+	mov rdx,r13
+	mov [rbx+20h],r13
+	call 000000018020B990h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,r13
+	mov r14,[rsp+50h]
+	mov rdi,[rsp+48h]
+	mov rbp,[rsp+40h]
+	mov rbx,[rsp+58h]
+	add rsp,20h
+	pop r15
+	pop r13
+	pop rsi
+	jmp near ptr 0000000181A4CC60h
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 Move stack:0x20, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, r13
+	006 ShiftStack -8
+	007 Move stack:0x0, r15
+	008 ShiftStack -32
+	009 Compare [0x182775E82], 0
+	010 Move r13, rcx
+	011 JumpIfNotEqual {25}
+	012 LoadAddress rcx, [0x182611690]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x18264C920]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x182646D40]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x18262C310]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 LoadAddress rcx, [0x18264A128]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 LoadAddress rcx, [0x18263B1F8]
+	023 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	024 Move [0x182775E82], 1
+	025 Move rcx, [0x182783220]
+	026 Move rbx, typeof(Polytoria.Controllers.ToolboxController+ToolboxCategory)
+	027 Compare [rcx+228], 0
+	028 JumpIfNotEqual {30}
+	029 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	030 Move rdx, 0
+	031 Move rcx, rbx
+	032 Call Type.GetTypeFromHandle, rcx, rdx
+	033 Move rcx, [0x1827831D8]
+	034 Move rbx, rax
+	035 Compare [rcx+228], 0
+	036 JumpIfNotEqual {38}
+	037 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	038 Move stack:0x40, rbp
+	039 Move rdx, 0
+	040 Move stack:0x48, rdi
+	041 Move rcx, rbx
+	042 Move stack:0x50, r14
+	043 Call Enum.GetNames, rcx, rdx
+	044 Move rcx, 0
+	045 Move rsi, 0
+	046 Move r15, rax
+	047 Compare rax, 0
+	048 JumpIfEqual {149}
+	049 LoadAddress r14, [rax+32]
+	050 Compare rcx, [r15+24]
+	051 JumpIfGreaterOrEqual {111}
+	052 Compare rsi, [r15+24]
+	053 JumpIfGreaterOrEqual {151}
+	054 Move rcx, [r13+32]
+	055 Move rbx, [r14]
+	056 Compare rcx, 0
+	057 JumpIfEqual {149}
+	058 Move rdx, 0
+	059 Call TMP_Dropdown.get_options, rcx, rdx
+	060 Move rcx, typeof(System.Text.RegularExpressions.Regex)
+	061 Move rdi, rax
+	062 Compare [rcx+228], 0
+	063 JumpIfNotEqual {65}
+	064 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	065 Move r8, " $0"
+	066 Move r9, 0
+	067 Move rdx, "((?<=\p{Ll})\p{Lu})|((?!\A)\p{Lu}(?>\p{Ll}))"
+	068 Move rcx, rbx
+	069 Call Regex.Replace, rcx, rdx, r8, r9
+	070 Move rcx, typeof(TMPro.TMP_Dropdown+OptionData)
+	071 Move rbx, rax
+	072 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	073 Move r8, 0
+	074 Move rdx, rbx
+	075 Move rcx, rax
+	076 Move rbp, rax
+	077 Call OptionData..ctor, rcx, rdx
+	078 Compare rdi, 0
+	079 JumpIfEqual {149}
+	080 Move rax, [0x182611690]
+	081 Add [rdi+28], [rdi+28], 1
+	082 Move rdx, [rdi+16]
+	083 Compare rdx, 0
+	084 JumpIfEqual {149}
+	085 Move rcx, [rdi+24]
+	086 Compare rcx, [rdx+24]
+	087 JumpIfLess {98}
+	088 Move rax, [rax+32]
+	089 Move rdx, rbp
+	090 Move rcx, rdi
+	091 Move r8, [rax+192]
+	092 Move r8, [r8+112]
+	093 Call List`1<Object>.AddWithResize, rcx, rdx
+	094 Add rsi, rsi, 1
+	095 Add r14, r14, 8
+	096 Move rcx, rsi
+	097 Goto {50}
+	098 LoadAddress rax, [rcx+1]
+	099 Move [rdi+24], rax
+	100 Compare rcx, [rdx+24]
+	101 JumpIfGreaterOrEqual {151}
+	102 LoadAddress rax, [rdx+32]
+	103 Move [rdx+32+rcx*8], rbp
+	104 LoadAddress rcx, [rax+rcx*8]
+	105 Move rdx, rbp
+	106 Call 0x18020B990, rcx, rdx, r8, r9
+	107 Add rsi, rsi, 1
+	108 Add r14, r14, 8
+	109 Move rcx, rsi
+	110 Goto {50}
+	111 Move rcx, [r13+32]
+	112 Compare rcx, 0
+	113 JumpIfEqual {149}
+	114 Move r8, 0
+	115 Move rdx, 0
+	116 Call TMP_Dropdown.set_value, rcx, rdx
+	117 Compare [0x182775E83], 0
+	118 JumpIfNotEqual {122}
+	119 LoadAddress rcx, [0x1825F84F8]
+	120 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	121 Move [0x182775E83], 1
+	122 Move rcx, typeof(Polytoria.Controllers.ToolboxController+<DoReloadToolbox>d__22)
+	123 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	124 Move rdx, 0
+	125 Move rcx, rax
+	126 Move rbx, rax
+	127 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	128 LoadAddress rcx, [rbx+32]
+	129 Move [rbx+16], 0
+	130 Move rdx, r13
+	131 Move [rbx+32], r13
+	132 Call 0x18020B990, rcx, rdx, r8, r9
+	133 Move r8, 0
+	134 Move rdx, rbx
+	135 Move rcx, r13
+	136 Move r14, stack:0x50
+	137 Move rdi, stack:0x48
+	138 Move rbp, stack:0x40
+	139 Move rbx, stack:0x58
+	140 ShiftStack 32
+	141 Move r15, stack:0x0
+	142 ShiftStack 8
+	143 Move r13, stack:0x0
+	144 ShiftStack 8
+	145 Move rsi, stack:0x0
+	146 ShiftStack 8
+	147 Call 0x181A4CC60, rcx, rdx
+	148 Return 
+	149 Call 0x18020CAB0, rcx, rdx, r8, r9
+	150 Interrupt 
+	151 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Void SetSearchQuery(System.String q)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov [rcx+50h],rdx
+	add rcx,50h
+	call 000000018020B990h
+	xor edx,edx
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180504E90h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move [rcx+80], rdx
+	006 Add rcx, rcx, 80
+	007 Call 0x18020B990, rcx, rdx, r8, r9
+	008 Move rdx, 0
+	009 Move rcx, rbx
+	010 ShiftStack 32
+	011 Move rbx, stack:0x0
+	012 ShiftStack 8
+	013 Call ToolboxController.ReloadToolbox, rcx, rdx
+	014 Return 
+
+Method: System.Void ReloadToolbox()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [182775E83h],0
+	mov rdi,rcx
+	jne short 0000000180504EB9h
+	lea rcx,[1825F84F8h]
+	call 000000018020C870h
+	mov byte ptr [182775E83h],1
+	mov rcx,[1825F84F8h]
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802E39B0h
+	lea rcx,[rbx+20h]
+	mov dword ptr [rbx+10h],0
+	mov rdx,rdi
+	mov [rbx+20h],rdi
+	call 000000018020B990h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000181A4CC60h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x182775E83], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x1825F84F8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x182775E83], 1
+	011 Move rcx, typeof(Polytoria.Controllers.ToolboxController+<DoReloadToolbox>d__22)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	017 LoadAddress rcx, [rbx+32]
+	018 Move [rbx+16], 0
+	019 Move rdx, rdi
+	020 Move [rbx+32], rdi
+	021 Call 0x18020B990, rcx, rdx, r8, r9
+	022 Move r8, 0
+	023 Move rdx, rbx
+	024 Move rcx, rdi
+	025 Move rbx, stack:0x30
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Call 0x181A4CC60, rcx, rdx
+	030 Return 
+
+Method: System.Void PageUp()
+
+Disassembly:
+	mov eax,[rcx+44h]
+	cmp [rcx+40h],eax
+	jge short 0000000180504E84h
+	mov eax,[rcx+40h]
+	inc eax
+	cmp eax,1
+	jl short 0000000180504E75h
+	mov edx,[rcx+44h]
+	cmp eax,edx
+	jle short 0000000180504E7Ah
+	mov eax,edx
+	mov [rcx+40h],edx
+	xor edx,edx
+	jmp near ptr 0000000180504E90h
+	mov eax,1
+	xor edx,edx
+	mov [rcx+40h],eax
+	jmp near ptr 0000000180504E90h
+	ret
+
+ISIL:
+	001 Move rax, [rcx+68]
+	002 Compare [rcx+64], rax
+	003 JumpIfGreaterOrEqual {19}
+	004 Move rax, [rcx+64]
+	005 Add rax, rax, 1
+	006 Compare rax, 1
+	007 JumpIfLess {15}
+	008 Move rdx, [rcx+68]
+	009 Compare rax, rdx
+	010 JumpIfLessOrEqual {16}
+	011 Move rax, rdx
+	012 Move [rcx+64], rdx
+	013 Move rdx, 0
+	014 Invalid "Jump target not found in method."
+	015 Move rax, 1
+	016 Move rdx, 0
+	017 Move [rcx+64], rax
+	018 Invalid "Jump target not found in method."
+	019 Return 
+
+Method: System.Void PageDown()
+
+Disassembly:
+	cmp dword ptr [rcx+40h],1
+	jle short 0000000180504E42h
+	mov eax,[rcx+40h]
+	dec eax
+	cmp eax,1
+	jl short 0000000180504E33h
+	mov edx,[rcx+44h]
+	cmp eax,edx
+	jle short 0000000180504E38h
+	mov eax,edx
+	mov [rcx+40h],edx
+	xor edx,edx
+	jmp near ptr 0000000180504E90h
+	mov eax,1
+	xor edx,edx
+	mov [rcx+40h],eax
+	jmp near ptr 0000000180504E90h
+	ret
+
+ISIL:
+	001 Compare [rcx+64], 1
+	002 JumpIfLessOrEqual {20}
+	003 Move rax, [rcx+64]
+	004 Subtract rax, rax, 1
+	005 Compare rax, 1
+	006 JumpIfLess {15}
+	007 Move rdx, [rcx+68]
+	008 Compare rax, rdx
+	009 JumpIfLessOrEqual {16}
+	010 Move rax, rdx
+	011 Move [rcx+64], rdx
+	012 Move rdx, 0
+	013 Call ToolboxController.ReloadToolbox, rcx, rdx
+	014 Return 
+	015 Move rax, 1
+	016 Move rdx, 0
+	017 Move [rcx+64], rax
+	018 Call ToolboxController.ReloadToolbox, rcx, rdx
+	019 Return 
+	020 Return 
+
+Method: System.Collections.IEnumerator DoReloadToolbox()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [182775E83h],0
+	mov rdi,rcx
+	jne short 0000000180504BA9h
+	lea rcx,[1825F84F8h]
+	call 000000018020C870h
+	mov byte ptr [182775E83h],1
+	mov rcx,[1825F84F8h]
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802E39B0h
+	lea rcx,[rbx+20h]
+	mov dword ptr [rbx+10h],0
+	mov rdx,rdi
+	mov [rbx+20h],rdi
+	call 000000018020B990h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x182775E83], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x1825F84F8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x182775E83], 1
+	011 Move rcx, typeof(Polytoria.Controllers.ToolboxController+<DoReloadToolbox>d__22)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	017 LoadAddress rcx, [rbx+32]
+	018 Move [rbx+16], 0
+	019 Move rdx, rdi
+	020 Move [rbx+32], rdi
+	021 Call 0x18020B990, rcx, rdx, r8, r9
+	022 Move rax, rbx
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return rax
+
+Method: System.Collections.IEnumerator LoadThumbnail(SimpleJSON.JSONNode entry, UnityEngine.UI.RawImage image)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [182775E84h],0
+	mov rdi,r8
+	mov rsi,rdx
+	jne short 0000000180504DB1h
+	lea rcx,[1825F8578h]
+	call 000000018020C870h
+	mov byte ptr [182775E84h],1
+	mov rcx,[1825F8578h]
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802E39B0h
+	lea rcx,[rbx+20h]
+	mov dword ptr [rbx+10h],0
+	mov rdx,rsi
+	mov [rbx+20h],rsi
+	call 000000018020B990h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	mov rsi,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x182775E84], 0
+	007 Move rdi, r8
+	008 Move rsi, rdx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x1825F8578]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x182775E84], 1
+	013 Move rcx, typeof(Polytoria.Controllers.ToolboxController+<LoadThumbnail>d__23)
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rdx, 0
+	016 Move rcx, rax
+	017 Move rbx, rax
+	018 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	019 LoadAddress rcx, [rbx+32]
+	020 Move [rbx+16], 0
+	021 Move rdx, rsi
+	022 Move [rbx+32], rsi
+	023 Call 0x18020B990, rcx, rdx, r8, r9
+	024 LoadAddress rcx, [rbx+40]
+	025 Move [rbx+40], rdi
+	026 Move rdx, rdi
+	027 Call 0x18020B990, rcx, rdx, r8, r9
+	028 Move rsi, stack:0x38
+	029 Move rax, rbx
+	030 Move rbx, stack:0x30
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 Return rax
+
+Method: System.Void InsertModel(System.Int32 id)
+
+Disassembly:
+	mov [rsp+20h],rbp
+	push rsi
+	sub rsp,30h
+	cmp byte ptr [182775E85h],0
+	mov ebp,edx
+	jne short 0000000180504C54h
+	lea rcx,[18262E3F8h]
+	call 000000018020C870h
+	lea rcx,[182610D98h]
+	call 000000018020C870h
+	lea rcx,[182610D10h]
+	call 000000018020C870h
+	lea rcx,[18262F348h]
+	call 000000018020C870h
+	lea rcx,[1826004A0h]
+	call 000000018020C870h
+	lea rcx,[1825F83F8h]
+	call 000000018020C870h
+	mov byte ptr [182775E85h],1
+	mov rax,[182610D98h]
+	mov [rsp+48h],rdi
+	mov [rsp+50h],r14
+	mov rcx,[rax+0B8h]
+	mov rax,[182610D10h]
+	mov rsi,[rcx]
+	mov rcx,[rax+0B8h]
+	mov rcx,[rcx]
+	test rcx,rcx
+	je near ptr 0000000180504D75h
+	mov rdx,[18262F348h]
+	call 00000001807210A0h
+	mov r14,rax
+	mov rax,[1825F83F8h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 0000000180504CB7h
+	mov rcx,rax
+	call 000000018020CB50h
+	mov rax,[1825F83F8h]
+	mov rcx,[rax+0B8h]
+	mov rdi,[rcx+8]
+	test rdi,rdi
+	jne short 0000000180504D42h
+	mov [rsp+40h],rbx
+	cmp [rax+0E4h],edi
+	jne short 0000000180504CE3h
+	mov rcx,rax
+	call 000000018020CB50h
+	mov rax,[1825F83F8h]
+	mov rax,[rax+0B8h]
+	mov rcx,[18262E3F8h]
+	mov rbx,[rax]
+	call 000000018020CA60h
+	mov r8,[1826004A0h]
+	xor r9d,r9d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180355C10h
+	mov rax,[1825F83F8h]
+	mov rdx,rdi
+	mov rcx,[rax+0B8h]
+	mov [rcx+8],rdi
+	mov rax,[1825F83F8h]
+	mov rcx,[rax+0B8h]
+	add rcx,8
+	call 000000018020B990h
+	mov rbx,[rsp+40h]
+	test rsi,rsi
+	je short 0000000180504D75h
+	mov r9,rdi
+	mov qword ptr [rsp+20h],0
+	mov r8,r14
+	mov edx,ebp
+	mov rcx,rsi
+	call 00000001804E1DA0h
+	mov r14,[rsp+50h]
+	mov rdi,[rsp+48h]
+	mov rbp,[rsp+58h]
+	add rsp,30h
+	pop rsi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x20, rbp
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -48
+	005 Compare [0x182775E85], 0
+	006 Move rbp, rdx
+	007 JumpIfNotEqual {21}
+	008 LoadAddress rcx, [0x18262E3F8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x182610D98]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x182610D10]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x18262F348]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x1826004A0]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x1825F83F8]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 Move [0x182775E85], 1
+	021 Move rax, typeof(Polytoria.Controllers.GameIO)
+	022 Move stack:0x48, rdi
+	023 Move stack:0x50, r14
+	024 Move rcx, [rax+184]
+	025 Move rax, typeof(Polytoria.Datamodel.Game)
+	026 Move rsi, [rcx]
+	027 Move rcx, [rax+184]
+	028 Move rcx, [rcx]
+	029 Compare rcx, 0
+	030 JumpIfEqual {84}
+	031 Move rdx, [0x18262F348]
+	032 Call 0x1807210A0, rcx, rdx
+	033 Move r14, rax
+	034 Move rax, typeof(Polytoria.Controllers.ToolboxController+<>c)
+	035 Compare [rax+228], 0
+	036 JumpIfNotEqual {40}
+	037 Move rcx, rax
+	038 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	039 Move rax, typeof(Polytoria.Controllers.ToolboxController+<>c)
+	040 Move rcx, [rax+184]
+	041 Move rdi, [rcx+8]
+	042 Compare rdi, 0
+	043 JumpIfNotEqual {69}
+	044 Move stack:0x40, rbx
+	045 Compare [rax+228], rdi
+	046 JumpIfNotEqual {50}
+	047 Move rcx, rax
+	048 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	049 Move rax, typeof(Polytoria.Controllers.ToolboxController+<>c)
+	050 Move rax, [rax+184]
+	051 Move rcx, typeof(System.Action`1<Instance>)
+	052 Move rbx, [rax]
+	053 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	054 Move r8, [0x1826004A0]
+	055 Move r9, 0
+	056 Move rdx, rbx
+	057 Move rcx, rax
+	058 Move rdi, rax
+	059 Call 0x180355C10, rcx, rdx, r8
+	060 Move rax, typeof(Polytoria.Controllers.ToolboxController+<>c)
+	061 Move rdx, rdi
+	062 Move rcx, [rax+184]
+	063 Move [rcx+8], rdi
+	064 Move rax, typeof(Polytoria.Controllers.ToolboxController+<>c)
+	065 Move rcx, [rax+184]
+	066 Add rcx, rcx, 8
+	067 Call 0x18020B990, rcx, rdx, r8, r9
+	068 Move rbx, stack:0x40
+	069 Compare rsi, 0
+	070 JumpIfEqual {84}
+	071 Move r9, rdi
+	072 Move stack:0x20, 0
+	073 Move r8, r14
+	074 Move rdx, rbp
+	075 Move rcx, rsi
+	076 Call GameIO.LoadModelFromSite, rcx, rdx, r8, r9
+	077 Move r14, stack:0x50
+	078 Move rdi, stack:0x48
+	079 Move rbp, stack:0x58
+	080 ShiftStack 48
+	081 Move rsi, stack:0x0
+	082 ShiftStack 8
+	083 Return 
+	084 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void SetCategory(System.Int32 c)
+
+Disassembly:
+	mov [rcx+48h],edx
+	xor edx,edx
+	mov dword ptr [rcx+40h],0
+	jmp near ptr 0000000180504E90h
+
+ISIL:
+	001 Move [rcx+72], rdx
+	002 Move rdx, 0
+	003 Move [rcx+64], 0
+	004 Call ToolboxController.ReloadToolbox, rcx, rdx
+	005 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+40h],1
+	mov dword ptr [rcx+44h],7FFFFFFFh
+	jmp near ptr 0000000181A44280h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+64], 1
+	003 Move [rcx+68], 0x7FFFFFFF
+	004 Call 0x181A44280, rcx, rdx
+	005 Return 
+

@@ -1,0 +1,53 @@
+Type: Mirror.NetworkClient+<>c__DisplayClass70_0
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: UnityEngine.GameObject <RegisterPrefab>b__0(Mirror.SpawnMessage msg)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 000000018126F74Bh
+	mov eax,[rdx+1Ch]
+	movsd xmm0,qword ptr [rdx+14h]
+	mov r9,[rcx+28h]
+	mov r8d,[rdx+10h]
+	lea rdx,[rsp+20h]
+	mov [rsp+28h],eax
+	mov rax,[rcx+18h]
+	mov rcx,[rcx+40h]
+	movsd qword ptr [rsp+20h],xmm0
+	call rax
+	add rsp,38h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {17}
+	005 Move rax, [rdx+28]
+	006 Move xmm0, [rdx+20]
+	007 Move r9, [rcx+40]
+	008 Move r8, [rdx+16]
+	009 LoadAddress rdx, stack:0x20
+	010 Move stack:0x28, rax
+	011 Move rax, [rcx+24]
+	012 Move rcx, [rcx+64]
+	013 Move stack:0x20, xmm0
+	014 Call rax
+	015 ShiftStack 56
+	016 Return rax
+	017 Call 0x1801EEA50, rcx, rdx, r8, r9
+

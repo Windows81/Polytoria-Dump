@@ -1,0 +1,88 @@
+Type: RLD.PyramidMath+<>c
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [1825C70D0h],0
+	jne short 000000018058D742h
+	lea rcx,[1824959A8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C70D0h],1
+	mov rcx,[1824959A8h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802C3410h
+	mov rcx,[1824959A8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[1824959A8h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x1825C70D0], 0
+	005 JumpIfNotEqual {9}
+	006 LoadAddress rcx, [0x1824959A8]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x1825C70D0], 1
+	009 Move rcx, typeof(RLD.PyramidMath+<>c)
+	010 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	011 Move rdx, 0
+	012 Move rcx, rax
+	013 Move rbx, rax
+	014 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	015 Move rcx, typeof(RLD.PyramidMath+<>c)
+	016 Move rdx, [rcx+184]
+	017 Move [rdx], rbx
+	018 Move rdx, rbx
+	019 Move rcx, typeof(RLD.PyramidMath+<>c)
+	020 Move rcx, [rcx+184]
+	021 ShiftStack 32
+	022 Move rbx, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x1801ED930, rcx, rdx, r8, r9
+	025 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: System.Int32 <Raycast>b__1_0(System.Single t0, System.Single t1)
+
+Disassembly:
+	movss dword ptr [rsp+10h],xmm1
+	sub rsp,28h
+	xor r8d,r8d
+	lea rcx,[rsp+38h]
+	movaps xmm1,xmm2
+	call 00000001814BF660h
+	add rsp,28h
+	ret
+
+ISIL:
+	001 Move stack:0x10, xmm1
+	002 ShiftStack -40
+	003 Move r8, 0
+	004 LoadAddress rcx, stack:0x38
+	005 Move xmm1, xmm2
+	006 Call Single.CompareTo, rcx, rdx
+	007 ShiftStack 40
+	008 Return rax
+

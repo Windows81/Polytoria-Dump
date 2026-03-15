@@ -1,0 +1,82 @@
+Type: RLD.PlaneMath
+
+Method: System.Boolean Raycast2D(UnityEngine.Vector2 rayOrigin, UnityEngine.Vector2 rayDir, UnityEngine.Vector2 planeNormal, UnityEngine.Vector2 ptOnPlane, out System.Single t)
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rsp+50h]
+	mov [rsp+18h],r9
+	mov [rsp],r8
+	mov [rsp+8],rdx
+	mov dword ptr [rax],0
+	mov [rsp+10h],rcx
+	movss xmm3,dword ptr [rsp+4]
+	movss xmm4,dword ptr [rsp]
+	movaps xmm2,xmm3
+	mulss xmm2,dword ptr [rsp+0Ch]
+	movaps xmm0,xmm4
+	mulss xmm0,dword ptr [rsp+8]
+	addss xmm2,xmm0
+	movss xmm0,dword ptr [181D30B84h]
+	movaps xmm1,xmm2
+	andps xmm1,[181D30CE0h]
+	comiss xmm0,xmm1
+	ja short 0000000180564B7Bh
+	movss xmm0,dword ptr [rsp+10h]
+	subss xmm0,dword ptr [rsp+18h]
+	movss xmm1,dword ptr [rsp+14h]
+	subss xmm1,dword ptr [rsp+1Ch]
+	xorps xmm2,[181D30CF0h]
+	mulss xmm0,xmm4
+	mulss xmm1,xmm3
+	addss xmm1,xmm0
+	xorps xmm0,xmm0
+	divss xmm1,xmm2
+	comiss xmm1,xmm0
+	movss dword ptr [rax],xmm1
+	setae al
+	add rsp,28h
+	ret
+	xor al,al
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, stack:0x50
+	003 Move stack:0x18, r9
+	004 Move stack:0x0, r8
+	005 Move stack:0x8, rdx
+	006 Move [rax], 0
+	007 Move stack:0x10, rcx
+	008 Move xmm3, stack:0x4
+	009 Move xmm4, stack:0x0
+	010 Move xmm2, xmm3
+	011 Multiply xmm2, xmm2, stack:0xC
+	012 Move xmm0, xmm4
+	013 Multiply xmm0, xmm0, stack:0x8
+	014 Add xmm2, xmm2, xmm0
+	015 Move xmm0, [0x181D30B84]
+	016 Move xmm1, xmm2
+	017 And xmm1, xmm1, [0x181D30CE0]
+	018 Compare xmm0, xmm1
+	019 JumpIfGreater {35}
+	020 Move xmm0, stack:0x10
+	021 Subtract xmm0, xmm0, stack:0x18
+	022 Move xmm1, stack:0x14
+	023 Subtract xmm1, xmm1, stack:0x1C
+	024 Xor xmm2, xmm2, [0x181D30CF0]
+	025 Multiply xmm0, xmm0, xmm4
+	026 Multiply xmm1, xmm1, xmm3
+	027 Add xmm1, xmm1, xmm0
+	028 Move xmm0, 0
+	029 Divide xmm1, xmm1, xmm2
+	030 Compare xmm1, xmm0
+	031 Move [rax], xmm1
+	032 NotImplemented "setae al"
+	033 ShiftStack 40
+	034 Return rax
+	035 Move rax, 0
+	036 ShiftStack 40
+	037 Return rax
+

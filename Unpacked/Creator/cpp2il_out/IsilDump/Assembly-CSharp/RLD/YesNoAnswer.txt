@@ -1,0 +1,73 @@
+Type: RLD.YesNoAnswer
+
+Method: System.Boolean get_HasYes()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Boolean get_HasNo()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+11h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+17]
+	002 Return rax
+
+Method: System.Boolean get_HasOnlyYes()
+
+Disassembly:
+	cmp byte ptr [rcx+10h],0
+	jne short 0000000180551C29h
+	xor al,al
+	ret
+	cmp byte ptr [rcx+11h],0
+	sete al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 0
+	002 JumpIfNotEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Compare [rcx+17], 0
+	006 NotImplemented "sete al"
+	007 Return rax
+
+Method: System.Void Yes()
+
+Disassembly:
+	mov byte ptr [rcx+10h],1
+	ret
+
+ISIL:
+	001 Move [rcx+16], 1
+	002 Return 
+
+Method: System.Void No()
+
+Disassembly:
+	mov byte ptr [rcx+11h],1
+	ret
+
+ISIL:
+	001 Move [rcx+17], 1
+	002 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+

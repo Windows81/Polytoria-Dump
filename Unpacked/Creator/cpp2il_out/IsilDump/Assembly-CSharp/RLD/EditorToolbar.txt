@@ -1,0 +1,306 @@
+Type: RLD.EditorToolbar
+
+Method: System.Int32 get_ActiveTabIndex()
+
+Disassembly:
+	mov eax,[rcx+30h]
+	ret
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	sub rsp,28h
+	cmp byte ptr [1825C5F4Bh],0
+	jne short 00000001802F5B50h
+	lea rcx,[182460FE8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5F4Bh],1
+	mov rax,[182460FE8h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 00000001802F5B6Fh
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182460FE8h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax+8]
+	add rsp,28h
+	ret
+	int 3
+	sub rsp,28h
+	cmp byte ptr [1825C5F57h],0
+	jne short 00000001802F5BA0h
+	lea rcx,[1824682B0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5F57h],1
+	mov rax,[1824682B0h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 00000001802F5BBFh
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[1824682B0h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 Move rax, [rcx+48]
+	002 Return rax
+	003 Interrupt 
+	004 Interrupt 
+	005 Interrupt 
+	006 Interrupt 
+	007 Interrupt 
+	008 Interrupt 
+	009 Interrupt 
+	010 Interrupt 
+	011 Interrupt 
+	012 Interrupt 
+	013 Interrupt 
+	014 Interrupt 
+	015 ShiftStack -40
+	016 Compare [0x1825C5F4B], 0
+	017 JumpIfNotEqual {21}
+	018 LoadAddress rcx, [0x182460FE8]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 Move [0x1825C5F4B], 1
+	021 Move rax, typeof(MoonSharp.Interpreter.DynValue)
+	022 Compare [rax+228], 0
+	023 JumpIfNotEqual {27}
+	024 Move rcx, rax
+	025 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	026 Move rax, typeof(MoonSharp.Interpreter.DynValue)
+	027 Move rax, [rax+184]
+	028 Move rax, [rax+8]
+	029 ShiftStack 40
+	030 Return rax
+	031 Interrupt 
+	032 ShiftStack -40
+	033 Compare [0x1825C5F57], 0
+	034 JumpIfNotEqual {38}
+	035 LoadAddress rcx, [0x1824682B0]
+	036 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	037 Move [0x1825C5F57], 1
+	038 Move rax, typeof(MoonSharp.Interpreter.Compatibility.Framework)
+	039 Compare [rax+228], 0
+	040 JumpIfNotEqual {44}
+	041 Move rcx, rax
+	042 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	043 Move rax, typeof(MoonSharp.Interpreter.Compatibility.Framework)
+	044 Move rax, [rax+184]
+	045 Move rax, [rax]
+	046 ShiftStack 40
+	047 Return rax
+
+Method: RLD.EditorToolbarTab get_ActiveTab()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,[rcx+28h]
+	test rdx,rdx
+	je short 000000018053F5D0h
+	movsxd rax,dword ptr [rcx+30h]
+	cmp eax,[rdx+18h]
+	jae short 000000018053F5D6h
+	mov rax,[rdx+rax*8+20h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, [rcx+40]
+	003 Compare rdx, 0
+	004 JumpIfEqual {11}
+	005 Move rax, [rcx+48]
+	006 Compare rax, [rdx+24]
+	007 JumpIfGreaterOrEqual {13}
+	008 Move rax, [rdx+32+rax*8]
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801EEA50, rcx, rdx, r8, r9
+	012 Interrupt 
+	013 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_ActiveTabColor()
+
+Disassembly:
+	movups xmm0,[rdx+10h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+16]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Void set_ActiveTabColor(UnityEngine.Color value)
+
+Disassembly:
+	movups xmm0,[rdx]
+	movups [rcx+10h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx+16], xmm0
+	003 Return 
+
+Method: System.Int32 get_NumTabsPerRow()
+
+Disassembly:
+	mov eax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void set_NumTabsPerRow(System.Int32 value)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,1
+	cmp edx,eax
+	cmovge eax,edx
+	mov [rcx+20h],eax
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, 1
+	003 Compare rdx, rax
+	004 JumpIfLess {6}
+	005 Move rax, rdx
+	006 Nop 
+	007 Move [rcx+32], rax
+	008 Return 
+
+Method: System.Int32 get_NumTabs()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+28h]
+	test rax,rax
+	je short 0000000180525B65h
+	mov eax,[rax+18h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+40]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+24]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void .ctor(RLD.EditorToolbarTab[] tabs, System.Int32 numTabsPerRow, UnityEngine.Color activeTabColor)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	movdqa xmm0,[181D30EC0h]
+	mov rbx,rdx
+	xor edx,edx
+	mov dword ptr [rcx+20h],3
+	movups [rcx+10h],xmm0
+	mov rsi,r9
+	mov ebp,r8d
+	mov rdi,rcx
+	call 00000001802C3410h
+	lea rcx,[rdi+28h]
+	mov [rdi+28h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	movups xmm0,[rsi]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	mov [rdi+20h],ebp
+	mov rbp,[rsp+38h]
+	movups [rdi+10h],xmm0
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move xmm0, [0x181D30EC0]
+	008 Move rbx, rdx
+	009 Move rdx, 0
+	010 Move [rcx+32], 3
+	011 Move [rcx+16], xmm0
+	012 Move rsi, r9
+	013 Move rbp, r8
+	014 Move rdi, rcx
+	015 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	016 LoadAddress rcx, [rdi+40]
+	017 Move [rdi+40], rbx
+	018 Move rdx, rbx
+	019 Call 0x1801ED930, rcx, rdx, r8, r9
+	020 Move xmm0, [rsi]
+	021 Move rbx, stack:0x30
+	022 Move rsi, stack:0x40
+	023 Move [rdi+32], rbp
+	024 Move rbp, stack:0x38
+	025 Move [rdi+16], xmm0
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Return 
+
+Method: RLD.EditorToolbarTab GetTabByIndex(System.Int32 tabIndex)
+
+Disassembly:
+	sub rsp,28h
+	mov r8,[rcx+28h]
+	test r8,r8
+	je short 000000018053F530h
+	cmp edx,[r8+18h]
+	jae short 000000018053F536h
+	movsxd rax,edx
+	mov rax,[r8+rax*8+20h]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r8, [rcx+40]
+	003 Compare r8, 0
+	004 JumpIfEqual {11}
+	005 Compare rdx, [r8+24]
+	006 JumpIfGreaterOrEqual {13}
+	007 Move rax, rdx
+	008 Move rax, [r8+32+rax*8]
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801EEA50, rcx, rdx, r8, r9
+	012 Interrupt 
+	013 Call 0x1801EEA40, rcx, rdx, r8, r9
+

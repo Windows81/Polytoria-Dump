@@ -1,0 +1,370 @@
+Type: Mirror.BouncyCastle.Math.EC.Endo.EndoUtilities+MapPointCallback
+
+Method: System.Void .ctor(Mirror.BouncyCastle.Math.EC.Endo.ECEndomorphism endomorphism, Mirror.BouncyCastle.Math.EC.ECPoint point)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 00000001802C3410h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801ED930, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801ED930, rcx, rdx, r8, r9
+	024 Return 
+
+Method: Mirror.BouncyCastle.Math.EC.Multiplier.PreCompInfo Precompute(Mirror.BouncyCastle.Math.EC.Multiplier.PreCompInfo existing)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [1825C99F0h],0
+	mov rsi,rdx
+	mov rbp,rcx
+	jne short 000000018115BBA9h
+	lea rcx,[182461728h]
+	call 00000001801EE810h
+	lea rcx,[182461C80h]
+	call 00000001801EE810h
+	lea rcx,[1824633C0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C99F0h],1
+	xor ebx,ebx
+	mov [rsp+30h],rdi
+	test rsi,rsi
+	je near ptr 000000018115BC4Ch
+	mov rdx,[1824633C0h]
+	mov r8,[rsi]
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r8+130h],al
+	jb short 000000018115BBE9h
+	movzx ecx,al
+	mov rax,[r8+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	mov eax,1
+	je short 000000018115BBEBh
+	mov eax,ebx
+	test eax,eax
+	mov rdi,rbx
+	cmovne rdi,rsi
+	mov rsi,[rbp+10h]
+	test rdi,rdi
+	je short 000000018115BC4Ch
+	mov rdx,[rdi]
+	mov rcx,rdi
+	mov rax,[rdx+178h]
+	mov rdx,[rdx+180h]
+	call rax
+	cmp rax,rsi
+	jne short 000000018115BC4Ch
+	mov rdx,[rdi]
+	mov rcx,rdi
+	mov r8,[rdx+198h]
+	mov rdx,[rdx+1A0h]
+	call r8
+	test rax,rax
+	je short 000000018115BC4Ch
+	mov rax,rdi
+	mov rdi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	mov rbp,[rsp+40h]
+	add rsp,20h
+	pop rsi
+	ret
+	mov rdi,[rbp+10h]
+	test rdi,rdi
+	je near ptr 000000018115BD48h
+	mov r9,[rdi]
+	mov rdx,[182461728h]
+	movzx ecx,word ptr [r9+12Eh]
+	cmp bx,cx
+	jae short 000000018115BC98h
+	mov r8,[r9+0B0h]
+	nop word ptr [rax+rax]
+	movzx eax,bx
+	add rax,rax
+	cmp [r8+rax*8],rdx
+	je near ptr 000000018115BD2Bh
+	inc bx
+	cmp bx,cx
+	jb short 000000018115BC80h
+	xor r8d,r8d
+	mov rcx,rdi
+	call 00000001801F6BD0h
+	mov r8,[rax]
+	mov rcx,rdi
+	mov rdx,[rax+8]
+	call r8
+	test rax,rax
+	je near ptr 000000018115BD48h
+	mov r9,[rbp+18h]
+	xor ecx,ecx
+	mov rdx,[182461C80h]
+	mov r8,rax
+	call 0000000180002B50h
+	mov rcx,[1824633C0h]
+	mov rdi,rax
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001802C3410h
+	test rbx,rbx
+	je short 000000018115BD48h
+	mov r8,[rbx]
+	mov rcx,rbx
+	mov rdx,[rbp+10h]
+	mov r9,[r8+188h]
+	mov r8,[r8+190h]
+	call r9
+	mov r8,[rbx]
+	mov rdx,rdi
+	mov rcx,rbx
+	mov rax,[r8+1A8h]
+	mov r8,[r8+1B0h]
+	call rax
+	mov rax,rbx
+	jmp near ptr 000000018115BC37h
+	movzx ecx,bx
+	add rcx,rcx
+	movsxd rax,dword ptr [r8+rcx*8+8]
+	shl rax,4
+	add rax,138h
+	add rax,r9
+	jmp near ptr 000000018115BCA3h
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, rsi
+	005 ShiftStack -32
+	006 Compare [0x1825C99F0], 0
+	007 Move rsi, rdx
+	008 Move rbp, rcx
+	009 JumpIfNotEqual {17}
+	010 LoadAddress rcx, [0x182461728]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x182461C80]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x1824633C0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x1825C99F0], 1
+	017 Move rbx, 0
+	018 Move stack:0x30, rdi
+	019 Compare rsi, 0
+	020 JumpIfEqual {62}
+	021 Move rdx, typeof(Mirror.BouncyCastle.Math.EC.Endo.EndoPreCompInfo)
+	022 Move r8, [rsi]
+	023 Move rax, [rdx+304]
+	024 Compare [r8+304], rax
+	025 JumpIfLess {31}
+	026 Move rcx, rax
+	027 Move rax, [r8+200]
+	028 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	029 Move rax, 1
+	030 JumpIfEqual {32}
+	031 Move rax, rbx
+	032 Compare rax, 0
+	033 Move rdi, rbx
+	034 JumpIfEqual {36}
+	035 Move rdi, rsi
+	036 Nop 
+	037 Move rsi, [rbp+16]
+	038 Compare rdi, 0
+	039 JumpIfEqual {62}
+	040 Move rdx, [rdi]
+	041 Move rcx, rdi
+	042 Move rax, [rdx+376]
+	043 Move rdx, [rdx+384]
+	044 Call rax
+	045 Compare rax, rsi
+	046 JumpIfNotEqual {62}
+	047 Move rdx, [rdi]
+	048 Move rcx, rdi
+	049 Move r8, [rdx+408]
+	050 Move rdx, [rdx+416]
+	051 Call r8
+	052 Compare rax, 0
+	053 JumpIfEqual {62}
+	054 Move rax, rdi
+	055 Move rdi, stack:0x30
+	056 Move rbx, stack:0x38
+	057 Move rbp, stack:0x40
+	058 ShiftStack 32
+	059 Move rsi, stack:0x0
+	060 ShiftStack 8
+	061 Return rax
+	062 Move rdi, [rbp+16]
+	063 Compare rdi, 0
+	064 JumpIfEqual {123}
+	065 Move r9, [rdi]
+	066 Move rdx, typeof(Mirror.BouncyCastle.Math.EC.Endo.ECEndomorphism)
+	067 Move rcx, [r9+302]
+	068 Compare rbx, rcx
+	069 JumpIfGreaterOrEqual {79}
+	070 Move r8, [r9+176]
+	071 Nop 
+	072 Move rax, rbx
+	073 Add rax, rax, rax
+	074 Compare [r8+rax*8], rdx
+	075 JumpIfEqual {116}
+	076 Add rbx, rbx, 1
+	077 Compare rbx, rcx
+	078 JumpIfLess {72}
+	079 Move r8, 0
+	080 Move rcx, rdi
+	081 Call 0x1801F6BD0, rcx, rdx, r8, r9
+	082 Move r8, [rax]
+	083 Move rcx, rdi
+	084 Move rdx, [rax+8]
+	085 Call r8
+	086 Compare rax, 0
+	087 JumpIfEqual {123}
+	088 Move r9, [rbp+24]
+	089 Move rcx, 0
+	090 Move rdx, typeof(Mirror.BouncyCastle.Math.EC.ECPointMap)
+	091 Move r8, rax
+	092 Call 0x180002B50, rcx, rdx, r8, r9
+	093 Move rcx, typeof(Mirror.BouncyCastle.Math.EC.Endo.EndoPreCompInfo)
+	094 Move rdi, rax
+	095 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	096 Move rdx, 0
+	097 Move rcx, rax
+	098 Move rbx, rax
+	099 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	100 Compare rbx, 0
+	101 JumpIfEqual {123}
+	102 Move r8, [rbx]
+	103 Move rcx, rbx
+	104 Move rdx, [rbp+16]
+	105 Move r9, [r8+392]
+	106 Move r8, [r8+400]
+	107 Call r9
+	108 Move r8, [rbx]
+	109 Move rdx, rdi
+	110 Move rcx, rbx
+	111 Move rax, [r8+424]
+	112 Move r8, [r8+432]
+	113 Call rax
+	114 Move rax, rbx
+	115 Goto {55}
+	116 Move rcx, rbx
+	117 Add rcx, rcx, rcx
+	118 Move rax, [r8+8+rcx*8]
+	119 ShiftLeft rax, 4
+	120 Add rax, rax, 312
+	121 Add rax, rax, r9
+	122 Goto {82}
+	123 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean CheckExisting(Mirror.BouncyCastle.Math.EC.Endo.EndoPreCompInfo existingEndo, Mirror.BouncyCastle.Math.EC.Endo.ECEndomorphism endomorphism)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,r8
+	mov rbx,rdx
+	test rdx,rdx
+	je short 000000018115BB47h
+	mov rdx,[rdx]
+	mov rcx,rbx
+	mov rax,[rdx+178h]
+	mov rdx,[rdx+180h]
+	call rax
+	cmp rax,rdi
+	jne short 000000018115BB47h
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rax,[rdx+198h]
+	mov rdx,[rdx+1A0h]
+	call rax
+	test rax,rax
+	setne al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	xor al,al
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, r8
+	006 Move rbx, rdx
+	007 Compare rdx, 0
+	008 JumpIfEqual {28}
+	009 Move rdx, [rdx]
+	010 Move rcx, rbx
+	011 Move rax, [rdx+376]
+	012 Move rdx, [rdx+384]
+	013 Call rax
+	014 Compare rax, rdi
+	015 JumpIfNotEqual {28}
+	016 Move rdx, [rbx]
+	017 Move rcx, rbx
+	018 Move rax, [rdx+408]
+	019 Move rdx, [rdx+416]
+	020 Call rax
+	021 Compare rax, 0
+	022 NotImplemented "setne al"
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return rax
+	028 Move rbx, stack:0x30
+	029 Move rax, 0
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return rax
+

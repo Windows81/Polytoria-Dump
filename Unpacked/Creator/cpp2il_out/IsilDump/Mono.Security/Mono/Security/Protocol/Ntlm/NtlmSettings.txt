@@ -1,0 +1,68 @@
+Type: Mono.Security.Protocol.Ntlm.NtlmSettings
+
+Method: Mono.Security.Protocol.Ntlm.NtlmAuthLevel get_DefaultAuthLevel()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825CA504h],0
+	jne short 00000001812CDC30h
+	lea rcx,[182490400h]
+	call 00000001801EE810h
+	mov byte ptr [1825CA504h],1
+	mov rax,[182490400h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 00000001812CDC4Fh
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182490400h]
+	mov rax,[rax+0B8h]
+	mov eax,[rax]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825CA504], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x182490400]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825CA504], 1
+	007 Move rax, typeof(Mono.Security.Protocol.Ntlm.NtlmSettings)
+	008 Compare [rax+228], 0
+	009 JumpIfNotEqual {13}
+	010 Move rcx, rax
+	011 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	012 Move rax, typeof(Mono.Security.Protocol.Ntlm.NtlmSettings)
+	013 Move rax, [rax+184]
+	014 Move rax, [rax]
+	015 ShiftStack 40
+	016 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825CA505h],0
+	jne short 00000001812CDBF0h
+	lea rcx,[182490400h]
+	call 00000001801EE810h
+	mov byte ptr [1825CA505h],1
+	mov rax,[182490400h]
+	mov rcx,[rax+0B8h]
+	mov dword ptr [rcx],1
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825CA505], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x182490400]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825CA505], 1
+	007 Move rax, typeof(Mono.Security.Protocol.Ntlm.NtlmSettings)
+	008 Move rcx, [rax+184]
+	009 Move [rcx], 1
+	010 ShiftStack 40
+	011 Return 
+

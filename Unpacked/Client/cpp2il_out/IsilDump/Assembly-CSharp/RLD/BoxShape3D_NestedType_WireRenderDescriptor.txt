@@ -1,0 +1,71 @@
+Type: RLD.BoxShape3D+WireRenderDescriptor
+
+Method: RLD.BoxShape3D+WireRenderMode get_WireMode()
+
+Disassembly:
+	mov eax,[rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Void set_WireMode(RLD.BoxShape3D+WireRenderMode value)
+
+Disassembly:
+	mov [rcx+14h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+20], rdx
+	002 Return 
+
+Method: System.Single get_CornerLinePercentage()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+16]
+	002 Return xmm0
+
+Method: System.Void set_CornerLinePercentage(System.Single value)
+
+Disassembly:
+	xorps xmm0,xmm0
+	comiss xmm0,xmm1
+	ja short 00000001805ECFFBh
+	movss xmm0,dword ptr [181E5DC04h]
+	comiss xmm1,xmm0
+	ja short 00000001805ECFFBh
+	movss dword ptr [rcx+10h],xmm1
+	ret
+	movss dword ptr [rcx+10h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, 0
+	002 Compare xmm0, xmm1
+	003 JumpIfGreater {9}
+	004 Move xmm0, [0x181E5DC04]
+	005 Compare xmm1, xmm0
+	006 JumpIfGreater {9}
+	007 Move [rcx+16], xmm1
+	008 Return 
+	009 Move [rcx+16], xmm0
+	010 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+10h],3E4CCCCDh
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+16], 0x3E4CCCCD
+	003 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	004 Return 
+

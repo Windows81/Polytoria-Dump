@@ -1,0 +1,992 @@
+Type: Mono.Btls.MonoBtlsX509Chain
+
+Method: Mono.Btls.MonoBtlsX509Chain+BoringX509ChainHandle get_Handle()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [18277BE3Eh],0
+	mov rbx,rcx
+	jne short 000000018180C4C5h
+	lea rcx,[182637690h]
+	call 000000018020C870h
+	mov byte ptr [18277BE3Eh],1
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001816C7710h
+	mov r8,[182637690h]
+	test rax,rax
+	jne short 000000018180C4E1h
+	add rsp,20h
+	pop rbx
+	ret
+	mov r9,[rax]
+	movzx ecx,byte ptr [r8+130h]
+	cmp [r9+130h],cl
+	jb short 000000018180C506h
+	movzx edx,cl
+	mov rcx,[r9+0C8h]
+	cmp [rcx+rdx*8-8],r8
+	je short 000000018180C4DBh
+	mov rdx,r8
+	mov rcx,rax
+	call 000000018020B9D0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x18277BE3E], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x182637690]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x18277BE3E], 1
+	010 Move rdx, 0
+	011 Move rcx, rbx
+	012 Call MonoBtlsObject.get_Handle, rcx, rdx
+	013 Move r8, typeof(Mono.Btls.MonoBtlsX509Chain+BoringX509ChainHandle)
+	014 Compare rax, 0
+	015 JumpIfNotEqual {20}
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+	020 Move r9, [rax]
+	021 Move rcx, [r8+304]
+	022 Compare [r9+304], rcx
+	023 JumpIfLess {28}
+	024 Move rdx, rcx
+	025 Move rcx, [r9+200]
+	026 Compare [rcx+0xFFFFFFF8+rdx*8], r8
+	027 JumpIfEqual {16}
+	028 Move rdx, r8
+	029 Move rcx, rax
+	030 Call 0x18020B9D0, rcx, rdx, r8, r9
+
+Method: System.IntPtr mono_btls_x509_chain_new()
+
+Disassembly:
+	sub rsp,58h
+	mov rax,[18277BE40h]
+	test rax,rax
+	jne short 000000018180C79Eh
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4EA8h]
+	mov qword ptr [rsp+38h],18h
+	mov [rsp+30h],rax
+	xor eax,eax
+	mov [rsp+40h],eax
+	mov [rsp+4Ch],al
+	mov qword ptr [rsp+44h],2
+	call 000000018020CB00h
+	mov [18277BE40h],rax
+	call rax
+	add rsp,58h
+	ret
+
+ISIL:
+	001 ShiftStack -88
+	002 Move rax, [0x18277BE40]
+	003 Compare rax, 0
+	004 JumpIfNotEqual {18}
+	005 LoadAddress rax, [0x181EF4678]
+	006 Move stack:0x28, 19
+	007 Move stack:0x20, rax
+	008 LoadAddress rcx, stack:0x20
+	009 LoadAddress rax, [0x181EF4EA8]
+	010 Move stack:0x38, 24
+	011 Move stack:0x30, rax
+	012 Move rax, 0
+	013 Move stack:0x40, rax
+	014 Move stack:0x4C, rax
+	015 Move stack:0x44, 2
+	016 Call 0x18020CB00, rcx, rdx, r8, r9
+	017 Move [0x18277BE40], rax
+	018 Call rax
+	019 ShiftStack 88
+	020 Return rax
+
+Method: System.Int32 mono_btls_x509_chain_get_count(System.IntPtr handle)
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	mov rax,[18277BE48h]
+	mov rbx,rcx
+	test rax,rax
+	jne short 000000018180C72Dh
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4EC8h]
+	mov qword ptr [rsp+38h],1Eh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE48h],rax
+	mov rcx,rbx
+	call rax
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move rax, [0x18277BE48]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfNotEqual {21}
+	008 LoadAddress rax, [0x181EF4678]
+	009 Move stack:0x28, 19
+	010 Move stack:0x20, rax
+	011 LoadAddress rcx, stack:0x20
+	012 LoadAddress rax, [0x181EF4EC8]
+	013 Move stack:0x38, 30
+	014 Move stack:0x30, rax
+	015 Move stack:0x40, 0
+	016 Move stack:0x44, 2
+	017 Move stack:0x48, 8
+	018 Move stack:0x4C, 0
+	019 Call 0x18020CB00, rcx, rdx, r8, r9
+	020 Move [0x18277BE48], rax
+	021 Move rcx, rbx
+	022 Call rax
+	023 ShiftStack 80
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+
+Method: System.IntPtr mono_btls_x509_chain_get_cert(System.IntPtr Handle, System.Int32 index)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	mov rax,[18277BE50h]
+	mov ebx,edx
+	mov rdi,rcx
+	test rax,rax
+	jne short 000000018180C6A3h
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4EE8h]
+	mov qword ptr [rsp+38h],1Dh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],0Ch
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE50h],rax
+	mov edx,ebx
+	mov rcx,rdi
+	call rax
+	mov rbx,[rsp+60h]
+	add rsp,50h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Move rax, [0x18277BE50]
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Compare rax, 0
+	009 JumpIfNotEqual {23}
+	010 LoadAddress rax, [0x181EF4678]
+	011 Move stack:0x28, 19
+	012 Move stack:0x20, rax
+	013 LoadAddress rcx, stack:0x20
+	014 LoadAddress rax, [0x181EF4EE8]
+	015 Move stack:0x38, 29
+	016 Move stack:0x30, rax
+	017 Move stack:0x40, 0
+	018 Move stack:0x44, 2
+	019 Move stack:0x48, 12
+	020 Move stack:0x4C, 0
+	021 Call 0x18020CB00, rcx, rdx, r8, r9
+	022 Move [0x18277BE50], rax
+	023 Move rdx, rbx
+	024 Move rcx, rdi
+	025 Call rax
+	026 Move rbx, stack:0x60
+	027 ShiftStack 80
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+
+Method: System.Int32 mono_btls_x509_chain_add_cert(System.IntPtr chain, System.IntPtr x509)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	mov rax,[18277BE58h]
+	mov rbx,rdx
+	mov rdi,rcx
+	test rax,rax
+	jne short 000000018180C594h
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4F08h]
+	mov qword ptr [rsp+38h],1Dh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],10h
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE58h],rax
+	mov rdx,rbx
+	mov rcx,rdi
+	call rax
+	mov rbx,[rsp+60h]
+	add rsp,50h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Move rax, [0x18277BE58]
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Compare rax, 0
+	009 JumpIfNotEqual {23}
+	010 LoadAddress rax, [0x181EF4678]
+	011 Move stack:0x28, 19
+	012 Move stack:0x20, rax
+	013 LoadAddress rcx, stack:0x20
+	014 LoadAddress rax, [0x181EF4F08]
+	015 Move stack:0x38, 29
+	016 Move stack:0x30, rax
+	017 Move stack:0x40, 0
+	018 Move stack:0x44, 2
+	019 Move stack:0x48, 16
+	020 Move stack:0x4C, 0
+	021 Call 0x18020CB00, rcx, rdx, r8, r9
+	022 Move [0x18277BE58], rax
+	023 Move rdx, rbx
+	024 Move rcx, rdi
+	025 Call rax
+	026 Move rbx, stack:0x60
+	027 ShiftStack 80
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+
+Method: System.IntPtr mono_btls_x509_chain_up_ref(System.IntPtr handle)
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	mov rax,[18277BE60h]
+	mov rbx,rcx
+	test rax,rax
+	jne short 000000018180C81Dh
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4F28h]
+	mov qword ptr [rsp+38h],1Bh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE60h],rax
+	mov rcx,rbx
+	call rax
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move rax, [0x18277BE60]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfNotEqual {21}
+	008 LoadAddress rax, [0x181EF4678]
+	009 Move stack:0x28, 19
+	010 Move stack:0x20, rax
+	011 LoadAddress rcx, stack:0x20
+	012 LoadAddress rax, [0x181EF4F28]
+	013 Move stack:0x38, 27
+	014 Move stack:0x30, rax
+	015 Move stack:0x40, 0
+	016 Move stack:0x44, 2
+	017 Move stack:0x48, 8
+	018 Move stack:0x4C, 0
+	019 Call 0x18020CB00, rcx, rdx, r8, r9
+	020 Move [0x18277BE60], rax
+	021 Move rcx, rbx
+	022 Call rax
+	023 ShiftStack 80
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+
+Method: System.Void mono_btls_x509_chain_free(System.IntPtr handle)
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	mov rax,[18277BE68h]
+	mov rbx,rcx
+	test rax,rax
+	jne short 000000018180C61Dh
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4F48h]
+	mov qword ptr [rsp+38h],19h
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE68h],rax
+	mov rcx,rbx
+	call rax
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move rax, [0x18277BE68]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfNotEqual {21}
+	008 LoadAddress rax, [0x181EF4678]
+	009 Move stack:0x28, 19
+	010 Move stack:0x20, rax
+	011 LoadAddress rcx, stack:0x20
+	012 LoadAddress rax, [0x181EF4F48]
+	013 Move stack:0x38, 25
+	014 Move stack:0x30, rax
+	015 Move stack:0x40, 0
+	016 Move stack:0x44, 2
+	017 Move stack:0x48, 8
+	018 Move stack:0x4C, 0
+	019 Call 0x18020CB00, rcx, rdx, r8, r9
+	020 Move [0x18277BE68], rax
+	021 Move rcx, rbx
+	022 Call rax
+	023 ShiftStack 80
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,50h
+	cmp byte ptr [18277BE70h],0
+	mov rsi,rcx
+	jne short 000000018180C34Eh
+	lea rcx,[182637690h]
+	call 000000018020C870h
+	mov byte ptr [18277BE70h],1
+	mov rax,[18277BE40h]
+	test rax,rax
+	jne short 000000018180C3A8h
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4EA8h]
+	mov qword ptr [rsp+38h],18h
+	mov [rsp+30h],rax
+	xor eax,eax
+	mov [rsp+40h],eax
+	mov [rsp+4Ch],al
+	mov qword ptr [rsp+44h],2
+	call 000000018020CB00h
+	mov [18277BE40h],rax
+	call rax
+	mov rcx,[182637690h]
+	mov rbx,rax
+	call 000000018020CA60h
+	xor r9d,r9d
+	mov r8b,1
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001816C67F0h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rsi
+	mov rbx,[rsp+60h]
+	mov rsi,[rsp+68h]
+	add rsp,50h
+	pop rdi
+	jmp near ptr 0000000180389F80h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -80
+	006 Compare [0x18277BE70], 0
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182637690]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x18277BE70], 1
+	012 Move rax, [0x18277BE40]
+	013 Compare rax, 0
+	014 JumpIfNotEqual {28}
+	015 LoadAddress rax, [0x181EF4678]
+	016 Move stack:0x28, 19
+	017 Move stack:0x20, rax
+	018 LoadAddress rcx, stack:0x20
+	019 LoadAddress rax, [0x181EF4EA8]
+	020 Move stack:0x38, 24
+	021 Move stack:0x30, rax
+	022 Move rax, 0
+	023 Move stack:0x40, rax
+	024 Move stack:0x4C, rax
+	025 Move stack:0x44, 2
+	026 Call 0x18020CB00, rcx, rdx, r8, r9
+	027 Move [0x18277BE40], rax
+	028 Call rax
+	029 Move rcx, typeof(Mono.Btls.MonoBtlsX509Chain+BoringX509ChainHandle)
+	030 Move rbx, rax
+	031 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	032 Move r9, 0
+	033 Move r8, 1
+	034 Move rdx, rbx
+	035 Move rcx, rax
+	036 Move rdi, rax
+	037 Call MonoBtlsHandle..ctor, rcx, rdx, r8
+	038 Move r8, 0
+	039 Move rdx, rdi
+	040 Move rcx, rsi
+	041 Move rbx, stack:0x60
+	042 Move rsi, stack:0x68
+	043 ShiftStack 80
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Call 0x180389F80, rcx, rdx
+	047 Return 
+
+Method: System.Void .ctor(Mono.Btls.MonoBtlsX509Chain+BoringX509ChainHandle handle)
+
+Disassembly:
+	xor r8d,r8d
+	jmp near ptr 0000000180389F80h
+
+ISIL:
+	001 Move r8, 0
+	002 Call 0x180389F80, rcx, rdx
+	003 Return 
+
+Method: System.Int32 get_Count()
+
+Disassembly:
+	sub rsp,58h
+	xor edx,edx
+	call 000000018180C4A0h
+	test rax,rax
+	je short 000000018180C48Ch
+	mov [rsp+50h],rbx
+	mov rbx,[rax+10h]
+	mov rax,[18277BE48h]
+	test rax,rax
+	jne short 000000018180C47Dh
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4EC8h]
+	mov qword ptr [rsp+38h],1Eh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE48h],rax
+	mov rcx,rbx
+	call rax
+	mov rbx,[rsp+50h]
+	add rsp,58h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -88
+	002 Move rdx, 0
+	003 Call MonoBtlsX509Chain.get_Handle, rcx, rdx
+	004 Compare rax, 0
+	005 JumpIfEqual {29}
+	006 Move stack:0x50, rbx
+	007 Move rbx, [rax+16]
+	008 Move rax, [0x18277BE48]
+	009 Compare rax, 0
+	010 JumpIfNotEqual {24}
+	011 LoadAddress rax, [0x181EF4678]
+	012 Move stack:0x28, 19
+	013 Move stack:0x20, rax
+	014 LoadAddress rcx, stack:0x20
+	015 LoadAddress rax, [0x181EF4EC8]
+	016 Move stack:0x38, 30
+	017 Move stack:0x30, rax
+	018 Move stack:0x40, 0
+	019 Move stack:0x44, 2
+	020 Move stack:0x48, 8
+	021 Move stack:0x4C, 0
+	022 Call 0x18020CB00, rcx, rdx, r8, r9
+	023 Move [0x18277BE48], rax
+	024 Move rcx, rbx
+	025 Call rax
+	026 Move rbx, stack:0x50
+	027 ShiftStack 88
+	028 Return rax
+	029 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Mono.Btls.MonoBtlsX509 GetCertificate(System.Int32 index)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,50h
+	cmp byte ptr [18277BE71h],0
+	mov ebx,edx
+	mov rdi,rcx
+	jne short 000000018180C1D3h
+	lea rcx,[182637608h]
+	call 000000018020C870h
+	lea rcx,[182633618h]
+	call 000000018020C870h
+	lea rcx,[182610D88h]
+	call 000000018020C870h
+	mov byte ptr [18277BE71h],1
+	xor edx,edx
+	mov rcx,rdi
+	call 000000018180C400h
+	cmp ebx,eax
+	jge near ptr 000000018180C2D7h
+	xor edx,edx
+	mov rcx,rdi
+	call 000000018180C4A0h
+	test rax,rax
+	je near ptr 000000018180C310h
+	mov [rsp+60h],rsi
+	mov rsi,[rax+10h]
+	mov rax,[18277BE50h]
+	test rax,rax
+	jne short 000000018180C265h
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4EE8h]
+	mov qword ptr [rsp+38h],1Dh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],0Ch
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE50h],rax
+	mov edx,ebx
+	mov rcx,rsi
+	call rax
+	mov r8,[182610D88h]
+	test rax,rax
+	mov rcx,rdi
+	mov rbx,rax
+	setne dl
+	xor r9d,r9d
+	call 00000001816C7080h
+	mov rcx,[182637608h]
+	call 000000018020CA60h
+	xor r9d,r9d
+	mov r8b,1
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001816C67F0h
+	mov rcx,[182633618h]
+	call 000000018020CA60h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180389F80h
+	mov rsi,[rsp+60h]
+	mov rax,rbx
+	mov rbx,[rsp+68h]
+	add rsp,50h
+	pop rdi
+	ret
+	lea rcx,[182624E40h]
+	call 000000018020C890h
+	mov rcx,rax
+	call 000000018020CA60h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018156D1C0h
+	lea rcx,[18264AC80h]
+	call 000000018020C890h
+	mov rdx,rax
+	mov rcx,rbx
+	call 000000018020CA70h
+	int 3
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Compare [0x18277BE71], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {16}
+	009 LoadAddress rcx, [0x182637608]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182633618]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182610D88]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x18277BE71], 1
+	016 Move rdx, 0
+	017 Move rcx, rdi
+	018 Call MonoBtlsX509Chain.get_Count, rcx, rdx
+	019 Compare rbx, rax
+	020 JumpIfGreaterOrEqual {76}
+	021 Move rdx, 0
+	022 Move rcx, rdi
+	023 Call MonoBtlsX509Chain.get_Handle, rcx, rdx
+	024 Compare rax, 0
+	025 JumpIfEqual {90}
+	026 Move stack:0x60, rsi
+	027 Move rsi, [rax+16]
+	028 Move rax, [0x18277BE50]
+	029 Compare rax, 0
+	030 JumpIfNotEqual {44}
+	031 LoadAddress rax, [0x181EF4678]
+	032 Move stack:0x28, 19
+	033 Move stack:0x20, rax
+	034 LoadAddress rcx, stack:0x20
+	035 LoadAddress rax, [0x181EF4EE8]
+	036 Move stack:0x38, 29
+	037 Move stack:0x30, rax
+	038 Move stack:0x40, 0
+	039 Move stack:0x44, 2
+	040 Move stack:0x48, 12
+	041 Move stack:0x4C, 0
+	042 Call 0x18020CB00, rcx, rdx, r8, r9
+	043 Move [0x18277BE50], rax
+	044 Move rdx, rbx
+	045 Move rcx, rsi
+	046 Call rax
+	047 Move r8, "GetCertificate"
+	048 Compare rax, 0
+	049 Move rcx, rdi
+	050 Move rbx, rax
+	051 NotImplemented "setne dl"
+	052 Move r9, 0
+	053 Call MonoBtlsObject.CheckError, rcx, rdx, r8
+	054 Move rcx, typeof(Mono.Btls.MonoBtlsX509+BoringX509Handle)
+	055 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	056 Move r9, 0
+	057 Move r8, 1
+	058 Move rdx, rbx
+	059 Move rcx, rax
+	060 Move rdi, rax
+	061 Call MonoBtlsHandle..ctor, rcx, rdx, r8
+	062 Move rcx, typeof(Mono.Btls.MonoBtlsX509)
+	063 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	064 Move r8, 0
+	065 Move rdx, rdi
+	066 Move rcx, rax
+	067 Move rbx, rax
+	068 Call 0x180389F80, rcx, rdx
+	069 Move rsi, stack:0x60
+	070 Move rax, rbx
+	071 Move rbx, stack:0x68
+	072 ShiftStack 80
+	073 Move rdi, stack:0x0
+	074 ShiftStack 8
+	075 Return rax
+	076 LoadAddress rcx, [0x182624E40]
+	077 Call 0x18020C890, rcx, rdx, r8, r9
+	078 Move rcx, rax
+	079 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	080 Move rdx, 0
+	081 Move rcx, rax
+	082 Move rbx, rax
+	083 Call IndexOutOfRangeException..ctor, rcx, rdx
+	084 LoadAddress rcx, [0x18264AC80]
+	085 Call 0x18020C890, rcx, rdx, r8, r9
+	086 Move rdx, rax
+	087 Move rcx, rbx
+	088 Call 0x18020CA70, rcx, rdx, r8, r9
+	089 Interrupt 
+	090 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void AddCertificate(Mono.Btls.MonoBtlsX509 x509)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	mov rbx,rdx
+	xor edx,edx
+	call 000000018180C4A0h
+	test rax,rax
+	je near ptr 000000018180C054h
+	mov rdi,[rax+10h]
+	test rbx,rbx
+	je near ptr 000000018180C054h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181812E50h
+	test rax,rax
+	je short 000000018180C054h
+	mov rbx,[rax+10h]
+	mov rax,[18277BE58h]
+	test rax,rax
+	jne short 000000018180C041h
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4F08h]
+	mov qword ptr [rsp+38h],1Dh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],10h
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE58h],rax
+	mov rdx,rbx
+	mov rcx,rdi
+	call rax
+	mov rbx,[rsp+60h]
+	add rsp,50h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Move rbx, rdx
+	006 Move rdx, 0
+	007 Call MonoBtlsX509Chain.get_Handle, rcx, rdx
+	008 Compare rax, 0
+	009 JumpIfEqual {43}
+	010 Move rdi, [rax+16]
+	011 Compare rbx, 0
+	012 JumpIfEqual {43}
+	013 Move rdx, 0
+	014 Move rcx, rbx
+	015 Call MonoBtlsX509.get_Handle, rcx, rdx
+	016 Compare rax, 0
+	017 JumpIfEqual {43}
+	018 Move rbx, [rax+16]
+	019 Move rax, [0x18277BE58]
+	020 Compare rax, 0
+	021 JumpIfNotEqual {35}
+	022 LoadAddress rax, [0x181EF4678]
+	023 Move stack:0x28, 19
+	024 Move stack:0x20, rax
+	025 LoadAddress rcx, stack:0x20
+	026 LoadAddress rax, [0x181EF4F08]
+	027 Move stack:0x38, 29
+	028 Move stack:0x30, rax
+	029 Move stack:0x40, 0
+	030 Move stack:0x44, 2
+	031 Move stack:0x48, 16
+	032 Move stack:0x4C, 0
+	033 Call 0x18020CB00, rcx, rdx, r8, r9
+	034 Move [0x18277BE58], rax
+	035 Move rdx, rbx
+	036 Move rcx, rdi
+	037 Call rax
+	038 Move rbx, stack:0x60
+	039 ShiftStack 80
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 Return 
+	043 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Mono.Btls.MonoBtlsX509Chain Copy()
+
+Disassembly:
+	push rdi
+	sub rsp,50h
+	cmp byte ptr [18277BE72h],0
+	mov rdi,rcx
+	jne short 000000018180C09Dh
+	lea rcx,[182637690h]
+	call 000000018020C870h
+	lea rcx,[1826336A0h]
+	call 000000018020C870h
+	lea rcx,[1826471C8h]
+	call 000000018020C870h
+	mov byte ptr [18277BE72h],1
+	xor edx,edx
+	mov rcx,rdi
+	call 000000018180C4A0h
+	test rax,rax
+	je near ptr 000000018180C188h
+	mov [rsp+60h],rbx
+	mov rbx,[rax+10h]
+	mov rax,[18277BE60h]
+	test rax,rax
+	jne short 000000018180C11Dh
+	lea rax,[181EF4678h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181EF4F28h]
+	mov qword ptr [rsp+38h],1Bh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 000000018020CB00h
+	mov [18277BE60h],rax
+	mov rcx,rbx
+	call rax
+	mov r8,[1826471C8h]
+	test rax,rax
+	mov rcx,rdi
+	mov rbx,rax
+	setne dl
+	xor r9d,r9d
+	call 00000001816C7080h
+	mov rcx,[182637690h]
+	call 000000018020CA60h
+	xor r9d,r9d
+	mov r8b,1
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001816C67F0h
+	mov rcx,[1826336A0h]
+	call 000000018020CA60h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180389F80h
+	mov rax,rbx
+	mov rbx,[rsp+60h]
+	add rsp,50h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -80
+	004 Compare [0x18277BE72], 0
+	005 Move rdi, rcx
+	006 JumpIfNotEqual {14}
+	007 LoadAddress rcx, [0x182637690]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x1826336A0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x1826471C8]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x18277BE72], 1
+	014 Move rdx, 0
+	015 Move rcx, rdi
+	016 Call MonoBtlsX509Chain.get_Handle, rcx, rdx
+	017 Compare rax, 0
+	018 JumpIfEqual {67}
+	019 Move stack:0x60, rbx
+	020 Move rbx, [rax+16]
+	021 Move rax, [0x18277BE60]
+	022 Compare rax, 0
+	023 JumpIfNotEqual {37}
+	024 LoadAddress rax, [0x181EF4678]
+	025 Move stack:0x28, 19
+	026 Move stack:0x20, rax
+	027 LoadAddress rcx, stack:0x20
+	028 LoadAddress rax, [0x181EF4F28]
+	029 Move stack:0x38, 27
+	030 Move stack:0x30, rax
+	031 Move stack:0x40, 0
+	032 Move stack:0x44, 2
+	033 Move stack:0x48, 8
+	034 Move stack:0x4C, 0
+	035 Call 0x18020CB00, rcx, rdx, r8, r9
+	036 Move [0x18277BE60], rax
+	037 Move rcx, rbx
+	038 Call rax
+	039 Move r8, "Copy"
+	040 Compare rax, 0
+	041 Move rcx, rdi
+	042 Move rbx, rax
+	043 NotImplemented "setne dl"
+	044 Move r9, 0
+	045 Call MonoBtlsObject.CheckError, rcx, rdx, r8
+	046 Move rcx, typeof(Mono.Btls.MonoBtlsX509Chain+BoringX509ChainHandle)
+	047 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	048 Move r9, 0
+	049 Move r8, 1
+	050 Move rdx, rbx
+	051 Move rcx, rax
+	052 Move rdi, rax
+	053 Call MonoBtlsHandle..ctor, rcx, rdx, r8
+	054 Move rcx, typeof(Mono.Btls.MonoBtlsX509Chain)
+	055 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	056 Move r8, 0
+	057 Move rdx, rdi
+	058 Move rcx, rax
+	059 Move rbx, rax
+	060 Call 0x180389F80, rcx, rdx
+	061 Move rax, rbx
+	062 Move rbx, stack:0x60
+	063 ShiftStack 80
+	064 Move rdi, stack:0x0
+	065 ShiftStack 8
+	066 Return rax
+	067 Call 0x18020CAB0, rcx, rdx, r8, r9
+

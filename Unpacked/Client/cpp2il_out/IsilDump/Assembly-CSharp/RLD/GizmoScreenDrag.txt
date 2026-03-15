@@ -1,0 +1,253 @@
+Type: RLD.GizmoScreenDrag
+
+Method: System.Boolean get_IsSnapEnabled()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+68h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+104]
+	002 Return rax
+
+Method: System.Void set_IsSnapEnabled(System.Boolean value)
+
+Disassembly:
+	mov [rcx+68h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+104], rdx
+	002 Return 
+
+Method: System.Single get_Sensitivity()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+6Ch]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+108]
+	002 Return xmm0
+
+Method: System.Void set_Sensitivity(System.Single value)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [181E5DB88h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+6Ch],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [0x181E5DB88]
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+108], xmm0
+	008 Return 
+
+Method: System.Boolean get_IsActive()
+
+Disassembly:
+	cmp qword ptr [rcx+70h],0
+	jne short 00000001803DC3FAh
+	xor al,al
+	ret
+	mov rax,[rcx+70h]
+	movzx eax,byte ptr [rax+30h]
+	ret
+
+ISIL:
+	001 Compare [rcx+112], 0
+	002 JumpIfNotEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Move rax, [rcx+112]
+	006 Move rax, [rax+48]
+	007 Return rax
+
+Method: System.Boolean DoBeginSession()
+
+Disassembly:
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [182775541h],0
+	mov rsi,rcx
+	jne short 00000001803DC2FDh
+	lea rcx,[182625368h]
+	call 000000018020C870h
+	lea rcx,[182616C28h]
+	call 000000018020C870h
+	lea rcx,[18261BE40h]
+	call 000000018020C870h
+	mov byte ptr [182775541h],1
+	mov rcx,[18261BE40h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001803DC312h
+	call 000000018020CB50h
+	mov rcx,[182616C28h]
+	call 0000000180FB5B30h
+	test rax,rax
+	je short 00000001803DC37Dh
+	mov rcx,[182625368h]
+	mov [rsp+30h],rbx
+	mov rbx,[rax+20h]
+	mov [rsp+38h],rdi
+	call 000000018020CA60h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001805BE2A0h
+	lea rcx,[rsi+70h]
+	mov [rsi+70h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	mov rcx,[rsi+70h]
+	mov rdi,[rsp+38h]
+	mov rbx,[rsp+30h]
+	test rcx,rcx
+	je short 00000001803DC37Dh
+	xor edx,edx
+	add rsp,20h
+	pop rsi
+	jmp near ptr 00000001805BE030h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rsi
+	003 ShiftStack -32
+	004 Compare [0x182775541], 0
+	005 Move rsi, rcx
+	006 JumpIfNotEqual {14}
+	007 LoadAddress rcx, [0x182625368]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x182616C28]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x18261BE40]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x182775541], 1
+	014 Move rcx, typeof(RLD.MonoSingleton`1<RTInputDevice>)
+	015 Compare [rcx+228], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rcx, [0x182616C28]
+	019 Call 0x180FB5B30, rcx
+	020 Compare rax, 0
+	021 JumpIfEqual {47}
+	022 Move rcx, typeof(RLD.InputDeviceScreenDragSession)
+	023 Move stack:0x30, rbx
+	024 Move rbx, [rax+32]
+	025 Move stack:0x38, rdi
+	026 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	027 Move r8, 0
+	028 Move rdx, rbx
+	029 Move rcx, rax
+	030 Move rdi, rax
+	031 Call 0x1805BE2A0, rcx, rdx, r8
+	032 LoadAddress rcx, [rsi+112]
+	033 Move [rsi+112], rdi
+	034 Move rdx, rdi
+	035 Call 0x18020B990, rcx, rdx, r8, r9
+	036 Move rcx, [rsi+112]
+	037 Move rdi, stack:0x38
+	038 Move rbx, stack:0x30
+	039 Compare rcx, 0
+	040 JumpIfEqual {47}
+	041 Move rdx, 0
+	042 ShiftStack 32
+	043 Move rsi, stack:0x0
+	044 ShiftStack 8
+	045 Call InputDeviceScreenDragSession.Begin, rcx, rdx
+	046 Return rax
+	047 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean DoUpdateSession()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+70h]
+	test rcx,rcx
+	je short 00000001803DC3E8h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 00000001805BE1D0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+112]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call InputDeviceScreenDragSession.Update, rcx, rdx
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void DoEndSession()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov rcx,[rcx+70h]
+	test rcx,rcx
+	je short 00000001803DC3C1h
+	xor edx,edx
+	call 00000001805BE060h
+	lea rcx,[rbx+70h]
+	mov qword ptr [rbx+70h],0
+	xor edx,edx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 000000018020B990h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rcx, [rcx+112]
+	006 Compare rcx, 0
+	007 JumpIfEqual {18}
+	008 Move rdx, 0
+	009 Call InputDeviceScreenDragSession.End, rcx, rdx
+	010 LoadAddress rcx, [rbx+112]
+	011 Move [rbx+112], 0
+	012 Move rdx, 0
+	013 ShiftStack 32
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Return 
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean CanSnap()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+68h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+104]
+	002 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+6Ch],3F800000h
+	jmp near ptr 00000001803D9E20h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+108], 0x3F800000
+	003 Call GizmoDragSession..ctor, rcx, rdx
+	004 Return 
+

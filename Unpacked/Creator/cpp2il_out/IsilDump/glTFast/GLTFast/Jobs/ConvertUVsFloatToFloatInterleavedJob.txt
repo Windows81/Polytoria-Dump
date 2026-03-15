@@ -1,0 +1,175 @@
+Type: GLTFast.Jobs.ConvertUVsFloatToFloatInterleavedJob
+
+Method: System.Void Execute(System.Int32 i, System.Int32 count)
+
+Disassembly:
+	mov [rsp+20h],rbx
+	push rdi
+	movss xmm1,dword ptr [181D30C04h]
+	mov eax,edx
+	imul eax,[rcx+10h]
+	xor ebx,ebx
+	imul edx,[rcx]
+	movsxd r9,eax
+	add r9,[rcx+18h]
+	movsxd r10,edx
+	add r10,[rcx+8]
+	cmp r8d,4
+	jl near ptr 000000018108BE8Ah
+	movsxd rdi,dword ptr [rcx]
+	lea eax,[r8-4]
+	movsxd r11,dword ptr [rcx+10h]
+	mov [rsp+10h],rbp
+	mov rdx,r11
+	mov [rsp+18h],rsi
+	shr eax,2
+	lea rsi,[rdi+rdi*2]
+	inc eax
+	mov [rsp+20h],r14
+	lea r14,[rdi*4]
+	mov ebp,eax
+	lea ebx,[rax*4]
+	nop dword ptr [rax+rax]
+	mov eax,[r10]
+	movaps xmm0,xmm1
+	subss xmm0,dword ptr [r10+4]
+	mov [r9],eax
+	movss dword ptr [r9+4],xmm0
+	add r9,rdx
+	mov eax,[rdi+r10]
+	movaps xmm0,xmm1
+	subss xmm0,dword ptr [rdi+r10+4]
+	mov [r9],eax
+	movss dword ptr [r9+4],xmm0
+	add r9,rdx
+	mov eax,[r10+rdi*2]
+	movaps xmm0,xmm1
+	subss xmm0,dword ptr [r10+rdi*2+4]
+	mov [r9],eax
+	movss dword ptr [r9+4],xmm0
+	add r9,rdx
+	mov eax,[rsi+r10]
+	movaps xmm0,xmm1
+	subss xmm0,dword ptr [rsi+r10+4]
+	mov [r9],eax
+	add r10,r14
+	movss dword ptr [r9+4],xmm0
+	add r9,rdx
+	sub rbp,1
+	jne short 000000018108BE00h
+	mov r14,[rsp+20h]
+	mov rsi,[rsp+18h]
+	mov rbp,[rsp+10h]
+	cmp ebx,r8d
+	jl short 000000018108BE95h
+	mov rbx,[rsp+28h]
+	pop rdi
+	ret
+	test r8d,r8d
+	jle short 000000018108BEC2h
+	mov r11d,[rcx+10h]
+	mov edi,[rcx]
+	sub r8d,ebx
+	movsxd rdx,r11d
+	mov ecx,r8d
+	movsxd r11,edi
+	mov eax,[r10]
+	movaps xmm0,xmm1
+	subss xmm0,dword ptr [r10+4]
+	mov [r9],eax
+	add r10,r11
+	movss dword ptr [r9+4],xmm0
+	add r9,rdx
+	sub rcx,1
+	jne short 000000018108BEA1h
+	mov rbx,[rsp+28h]
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x20, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 Move xmm1, [0x181D30C04]
+	005 Move rax, rdx
+	006 Multiply rax, rax, [rcx+16]
+	007 Move rbx, 0
+	008 Multiply rdx, rdx, [rcx]
+	009 Move r9, rax
+	010 Add r9, r9, [rcx+24]
+	011 Move r10, rdx
+	012 Add r10, r10, [rcx+8]
+	013 Compare r8, 4
+	014 JumpIfLess {65}
+	015 Move rdi, [rcx]
+	016 LoadAddress rax, [r8-4]
+	017 Move r11, [rcx+16]
+	018 Move stack:0x10, rbp
+	019 Move rdx, r11
+	020 Move stack:0x18, rsi
+	021 ShiftRight rax, 2
+	022 LoadAddress rsi, [rdi+rdi*2]
+	023 Add rax, rax, 1
+	024 Move stack:0x20, r14
+	025 LoadAddress r14, []
+	026 Move rbp, rax
+	027 LoadAddress rbx, []
+	028 Nop 
+	029 Move rax, [r10]
+	030 Move xmm0, xmm1
+	031 Subtract xmm0, xmm0, [r10+4]
+	032 Move [r9], rax
+	033 Move [r9+4], xmm0
+	034 Add r9, r9, rdx
+	035 Move rax, [rdi+r10]
+	036 Move xmm0, xmm1
+	037 Subtract xmm0, xmm0, [rdi+4+r10]
+	038 Move [r9], rax
+	039 Move [r9+4], xmm0
+	040 Add r9, r9, rdx
+	041 Move rax, [r10+rdi*2]
+	042 Move xmm0, xmm1
+	043 Subtract xmm0, xmm0, [r10+4+rdi*2]
+	044 Move [r9], rax
+	045 Move [r9+4], xmm0
+	046 Add r9, r9, rdx
+	047 Move rax, [rsi+r10]
+	048 Move xmm0, xmm1
+	049 Subtract xmm0, xmm0, [rsi+4+r10]
+	050 Move [r9], rax
+	051 Add r10, r10, r14
+	052 Move [r9+4], xmm0
+	053 Add r9, r9, rdx
+	054 Subtract rbp, rbp, 1
+	055 JumpIfNotEqual {29}
+	056 Move r14, stack:0x20
+	057 Move rsi, stack:0x18
+	058 Move rbp, stack:0x10
+	059 Compare rbx, r8
+	060 JumpIfLess {69}
+	061 Move rbx, stack:0x28
+	062 Move rdi, stack:0x0
+	063 ShiftStack 8
+	064 Return 
+	065 Compare r8, 0
+	066 JumpIfLessOrEqual {82}
+	067 Move r11, [rcx+16]
+	068 Move rdi, [rcx]
+	069 Subtract r8, r8, rbx
+	070 Move rdx, r11
+	071 Move rcx, r8
+	072 Move r11, rdi
+	073 Move rax, [r10]
+	074 Move xmm0, xmm1
+	075 Subtract xmm0, xmm0, [r10+4]
+	076 Move [r9], rax
+	077 Add r10, r10, r11
+	078 Move [r9+4], xmm0
+	079 Add r9, r9, rdx
+	080 Subtract rcx, rcx, 1
+	081 JumpIfNotEqual {73}
+	082 Move rbx, stack:0x28
+	083 Move rdi, stack:0x0
+	084 ShiftStack 8
+	085 Return 
+

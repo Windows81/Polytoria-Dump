@@ -1,0 +1,50 @@
+Type: GLTFast.Jobs.ConvertBoneJointsUInt8ToUInt32Job
+
+Method: System.Void Execute(System.Int32 index)
+
+Disassembly:
+	sub rsp,18h
+	mov eax,edx
+	mov r10,rcx
+	imul eax,[rcx+8]
+	movsxd r9,eax
+	add r9,[rcx]
+	imul edx,[rcx+18h]
+	movzx eax,byte ptr [r9]
+	mov [rsp],eax
+	movzx eax,byte ptr [r9+1]
+	mov [rsp+4],eax
+	movzx eax,byte ptr [r9+2]
+	mov [rsp+8],eax
+	movzx eax,byte ptr [r9+3]
+	mov [rsp+0Ch],eax
+	mov rax,[r10+10h]
+	movups xmm0,[rsp]
+	movsxd rcx,edx
+	movups [rcx+rax],xmm0
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move rax, rdx
+	003 Move r10, rcx
+	004 Multiply rax, rax, [rcx+8]
+	005 Move r9, rax
+	006 Add r9, r9, [rcx]
+	007 Multiply rdx, rdx, [rcx+24]
+	008 Move rax, [r9]
+	009 Move stack:0x0, rax
+	010 Move rax, [r9+1]
+	011 Move stack:0x4, rax
+	012 Move rax, [r9+2]
+	013 Move stack:0x8, rax
+	014 Move rax, [r9+3]
+	015 Move stack:0xC, rax
+	016 Move rax, [r10+16]
+	017 Move xmm0, stack:0x0
+	018 Move rcx, rdx
+	019 Move [rcx+rax], xmm0
+	020 ShiftStack 24
+	021 Return 
+

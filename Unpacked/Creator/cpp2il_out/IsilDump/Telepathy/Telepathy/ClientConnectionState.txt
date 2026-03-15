@@ -1,0 +1,178 @@
+Type: Telepathy.ClientConnectionState
+
+Method: System.Boolean get_Connected()
+
+Disassembly:
+	cmp qword ptr [rcx+10h],0
+	je short 00000001818017EBh
+	mov rax,[rcx+10h]
+	cmp qword ptr [rax+10h],0
+	je short 00000001818017EBh
+	mov rax,[rax+10h]
+	movzx eax,byte ptr [rax+52h]
+	ret
+	xor al,al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 0
+	002 JumpIfEqual {9}
+	003 Move rax, [rcx+16]
+	004 Compare [rax+16], 0
+	005 JumpIfEqual {9}
+	006 Move rax, [rax+16]
+	007 Move rax, [rax+82]
+	008 Return rax
+	009 Move rax, 0
+	010 Return rax
+
+Method: System.Void .ctor(System.Int32 MaxMessageSize)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825CD1A1h],0
+	mov esi,edx
+	mov rdi,rcx
+	jne short 000000018180175Ch
+	lea rcx,[182486838h]
+	call 00000001801EE810h
+	lea rcx,[18245B290h]
+	call 00000001801EE810h
+	mov byte ptr [1825CD1A1h],1
+	mov rcx,[18245B290h]
+	call 00000001801EEA00h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018172BFB0h
+	xor r9d,r9d
+	mov r8d,esi
+	mov rdx,rbx
+	mov rcx,rdi
+	call 0000000181802610h
+	mov rcx,[182486838h]
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov edx,esi
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001818033E0h
+	lea rcx,[rdi+38h]
+	mov [rdi+38h],rbx
+	mov rdx,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x1825CD1A1], 0
+	007 Move rsi, rdx
+	008 Move rdi, rcx
+	009 JumpIfNotEqual {15}
+	010 LoadAddress rcx, [0x182486838]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x18245B290]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x1825CD1A1], 1
+	015 Move rcx, typeof(System.Net.Sockets.TcpClient)
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move rdx, 0
+	018 Move rcx, rax
+	019 Move rbx, rax
+	020 Call TcpClient..ctor, rcx, rdx
+	021 Move r9, 0
+	022 Move r8, rsi
+	023 Move rdx, rbx
+	024 Move rcx, rdi
+	025 Call ConnectionState..ctor, rcx, rdx, r8
+	026 Move rcx, typeof(Telepathy.MagnificentReceivePipe)
+	027 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	028 Move r8, 0
+	029 Move rdx, rsi
+	030 Move rcx, rax
+	031 Move rbx, rax
+	032 Call MagnificentReceivePipe..ctor, rcx, rdx
+	033 LoadAddress rcx, [rdi+56]
+	034 Move [rdi+56], rbx
+	035 Move rdx, rbx
+	036 Move rbx, stack:0x30
+	037 Move rsi, stack:0x38
+	038 ShiftStack 32
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Call 0x1801ED930, rcx, rdx, r8, r9
+	042 Return 
+
+Method: System.Void Dispose()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 000000018180171Ah
+	xor edx,edx
+	call 000000018172B3A0h
+	mov rcx,[rbx+28h]
+	test rcx,rcx
+	je short 00000001818016E9h
+	xor edx,edx
+	call 000000018151AFE0h
+	call 00000001801EE990h
+	mov rcx,[rbx+18h]
+	mov byte ptr [rbx+30h],0
+	test rcx,rcx
+	je short 000000018180171Ah
+	xor edx,edx
+	call 0000000181803700h
+	lea rcx,[rbx+10h]
+	mov qword ptr [rbx+10h],0
+	xor edx,edx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801ED930h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rcx, [rcx+16]
+	006 Compare rcx, 0
+	007 JumpIfEqual {30}
+	008 Move rdx, 0
+	009 Call TcpClient.Close, rcx, rdx
+	010 Move rcx, [rbx+40]
+	011 Compare rcx, 0
+	012 JumpIfEqual {15}
+	013 Move rdx, 0
+	014 Call 0x18151AFE0, rcx, rdx
+	015 Call 0x1801EE990, rcx, rdx, r8, r9
+	016 Move rcx, [rbx+24]
+	017 Move [rbx+48], 0
+	018 Compare rcx, 0
+	019 JumpIfEqual {30}
+	020 Move rdx, 0
+	021 Call MagnificentSendPipe.Clear, rcx, rdx
+	022 LoadAddress rcx, [rbx+16]
+	023 Move [rbx+16], 0
+	024 Move rdx, 0
+	025 ShiftStack 32
+	026 Move rbx, stack:0x0
+	027 ShiftStack 8
+	028 Call 0x1801ED930, rcx, rdx, r8, r9
+	029 Return 
+	030 Call 0x1801EEA50, rcx, rdx, r8, r9
+

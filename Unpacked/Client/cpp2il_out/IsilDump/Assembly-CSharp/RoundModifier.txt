@@ -1,0 +1,76 @@
+Type: RoundModifier
+
+Method: UnityEngine.Vector4 CalculateRadius(UnityEngine.Rect imageRect)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1827754C7h],0
+	mov rdi,r8
+	mov rbx,rcx
+	jne short 00000001803E80DCh
+	lea rcx,[182645F70h]
+	call 000000018020C870h
+	mov byte ptr [1827754C7h],1
+	mov rcx,[182645F70h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 00000001803E80F1h
+	call 000000018020CB50h
+	movss xmm0,dword ptr [rdi+8]
+	mov rax,rbx
+	minss xmm0,dword ptr [rdi+0Ch]
+	mulss xmm0,dword ptr [181E5DBC4h]
+	shufps xmm0,xmm0,0
+	movups [rbx],xmm0
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1827754C7], 0
+	006 Move rdi, r8
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182645F70]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1827754C7], 1
+	012 Move rcx, typeof(UnityEngine.Rect)
+	013 Compare [rcx+228], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Move xmm0, [rdi+8]
+	017 Move rax, rbx
+	018 Compare xmm0, [rdi+12]
+	019 JumpIfLessOrEqual {21}
+	020 Move xmm0, [rdi+12]
+	021 Nop 
+	022 Multiply xmm0, xmm0, [0x181E5DBC4]
+	023 Move XMM_TEMP.S[0], xmm0.S[0]
+	024 Move XMM_TEMP.S[1], xmm0.S[0]
+	025 Move XMM_TEMP.S[2], xmm0.S[0]
+	026 Move XMM_TEMP.S[3], xmm0.S[0]
+	027 Move xmm0, XMM_TEMP
+	028 Move [rbx], xmm0
+	029 Move rbx, stack:0x30
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E75F0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E75F0, rcx, rdx
+	003 Return 
+

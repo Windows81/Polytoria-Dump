@@ -1,0 +1,110 @@
+Type: RLD.SphereTreeNodeRayHit`1
+
+Method: RLD.SphereTreeNode`1<T> get_HitNode()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: UnityEngine.Vector3 get_HitPoint()
+
+Disassembly:
+	mov eax,[rdx+20h]
+	movsd xmm0,qword ptr [rdx+18h]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+32]
+	002 Move xmm0, [rdx+24]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Single get_HitEnter()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+24h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+36]
+	002 Return xmm0
+
+Method: System.Void .ctor(UnityEngine.Ray ray, RLD.SphereTreeNode`1<T> hitNode, System.Single hitEnter)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,40h
+	mov rdi,rdx
+	movaps [rsp+30h],xmm6
+	xor edx,edx
+	movaps xmm6,xmm3
+	mov rbx,r8
+	mov rsi,rcx
+	call 00000001802C3410h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	xor r9d,r9d
+	movss dword ptr [rsi+24h],xmm6
+	movaps xmm2,xmm6
+	lea rcx,[rsp+20h]
+	mov rdx,rdi
+	call 000000018193A4B0h
+	mov rbx,[rsp+50h]
+	movaps xmm6,[rsp+30h]
+	movsd xmm0,qword ptr [rax]
+	mov ecx,[rax+8]
+	movsd qword ptr [rsi+18h],xmm0
+	mov [rsi+20h],ecx
+	mov rsi,[rsp+58h]
+	add rsp,40h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -64
+	006 Move rdi, rdx
+	007 Move stack:0x30, xmm6
+	008 Move rdx, 0
+	009 Move xmm6, xmm3
+	010 Move rbx, r8
+	011 Move rsi, rcx
+	012 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	013 LoadAddress rcx, [rsi+16]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801ED930, rcx, rdx, r8, r9
+	017 Move r9, 0
+	018 Move [rsi+36], xmm6
+	019 Move xmm2, xmm6
+	020 LoadAddress rcx, stack:0x20
+	021 Move rdx, rdi
+	022 Call Ray.GetPoint, rcx, rdx
+	023 Move rbx, stack:0x50
+	024 Move xmm6, stack:0x30
+	025 Move xmm0, [rax]
+	026 Move rcx, [rax+8]
+	027 Move [rsi+24], xmm0
+	028 Move [rsi+32], rcx
+	029 Move rsi, stack:0x58
+	030 ShiftStack 64
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return 
+

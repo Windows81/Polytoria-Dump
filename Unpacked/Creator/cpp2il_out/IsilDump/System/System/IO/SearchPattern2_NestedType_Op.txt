@@ -1,0 +1,51 @@
+Type: System.IO.SearchPattern2+Op
+
+Method: System.Void .ctor(System.IO.SearchPattern2+OpCode code)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov rdi,rcx
+	xor edx,edx
+	call 00000001802C3410h
+	mov [rdi+10h],ebx
+	lea rcx,[rdi+18h]
+	xor ebx,ebx
+	xor edx,edx
+	mov [rdi+18h],rbx
+	call 00000001801ED930h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rbx
+	xor edx,edx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rdi, rcx
+	007 Move rdx, 0
+	008 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	009 Move [rdi+16], rbx
+	010 LoadAddress rcx, [rdi+24]
+	011 Move rbx, 0
+	012 Move rdx, 0
+	013 Move [rdi+24], rbx
+	014 Call 0x1801ED930, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+32]
+	016 Move [rdi+32], rbx
+	017 Move rdx, 0
+	018 Move rbx, stack:0x30
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Call 0x1801ED930, rcx, rdx, r8, r9
+	023 Return 
+

@@ -1,0 +1,346 @@
+Type: kcp2k.Utils
+
+Method: System.Int32 Clamp(System.Int32 value, System.Int32 min, System.Int32 max)
+
+Disassembly:
+	cmp ecx,edx
+	jl short 000000018116CDBFh
+	cmp ecx,r8d
+	cmovle r8d,ecx
+	mov eax,r8d
+	ret
+	mov eax,edx
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 JumpIfLess {9}
+	003 Compare rcx, r8
+	004 JumpIfGreater {6}
+	005 Move r8, rcx
+	006 Nop 
+	007 Move rax, r8
+	008 Return rax
+	009 Move rax, rdx
+	010 Return rax
+
+Method: System.Int32 Encode8u(System.Byte[] p, System.Int32 offset, System.Byte value)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018116CFB0h
+	cmp edx,[rcx+18h]
+	jae short 000000018116CFB6h
+	movsxd rax,edx
+	mov [rax+rcx+20h],r8b
+	mov eax,1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {11}
+	004 Compare rdx, [rcx+24]
+	005 JumpIfGreaterOrEqual {13}
+	006 Move rax, rdx
+	007 Move [rax+32+rcx], r8
+	008 Move rax, 1
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x18020CAB0, rcx, rdx, r8, r9
+	012 Interrupt 
+	013 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Int32 Decode8u(System.Byte[] p, System.Int32 offset, out System.Byte value)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018116CEC3h
+	cmp edx,[rcx+18h]
+	jae short 000000018116CEC9h
+	movsxd rax,edx
+	movzx ecx,byte ptr [rax+rcx+20h]
+	mov eax,1
+	mov [r8],cl
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {12}
+	004 Compare rdx, [rcx+24]
+	005 JumpIfGreaterOrEqual {14}
+	006 Move rax, rdx
+	007 Move rcx, [rax+32+rcx]
+	008 Move rax, 1
+	009 Move [r8], rcx
+	010 ShiftStack 40
+	011 Return rax
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+	013 Interrupt 
+	014 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Int32 Encode16U(System.Byte[] p, System.Int32 offset, System.UInt16 value)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018116CF05h
+	cmp edx,[rcx+18h]
+	jae short 000000018116CF0Bh
+	movsxd rax,edx
+	mov [rax+rcx+20h],r8b
+	movsxd rax,edx
+	inc rax
+	cmp eax,[rcx+18h]
+	jae short 000000018116CF0Bh
+	shr r8w,8
+	mov [rax+rcx+20h],r8b
+	mov eax,2
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {17}
+	004 Compare rdx, [rcx+24]
+	005 JumpIfGreaterOrEqual {19}
+	006 Move rax, rdx
+	007 Move [rax+32+rcx], r8
+	008 Move rax, rdx
+	009 Add rax, rax, 1
+	010 Compare rax, [rcx+24]
+	011 JumpIfGreaterOrEqual {19}
+	012 ShiftRight r8, 8
+	013 Move [rax+32+rcx], r8
+	014 Move rax, 2
+	015 ShiftStack 40
+	016 Return rax
+	017 Call 0x18020CAB0, rcx, rdx, r8, r9
+	018 Interrupt 
+	019 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Int32 Decode16U(System.Byte[] p, System.Int32 offset, out System.UInt16 value)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018116CE0Dh
+	cmp edx,[rcx+18h]
+	jae short 000000018116CE13h
+	movsxd rax,edx
+	movzx r9d,byte ptr [rax+rcx+20h]
+	movsxd rax,edx
+	inc rax
+	cmp eax,[rcx+18h]
+	jae short 000000018116CE13h
+	movzx eax,byte ptr [rax+rcx+20h]
+	shl ax,8
+	or ax,r9w
+	mov [r8],ax
+	mov eax,2
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {19}
+	004 Compare rdx, [rcx+24]
+	005 JumpIfGreaterOrEqual {21}
+	006 Move rax, rdx
+	007 Move r9, [rax+32+rcx]
+	008 Move rax, rdx
+	009 Add rax, rax, 1
+	010 Compare rax, [rcx+24]
+	011 JumpIfGreaterOrEqual {21}
+	012 Move rax, [rax+32+rcx]
+	013 ShiftLeft rax, 8
+	014 Or rax, rax, r9
+	015 Move [r8], rax
+	016 Move rax, 2
+	017 ShiftStack 40
+	018 Return rax
+	019 Call 0x18020CAB0, rcx, rdx, r8, r9
+	020 Interrupt 
+	021 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Int32 Encode32U(System.Byte[] p, System.Int32 offset, System.UInt32 value)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018116CF84h
+	cmp edx,[rcx+18h]
+	jae short 000000018116CF8Ah
+	movsxd rax,edx
+	movsxd r9,edx
+	inc r9
+	mov [rax+rcx+20h],r8b
+	cmp r9d,[rcx+18h]
+	jae short 000000018116CF8Ah
+	mov eax,r8d
+	shr eax,8
+	mov [r9+rcx+20h],al
+	movsxd r9,edx
+	add r9,2
+	cmp r9d,[rcx+18h]
+	jae short 000000018116CF8Ah
+	mov eax,r8d
+	shr eax,10h
+	mov [r9+rcx+20h],al
+	movsxd rax,edx
+	add rax,3
+	cmp eax,[rcx+18h]
+	jae short 000000018116CF8Ah
+	shr r8d,18h
+	mov [rax+rcx+20h],r8b
+	mov eax,4
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {31}
+	004 Compare rdx, [rcx+24]
+	005 JumpIfGreaterOrEqual {33}
+	006 Move rax, rdx
+	007 Move r9, rdx
+	008 Add r9, r9, 1
+	009 Move [rax+32+rcx], r8
+	010 Compare r9, [rcx+24]
+	011 JumpIfGreaterOrEqual {33}
+	012 Move rax, r8
+	013 ShiftRight rax, 8
+	014 Move [r9+32+rcx], rax
+	015 Move r9, rdx
+	016 Add r9, r9, 2
+	017 Compare r9, [rcx+24]
+	018 JumpIfGreaterOrEqual {33}
+	019 Move rax, r8
+	020 ShiftRight rax, 16
+	021 Move [r9+32+rcx], rax
+	022 Move rax, rdx
+	023 Add rax, rax, 3
+	024 Compare rax, [rcx+24]
+	025 JumpIfGreaterOrEqual {33}
+	026 ShiftRight r8, 24
+	027 Move [rax+32+rcx], r8
+	028 Move rax, 4
+	029 ShiftStack 40
+	030 Return rax
+	031 Call 0x18020CAB0, rcx, rdx, r8, r9
+	032 Interrupt 
+	033 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Int32 Decode32U(System.Byte[] p, System.Int32 offset, out System.UInt32 value)
+
+Disassembly:
+	sub rsp,28h
+	mov r10,r8
+	test rcx,rcx
+	je short 000000018116CE8Fh
+	cmp edx,[rcx+18h]
+	jae short 000000018116CE95h
+	movsxd rax,edx
+	movzx r8d,byte ptr [rax+rcx+20h]
+	movsxd rax,edx
+	inc rax
+	cmp eax,[rcx+18h]
+	jae short 000000018116CE95h
+	movzx r9d,byte ptr [rax+rcx+20h]
+	shl r9d,8
+	movsxd rax,edx
+	or r9d,r8d
+	add rax,2
+	cmp eax,[rcx+18h]
+	jae short 000000018116CE95h
+	movzx r8d,byte ptr [rax+rcx+20h]
+	shl r8d,10h
+	movsxd rax,edx
+	or r8d,r9d
+	add rax,3
+	cmp eax,[rcx+18h]
+	jae short 000000018116CE95h
+	movzx eax,byte ptr [rax+rcx+20h]
+	shl eax,18h
+	or eax,r8d
+	mov [r10],eax
+	mov eax,4
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r10, r8
+	003 Compare rcx, 0
+	004 JumpIfEqual {34}
+	005 Compare rdx, [rcx+24]
+	006 JumpIfGreaterOrEqual {36}
+	007 Move rax, rdx
+	008 Move r8, [rax+32+rcx]
+	009 Move rax, rdx
+	010 Add rax, rax, 1
+	011 Compare rax, [rcx+24]
+	012 JumpIfGreaterOrEqual {36}
+	013 Move r9, [rax+32+rcx]
+	014 ShiftLeft r9, 8
+	015 Move rax, rdx
+	016 Or r9, r9, r8
+	017 Add rax, rax, 2
+	018 Compare rax, [rcx+24]
+	019 JumpIfGreaterOrEqual {36}
+	020 Move r8, [rax+32+rcx]
+	021 ShiftLeft r8, 16
+	022 Move rax, rdx
+	023 Or r8, r8, r9
+	024 Add rax, rax, 3
+	025 Compare rax, [rcx+24]
+	026 JumpIfGreaterOrEqual {36}
+	027 Move rax, [rax+32+rcx]
+	028 ShiftLeft rax, 24
+	029 Or rax, rax, r8
+	030 Move [r10], rax
+	031 Move rax, 4
+	032 ShiftStack 40
+	033 Return rax
+	034 Call 0x18020CAB0, rcx, rdx, r8, r9
+	035 Interrupt 
+	036 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: System.Int32 TimeDiff(System.UInt32 later, System.UInt32 earlier)
+
+Disassembly:
+	sub ecx,edx
+	mov eax,ecx
+	ret
+
+ISIL:
+	001 Subtract rcx, rcx, rdx
+	002 Move rax, rcx
+	003 Return rax
+

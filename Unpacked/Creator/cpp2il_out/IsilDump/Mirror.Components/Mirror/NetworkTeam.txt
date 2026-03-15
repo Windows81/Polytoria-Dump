@@ -1,0 +1,251 @@
+Type: Mirror.NetworkTeam
+
+Method: System.String get_teamId()
+
+Disassembly:
+	mov rax,[rcx+68h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+104]
+	002 Return rax
+
+Method: System.Void set_teamId(System.String value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C9F79h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 000000018121EE79h
+	lea rcx,[18249F7B8h]
+	call 00000001801EE810h
+	lea rcx,[18248F480h]
+	call 00000001801EE810h
+	lea rcx,[18245B388h]
+	call 00000001801EE810h
+	mov byte ptr [1825C9F79h],1
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018195E2E0h
+	mov rcx,[18249F7B8h]
+	mov rsi,rax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018121EE9Bh
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rsi
+	call 000000018191D2D0h
+	test al,al
+	je short 000000018121EF07h
+	mov rcx,[18248F480h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018121EEBEh
+	call 00000001801EEAF0h
+	cmp byte ptr [1825C6502h],0
+	jne short 000000018121EEDAh
+	lea rcx,[18248F480h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6502h],1
+	mov rcx,[18248F480h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018121EEEFh
+	call 00000001801EEAF0h
+	mov rax,[18248F480h]
+	mov rcx,[rax+0B8h]
+	cmp byte ptr [rcx+39h],0
+	je near ptr 000000018121EFB9h
+	mov rcx,[rbx+68h]
+	xor r8d,r8d
+	mov rdx,rdi
+	call 00000001813010A0h
+	test al,al
+	jne near ptr 000000018121EFA9h
+	mov rsi,[rbx+68h]
+	lea rcx,[rbx+68h]
+	mov rdx,rdi
+	mov [rbx+68h],rdi
+	call 00000001801ED930h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181258A70h
+	test al,al
+	je short 000000018121EFA9h
+	mov rax,[18248F480h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 000000018121EF5Fh
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[18248F480h]
+	mov rax,[rax+0B8h]
+	mov rcx,[rax+40h]
+	test rcx,rcx
+	je short 000000018121EFA9h
+	mov r9,[18245B388h]
+	mov r10,[rcx]
+	movzx eax,byte ptr [r9+130h]
+	cmp [r10+130h],al
+	jb short 000000018121EFA9h
+	movzx edx,al
+	mov rax,[r10+0C8h]
+	cmp [rax+rdx*8-8],r9
+	jne short 000000018121EFA9h
+	xor r9d,r9d
+	mov r8,rsi
+	mov rdx,rbx
+	call 0000000181229E50h
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	lea rcx,[18247FAB0h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	lea rcx,[18245D7B0h]
+	mov rbx,rax
+	call 00000001801EE830h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001814A19E0h
+	lea rcx,[1824A13E0h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x1825C9F79], 0
+	007 Move rdi, rdx
+	008 Move rbx, rcx
+	009 JumpIfNotEqual {17}
+	010 LoadAddress rcx, [0x18249F7B8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x18248F480]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x18245B388]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x1825C9F79], 1
+	017 Move rdx, 0
+	018 Move rcx, rbx
+	019 Call Component.get_gameObject, rcx, rdx
+	020 Move rcx, typeof(UnityEngine.Application)
+	021 Move rsi, rax
+	022 Compare [rcx+228], 0
+	023 JumpIfNotEqual {25}
+	024 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	025 Move rdx, 0
+	026 Move rcx, rsi
+	027 Call Application.IsPlaying, rcx, rdx
+	028 Compare rax, 0
+	029 JumpIfEqual {47}
+	030 Move rcx, typeof(Mirror.NetworkServer)
+	031 Compare [rcx+228], 0
+	032 JumpIfNotEqual {34}
+	033 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	034 Compare [0x1825C6502], 0
+	035 JumpIfNotEqual {39}
+	036 LoadAddress rcx, [0x18248F480]
+	037 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	038 Move [0x1825C6502], 1
+	039 Move rcx, typeof(Mirror.NetworkServer)
+	040 Compare [rcx+228], 0
+	041 JumpIfNotEqual {43}
+	042 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	043 Move rax, typeof(Mirror.NetworkServer)
+	044 Move rcx, [rax+184]
+	045 Compare [rcx+57], 0
+	046 JumpIfEqual {92}
+	047 Move rcx, [rbx+104]
+	048 Move r8, 0
+	049 Move rdx, rdi
+	050 Call 0x1813010A0, rcx, rdx, r8
+	051 Compare rax, 0
+	052 JumpIfNotEqual {86}
+	053 Move rsi, [rbx+104]
+	054 LoadAddress rcx, [rbx+104]
+	055 Move rdx, rdi
+	056 Move [rbx+104], rdi
+	057 Call 0x1801ED930, rcx, rdx, r8, r9
+	058 Move rdx, 0
+	059 Move rcx, rbx
+	060 Call NetworkBehaviour.get_isServer, rcx, rdx
+	061 Compare rax, 0
+	062 JumpIfEqual {86}
+	063 Move rax, typeof(Mirror.NetworkServer)
+	064 Compare [rax+228], 0
+	065 JumpIfNotEqual {69}
+	066 Move rcx, rax
+	067 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	068 Move rax, typeof(Mirror.NetworkServer)
+	069 Move rax, [rax+184]
+	070 Move rcx, [rax+64]
+	071 Compare rcx, 0
+	072 JumpIfEqual {86}
+	073 Move r9, typeof(Mirror.TeamInterestManagement)
+	074 Move r10, [rcx]
+	075 Move rax, [r9+304]
+	076 Compare [r10+304], rax
+	077 JumpIfLess {86}
+	078 Move rdx, rax
+	079 Move rax, [r10+200]
+	080 Compare [rax+0xFFFFFFF8+rdx*8], r9
+	081 JumpIfNotEqual {86}
+	082 Move r9, 0
+	083 Move r8, rsi
+	084 Move rdx, rbx
+	085 Call TeamInterestManagement.OnTeamChanged, rcx, rdx, r8
+	086 Move rbx, stack:0x30
+	087 Move rsi, stack:0x38
+	088 ShiftStack 32
+	089 Move rdi, stack:0x0
+	090 ShiftStack 8
+	091 Return 
+	092 LoadAddress rcx, [0x18247FAB0]
+	093 Call 0x1801EE830, rcx, rdx, r8, r9
+	094 Move rcx, rax
+	095 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	096 LoadAddress rcx, [0x18245D7B0]
+	097 Move rbx, rax
+	098 Call 0x1801EE830, rcx, rdx, r8, r9
+	099 Move rdx, rax
+	100 Move r8, 0
+	101 Move rcx, rbx
+	102 Call InvalidOperationException..ctor, rcx, rdx
+	103 LoadAddress rcx, [0x1824A13E0]
+	104 Call 0x1801EE830, rcx, rdx, r8, r9
+	105 Move rdx, rax
+	106 Move rcx, rbx
+	107 Call 0x1801EEA10, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001812588B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call NetworkBehaviour..ctor, rcx, rdx
+	003 Return 
+
+Method: System.Boolean Weaved()
+
+Disassembly:
+	mov al,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+

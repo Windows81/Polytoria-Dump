@@ -1,0 +1,320 @@
+Type: Battlehub.UIControls.MenuControl.MenuCommandAttribute
+
+Method: System.String get_Path()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_Path(System.String value)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x1801ED930, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.String get_IconPath()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_IconPath(System.String value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x1801ED930, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Boolean get_Validate()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void set_Validate(System.Boolean value)
+
+Disassembly:
+	mov [rcx+20h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+32], rdx
+	002 Return 
+
+Method: System.Boolean get_Hide()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+21h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+33]
+	002 Return rax
+
+Method: System.Void set_Hide(System.Boolean value)
+
+Disassembly:
+	mov [rcx+21h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+33], rdx
+	002 Return 
+
+Method: System.Int32 get_Priority()
+
+Disassembly:
+	mov eax,[rcx+24h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+36]
+	002 Return rax
+
+Method: System.Void set_Priority(System.Int32 value)
+
+Disassembly:
+	mov [rcx+24h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+36], rdx
+	002 Return 
+
+Method: System.Boolean get_RequiresInstance()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void set_RequiresInstance(System.Boolean value)
+
+Disassembly:
+	mov [rcx+28h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Return 
+
+Method: System.Void .ctor(System.String path, System.Boolean validate = False, System.Boolean hide = False, System.Int32 priority = 2147483647, System.Boolean requiresInstance = False)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	movzx esi,r9b
+	xor edx,edx
+	movzx edi,r8b
+	mov rbp,rcx
+	call 00000001802BC7B0h
+	lea rcx,[rbp+10h]
+	mov [rbp+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	mov eax,[rsp+50h]
+	mov rbx,[rsp+30h]
+	mov [rbp+24h],eax
+	movzx eax,byte ptr [rsp+58h]
+	mov [rbp+21h],sil
+	mov rsi,[rsp+40h]
+	mov [rbp+28h],al
+	mov [rbp+20h],dil
+	mov rbp,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rsi, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rbp, rcx
+	012 Call 0x1802BC7B0, rcx, rdx, r8
+	013 LoadAddress rcx, [rbp+16]
+	014 Move [rbp+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801ED930, rcx, rdx, r8, r9
+	017 Move rax, stack:0x50
+	018 Move rbx, stack:0x30
+	019 Move [rbp+36], rax
+	020 Move rax, stack:0x58
+	021 Move [rbp+33], rsi
+	022 Move rsi, stack:0x40
+	023 Move [rbp+40], rax
+	024 Move [rbp+32], rdi
+	025 Move rbp, stack:0x38
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Return 
+
+Method: System.Void .ctor(System.String path, System.String iconPath, System.Boolean requiresInstance = False)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	movzx ebp,r9b
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 00000001802BC7B0h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	lea rcx,[rsi+18h]
+	mov byte ptr [rsi+20h],0
+	mov rdx,rdi
+	mov [rsi+18h],rdi
+	call 00000001801ED930h
+	mov rbx,[rsp+30h]
+	mov [rsi+28h],bpl
+	mov rbp,[rsp+38h]
+	mov dword ptr [rsi+24h],7FFFFFFFh
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x1802BC7B0, rcx, rdx, r8
+	013 LoadAddress rcx, [rsi+16]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801ED930, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rsi+24]
+	018 Move [rsi+32], 0
+	019 Move rdx, rdi
+	020 Move [rsi+24], rdi
+	021 Call 0x1801ED930, rcx, rdx, r8, r9
+	022 Move rbx, stack:0x30
+	023 Move [rsi+40], rbp
+	024 Move rbp, stack:0x38
+	025 Move [rsi+36], 0x7FFFFFFF
+	026 Move rsi, stack:0x40
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return 
+
+Method: System.Void .ctor(System.String path, System.String iconPath, System.Int32 priority, System.Boolean requiresInstance = False)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov ebp,r9d
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 00000001802BC7B0h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801ED930h
+	lea rcx,[rsi+18h]
+	mov byte ptr [rsi+20h],0
+	mov rdx,rdi
+	mov [rsi+18h],rdi
+	call 00000001801ED930h
+	movzx eax,byte ptr [rsp+50h]
+	mov rbx,[rsp+30h]
+	mov [rsi+24h],ebp
+	mov rbp,[rsp+38h]
+	mov [rsi+28h],al
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x1802BC7B0, rcx, rdx, r8
+	013 LoadAddress rcx, [rsi+16]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801ED930, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rsi+24]
+	018 Move [rsi+32], 0
+	019 Move rdx, rdi
+	020 Move [rsi+24], rdi
+	021 Call 0x1801ED930, rcx, rdx, r8, r9
+	022 Move rax, stack:0x50
+	023 Move rbx, stack:0x30
+	024 Move [rsi+36], rbp
+	025 Move rbp, stack:0x38
+	026 Move [rsi+40], rax
+	027 Move rsi, stack:0x40
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return 
+

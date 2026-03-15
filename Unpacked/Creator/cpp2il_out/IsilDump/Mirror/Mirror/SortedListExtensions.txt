@@ -1,0 +1,80 @@
+Type: Mirror.SortedListExtensions
+
+Method: System.Void RemoveRange(System.Collections.Generic.SortedList`2<T, U> list, System.Int32 amount)
+
+Disassembly:
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [r8+38h],0
+	mov rsi,r8
+	mov ebp,edx
+	mov rdi,rcx
+	jne short 000000018075C6A6h
+	mov rcx,r8
+	call 00000001801F7350h
+	test ebp,ebp
+	jle short 000000018075C6D9h
+	mov [rsp+30h],rbx
+	nop
+	xor ebx,ebx
+	test rdi,rdi
+	je short 000000018075C6E9h
+	cmp ebx,[rdi+20h]
+	jge short 000000018075C6D4h
+	mov r8,[rsi+38h]
+	xor edx,edx
+	mov rcx,rdi
+	mov r8,[r8+8]
+	call 0000000180F1EFE0h
+	inc ebx
+	cmp ebx,ebp
+	jl short 000000018075C6B7h
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbp
+	002 Move stack:0x18, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [r8+56], 0
+	007 Move rsi, r8
+	008 Move rbp, rdx
+	009 Move rdi, rcx
+	010 JumpIfNotEqual {13}
+	011 Move rcx, r8
+	012 Call 0x1801F7350, rcx, rdx, r8, r9
+	013 Compare rbp, 0
+	014 JumpIfLessOrEqual {31}
+	015 Move stack:0x30, rbx
+	016 Nop 
+	017 Move rbx, 0
+	018 Compare rdi, 0
+	019 JumpIfEqual {37}
+	020 Compare rbx, [rdi+32]
+	021 JumpIfGreaterOrEqual {30}
+	022 Move r8, [rsi+56]
+	023 Move rdx, 0
+	024 Move rcx, rdi
+	025 Move r8, [r8+8]
+	026 Call 0x180F1EFE0, rcx, rdx
+	027 Add rbx, rbx, 1
+	028 Compare rbx, rbp
+	029 JumpIfLess {20}
+	030 Move rbx, stack:0x30
+	031 Move rbp, stack:0x38
+	032 Move rsi, stack:0x40
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Return 
+	037 Call 0x1801EEA50, rcx, rdx, r8, r9
+

@@ -1,0 +1,134 @@
+Type: U8Xml.Internal.FileHelper
+
+Method: System.ValueTuple`2<U8Xml.Internal.UnmanagedBuffer, System.Int32> ReadFileToUnmanaged(System.String filePath)
+
+Disassembly:
+	mov [rsp+18h],rbx
+	mov [rsp+8],rcx
+	push rdi
+	sub rsp,50h
+	mov rdi,rdx
+	mov rbx,rcx
+	cmp byte ptr [18277C57Ch],0
+	jne short 00000001818D8C6Dh
+	lea rcx,[18261CAD0h]
+	call 000000018020C870h
+	lea rcx,[18262ABB0h]
+	call 000000018020C870h
+	mov byte ptr [18277C57Ch],1
+	xorps xmm0,xmm0
+	xor eax,eax
+	movups [rbx],xmm0
+	mov [rbx+10h],rax
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181523280h
+	mov [rsp+68h],rax
+	mov qword ptr [rsp+28h],0
+	lea rax,[rsp+68h]
+	mov [rsp+30h],rax
+	mov rcx,[rsp+68h]
+	test rcx,rcx
+	je near ptr 00000001818D8D2Ah
+	mov rdx,[rcx]
+	mov rax,[rdx+1E8h]
+	mov rdx,[rdx+1F0h]
+	call rax
+	cmp rax,7FFFFFFFh
+	jg short 00000001818D8D1Ch
+	xor r9d,r9d
+	mov r8d,eax
+	mov rdx,[rsp+68h]
+	lea rcx,[rsp+38h]
+	call 00000001818DBBF0h
+	movups xmm0,[rax]
+	movups [rbx],xmm0
+	movsd xmm1,qword ptr [rax+10h]
+	movsd qword ptr [rbx+10h],xmm1
+	lea rcx,[rsp+30h]
+	call 00000001807891C0h
+	jmp short 00000001818D8D0Eh
+	lea rcx,[rsp+30h]
+	call 00000001807891C0h
+	mov rcx,[rsp+28h]
+	test rcx,rcx
+	jne short 00000001818D8D30h
+	mov rbx,[rsp+60h]
+	mov rax,rbx
+	mov rbx,[rsp+70h]
+	add rsp,50h
+	pop rdi
+	ret
+	xor edx,edx
+	mov rcx,[18262ABB0h]
+	call 00000001818DC300h
+	call 000000018020CAB0h
+	nop
+	call 000000018020CB40h
+
+ISIL:
+	001 Move stack:0x18, rbx
+	002 Move stack:0x8, rcx
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -80
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 Compare [0x18277C57C], 0
+	009 JumpIfNotEqual {15}
+	010 LoadAddress rcx, [0x18261CAD0]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x18262ABB0]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x18277C57C], 1
+	015 Move xmm0, 0
+	016 Move rax, 0
+	017 Move [rbx], xmm0
+	018 Move [rbx+16], rax
+	019 Move rdx, 0
+	020 Move rcx, rdi
+	021 Call File.OpenRead, rcx, rdx
+	022 Move stack:0x68, rax
+	023 Move stack:0x28, 0
+	024 LoadAddress rax, stack:0x68
+	025 Move stack:0x30, rax
+	026 Move rcx, stack:0x68
+	027 Compare rcx, 0
+	028 JumpIfEqual {62}
+	029 Move rdx, [rcx]
+	030 Move rax, [rdx+488]
+	031 Move rdx, [rdx+496]
+	032 Call rax
+	033 Compare rax, 0x7FFFFFFF
+	034 JumpIfGreater {59}
+	035 Move r9, 0
+	036 Move r8, rax
+	037 Move rdx, stack:0x68
+	038 LoadAddress rcx, stack:0x38
+	039 Call StreamExtension.ReadAllToUnmanaged, rcx, rdx, r8
+	040 Move xmm0, [rax]
+	041 Move [rbx], xmm0
+	042 Move xmm1, [rax+16]
+	043 Move [rbx+16], xmm1
+	044 LoadAddress rcx, stack:0x30
+	045 Call 0x1807891C0, rcx, rdx, r8, r9
+	046 Goto {53}
+	047 LoadAddress rcx, stack:0x30
+	048 Call 0x1807891C0, rcx, rdx, r8, r9
+	049 Move rcx, stack:0x28
+	050 Compare rcx, 0
+	051 JumpIfNotEqual {64}
+	052 Move rbx, stack:0x60
+	053 Move rax, rbx
+	054 Move rbx, stack:0x70
+	055 ShiftStack 80
+	056 Move rdi, stack:0x0
+	057 ShiftStack 8
+	058 Return rax
+	059 Move rdx, 0
+	060 Move rcx, "The file is too large to parse. The parser only supports the file whose size is less than 2GB."
+	061 Call ThrowHelper.ThrowNotSupported, rcx, rdx
+	062 Call 0x18020CAB0, rcx, rdx, r8, r9
+	063 Nop 
+	064 Call 0x18020CB40, rcx, rdx, r8, r9
+

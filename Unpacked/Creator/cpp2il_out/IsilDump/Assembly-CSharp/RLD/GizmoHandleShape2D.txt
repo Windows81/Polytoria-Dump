@@ -1,0 +1,91 @@
+Type: RLD.GizmoHandleShape2D
+
+Method: RLD.Shape2D get_Shape()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Boolean get_IsVisible()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_IsVisible(System.Boolean value)
+
+Disassembly:
+	mov [rcx+10h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: System.Boolean get_IsHoverable()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+11h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+17]
+	002 Return rax
+
+Method: System.Void set_IsHoverable(System.Boolean value)
+
+Disassembly:
+	mov [rcx+11h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+17], rdx
+	002 Return 
+
+Method: System.Void .ctor(RLD.Shape2D shape)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov word ptr [rcx+10h],101h
+	xor edx,edx
+	mov rbx,rcx
+	call 00000001802C3410h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move [rcx+16], 257
+	007 Move rdx, 0
+	008 Move rbx, rcx
+	009 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	010 LoadAddress rcx, [rbx+24]
+	011 Move [rbx+24], rdi
+	012 Move rdx, rdi
+	013 Move rbx, stack:0x30
+	014 ShiftStack 32
+	015 Move rdi, stack:0x0
+	016 ShiftStack 8
+	017 Call 0x1801ED930, rcx, rdx, r8, r9
+	018 Return 
+

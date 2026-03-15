@@ -1,0 +1,364 @@
+Type: RLD.RayEx
+
+Method: UnityEngine.Ray InverseTransform(UnityEngine.Ray ray, UnityEngine.Matrix4x4 transformMatrix)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push rbp
+	lea rbp,[rsp-57h]
+	sub rsp,0C0h
+	xorps xmm0,xmm0
+	mov rax,r8
+	mov rdi,rdx
+	mov rsi,rcx
+	mov rdx,rax
+	lea rcx,[rbp+17h]
+	xor r8d,r8d
+	movups [rbp-29h],xmm0
+	movups [rbp-19h],xmm0
+	movups [rbp-9],xmm0
+	movups [rbp+7],xmm0
+	call 0000000181949790h
+	movups xmm0,[rax]
+	movaps [rbp-29h],xmm0
+	movups xmm1,[rax+10h]
+	movaps [rbp-19h],xmm1
+	movups xmm0,[rax+20h]
+	movaps [rbp-9],xmm0
+	movups xmm1,[rax+30h]
+	movaps [rbp+7],xmm1
+	movsd xmm0,qword ptr [rdi]
+	lea r8,[rbp-49h]
+	mov eax,[rdi+8]
+	lea rdx,[rbp-29h]
+	xor r9d,r9d
+	movsd qword ptr [rbp-49h],xmm0
+	lea rcx,[rbp-39h]
+	mov [rbp-41h],eax
+	call 00000001819485C0h
+	movsd xmm0,qword ptr [rax]
+	mov ebx,[rax+8]
+	movsd qword ptr [rbp+67h],xmm0
+	movsd xmm0,qword ptr [rdi+0Ch]
+	lea r8,[rbp-49h]
+	mov eax,[rdi+14h]
+	lea rdx,[rbp-29h]
+	xor r9d,r9d
+	movsd qword ptr [rbp-49h],xmm0
+	lea rcx,[rbp-39h]
+	mov [rbp-41h],eax
+	call 00000001819486C0h
+	xor r8d,r8d
+	lea rdx,[rbp-49h]
+	lea rcx,[rbp-39h]
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rbp-49h],xmm0
+	mov [rbp-41h],eax
+	call 00000001802BC310h
+	xor ecx,ecx
+	lea rdx,[rbp-49h]
+	mov [rsi+0Ch],rcx
+	xor r8d,r8d
+	mov [rsi+14h],ecx
+	lea rcx,[rbp-39h]
+	movsd xmm0,qword ptr [rbp+67h]
+	movsd qword ptr [rsi],xmm0
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rbp-49h],xmm0
+	mov [rbp-41h],eax
+	mov [rsi+8],ebx
+	call 00000001802BC310h
+	movsd xmm0,qword ptr [rax]
+	lea r11,[rsp+0C0h]
+	mov eax,[rax+8]
+	mov rbx,[r11+18h]
+	mov rdi,[r11+28h]
+	movsd qword ptr [rsi+0Ch],xmm0
+	mov [rsi+14h],eax
+	mov rax,rsi
+	mov rsi,[r11+20h]
+	mov rsp,r11
+	pop rbp
+	ret
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rsi
+	003 Move stack:0x20, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, rbp
+	006 LoadAddress rbp, stack:0xFFFFFFA9
+	007 ShiftStack -192
+	008 Move xmm0, 0
+	009 Move rax, r8
+	010 Move rdi, rdx
+	011 Move rsi, rcx
+	012 Move rdx, rax
+	013 LoadAddress rcx, [rbp+23]
+	014 Move r8, 0
+	015 Move [rbp-41], xmm0
+	016 Move [rbp-25], xmm0
+	017 Move [rbp-9], xmm0
+	018 Move [rbp+7], xmm0
+	019 Call Matrix4x4.get_inverse, rcx, rdx
+	020 Move xmm0, [rax]
+	021 Move [rbp-41], xmm0
+	022 Move xmm1, [rax+16]
+	023 Move [rbp-25], xmm1
+	024 Move xmm0, [rax+32]
+	025 Move [rbp-9], xmm0
+	026 Move xmm1, [rax+48]
+	027 Move [rbp+7], xmm1
+	028 Move xmm0, [rdi]
+	029 LoadAddress r8, [rbp-73]
+	030 Move rax, [rdi+8]
+	031 LoadAddress rdx, [rbp-41]
+	032 Move r9, 0
+	033 Move [rbp-73], xmm0
+	034 LoadAddress rcx, [rbp-57]
+	035 Move [rbp-65], rax
+	036 Call Matrix4x4.MultiplyPoint, rcx, rdx
+	037 Move xmm0, [rax]
+	038 Move rbx, [rax+8]
+	039 Move [rbp+103], xmm0
+	040 Move xmm0, [rdi+12]
+	041 LoadAddress r8, [rbp-73]
+	042 Move rax, [rdi+20]
+	043 LoadAddress rdx, [rbp-41]
+	044 Move r9, 0
+	045 Move [rbp-73], xmm0
+	046 LoadAddress rcx, [rbp-57]
+	047 Move [rbp-65], rax
+	048 Call Matrix4x4.MultiplyVector, rcx, rdx
+	049 Move r8, 0
+	050 LoadAddress rdx, [rbp-73]
+	051 LoadAddress rcx, [rbp-57]
+	052 Move xmm0, [rax]
+	053 Move rax, [rax+8]
+	054 Move [rbp-73], xmm0
+	055 Move [rbp-65], rax
+	056 Call Vector3.Normalize, rcx, rdx
+	057 Move rcx, 0
+	058 LoadAddress rdx, [rbp-73]
+	059 Move [rsi+12], rcx
+	060 Move r8, 0
+	061 Move [rsi+20], rcx
+	062 LoadAddress rcx, [rbp-57]
+	063 Move xmm0, [rbp+103]
+	064 Move [rsi], xmm0
+	065 Move xmm0, [rax]
+	066 Move rax, [rax+8]
+	067 Move [rbp-73], xmm0
+	068 Move [rbp-65], rax
+	069 Move [rsi+8], rbx
+	070 Call Vector3.Normalize, rcx, rdx
+	071 Move xmm0, [rax]
+	072 LoadAddress r11, stack:0xC0
+	073 Move rax, [rax+8]
+	074 Move rbx, [r11+24]
+	075 Move rdi, [r11+40]
+	076 Move [rsi+12], xmm0
+	077 Move [rsi+20], rax
+	078 Move rax, rsi
+	079 Move rsi, [r11+32]
+	080 Move rsp, r11
+	081 Move rbp, stack:0x0
+	082 ShiftStack 8
+	083 Return rax
+
+Method: UnityEngine.Ray Mirror(UnityEngine.Ray ray, UnityEngine.Vector3 mirrorPoint)
+
+Disassembly:
+	mov rax,rsp
+	mov [rax+8],rbx
+	mov [rax+10h],rsi
+	push rdi
+	sub rsp,40h
+	movups xmm0,[rdx]
+	mov rbx,r8
+	mov rdi,rdx
+	movsd xmm1,qword ptr [rdx+10h]
+	mov rsi,rcx
+	movups [rcx],xmm0
+	movsd qword ptr [rcx+10h],xmm1
+	movsd xmm1,qword ptr [r8]
+	movaps xmm3,xmm0
+	movaps xmm2,xmm0
+	movsd qword ptr [rax-28h],xmm0
+	movaps xmm0,xmm1
+	movsd qword ptr [rax-28h],xmm1
+	subss xmm3,xmm1
+	shufps xmm0,xmm0,55h
+	movss xmm1,dword ptr [rdx+8]
+	subss xmm1,dword ptr [r8+8]
+	shufps xmm2,xmm2,55h
+	subss xmm2,xmm0
+	unpcklps xmm3,xmm2
+	lea rcx,[rax-28h]
+	xor edx,edx
+	movsd qword ptr [rax-28h],xmm3
+	movss dword ptr [rax-20h],xmm1
+	call 00000001802BC4C0h
+	movsd xmm1,qword ptr [rdi+0Ch]
+	movaps xmm5,xmm0
+	movsd xmm2,qword ptr [rbx]
+	movaps xmm4,xmm1
+	movaps xmm0,xmm2
+	mulss xmm4,xmm5
+	movaps xmm3,xmm1
+	movsd qword ptr [rsp+20h],xmm1
+	movsd qword ptr [rsp+20h],xmm2
+	addss xmm4,xmm2
+	shufps xmm3,xmm3,55h
+	movss xmm2,dword ptr [rdi+14h]
+	mulss xmm2,xmm5
+	mulss xmm3,xmm5
+	addss xmm2,dword ptr [rbx+8]
+	shufps xmm0,xmm0,55h
+	addss xmm3,xmm0
+	unpcklps xmm4,xmm3
+	movsd qword ptr [rsi],xmm4
+	movss dword ptr [rsi+8],xmm2
+	movss xmm2,dword ptr [181D30CF0h]
+	movaps xmm3,xmm1
+	movaps xmm4,xmm1
+	movsd qword ptr [rsp+20h],xmm1
+	movss xmm1,dword ptr [rdi+14h]
+	xorps xmm4,xmm2
+	shufps xmm3,xmm3,55h
+	xorps xmm1,xmm2
+	xorps xmm3,xmm2
+	unpcklps xmm4,xmm3
+	lea rdx,[rsp+20h]
+	xor r8d,r8d
+	movsd qword ptr [rsp+20h],xmm4
+	lea rcx,[rsp+30h]
+	movss dword ptr [rsp+28h],xmm1
+	call 00000001802BC310h
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	mov rbx,[rsp+50h]
+	movsd qword ptr [rsi+0Ch],xmm0
+	mov [rsi+14h],eax
+	mov rax,rsi
+	mov rsi,[rsp+58h]
+	add rsp,40h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move rax, rsp
+	002 Move [rax+8], rbx
+	003 Move [rax+16], rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -64
+	007 Move xmm0, [rdx]
+	008 Move rbx, r8
+	009 Move rdi, rdx
+	010 Move xmm1, [rdx+16]
+	011 Move rsi, rcx
+	012 Move [rcx], xmm0
+	013 Move [rcx+16], xmm1
+	014 Move xmm1, [r8]
+	015 Move xmm3, xmm0
+	016 Move xmm2, xmm0
+	017 Move [rax-40], xmm0
+	018 Move xmm0, xmm1
+	019 Move [rax-40], xmm1
+	020 Subtract xmm3, xmm3, xmm1
+	021 Move XMM_TEMP.S[0], xmm0.S[1]
+	022 Move XMM_TEMP.S[1], xmm0.S[1]
+	023 Move XMM_TEMP.S[2], xmm0.S[1]
+	024 Move XMM_TEMP.S[3], xmm0.S[1]
+	025 Move xmm0, XMM_TEMP
+	026 Move xmm1, [rdx+8]
+	027 Subtract xmm1, xmm1, [r8+8]
+	028 Move XMM_TEMP.S[0], xmm2.S[1]
+	029 Move XMM_TEMP.S[1], xmm2.S[1]
+	030 Move XMM_TEMP.S[2], xmm2.S[1]
+	031 Move XMM_TEMP.S[3], xmm2.S[1]
+	032 Move xmm2, XMM_TEMP
+	033 Subtract xmm2, xmm2, xmm0
+	034 Move XMM_TEMP.S[0], xmm3.S[0]
+	035 Move XMM_TEMP.S[1], xmm2.S[0]
+	036 Move XMM_TEMP.S[2], xmm3.S[1]
+	037 Move XMM_TEMP.S[3], xmm2.S[1]
+	038 Move xmm3, XMM_TEMP
+	039 LoadAddress rcx, [rax-40]
+	040 Move rdx, 0
+	041 Move [rax-40], xmm3
+	042 Move [rax-32], xmm1
+	043 Call 0x1802BC4C0, rcx, rdx, r8, r9
+	044 Move xmm1, [rdi+12]
+	045 Move xmm5, xmm0
+	046 Move xmm2, [rbx]
+	047 Move xmm4, xmm1
+	048 Move xmm0, xmm2
+	049 Multiply xmm4, xmm4, xmm5
+	050 Move xmm3, xmm1
+	051 Move stack:0x20, xmm1
+	052 Move stack:0x20, xmm2
+	053 Add xmm4, xmm4, xmm2
+	054 Move XMM_TEMP.S[0], xmm3.S[1]
+	055 Move XMM_TEMP.S[1], xmm3.S[1]
+	056 Move XMM_TEMP.S[2], xmm3.S[1]
+	057 Move XMM_TEMP.S[3], xmm3.S[1]
+	058 Move xmm3, XMM_TEMP
+	059 Move xmm2, [rdi+20]
+	060 Multiply xmm2, xmm2, xmm5
+	061 Multiply xmm3, xmm3, xmm5
+	062 Add xmm2, xmm2, [rbx+8]
+	063 Move XMM_TEMP.S[0], xmm0.S[1]
+	064 Move XMM_TEMP.S[1], xmm0.S[1]
+	065 Move XMM_TEMP.S[2], xmm0.S[1]
+	066 Move XMM_TEMP.S[3], xmm0.S[1]
+	067 Move xmm0, XMM_TEMP
+	068 Add xmm3, xmm3, xmm0
+	069 Move XMM_TEMP.S[0], xmm4.S[0]
+	070 Move XMM_TEMP.S[1], xmm3.S[0]
+	071 Move XMM_TEMP.S[2], xmm4.S[1]
+	072 Move XMM_TEMP.S[3], xmm3.S[1]
+	073 Move xmm4, XMM_TEMP
+	074 Move [rsi], xmm4
+	075 Move [rsi+8], xmm2
+	076 Move xmm2, [0x181D30CF0]
+	077 Move xmm3, xmm1
+	078 Move xmm4, xmm1
+	079 Move stack:0x20, xmm1
+	080 Move xmm1, [rdi+20]
+	081 Xor xmm4, xmm4, xmm2
+	082 Move XMM_TEMP.S[0], xmm3.S[1]
+	083 Move XMM_TEMP.S[1], xmm3.S[1]
+	084 Move XMM_TEMP.S[2], xmm3.S[1]
+	085 Move XMM_TEMP.S[3], xmm3.S[1]
+	086 Move xmm3, XMM_TEMP
+	087 Xor xmm1, xmm1, xmm2
+	088 Xor xmm3, xmm3, xmm2
+	089 Move XMM_TEMP.S[0], xmm4.S[0]
+	090 Move XMM_TEMP.S[1], xmm3.S[0]
+	091 Move XMM_TEMP.S[2], xmm4.S[1]
+	092 Move XMM_TEMP.S[3], xmm3.S[1]
+	093 Move xmm4, XMM_TEMP
+	094 LoadAddress rdx, stack:0x20
+	095 Move r8, 0
+	096 Move stack:0x20, xmm4
+	097 LoadAddress rcx, stack:0x30
+	098 Move stack:0x28, xmm1
+	099 Call Vector3.Normalize, rcx, rdx
+	100 Move xmm0, [rax]
+	101 Move rax, [rax+8]
+	102 Move rbx, stack:0x50
+	103 Move [rsi+12], xmm0
+	104 Move [rsi+20], rax
+	105 Move rax, rsi
+	106 Move rsi, stack:0x58
+	107 ShiftStack 64
+	108 Move rdi, stack:0x0
+	109 ShiftStack 8
+	110 Return rax
+

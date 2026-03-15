@@ -1,0 +1,48 @@
+Type: GLTFast.Jobs.ConvertUVsUInt16ToFloatInterleavedNormalizedJob
+
+Method: System.Void Execute(System.Int32 index)
+
+Disassembly:
+	mov r8,[rcx+8]
+	mov eax,edx
+	imul eax,[rcx]
+	movss xmm2,dword ptr [181E5DC04h]
+	imul edx,[rcx+10h]
+	mov rcx,[rcx+18h]
+	movsxd r9,eax
+	movsxd rdx,edx
+	movzx eax,word ptr [r9+r8+2]
+	movd xmm0,eax
+	movzx eax,word ptr [r9+r8]
+	cvtdq2ps xmm0,xmm0
+	divss xmm0,dword ptr [181E5E1A8h]
+	subss xmm2,xmm0
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	movss dword ptr [rdx+rcx+4],xmm2
+	divss xmm0,dword ptr [181E5E1A8h]
+	movss dword ptr [rdx+rcx],xmm0
+	ret
+
+ISIL:
+	001 Move r8, [rcx+8]
+	002 Move rax, rdx
+	003 Multiply rax, rax, [rcx]
+	004 Move xmm2, [0x181E5DC04]
+	005 Multiply rdx, rdx, [rcx+16]
+	006 Move rcx, [rcx+24]
+	007 Move r9, rax
+	008 Move rdx, rdx
+	009 Move rax, [r9+2+r8]
+	010 Move xmm0, rax
+	011 Move rax, [r9+r8]
+	012 Move xmm0, xmm0
+	013 Divide xmm0, xmm0, [0x181E5E1A8]
+	014 Subtract xmm2, xmm2, xmm0
+	015 Move xmm0, rax
+	016 Move xmm0, xmm0
+	017 Move [rdx+4+rcx], xmm2
+	018 Divide xmm0, xmm0, [0x181E5E1A8]
+	019 Move [rdx+rcx], xmm0
+	020 Return 
+

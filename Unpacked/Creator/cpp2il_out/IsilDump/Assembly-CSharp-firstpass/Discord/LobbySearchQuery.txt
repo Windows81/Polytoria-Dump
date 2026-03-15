@@ -1,0 +1,558 @@
+Type: Discord.LobbySearchQuery
+
+Method: Discord.LobbySearchQuery+FFIMethods get_Methods()
+
+Disassembly:
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [1825C633Fh],0
+	mov rsi,rcx
+	mov [rsp+40h],rdi
+	mov rdi,rdx
+	jne short 000000018039F495h
+	lea rcx,[1824860E0h]
+	call 00000001801EE810h
+	lea rcx,[18248BB68h]
+	call 00000001801EE810h
+	lea rcx,[182486DB8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C633Fh],1
+	cmp qword ptr [rdi+8],0
+	jne short 000000018039F50Fh
+	mov rcx,[1825D3820h]
+	mov [rsp+30h],rbx
+	mov rbx,[1824860E0h]
+	mov [rsp+38h],rbp
+	cmp dword ptr [rcx+0E4h],0
+	mov rbp,[rdi]
+	jne short 000000018039F4C5h
+	call 00000001801EEAF0h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814C87A0h
+	mov rcx,[182486DB8h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018039F4E7h
+	call 00000001801EEAF0h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rbp
+	call 00000001813BC590h
+	lea rcx,[rdi+8]
+	mov [rdi+8],rax
+	mov rdx,rax
+	call 00000001801ED930h
+	mov rbp,[rsp+38h]
+	mov rbx,[rsp+30h]
+	mov rcx,[rdi+8]
+	mov r8,[18248BB68h]
+	mov rdi,[rsp+40h]
+	test rcx,rcx
+	je short 000000018039F54Dh
+	mov rdx,[rcx]
+	mov rax,[r8+40h]
+	cmp [rdx+40h],rax
+	jne short 000000018039F553h
+	call 00000001801EDB10h
+	movups xmm0,[rax]
+	movups xmm1,[rax+10h]
+	mov rax,rsi
+	movups [rsi],xmm0
+	movups [rsi+10h],xmm1
+	add rsp,20h
+	pop rsi
+	ret
+	call 00000001801EEA50h
+	int 3
+	mov rdx,r8
+	call 00000001801ED970h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rsi
+	003 ShiftStack -32
+	004 Compare [0x1825C633F], 0
+	005 Move rsi, rcx
+	006 Move stack:0x40, rdi
+	007 Move rdi, rdx
+	008 JumpIfNotEqual {16}
+	009 LoadAddress rcx, [0x1824860E0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x18248BB68]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182486DB8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825C633F], 1
+	016 Compare [rdi+8], 0
+	017 JumpIfNotEqual {44}
+	018 Move rcx, [0x1825D3820]
+	019 Move stack:0x30, rbx
+	020 Move rbx, typeof(Discord.LobbySearchQuery+FFIMethods)
+	021 Move stack:0x38, rbp
+	022 Compare [rcx+228], 0
+	023 Move rbp, [rdi]
+	024 JumpIfNotEqual {26}
+	025 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	026 Move rdx, 0
+	027 Move rcx, rbx
+	028 Call Type.GetTypeFromHandle, rcx, rdx
+	029 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	030 Move rbx, rax
+	031 Compare [rcx+228], 0
+	032 JumpIfNotEqual {34}
+	033 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	034 Move r8, 0
+	035 Move rdx, rbx
+	036 Move rcx, rbp
+	037 Call Marshal.PtrToStructure, rcx, rdx, r8
+	038 LoadAddress rcx, [rdi+8]
+	039 Move [rdi+8], rax
+	040 Move rdx, rax
+	041 Call 0x1801ED930, rcx, rdx, r8, r9
+	042 Move rbp, stack:0x38
+	043 Move rbx, stack:0x30
+	044 Move rcx, [rdi+8]
+	045 Move r8, typeof(Discord.LobbySearchQuery+FFIMethods)
+	046 Move rdi, stack:0x40
+	047 Compare rcx, 0
+	048 JumpIfEqual {63}
+	049 Move rdx, [rcx]
+	050 Move rax, [r8+64]
+	051 Compare [rdx+64], rax
+	052 JumpIfNotEqual {65}
+	053 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	054 Move xmm0, [rax]
+	055 Move xmm1, [rax+16]
+	056 Move rax, rsi
+	057 Move [rsi], xmm0
+	058 Move [rsi+16], xmm1
+	059 ShiftStack 32
+	060 Move rsi, stack:0x0
+	061 ShiftStack 8
+	062 Return rax
+	063 Call 0x1801EEA50, rcx, rdx, r8, r9
+	064 Interrupt 
+	065 Move rdx, r8
+	066 Call 0x1801ED970, rcx, rdx, r8, r9
+
+Method: System.Void Filter(System.String key, Discord.LobbySearchComparison comparison, Discord.LobbySearchCast cast, System.String value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,80h
+	cmp qword ptr [rcx],0
+	mov edi,r9d
+	mov esi,r8d
+	mov rbp,rdx
+	mov rbx,rcx
+	je short 000000018039F289h
+	mov rdx,rcx
+	xor r8d,r8d
+	lea rcx,[rsp+40h]
+	call 000000018039F450h
+	mov rcx,[rax]
+	test rcx,rcx
+	je near ptr 000000018039F2DEh
+	mov rax,[rcx+28h]
+	mov r9d,esi
+	mov r10,[rcx+18h]
+	mov r8,rbp
+	mov rdx,[rbx]
+	mov rcx,[rcx+40h]
+	mov [rsp+30h],rax
+	mov rax,[rsp+0B0h]
+	mov [rsp+28h],rax
+	mov [rsp+20h],edi
+	call r10
+	mov edi,eax
+	test eax,eax
+	jne short 000000018039F2A2h
+	lea r11,[rsp+80h]
+	mov rbx,[r11+10h]
+	mov rbp,[r11+18h]
+	mov rsi,[r11+20h]
+	mov rsp,r11
+	pop rdi
+	ret
+	lea rcx,[18249F260h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001803A0E30h
+	lea rcx,[182482F50h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -128
+	007 Compare [rcx], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfEqual {34}
+	013 Move rdx, rcx
+	014 Move r8, 0
+	015 LoadAddress rcx, stack:0x40
+	016 Call LobbySearchQuery.get_Methods, rcx, rdx
+	017 Move rcx, [rax]
+	018 Compare rcx, 0
+	019 JumpIfEqual {57}
+	020 Move rax, [rcx+40]
+	021 Move r9, rsi
+	022 Move r10, [rcx+24]
+	023 Move r8, rbp
+	024 Move rdx, [rbx]
+	025 Move rcx, [rcx+64]
+	026 Move stack:0x30, rax
+	027 Move rax, stack:0xB0
+	028 Move stack:0x28, rax
+	029 Move stack:0x20, rdi
+	030 Call r10
+	031 Move rdi, rax
+	032 Compare rax, 0
+	033 JumpIfNotEqual {42}
+	034 LoadAddress r11, stack:0x80
+	035 Move rbx, [r11+16]
+	036 Move rbp, [r11+24]
+	037 Move rsi, [r11+32]
+	038 Move rsp, r11
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Return 
+	042 LoadAddress rcx, [0x18249F260]
+	043 Call 0x1801EE830, rcx, rdx, r8, r9
+	044 Move rcx, rax
+	045 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	046 Move r8, 0
+	047 Move rdx, rdi
+	048 Move rcx, rax
+	049 Move rbx, rax
+	050 Call ResultException..ctor, rcx, rdx
+	051 LoadAddress rcx, [0x182482F50]
+	052 Call 0x1801EE830, rcx, rdx, r8, r9
+	053 Move rdx, rax
+	054 Move rcx, rbx
+	055 Call 0x1801EEA10, rcx, rdx, r8, r9
+	056 Interrupt 
+	057 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Sort(System.String key, Discord.LobbySearchCast cast, System.String value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,70h
+	cmp qword ptr [rcx],0
+	mov rdi,r9
+	mov esi,r8d
+	mov rbp,rdx
+	mov rbx,rcx
+	je short 000000018039F3F7h
+	mov rdx,rcx
+	xor r8d,r8d
+	lea rcx,[rsp+30h]
+	call 000000018039F450h
+	mov rcx,[rax+8]
+	test rcx,rcx
+	je short 000000018039F449h
+	mov rax,[rcx+28h]
+	mov r9d,esi
+	mov r10,[rcx+18h]
+	mov r8,rbp
+	mov rdx,[rbx]
+	mov rcx,[rcx+40h]
+	mov [rsp+28h],rax
+	mov [rsp+20h],rdi
+	call r10
+	mov edi,eax
+	test eax,eax
+	jne short 000000018039F40Dh
+	lea r11,[rsp+70h]
+	mov rbx,[r11+10h]
+	mov rbp,[r11+18h]
+	mov rsi,[r11+20h]
+	mov rsp,r11
+	pop rdi
+	ret
+	lea rcx,[18249F260h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001803A0E30h
+	lea rcx,[182483050h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -112
+	007 Compare [rcx], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfEqual {32}
+	013 Move rdx, rcx
+	014 Move r8, 0
+	015 LoadAddress rcx, stack:0x30
+	016 Call LobbySearchQuery.get_Methods, rcx, rdx
+	017 Move rcx, [rax+8]
+	018 Compare rcx, 0
+	019 JumpIfEqual {55}
+	020 Move rax, [rcx+40]
+	021 Move r9, rsi
+	022 Move r10, [rcx+24]
+	023 Move r8, rbp
+	024 Move rdx, [rbx]
+	025 Move rcx, [rcx+64]
+	026 Move stack:0x28, rax
+	027 Move stack:0x20, rdi
+	028 Call r10
+	029 Move rdi, rax
+	030 Compare rax, 0
+	031 JumpIfNotEqual {40}
+	032 LoadAddress r11, stack:0x70
+	033 Move rbx, [r11+16]
+	034 Move rbp, [r11+24]
+	035 Move rsi, [r11+32]
+	036 Move rsp, r11
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return 
+	040 LoadAddress rcx, [0x18249F260]
+	041 Call 0x1801EE830, rcx, rdx, r8, r9
+	042 Move rcx, rax
+	043 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	044 Move r8, 0
+	045 Move rdx, rdi
+	046 Move rcx, rax
+	047 Move rbx, rax
+	048 Call ResultException..ctor, rcx, rdx
+	049 LoadAddress rcx, [0x182483050]
+	050 Call 0x1801EE830, rcx, rdx, r8, r9
+	051 Move rdx, rax
+	052 Move rcx, rbx
+	053 Call 0x1801EEA10, rcx, rdx, r8, r9
+	054 Interrupt 
+	055 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Limit(System.UInt32 limit)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,60h
+	cmp qword ptr [rcx],0
+	mov edi,edx
+	mov rbx,rcx
+	je short 000000018039F338h
+	mov rdx,rcx
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018039F450h
+	mov rcx,[rax+10h]
+	test rcx,rcx
+	je short 000000018039F37Fh
+	mov rax,[rcx+18h]
+	mov r8d,edi
+	mov r9,[rcx+28h]
+	mov rcx,[rcx+40h]
+	mov rdx,[rbx]
+	call rax
+	mov edi,eax
+	test eax,eax
+	jne short 000000018039F343h
+	mov rbx,[rsp+70h]
+	add rsp,60h
+	pop rdi
+	ret
+	lea rcx,[18249F260h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001803A0E30h
+	lea rcx,[182482FD0h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -96
+	005 Compare [rcx], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfEqual {25}
+	009 Move rdx, rcx
+	010 Move r8, 0
+	011 LoadAddress rcx, stack:0x20
+	012 Call LobbySearchQuery.get_Methods, rcx, rdx
+	013 Move rcx, [rax+16]
+	014 Compare rcx, 0
+	015 JumpIfEqual {45}
+	016 Move rax, [rcx+24]
+	017 Move r8, rdi
+	018 Move r9, [rcx+40]
+	019 Move rcx, [rcx+64]
+	020 Move rdx, [rbx]
+	021 Call rax
+	022 Move rdi, rax
+	023 Compare rax, 0
+	024 JumpIfNotEqual {30}
+	025 Move rbx, stack:0x70
+	026 ShiftStack 96
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Return 
+	030 LoadAddress rcx, [0x18249F260]
+	031 Call 0x1801EE830, rcx, rdx, r8, r9
+	032 Move rcx, rax
+	033 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	034 Move r8, 0
+	035 Move rdx, rdi
+	036 Move rcx, rax
+	037 Move rbx, rax
+	038 Call ResultException..ctor, rcx, rdx
+	039 LoadAddress rcx, [0x182482FD0]
+	040 Call 0x1801EE830, rcx, rdx, r8, r9
+	041 Move rdx, rax
+	042 Move rcx, rbx
+	043 Call 0x1801EEA10, rcx, rdx, r8, r9
+	044 Interrupt 
+	045 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Void Distance(Discord.LobbySearchDistance distance)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,60h
+	cmp qword ptr [rcx],0
+	mov edi,edx
+	mov rbx,rcx
+	je short 000000018039F1B8h
+	mov rdx,rcx
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018039F450h
+	mov rcx,[rax+18h]
+	test rcx,rcx
+	je short 000000018039F1FFh
+	mov rax,[rcx+18h]
+	mov r8d,edi
+	mov r9,[rcx+28h]
+	mov rcx,[rcx+40h]
+	mov rdx,[rbx]
+	call rax
+	mov edi,eax
+	test eax,eax
+	jne short 000000018039F1C3h
+	mov rbx,[rsp+70h]
+	add rsp,60h
+	pop rdi
+	ret
+	lea rcx,[18249F260h]
+	call 00000001801EE830h
+	mov rcx,rax
+	call 00000001801EEA00h
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001803A0E30h
+	lea rcx,[182482ED0h]
+	call 00000001801EE830h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -96
+	005 Compare [rcx], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfEqual {25}
+	009 Move rdx, rcx
+	010 Move r8, 0
+	011 LoadAddress rcx, stack:0x20
+	012 Call LobbySearchQuery.get_Methods, rcx, rdx
+	013 Move rcx, [rax+24]
+	014 Compare rcx, 0
+	015 JumpIfEqual {45}
+	016 Move rax, [rcx+24]
+	017 Move r8, rdi
+	018 Move r9, [rcx+40]
+	019 Move rcx, [rcx+64]
+	020 Move rdx, [rbx]
+	021 Call rax
+	022 Move rdi, rax
+	023 Compare rax, 0
+	024 JumpIfNotEqual {30}
+	025 Move rbx, stack:0x70
+	026 ShiftStack 96
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Return 
+	030 LoadAddress rcx, [0x18249F260]
+	031 Call 0x1801EE830, rcx, rdx, r8, r9
+	032 Move rcx, rax
+	033 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	034 Move r8, 0
+	035 Move rdx, rdi
+	036 Move rcx, rax
+	037 Move rbx, rax
+	038 Call ResultException..ctor, rcx, rdx
+	039 LoadAddress rcx, [0x182482ED0]
+	040 Call 0x1801EE830, rcx, rdx, r8, r9
+	041 Move rdx, rax
+	042 Move rcx, rbx
+	043 Call 0x1801EEA10, rcx, rdx, r8, r9
+	044 Interrupt 
+	045 Call 0x1801EEA50, rcx, rdx, r8, r9
+

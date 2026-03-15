@@ -1,0 +1,134 @@
+Type: GLTFast.NativeArrayExtensions
+
+Method: System.IO.UnmanagedMemoryStream ToUnmanagedMemoryStream(Unity.Collections.NativeArray`1+ReadOnly<System.Byte> data, System.UInt32 start, System.UInt32 count)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,40h
+	cmp byte ptr [18277868Ch],0
+	mov rbx,rcx
+	mov esi,r8d
+	mov ebp,edx
+	jne short 000000018113A8A4h
+	lea rcx,[1825F7ED8h]
+	call 000000018020C870h
+	lea rcx,[18260CDC0h]
+	call 000000018020C870h
+	mov byte ptr [18277868Ch],1
+	movups xmm0,[rbx]
+	mov rdx,[1825F7ED8h]
+	lea rcx,[rsp+30h]
+	movaps [rsp+30h],xmm0
+	call 000000018073F1D0h
+	mov rcx,[18260CDC0h]
+	mov rbx,rax
+	call 000000018020CA60h
+	mov r8,rsi
+	mov qword ptr [rsp+28h],0
+	lea rdx,[rbx+rbp]
+	mov dword ptr [rsp+20h],1
+	mov r9,rsi
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000181537BD0h
+	mov rbx,[rsp+50h]
+	mov rax,rdi
+	mov rbp,[rsp+58h]
+	mov rsi,[rsp+60h]
+	add rsp,40h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -64
+	007 Compare [0x18277868C], 0
+	008 Move rbx, rcx
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 JumpIfNotEqual {17}
+	012 LoadAddress rcx, [0x1825F7ED8]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x18260CDC0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x18277868C], 1
+	017 Move xmm0, [rbx]
+	018 Move rdx, [0x1825F7ED8]
+	019 LoadAddress rcx, stack:0x30
+	020 Move stack:0x30, xmm0
+	021 Call 0x18073F1D0, rcx, rdx
+	022 Move rcx, typeof(System.IO.UnmanagedMemoryStream)
+	023 Move rbx, rax
+	024 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	025 Move r8, rsi
+	026 Move stack:0x28, 0
+	027 LoadAddress rdx, [rbx+rbp]
+	028 Move stack:0x20, 1
+	029 Move r9, rsi
+	030 Move rcx, rax
+	031 Move rdi, rax
+	032 Call UnmanagedMemoryStream..ctor, rcx, rdx, r8, r9, stack:0x0
+	033 Move rbx, stack:0x50
+	034 Move rax, rdi
+	035 Move rbp, stack:0x58
+	036 Move rsi, stack:0x60
+	037 ShiftStack 64
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return rax
+
+Method: System.UInt32 ReadUInt32(Unity.Collections.NativeArray`1+ReadOnly<System.Byte> data, System.Int32 offset)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [18277868Dh],0
+	mov rdi,rcx
+	movsxd rbx,edx
+	jne short 000000018113A82Ch
+	lea rcx,[1825F7ED8h]
+	call 000000018020C870h
+	mov byte ptr [18277868Dh],1
+	movups xmm0,[rdi]
+	mov rdx,[1825F7ED8h]
+	lea rcx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018073F1D0h
+	mov eax,[rax+rbx]
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x18277868D], 0
+	006 Move rdi, rcx
+	007 Move rbx, rdx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x1825F7ED8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x18277868D], 1
+	012 Move xmm0, [rdi]
+	013 Move rdx, [0x1825F7ED8]
+	014 LoadAddress rcx, stack:0x20
+	015 Move stack:0x20, xmm0
+	016 Call 0x18073F1D0, rcx, rdx
+	017 Move rax, [rax+rbx]
+	018 Move rbx, stack:0x40
+	019 ShiftStack 48
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Return rax
+

@@ -1,0 +1,214 @@
+Type: RLD.XZGridSettings
+
+Method: System.Boolean get_IsVisible()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void set_IsVisible(System.Boolean value)
+
+Disassembly:
+	mov [rcx+28h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Return 
+
+Method: System.Single get_CellSizeX()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+2Ch]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+44]
+	002 Return xmm0
+
+Method: System.Void set_CellSizeX(System.Single value)
+
+Disassembly:
+	xchg ax,ax
+	maxss xmm1,dword ptr [181E5DED0h]
+	movss dword ptr [rcx+2Ch],xmm1
+	ret
+
+ISIL:
+	001 Nop 
+	002 Compare xmm1, [0x181E5DED0]
+	003 JumpIfGreaterOrEqual {5}
+	004 Move xmm1, [0x181E5DED0]
+	005 Nop 
+	006 Move [rcx+44], xmm1
+	007 Return 
+
+Method: System.Single get_CellSizeZ()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+30h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+48]
+	002 Return xmm0
+
+Method: System.Void set_CellSizeZ(System.Single value)
+
+Disassembly:
+	xchg ax,ax
+	maxss xmm1,dword ptr [181E5DED0h]
+	movss dword ptr [rcx+30h],xmm1
+	ret
+
+ISIL:
+	001 Nop 
+	002 Compare xmm1, [0x181E5DED0]
+	003 JumpIfGreaterOrEqual {5}
+	004 Move xmm1, [0x181E5DED0]
+	005 Nop 
+	006 Move [rcx+48], xmm1
+	007 Return 
+
+Method: UnityEngine.Vector3 get_RotationAngles()
+
+Disassembly:
+	mov eax,[rdx+40h]
+	movsd xmm0,qword ptr [rdx+38h]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+64]
+	002 Move xmm0, [rdx+56]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Void set_RotationAngles(UnityEngine.Vector3 value)
+
+Disassembly:
+	movsd xmm0,qword ptr [rdx]
+	mov eax,[rdx+8]
+	movsd qword ptr [rcx+38h],xmm0
+	mov [rcx+40h],eax
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, [rdx+8]
+	003 Move [rcx+56], xmm0
+	004 Move [rcx+64], rax
+	005 Return 
+
+Method: System.Single get_YOffset()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+34h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+52]
+	002 Return xmm0
+
+Method: System.Void set_YOffset(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+34h],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+52], xmm1
+	002 Return 
+
+Method: System.Single get_UpDownStep()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+44h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+68]
+	002 Return xmm0
+
+Method: System.Void set_UpDownStep(System.Single value)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [181E5DB88h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+44h],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [0x181E5DB88]
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+68], xmm0
+	008 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov byte ptr [rcx+28h],1
+	mov rbx,rcx
+	mov dword ptr [rcx+2Ch],3F800000h
+	mov dword ptr [rcx+30h],3F800000h
+	cmp byte ptr [182774CCEh],0
+	jne short 00000001805CF767h
+	lea rcx,[18260F030h]
+	call 000000018020C870h
+	mov byte ptr [182774CCEh],1
+	mov rax,[18260F030h]
+	xor edx,edx
+	mov rcx,[rax+0B8h]
+	movsd xmm0,qword ptr [rcx]
+	mov eax,[rcx+8]
+	mov rcx,rbx
+	movsd qword ptr [rbx+38h],xmm0
+	mov [rbx+40h],eax
+	mov dword ptr [rbx+44h],3F800000h
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001805727C0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move [rcx+40], 1
+	005 Move rbx, rcx
+	006 Move [rcx+44], 0x3F800000
+	007 Move [rcx+48], 0x3F800000
+	008 Compare [0x182774CCE], 0
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x18260F030]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x182774CCE], 1
+	013 Move rax, typeof(UnityEngine.Vector3)
+	014 Move rdx, 0
+	015 Move rcx, [rax+184]
+	016 Move xmm0, [rcx]
+	017 Move rax, [rcx+8]
+	018 Move rcx, rbx
+	019 Move [rbx+56], xmm0
+	020 Move [rbx+64], rax
+	021 Move [rbx+68], 0x3F800000
+	022 ShiftStack 32
+	023 Move rbx, stack:0x0
+	024 ShiftStack 8
+	025 Call Settings..ctor, rcx, rdx
+	026 Return 
+

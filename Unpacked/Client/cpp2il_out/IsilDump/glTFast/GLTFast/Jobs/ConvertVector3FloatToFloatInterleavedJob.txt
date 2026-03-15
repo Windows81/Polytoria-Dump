@@ -1,0 +1,128 @@
+Type: GLTFast.Jobs.ConvertVector3FloatToFloatInterleavedJob
+
+Method: System.Void Execute(System.Int32 startIndex, System.Int32 count)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	push r14
+	push r15
+	sub rsp,40h
+	cmp byte ptr [18277873Ch],0
+	mov ebp,r8d
+	movsxd r14,edx
+	mov rbx,rcx
+	jne short 0000000181152EFDh
+	lea rcx,[182636840h]
+	call 000000018020C870h
+	mov byte ptr [18277873Ch],1
+	mov eax,r14d
+	mov rsi,r14
+	imul eax,[rbx+10h]
+	movsxd rdi,eax
+	lea eax,[r14+rbp]
+	add rdi,[rbx+18h]
+	movsxd r15,eax
+	cmp r14,r15
+	jge short 0000000181152F86h
+	movaps [rsp+30h],xmm6
+	movss xmm6,dword ptr [181E5DC8Ch]
+	nop word ptr [rax+rax]
+	mov rax,[182636840h]
+	mov rbp,[rbx]
+	movsxd r14,dword ptr [rbx+0Ch]
+	mov rcx,[rax+20h]
+	test byte ptr [rcx+135h],1
+	jne short 0000000181152F50h
+	call 0000000180215330h
+	mov rax,r14
+	imul rax,rsi
+	inc rsi
+	movsd xmm1,qword ptr [rax+rbp]
+	mov ecx,[rax+rbp+8]
+	movaps xmm0,xmm1
+	movsxd rax,dword ptr [rbx+10h]
+	mulss xmm0,xmm6
+	movss xmm1,xmm0
+	movsd qword ptr [rdi],xmm1
+	mov [rdi+8],ecx
+	add rdi,rax
+	cmp rsi,r15
+	jl short 0000000181152F30h
+	movaps xmm6,[rsp+30h]
+	mov rbx,[rsp+60h]
+	mov rbp,[rsp+68h]
+	mov rsi,[rsp+70h]
+	add rsp,40h
+	pop r15
+	pop r14
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -8
+	009 Move stack:0x0, r15
+	010 ShiftStack -64
+	011 Compare [0x18277873C], 0
+	012 Move rbp, r8
+	013 Move r14, rdx
+	014 Move rbx, rcx
+	015 JumpIfNotEqual {19}
+	016 LoadAddress rcx, [0x182636840]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 Move [0x18277873C], 1
+	019 Move rax, r14
+	020 Move rsi, r14
+	021 Multiply rax, rax, [rbx+16]
+	022 Move rdi, rax
+	023 LoadAddress rax, [r14+rbp]
+	024 Add rdi, rdi, [rbx+24]
+	025 Move r15, rax
+	026 Compare r14, r15
+	027 JumpIfGreaterOrEqual {53}
+	028 Move stack:0x30, xmm6
+	029 Move xmm6, [0x181E5DC8C]
+	030 Nop 
+	031 Move rax, [0x182636840]
+	032 Move rbp, [rbx]
+	033 Move r14, [rbx+12]
+	034 Move rcx, [rax+32]
+	035 Compare [rcx+309], 1
+	036 JumpIfNotEqual {38}
+	037 Call 0x180215330, rcx, rdx, r8, r9
+	038 Move rax, r14
+	039 Multiply rax, rax, rsi
+	040 Add rsi, rsi, 1
+	041 Move xmm1, [rax+rbp]
+	042 Move rcx, [rax+8+rbp]
+	043 Move xmm0, xmm1
+	044 Move rax, [rbx+16]
+	045 Multiply xmm0, xmm0, xmm6
+	046 Move xmm1, xmm0
+	047 Move [rdi], xmm1
+	048 Move [rdi+8], rcx
+	049 Add rdi, rdi, rax
+	050 Compare rsi, r15
+	051 JumpIfLess {31}
+	052 Move xmm6, stack:0x30
+	053 Move rbx, stack:0x60
+	054 Move rbp, stack:0x68
+	055 Move rsi, stack:0x70
+	056 ShiftStack 64
+	057 Move r15, stack:0x0
+	058 ShiftStack 8
+	059 Move r14, stack:0x0
+	060 ShiftStack 8
+	061 Move rdi, stack:0x0
+	062 ShiftStack 8
+	063 Return 
+

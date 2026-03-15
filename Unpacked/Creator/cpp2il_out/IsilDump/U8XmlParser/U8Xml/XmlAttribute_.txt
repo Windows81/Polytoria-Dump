@@ -1,0 +1,138 @@
+Type: U8Xml.XmlAttribute_
+
+Method: System.Void .ctor(U8Xml.RawString name, U8Xml.RawString value, U8Xml.XmlNode_* node)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	mov [rsp+20h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825CD1D8h],0
+	mov rdi,r9
+	mov rsi,r8
+	mov rbp,rdx
+	mov rbx,rcx
+	jne short 000000018180C23Ch
+	lea rcx,[182472BC8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CD1D8h],1
+	movups xmm0,[rbp]
+	xor edx,edx
+	mov rcx,rdi
+	movups [rbx],xmm0
+	movups xmm0,[rsi]
+	movups [rbx+10h],xmm0
+	call 000000018030E8E0h
+	mov rdx,[182472BC8h]
+	lea rcx,[rsp+30h]
+	mov [rsp+30h],rax
+	call 0000000180E5D160h
+	mov rbp,[rsp+40h]
+	mov rsi,[rsp+48h]
+	mov [rbx+20h],rax
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 Move stack:0x20, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x1825CD1D8], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x182472BC8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825CD1D8], 1
+	016 Move xmm0, [rbp]
+	017 Move rdx, 0
+	018 Move rcx, rdi
+	019 Move [rbx], xmm0
+	020 Move xmm0, [rsi]
+	021 Move [rbx+16], xmm0
+	022 Call 0x18030E8E0, rcx, rdx
+	023 Move rdx, [0x182472BC8]
+	024 LoadAddress rcx, stack:0x30
+	025 Move stack:0x30, rax
+	026 Call 0x180E5D160, rcx, rdx
+	027 Move rbp, stack:0x40
+	028 Move rsi, stack:0x48
+	029 Move [rbx+32], rax
+	030 Move rbx, stack:0x38
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 Return 
+
+Method: System.String ToString()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [1825CD1D9h],0
+	mov rdi,rcx
+	jne short 000000018180C1B5h
+	lea rcx,[182461AC8h]
+	call 00000001801EE810h
+	lea rcx,[1824835D8h]
+	call 00000001801EE810h
+	mov byte ptr [1825CD1D9h],1
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000181809BF0h
+	lea rcx,[rdi+10h]
+	xor edx,edx
+	mov rbx,rax
+	call 0000000181809BF0h
+	mov r9,[1824835D8h]
+	mov r8,rax
+	mov rdx,[182461AC8h]
+	mov rcx,rbx
+	mov qword ptr [rsp+20h],0
+	call 00000001812FE800h
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x1825CD1D9], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {13}
+	008 LoadAddress rcx, [0x182461AC8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x1824835D8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x1825CD1D9], 1
+	013 Move rdx, 0
+	014 Move rcx, rdi
+	015 Call RawString.ToString, rcx, rdx
+	016 LoadAddress rcx, [rdi+16]
+	017 Move rdx, 0
+	018 Move rbx, rax
+	019 Call RawString.ToString, rcx, rdx
+	020 Move r9, """
+	021 Move r8, rax
+	022 Move rdx, "=""
+	023 Move rcx, rbx
+	024 Move stack:0x20, 0
+	025 Call String.Concat, rcx, rdx, r8, r9, stack:0x0
+	026 Move rbx, stack:0x40
+	027 ShiftStack 48
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+

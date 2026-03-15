@@ -1,0 +1,71 @@
+Type: SoftMasking.ClearListAtExit`1
+
+Method: System.Void .ctor(System.Collections.Generic.List`1<T> list)
+
+Disassembly:
+	mov [rcx],rdx
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move [rcx], rdx
+	002 Call 0x1801ED930, rcx, rdx, r8, r9
+	003 Return 
+
+Method: System.Void Dispose()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,[rcx]
+	test rbx,rbx
+	je short 000000018096C08Ch
+	mov rcx,[rdx+20h]
+	test byte ptr [rcx+135h],1
+	jne short 000000018096C060h
+	call 00000001801F72D0h
+	mov r8d,[rbx+18h]
+	inc dword ptr [rbx+1Ch]
+	mov dword ptr [rbx+18h],0
+	test r8d,r8d
+	jle short 000000018096C086h
+	mov rcx,[rbx+10h]
+	xor r9d,r9d
+	xor edx,edx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001814B48B0h
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx]
+	005 Compare rbx, 0
+	006 JumpIfEqual {28}
+	007 Move rcx, [rdx+32]
+	008 Compare [rcx+309], 1
+	009 JumpIfNotEqual {11}
+	010 Call 0x1801F72D0, rcx, rdx, r8, r9
+	011 Move r8, [rbx+24]
+	012 Add [rbx+28], [rbx+28], 1
+	013 Move [rbx+24], 0
+	014 Compare r8, 0
+	015 JumpIfLessOrEqual {24}
+	016 Move rcx, [rbx+16]
+	017 Move r9, 0
+	018 Move rdx, 0
+	019 ShiftStack 32
+	020 Move rbx, stack:0x0
+	021 ShiftStack 8
+	022 Call Array.Clear, rcx, rdx, r8, r9
+	023 Return 
+	024 ShiftStack 32
+	025 Move rbx, stack:0x0
+	026 ShiftStack 8
+	027 Return 
+	028 Call 0x1801EEA50, rcx, rdx, r8, r9
+

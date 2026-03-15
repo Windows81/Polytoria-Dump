@@ -1,0 +1,34 @@
+Type: Mirror.NetworkIdentitySerialization
+
+Method: System.Void ResetWriters()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+8]
+	test rax,rax
+	je short 0000000181265F03h
+	xor edx,edx
+	mov [rax+18h],edx
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 0000000181265F03h
+	mov [rax+18h],edx
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+8]
+	003 Compare rax, 0
+	004 JumpIfEqual {13}
+	005 Move rdx, 0
+	006 Move [rax+24], rdx
+	007 Move rax, [rcx+16]
+	008 Compare rax, 0
+	009 JumpIfEqual {13}
+	010 Move [rax+24], rdx
+	011 ShiftStack 40
+	012 Return 
+	013 Call 0x1801EEA50, rcx, rdx, r8, r9
+

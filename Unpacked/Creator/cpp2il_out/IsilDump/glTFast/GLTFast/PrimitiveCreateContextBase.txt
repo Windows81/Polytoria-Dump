@@ -1,0 +1,147 @@
+Type: GLTFast.PrimitiveCreateContextBase
+
+Method: System.Int32 get_MeshIndex()
+
+Disassembly:
+	mov eax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Int32 get_PrimitiveIndex()
+
+Disassembly:
+	mov eax,[rcx+24h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+36]
+	002 Return rax
+
+Method: System.Boolean get_IsCompleted()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Void .ctor(System.Int32 meshIndex, System.Int32 primitiveIndex, System.Int32 subMeshCount, System.String meshName)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C9387h],0
+	mov edi,r9d
+	mov esi,r8d
+	mov ebp,edx
+	mov rbx,rcx
+	jne short 0000000181078BABh
+	lea rcx,[1824967D0h]
+	call 00000001801EE810h
+	mov byte ptr [1825C9387h],1
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802C3410h
+	mov [rbx+20h],ebp
+	mov edx,edi
+	mov [rbx+24h],esi
+	mov rcx,[1824967D0h]
+	call 00000001801ED9B0h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rax
+	mov rdx,rax
+	call 00000001801ED930h
+	mov rdx,[rsp+50h]
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdx
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x1825C9387], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x1824967D0]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x1825C9387], 1
+	016 Move rdx, 0
+	017 Move rcx, rbx
+	018 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	019 Move [rbx+32], rbp
+	020 Move rdx, rdi
+	021 Move [rbx+36], rsi
+	022 Move rcx, typeof(System.Int32[1])
+	023 Call "SzArrayNew", rcx, rdx, r8, r9
+	024 LoadAddress rcx, [rbx+24]
+	025 Move [rbx+24], rax
+	026 Move rdx, rax
+	027 Call 0x1801ED930, rcx, rdx, r8, r9
+	028 Move rdx, stack:0x50
+	029 LoadAddress rcx, [rbx+16]
+	030 Move [rbx+16], rdx
+	031 Move rbx, stack:0x30
+	032 Move rbp, stack:0x38
+	033 Move rsi, stack:0x40
+	034 ShiftStack 32
+	035 Move rdi, stack:0x0
+	036 ShiftStack 8
+	037 Call 0x1801ED930, rcx, rdx, r8, r9
+	038 Return 
+
+Method: System.Void SetMaterial(System.Int32 subMesh, System.Int32 materialIndex)
+
+Disassembly:
+	sub rsp,28h
+	mov r9,[rcx+18h]
+	test r9,r9
+	je short 0000000181078B60h
+	cmp edx,[r9+18h]
+	jae short 0000000181078B66h
+	movsxd rax,edx
+	mov [r9+rax*4+20h],r8d
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r9, [rcx+24]
+	003 Compare r9, 0
+	004 JumpIfEqual {11}
+	005 Compare rdx, [r9+24]
+	006 JumpIfGreaterOrEqual {13}
+	007 Move rax, rdx
+	008 Move [r9+32+rax*4], r8
+	009 ShiftStack 40
+	010 Return 
+	011 Call 0x1801EEA50, rcx, rdx, r8, r9
+	012 Interrupt 
+	013 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: System.Threading.Tasks.Task`1<System.Nullable`1<GLTFast.MeshResult>> CreatePrimitive()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated

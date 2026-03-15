@@ -1,0 +1,385 @@
+Type: RLD.StringEx
+
+Method: System.String RemoveTrailingSlashes(System.String str)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov rdx,rcx
+	test rcx,rcx
+	je short 000000018056C711h
+	mov edx,[rdx+10h]
+	xor r8d,r8d
+	dec edx
+	call 0000000181308CC0h
+	cmp ax,5Ch
+	je short 000000018056C6DFh
+	test rbx,rbx
+	je short 000000018056C711h
+	mov edx,[rbx+10h]
+	xor r8d,r8d
+	dec edx
+	mov rcx,rbx
+	call 0000000181308CC0h
+	cmp ax,2Fh
+	jne short 000000018056C708h
+	test rbx,rbx
+	je short 000000018056C711h
+	mov r8d,[rbx+10h]
+	xor r9d,r9d
+	dec r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001813079C0h
+	mov rbx,rax
+	mov rcx,rax
+	mov rdx,rax
+	test rax,rax
+	je short 000000018056C711h
+	jmp short 000000018056C6B1h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rdx, rcx
+	006 Compare rcx, 0
+	007 JumpIfEqual {42}
+	008 Move rdx, [rdx+16]
+	009 Move r8, 0
+	010 Subtract rdx, rdx, 1
+	011 Call String.get_Chars, rcx, rdx
+	012 Compare rax, 92
+	013 JumpIfEqual {23}
+	014 Compare rbx, 0
+	015 JumpIfEqual {42}
+	016 Move rdx, [rbx+16]
+	017 Move r8, 0
+	018 Subtract rdx, rdx, 1
+	019 Move rcx, rbx
+	020 Call String.get_Chars, rcx, rdx
+	021 Compare rax, 47
+	022 JumpIfNotEqual {37}
+	023 Compare rbx, 0
+	024 JumpIfEqual {42}
+	025 Move r8, [rbx+16]
+	026 Move r9, 0
+	027 Subtract r8, r8, 1
+	028 Move rdx, 0
+	029 Move rcx, rbx
+	030 Call String.Substring, rcx, rdx, r8
+	031 Move rbx, rax
+	032 Move rcx, rax
+	033 Move rdx, rax
+	034 Compare rax, 0
+	035 JumpIfEqual {42}
+	036 Goto {8}
+	037 Move rax, rbx
+	038 ShiftStack 32
+	039 Move rbx, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+	042 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Char LastChar(System.String str)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018056C69Ah
+	mov edx,[rcx+10h]
+	xor r8d,r8d
+	dec edx
+	add rsp,28h
+	jmp near ptr 0000000181308CC0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {10}
+	004 Move rdx, [rcx+16]
+	005 Move r8, 0
+	006 Subtract rdx, rdx, 1
+	007 ShiftStack 40
+	008 Call String.get_Chars, rcx, rdx
+	009 Return rax
+	010 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Int32 LastCharIndex(System.String str)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018056C673h
+	mov eax,[rcx+10h]
+	dec eax
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {8}
+	004 Move rax, [rcx+16]
+	005 Subtract rax, rax, 1
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean ContainsOnlyWhiteSpace(System.String str)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	xor ebx,ebx
+	mov rdi,rcx
+	mov eax,ebx
+	test rcx,rcx
+	je short 000000018056C552h
+	mov [rsp+30h],rsi
+	nop dword ptr [rax+rax]
+	cmp eax,[rdi+10h]
+	jge short 000000018056C540h
+	xor r8d,r8d
+	mov edx,ebx
+	mov rcx,rdi
+	call 0000000181308CC0h
+	mov rcx,[1825D37C8h]
+	movzx esi,ax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018056C51Ah
+	call 00000001801EEAF0h
+	xor edx,edx
+	movzx ecx,si
+	call 000000018140F720h
+	test al,al
+	je short 000000018056C52Eh
+	inc ebx
+	mov eax,ebx
+	jmp short 000000018056C4F0h
+	mov rsi,[rsp+30h]
+	xor al,al
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rsi,[rsp+30h]
+	mov al,1
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, 0
+	006 Move rdi, rcx
+	007 Move rax, rbx
+	008 Compare rcx, 0
+	009 JumpIfEqual {45}
+	010 Move stack:0x30, rsi
+	011 Nop 
+	012 Compare rax, [rdi+16]
+	013 JumpIfGreaterOrEqual {38}
+	014 Move r8, 0
+	015 Move rdx, rbx
+	016 Move rcx, rdi
+	017 Call String.get_Chars, rcx, rdx
+	018 Move rcx, [0x1825D37C8]
+	019 Move rsi, rax
+	020 Compare [rcx+228], 0
+	021 JumpIfNotEqual {23}
+	022 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	023 Move rdx, 0
+	024 Move rcx, rsi
+	025 Call Char.IsWhiteSpace, rcx, rdx
+	026 Compare rax, 0
+	027 JumpIfEqual {31}
+	028 Add rbx, rbx, 1
+	029 Move rax, rbx
+	030 Goto {12}
+	031 Move rsi, stack:0x30
+	032 Move rax, 0
+	033 Move rbx, stack:0x38
+	034 ShiftStack 32
+	035 Move rdi, stack:0x0
+	036 ShiftStack 8
+	037 Return rax
+	038 Move rsi, stack:0x30
+	039 Move rax, 1
+	040 Move rbx, stack:0x38
+	041 ShiftStack 32
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean IsSingleDigit(System.String str)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018056C5F0h
+	cmp dword ptr [rcx+10h],1
+	je short 000000018056C5B6h
+	xor al,al
+	add rsp,28h
+	ret
+	xor r8d,r8d
+	mov [rsp+20h],rbx
+	xor edx,edx
+	call 0000000181308CC0h
+	mov rcx,[1825D37C8h]
+	movzx ebx,ax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018056C5DDh
+	call 00000001801EEAF0h
+	xor edx,edx
+	movzx ecx,bx
+	mov rbx,[rsp+20h]
+	add rsp,28h
+	jmp near ptr 000000018140EB00h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {24}
+	004 Compare [rcx+16], 1
+	005 JumpIfEqual {9}
+	006 Move rax, 0
+	007 ShiftStack 40
+	008 Return rax
+	009 Move r8, 0
+	010 Move stack:0x20, rbx
+	011 Move rdx, 0
+	012 Call String.get_Chars, rcx, rdx
+	013 Move rcx, [0x1825D37C8]
+	014 Move rbx, rax
+	015 Compare [rcx+228], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rdx, 0
+	019 Move rcx, rbx
+	020 Move rbx, stack:0x20
+	021 ShiftStack 40
+	022 Call Char.IsDigit, rcx, rdx
+	023 Return rax
+	024 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean IsSingleLetter(System.String str)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018056C650h
+	cmp dword ptr [rcx+10h],1
+	je short 000000018056C616h
+	xor al,al
+	add rsp,28h
+	ret
+	xor r8d,r8d
+	mov [rsp+20h],rbx
+	xor edx,edx
+	call 0000000181308CC0h
+	mov rcx,[1825D37C8h]
+	movzx ebx,ax
+	cmp dword ptr [rcx+0E4h],0
+	jne short 000000018056C63Dh
+	call 00000001801EEAF0h
+	xor edx,edx
+	movzx ecx,bx
+	mov rbx,[rsp+20h]
+	add rsp,28h
+	jmp near ptr 000000018140EEC0h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {24}
+	004 Compare [rcx+16], 1
+	005 JumpIfEqual {9}
+	006 Move rax, 0
+	007 ShiftStack 40
+	008 Return rax
+	009 Move r8, 0
+	010 Move stack:0x20, rbx
+	011 Move rdx, 0
+	012 Call String.get_Chars, rcx, rdx
+	013 Move rcx, [0x1825D37C8]
+	014 Move rbx, rax
+	015 Compare [rcx+228], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rdx, 0
+	019 Move rcx, rbx
+	020 Move rbx, stack:0x20
+	021 ShiftStack 40
+	022 Call Char.IsLetter, rcx, rdx
+	023 Return rax
+	024 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Boolean IsSingleChar(System.String str, System.Char character)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	movzx ebx,dx
+	test rcx,rcx
+	je short 000000018056C592h
+	cmp dword ptr [rcx+10h],1
+	je short 000000018056C57Ch
+	xor al,al
+	add rsp,20h
+	pop rbx
+	ret
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181308CC0h
+	cmp ax,bx
+	sete al
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rdx
+	005 Compare rcx, 0
+	006 JumpIfEqual {23}
+	007 Compare [rcx+16], 1
+	008 JumpIfEqual {14}
+	009 Move rax, 0
+	010 ShiftStack 32
+	011 Move rbx, stack:0x0
+	012 ShiftStack 8
+	013 Return rax
+	014 Move r8, 0
+	015 Move rdx, 0
+	016 Call String.get_Chars, rcx, rdx
+	017 Compare rax, rbx
+	018 NotImplemented "sete al"
+	019 ShiftStack 32
+	020 Move rbx, stack:0x0
+	021 ShiftStack 8
+	022 Return rax
+	023 Call 0x1801EEA50, rcx, rdx, r8, r9
+

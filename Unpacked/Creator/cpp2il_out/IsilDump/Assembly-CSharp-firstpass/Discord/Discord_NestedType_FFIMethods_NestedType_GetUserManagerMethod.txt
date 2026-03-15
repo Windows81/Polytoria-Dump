@@ -1,0 +1,196 @@
+Type: Discord.Discord+FFIMethods+GetUserManagerMethod
+
+Method: System.Void .ctor(System.Object object, System.IntPtr method)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+8]
+	mov rbx,r8
+	mov [rcx+10h],rax
+	mov rdi,rcx
+	mov [rcx+28h],rbx
+	mov rsi,rdx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 00000001801ED930h
+	movzx ebp,byte ptr [rbx+52h]
+	mov rcx,rbx
+	mov [rdi+40h],rdi
+	call 00000001801ED960h
+	test al,al
+	je short 00000001803969C9h
+	cmp bpl,1
+	jne short 00000001803969CEh
+	lea rax,[180002F30h]
+	jmp short 00000001803969DAh
+	test rsi,rsi
+	je short 00000001803969FEh
+	mov rax,[rdi+20h]
+	mov [rdi+40h],rax
+	mov rax,[rdi+10h]
+	mov [rdi+18h],rax
+	lea rax,[180002D50h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov [rdi+38h],rax
+	add rsp,20h
+	pop rdi
+	ret
+	lea rdx,[181D30D00h]
+	xor ecx,ecx
+	call 00000001801EE410h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801EEA10h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+8]
+	008 Move rbx, r8
+	009 Move [rcx+16], rax
+	010 Move rdi, rcx
+	011 Move [rcx+40], rbx
+	012 Move rsi, rdx
+	013 Move [rcx+32], rdx
+	014 Add rcx, rcx, 32
+	015 Call 0x1801ED930, rcx, rdx, r8, r9
+	016 Move rbp, [rbx+82]
+	017 Move rcx, rbx
+	018 Move [rdi+64], rdi
+	019 Call 0x1801ED960, rcx, rdx, r8, r9
+	020 Compare rax, 0
+	021 JumpIfEqual {26}
+	022 Compare rbp, 1
+	023 JumpIfNotEqual {28}
+	024 LoadAddress rax, [0x180002F30]
+	025 Goto {31}
+	026 Compare rsi, 0
+	027 JumpIfEqual {41}
+	028 Move rax, [rdi+32]
+	029 Move [rdi+64], rax
+	030 Move rax, [rdi+16]
+	031 Move [rdi+24], rax
+	032 LoadAddress rax, [0x180002D50]
+	033 Move rbx, stack:0x30
+	034 Move rbp, stack:0x38
+	035 Move rsi, stack:0x40
+	036 Move [rdi+56], rax
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return 
+	041 LoadAddress rdx, [0x181D30D00]
+	042 Move rcx, 0
+	043 Call 0x1801EE410, rcx, rdx, r8, r9
+	044 Move rcx, rax
+	045 Move rdx, 0
+	046 Call 0x1801EEA10, rcx, rdx, r8, r9
+
+Method: System.IntPtr Invoke(System.IntPtr discordPtr)
+
+Disassembly:
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	jmp rax
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Move r8, [rcx+40]
+	003 Move rcx, [rcx+64]
+	004 CallNoReturn rax
+
+Method: System.IAsyncResult BeginInvoke(System.IntPtr discordPtr, System.AsyncCallback callback, System.Object object)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+18h],rsi
+	mov [rsp+10h],rdx
+	push rdi
+	sub rsp,30h
+	mov rsi,rcx
+	mov qword ptr [rsp+28h],0
+	mov rcx,[1825D3798h]
+	lea rdx,[rsp+48h]
+	mov rbx,r9
+	mov rdi,r8
+	call 00000001801ED910h
+	mov r9,rbx
+	mov [rsp+20h],rax
+	mov r8,rdi
+	lea rdx,[rsp+20h]
+	mov rcx,rsi
+	call 00000001801EE3F0h
+	mov rbx,[rsp+40h]
+	mov rsi,[rsp+50h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x18, rsi
+	003 Move stack:0x10, rdx
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Move rsi, rcx
+	008 Move stack:0x28, 0
+	009 Move rcx, [0x1825D3798]
+	010 LoadAddress rdx, stack:0x48
+	011 Move rbx, r9
+	012 Move rdi, r8
+	013 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	014 Move r9, rbx
+	015 Move stack:0x20, rax
+	016 Move r8, rdi
+	017 LoadAddress rdx, stack:0x20
+	018 Move rcx, rsi
+	019 Call 0x1801EE3F0, rcx, rdx, r8, r9
+	020 Move rbx, stack:0x40
+	021 Move rsi, stack:0x50
+	022 ShiftStack 48
+	023 Move rdi, stack:0x0
+	024 ShiftStack 8
+	025 Return rax
+
+Method: System.IntPtr EndInvoke(System.IAsyncResult result)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,rdx
+	xor edx,edx
+	call 00000001801EE400h
+	test rax,rax
+	je short 0000000180396963h
+	mov rcx,rax
+	call 00000001801EDB10h
+	mov rax,[rax]
+	add rsp,28h
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, rdx
+	003 Move rdx, 0
+	004 Call 0x1801EE400, rcx, rdx, r8, r9
+	005 Compare rax, 0
+	006 JumpIfEqual {12}
+	007 Move rcx, rax
+	008 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	009 Move rax, [rax]
+	010 ShiftStack 40
+	011 Return rax
+	012 Call 0x1801EEA50, rcx, rdx, r8, r9
+

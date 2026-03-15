@@ -1,0 +1,163 @@
+Type: RLD.SceneGizmo+<>c__DisplayClass20_0
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802E39B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: System.Int32 <OnGizmoRender>b__0(RLD.SceneGizmoCap h0, RLD.SceneGizmoCap h1)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	movaps [rsp+40h],xmm6
+	mov rbx,r8
+	mov rdi,rcx
+	test rdx,rdx
+	je near ptr 00000001804064A0h
+	mov rdx,[rdx+18h]
+	test rdx,rdx
+	je near ptr 00000001804064A0h
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 00000001803D7220h
+	movsd xmm1,qword ptr [rdi+10h]
+	movsd xmm0,qword ptr [rax]
+	movsd qword ptr [rsp+30h],xmm0
+	movaps xmm2,xmm0
+	movsd qword ptr [rsp+30h],xmm1
+	subss xmm2,xmm1
+	movaps xmm6,xmm0
+	movaps xmm0,xmm1
+	movss xmm1,dword ptr [rax+8]
+	shufps xmm6,xmm6,55h
+	shufps xmm0,xmm0,55h
+	mulss xmm2,xmm2
+	subss xmm6,xmm0
+	subss xmm1,dword ptr [rdi+18h]
+	mulss xmm6,xmm6
+	mulss xmm1,xmm1
+	addss xmm6,xmm2
+	addss xmm6,xmm1
+	test rbx,rbx
+	je short 00000001804064A0h
+	mov rdx,[rbx+18h]
+	test rdx,rdx
+	je short 00000001804064A0h
+	xor r8d,r8d
+	lea rcx,[rsp+30h]
+	call 00000001803D7220h
+	movsd xmm1,qword ptr [rdi+10h]
+	lea rcx,[rsp+68h]
+	movaps xmm0,xmm1
+	xor r8d,r8d
+	shufps xmm0,xmm0,55h
+	movsd xmm3,qword ptr [rax]
+	movss xmm4,dword ptr [rax+4]
+	subss xmm3,xmm1
+	movss xmm2,dword ptr [rax+8]
+	subss xmm4,xmm0
+	subss xmm2,dword ptr [rdi+18h]
+	movaps xmm1,xmm6
+	mulss xmm3,xmm3
+	mulss xmm4,xmm4
+	mulss xmm2,xmm2
+	addss xmm4,xmm3
+	addss xmm4,xmm2
+	movss dword ptr [rsp+68h],xmm4
+	call 000000018158E8B0h
+	mov rbx,[rsp+60h]
+	movaps xmm6,[rsp+40h]
+	add rsp,50h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Move stack:0x40, xmm6
+	006 Move rbx, r8
+	007 Move rdi, rcx
+	008 Compare rdx, 0
+	009 JumpIfEqual {79}
+	010 Move rdx, [rdx+24]
+	011 Compare rdx, 0
+	012 JumpIfEqual {79}
+	013 Move r8, 0
+	014 LoadAddress rcx, stack:0x20
+	015 Call GizmoCap3D.get_Position, rcx, rdx
+	016 Move xmm1, [rdi+16]
+	017 Move xmm0, [rax]
+	018 Move stack:0x30, xmm0
+	019 Move xmm2, xmm0
+	020 Move stack:0x30, xmm1
+	021 Subtract xmm2, xmm2, xmm1
+	022 Move xmm6, xmm0
+	023 Move xmm0, xmm1
+	024 Move xmm1, [rax+8]
+	025 Move XMM_TEMP.S[0], xmm6.S[1]
+	026 Move XMM_TEMP.S[1], xmm6.S[1]
+	027 Move XMM_TEMP.S[2], xmm6.S[1]
+	028 Move XMM_TEMP.S[3], xmm6.S[1]
+	029 Move xmm6, XMM_TEMP
+	030 Move XMM_TEMP.S[0], xmm0.S[1]
+	031 Move XMM_TEMP.S[1], xmm0.S[1]
+	032 Move XMM_TEMP.S[2], xmm0.S[1]
+	033 Move XMM_TEMP.S[3], xmm0.S[1]
+	034 Move xmm0, XMM_TEMP
+	035 Multiply xmm2, xmm2, xmm2
+	036 Subtract xmm6, xmm6, xmm0
+	037 Subtract xmm1, xmm1, [rdi+24]
+	038 Multiply xmm6, xmm6, xmm6
+	039 Multiply xmm1, xmm1, xmm1
+	040 Add xmm6, xmm6, xmm2
+	041 Add xmm6, xmm6, xmm1
+	042 Compare rbx, 0
+	043 JumpIfEqual {79}
+	044 Move rdx, [rbx+24]
+	045 Compare rdx, 0
+	046 JumpIfEqual {79}
+	047 Move r8, 0
+	048 LoadAddress rcx, stack:0x30
+	049 Call GizmoCap3D.get_Position, rcx, rdx
+	050 Move xmm1, [rdi+16]
+	051 LoadAddress rcx, stack:0x68
+	052 Move xmm0, xmm1
+	053 Move r8, 0
+	054 Move XMM_TEMP.S[0], xmm0.S[1]
+	055 Move XMM_TEMP.S[1], xmm0.S[1]
+	056 Move XMM_TEMP.S[2], xmm0.S[1]
+	057 Move XMM_TEMP.S[3], xmm0.S[1]
+	058 Move xmm0, XMM_TEMP
+	059 Move xmm3, [rax]
+	060 Move xmm4, [rax+4]
+	061 Subtract xmm3, xmm3, xmm1
+	062 Move xmm2, [rax+8]
+	063 Subtract xmm4, xmm4, xmm0
+	064 Subtract xmm2, xmm2, [rdi+24]
+	065 Move xmm1, xmm6
+	066 Multiply xmm3, xmm3, xmm3
+	067 Multiply xmm4, xmm4, xmm4
+	068 Multiply xmm2, xmm2, xmm2
+	069 Add xmm4, xmm4, xmm3
+	070 Add xmm4, xmm4, xmm2
+	071 Move stack:0x68, xmm4
+	072 Call Single.CompareTo, rcx, rdx
+	073 Move rbx, stack:0x60
+	074 Move xmm6, stack:0x40
+	075 ShiftStack 80
+	076 Move rdi, stack:0x0
+	077 ShiftStack 8
+	078 Return rax
+	079 Call 0x18020CAB0, rcx, rdx, r8, r9
+

@@ -1,0 +1,162 @@
+Type: RLD.ColorEx
+
+Method: UnityEngine.Color FromByteValues(System.Byte r, System.Byte g, System.Byte b, System.Byte a)
+
+Disassembly:
+	movss xmm2,dword ptr [181D311E0h]
+	movzx eax,dl
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	movzx eax,r8b
+	mulss xmm0,xmm2
+	movss dword ptr [rcx],xmm0
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	movzx eax,r9b
+	movd xmm1,eax
+	movzx eax,byte ptr [rsp+28h]
+	mulss xmm0,xmm2
+	cvtdq2ps xmm1,xmm1
+	movss dword ptr [rcx+4],xmm0
+	movd xmm0,eax
+	mov rax,rcx
+	cvtdq2ps xmm0,xmm0
+	mulss xmm1,xmm2
+	mulss xmm0,xmm2
+	movss dword ptr [rcx+8],xmm1
+	movss dword ptr [rcx+0Ch],xmm0
+	ret
+
+ISIL:
+	001 Move xmm2, [0x181D311E0]
+	002 Move rax, rdx
+	003 Move xmm0, rax
+	004 Move xmm0, xmm0
+	005 Move rax, r8
+	006 Multiply xmm0, xmm0, xmm2
+	007 Move [rcx], xmm0
+	008 Move xmm0, rax
+	009 Move xmm0, xmm0
+	010 Move rax, r9
+	011 Move xmm1, rax
+	012 Move rax, stack:0x28
+	013 Multiply xmm0, xmm0, xmm2
+	014 Move xmm1, xmm1
+	015 Move [rcx+4], xmm0
+	016 Move xmm0, rax
+	017 Move rax, rcx
+	018 Move xmm0, xmm0
+	019 Multiply xmm1, xmm1, xmm2
+	020 Multiply xmm0, xmm0, xmm2
+	021 Move [rcx+8], xmm1
+	022 Move [rcx+12], xmm0
+	023 Return rax
+
+Method: UnityEngine.Color[] GetFilledColorArray(System.Int32 arrayLength, UnityEngine.Color fillValue)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C7036h],0
+	mov rdi,rdx
+	movsxd rbx,ecx
+	jne short 000000018053EB5Ch
+	lea rcx,[1824930D8h]
+	call 00000001801EE810h
+	mov byte ptr [1825C7036h],1
+	mov rcx,[1824930D8h]
+	mov edx,ebx
+	call 00000001801ED9B0h
+	test ebx,ebx
+	jle short 000000018053EB9Ah
+	xchg ax,ax
+	xor ecx,ecx
+	lea r8,[rax+20h]
+	mov edx,ecx
+	test rax,rax
+	je short 000000018053EBA5h
+	nop dword ptr [rax]
+	cmp ecx,[rax+18h]
+	jae short 000000018053EBABh
+	movups xmm0,[rdi]
+	inc ecx
+	inc rdx
+	movups [r8],xmm0
+	add r8,10h
+	cmp rdx,rbx
+	jl short 000000018053EB80h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C7036], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x1824930D8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C7036], 1
+	012 Move rcx, typeof(UnityEngine.Color[1])
+	013 Move rdx, rbx
+	014 Call "SzArrayNew", rcx, rdx, r8, r9
+	015 Compare rbx, 0
+	016 JumpIfLessOrEqual {33}
+	017 Nop 
+	018 Move rcx, 0
+	019 LoadAddress r8, [rax+32]
+	020 Move rdx, rcx
+	021 Compare rax, 0
+	022 JumpIfEqual {38}
+	023 Nop 
+	024 Compare rcx, [rax+24]
+	025 JumpIfGreaterOrEqual {40}
+	026 Move xmm0, [rdi]
+	027 Add rcx, rcx, 1
+	028 Add rdx, rdx, 1
+	029 Move [r8], xmm0
+	030 Add r8, r8, 16
+	031 Compare rdx, rbx
+	032 JumpIfLess {24}
+	033 Move rbx, stack:0x30
+	034 ShiftStack 32
+	035 Move rdi, stack:0x0
+	036 ShiftStack 8
+	037 Return rax
+	038 Call 0x1801EEA50, rcx, rdx, r8, r9
+	039 Interrupt 
+	040 Call 0x1801EEA40, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color KeepAllButAlpha(UnityEngine.Color color, System.Single newAlpha)
+
+Disassembly:
+	mov eax,[rdx]
+	mov [rcx],eax
+	mov eax,[rdx+4]
+	mov [rcx+4],eax
+	mov eax,[rdx+8]
+	mov [rcx+8],eax
+	mov rax,rcx
+	movss dword ptr [rcx+0Ch],xmm2
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Move [rcx], rax
+	003 Move rax, [rdx+4]
+	004 Move [rcx+4], rax
+	005 Move rax, [rdx+8]
+	006 Move [rcx+8], rax
+	007 Move rax, rcx
+	008 Move [rcx+12], xmm2
+	009 Return rax
+

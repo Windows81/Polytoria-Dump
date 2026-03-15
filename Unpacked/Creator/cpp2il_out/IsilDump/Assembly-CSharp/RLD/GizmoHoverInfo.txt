@@ -1,0 +1,148 @@
+Type: RLD.GizmoHoverInfo
+
+Method: System.Boolean get_IsHovered()
+
+Disassembly:
+	movzx eax,byte ptr [rcx]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Return rax
+
+Method: System.Void set_IsHovered(System.Boolean value)
+
+Disassembly:
+	mov [rcx],dl
+	ret
+
+ISIL:
+	001 Move [rcx], rdx
+	002 Return 
+
+Method: System.Int32 get_HandleId()
+
+Disassembly:
+	mov eax,[rcx+4]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+4]
+	002 Return rax
+
+Method: System.Void set_HandleId(System.Int32 value)
+
+Disassembly:
+	mov [rcx+4],edx
+	ret
+
+ISIL:
+	001 Move [rcx+4], rdx
+	002 Return 
+
+Method: RLD.GizmoDimension get_HandleDimension()
+
+Disassembly:
+	mov eax,[rcx+8]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+8]
+	002 Return rax
+
+Method: System.Void set_HandleDimension(RLD.GizmoDimension value)
+
+Disassembly:
+	mov [rcx+8],edx
+	ret
+
+ISIL:
+	001 Move [rcx+8], rdx
+	002 Return 
+
+Method: UnityEngine.Vector3 get_HoverPoint()
+
+Disassembly:
+	mov eax,[rdx+14h]
+	movsd xmm0,qword ptr [rdx+0Ch]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+20]
+	002 Move xmm0, [rdx+12]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Void set_HoverPoint(UnityEngine.Vector3 value)
+
+Disassembly:
+	movsd xmm0,qword ptr [rdx]
+	mov eax,[rdx+8]
+	movsd qword ptr [rcx+0Ch],xmm0
+	mov [rcx+14h],eax
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, [rdx+8]
+	003 Move [rcx+12], xmm0
+	004 Move [rcx+20], rax
+	005 Return 
+
+Method: System.Void Reset()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov byte ptr [rcx],0
+	xor ecx,ecx
+	call 00000001802DAD10h
+	mov [rbx+4],eax
+	mov dword ptr [rbx+8],0
+	cmp byte ptr [1825C5C84h],0
+	jne short 00000001803B9409h
+	lea rcx,[182466260h]
+	call 00000001801EE810h
+	mov byte ptr [1825C5C84h],1
+	mov rax,[182466260h]
+	mov rcx,[rax+0B8h]
+	movsd xmm0,qword ptr [rcx]
+	mov eax,[rcx+8]
+	movsd qword ptr [rbx+0Ch],xmm0
+	mov [rbx+14h],eax
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move [rcx], 0
+	006 Move rcx, 0
+	007 Call 0x1802DAD10, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	008 Move [rbx+4], rax
+	009 Move [rbx+8], 0
+	010 Compare [0x1825C5C84], 0
+	011 JumpIfNotEqual {15}
+	012 LoadAddress rcx, [0x182466260]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x1825C5C84], 1
+	015 Move rax, typeof(UnityEngine.Vector3)
+	016 Move rcx, [rax+184]
+	017 Move xmm0, [rcx]
+	018 Move rax, [rcx+8]
+	019 Move [rbx+12], xmm0
+	020 Move [rbx+20], rax
+	021 ShiftStack 32
+	022 Move rbx, stack:0x0
+	023 ShiftStack 8
+	024 Return 
+

@@ -1,0 +1,74 @@
+Type: GLTFast.Jobs.ConvertPositionsInt8ToFloatInterleavedJob
+
+Method: System.Void Execute(System.Int32 i, System.Int32 count)
+
+Disassembly:
+	mov eax,edx
+	imul edx,[rcx]
+	imul eax,[rcx+10h]
+	movsxd r9,edx
+	add r9,[rcx+8]
+	movsxd r10,eax
+	add r10,[rcx+18h]
+	test r8d,r8d
+	jle short 000000018108B0EFh
+	movsxd rdx,dword ptr [rcx+10h]
+	movsxd r11,dword ptr [rcx]
+	mov ecx,r8d
+	nop word ptr [rax+rax]
+	movsx eax,byte ptr [r9]
+	neg eax
+	movd xmm0,eax
+	movsx eax,byte ptr [r9+1]
+	cvtdq2ps xmm0,xmm0
+	movd xmm1,eax
+	movsx eax,byte ptr [r9+2]
+	add r9,r11
+	cvtdq2ps xmm1,xmm1
+	movd xmm2,eax
+	cvtdq2ps xmm2,xmm2
+	unpcklps xmm0,xmm1
+	movsd qword ptr [r10],xmm0
+	movss dword ptr [r10+8],xmm2
+	add r10,rdx
+	sub rcx,1
+	jne short 000000018108B0B0h
+	ret
+
+ISIL:
+	001 Move rax, rdx
+	002 Multiply rdx, rdx, [rcx]
+	003 Multiply rax, rax, [rcx+16]
+	004 Move r9, rdx
+	005 Add r9, r9, [rcx+8]
+	006 Move r10, rax
+	007 Add r10, r10, [rcx+24]
+	008 Compare r8, 0
+	009 JumpIfLessOrEqual {35}
+	010 Move rdx, [rcx+16]
+	011 Move r11, [rcx]
+	012 Move rcx, r8
+	013 Nop 
+	014 Move rax, [r9]
+	015 Neg rax
+	016 Move xmm0, rax
+	017 Move rax, [r9+1]
+	018 Move xmm0, xmm0
+	019 Move xmm1, rax
+	020 Move rax, [r9+2]
+	021 Add r9, r9, r11
+	022 Move xmm1, xmm1
+	023 Move xmm2, rax
+	024 Move xmm2, xmm2
+	025 Move XMM_TEMP.S[0], xmm0.S[0]
+	026 Move XMM_TEMP.S[1], xmm1.S[0]
+	027 Move XMM_TEMP.S[2], xmm0.S[1]
+	028 Move XMM_TEMP.S[3], xmm1.S[1]
+	029 Move xmm0, XMM_TEMP
+	030 Move [r10], xmm0
+	031 Move [r10+8], xmm2
+	032 Add r10, r10, rdx
+	033 Subtract rcx, rcx, 1
+	034 JumpIfNotEqual {14}
+	035 Return 
+

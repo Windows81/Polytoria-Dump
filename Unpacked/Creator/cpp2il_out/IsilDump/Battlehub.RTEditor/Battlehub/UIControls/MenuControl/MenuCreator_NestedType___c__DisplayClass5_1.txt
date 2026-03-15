@@ -1,0 +1,55 @@
+Type: Battlehub.UIControls.MenuControl.MenuCreator+<>c__DisplayClass5_1
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: System.Void <Awake>b__4(Battlehub.UIControls.MenuControl.MenuItemValidationArgs args)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rcx,[rcx+10h]
+	mov rbx,rdx
+	test rcx,rcx
+	je short 00000001805EE23Eh
+	mov rax,[rcx+18h]
+	mov rdx,[rcx+28h]
+	mov rcx,[rcx+40h]
+	call rax
+	test rbx,rbx
+	je short 00000001805EE23Eh
+	mov [rbx+10h],al
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rcx, [rcx+16]
+	005 Move rbx, rdx
+	006 Compare rcx, 0
+	007 JumpIfEqual {19}
+	008 Move rax, [rcx+24]
+	009 Move rdx, [rcx+40]
+	010 Move rcx, [rcx+64]
+	011 Call rax
+	012 Compare rbx, 0
+	013 JumpIfEqual {19}
+	014 Move [rbx+16], rax
+	015 ShiftStack 32
+	016 Move rbx, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+	019 Call 0x1801EEA50, rcx, rdx, r8, r9
+

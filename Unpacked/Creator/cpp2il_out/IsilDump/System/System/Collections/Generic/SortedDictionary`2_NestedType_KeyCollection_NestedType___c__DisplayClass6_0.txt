@@ -1,0 +1,107 @@
+Type: System.Collections.Generic.SortedDictionary`2+KeyCollection+<>c__DisplayClass6_0
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	003 Return 
+
+Method: System.Boolean <System.Collections.ICollection.CopyTo>b__0(System.Collections.Generic.SortedSet`1+Node<System.Collections.Generic.KeyValuePair`2<TKey, TValue>> node)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rsi
+	sub rsp,20h
+	movsxd rsi,dword ptr [rcx+10h]
+	mov rbx,[rcx+18h]
+	lea eax,[rsi+1]
+	mov [rcx+10h],eax
+	test rdx,rdx
+	je short 00000001808014A5h
+	movups xmm0,[rdx+10h]
+	test rbx,rbx
+	je short 00000001808014A5h
+	mov [rsp+30h],rdi
+	movq rdi,xmm0
+	test rdi,rdi
+	je short 0000000180801479h
+	mov rdx,[rbx]
+	mov rcx,rdi
+	mov rdx,[rdx+40h]
+	call 00000001801ED950h
+	test rax,rax
+	je short 00000001808014ABh
+	cmp esi,[rbx+18h]
+	jae short 00000001808014BBh
+	lea rax,[rsi+4]
+	mov [rbx+rsi*8+20h],rdi
+	lea rcx,[rbx+rax*8]
+	mov rdx,rdi
+	call 00000001801ED930h
+	mov rdi,[rsp+30h]
+	mov al,1
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rsi
+	ret
+	call 00000001801EEA50h
+	int 3
+	call 00000001801EE430h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801EEA10h
+	int 3
+	call 00000001801EEA40h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -32
+	005 Move rsi, [rcx+16]
+	006 Move rbx, [rcx+24]
+	007 LoadAddress rax, [rsi+1]
+	008 Move [rcx+16], rax
+	009 Compare rdx, 0
+	010 JumpIfEqual {38}
+	011 Move xmm0, [rdx+16]
+	012 Compare rbx, 0
+	013 JumpIfEqual {38}
+	014 Move stack:0x30, rdi
+	015 Move rdi, xmm0
+	016 Compare rdi, 0
+	017 JumpIfEqual {24}
+	018 Move rdx, [rbx]
+	019 Move rcx, rdi
+	020 Move rdx, [rdx+64]
+	021 Call 0x1801ED950, rcx, rdx, r8, r9
+	022 Compare rax, 0
+	023 JumpIfEqual {40}
+	024 Compare rsi, [rbx+24]
+	025 JumpIfGreaterOrEqual {45}
+	026 LoadAddress rax, [rsi+4]
+	027 Move [rbx+32+rsi*8], rdi
+	028 LoadAddress rcx, [rbx+rax*8]
+	029 Move rdx, rdi
+	030 Call 0x1801ED930, rcx, rdx, r8, r9
+	031 Move rdi, stack:0x30
+	032 Move rax, 1
+	033 Move rbx, stack:0x38
+	034 ShiftStack 32
+	035 Move rsi, stack:0x0
+	036 ShiftStack 8
+	037 Return rax
+	038 Call 0x1801EEA50, rcx, rdx, r8, r9
+	039 Interrupt 
+	040 Call 0x1801EE430, rcx, rdx, r8, r9
+	041 Move rcx, rax
+	042 Move rdx, 0
+	043 Call 0x1801EEA10, rcx, rdx, r8, r9
+	044 Interrupt 
+	045 Call 0x1801EEA40, rcx, rdx, r8, r9
+

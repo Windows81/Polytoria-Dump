@@ -1,0 +1,217 @@
+Type: RLD.PrefabPreviewLookAndFeel
+
+Method: UnityEngine.Color get_BkColor()
+
+Disassembly:
+	movups xmm0,[rdx+28h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+40]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Void set_BkColor(UnityEngine.Color value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C6623h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001803F094Ch
+	lea rcx,[182498C70h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6623h],1
+	movups xmm0,[rdi]
+	movups [rbx+28h],xmm0
+	mov rax,[182498C70h]
+	cmp dword ptr [rax+0E4h],0
+	jne short 00000001803F0972h
+	mov rcx,rax
+	call 00000001801EEAF0h
+	mov rax,[182498C70h]
+	mov rax,[rax+0B8h]
+	movss xmm0,dword ptr [rax]
+	maxss xmm0,dword ptr [rbx+34h]
+	movss dword ptr [rbx+34h],xmm0
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C6623], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182498C70]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C6623], 1
+	012 Move xmm0, [rdi]
+	013 Move [rbx+40], xmm0
+	014 Move rax, typeof(RLD.PrefabPreviewLookAndFeel)
+	015 Compare [rax+228], 0
+	016 JumpIfNotEqual {20}
+	017 Move rcx, rax
+	018 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	019 Move rax, typeof(RLD.PrefabPreviewLookAndFeel)
+	020 Move rax, [rax+184]
+	021 Move xmm0, [rax]
+	022 Compare xmm0, [rbx+52]
+	023 JumpIfGreaterOrEqual {25}
+	024 Move xmm0, [rbx+52]
+	025 Nop 
+	026 Move [rbx+52], xmm0
+	027 Move rbx, stack:0x30
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return 
+
+Method: System.Int32 get_PreviewWidth()
+
+Disassembly:
+	mov eax,[rcx+38h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+56]
+	002 Return rax
+
+Method: System.Void set_PreviewWidth(System.Int32 value)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,4
+	cmp edx,eax
+	cmovge eax,edx
+	mov [rcx+38h],eax
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, 4
+	003 Compare rdx, rax
+	004 JumpIfLess {6}
+	005 Move rax, rdx
+	006 Nop 
+	007 Move [rcx+56], rax
+	008 Return 
+
+Method: System.Int32 get_PreviewHeight()
+
+Disassembly:
+	mov eax,[rcx+3Ch]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+60]
+	002 Return rax
+
+Method: System.Void set_PreviewHeight(System.Int32 value)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,4
+	cmp edx,eax
+	cmovge eax,edx
+	mov [rcx+3Ch],eax
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, 4
+	003 Compare rdx, rax
+	004 JumpIfLess {6}
+	005 Move rax, rdx
+	006 Nop 
+	007 Move [rcx+60], rax
+	008 Return 
+
+Method: System.Single get_LightIntensity()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+40h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+64]
+	002 Return xmm0
+
+Method: System.Void set_LightIntensity(System.Single value)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [181D30B88h]
+	maxss xmm0,xmm1
+	movss dword ptr [rcx+40h],xmm0
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [0x181D30B88]
+	003 Compare xmm0, xmm1
+	004 JumpIfGreaterOrEqual {6}
+	005 Move xmm0, xmm1
+	006 Nop 
+	007 Move [rcx+64], xmm0
+	008 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	movdqa xmm0,[181D30EF0h]
+	xor edx,edx
+	movups [rcx+28h],xmm0
+	mov dword ptr [rcx+38h],5Ah
+	mov dword ptr [rcx+3Ch],5Ah
+	mov dword ptr [rcx+40h],3F800000h
+	jmp near ptr 000000018054CCF0h
+
+ISIL:
+	001 Move xmm0, [0x181D30EF0]
+	002 Move rdx, 0
+	003 Move [rcx+40], xmm0
+	004 Move [rcx+56], 90
+	005 Move [rcx+60], 90
+	006 Move [rcx+64], 0x3F800000
+	007 Call Settings..ctor, rcx, rdx
+	008 Return 
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [1825C6624h],0
+	jne short 00000001803F08D0h
+	lea rcx,[182498C70h]
+	call 00000001801EE810h
+	mov byte ptr [1825C6624h],1
+	mov rax,[182498C70h]
+	mov rcx,[rax+0B8h]
+	mov dword ptr [rcx],3B83126Fh
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x1825C6624], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x182498C70]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x1825C6624], 1
+	007 Move rax, typeof(RLD.PrefabPreviewLookAndFeel)
+	008 Move rcx, [rax+184]
+	009 Move [rcx], 0x3B83126F
+	010 ShiftStack 40
+	011 Return 
+

@@ -1,0 +1,99 @@
+Type: RLD.TorusShape3D+WireRenderDescriptor
+
+Method: System.Int32 get_NumTubeSlices()
+
+Disassembly:
+	mov eax,[rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Void set_NumTubeSlices(System.Int32 value)
+
+Disassembly:
+	xchg ax,ax
+	xor eax,eax
+	test edx,edx
+	cmovns eax,edx
+	mov [rcx+14h],eax
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, 0
+	003 Compare rdx, 0
+	004 JumpIfSign {6}
+	005 Move rax, rdx
+	006 Nop 
+	007 Move [rcx+20], rax
+	008 Return 
+
+Method: System.Int32 get_NumAxialSlices()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_NumAxialSlices(System.Int32 value)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,2
+	cmp edx,eax
+	cmovge eax,edx
+	mov [rcx+18h],eax
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, 2
+	003 Compare rdx, rax
+	004 JumpIfLess {6}
+	005 Move rax, rdx
+	006 Nop 
+	007 Move [rcx+24], rax
+	008 Return 
+
+Method: RLD.TorusShape3D+WireRenderFlags get_WireFlags()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_WireFlags(RLD.TorusShape3D+WireRenderFlags value)
+
+Disassembly:
+	mov [rcx+10h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+10h],2
+	mov dword ptr [rcx+14h],1Eh
+	mov dword ptr [rcx+18h],1Eh
+	jmp near ptr 00000001802C3410h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+16], 2
+	003 Move [rcx+20], 30
+	004 Move [rcx+24], 30
+	005 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	006 Return 
+

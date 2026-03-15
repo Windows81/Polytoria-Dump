@@ -1,0 +1,94 @@
+Type: Mirror.BouncyCastle.Math.Raw.Bits
+
+Method: System.UInt32 BitPermuteStep(System.UInt32 x, System.UInt32 m, System.Int32 s)
+
+Disassembly:
+	mov r10d,ecx
+	mov ecx,r8d
+	mov r9d,r10d
+	and r8d,1Fh
+	shr r9d,cl
+	movzx ecx,r8b
+	xor r9d,r10d
+	and r9d,edx
+	mov eax,r9d
+	shl eax,cl
+	xor eax,r9d
+	xor eax,r10d
+	ret
+
+ISIL:
+	001 Move r10, rcx
+	002 Move rcx, r8
+	003 Move r9, r10
+	004 And r8, r8, 31
+	005 ShiftRight r9, rcx
+	006 Move rcx, r8
+	007 Xor r9, r9, r10
+	008 And r9, r9, rdx
+	009 Move rax, r9
+	010 ShiftLeft rax, rcx
+	011 Xor rax, rax, r9
+	012 Xor rax, rax, r10
+	013 Return rax
+
+Method: System.UInt64 BitPermuteStep(System.UInt64 x, System.UInt64 m, System.Int32 s)
+
+Disassembly:
+	mov r10,rcx
+	mov ecx,r8d
+	mov r9,r10
+	and r8d,3Fh
+	shr r9,cl
+	movzx ecx,r8b
+	xor r9,r10
+	and r9,rdx
+	mov rax,r9
+	shl rax,cl
+	xor rax,r9
+	xor rax,r10
+	ret
+
+ISIL:
+	001 Move r10, rcx
+	002 Move rcx, r8
+	003 Move r9, r10
+	004 And r8, r8, 63
+	005 ShiftRight r9, rcx
+	006 Move rcx, r8
+	007 Xor r9, r9, r10
+	008 And r9, r9, rdx
+	009 Move rax, r9
+	010 ShiftLeft rax, rcx
+	011 Xor rax, rax, r9
+	012 Xor rax, rax, r10
+	013 Return rax
+
+Method: System.UInt64 BitPermuteStepSimple(System.UInt64 x, System.UInt64 m, System.Int32 s)
+
+Disassembly:
+	mov r9,rcx
+	mov ecx,r8d
+	mov rax,r9
+	and r8d,3Fh
+	shr rax,cl
+	and r9,rdx
+	movzx ecx,r8b
+	and rax,rdx
+	shl r9,cl
+	or rax,r9
+	ret
+
+ISIL:
+	001 Move r9, rcx
+	002 Move rcx, r8
+	003 Move rax, r9
+	004 And r8, r8, 63
+	005 ShiftRight rax, rcx
+	006 And r9, r9, rdx
+	007 Move rcx, r8
+	008 And rax, rax, rdx
+	009 ShiftLeft r9, rcx
+	010 Or rax, rax, r9
+	011 Return rax
+

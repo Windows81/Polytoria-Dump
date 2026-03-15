@@ -1,0 +1,196 @@
+Type: MoonSharp.Interpreter.LuaTypeExtensions
+
+Method: System.Boolean CanHaveTypeMetatables(MoonSharp.Interpreter.DataType type)
+
+Disassembly:
+	cmp ecx,6
+	setl al
+	ret
+
+ISIL:
+	001 Compare rcx, 6
+	002 NotImplemented "setl al"
+	003 Return rax
+
+Method: System.String ToErrorTypeString(MoonSharp.Interpreter.DataType type)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	cmp byte ptr [182774E89h],0
+	movsxd rbx,ecx
+	jne near ptr 00000001803246E1h
+	lea rcx,[182602D00h]
+	call 000000018020C870h
+	lea rcx,[18261E388h]
+	call 000000018020C870h
+	lea rcx,[182605370h]
+	call 000000018020C870h
+	lea rcx,[182638480h]
+	call 000000018020C870h
+	lea rcx,[18262F550h]
+	call 000000018020C870h
+	lea rcx,[1826034F8h]
+	call 000000018020C870h
+	lea rcx,[182621BB8h]
+	call 000000018020C870h
+	lea rcx,[182618478h]
+	call 000000018020C870h
+	lea rcx,[1826200B8h]
+	call 000000018020C870h
+	lea rcx,[182644DB0h]
+	call 000000018020C870h
+	lea rcx,[1826227F0h]
+	call 000000018020C870h
+	mov byte ptr [182774E89h],1
+	cmp ebx,0Ch
+	ja near ptr 0000000180324772h
+	lea rdx,[180000000h]
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Compare [0x182774E89], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {30}
+	007 LoadAddress rcx, [0x182602D00]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x18261E388]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182605370]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182638480]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x18262F550]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x1826034F8]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x182621BB8]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x182618478]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 LoadAddress rcx, [0x1826200B8]
+	024 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	025 LoadAddress rcx, [0x182644DB0]
+	026 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	027 LoadAddress rcx, [0x1826227F0]
+	028 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	029 Move [0x182774E89], 1
+	030 Compare rbx, 12
+	031 Invalid "Jump target not found in method."
+	032 LoadAddress rdx, [0x180000000]
+
+Method: System.String ToLuaDebuggerString(MoonSharp.Interpreter.DataType type)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	cmp byte ptr [182774E8Ah],0
+	mov ebx,ecx
+	jne short 0000000180324844h
+	lea rcx,[182601608h]
+	call 000000018020C870h
+	mov byte ptr [182774E8Ah],1
+	mov rax,[182601608h]
+	lea rcx,[rsp+20h]
+	xor edx,edx
+	mov [rsp+20h],rax
+	mov qword ptr [rsp+28h],0FFFFFFFFFFFFFFFFh
+	mov [rsp+30h],ebx
+	call 00000001815ABF80h
+	test rax,rax
+	je short 000000018032487Eh
+	xor edx,edx
+	mov rcx,rax
+	call 00000001813D2BF0h
+	add rsp,40h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Compare [0x182774E8A], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x182601608]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x182774E8A], 1
+	010 Move rax, typeof(MoonSharp.Interpreter.DataType)
+	011 LoadAddress rcx, stack:0x20
+	012 Move rdx, 0
+	013 Move stack:0x20, rax
+	014 Move stack:0x28, 18446744073709551615
+	015 Move stack:0x30, rbx
+	016 Call Enum.ToString, rcx, rdx
+	017 Compare rax, 0
+	018 JumpIfEqual {26}
+	019 Move rdx, 0
+	020 Move rcx, rax
+	021 Call String.ToLowerInvariant, rcx, rdx
+	022 ShiftStack 64
+	023 Move rbx, stack:0x0
+	024 ShiftStack 8
+	025 Return rax
+	026 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.String ToLuaTypeString(MoonSharp.Interpreter.DataType type)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [182774E8Bh],0
+	movsxd rbx,ecx
+	jne short 0000000180324909h
+	lea rcx,[182602D00h]
+	call 000000018020C870h
+	lea rcx,[18261E388h]
+	call 000000018020C870h
+	lea rcx,[182624058h]
+	call 000000018020C870h
+	lea rcx,[182605370h]
+	call 000000018020C870h
+	lea rcx,[182638480h]
+	call 000000018020C870h
+	lea rcx,[18262F550h]
+	call 000000018020C870h
+	lea rcx,[182621BB8h]
+	call 000000018020C870h
+	lea rcx,[182618478h]
+	call 000000018020C870h
+	mov byte ptr [182774E8Bh],1
+	cmp ebx,0Ch
+	ja short 0000000180324989h
+	lea rdx,[180000000h]
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x182774E8B], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {24}
+	007 LoadAddress rcx, [0x182602D00]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x18261E388]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x182624058]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x182605370]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x182638480]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x18262F550]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x182621BB8]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x182618478]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 Move [0x182774E8B], 1
+	024 Compare rbx, 12
+	025 Invalid "Jump target not found in method."
+	026 LoadAddress rdx, [0x180000000]
+

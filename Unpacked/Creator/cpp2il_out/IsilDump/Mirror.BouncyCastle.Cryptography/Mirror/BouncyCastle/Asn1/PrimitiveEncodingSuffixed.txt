@@ -1,0 +1,179 @@
+Type: Mirror.BouncyCastle.Asn1.PrimitiveEncodingSuffixed
+
+Method: System.Void .ctor(System.Int32 tagClass, System.Int32 tagNo, System.Byte[] contentsOctets, System.Byte contentsSuffix)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov rsi,r9
+	xor edx,edx
+	mov edi,r8d
+	mov rbp,rcx
+	call 00000001802C3410h
+	lea rcx,[rbp+18h]
+	mov [rbp+10h],ebx
+	mov rdx,rsi
+	mov [rbp+14h],edi
+	mov [rbp+18h],rsi
+	call 00000001801ED930h
+	movzx eax,byte ptr [rsp+50h]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	mov [rbp+20h],al
+	mov rbp,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rsi, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rbp, rcx
+	012 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	013 LoadAddress rcx, [rbp+24]
+	014 Move [rbp+16], rbx
+	015 Move rdx, rsi
+	016 Move [rbp+20], rdi
+	017 Move [rbp+24], rsi
+	018 Call 0x1801ED930, rcx, rdx, r8, r9
+	019 Move rax, stack:0x50
+	020 Move rbx, stack:0x30
+	021 Move rsi, stack:0x40
+	022 Move [rbp+32], rax
+	023 Move rbp, stack:0x38
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return 
+
+Method: System.Void Mirror.BouncyCastle.Asn1.IAsn1Encoding.Encode(Mirror.BouncyCastle.Asn1.Asn1OutputStream asn1Out)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	mov rdi,rdx
+	mov rbx,rcx
+	test rdx,rdx
+	je near ptr 000000018111109Ah
+	mov r8d,[rcx+14h]
+	xor r9d,r9d
+	mov edx,[rcx+10h]
+	mov rcx,rdi
+	call 00000001810E8900h
+	mov rdx,[rbx+18h]
+	test rdx,rdx
+	je short 000000018111109Ah
+	mov edx,[rdx+18h]
+	xor r8d,r8d
+	mov rcx,rdi
+	call 00000001810E8800h
+	mov r9,[rbx+18h]
+	test r9,r9
+	je short 000000018111109Ah
+	mov rax,[rdi]
+	xor r8d,r8d
+	mov r9d,[r9+18h]
+	mov rcx,rdi
+	mov rdx,[rbx+18h]
+	dec r9d
+	mov r10,[rax+378h]
+	mov rax,[rax+380h]
+	mov [rsp+20h],rax
+	call r10
+	mov r8,[rdi]
+	mov rcx,rdi
+	movzx edx,byte ptr [rbx+20h]
+	mov rax,[r8+398h]
+	mov r8,[r8+3A0h]
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	jmp rax
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Compare rdx, 0
+	008 JumpIfEqual {44}
+	009 Move r8, [rcx+20]
+	010 Move r9, 0
+	011 Move rdx, [rcx+16]
+	012 Move rcx, rdi
+	013 Call Asn1OutputStream.WriteIdentifier, rcx, rdx, r8
+	014 Move rdx, [rbx+24]
+	015 Compare rdx, 0
+	016 JumpIfEqual {44}
+	017 Move rdx, [rdx+24]
+	018 Move r8, 0
+	019 Move rcx, rdi
+	020 Call Asn1OutputStream.WriteDL, rcx, rdx
+	021 Move r9, [rbx+24]
+	022 Compare r9, 0
+	023 JumpIfEqual {44}
+	024 Move rax, [rdi]
+	025 Move r8, 0
+	026 Move r9, [r9+24]
+	027 Move rcx, rdi
+	028 Move rdx, [rbx+24]
+	029 Subtract r9, r9, 1
+	030 Move r10, [rax+888]
+	031 Move rax, [rax+896]
+	032 Move stack:0x20, rax
+	033 Call r10
+	034 Move r8, [rdi]
+	035 Move rcx, rdi
+	036 Move rdx, [rbx+32]
+	037 Move rax, [r8+920]
+	038 Move r8, [r8+928]
+	039 Move rbx, stack:0x40
+	040 ShiftStack 48
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 CallNoReturn rax
+	044 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Int32 Mirror.BouncyCastle.Asn1.IAsn1Encoding.GetLength()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,[rcx+18h]
+	test rdx,rdx
+	je short 00000001811110BFh
+	mov edx,[rdx+18h]
+	xor r8d,r8d
+	mov ecx,[rcx+14h]
+	add rsp,28h
+	jmp near ptr 00000001810E8690h
+	call 00000001801EEA50h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, [rcx+24]
+	003 Compare rdx, 0
+	004 JumpIfEqual {11}
+	005 Move rdx, [rdx+24]
+	006 Move r8, 0
+	007 Move rcx, [rcx+20]
+	008 ShiftStack 40
+	009 Call Asn1OutputStream.GetLengthOfEncodingDL, rcx, rdx, r8
+	010 Return rax
+	011 Call 0x1801EEA50, rcx, rdx, r8, r9
+

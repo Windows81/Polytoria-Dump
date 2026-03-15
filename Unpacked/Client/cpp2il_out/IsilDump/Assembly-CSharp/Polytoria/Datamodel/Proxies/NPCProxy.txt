@@ -1,0 +1,1243 @@
+Type: Polytoria.Datamodel.Proxies.NPCProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.NPC target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x18020B990, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rbx+32]
+	018 Move [rbx+32], rdi
+	019 Move rdx, rdi
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x18020B990, rcx, rdx, r8, r9
+	025 Return 
+
+Method: Polytoria.Lua.LuaEvent get_Died()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA669h
+	mov rax,[rax+2F0h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+752]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Polytoria.Datamodel.Instance get_MoveTarget()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA7E9h
+	mov rax,[rax+2E8h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+744]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_MoveTarget(Polytoria.Datamodel.Instance value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAAD9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045B8E0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.set_MoveTarget, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_HeadColor()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804CA6DEh
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018045A8C0h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {18}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call NPC.get_HeadColor, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, rbx
+	013 Move [rbx], xmm0
+	014 ShiftStack 48
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_HeadColor(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA9F7h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018045B460h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call NPC.set_HeadColor, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_TorsoColor()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804CA91Eh
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018045AE60h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {18}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call NPC.get_TorsoColor, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, rbx
+	013 Move [rbx], xmm0
+	014 ShiftStack 48
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_TorsoColor(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CABA7h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018045C240h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call NPC.set_TorsoColor, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_LeftArmColor()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804CA75Eh
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018045A980h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {18}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call NPC.get_LeftArmColor, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, rbx
+	013 Move [rbx], xmm0
+	014 ShiftStack 48
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_LeftArmColor(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAA67h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018045B6A0h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call NPC.set_LeftArmColor, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_RightArmColor()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804CA89Eh
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018045AD10h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {18}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call NPC.get_RightArmColor, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, rbx
+	013 Move [rbx], xmm0
+	014 ShiftStack 48
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_RightArmColor(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAB27h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018045BDE0h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call NPC.set_RightArmColor, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_LeftLegColor()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804CA79Eh
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018045AA20h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {18}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call NPC.get_LeftLegColor, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, rbx
+	013 Move [rbx], xmm0
+	014 ShiftStack 48
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_LeftLegColor(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAA97h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018045B760h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call NPC.set_LeftLegColor, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_RightLegColor()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804CA8DEh
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018045ADB0h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {18}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call NPC.get_RightLegColor, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, rbx
+	013 Move [rbx], xmm0
+	014 ShiftStack 48
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_RightLegColor(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAB57h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018045BEA0h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call NPC.set_RightLegColor, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_Anchored()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA649h
+	movzx eax,byte ptr [rax+274h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+628]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Anchored(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA9A9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045AF40h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.set_Anchored, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_Health()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA70Ah
+	movss xmm0,dword ptr [rax+25Ch]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move xmm0, [rax+604]
+	006 ShiftStack 40
+	007 Return xmm0
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Health(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAA19h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045B520h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18045B520, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_MaxHealth()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA7CAh
+	movss xmm0,dword ptr [rax+258h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move xmm0, [rax+600]
+	006 ShiftStack 40
+	007 Return xmm0
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_MaxHealth(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAAB9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045B820h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18045B820, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Int32 get_ShirtID()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804C5D48h
+	mov eax,[rax+268h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+616]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_ShirtID(System.Int32 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAB79h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045BF60h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.set_ShirtID, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Int32 get_PantsID()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA868h
+	mov eax,[rax+26Ch]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+620]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_PantsID(System.Int32 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAAF9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045BB60h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.set_PantsID, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Int32 get_FaceID()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA688h
+	mov eax,[rax+270h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+624]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_FaceID(System.Int32 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA9C9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045B230h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.set_FaceID, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_WalkSpeed()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA98Ah
+	movss xmm0,dword ptr [rax+260h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move xmm0, [rax+608]
+	006 ShiftStack 40
+	007 Return xmm0
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_WalkSpeed(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAC09h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045C340h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.set_WalkSpeed, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_JumpPower()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA72Ah
+	movss xmm0,dword ptr [rax+264h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move xmm0, [rax+612]
+	006 ShiftStack 40
+	007 Return xmm0
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_JumpPower(System.Single value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CAA39h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018045B5E0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call 0x18045B5E0, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector3 get_Velocity()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx+20h]
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001804CA966h
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	call 000000018045AF00h
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rbx],xmm0
+	mov [rbx+8],eax
+	mov rax,rbx
+	add rsp,30h
+	pop rbx
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx+32]
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {20}
+	008 Move r8, 0
+	009 LoadAddress rcx, stack:0x20
+	010 Call NPC.get_Velocity, rcx, rdx
+	011 Move xmm0, [rax]
+	012 Move rax, [rax+8]
+	013 Move [rbx], xmm0
+	014 Move [rbx+8], rax
+	015 Move rax, rbx
+	016 ShiftStack 48
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+	020 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Velocity(UnityEngine.Vector3 value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CABE0h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 000000018045C300h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call NPC.set_Velocity, rcx, rdx
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Single get_NavDestinationDistance()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA808h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 000000018045AAE0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call NPC.get_NavDestinationDistance, rcx, rdx
+	008 Return xmm0
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_NavDestinationReached()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA828h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 000000018045AB70h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call NPC.get_NavDestinationReached, rcx, rdx
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_NavDestinationValid()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA848h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 000000018045AC10h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call NPC.get_NavDestinationValid, rcx, rdx
+	008 Return rax
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_Grounded()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804CA6A9h
+	movzx eax,byte ptr [rax+275h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+629]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Respawn()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA5E8h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180458820h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call NPC.Respawn, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Jump()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA5A8h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 00000001804572B0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call NPC.Jump, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void LoadAppearance(System.Int32 userID)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA5C9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180457570h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.LoadAppearance, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void ClearAppearance()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA548h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000180454940h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call NPC.ClearAppearance, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void SetNavDestination(UnityEngine.Vector3 destination)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA620h
+	movsd xmm0,qword ptr [rdx]
+	xor r8d,r8d
+	mov eax,[rdx+8]
+	lea rdx,[rsp+20h]
+	movsd qword ptr [rsp+20h],xmm0
+	mov [rsp+28h],eax
+	call 00000001804597C0h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {14}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 Move rax, [rdx+8]
+	008 LoadAddress rdx, stack:0x20
+	009 Move stack:0x20, xmm0
+	010 Move stack:0x28, rax
+	011 Call NPC.SetNavDestination, rcx, rdx
+	012 ShiftStack 56
+	013 Return 
+	014 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void EquipTool(Polytoria.Datamodel.Tool tool)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA589h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 0000000180455AF0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call NPC.EquipTool, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void DropTool()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804CA568h
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 00000001804559B0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call NPC.DropTool, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

@@ -1,0 +1,197 @@
+Type: Mirror.BouncyCastle.Asn1.ConstructedILEncoding
+
+Method: System.Void .ctor(System.Int32 tagClass, System.Int32 tagNo, Mirror.BouncyCastle.Asn1.IAsn1Encoding[] contentsElements)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov rbp,r9
+	xor edx,edx
+	mov edi,r8d
+	mov rsi,rcx
+	call 00000001802C3410h
+	lea rcx,[rsi+18h]
+	mov [rsi+10h],ebx
+	mov rdx,rbp
+	mov [rsi+14h],edi
+	mov [rsi+18h],rbp
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	013 LoadAddress rcx, [rsi+24]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbp
+	016 Move [rsi+20], rdi
+	017 Move [rsi+24], rbp
+	018 Move rbx, stack:0x30
+	019 Move rbp, stack:0x38
+	020 Move rsi, stack:0x40
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x1801ED930, rcx, rdx, r8, r9
+	025 Return 
+
+Method: System.Void Mirror.BouncyCastle.Asn1.IAsn1Encoding.Encode(Mirror.BouncyCastle.Asn1.Asn1OutputStream asn1Out)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,rcx
+	test rdx,rdx
+	je short 00000001810F05DCh
+	mov edx,[rcx+10h]
+	xor r9d,r9d
+	mov r8d,[rcx+14h]
+	or edx,20h
+	mov rcx,rbx
+	call 00000001810E8900h
+	mov r8,[rbx]
+	mov dl,80h
+	mov rcx,rbx
+	mov rax,[r8+398h]
+	mov r8,[r8+3A0h]
+	call rax
+	mov rdx,[rdi+18h]
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001810E8080h
+	mov r8,[rbx]
+	xor edx,edx
+	mov rcx,rbx
+	mov rax,[r8+398h]
+	mov r8,[r8+3A0h]
+	call rax
+	mov r8,[rbx]
+	xor edx,edx
+	mov rcx,rbx
+	mov rax,[r8+398h]
+	mov r8,[r8+3A0h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rdi, rcx
+	007 Compare rdx, 0
+	008 JumpIfEqual {41}
+	009 Move rdx, [rcx+16]
+	010 Move r9, 0
+	011 Move r8, [rcx+20]
+	012 Or rdx, rdx, 32
+	013 Move rcx, rbx
+	014 Call Asn1OutputStream.WriteIdentifier, rcx, rdx, r8
+	015 Move r8, [rbx]
+	016 Move rdx, 128
+	017 Move rcx, rbx
+	018 Move rax, [r8+920]
+	019 Move r8, [r8+928]
+	020 Call rax
+	021 Move rdx, [rdi+24]
+	022 Move r8, 0
+	023 Move rcx, rbx
+	024 Call Asn1OutputStream.EncodeContents, rcx, rdx
+	025 Move r8, [rbx]
+	026 Move rdx, 0
+	027 Move rcx, rbx
+	028 Move rax, [r8+920]
+	029 Move r8, [r8+928]
+	030 Call rax
+	031 Move r8, [rbx]
+	032 Move rdx, 0
+	033 Move rcx, rbx
+	034 Move rax, [r8+920]
+	035 Move r8, [r8+928]
+	036 Move rbx, stack:0x30
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 CallNoReturn rax
+	041 Call 0x1801EEA50, rcx, rdx, r8, r9
+
+Method: System.Int32 Mirror.BouncyCastle.Asn1.IAsn1Encoding.GetLength()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov eax,[rcx+14h]
+	cmp eax,1Fh
+	jl short 00000001810F061Bh
+	sar eax,7
+	mov ebx,2
+	test eax,eax
+	jle short 00000001810F0620h
+	nop word ptr [rax+rax]
+	inc ebx
+	shr eax,7
+	test eax,eax
+	jne short 00000001810F0610h
+	jmp short 00000001810F0620h
+	mov ebx,1
+	mov rcx,[rcx+18h]
+	xor edx,edx
+	call 00000001810E8520h
+	add eax,3
+	add eax,ebx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [rcx+20]
+	005 Compare rax, 31
+	006 JumpIfLess {17}
+	007 ShiftRight rax, 7
+	008 Move rbx, 2
+	009 Compare rax, 0
+	010 JumpIfLessOrEqual {18}
+	011 Nop 
+	012 Add rbx, rbx, 1
+	013 ShiftRight rax, 7
+	014 Compare rax, 0
+	015 JumpIfNotEqual {12}
+	016 Goto {18}
+	017 Move rbx, 1
+	018 Move rcx, [rcx+24]
+	019 Move rdx, 0
+	020 Call Asn1OutputStream.GetLengthOfContents, rcx, rdx
+	021 Add rax, rax, 3
+	022 Add rax, rax, rbx
+	023 ShiftStack 32
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+

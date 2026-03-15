@@ -1,0 +1,356 @@
+Type: Polytoria.Datamodel.Proxies.DecalProxy
+
+Method: System.Void .ctor(Polytoria.Datamodel.Decal target)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 000000018020B990h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Call 0x18020B990, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+24]
+	014 Move [rbx+24], rdi
+	015 Move rdx, rdi
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rbx+32]
+	018 Move [rbx+32], rdi
+	019 Move rdx, rdi
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x18020B990, rcx, rdx, r8, r9
+	025 Return 
+
+Method: System.String get_ImageID()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804C79B9h
+	mov rax,[rax+210h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+528]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_ImageID(System.String value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804C7AA9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018042AD10h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Decal.set_ImageID, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: Polytoria.Controllers.ImageType get_ImageType()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804C79D8h
+	mov eax,[rax+218h]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+536]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_ImageType(Polytoria.Controllers.ImageType value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804C7AC9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018042AD80h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Decal.set_ImageType, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector2 get_TextureScale()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804C7A3Ah
+	movss xmm0,dword ptr [rax+220h]
+	movss xmm1,dword ptr [rax+21Ch]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {15}
+	005 Move xmm0, [rax+544]
+	006 Move xmm1, [rax+540]
+	007 Move XMM_TEMP.S[0], xmm1.S[0]
+	008 Move XMM_TEMP.S[1], xmm0.S[0]
+	009 Move XMM_TEMP.S[2], xmm1.S[1]
+	010 Move XMM_TEMP.S[3], xmm0.S[1]
+	011 Move xmm1, XMM_TEMP
+	012 Move rax, xmm1
+	013 ShiftStack 40
+	014 Return rax
+	015 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_TextureScale(UnityEngine.Vector2 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804C7B09h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018042B2F0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Decal.set_TextureScale, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Vector2 get_TextureOffset()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804C7A0Ah
+	movss xmm0,dword ptr [rax+228h]
+	movss xmm1,dword ptr [rax+224h]
+	unpcklps xmm1,xmm0
+	movq rax,xmm1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {15}
+	005 Move xmm0, [rax+552]
+	006 Move xmm1, [rax+548]
+	007 Move XMM_TEMP.S[0], xmm1.S[0]
+	008 Move XMM_TEMP.S[1], xmm0.S[0]
+	009 Move XMM_TEMP.S[2], xmm1.S[1]
+	010 Move XMM_TEMP.S[3], xmm0.S[1]
+	011 Move xmm1, XMM_TEMP
+	012 Move rax, xmm1
+	013 ShiftStack 40
+	014 Return rax
+	015 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_TextureOffset(UnityEngine.Vector2 value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804C7AE9h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018042B250h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Decal.set_TextureOffset, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: UnityEngine.Color get_Color()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rdx+20h]
+	test rax,rax
+	je short 00000001804C798Fh
+	movups xmm0,[rax+22Ch]
+	mov rax,rcx
+	movups [rcx],xmm0
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rdx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {10}
+	005 Move xmm0, [rax+556]
+	006 Move rax, rcx
+	007 Move [rcx], xmm0
+	008 ShiftStack 40
+	009 Return rax
+	010 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_Color(UnityEngine.Color value)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804C7A87h
+	movups xmm0,[rdx]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 000000018042AB00h
+	add rsp,38h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {12}
+	005 Move xmm0, [rdx]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move stack:0x20, xmm0
+	009 Call Decal.set_Color, rcx, rdx
+	010 ShiftStack 56
+	011 Return 
+	012 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_CastShadows()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+20h]
+	test rax,rax
+	je short 00000001804C7969h
+	movzx eax,byte ptr [rax+23Ch]
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+32]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+572]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void set_CastShadows(System.Boolean value)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001804C7A59h
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018042AA70h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move r8, 0
+	006 ShiftStack 40
+	007 Call Decal.set_CastShadows, rcx, rdx
+	008 Return 
+	009 Call 0x18020CAB0, rcx, rdx, r8, r9
+

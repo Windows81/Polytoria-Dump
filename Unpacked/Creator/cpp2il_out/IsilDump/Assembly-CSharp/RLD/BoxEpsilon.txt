@@ -1,0 +1,128 @@
+Type: RLD.BoxEpsilon
+
+Method: UnityEngine.Vector3 get_SizeEps()
+
+Disassembly:
+	mov eax,[rdx+8]
+	movsd xmm0,qword ptr [rdx]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, [rdx+8]
+	002 Move xmm0, [rdx]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Move rax, rcx
+	006 Return rax
+
+Method: System.Void set_SizeEps(UnityEngine.Vector3 value)
+
+Disassembly:
+	sub rsp,18h
+	movdqa xmm1,[181D30CE0h]
+	movsd xmm3,qword ptr [rdx]
+	movsd xmm4,qword ptr [rdx]
+	movss xmm2,dword ptr [rdx+8]
+	andps xmm4,xmm1
+	shufps xmm3,xmm3,55h
+	andps xmm2,xmm1
+	andps xmm3,xmm1
+	unpcklps xmm4,xmm3
+	movsd qword ptr [rcx],xmm4
+	movss dword ptr [rcx+8],xmm2
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move xmm1, [0x181D30CE0]
+	003 Move xmm3, [rdx]
+	004 Move xmm4, [rdx]
+	005 Move xmm2, [rdx+8]
+	006 And xmm4, xmm4, xmm1
+	007 Move XMM_TEMP.S[0], xmm3.S[1]
+	008 Move XMM_TEMP.S[1], xmm3.S[1]
+	009 Move XMM_TEMP.S[2], xmm3.S[1]
+	010 Move XMM_TEMP.S[3], xmm3.S[1]
+	011 Move xmm3, XMM_TEMP
+	012 And xmm2, xmm2, xmm1
+	013 And xmm3, xmm3, xmm1
+	014 Move XMM_TEMP.S[0], xmm4.S[0]
+	015 Move XMM_TEMP.S[1], xmm3.S[0]
+	016 Move XMM_TEMP.S[2], xmm4.S[1]
+	017 Move XMM_TEMP.S[3], xmm3.S[1]
+	018 Move xmm4, XMM_TEMP
+	019 Move [rcx], xmm4
+	020 Move [rcx+8], xmm2
+	021 ShiftStack 24
+	022 Return 
+
+Method: System.Single get_WidthEps()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx]
+	002 Return xmm0
+
+Method: System.Void set_WidthEps(System.Single value)
+
+Disassembly:
+	andps xmm1,[181D30CE0h]
+	movss dword ptr [rcx],xmm1
+	ret
+
+ISIL:
+	001 And xmm1, xmm1, [0x181D30CE0]
+	002 Move [rcx], xmm1
+	003 Return 
+
+Method: System.Single get_HeightEps()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+4]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+4]
+	002 Return xmm0
+
+Method: System.Void set_HeightEps(System.Single value)
+
+Disassembly:
+	andps xmm1,[181D30CE0h]
+	movss dword ptr [rcx+4],xmm1
+	ret
+
+ISIL:
+	001 And xmm1, xmm1, [0x181D30CE0]
+	002 Move [rcx+4], xmm1
+	003 Return 
+
+Method: System.Single get_DepthEps()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+8]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+8]
+	002 Return xmm0
+
+Method: System.Void set_DepthEps(System.Single value)
+
+Disassembly:
+	andps xmm1,[181D30CE0h]
+	movss dword ptr [rcx+8],xmm1
+	ret
+
+ISIL:
+	001 And xmm1, xmm1, [0x181D30CE0]
+	002 Move [rcx+8], xmm1
+	003 Return 
+

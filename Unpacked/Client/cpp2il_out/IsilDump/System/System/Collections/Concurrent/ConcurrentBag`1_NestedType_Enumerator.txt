@@ -1,0 +1,209 @@
+Type: System.Collections.Concurrent.ConcurrentBag`1+Enumerator
+
+Method: System.Void .ctor(T[] array)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Boolean MoveNext()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 0000000180C90831h
+	mov rdx,rax
+	mov eax,[rax+18h]
+	cmp [rcx+20h],eax
+	jl short 0000000180C90807h
+	mov eax,[rdx+18h]
+	inc eax
+	mov [rcx+20h],eax
+	xor al,al
+	add rsp,28h
+	ret
+	movsxd r8,dword ptr [rcx+20h]
+	lea eax,[r8+1]
+	mov [rcx+20h],eax
+	cmp r8d,[rdx+18h]
+	jae short 0000000180C90837h
+	mov rdx,[rdx+r8*8+20h]
+	mov [rcx+18h],rdx
+	add rcx,18h
+	call 000000018020B990h
+	mov al,1
+	add rsp,28h
+	ret
+	call 000000018020CAB0h
+	int 3
+	call 000000018020CAA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {27}
+	005 Move rdx, rax
+	006 Move rax, [rax+24]
+	007 Compare [rcx+32], rax
+	008 JumpIfLess {15}
+	009 Move rax, [rdx+24]
+	010 Add rax, rax, 1
+	011 Move [rcx+32], rax
+	012 Move rax, 0
+	013 ShiftStack 40
+	014 Return rax
+	015 Move r8, [rcx+32]
+	016 LoadAddress rax, [r8+1]
+	017 Move [rcx+32], rax
+	018 Compare r8, [rdx+24]
+	019 JumpIfGreaterOrEqual {29}
+	020 Move rdx, [rdx+32+r8*8]
+	021 Move [rcx+24], rdx
+	022 Add rcx, rcx, 24
+	023 Call 0x18020B990, rcx, rdx, r8, r9
+	024 Move rax, 1
+	025 ShiftStack 40
+	026 Return rax
+	027 Call 0x18020CAB0, rcx, rdx, r8, r9
+	028 Interrupt 
+	029 Call 0x18020CAA0, rcx, rdx, r8, r9
+
+Method: T get_Current()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Object System.Collections.IEnumerator.get_Current()
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp dword ptr [rcx+20h],0
+	mov rdi,rdx
+	je short 0000000180C9341Ch
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 0000000180C93462h
+	mov eax,[rax+18h]
+	inc eax
+	cmp [rcx+20h],eax
+	je short 0000000180C9341Ch
+	mov rax,[rcx+18h]
+	add rsp,20h
+	pop rdi
+	ret
+	lea rcx,[1826271D0h]
+	mov [rsp+30h],rbx
+	call 000000018020C890h
+	mov rcx,rax
+	call 000000018020CA60h
+	lea rcx,[1826020F8h]
+	mov rbx,rax
+	call 000000018020C890h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001815703A0h
+	mov rdx,rdi
+	mov rcx,rbx
+	call 000000018020CA70h
+	mov rbx,[rsp+30h]
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [rcx+32], 0
+	005 Move rdi, rdx
+	006 JumpIfEqual {19}
+	007 Move rax, [rcx+16]
+	008 Compare rax, 0
+	009 JumpIfEqual {35}
+	010 Move rax, [rax+24]
+	011 Add rax, rax, 1
+	012 Compare [rcx+32], rax
+	013 JumpIfEqual {19}
+	014 Move rax, [rcx+24]
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Return rax
+	019 LoadAddress rcx, [0x1826271D0]
+	020 Move stack:0x30, rbx
+	021 Call 0x18020C890, rcx, rdx, r8, r9
+	022 Move rcx, rax
+	023 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	024 LoadAddress rcx, [0x1826020F8]
+	025 Move rbx, rax
+	026 Call 0x18020C890, rcx, rdx, r8, r9
+	027 Move rdx, rax
+	028 Move r8, 0
+	029 Move rcx, rbx
+	030 Call InvalidOperationException..ctor, rcx, rdx
+	031 Move rdx, rdi
+	032 Move rcx, rbx
+	033 Call 0x18020CA70, rcx, rdx, r8, r9
+	034 Move rbx, stack:0x30
+	035 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void Reset()
+
+Disassembly:
+	xor eax,eax
+	mov dword ptr [rcx+20h],0
+	mov [rcx+18h],rax
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Move [rcx+32], 0
+	003 Move [rcx+24], rax
+	004 Return 
+
+Method: System.Void Dispose()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+

@@ -1,0 +1,135 @@
+Type: MoonSharp.Interpreter.Diagnostics.PerformanceCounters.GlobalPerformanceStopwatch+GlobalPerformanceStopwatch_StopwatchObject
+
+Method: System.Void .ctor(MoonSharp.Interpreter.Diagnostics.PerformanceCounters.GlobalPerformanceStopwatch parent)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [1825C620Eh],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000180379B2Ch
+	lea rcx,[182456398h]
+	call 00000001801EE810h
+	mov byte ptr [1825C620Eh],1
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001802C3410h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 00000001801ED930h
+	mov rcx,[182456398h]
+	cmp dword ptr [rcx+0E4h],0
+	jne short 0000000180379B5Bh
+	call 00000001801EEAF0h
+	xor ecx,ecx
+	call 00000001817810C0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rax
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801ED930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x1825C620E], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x182456398]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x1825C620E], 1
+	012 Move rdx, 0
+	013 Move rcx, rbx
+	014 Call 0x1802C3410, rcx, rdx, r8, r9, stack:0x0
+	015 LoadAddress rcx, [rbx+24]
+	016 Move [rbx+24], rdi
+	017 Move rdx, rdi
+	018 Call 0x1801ED930, rcx, rdx, r8, r9
+	019 Move rcx, typeof(System.Diagnostics.Stopwatch)
+	020 Compare [rcx+228], 0
+	021 JumpIfNotEqual {23}
+	022 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	023 Move rcx, 0
+	024 Call Stopwatch.StartNew, rcx
+	025 LoadAddress rcx, [rbx+16]
+	026 Move [rbx+16], rax
+	027 Move rdx, rax
+	028 Move rbx, stack:0x30
+	029 ShiftStack 32
+	030 Move rdi, stack:0x0
+	031 ShiftStack 8
+	032 Call 0x1801ED930, rcx, rdx, r8, r9
+	033 Return 
+
+Method: System.Void Dispose()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,rcx
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000180379AF9h
+	xor edx,edx
+	call 00000001817811C0h
+	mov rbx,[rdi+18h]
+	test rbx,rbx
+	je short 0000000180379AF9h
+	mov rcx,[rdi+10h]
+	mov rsi,[rbx+18h]
+	test rcx,rcx
+	je short 0000000180379AF9h
+	xor edx,edx
+	call 0000000181781290h
+	add rax,rsi
+	mov rsi,[rsp+38h]
+	inc dword ptr [rbx+10h]
+	mov [rbx+18h],rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801EEA50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rdi, rcx
+	007 Move rcx, [rcx+16]
+	008 Compare rcx, 0
+	009 JumpIfEqual {30}
+	010 Move rdx, 0
+	011 Call Stopwatch.Stop, rcx, rdx
+	012 Move rbx, [rdi+24]
+	013 Compare rbx, 0
+	014 JumpIfEqual {30}
+	015 Move rcx, [rdi+16]
+	016 Move rsi, [rbx+24]
+	017 Compare rcx, 0
+	018 JumpIfEqual {30}
+	019 Move rdx, 0
+	020 Call Stopwatch.get_ElapsedMilliseconds, rcx, rdx
+	021 Add rax, rax, rsi
+	022 Move rsi, stack:0x38
+	023 Add [rbx+16], [rbx+16], 1
+	024 Move [rbx+24], rax
+	025 Move rbx, stack:0x30
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Return 
+	030 Call 0x1801EEA50, rcx, rdx, r8, r9
+

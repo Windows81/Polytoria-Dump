@@ -1,0 +1,186 @@
+Type: RLD.GizmoThinCircle2DBorderController
+
+Method: System.Void .ctor(RLD.GizmoCircle2DBorderControllerData data)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 00000001802E39B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018020B990h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x1802E39B0, rcx, rdx, r8, r9, stack:0x0
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x18020B990, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Void UpdateHandles()
+
+Disassembly:
+	sub rsp,28h
+	mov r9,[rcx+10h]
+	test r9,r9
+	je short 0000000180538F16h
+	mov r8,[r9+20h]
+	mov rdx,r9
+	test r8,r8
+	je short 0000000180538F16h
+	mov rcx,[r9+28h]
+	test rcx,rcx
+	je short 0000000180538F16h
+	movzx r8d,byte ptr [r8+28h]
+	xor r9d,r9d
+	mov edx,[rdx+40h]
+	add rsp,28h
+	jmp near ptr 00000001803F10B0h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r9, [rcx+16]
+	003 Compare r9, 0
+	004 JumpIfEqual {18}
+	005 Move r8, [r9+32]
+	006 Move rdx, r9
+	007 Compare r8, 0
+	008 JumpIfEqual {18}
+	009 Move rcx, [r9+40]
+	010 Compare rcx, 0
+	011 JumpIfEqual {18}
+	012 Move r8, [r8+40]
+	013 Move r9, 0
+	014 Move rdx, [rdx+64]
+	015 ShiftStack 40
+	016 Call GizmoHandle.Set2DShapeVisible, rcx, rdx, r8
+	017 Return 
+	018 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void UpdateEpsilons()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,[rcx+10h]
+	test rbx,rbx
+	je short 0000000180538ED6h
+	mov rax,[rcx+10h]
+	mov rbx,[rbx+38h]
+	mov rcx,[rax+18h]
+	test rcx,rcx
+	je short 0000000180538ED6h
+	xor edx,edx
+	call 000000018052C640h
+	test rax,rax
+	je short 0000000180538ED6h
+	test rbx,rbx
+	je short 0000000180538ED6h
+	movss xmm1,dword ptr [rax+14h]
+	xor r8d,r8d
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001805D2A90h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx+16]
+	005 Compare rbx, 0
+	006 JumpIfEqual {26}
+	007 Move rax, [rcx+16]
+	008 Move rbx, [rbx+56]
+	009 Move rcx, [rax+24]
+	010 Compare rcx, 0
+	011 JumpIfEqual {26}
+	012 Move rdx, 0
+	013 Call GizmoPlaneSlider2D.get_Settings, rcx, rdx
+	014 Compare rax, 0
+	015 JumpIfEqual {26}
+	016 Compare rbx, 0
+	017 JumpIfEqual {26}
+	018 Move xmm1, [rax+20]
+	019 Move r8, 0
+	020 Move rcx, rbx
+	021 ShiftStack 32
+	022 Move rbx, stack:0x0
+	023 ShiftStack 8
+	024 Call CircleShape2D.set_WireEps, rcx, rdx
+	025 Return 
+	026 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: System.Void UpdateTransforms()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,[rcx+10h]
+	test rdx,rdx
+	je short 0000000180538F6Dh
+	mov rcx,rdx
+	mov rdx,[rdx+30h]
+	test rdx,rdx
+	je short 0000000180538F6Dh
+	mov rcx,[rcx+38h]
+	movss xmm0,dword ptr [rdx+10h]
+	movss xmm2,dword ptr [rdx+14h]
+	test rcx,rcx
+	je short 0000000180538F6Dh
+	movss dword ptr [rcx+10h],xmm0
+	xor r8d,r8d
+	movss dword ptr [rcx+14h],xmm2
+	mov eax,[rdx+1Ch]
+	mov [rcx+1Ch],eax
+	movss xmm1,dword ptr [rdx+18h]
+	add rsp,28h
+	jmp near ptr 00000001805D2250h
+	call 000000018020CAB0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, [rcx+16]
+	003 Compare rdx, 0
+	004 JumpIfEqual {23}
+	005 Move rcx, rdx
+	006 Move rdx, [rdx+48]
+	007 Compare rdx, 0
+	008 JumpIfEqual {23}
+	009 Move rcx, [rcx+56]
+	010 Move xmm0, [rdx+16]
+	011 Move xmm2, [rdx+20]
+	012 Compare rcx, 0
+	013 JumpIfEqual {23}
+	014 Move [rcx+16], xmm0
+	015 Move r8, 0
+	016 Move [rcx+20], xmm2
+	017 Move rax, [rdx+28]
+	018 Move [rcx+28], rax
+	019 Move xmm1, [rdx+24]
+	020 ShiftStack 40
+	021 Call 0x1805D2250, rcx, rdx
+	022 Return 
+	023 Call 0x18020CAB0, rcx, rdx, r8, r9
+

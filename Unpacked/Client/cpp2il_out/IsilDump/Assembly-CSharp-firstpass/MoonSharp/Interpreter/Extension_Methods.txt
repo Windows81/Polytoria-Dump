@@ -1,0 +1,176 @@
+Type: MoonSharp.Interpreter.Extension_Methods
+
+Method: TValue GetOrDefault(System.Collections.Generic.Dictionary`2<TKey, TValue> dictionary, TKey key)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	mov [rsp+20h],rsi
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [r8+38h],0
+	mov rbx,r8
+	mov rsi,rdx
+	mov rdi,rcx
+	jne short 000000018070604Ch
+	mov rcx,rbx
+	call 00000001802153B0h
+	xor ebp,ebp
+	mov [rsp+30h],rbp
+	test rdi,rdi
+	je short 0000000180706093h
+	mov r9,[rbx+38h]
+	lea r8,[rsp+30h]
+	mov rdx,rsi
+	mov rcx,rdi
+	mov r9,[r9+10h]
+	call 0000000180BE1910h
+	mov rcx,[rsp+30h]
+	test al,al
+	mov rbx,[rsp+38h]
+	mov rsi,[rsp+48h]
+	cmove rcx,rbp
+	mov rbp,[rsp+40h]
+	mov rax,rcx
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 Move stack:0x20, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [r8+56], 0
+	008 Move rbx, r8
+	009 Move rsi, rdx
+	010 Move rdi, rcx
+	011 JumpIfNotEqual {14}
+	012 Move rcx, rbx
+	013 Call 0x1802153B0, rcx, rdx, r8, r9
+	014 Move rbp, 0
+	015 Move stack:0x30, rbp
+	016 Compare rdi, 0
+	017 JumpIfEqual {37}
+	018 Move r9, [rbx+56]
+	019 LoadAddress r8, stack:0x30
+	020 Move rdx, rsi
+	021 Move rcx, rdi
+	022 Move r9, [r9+16]
+	023 Call Dictionary`2<Object, Object>.TryGetValue, rcx, rdx, r8
+	024 Move rcx, stack:0x30
+	025 Compare rax, 0
+	026 Move rbx, stack:0x38
+	027 Move rsi, stack:0x48
+	028 JumpIfNotEqual {30}
+	029 Move rcx, rbp
+	030 Nop 
+	031 Move rbp, stack:0x40
+	032 Move rax, rcx
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+	037 Call 0x18020CAB0, rcx, rdx, r8, r9
+
+Method: TValue GetOrCreate(System.Collections.Generic.Dictionary`2<TKey, TValue> dictionary, TKey key, System.Func`1<TValue> creator)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	mov [rsp+20h],rsi
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [r9+38h],0
+	mov rbx,r9
+	mov rsi,r8
+	mov rbp,rdx
+	mov rdi,rcx
+	jne short 0000000180705DEFh
+	mov rcx,rbx
+	call 00000001802153B0h
+	mov qword ptr [rsp+30h],0
+	test rdi,rdi
+	je short 0000000180705E61h
+	mov r9,[rbx+38h]
+	lea r8,[rsp+30h]
+	mov rdx,rbp
+	mov rcx,rdi
+	mov r9,[r9+10h]
+	call 0000000180BE1910h
+	test al,al
+	jne short 0000000180705E47h
+	test rsi,rsi
+	je short 0000000180705E61h
+	mov rax,[rsi+18h]
+	mov rdx,[rsi+28h]
+	mov rcx,[rsi+40h]
+	call rax
+	mov r9,[rbx+38h]
+	mov r8,rax
+	mov [rsp+30h],rax
+	mov rdx,rbp
+	mov rcx,rdi
+	mov r9,[r9+38h]
+	call 0000000180BD3C70h
+	mov rax,[rsp+30h]
+	mov rbx,[rsp+38h]
+	mov rbp,[rsp+40h]
+	mov rsi,[rsp+48h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 Move stack:0x20, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [r9+56], 0
+	008 Move rbx, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rdi, rcx
+	012 JumpIfNotEqual {15}
+	013 Move rcx, rbx
+	014 Call 0x1802153B0, rcx, rdx, r8, r9
+	015 Move stack:0x30, 0
+	016 Compare rdi, 0
+	017 JumpIfEqual {47}
+	018 Move r9, [rbx+56]
+	019 LoadAddress r8, stack:0x30
+	020 Move rdx, rbp
+	021 Move rcx, rdi
+	022 Move r9, [r9+16]
+	023 Call Dictionary`2<Object, Object>.TryGetValue, rcx, rdx, r8
+	024 Compare rax, 0
+	025 JumpIfNotEqual {39}
+	026 Compare rsi, 0
+	027 JumpIfEqual {47}
+	028 Move rax, [rsi+24]
+	029 Move rdx, [rsi+40]
+	030 Move rcx, [rsi+64]
+	031 Call rax
+	032 Move r9, [rbx+56]
+	033 Move r8, rax
+	034 Move stack:0x30, rax
+	035 Move rdx, rbp
+	036 Move rcx, rdi
+	037 Move r9, [r9+56]
+	038 Call Dictionary`2<Object, Object>.Add, rcx, rdx, r8
+	039 Move rax, stack:0x30
+	040 Move rbx, stack:0x38
+	041 Move rbp, stack:0x40
+	042 Move rsi, stack:0x48
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Return rax
+	047 Call 0x18020CAB0, rcx, rdx, r8, r9
+

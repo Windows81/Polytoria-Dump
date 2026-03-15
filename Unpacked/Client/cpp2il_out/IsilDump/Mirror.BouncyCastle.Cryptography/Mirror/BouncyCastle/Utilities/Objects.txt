@@ -1,0 +1,110 @@
+Type: Mirror.BouncyCastle.Utilities.Objects
+
+Method: System.Int32 GetHashCode(System.Object obj)
+
+Disassembly:
+	test rcx,rcx
+	jne short 00000001811866A8h
+	xor eax,eax
+	ret
+	mov rdx,[rcx]
+	mov rax,[rdx+158h]
+	mov rdx,[rdx+160h]
+	jmp rax
+
+ISIL:
+	001 Compare rcx, 0
+	002 JumpIfNotEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Move rdx, [rcx]
+	006 Move rax, [rdx+344]
+	007 Move rdx, [rdx+352]
+	008 CallNoReturn rax
+
+Method: TValue EnsureSingletonInitialized(ref TValue value, TArg arg, System.Func`2<TArg, TValue> initialize)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [r9+38h],0
+	mov rdi,r8
+	mov rbp,rdx
+	mov rsi,rcx
+	jne short 00000001807593ACh
+	mov rcx,r9
+	call 00000001802153B0h
+	mov rbx,[rsi]
+	call 000000018020C9F0h
+	test rbx,rbx
+	jne short 00000001807593E7h
+	test rdi,rdi
+	je short 00000001807593FFh
+	mov rax,[rdi+18h]
+	mov rdx,rbp
+	mov r8,[rdi+28h]
+	mov rcx,[rdi+40h]
+	call rax
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rsi
+	mov rbx,rax
+	call 0000000180216BA0h
+	test rax,rax
+	cmovne rbx,rax
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 000000018020CAB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [r9+56], 0
+	008 Move rdi, r8
+	009 Move rbp, rdx
+	010 Move rsi, rcx
+	011 JumpIfNotEqual {14}
+	012 Move rcx, r9
+	013 Call 0x1802153B0, rcx, rdx, r8, r9
+	014 Move rbx, [rsi]
+	015 Call 0x18020C9F0, rcx, rdx, r8, r9
+	016 Compare rbx, 0
+	017 JumpIfNotEqual {34}
+	018 Compare rdi, 0
+	019 JumpIfEqual {42}
+	020 Move rax, [rdi+24]
+	021 Move rdx, rbp
+	022 Move r8, [rdi+40]
+	023 Move rcx, [rdi+64]
+	024 Call rax
+	025 Move r8, 0
+	026 Move rdx, rax
+	027 Move rcx, rsi
+	028 Move rbx, rax
+	029 Call 0x180216BA0, rcx, rdx, r8, r9
+	030 Compare rax, 0
+	031 JumpIfEqual {33}
+	032 Move rbx, rax
+	033 Nop 
+	034 Move rbp, stack:0x38
+	035 Move rax, rbx
+	036 Move rbx, stack:0x30
+	037 Move rsi, stack:0x40
+	038 ShiftStack 32
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+	042 Call 0x18020CAB0, rcx, rdx, r8, r9
+
