@@ -1,8 +1,5 @@
 #!/bin/sh
 
-rm -rf ./Downloads/
-rm -rf ./Unzipped/
-
 # TODO: make script automatically extract join token from `polytoria.com/api/places/join`.
 beta_token="a88bc47e6e23960f8bf3d06928b3b8f9"
 
@@ -33,7 +30,6 @@ download_stable_releases() {
     awk -v os="${1^}" -F'|' '{ system("wget --no-clobber --directory-prefix Downloads/\"" os $1 "\" -U PolytoriaLauncher/4.13 \"" $2 "\"") }'
 }
 
-rm -rf ./Downloads/
 download_stable_releases "windows"
 download_stable_releases "macos"
 download_stable_releases "linux"
