@@ -1,7 +1,29 @@
 #!/bin/sh
 
-# TODO: make script automatically extract join token from `polytoria.com/api/places/join`.
-beta_token="a88bc47e6e23960f8bf3d06928b3b8f9"
+# PT_AUTH cookie value of an account to generate cookies with. Should be
+if [ -z "$PT_AUTH" ]; then
+    echo "PT_AUTH environment variable is not set!"
+    echo "Please set it to the value of your PT_AUTH cookie and run the again!"
+    exit 1
+fi
+
+cookie_jar_path="$(mktemp polytoria-dump-cookiejar)"
+
+# First request is to fetch XSRF-TOKEN and SESSION cookies.
+# The use of edit endpoint is just a personal preference
+curl -A "PolytoriaLauncher/4.13" -X "POST" "https://polytoria.com/api/places/edit" --cookie-jar "$cookie_jar_path/cookies.txt" &> /dev/null
+
+xsrf="$(grep -E -o 'XSRF-TOKEN\s([a-zA-Z0-9!-\)_\-\.]+)' "$cookie_jar_path/cookies.txt" | grep -E -o '([a-zA-Z0-9!-\)_\-\.]+)' | tail -n1)"
+session="$(grep -E -o 'SESSION\s([a-zA-Z0-9!-\)_\-\.]+)' "$cookie_jar_path/cookies.txt" | grep -E -o '([a-zA-Z0-9!-\)_\-\.]+)' | tail -n1)"
+beta_token="$(curl -s -A "PolytoriaLauncher/4.13" -b "PT_AUTH=$PT_AUTH" -b "SESSION=$session" -H "x-xsrf-token: $xsrf" -H "content-type: application/json" -X "POST" "https://polytoria.com/api/places/edit" -d "{\"placeId\": null, \"isBeta\": true}" | jq -r .token)"
+
+if [ "$beta_token" = "null" ]; then
+    echo "Failed fetching token!"
+    echo "You are entirely on your own. Good luck!"
+    exit 1
+fi
+
+rm -r "$cookie_jar_path"
 
 download_stable_update_json() {
     curl -A "PolytoriaLauncher/4.13" "https://api.polytoria.com/v1/launcher/updates?os=$1&release=stable" | \
