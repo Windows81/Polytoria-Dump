@@ -7,7 +7,7 @@ if [ -z "$PT_AUTH" ]; then
     exit 1
 fi
 
-cookie_jar_path="$(mktemp polytoria-dump-cookiejar)"
+cookie_jar_path="$(mktemp -d)"
 
 # First request is to fetch XSRF-TOKEN and SESSION cookies.
 # The use of edit endpoint is just a personal preference
